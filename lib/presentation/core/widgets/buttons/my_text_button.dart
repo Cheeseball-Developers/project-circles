@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:projectcircles/constants/layout_constants.dart';
-import 'package:projectcircles/enums/button_type.dart';
 
-class Button extends StatelessWidget {
+class MyTextButton extends StatelessWidget {
   final String text;
   final VoidCallback onTap;
   final ButtonType type;
 
-  const Button({Key key, this.text, this.onTap, @required this.type})
+  final borderRadius = 24.0;
+  final buttonBorderRadius = 12.0;
+
+  const MyTextButton({Key key, this.text, this.onTap, @required this.type})
       : super(key: key);
 
   @override
@@ -23,7 +24,7 @@ class Button extends StatelessWidget {
           onTap: onTap,
           child: Padding(
             padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Text(text,
                 style: TextStyle(
                     color: type == ButtonType.primary
@@ -33,4 +34,9 @@ class Button extends StatelessWidget {
           )),
     );
   }
+}
+
+enum ButtonType {
+  primary,
+  secondary
 }

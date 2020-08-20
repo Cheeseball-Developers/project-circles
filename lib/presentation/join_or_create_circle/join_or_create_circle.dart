@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:projectcircles/enums/my_connection_state.dart';
 
-class JoinCreateGroup extends StatefulWidget {
+class JoinOrCreateCircle extends StatefulWidget {
   @override
-  _JoinCreateGroupState createState() => _JoinCreateGroupState();
+  _JoinOrCreateGroupState createState() => _JoinOrCreateGroupState();
 }
 
-class _JoinCreateGroupState extends State<JoinCreateGroup>
+class _JoinOrCreateGroupState extends State<JoinOrCreateCircle>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
@@ -48,25 +47,24 @@ class _JoinCreateGroupState extends State<JoinCreateGroup>
     radius = Tween<double>(begin: beginRadius(0), end: endRadius(0)).animate(
         CurvedAnimation(
             parent: _controller,
-            curve: Interval(0.1, 0.5, curve: Curves.easeIn)));
+            curve: const Interval(0.1, 0.5, curve: Curves.easeIn)));
     radius1 = Tween<double>(begin: beginRadius(1), end: endRadius(1)).animate(
         CurvedAnimation(
             parent: _controller,
-            curve: Interval(0.15, 0.55, curve: Curves.easeIn)));
+            curve: const Interval(0.15, 0.55, curve: Curves.easeIn)));
     radius2 = Tween<double>(begin: beginRadius(2), end: endRadius(2)).animate(
         CurvedAnimation(
             parent: _controller,
-            curve: Interval(0.2, 0.6, curve: Curves.easeIn)));
+            curve: const Interval(0.2, 0.6, curve: Curves.easeIn)));
     radius3 = Tween<double>(begin: beginRadius(3), end: endRadius(3)).animate(
         CurvedAnimation(
             parent: _controller,
-            curve: Interval(0.25, 0.65, curve: Curves.easeIn)));
+            curve: const Interval(0.25, 0.65, curve: Curves.easeIn)));
   }
 
   @override
   void initState() {
-    _controller = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1800));
+    _controller = AnimationController(duration: const Duration(milliseconds: 1800));
     _assignAnimationRadius();
     _controller.addListener(() {
       setState(() {});
@@ -124,4 +122,9 @@ class _JoinCreateGroupState extends State<JoinCreateGroup>
       ),
     );
   }
+}
+
+enum MyConnectionState {
+  scanning,
+  notScanning
 }

@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:projectcircles/constants/layout_constants.dart';
-import 'package:projectcircles/widgets/buttons/primary_button.dart';
-import 'package:projectcircles/widgets/buttons/secondary_button.dart';
+import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 
 class ConfirmationDialog extends StatelessWidget {
   final String title;
   final String subtitle;
-  final VoidCallback yesTap;
+  final String noText;
+  final String yesText;
   final VoidCallback noTap;
+  final VoidCallback yesTap;
+
+  final borderRadius = 24.0;
+  final buttonBorderRadius = 12.0;
 
   const ConfirmationDialog(
-      {@required this.title, @required this.subtitle, this.yesTap, this.noTap})
+      {@required this.title,
+        @required this.subtitle,
+        this.noText = 'No',
+        this.yesText = 'Yes',
+        this.yesTap,
+        this.noTap})
       : assert(title != null, subtitle != null);
 
   @override
@@ -44,9 +52,19 @@ class ConfirmationDialog extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    SecondaryButton(text: 'No', onTap: () {},),
-                    Padding(padding: const EdgeInsets.only(right: 8.0),),
-                    PrimaryButton(text: 'Yes', onTap: () {},)
+                    MyTextButton(
+                      type: ButtonType.secondary,
+                      text: 'No',
+                      onTap: () {},
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 8.0),
+                    ),
+                    MyTextButton(
+                      type: ButtonType.primary,
+                      text: 'Yes',
+                      onTap: () {},
+                    )
                   ],
                 )
               ],

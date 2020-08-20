@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:projectcircles/pages/group_home.dart';
-import 'package:projectcircles/pages/join_create_group.dart';
-import 'package:projectcircles/utils/theme.dart';
+import 'package:projectcircles/presentation/core/theme.dart';
+import 'package:projectcircles/presentation/routes/router.gr.dart' as router;
 
 void main() {
   runApp(MyApp());
@@ -12,9 +11,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Circles',
       theme: defaultTheme(),
-      home: GroupHome(),
+      initialRoute: router.Routes.joinOrCreateCircle,
+      onGenerateRoute: router.Router(),
     );
   }
 }
