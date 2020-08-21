@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:dartz/dartz.dart';
 import 'package:projectcircles/domain/core/errors.dart';
 import 'package:projectcircles/domain/core/failures.dart';
+import 'package:projectcircles/domain/core/value_validators.dart';
 import 'package:uuid/uuid.dart';
 
 @immutable
@@ -42,6 +43,11 @@ class UniqueId extends ValueObject<String> {
 class Name extends ValueObject<String> {
   @override
   final Either<ValueFailure<String>, String> value;
+  
+  factory Name(String input) {
+    assert(input!=null);
+    return Name._(validateName(input));
+  }
 
   const Name._(this.value);
 }
