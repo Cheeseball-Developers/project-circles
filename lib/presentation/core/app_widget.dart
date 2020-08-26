@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
       child: MaterialApp(
         title: 'Circles',
         theme: defaultTheme(),
-        initialRoute: router.Routes.joinOrCreateCircle,
+        initialRoute: router.Routes.settings,
         onGenerateRoute: router.Router(),
       ),
     );

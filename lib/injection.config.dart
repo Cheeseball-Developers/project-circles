@@ -8,6 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
 import 'application/circle/join_or_create_circle/join_or_create_circle_bloc.dart';
+import 'application/settings/settings_bloc.dart';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -19,5 +20,6 @@ GetIt $initGetIt(
 }) {
   final gh = GetItHelper(get, environment, environmentFilter);
   gh.factory<JoinOrCreateCircleBloc>(() => JoinOrCreateCircleBloc());
+  gh.factory<SettingsBloc>(() => SettingsBloc());
   return get;
 }
