@@ -27,16 +27,38 @@ class JoinOrCreateCircle extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Material(
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(10.0),
             color: Colors.white,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Group Name'),
-                  Text('Password ka option idhar'),
-                  Text('Create group button idhar')
+                  Text('Create Circle', style: Theme.of(context).textTheme.headline6),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "Abhishek Upmanyu's Circle",
+                            style: Theme.of(context).textTheme.subtitle1,
+                          ),
+                        ),
+                      ),
+                      Material(
+                        borderRadius: BorderRadius.circular(10.0),
+                        color: Colors.lightBlue,
+                        child: InkWell(
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Icon(Icons.done),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             )),
