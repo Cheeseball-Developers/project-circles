@@ -20,8 +20,15 @@ class _$SettingsEventTearOff {
   }
 
 // ignore: unused_element
-  SelectDefaultDirectory selectDefaultDirectory() {
-    return const SelectDefaultDirectory();
+  SelectDefaultDirectory selectDefaultDirectory(Directory directory) {
+    return SelectDefaultDirectory(
+      directory,
+    );
+  }
+
+// ignore: unused_element
+  ToggleAskBeforeReceiving toggleAskBeforeReceiving() {
+    return const ToggleAskBeforeReceiving();
   }
 
 // ignore: unused_element
@@ -37,13 +44,15 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result nameChanged(String name),
-    @required Result selectDefaultDirectory(),
+    @required Result selectDefaultDirectory(Directory directory),
+    @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result nameChanged(String name),
-    Result selectDefaultDirectory(),
+    Result selectDefaultDirectory(Directory directory),
+    Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
     @required Result orElse(),
   });
@@ -51,12 +60,14 @@ mixin _$SettingsEvent {
   Result map<Result extends Object>({
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
+    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
+    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     Result toggleDarkMode(ToggleDarkMode value),
     @required Result orElse(),
   });
@@ -134,11 +145,13 @@ class _$NameChanged implements NameChanged {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result nameChanged(String name),
-    @required Result selectDefaultDirectory(),
+    @required Result selectDefaultDirectory(Directory directory),
+    @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
     assert(toggleDarkMode != null);
     return nameChanged(name);
   }
@@ -147,7 +160,8 @@ class _$NameChanged implements NameChanged {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result nameChanged(String name),
-    Result selectDefaultDirectory(),
+    Result selectDefaultDirectory(Directory directory),
+    Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
     @required Result orElse(),
   }) {
@@ -163,10 +177,12 @@ class _$NameChanged implements NameChanged {
   Result map<Result extends Object>({
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
+    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
     assert(toggleDarkMode != null);
     return nameChanged(this);
   }
@@ -176,6 +192,7 @@ class _$NameChanged implements NameChanged {
   Result maybeMap<Result extends Object>({
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
+    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     Result toggleDarkMode(ToggleDarkMode value),
     @required Result orElse(),
   }) {
@@ -198,6 +215,7 @@ abstract class $SelectDefaultDirectoryCopyWith<$Res> {
   factory $SelectDefaultDirectoryCopyWith(SelectDefaultDirectory value,
           $Res Function(SelectDefaultDirectory) then) =
       _$SelectDefaultDirectoryCopyWithImpl<$Res>;
+  $Res call({Directory directory});
 }
 
 class _$SelectDefaultDirectoryCopyWithImpl<$Res>
@@ -209,48 +227,73 @@ class _$SelectDefaultDirectoryCopyWithImpl<$Res>
 
   @override
   SelectDefaultDirectory get _value => super._value as SelectDefaultDirectory;
+
+  @override
+  $Res call({
+    Object directory = freezed,
+  }) {
+    return _then(SelectDefaultDirectory(
+      directory == freezed ? _value.directory : directory as Directory,
+    ));
+  }
 }
 
 class _$SelectDefaultDirectory implements SelectDefaultDirectory {
-  const _$SelectDefaultDirectory();
+  const _$SelectDefaultDirectory(this.directory) : assert(directory != null);
+
+  @override
+  final Directory directory;
 
   @override
   String toString() {
-    return 'SettingsEvent.selectDefaultDirectory()';
+    return 'SettingsEvent.selectDefaultDirectory(directory: $directory)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is SelectDefaultDirectory);
+    return identical(this, other) ||
+        (other is SelectDefaultDirectory &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(directory);
+
+  @override
+  $SelectDefaultDirectoryCopyWith<SelectDefaultDirectory> get copyWith =>
+      _$SelectDefaultDirectoryCopyWithImpl<SelectDefaultDirectory>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result nameChanged(String name),
-    @required Result selectDefaultDirectory(),
+    @required Result selectDefaultDirectory(Directory directory),
+    @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
     assert(toggleDarkMode != null);
-    return selectDefaultDirectory();
+    return selectDefaultDirectory(directory);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result nameChanged(String name),
-    Result selectDefaultDirectory(),
+    Result selectDefaultDirectory(Directory directory),
+    Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (selectDefaultDirectory != null) {
-      return selectDefaultDirectory();
+      return selectDefaultDirectory(directory);
     }
     return orElse();
   }
@@ -260,10 +303,12 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   Result map<Result extends Object>({
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
+    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
     assert(toggleDarkMode != null);
     return selectDefaultDirectory(this);
   }
@@ -273,6 +318,7 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   Result maybeMap<Result extends Object>({
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
+    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     Result toggleDarkMode(ToggleDarkMode value),
     @required Result orElse(),
   }) {
@@ -285,7 +331,112 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
 }
 
 abstract class SelectDefaultDirectory implements SettingsEvent {
-  const factory SelectDefaultDirectory() = _$SelectDefaultDirectory;
+  const factory SelectDefaultDirectory(Directory directory) =
+      _$SelectDefaultDirectory;
+
+  Directory get directory;
+  $SelectDefaultDirectoryCopyWith<SelectDefaultDirectory> get copyWith;
+}
+
+abstract class $ToggleAskBeforeReceivingCopyWith<$Res> {
+  factory $ToggleAskBeforeReceivingCopyWith(ToggleAskBeforeReceiving value,
+          $Res Function(ToggleAskBeforeReceiving) then) =
+      _$ToggleAskBeforeReceivingCopyWithImpl<$Res>;
+}
+
+class _$ToggleAskBeforeReceivingCopyWithImpl<$Res>
+    extends _$SettingsEventCopyWithImpl<$Res>
+    implements $ToggleAskBeforeReceivingCopyWith<$Res> {
+  _$ToggleAskBeforeReceivingCopyWithImpl(ToggleAskBeforeReceiving _value,
+      $Res Function(ToggleAskBeforeReceiving) _then)
+      : super(_value, (v) => _then(v as ToggleAskBeforeReceiving));
+
+  @override
+  ToggleAskBeforeReceiving get _value =>
+      super._value as ToggleAskBeforeReceiving;
+}
+
+class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
+  const _$ToggleAskBeforeReceiving();
+
+  @override
+  String toString() {
+    return 'SettingsEvent.toggleAskBeforeReceiving()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ToggleAskBeforeReceiving);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result nameChanged(String name),
+    @required Result selectDefaultDirectory(Directory directory),
+    @required Result toggleAskBeforeReceiving(),
+    @required Result toggleDarkMode(),
+  }) {
+    assert(nameChanged != null);
+    assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
+    assert(toggleDarkMode != null);
+    return toggleAskBeforeReceiving();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result nameChanged(String name),
+    Result selectDefaultDirectory(Directory directory),
+    Result toggleAskBeforeReceiving(),
+    Result toggleDarkMode(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (toggleAskBeforeReceiving != null) {
+      return toggleAskBeforeReceiving();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result nameChanged(NameChanged value),
+    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
+    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required Result toggleDarkMode(ToggleDarkMode value),
+  }) {
+    assert(nameChanged != null);
+    assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
+    assert(toggleDarkMode != null);
+    return toggleAskBeforeReceiving(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result nameChanged(NameChanged value),
+    Result selectDefaultDirectory(SelectDefaultDirectory value),
+    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    Result toggleDarkMode(ToggleDarkMode value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (toggleAskBeforeReceiving != null) {
+      return toggleAskBeforeReceiving(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleAskBeforeReceiving implements SettingsEvent {
+  const factory ToggleAskBeforeReceiving() = _$ToggleAskBeforeReceiving;
 }
 
 abstract class $ToggleDarkModeCopyWith<$Res> {
@@ -325,11 +476,13 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result nameChanged(String name),
-    @required Result selectDefaultDirectory(),
+    @required Result selectDefaultDirectory(Directory directory),
+    @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
     assert(toggleDarkMode != null);
     return toggleDarkMode();
   }
@@ -338,7 +491,8 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result nameChanged(String name),
-    Result selectDefaultDirectory(),
+    Result selectDefaultDirectory(Directory directory),
+    Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
     @required Result orElse(),
   }) {
@@ -354,10 +508,12 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   Result map<Result extends Object>({
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
+    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
     assert(toggleDarkMode != null);
     return toggleDarkMode(this);
   }
@@ -367,6 +523,7 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   Result maybeMap<Result extends Object>({
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
+    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     Result toggleDarkMode(ToggleDarkMode value),
     @required Result orElse(),
   }) {
@@ -388,11 +545,15 @@ class _$SettingsStateTearOff {
 // ignore: unused_element
   _SettingsState call(
       {@required Name name,
+      @required UniqueId uid,
       @required Directory path,
+      @required bool askBeforeReceiving,
       @required bool darkMode}) {
     return _SettingsState(
       name: name,
+      uid: uid,
       path: path,
+      askBeforeReceiving: askBeforeReceiving,
       darkMode: darkMode,
     );
   }
@@ -403,7 +564,9 @@ const $SettingsState = _$SettingsStateTearOff();
 
 mixin _$SettingsState {
   Name get name;
+  UniqueId get uid;
   Directory get path;
+  bool get askBeforeReceiving;
   bool get darkMode;
 
   $SettingsStateCopyWith<SettingsState> get copyWith;
@@ -413,7 +576,12 @@ abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(
           SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res>;
-  $Res call({Name name, Directory path, bool darkMode});
+  $Res call(
+      {Name name,
+      UniqueId uid,
+      Directory path,
+      bool askBeforeReceiving,
+      bool darkMode});
 }
 
 class _$SettingsStateCopyWithImpl<$Res>
@@ -427,12 +595,18 @@ class _$SettingsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object name = freezed,
+    Object uid = freezed,
     Object path = freezed,
+    Object askBeforeReceiving = freezed,
     Object darkMode = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed ? _value.name : name as Name,
+      uid: uid == freezed ? _value.uid : uid as UniqueId,
       path: path == freezed ? _value.path : path as Directory,
+      askBeforeReceiving: askBeforeReceiving == freezed
+          ? _value.askBeforeReceiving
+          : askBeforeReceiving as bool,
       darkMode: darkMode == freezed ? _value.darkMode : darkMode as bool,
     ));
   }
@@ -444,7 +618,12 @@ abstract class _$SettingsStateCopyWith<$Res>
           _SettingsState value, $Res Function(_SettingsState) then) =
       __$SettingsStateCopyWithImpl<$Res>;
   @override
-  $Res call({Name name, Directory path, bool darkMode});
+  $Res call(
+      {Name name,
+      UniqueId uid,
+      Directory path,
+      bool askBeforeReceiving,
+      bool darkMode});
 }
 
 class __$SettingsStateCopyWithImpl<$Res>
@@ -460,12 +639,18 @@ class __$SettingsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object name = freezed,
+    Object uid = freezed,
     Object path = freezed,
+    Object askBeforeReceiving = freezed,
     Object darkMode = freezed,
   }) {
     return _then(_SettingsState(
       name: name == freezed ? _value.name : name as Name,
+      uid: uid == freezed ? _value.uid : uid as UniqueId,
       path: path == freezed ? _value.path : path as Directory,
+      askBeforeReceiving: askBeforeReceiving == freezed
+          ? _value.askBeforeReceiving
+          : askBeforeReceiving as bool,
       darkMode: darkMode == freezed ? _value.darkMode : darkMode as bool,
     ));
   }
@@ -473,21 +658,31 @@ class __$SettingsStateCopyWithImpl<$Res>
 
 class _$_SettingsState implements _SettingsState {
   const _$_SettingsState(
-      {@required this.name, @required this.path, @required this.darkMode})
+      {@required this.name,
+      @required this.uid,
+      @required this.path,
+      @required this.askBeforeReceiving,
+      @required this.darkMode})
       : assert(name != null),
+        assert(uid != null),
         assert(path != null),
+        assert(askBeforeReceiving != null),
         assert(darkMode != null);
 
   @override
   final Name name;
   @override
+  final UniqueId uid;
+  @override
   final Directory path;
+  @override
+  final bool askBeforeReceiving;
   @override
   final bool darkMode;
 
   @override
   String toString() {
-    return 'SettingsState(name: $name, path: $path, darkMode: $darkMode)';
+    return 'SettingsState(name: $name, uid: $uid, path: $path, askBeforeReceiving: $askBeforeReceiving, darkMode: $darkMode)';
   }
 
   @override
@@ -496,8 +691,13 @@ class _$_SettingsState implements _SettingsState {
         (other is _SettingsState &&
             (identical(other.name, name) ||
                 const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.uid, uid) ||
+                const DeepCollectionEquality().equals(other.uid, uid)) &&
             (identical(other.path, path) ||
                 const DeepCollectionEquality().equals(other.path, path)) &&
+            (identical(other.askBeforeReceiving, askBeforeReceiving) ||
+                const DeepCollectionEquality()
+                    .equals(other.askBeforeReceiving, askBeforeReceiving)) &&
             (identical(other.darkMode, darkMode) ||
                 const DeepCollectionEquality()
                     .equals(other.darkMode, darkMode)));
@@ -507,7 +707,9 @@ class _$_SettingsState implements _SettingsState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(uid) ^
       const DeepCollectionEquality().hash(path) ^
+      const DeepCollectionEquality().hash(askBeforeReceiving) ^
       const DeepCollectionEquality().hash(darkMode);
 
   @override
@@ -518,13 +720,19 @@ class _$_SettingsState implements _SettingsState {
 abstract class _SettingsState implements SettingsState {
   const factory _SettingsState(
       {@required Name name,
+      @required UniqueId uid,
       @required Directory path,
+      @required bool askBeforeReceiving,
       @required bool darkMode}) = _$_SettingsState;
 
   @override
   Name get name;
   @override
+  UniqueId get uid;
+  @override
   Directory get path;
+  @override
+  bool get askBeforeReceiving;
   @override
   bool get darkMode;
   @override

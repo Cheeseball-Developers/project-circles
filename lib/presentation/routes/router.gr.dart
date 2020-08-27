@@ -11,13 +11,16 @@ import 'package:flutter/material.dart';
 
 import '../circle_home/circle_home.dart';
 import '../join_or_create_circle/join_or_create_circle.dart';
+import '../settings/settings.dart';
 
 class Routes {
   static const String joinOrCreateCircle = '/';
   static const String circleHome = '/circle-home';
+  static const String settings = '/Settings';
   static const all = <String>{
     joinOrCreateCircle,
     circleHome,
+    settings,
   };
 }
 
@@ -27,6 +30,7 @@ class Router extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.joinOrCreateCircle, page: JoinOrCreateCircle),
     RouteDef(Routes.circleHome, page: CircleHome),
+    RouteDef(Routes.settings, page: Settings),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -40,6 +44,12 @@ class Router extends RouterBase {
     CircleHome: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => CircleHome(),
+        settings: data,
+      );
+    },
+    Settings: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => Settings(),
         settings: data,
       );
     },
