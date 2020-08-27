@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
+import 'package:projectcircles/presentation/settings/widgets/settings_item_list_tile.dart';
+import 'package:projectcircles/presentation/settings/widgets/settings_section.dart';
 
 class Settings extends StatelessWidget {
   @override
@@ -24,26 +26,59 @@ class Settings extends StatelessWidget {
                           child: Text('AU'),
                           radius: 64.0,
                         ),
-                        Padding(padding: const EdgeInsets.only(right: 16.0),),
-                        Column(children: [Text(state.name.getOrCrash()), Text(state.uid.getOrCrash())])
+                        const Padding(
+                          padding: EdgeInsets.only(right: 16.0),
+                        ),
+                        Column(children: [
+                          Text(state.name.getOrCrash()),
+                          Text(state.uid.getOrCrash())
+                        ])
                       ],
                     ),
                   ),
-                  ListTile(
-                      leading: Icon(Icons.save_alt),
-                      title: Text('Default Save Location'),
-                      subtitle: Text('Documents/circles'),
-                      onTap: null),
-                  ListTile(
-                      leading: Icon(Icons.remove_circle_outline),
-                      title: Text('Remove Ads'),
-                      subtitle: Text('\$1'),
-                      onTap: null),
-                  ListTile(
-                      leading: Icon(Icons.info),
-                      title: Text('About the app'),
-                      subtitle: Text('Documents/circles'),
-                      onTap: null),
+                  SettingsSection(
+                    title: 'File Transfer',
+                    items: [
+                      SettingsItemListTile(
+                          icon: Icons.save,
+                          title: 'Default Save Location',
+                          subtitle: 'Downloads/Circles',
+                          type: SettingsItemType.tapToOpen,
+                          onTap: () => context
+                              .bloc<SettingsBloc>()
+                              .add(const SettingsEvent.toggleDarkMode())),
+                      SettingsItemListTile(
+                          icon: Icons.save_alt,
+                          title: 'Ask Before Receiving',
+                          subtitle:
+                              'Ask for permission before downloading file sent by other users',
+                          type: SettingsItemType.toggle,
+                          toggleValue: state.askBeforeReceiving,
+                          onTap: () => context.bloc<SettingsBloc>().add(
+                              const SettingsEvent.toggleAskBeforeReceiving())),
+                    ],
+                  ),
+                  SettingsSection(
+                    title: 'Theme',
+                    items: [
+                      SettingsItemListTile(
+                          icon: Icons.brightness_4,
+                          title: 'Dark Mode',
+                          subtitle: 'Dark Mode it is!',
+                          type: SettingsItemType.toggle,
+                          toggleValue: state.darkMode,
+                          onTap: () => context
+                              .bloc<SettingsBloc>()
+                              .add(const SettingsEvent.toggleDarkMode())),
+                    ],
+                  ),
+                  SettingsSection(title: 'About', items: [
+                    SettingsItemListTile(
+                        icon: Icons.info,
+                        title: 'About Circles',
+                        type: SettingsItemType.tapToOpen,
+                        onTap: () {}),
+                  ])
                 ],
               ),
             ),

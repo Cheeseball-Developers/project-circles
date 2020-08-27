@@ -4,5 +4,6 @@ part of 'settings_bloc.dart';
 abstract class SettingsEvent with _$SettingsEvent {
   const factory SettingsEvent.nameChanged(String name) = NameChanged;
   const factory SettingsEvent.selectDefaultDirectory(Directory directory) = SelectDefaultDirectory;
+  const factory SettingsEvent.toggleAskBeforeReceiving() = ToggleAskBeforeReceiving;
   const factory SettingsEvent.toggleDarkMode() = ToggleDarkMode;
 }

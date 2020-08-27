@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/injection.dart';
@@ -9,6 +10,15 @@ class JoinOrCreateCircle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlue,
+      appBar: AppBar(
+        elevation: 0.0,
+        actions: [
+          IconButton(
+            onPressed: () => ExtendedNavigator.named('nav').push('/Settings'),
+            icon: Icon(Icons.settings),
+          )
+        ],
+      ),
       body: Center(
         child: BlocProvider(
             create: (context) => getIt<JoinOrCreateCircleBloc>(),

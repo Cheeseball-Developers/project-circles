@@ -6,7 +6,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
-import 'package:uuid/uuid.dart';
 
 part 'settings_event.dart';
 
@@ -26,6 +25,8 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       yield state.copyWith(name: Name(e.name));
     }, selectDefaultDirectory: (e) async* {
       yield state.copyWith(path: e.directory);
+    }, toggleAskBeforeReceiving: (e) async* {
+      yield state.copyWith(askBeforeReceiving: !state.askBeforeReceiving);
     }, toggleDarkMode: (e) async* {
       yield state.copyWith(darkMode: !state.darkMode);
     });
