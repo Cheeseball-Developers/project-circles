@@ -2,17 +2,11 @@ part of 'settings_bloc.dart';
 
 @freezed
 abstract class SettingsState with _$SettingsState {
-  const factory SettingsState(
-      {@required Name name,
-      @required UniqueId uid,
-      @required Directory path,
-      @required bool askBeforeReceiving,
-      @required bool darkMode}) = _SettingsState;
+  const factory SettingsState.initial() = _Initial;
 
-  factory SettingsState.initial() => _SettingsState(
-      name: Name('Abhishek Upmanyu'),
-      uid: UniqueId(),
-      path: Directory('/'),
-      askBeforeReceiving: false,
-      darkMode: false);
+  const factory SettingsState.isLoading() = _IsLoading;
+
+  const factory SettingsState.hasLoaded(SettingsObject settings) = _HasLoaded;
+
+  const factory SettingsState.hasFailed(PrefsLoadFailure failure) = _HasFailed;
 }
