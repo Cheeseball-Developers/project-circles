@@ -12,7 +12,7 @@ class _SearchButtonState extends State<SearchButton>
   AnimationController _controller;
 
   double baseRadius = 32.0;
-  Animation<double> radius, radius1, radius2, radius3;
+  Animation<double> radius, radius1, radius2, radius3, radius4;
 
   // math function to calculate the begin radius of circle in pulse animation
   double beginRadius(int index) {
@@ -42,12 +42,16 @@ class _SearchButtonState extends State<SearchButton>
         CurvedAnimation(
             parent: _controller,
             curve: const Interval(0.25, 0.65, curve: Curves.easeIn)));
+    radius4 = Tween<double>(begin: beginRadius(4), end: endRadius(4)).animate(
+        CurvedAnimation(
+            parent: _controller,
+            curve: const Interval(0.30, 0.70, curve: Curves.easeIn)));
   }
 
   @override
   void initState() {
-    _controller =
-        AnimationController(duration: const Duration(milliseconds: 1800), vsync: this);
+    _controller = AnimationController(
+        duration: const Duration(milliseconds: 1800), vsync: this);
     print(_controller.toString());
     _assignAnimationRadius();
     super.initState();
@@ -72,15 +76,38 @@ class _SearchButtonState extends State<SearchButton>
         builder: (context, child) => Stack(
           alignment: Alignment.center,
           children: [
-            CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor.withOpacity(0.3),
-                radius: radius3.value),
-            CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor.withOpacity(0.3),
-                radius: radius2.value),
-            CircleAvatar(
-                backgroundColor: Theme.of(context).accentColor.withOpacity(0.3),
-                radius: radius1.value),
+            OverflowBox(
+              maxHeight: MediaQuery.of(context).size.width * 2,
+              maxWidth: MediaQuery.of(context).size.width * 2,
+              child: CircleAvatar(
+                  backgroundColor:
+                      Theme.of(context).accentColor.withOpacity(0.25),
+                  radius: radius4.value),
+            ),
+            OverflowBox(
+              maxHeight: MediaQuery.of(context).size.width * 2,
+              maxWidth: MediaQuery.of(context).size.width * 2,
+              child: CircleAvatar(
+                  backgroundColor:
+                      Theme.of(context).accentColor.withOpacity(0.25),
+                  radius: radius3.value),
+            ),
+            OverflowBox(
+              maxHeight: MediaQuery.of(context).size.width * 2,
+              maxWidth: MediaQuery.of(context).size.width * 2,
+              child: CircleAvatar(
+                  backgroundColor:
+                      Theme.of(context).accentColor.withOpacity(0.25),
+                  radius: radius2.value),
+            ),
+            OverflowBox(
+              maxHeight: MediaQuery.of(context).size.width * 2,
+              maxWidth: MediaQuery.of(context).size.width * 2,
+              child: CircleAvatar(
+                  backgroundColor:
+                      Theme.of(context).accentColor.withOpacity(0.25),
+                  radius: radius1.value),
+            ),
             GestureDetector(
               onTap: state.isSearching
                   ? () => context
