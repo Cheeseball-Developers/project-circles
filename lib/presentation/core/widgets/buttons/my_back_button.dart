@@ -10,7 +10,7 @@ class MyBackButton extends StatelessWidget {
         children: [
           Icon(
             Icons.arrow_back,
-            color: Theme.of(context).accentColor,
+            color: Theme.of(context).buttonColor,
             size: 24.0,
           ),
           Text(
@@ -18,7 +18,7 @@ class MyBackButton extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .bodyText2
-                .copyWith(color: Theme.of(context).accentColor),
+                .copyWith(color: Theme.of(context).buttonColor),
           )
         ],
       ),
