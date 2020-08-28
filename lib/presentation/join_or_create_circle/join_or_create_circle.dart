@@ -42,7 +42,7 @@ class JoinOrCreateCircle extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             "Abhishek Upmanyu's Circle",
-                            style: Theme.of(context).textTheme.subtitle1,
+                            style: Theme.of(context).textTheme.subtitle2,
                           ),
                         ),
                       ),
@@ -51,9 +51,9 @@ class JoinOrCreateCircle extends StatelessWidget {
                         color: Colors.lightBlue,
                         child: InkWell(
                           onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Icon(Icons.done),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Icon(Icons.done, color: Theme.of(context).accentIconTheme.color,),
                           ),
                         ),
                       )

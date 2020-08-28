@@ -8,14 +8,17 @@ class SettingsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(title),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: ListView(shrinkWrap: true, children: items),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Column(
+        children: [
+          Text(title, style: Theme.of(context).textTheme.subtitle2,),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: ListView(shrinkWrap: true, children: items),
+          )
+        ],
+      ),
     );
   }
 }
