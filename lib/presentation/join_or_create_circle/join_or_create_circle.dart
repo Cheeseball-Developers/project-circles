@@ -9,7 +9,7 @@ class JoinOrCreateCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue,
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
         elevation: 0.0,
         actions: [
@@ -28,7 +28,7 @@ class JoinOrCreateCircle extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Material(
             borderRadius: BorderRadius.circular(10.0),
-            color: Colors.white,
+            color: Theme.of(context).cardColor,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -48,7 +48,7 @@ class JoinOrCreateCircle extends StatelessWidget {
                       ),
                       Material(
                         borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.lightBlue,
+                        color: Theme.of(context).buttonColor,
                         child: InkWell(
                           onTap: () {},
                           child: Padding(

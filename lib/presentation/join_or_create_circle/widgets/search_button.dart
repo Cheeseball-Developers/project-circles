@@ -73,13 +73,13 @@ class _SearchButtonState extends State<SearchButton>
           alignment: Alignment.center,
           children: [
             CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
+                backgroundColor: Theme.of(context).accentColor.withOpacity(0.3),
                 radius: radius3.value),
             CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
+                backgroundColor: Theme.of(context).accentColor.withOpacity(0.3),
                 radius: radius2.value),
             CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
+                backgroundColor: Theme.of(context).accentColor.withOpacity(0.3),
                 radius: radius1.value),
             GestureDetector(
               onTap: state.isSearching
