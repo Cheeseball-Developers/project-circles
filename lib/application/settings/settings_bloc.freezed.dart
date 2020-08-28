@@ -13,7 +13,12 @@ class _$SettingsEventTearOff {
   const _$SettingsEventTearOff();
 
 // ignore: unused_element
-  NameChanged nameChanged(String name) {
+  LoadPrefs loadPrefs() {
+    return const LoadPrefs();
+  }
+
+// ignore: unused_element
+  NameChanged nameChanged(Name name) {
     return NameChanged(
       name,
     );
@@ -43,14 +48,16 @@ const $SettingsEvent = _$SettingsEventTearOff();
 mixin _$SettingsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result nameChanged(String name),
+    @required Result loadPrefs(),
+    @required Result nameChanged(Name name),
     @required Result selectDefaultDirectory(Directory directory),
     @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result nameChanged(String name),
+    Result loadPrefs(),
+    Result nameChanged(Name name),
     Result selectDefaultDirectory(Directory directory),
     Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
@@ -58,6 +65,7 @@ mixin _$SettingsEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadPrefs(LoadPrefs value),
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
     @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -65,6 +73,7 @@ mixin _$SettingsEvent {
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadPrefs(LoadPrefs value),
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
     Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -88,11 +97,114 @@ class _$SettingsEventCopyWithImpl<$Res>
   final $Res Function(SettingsEvent) _then;
 }
 
+abstract class $LoadPrefsCopyWith<$Res> {
+  factory $LoadPrefsCopyWith(LoadPrefs value, $Res Function(LoadPrefs) then) =
+      _$LoadPrefsCopyWithImpl<$Res>;
+}
+
+class _$LoadPrefsCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
+    implements $LoadPrefsCopyWith<$Res> {
+  _$LoadPrefsCopyWithImpl(LoadPrefs _value, $Res Function(LoadPrefs) _then)
+      : super(_value, (v) => _then(v as LoadPrefs));
+
+  @override
+  LoadPrefs get _value => super._value as LoadPrefs;
+}
+
+class _$LoadPrefs implements LoadPrefs {
+  const _$LoadPrefs();
+
+  @override
+  String toString() {
+    return 'SettingsEvent.loadPrefs()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LoadPrefs);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loadPrefs(),
+    @required Result nameChanged(Name name),
+    @required Result selectDefaultDirectory(Directory directory),
+    @required Result toggleAskBeforeReceiving(),
+    @required Result toggleDarkMode(),
+  }) {
+    assert(loadPrefs != null);
+    assert(nameChanged != null);
+    assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
+    assert(toggleDarkMode != null);
+    return loadPrefs();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loadPrefs(),
+    Result nameChanged(Name name),
+    Result selectDefaultDirectory(Directory directory),
+    Result toggleAskBeforeReceiving(),
+    Result toggleDarkMode(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadPrefs != null) {
+      return loadPrefs();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loadPrefs(LoadPrefs value),
+    @required Result nameChanged(NameChanged value),
+    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
+    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required Result toggleDarkMode(ToggleDarkMode value),
+  }) {
+    assert(loadPrefs != null);
+    assert(nameChanged != null);
+    assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
+    assert(toggleDarkMode != null);
+    return loadPrefs(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loadPrefs(LoadPrefs value),
+    Result nameChanged(NameChanged value),
+    Result selectDefaultDirectory(SelectDefaultDirectory value),
+    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    Result toggleDarkMode(ToggleDarkMode value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadPrefs != null) {
+      return loadPrefs(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadPrefs implements SettingsEvent {
+  const factory LoadPrefs() = _$LoadPrefs;
+}
+
 abstract class $NameChangedCopyWith<$Res> {
   factory $NameChangedCopyWith(
           NameChanged value, $Res Function(NameChanged) then) =
       _$NameChangedCopyWithImpl<$Res>;
-  $Res call({String name});
+  $Res call({Name name});
 }
 
 class _$NameChangedCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
@@ -109,7 +221,7 @@ class _$NameChangedCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
     Object name = freezed,
   }) {
     return _then(NameChanged(
-      name == freezed ? _value.name : name as String,
+      name == freezed ? _value.name : name as Name,
     ));
   }
 }
@@ -118,7 +230,7 @@ class _$NameChanged implements NameChanged {
   const _$NameChanged(this.name) : assert(name != null);
 
   @override
-  final String name;
+  final Name name;
 
   @override
   String toString() {
@@ -144,11 +256,13 @@ class _$NameChanged implements NameChanged {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result nameChanged(String name),
+    @required Result loadPrefs(),
+    @required Result nameChanged(Name name),
     @required Result selectDefaultDirectory(Directory directory),
     @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -159,7 +273,8 @@ class _$NameChanged implements NameChanged {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result nameChanged(String name),
+    Result loadPrefs(),
+    Result nameChanged(Name name),
     Result selectDefaultDirectory(Directory directory),
     Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
@@ -175,11 +290,13 @@ class _$NameChanged implements NameChanged {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadPrefs(LoadPrefs value),
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
     @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -190,6 +307,7 @@ class _$NameChanged implements NameChanged {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadPrefs(LoadPrefs value),
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
     Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -205,9 +323,9 @@ class _$NameChanged implements NameChanged {
 }
 
 abstract class NameChanged implements SettingsEvent {
-  const factory NameChanged(String name) = _$NameChanged;
+  const factory NameChanged(Name name) = _$NameChanged;
 
-  String get name;
+  Name get name;
   $NameChangedCopyWith<NameChanged> get copyWith;
 }
 
@@ -270,11 +388,13 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result nameChanged(String name),
+    @required Result loadPrefs(),
+    @required Result nameChanged(Name name),
     @required Result selectDefaultDirectory(Directory directory),
     @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -285,7 +405,8 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result nameChanged(String name),
+    Result loadPrefs(),
+    Result nameChanged(Name name),
     Result selectDefaultDirectory(Directory directory),
     Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
@@ -301,11 +422,13 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadPrefs(LoadPrefs value),
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
     @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -316,6 +439,7 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadPrefs(LoadPrefs value),
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
     Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -375,11 +499,13 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result nameChanged(String name),
+    @required Result loadPrefs(),
+    @required Result nameChanged(Name name),
     @required Result selectDefaultDirectory(Directory directory),
     @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -390,7 +516,8 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result nameChanged(String name),
+    Result loadPrefs(),
+    Result nameChanged(Name name),
     Result selectDefaultDirectory(Directory directory),
     Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
@@ -406,11 +533,13 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadPrefs(LoadPrefs value),
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
     @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -421,6 +550,7 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadPrefs(LoadPrefs value),
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
     Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -475,11 +605,13 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result nameChanged(String name),
+    @required Result loadPrefs(),
+    @required Result nameChanged(Name name),
     @required Result selectDefaultDirectory(Directory directory),
     @required Result toggleAskBeforeReceiving(),
     @required Result toggleDarkMode(),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -490,7 +622,8 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result nameChanged(String name),
+    Result loadPrefs(),
+    Result nameChanged(Name name),
     Result selectDefaultDirectory(Directory directory),
     Result toggleAskBeforeReceiving(),
     Result toggleDarkMode(),
@@ -506,11 +639,13 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadPrefs(LoadPrefs value),
     @required Result nameChanged(NameChanged value),
     @required Result selectDefaultDirectory(SelectDefaultDirectory value),
     @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required Result toggleDarkMode(ToggleDarkMode value),
   }) {
+    assert(loadPrefs != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -521,6 +656,7 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadPrefs(LoadPrefs value),
     Result nameChanged(NameChanged value),
     Result selectDefaultDirectory(SelectDefaultDirectory value),
     Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -543,18 +679,26 @@ class _$SettingsStateTearOff {
   const _$SettingsStateTearOff();
 
 // ignore: unused_element
-  _SettingsState call(
-      {@required Name name,
-      @required UniqueId uid,
-      @required Directory path,
-      @required bool askBeforeReceiving,
-      @required bool darkMode}) {
-    return _SettingsState(
-      name: name,
-      uid: uid,
-      path: path,
-      askBeforeReceiving: askBeforeReceiving,
-      darkMode: darkMode,
+  _Initial initial() {
+    return const _Initial();
+  }
+
+// ignore: unused_element
+  _IsLoading isLoading() {
+    return const _IsLoading();
+  }
+
+// ignore: unused_element
+  _HasLoaded hasLoaded(SettingsObject settings) {
+    return _HasLoaded(
+      settings,
+    );
+  }
+
+// ignore: unused_element
+  _HasFailed hasFailed(PrefsLoadFailure failure) {
+    return _HasFailed(
+      failure,
     );
   }
 }
@@ -563,25 +707,42 @@ class _$SettingsStateTearOff {
 const $SettingsState = _$SettingsStateTearOff();
 
 mixin _$SettingsState {
-  Name get name;
-  UniqueId get uid;
-  Directory get path;
-  bool get askBeforeReceiving;
-  bool get darkMode;
-
-  $SettingsStateCopyWith<SettingsState> get copyWith;
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result isLoading(),
+    @required Result hasLoaded(SettingsObject settings),
+    @required Result hasFailed(PrefsLoadFailure failure),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result isLoading(),
+    Result hasLoaded(SettingsObject settings),
+    Result hasFailed(PrefsLoadFailure failure),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result isLoading(_IsLoading value),
+    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasFailed(_HasFailed value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result isLoading(_IsLoading value),
+    Result hasLoaded(_HasLoaded value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  });
 }
 
 abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(
           SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res>;
-  $Res call(
-      {Name name,
-      UniqueId uid,
-      Directory path,
-      bool askBeforeReceiving,
-      bool darkMode});
 }
 
 class _$SettingsStateCopyWithImpl<$Res>
@@ -591,150 +752,456 @@ class _$SettingsStateCopyWithImpl<$Res>
   final SettingsState _value;
   // ignore: unused_field
   final $Res Function(SettingsState) _then;
-
-  @override
-  $Res call({
-    Object name = freezed,
-    Object uid = freezed,
-    Object path = freezed,
-    Object askBeforeReceiving = freezed,
-    Object darkMode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as Name,
-      uid: uid == freezed ? _value.uid : uid as UniqueId,
-      path: path == freezed ? _value.path : path as Directory,
-      askBeforeReceiving: askBeforeReceiving == freezed
-          ? _value.askBeforeReceiving
-          : askBeforeReceiving as bool,
-      darkMode: darkMode == freezed ? _value.darkMode : darkMode as bool,
-    ));
-  }
 }
 
-abstract class _$SettingsStateCopyWith<$Res>
-    implements $SettingsStateCopyWith<$Res> {
-  factory _$SettingsStateCopyWith(
-          _SettingsState value, $Res Function(_SettingsState) then) =
-      __$SettingsStateCopyWithImpl<$Res>;
-  @override
-  $Res call(
-      {Name name,
-      UniqueId uid,
-      Directory path,
-      bool askBeforeReceiving,
-      bool darkMode});
+abstract class _$InitialCopyWith<$Res> {
+  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
+      __$InitialCopyWithImpl<$Res>;
 }
 
-class __$SettingsStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res>
-    implements _$SettingsStateCopyWith<$Res> {
-  __$SettingsStateCopyWithImpl(
-      _SettingsState _value, $Res Function(_SettingsState) _then)
-      : super(_value, (v) => _then(v as _SettingsState));
+class __$InitialCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
+    implements _$InitialCopyWith<$Res> {
+  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
+      : super(_value, (v) => _then(v as _Initial));
 
   @override
-  _SettingsState get _value => super._value as _SettingsState;
-
-  @override
-  $Res call({
-    Object name = freezed,
-    Object uid = freezed,
-    Object path = freezed,
-    Object askBeforeReceiving = freezed,
-    Object darkMode = freezed,
-  }) {
-    return _then(_SettingsState(
-      name: name == freezed ? _value.name : name as Name,
-      uid: uid == freezed ? _value.uid : uid as UniqueId,
-      path: path == freezed ? _value.path : path as Directory,
-      askBeforeReceiving: askBeforeReceiving == freezed
-          ? _value.askBeforeReceiving
-          : askBeforeReceiving as bool,
-      darkMode: darkMode == freezed ? _value.darkMode : darkMode as bool,
-    ));
-  }
+  _Initial get _value => super._value as _Initial;
 }
 
-class _$_SettingsState implements _SettingsState {
-  const _$_SettingsState(
-      {@required this.name,
-      @required this.uid,
-      @required this.path,
-      @required this.askBeforeReceiving,
-      @required this.darkMode})
-      : assert(name != null),
-        assert(uid != null),
-        assert(path != null),
-        assert(askBeforeReceiving != null),
-        assert(darkMode != null);
-
-  @override
-  final Name name;
-  @override
-  final UniqueId uid;
-  @override
-  final Directory path;
-  @override
-  final bool askBeforeReceiving;
-  @override
-  final bool darkMode;
+class _$_Initial implements _Initial {
+  const _$_Initial();
 
   @override
   String toString() {
-    return 'SettingsState(name: $name, uid: $uid, path: $path, askBeforeReceiving: $askBeforeReceiving, darkMode: $darkMode)';
+    return 'SettingsState.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Initial);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result isLoading(),
+    @required Result hasLoaded(SettingsObject settings),
+    @required Result hasFailed(PrefsLoadFailure failure),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result isLoading(),
+    Result hasLoaded(SettingsObject settings),
+    Result hasFailed(PrefsLoadFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result isLoading(_IsLoading value),
+    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result isLoading(_IsLoading value),
+    Result hasLoaded(_HasLoaded value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initial implements SettingsState {
+  const factory _Initial() = _$_Initial;
+}
+
+abstract class _$IsLoadingCopyWith<$Res> {
+  factory _$IsLoadingCopyWith(
+          _IsLoading value, $Res Function(_IsLoading) then) =
+      __$IsLoadingCopyWithImpl<$Res>;
+}
+
+class __$IsLoadingCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
+    implements _$IsLoadingCopyWith<$Res> {
+  __$IsLoadingCopyWithImpl(_IsLoading _value, $Res Function(_IsLoading) _then)
+      : super(_value, (v) => _then(v as _IsLoading));
+
+  @override
+  _IsLoading get _value => super._value as _IsLoading;
+}
+
+class _$_IsLoading implements _IsLoading {
+  const _$_IsLoading();
+
+  @override
+  String toString() {
+    return 'SettingsState.isLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _IsLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result isLoading(),
+    @required Result hasLoaded(SettingsObject settings),
+    @required Result hasFailed(PrefsLoadFailure failure),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return isLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result isLoading(),
+    Result hasLoaded(SettingsObject settings),
+    Result hasFailed(PrefsLoadFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (isLoading != null) {
+      return isLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result isLoading(_IsLoading value),
+    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return isLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result isLoading(_IsLoading value),
+    Result hasLoaded(_HasLoaded value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (isLoading != null) {
+      return isLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsLoading implements SettingsState {
+  const factory _IsLoading() = _$_IsLoading;
+}
+
+abstract class _$HasLoadedCopyWith<$Res> {
+  factory _$HasLoadedCopyWith(
+          _HasLoaded value, $Res Function(_HasLoaded) then) =
+      __$HasLoadedCopyWithImpl<$Res>;
+  $Res call({SettingsObject settings});
+}
+
+class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
+    implements _$HasLoadedCopyWith<$Res> {
+  __$HasLoadedCopyWithImpl(_HasLoaded _value, $Res Function(_HasLoaded) _then)
+      : super(_value, (v) => _then(v as _HasLoaded));
+
+  @override
+  _HasLoaded get _value => super._value as _HasLoaded;
+
+  @override
+  $Res call({
+    Object settings = freezed,
+  }) {
+    return _then(_HasLoaded(
+      settings == freezed ? _value.settings : settings as SettingsObject,
+    ));
+  }
+}
+
+class _$_HasLoaded implements _HasLoaded {
+  const _$_HasLoaded(this.settings) : assert(settings != null);
+
+  @override
+  final SettingsObject settings;
+
+  @override
+  String toString() {
+    return 'SettingsState.hasLoaded(settings: $settings)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SettingsState &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid)) &&
-            (identical(other.path, path) ||
-                const DeepCollectionEquality().equals(other.path, path)) &&
-            (identical(other.askBeforeReceiving, askBeforeReceiving) ||
+        (other is _HasLoaded &&
+            (identical(other.settings, settings) ||
                 const DeepCollectionEquality()
-                    .equals(other.askBeforeReceiving, askBeforeReceiving)) &&
-            (identical(other.darkMode, darkMode) ||
-                const DeepCollectionEquality()
-                    .equals(other.darkMode, darkMode)));
+                    .equals(other.settings, settings)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(uid) ^
-      const DeepCollectionEquality().hash(path) ^
-      const DeepCollectionEquality().hash(askBeforeReceiving) ^
-      const DeepCollectionEquality().hash(darkMode);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(settings);
 
   @override
-  _$SettingsStateCopyWith<_SettingsState> get copyWith =>
-      __$SettingsStateCopyWithImpl<_SettingsState>(this, _$identity);
+  _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
+      __$HasLoadedCopyWithImpl<_HasLoaded>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result isLoading(),
+    @required Result hasLoaded(SettingsObject settings),
+    @required Result hasFailed(PrefsLoadFailure failure),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return hasLoaded(settings);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result isLoading(),
+    Result hasLoaded(SettingsObject settings),
+    Result hasFailed(PrefsLoadFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasLoaded != null) {
+      return hasLoaded(settings);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result isLoading(_IsLoading value),
+    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return hasLoaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result isLoading(_IsLoading value),
+    Result hasLoaded(_HasLoaded value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasLoaded != null) {
+      return hasLoaded(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _SettingsState implements SettingsState {
-  const factory _SettingsState(
-      {@required Name name,
-      @required UniqueId uid,
-      @required Directory path,
-      @required bool askBeforeReceiving,
-      @required bool darkMode}) = _$_SettingsState;
+abstract class _HasLoaded implements SettingsState {
+  const factory _HasLoaded(SettingsObject settings) = _$_HasLoaded;
+
+  SettingsObject get settings;
+  _$HasLoadedCopyWith<_HasLoaded> get copyWith;
+}
+
+abstract class _$HasFailedCopyWith<$Res> {
+  factory _$HasFailedCopyWith(
+          _HasFailed value, $Res Function(_HasFailed) then) =
+      __$HasFailedCopyWithImpl<$Res>;
+  $Res call({PrefsLoadFailure failure});
+
+  $PrefsLoadFailureCopyWith<$Res> get failure;
+}
+
+class __$HasFailedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
+    implements _$HasFailedCopyWith<$Res> {
+  __$HasFailedCopyWithImpl(_HasFailed _value, $Res Function(_HasFailed) _then)
+      : super(_value, (v) => _then(v as _HasFailed));
 
   @override
-  Name get name;
+  _HasFailed get _value => super._value as _HasFailed;
+
   @override
-  UniqueId get uid;
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_HasFailed(
+      failure == freezed ? _value.failure : failure as PrefsLoadFailure,
+    ));
+  }
+
   @override
-  Directory get path;
+  $PrefsLoadFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $PrefsLoadFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+class _$_HasFailed implements _HasFailed {
+  const _$_HasFailed(this.failure) : assert(failure != null);
+
   @override
-  bool get askBeforeReceiving;
+  final PrefsLoadFailure failure;
+
   @override
-  bool get darkMode;
+  String toString() {
+    return 'SettingsState.hasFailed(failure: $failure)';
+  }
+
   @override
-  _$SettingsStateCopyWith<_SettingsState> get copyWith;
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _HasFailed &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @override
+  _$HasFailedCopyWith<_HasFailed> get copyWith =>
+      __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result isLoading(),
+    @required Result hasLoaded(SettingsObject settings),
+    @required Result hasFailed(PrefsLoadFailure failure),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return hasFailed(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result isLoading(),
+    Result hasLoaded(SettingsObject settings),
+    Result hasFailed(PrefsLoadFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasFailed != null) {
+      return hasFailed(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result isLoading(_IsLoading value),
+    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoaded != null);
+    assert(hasFailed != null);
+    return hasFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result isLoading(_IsLoading value),
+    Result hasLoaded(_HasLoaded value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasFailed != null) {
+      return hasFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HasFailed implements SettingsState {
+  const factory _HasFailed(PrefsLoadFailure failure) = _$_HasFailed;
+
+  PrefsLoadFailure get failure;
+  _$HasFailedCopyWith<_HasFailed> get copyWith;
 }
