@@ -5,7 +5,6 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:equatable/equatable.dart';
 import 'package:projectcircles/infrastructure/settings/my_shared_preferences.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/settings/prefs_load_failure.dart';
@@ -25,30 +24,55 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsObject _settingsObject;
 
   @override
-  Stream<SettingsState> mapEventToState(
-    SettingsEvent event,
-  ) async* {
+  Stream<SettingsState> mapEventToState(SettingsEvent event,) async* {
     yield* event.map(loadPrefs: (e) async* {
       yield const SettingsState.isLoading();
       final failureOrSettingsObject = await _mySharedPreferences.load();
       yield failureOrSettingsObject.fold(
-          (failure) => SettingsState.hasFailed(failure), (settingsObject) {
+              (failure) => SettingsState.hasFailed(failure), (settingsObject) {
         _settingsObject = settingsObject;
-        return SettingsState.hasLoaded(_settingsObject);
+        return SettingsState.hasLoaded(name: _settingsObject.name,
+            uid: _settingsObject.uid,
+            path: _settingsObject.path,
+            askBeforeReceiving: _settingsObject.askBeforeReceiving,
+            darkMode: _settingsObject.darkMode);
       });
-    }, nameChanged: (e) async* {
-      _settingsObject.name = e.name;
-      yield SettingsState.hasLoaded(_settingsObject);
-    }, selectDefaultDirectory: (e) async* {
-      _settingsObject.path = e.directory;
-      yield SettingsState.hasLoaded(_settingsObject);
-    }, toggleAskBeforeReceiving: (e) async* {
-      _settingsObject.askBeforeReceiving = !_settingsObject.askBeforeReceiving;
-      yield SettingsState.hasLoaded(_settingsObject);
-    }, toggleDarkMode: (e) async* {
-
-      _settingsObject.darkMode = !_settingsObject.darkMode;
-      yield SettingsState.hasLoaded(_settingsObject);
-    });
+    },
+        nameChanged: (e) async* {
+          _settingsObject.name = e.name;
+          yield SettingsState.hasLoaded(name: _settingsObject.name,
+              uid: _settingsObject.uid,
+              path: _settingsObject.path,
+              askBeforeReceiving: _settingsObject.askBeforeReceiving,
+              darkMode: _settingsObject.darkMode);
+        },
+        selectDefaultDirectory: (e) async* {
+          _settingsObject.path = e.directory;
+          yield SettingsState.hasLoaded(name: _settingsObject.name,
+              uid: _settingsObject.uid,
+              path: _settingsObject.path,
+              askBeforeReceiving: _settingsObject.askBeforeReceiving,
+              darkMode: _settingsObject.darkMode);
+        },
+        toggleAskBeforeReceiving: (e) async* {
+          _settingsObject.askBeforeReceiving =
+          !_settingsObject.askBeforeReceiving;
+          _settingsObject = _settingsObject;
+          yield SettingsState.hasLoaded(name: _settingsObject.name,
+              uid: _settingsObject.uid,
+              path: _settingsObject.path,
+              askBeforeReceiving: _settingsObject.askBeforeReceiving,
+              darkMode: _settingsObject.darkMode);
+        },
+        toggleDarkMode: (e) async* {
+          await _mySharedPreferences.setBool(
+              key: 'darkMode', value: !_settingsObject.darkMode);
+          _settingsObject.darkMode = !_settingsObject.darkMode;
+          yield SettingsState.hasLoaded(name: _settingsObject.name,
+              uid: _settingsObject.uid,
+              path: _settingsObject.path,
+              askBeforeReceiving: _settingsObject.askBeforeReceiving,
+              darkMode: _settingsObject.darkMode);
+        });
   }
 }

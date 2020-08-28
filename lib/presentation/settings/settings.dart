@@ -12,9 +12,8 @@ class Settings extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: BlocProvider(
-          create: (context) => getIt<SettingsBloc>(),
-          child: BlocConsumer<SettingsBloc, SettingsState>(
-              listener: (context, state) {},
+          create: (context) => getIt<SettingsBloc>()..add(const SettingsEvent.loadPrefs()),
+          child: BlocBuilder<SettingsBloc, SettingsState>(
               builder: (context, state) => state.map(
                     initial: (_) => Container(),
                     isLoading: (_) =>
@@ -35,8 +34,8 @@ class Settings extends StatelessWidget {
                                   padding: EdgeInsets.only(right: 16.0),
                                 ),
                                 Column(children: [
-                                  Text(state.settings.name.getOrCrash()),
-                                  Text(state.settings.uid.getOrCrash())
+                                  Text(state.name.getOrCrash()),
+                                  Text(state.uid.getOrCrash())
                                 ])
                               ],
                             ),
@@ -57,7 +56,7 @@ class Settings extends StatelessWidget {
                                   subtitle:
                                       'Ask for permission before downloading file sent by other users',
                                   type: SettingsItemType.toggle,
-                                  toggleValue: state.settings.askBeforeReceiving,
+                                  toggleValue: state.askBeforeReceiving,
                                   onTap: () => context.bloc<SettingsBloc>().add(
                                       const SettingsEvent
                                           .toggleAskBeforeReceiving())),
@@ -71,7 +70,7 @@ class Settings extends StatelessWidget {
                                   title: 'Dark Mode',
                                   subtitle: 'Dark Mode it is!',
                                   type: SettingsItemType.toggle,
-                                  toggleValue: state.settings.darkMode,
+                                  toggleValue: state.darkMode,
                                   onTap: () => context.bloc<SettingsBloc>().add(
                                       const SettingsEvent.toggleDarkMode())),
                             ],
