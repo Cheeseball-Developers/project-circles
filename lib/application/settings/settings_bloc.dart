@@ -5,6 +5,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/infrastructure/settings/my_shared_preferences.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/settings/prefs_load_failure.dart';
@@ -34,8 +35,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           (failure) => SettingsState.hasFailed(failure), (settingsObject) {
         _settingsObject = settingsObject;
         return SettingsState.hasLoaded(
-            name: _settingsObject.name,
-            uid: _settingsObject.uid,
+            user: User(uid: _settingsObject.uid, name: _settingsObject.name),
             path: _settingsObject.path,
             askBeforeReceiving: _settingsObject.askBeforeReceiving,
             darkMode: _settingsObject.darkMode);
@@ -43,16 +43,14 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     }, nameChanged: (e) async* {
       _settingsObject.name = e.name;
       yield SettingsState.hasLoaded(
-          name: _settingsObject.name,
-          uid: _settingsObject.uid,
+          user: User(uid: _settingsObject.uid, name: _settingsObject.name),
           path: _settingsObject.path,
           askBeforeReceiving: _settingsObject.askBeforeReceiving,
           darkMode: _settingsObject.darkMode);
     }, selectDefaultDirectory: (e) async* {
       _settingsObject.path = e.directory;
       yield SettingsState.hasLoaded(
-          name: _settingsObject.name,
-          uid: _settingsObject.uid,
+          user: User(uid: _settingsObject.uid, name: _settingsObject.name),
           path: _settingsObject.path,
           askBeforeReceiving: _settingsObject.askBeforeReceiving,
           darkMode: _settingsObject.darkMode);
@@ -62,8 +60,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           value: !_settingsObject.askBeforeReceiving);
       _settingsObject.askBeforeReceiving = !_settingsObject.askBeforeReceiving;
       yield SettingsState.hasLoaded(
-          name: _settingsObject.name,
-          uid: _settingsObject.uid,
+          user: User(uid: _settingsObject.uid, name: _settingsObject.name),
           path: _settingsObject.path,
           askBeforeReceiving: _settingsObject.askBeforeReceiving,
           darkMode: _settingsObject.darkMode);
@@ -72,8 +69,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           key: 'darkMode', value: !_settingsObject.darkMode);
       _settingsObject.darkMode = !_settingsObject.darkMode;
       yield SettingsState.hasLoaded(
-          name: _settingsObject.name,
-          uid: _settingsObject.uid,
+          user: User(uid: _settingsObject.uid, name: _settingsObject.name),
           path: _settingsObject.path,
           askBeforeReceiving: _settingsObject.askBeforeReceiving,
           darkMode: _settingsObject.darkMode);

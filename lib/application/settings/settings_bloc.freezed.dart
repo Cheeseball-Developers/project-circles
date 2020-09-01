@@ -690,14 +690,12 @@ class _$SettingsStateTearOff {
 
 // ignore: unused_element
   _HasLoaded hasLoaded(
-      {@required Name name,
-      @required UniqueId uid,
+      {@required User user,
       @required Directory path,
       @required bool askBeforeReceiving,
       @required bool darkMode}) {
     return _HasLoaded(
-      name: name,
-      uid: uid,
+      user: user,
       path: path,
       askBeforeReceiving: askBeforeReceiving,
       darkMode: darkMode,
@@ -721,16 +719,16 @@ mixin _$SettingsState {
     @required Result initial(),
     @required Result isLoading(),
     @required
-        Result hasLoaded(Name name, UniqueId uid, Directory path,
-            bool askBeforeReceiving, bool darkMode),
+        Result hasLoaded(
+            User user, Directory path, bool askBeforeReceiving, bool darkMode),
     @required Result hasFailed(PrefsLoadFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(Name name, UniqueId uid, Directory path,
-        bool askBeforeReceiving, bool darkMode),
+    Result hasLoaded(
+        User user, Directory path, bool askBeforeReceiving, bool darkMode),
     Result hasFailed(PrefsLoadFailure failure),
     @required Result orElse(),
   });
@@ -802,8 +800,8 @@ class _$_Initial implements _Initial {
     @required Result initial(),
     @required Result isLoading(),
     @required
-        Result hasLoaded(Name name, UniqueId uid, Directory path,
-            bool askBeforeReceiving, bool darkMode),
+        Result hasLoaded(
+            User user, Directory path, bool askBeforeReceiving, bool darkMode),
     @required Result hasFailed(PrefsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -818,8 +816,8 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(Name name, UniqueId uid, Directory path,
-        bool askBeforeReceiving, bool darkMode),
+    Result hasLoaded(
+        User user, Directory path, bool askBeforeReceiving, bool darkMode),
     Result hasFailed(PrefsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -903,8 +901,8 @@ class _$_IsLoading implements _IsLoading {
     @required Result initial(),
     @required Result isLoading(),
     @required
-        Result hasLoaded(Name name, UniqueId uid, Directory path,
-            bool askBeforeReceiving, bool darkMode),
+        Result hasLoaded(
+            User user, Directory path, bool askBeforeReceiving, bool darkMode),
     @required Result hasFailed(PrefsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -919,8 +917,8 @@ class _$_IsLoading implements _IsLoading {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(Name name, UniqueId uid, Directory path,
-        bool askBeforeReceiving, bool darkMode),
+    Result hasLoaded(
+        User user, Directory path, bool askBeforeReceiving, bool darkMode),
     Result hasFailed(PrefsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -972,11 +970,9 @@ abstract class _$HasLoadedCopyWith<$Res> {
           _HasLoaded value, $Res Function(_HasLoaded) then) =
       __$HasLoadedCopyWithImpl<$Res>;
   $Res call(
-      {Name name,
-      UniqueId uid,
-      Directory path,
-      bool askBeforeReceiving,
-      bool darkMode});
+      {User user, Directory path, bool askBeforeReceiving, bool darkMode});
+
+  $UserCopyWith<$Res> get user;
 }
 
 class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
@@ -989,15 +985,13 @@ class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object uid = freezed,
+    Object user = freezed,
     Object path = freezed,
     Object askBeforeReceiving = freezed,
     Object darkMode = freezed,
   }) {
     return _then(_HasLoaded(
-      name: name == freezed ? _value.name : name as Name,
-      uid: uid == freezed ? _value.uid : uid as UniqueId,
+      user: user == freezed ? _value.user : user as User,
       path: path == freezed ? _value.path : path as Directory,
       askBeforeReceiving: askBeforeReceiving == freezed
           ? _value.askBeforeReceiving
@@ -1005,25 +999,31 @@ class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
       darkMode: darkMode == freezed ? _value.darkMode : darkMode as bool,
     ));
   }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
-      {@required this.name,
-      @required this.uid,
+      {@required this.user,
       @required this.path,
       @required this.askBeforeReceiving,
       @required this.darkMode})
-      : assert(name != null),
-        assert(uid != null),
+      : assert(user != null),
         assert(path != null),
         assert(askBeforeReceiving != null),
         assert(darkMode != null);
 
   @override
-  final Name name;
-  @override
-  final UniqueId uid;
+  final User user;
   @override
   final Directory path;
   @override
@@ -1033,17 +1033,15 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   String toString() {
-    return 'SettingsState.hasLoaded(name: $name, uid: $uid, path: $path, askBeforeReceiving: $askBeforeReceiving, darkMode: $darkMode)';
+    return 'SettingsState.hasLoaded(user: $user, path: $path, askBeforeReceiving: $askBeforeReceiving, darkMode: $darkMode)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _HasLoaded &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.path, path) ||
                 const DeepCollectionEquality().equals(other.path, path)) &&
             (identical(other.askBeforeReceiving, askBeforeReceiving) ||
@@ -1057,8 +1055,7 @@ class _$_HasLoaded implements _HasLoaded {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(uid) ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(path) ^
       const DeepCollectionEquality().hash(askBeforeReceiving) ^
       const DeepCollectionEquality().hash(darkMode);
@@ -1073,15 +1070,15 @@ class _$_HasLoaded implements _HasLoaded {
     @required Result initial(),
     @required Result isLoading(),
     @required
-        Result hasLoaded(Name name, UniqueId uid, Directory path,
-            bool askBeforeReceiving, bool darkMode),
+        Result hasLoaded(
+            User user, Directory path, bool askBeforeReceiving, bool darkMode),
     @required Result hasFailed(PrefsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
     assert(hasLoaded != null);
     assert(hasFailed != null);
-    return hasLoaded(name, uid, path, askBeforeReceiving, darkMode);
+    return hasLoaded(user, path, askBeforeReceiving, darkMode);
   }
 
   @override
@@ -1089,14 +1086,14 @@ class _$_HasLoaded implements _HasLoaded {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(Name name, UniqueId uid, Directory path,
-        bool askBeforeReceiving, bool darkMode),
+    Result hasLoaded(
+        User user, Directory path, bool askBeforeReceiving, bool darkMode),
     Result hasFailed(PrefsLoadFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
-      return hasLoaded(name, uid, path, askBeforeReceiving, darkMode);
+      return hasLoaded(user, path, askBeforeReceiving, darkMode);
     }
     return orElse();
   }
@@ -1135,14 +1132,12 @@ class _$_HasLoaded implements _HasLoaded {
 
 abstract class _HasLoaded implements SettingsState {
   const factory _HasLoaded(
-      {@required Name name,
-      @required UniqueId uid,
+      {@required User user,
       @required Directory path,
       @required bool askBeforeReceiving,
       @required bool darkMode}) = _$_HasLoaded;
 
-  Name get name;
-  UniqueId get uid;
+  User get user;
   Directory get path;
   bool get askBeforeReceiving;
   bool get darkMode;
@@ -1219,8 +1214,8 @@ class _$_HasFailed implements _HasFailed {
     @required Result initial(),
     @required Result isLoading(),
     @required
-        Result hasLoaded(Name name, UniqueId uid, Directory path,
-            bool askBeforeReceiving, bool darkMode),
+        Result hasLoaded(
+            User user, Directory path, bool askBeforeReceiving, bool darkMode),
     @required Result hasFailed(PrefsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -1235,8 +1230,8 @@ class _$_HasFailed implements _HasFailed {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(Name name, UniqueId uid, Directory path,
-        bool askBeforeReceiving, bool darkMode),
+    Result hasLoaded(
+        User user, Directory path, bool askBeforeReceiving, bool darkMode),
     Result hasFailed(PrefsLoadFailure failure),
     @required Result orElse(),
   }) {

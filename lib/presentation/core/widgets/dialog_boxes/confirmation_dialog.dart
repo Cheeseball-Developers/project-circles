@@ -28,7 +28,7 @@ class ConfirmationDialog extends StatelessWidget {
         padding: const EdgeInsets.all(32.0),
         child: Material(
           borderRadius: BorderRadius.circular(borderRadius),
-          color: Colors.white,
+          color: Theme.of(context).cardColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -38,7 +38,7 @@ class ConfirmationDialog extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     title,
-                    style: Theme.of(context).textTheme.headline2,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
                 Padding(
@@ -54,16 +54,16 @@ class ConfirmationDialog extends StatelessWidget {
                   children: [
                     MyTextButton(
                       type: ButtonType.secondary,
-                      text: 'No',
-                      onTap: () {},
+                      text: noText,
+                      onTap: noTap,
                     ),
                     const Padding(
                       padding: EdgeInsets.only(right: 8.0),
                     ),
                     MyTextButton(
                       type: ButtonType.primary,
-                      text: 'Yes',
-                      onTap: () {},
+                      text: yesText,
+                      onTap: yesTap,
                     )
                   ],
                 )

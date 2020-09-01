@@ -50,12 +50,12 @@ class Settings extends StatelessWidget {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        state.name.getOrCrash(),
+                                        state.user.name.getOrCrash(),
                                         style: Theme.of(context)
                                             .textTheme
                                             .headline4,
                                       ),
-                                      Text(state.uid.getOrCrash(),
+                                      Text(state.user.uid.getOrCrash(),
                                           style: Theme.of(context)
                                               .textTheme
                                               .caption)
