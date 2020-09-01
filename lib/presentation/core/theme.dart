@@ -70,6 +70,9 @@ ThemeData darkTheme() {
             fontWeight: FontWeight.w600),
         bodyText2: const TextStyle(
             color: Colors.white70, fontSize: 14.0, fontFamily: 'Quicksand'),
+        button: const TextStyle(
+          color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'
+        ),
         caption: const TextStyle(
             color: Colors.white54,
             fontSize: 12.0,
@@ -83,7 +86,7 @@ ThemeData darkTheme() {
     primaryColor: Colors.black,
     accentColor: Colors.teal,
     scaffoldBackgroundColor: Colors.black,
-    iconTheme: const IconThemeData(color: Colors.lightBlue),
+    iconTheme: const IconThemeData(color: Colors.teal),
     accentIconTheme: const IconThemeData(color: Colors.white),
     buttonColor: Colors.teal,
     backgroundColor: Colors.white,

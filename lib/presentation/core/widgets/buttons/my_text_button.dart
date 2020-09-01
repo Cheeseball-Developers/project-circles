@@ -17,7 +17,7 @@ class MyTextButton extends StatelessWidget {
       decoration: BoxDecoration(
           color: type == ButtonType.primary
               ? Theme.of(context).buttonColor
-              : Colors.white,
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(buttonBorderRadius),
           border: Border.all(color: Theme.of(context).buttonColor)),
       child: InkWell(
@@ -26,11 +26,7 @@ class MyTextButton extends StatelessWidget {
             padding:
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
             child: Text(text,
-                style: TextStyle(
-                    color: type == ButtonType.primary
-                        ? Colors.white
-                        : Theme.of(context).buttonColor,
-                    fontWeight: FontWeight.w600)),
+                style: Theme.of(context).textTheme.button),
           )),
     );
   }

@@ -13,9 +13,10 @@ class _$UserTearOff {
   const _$UserTearOff();
 
 // ignore: unused_element
-  _User call({@required UniqueId id}) {
+  _User call({@required UniqueId uid, @required Name name}) {
     return _User(
-      id: id,
+      uid: uid,
+      name: name,
     );
   }
 }
@@ -24,7 +25,8 @@ class _$UserTearOff {
 const $User = _$UserTearOff();
 
 mixin _$User {
-  UniqueId get id;
+  UniqueId get uid;
+  Name get name;
 
   $UserCopyWith<User> get copyWith;
 }
@@ -32,7 +34,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({UniqueId id});
+  $Res call({UniqueId uid, Name name});
 }
 
 class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
@@ -44,10 +46,12 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object id = freezed,
+    Object uid = freezed,
+    Object name = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed ? _value.id : id as UniqueId,
+      uid: uid == freezed ? _value.uid : uid as UniqueId,
+      name: name == freezed ? _value.name : name as Name,
     ));
   }
 }
@@ -56,7 +60,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id});
+  $Res call({UniqueId uid, Name name});
 }
 
 class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
@@ -69,36 +73,46 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
+    Object uid = freezed,
+    Object name = freezed,
   }) {
     return _then(_User(
-      id: id == freezed ? _value.id : id as UniqueId,
+      uid: uid == freezed ? _value.uid : uid as UniqueId,
+      name: name == freezed ? _value.name : name as Name,
     ));
   }
 }
 
 class _$_User implements _User {
-  const _$_User({@required this.id}) : assert(id != null);
+  const _$_User({@required this.uid, @required this.name})
+      : assert(uid != null),
+        assert(name != null);
 
   @override
-  final UniqueId id;
+  final UniqueId uid;
+  @override
+  final Name name;
 
   @override
   String toString() {
-    return 'User(id: $id)';
+    return 'User(uid: $uid, name: $name)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _User &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)));
+            (identical(other.uid, uid) ||
+                const DeepCollectionEquality().equals(other.uid, uid)) &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(uid) ^
+      const DeepCollectionEquality().hash(name);
 
   @override
   _$UserCopyWith<_User> get copyWith =>
@@ -106,10 +120,12 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({@required UniqueId id}) = _$_User;
+  const factory _User({@required UniqueId uid, @required Name name}) = _$_User;
 
   @override
-  UniqueId get id;
+  UniqueId get uid;
+  @override
+  Name get name;
   @override
   _$UserCopyWith<_User> get copyWith;
 }

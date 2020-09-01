@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projectcircles/application/circle/join_or_create_circle/join_or_create_circle_bloc.dart';
+import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 
 class SearchButton extends StatefulWidget {
   @override
@@ -52,14 +52,13 @@ class _SearchButtonState extends State<SearchButton>
   void initState() {
     _controller = AnimationController(
         duration: const Duration(milliseconds: 1800), vsync: this);
-    print(_controller.toString());
     _assignAnimationRadius();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<JoinOrCreateCircleBloc, JoinOrCreateCircleState>(
+    return BlocConsumer<SearchBloc, SearchState>(
       listener: (context, state) {
         if (state.isSearching == true) {
           baseRadius = 64.0;
@@ -111,11 +110,11 @@ class _SearchButtonState extends State<SearchButton>
             GestureDetector(
               onTap: state.isSearching
                   ? () => context
-                      .bloc<JoinOrCreateCircleBloc>()
-                      .add(const JoinOrCreateCircleEvent.stopSearching())
+                      .bloc<SearchBloc>()
+                      .add(const SearchEvent.stopSearching())
                   : () => context
-                      .bloc<JoinOrCreateCircleBloc>()
-                      .add(const JoinOrCreateCircleEvent.startSearching()),
+                      .bloc<SearchBloc>()
+                      .add(const SearchEvent.startSearching()),
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: radius.value,

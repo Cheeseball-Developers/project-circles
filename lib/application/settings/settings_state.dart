@@ -7,8 +7,7 @@ abstract class SettingsState with _$SettingsState {
   const factory SettingsState.isLoading() = _IsLoading;
 
   const factory SettingsState.hasLoaded(
-      {@required Name name,
-      @required UniqueId uid,
+      {@required User user,
       @required Directory path,
       @required bool askBeforeReceiving,
       @required bool darkMode}) = _HasLoaded;
