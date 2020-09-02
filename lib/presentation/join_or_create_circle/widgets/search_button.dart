@@ -11,7 +11,7 @@ class _SearchButtonState extends State<SearchButton>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
 
-  double baseRadius = 32.0;
+  double baseRadius = 64.0;
   Animation<double> radius, radius1, radius2, radius3, radius4;
 
   // math function to calculate the begin radius of circle in pulse animation
@@ -58,6 +58,8 @@ class _SearchButtonState extends State<SearchButton>
 
   @override
   Widget build(BuildContext context) {
+    _assignAnimationRadius();
+    _controller.repeat();
     return BlocConsumer<SearchBloc, SearchState>(
       listener: (context, state) {
         if (state.isSearching == true) {

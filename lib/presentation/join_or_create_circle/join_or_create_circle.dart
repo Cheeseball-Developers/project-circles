@@ -44,7 +44,9 @@ class JoinOrCreateCircle extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text(
-                              "Abhishek Upmanyu's Circle",
+                              context.bloc<SettingsBloc>().state.maybeMap(
+                                  hasLoaded: (state) => "${state.user.name.getOrCrash()}'s Circle",
+                                  orElse: () => "Error"),
                               style: Theme.of(context).textTheme.subtitle2,
                             ),
                           ),
@@ -63,9 +65,12 @@ class JoinOrCreateCircle extends StatelessWidget {
                                                       .state
                                                       .map(
                                                           initial: (_) => null,
-                                                          isLoading: (_) => null,
-                                                          hasLoaded: (state) => state.user,
-                                                          hasFailed: (_) => null)));
+                                                          isLoading: (_) =>
+                                                              null,
+                                                          hasLoaded: (state) =>
+                                                              state.user,
+                                                          hasFailed: (_) =>
+                                                              null)));
                                           ExtendedNavigator.named('nav')
                                               .push('/circle-home');
                                         },

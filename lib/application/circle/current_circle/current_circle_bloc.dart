@@ -33,6 +33,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         memberLeft: (e) async* {
           yield null;
         },
+        leaveCircle: (e) async* {
+
+        },
         closeCircle: (e) async* {
           yield const CurrentCircleState.initial();
         });

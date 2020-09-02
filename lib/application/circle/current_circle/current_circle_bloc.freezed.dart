@@ -35,6 +35,11 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
+  LeaveCircle leaveCircle() {
+    return const LeaveCircle();
+  }
+
+// ignore: unused_element
   CloseCircle closeCircle() {
     return const CloseCircle();
   }
@@ -50,6 +55,7 @@ mixin _$CurrentCircleEvent {
     @required Result fileSent(),
     @required Result fileReceived(),
     @required Result memberLeft(),
+    @required Result leaveCircle(),
     @required Result closeCircle(),
   });
   @optionalTypeArgs
@@ -58,6 +64,7 @@ mixin _$CurrentCircleEvent {
     Result fileSent(),
     Result fileReceived(),
     Result memberLeft(),
+    Result leaveCircle(),
     Result closeCircle(),
     @required Result orElse(),
   });
@@ -67,6 +74,7 @@ mixin _$CurrentCircleEvent {
     @required Result fileSent(FileSent value),
     @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
   });
   @optionalTypeArgs
@@ -75,6 +83,7 @@ mixin _$CurrentCircleEvent {
     Result fileSent(FileSent value),
     Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
     @required Result orElse(),
   });
@@ -168,12 +177,14 @@ class _$StartCircle implements StartCircle {
     @required Result fileSent(),
     @required Result fileReceived(),
     @required Result memberLeft(),
+    @required Result leaveCircle(),
     @required Result closeCircle(),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return startCircle(host);
   }
@@ -185,6 +196,7 @@ class _$StartCircle implements StartCircle {
     Result fileSent(),
     Result fileReceived(),
     Result memberLeft(),
+    Result leaveCircle(),
     Result closeCircle(),
     @required Result orElse(),
   }) {
@@ -202,12 +214,14 @@ class _$StartCircle implements StartCircle {
     @required Result fileSent(FileSent value),
     @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return startCircle(this);
   }
@@ -219,6 +233,7 @@ class _$StartCircle implements StartCircle {
     Result fileSent(FileSent value),
     Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
     @required Result orElse(),
   }) {
@@ -275,12 +290,14 @@ class _$FileSent implements FileSent {
     @required Result fileSent(),
     @required Result fileReceived(),
     @required Result memberLeft(),
+    @required Result leaveCircle(),
     @required Result closeCircle(),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return fileSent();
   }
@@ -292,6 +309,7 @@ class _$FileSent implements FileSent {
     Result fileSent(),
     Result fileReceived(),
     Result memberLeft(),
+    Result leaveCircle(),
     Result closeCircle(),
     @required Result orElse(),
   }) {
@@ -309,12 +327,14 @@ class _$FileSent implements FileSent {
     @required Result fileSent(FileSent value),
     @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return fileSent(this);
   }
@@ -326,6 +346,7 @@ class _$FileSent implements FileSent {
     Result fileSent(FileSent value),
     Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
     @required Result orElse(),
   }) {
@@ -381,12 +402,14 @@ class _$FileReceived implements FileReceived {
     @required Result fileSent(),
     @required Result fileReceived(),
     @required Result memberLeft(),
+    @required Result leaveCircle(),
     @required Result closeCircle(),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return fileReceived();
   }
@@ -398,6 +421,7 @@ class _$FileReceived implements FileReceived {
     Result fileSent(),
     Result fileReceived(),
     Result memberLeft(),
+    Result leaveCircle(),
     Result closeCircle(),
     @required Result orElse(),
   }) {
@@ -415,12 +439,14 @@ class _$FileReceived implements FileReceived {
     @required Result fileSent(FileSent value),
     @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return fileReceived(this);
   }
@@ -432,6 +458,7 @@ class _$FileReceived implements FileReceived {
     Result fileSent(FileSent value),
     Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
     @required Result orElse(),
   }) {
@@ -486,12 +513,14 @@ class _$MemberLeft implements MemberLeft {
     @required Result fileSent(),
     @required Result fileReceived(),
     @required Result memberLeft(),
+    @required Result leaveCircle(),
     @required Result closeCircle(),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return memberLeft();
   }
@@ -503,6 +532,7 @@ class _$MemberLeft implements MemberLeft {
     Result fileSent(),
     Result fileReceived(),
     Result memberLeft(),
+    Result leaveCircle(),
     Result closeCircle(),
     @required Result orElse(),
   }) {
@@ -520,12 +550,14 @@ class _$MemberLeft implements MemberLeft {
     @required Result fileSent(FileSent value),
     @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return memberLeft(this);
   }
@@ -537,6 +569,7 @@ class _$MemberLeft implements MemberLeft {
     Result fileSent(FileSent value),
     Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
     @required Result orElse(),
   }) {
@@ -550,6 +583,118 @@ class _$MemberLeft implements MemberLeft {
 
 abstract class MemberLeft implements CurrentCircleEvent {
   const factory MemberLeft() = _$MemberLeft;
+}
+
+abstract class $LeaveCircleCopyWith<$Res> {
+  factory $LeaveCircleCopyWith(
+          LeaveCircle value, $Res Function(LeaveCircle) then) =
+      _$LeaveCircleCopyWithImpl<$Res>;
+}
+
+class _$LeaveCircleCopyWithImpl<$Res>
+    extends _$CurrentCircleEventCopyWithImpl<$Res>
+    implements $LeaveCircleCopyWith<$Res> {
+  _$LeaveCircleCopyWithImpl(
+      LeaveCircle _value, $Res Function(LeaveCircle) _then)
+      : super(_value, (v) => _then(v as LeaveCircle));
+
+  @override
+  LeaveCircle get _value => super._value as LeaveCircle;
+}
+
+class _$LeaveCircle implements LeaveCircle {
+  const _$LeaveCircle();
+
+  @override
+  String toString() {
+    return 'CurrentCircleEvent.leaveCircle()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LeaveCircle);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startCircle(User host),
+    @required Result fileSent(),
+    @required Result fileReceived(),
+    @required Result memberLeft(),
+    @required Result leaveCircle(),
+    @required Result closeCircle(),
+  }) {
+    assert(startCircle != null);
+    assert(fileSent != null);
+    assert(fileReceived != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    return leaveCircle();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startCircle(User host),
+    Result fileSent(),
+    Result fileReceived(),
+    Result memberLeft(),
+    Result leaveCircle(),
+    Result closeCircle(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (leaveCircle != null) {
+      return leaveCircle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startCircle(StartCircle value),
+    @required Result fileSent(FileSent value),
+    @required Result fileReceived(FileReceived value),
+    @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
+    @required Result closeCircle(CloseCircle value),
+  }) {
+    assert(startCircle != null);
+    assert(fileSent != null);
+    assert(fileReceived != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    return leaveCircle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startCircle(StartCircle value),
+    Result fileSent(FileSent value),
+    Result fileReceived(FileReceived value),
+    Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
+    Result closeCircle(CloseCircle value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (leaveCircle != null) {
+      return leaveCircle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LeaveCircle implements CurrentCircleEvent {
+  const factory LeaveCircle() = _$LeaveCircle;
 }
 
 abstract class $CloseCircleCopyWith<$Res> {
@@ -592,12 +737,14 @@ class _$CloseCircle implements CloseCircle {
     @required Result fileSent(),
     @required Result fileReceived(),
     @required Result memberLeft(),
+    @required Result leaveCircle(),
     @required Result closeCircle(),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return closeCircle();
   }
@@ -609,6 +756,7 @@ class _$CloseCircle implements CloseCircle {
     Result fileSent(),
     Result fileReceived(),
     Result memberLeft(),
+    Result leaveCircle(),
     Result closeCircle(),
     @required Result orElse(),
   }) {
@@ -626,12 +774,14 @@ class _$CloseCircle implements CloseCircle {
     @required Result fileSent(FileSent value),
     @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
   }) {
     assert(startCircle != null);
     assert(fileSent != null);
     assert(fileReceived != null);
     assert(memberLeft != null);
+    assert(leaveCircle != null);
     assert(closeCircle != null);
     return closeCircle(this);
   }
@@ -643,6 +793,7 @@ class _$CloseCircle implements CloseCircle {
     Result fileSent(FileSent value),
     Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
     @required Result orElse(),
   }) {
