@@ -42,7 +42,7 @@ class ConfirmationDialog extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 32.0),
                   child: Text(
                     subtitle,
                     style: Theme.of(context).textTheme.bodyText2,

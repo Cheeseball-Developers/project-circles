@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
-import 'package:projectcircles/injection.dart';
-import 'package:projectcircles/presentation/core/widgets/dialog_boxes/confirmation_dialog.dart';
+import 'package:projectcircles/application/settings/settings_bloc.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/close_circle_confirmation_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/leave_circle_confirmation_dialog.dart';
 
 class CircleHome extends StatelessWidget {
   @override
@@ -24,17 +24,12 @@ class CircleHome extends StatelessWidget {
               hasJoined: (state) => WillPopScope(
                 onWillPop: () => showDialog(
                     context: context,
-                    child: ConfirmationDialog(
-                      title: 'Disconnect',
-                      subtitle:
-                          'Are you sure you want to disconnect from the circle?',
-                      noText: 'Cancel',
-                      yesText: 'Disconnect',
-                      noTap: () {},
-                      yesTap: () => context
-                          .bloc<CurrentCircleBloc>()
-                          .add(const CurrentCircleEvent.closeCircle()),
-                    )),
+                    child: context.bloc<SettingsBloc>().state.maybeMap(
+                        hasLoaded: (settingsState) =>
+                            settingsState.user == state.host
+                                ? CloseCircleConfirmationDialog()
+                                : LeaveCircleConfirmationDialog(),
+                        orElse: () => Container())),
                 child: Scaffold(
                   appBar: PreferredSize(
                     preferredSize: Size(MediaQuery.of(context).size.width,
@@ -48,9 +43,12 @@ class CircleHome extends StatelessWidget {
                         child: SafeArea(
                             child: Row(
                           children: [
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: CircleAvatar(child: Icon(Icons.person)),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: CircleAvatar(
+                                  backgroundColor:
+                                      Theme.of(context).accentColor,
+                                  child: const Icon(Icons.person)),
                             ),
                             Expanded(
                               child: Column(
@@ -61,8 +59,7 @@ class CircleHome extends StatelessWidget {
                                       style:
                                           Theme.of(context).textTheme.caption),
                                   Text(
-                                      state.host.name.value.fold((l) => "Error",
-                                          (name) => "$name's Circle"),
+                                      "${state.host.name.getOrCrash()}'s Circle",
                                       style:
                                           Theme.of(context).textTheme.headline6)
                                 ],
@@ -74,15 +71,12 @@ class CircleHome extends StatelessWidget {
                                   color: Colors.redAccent),
                               onPressed: () => showDialog(
                                   context: context,
-                                  builder: (context) => ConfirmationDialog(
-                                        title: 'Disconnect',
-                                        subtitle:
-                                            'Are you sure you want to disconnect from the group?',
-                                        noText: 'Cancel',
-                                        yesText: 'Disconnect',
-                                        noTap: () {},
-                                        yesTap: () {},
-                                      )),
+                                  child: context.bloc<SettingsBloc>().state.maybeMap(
+                                      hasLoaded: (settingsState) =>
+                                          settingsState.user == state.host
+                                              ? CloseCircleConfirmationDialog()
+                                              : LeaveCircleConfirmationDialog(),
+                                      orElse: () => Container())),
                             )
                           ],
                         ))),
@@ -111,8 +105,17 @@ class CircleHome extends StatelessWidget {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: const [
-                                    Icon(Icons.ondemand_video),
-                                    Text('Stream')
+                                    Icon(Icons.save_alt),
+                                    Text('Received Files')
+                                  ],
+                                ),
+                              ),
+                              GestureDetector(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: const [
+                                    Icon(Icons.settings),
+                                    Text('Settings')
                                   ],
                                 ),
                               ),

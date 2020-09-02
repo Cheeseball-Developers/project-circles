@@ -6,5 +6,6 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
   const factory CurrentCircleEvent.fileSent() = FileSent;
   const factory CurrentCircleEvent.fileReceived() = FileReceived;
   const factory CurrentCircleEvent.memberLeft() = MemberLeft;
+  const factory CurrentCircleEvent.leaveCircle() = LeaveCircle;
   const factory CurrentCircleEvent.closeCircle() = CloseCircle;
 }
