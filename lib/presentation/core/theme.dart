@@ -85,6 +85,7 @@ ThemeData darkTheme() {
     textTheme: _defaultTextTheme(base.textTheme),
     primaryColor: Colors.black,
     accentColor: Colors.teal,
+    cardColor: Color(0xFF1A1A1A),
     scaffoldBackgroundColor: Colors.black,
     iconTheme: const IconThemeData(color: Colors.teal),
     accentIconTheme: const IconThemeData(color: Colors.white),
