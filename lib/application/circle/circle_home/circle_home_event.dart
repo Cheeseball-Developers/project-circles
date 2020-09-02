@@ -1,4 +1,6 @@
 part of 'circle_home_bloc.dart';
 
-@immutable
-abstract class CircleHomeEvent {}
+@freezed
+abstract class CircleHomeEvent with _$CircleHomeEvent {
+  const factory CircleHomeEvent.changePageIndex(int index) = ChangePageIndex;
+}

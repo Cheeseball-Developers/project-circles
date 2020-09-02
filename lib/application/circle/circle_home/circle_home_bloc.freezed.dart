@@ -9,6 +9,180 @@ part of 'circle_home_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+class _$CircleHomeEventTearOff {
+  const _$CircleHomeEventTearOff();
+
+// ignore: unused_element
+  ChangePageIndex changePageIndex(int index) {
+    return ChangePageIndex(
+      index,
+    );
+  }
+}
+
+// ignore: unused_element
+const $CircleHomeEvent = _$CircleHomeEventTearOff();
+
+mixin _$CircleHomeEvent {
+  int get index;
+
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changePageIndex(int index),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changePageIndex(int index),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changePageIndex(ChangePageIndex value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changePageIndex(ChangePageIndex value),
+    @required Result orElse(),
+  });
+
+  $CircleHomeEventCopyWith<CircleHomeEvent> get copyWith;
+}
+
+abstract class $CircleHomeEventCopyWith<$Res> {
+  factory $CircleHomeEventCopyWith(
+          CircleHomeEvent value, $Res Function(CircleHomeEvent) then) =
+      _$CircleHomeEventCopyWithImpl<$Res>;
+  $Res call({int index});
+}
+
+class _$CircleHomeEventCopyWithImpl<$Res>
+    implements $CircleHomeEventCopyWith<$Res> {
+  _$CircleHomeEventCopyWithImpl(this._value, this._then);
+
+  final CircleHomeEvent _value;
+  // ignore: unused_field
+  final $Res Function(CircleHomeEvent) _then;
+
+  @override
+  $Res call({
+    Object index = freezed,
+  }) {
+    return _then(_value.copyWith(
+      index: index == freezed ? _value.index : index as int,
+    ));
+  }
+}
+
+abstract class $ChangePageIndexCopyWith<$Res>
+    implements $CircleHomeEventCopyWith<$Res> {
+  factory $ChangePageIndexCopyWith(
+          ChangePageIndex value, $Res Function(ChangePageIndex) then) =
+      _$ChangePageIndexCopyWithImpl<$Res>;
+  @override
+  $Res call({int index});
+}
+
+class _$ChangePageIndexCopyWithImpl<$Res>
+    extends _$CircleHomeEventCopyWithImpl<$Res>
+    implements $ChangePageIndexCopyWith<$Res> {
+  _$ChangePageIndexCopyWithImpl(
+      ChangePageIndex _value, $Res Function(ChangePageIndex) _then)
+      : super(_value, (v) => _then(v as ChangePageIndex));
+
+  @override
+  ChangePageIndex get _value => super._value as ChangePageIndex;
+
+  @override
+  $Res call({
+    Object index = freezed,
+  }) {
+    return _then(ChangePageIndex(
+      index == freezed ? _value.index : index as int,
+    ));
+  }
+}
+
+class _$ChangePageIndex implements ChangePageIndex {
+  const _$ChangePageIndex(this.index) : assert(index != null);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'CircleHomeEvent.changePageIndex(index: $index)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ChangePageIndex &&
+            (identical(other.index, index) ||
+                const DeepCollectionEquality().equals(other.index, index)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+
+  @override
+  $ChangePageIndexCopyWith<ChangePageIndex> get copyWith =>
+      _$ChangePageIndexCopyWithImpl<ChangePageIndex>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result changePageIndex(int index),
+  }) {
+    assert(changePageIndex != null);
+    return changePageIndex(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result changePageIndex(int index),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changePageIndex != null) {
+      return changePageIndex(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result changePageIndex(ChangePageIndex value),
+  }) {
+    assert(changePageIndex != null);
+    return changePageIndex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result changePageIndex(ChangePageIndex value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (changePageIndex != null) {
+      return changePageIndex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangePageIndex implements CircleHomeEvent {
+  const factory ChangePageIndex(int index) = _$ChangePageIndex;
+
+  @override
+  int get index;
+  @override
+  $ChangePageIndexCopyWith<ChangePageIndex> get copyWith;
+}
+
 class _$CircleHomeStateTearOff {
   const _$CircleHomeStateTearOff();
 
