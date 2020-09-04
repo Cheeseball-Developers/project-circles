@@ -15,13 +15,21 @@ class AppIconWithName extends StatelessWidget {
         padding: const EdgeInsets.all(2.0),
         child: Material(
           borderRadius: BorderRadius.circular(5.0),
-          color: app.isSelected?Colors.teal:Colors.transparent,
+          color: app.isSelected ? Colors.teal : Colors.transparent,
           child: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Column(
               children: [
-                Image.memory(app.getOrCrash().icon, width: MediaQuery.of(context).size.width/10,),
-                Text(app.getOrCrash().appName, textAlign: TextAlign.center, overflow: TextOverflow.ellipsis,)
+                Image.memory(app
+                    .getOrCrash()
+                    .icon, width: MediaQuery
+                    .of(context)
+                    .size
+                    .width / 10,),
+                Text(app
+                    .getOrCrash()
+                    .appName, textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,)
               ],
             ),
           ),
