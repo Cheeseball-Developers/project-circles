@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/apps_tab_view/apps_tab_view_bloc.dart';
+import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/apps_tab_view.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/photos_tab_view.dart';
 
 class SendFile extends StatelessWidget {
   final appsTab = BlocProvider(
       create: (context) =>
-      getIt<AppsTabViewBloc>()..add(const AppsTabViewEvent.loadApps()),
+          getIt<AppsTabViewBloc>()..add(const AppsTabViewEvent.loadApps()),
       child: AppsTabView());
+
+  final photosTab = BlocProvider(
+    create: (context) =>
+        getIt<MediaTabViewBloc>()..add(const MediaTabViewEvent.loadMedia()),
+    child: PhotosTabView(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +34,8 @@ class SendFile extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(children: [
-          appsTab,
-          Text('Photos'),
-          Text('Videos'),
-          Text('Files')
-        ]),
+        body: TabBarView(
+            children: [appsTab, photosTab, Text('Videos'), Text('Files')]),
       ),
     );
   }

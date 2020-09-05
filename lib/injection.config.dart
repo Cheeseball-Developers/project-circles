@@ -10,6 +10,7 @@ import 'package:injectable/injectable.dart';
 import 'application/circle/circle_home/apps_tab_view/apps_tab_view_bloc.dart';
 import 'application/circle/circle_home/circle_home_bloc.dart';
 import 'application/circle/current_circle/current_circle_bloc.dart';
+import 'application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
 import 'application/circle/join_or_create_circle/search_bloc.dart';
 import 'application/settings/settings_bloc.dart';
 
@@ -25,6 +26,7 @@ GetIt $initGetIt(
   gh.factory<AppsTabViewBloc>(() => AppsTabViewBloc());
   gh.factory<CircleHomeBloc>(() => CircleHomeBloc());
   gh.factory<CurrentCircleBloc>(() => CurrentCircleBloc());
+  gh.factory<MediaTabViewBloc>(() => MediaTabViewBloc());
   gh.factory<SearchBloc>(() => SearchBloc());
   gh.factory<SettingsBloc>(() => SettingsBloc());
   return get;
