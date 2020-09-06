@@ -8,6 +8,7 @@ class AppsTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppsTabViewBloc, AppsTabViewState>(
+      buildWhen: (a, b) => !(a.runtimeType==b.runtimeType),
       builder: (context, state) =>
           state.map(
               initial: (_) => Container(),
@@ -18,33 +19,8 @@ class AppsTabView extends StatelessWidget {
                         crossAxisCount: 5),
                     itemCount: state.apps.length,
                     itemBuilder: (context, index) =>
-                        Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(5.0),
-                                onTap: () {
-                                  if (state.tapToSelect) {
-                                    context.bloc<AppsTabViewBloc>().add(
-                                        AppsTabViewEvent.toggleAppSelection(
-                                            index));
-                                  }
-                                },
-                                onLongPress: () {
-                                  if (!state.tapToSelect) {
-                                    context.bloc<AppsTabViewBloc>().add(
-                                        AppsTabViewEvent.toggleAppSelection(
-                                            index));
-                                    context.bloc<AppsTabViewBloc>().add(
-                                        const AppsTabViewEvent
-                                            .toggleTapToSelect());
-                                  } else {
-                                    context.bloc<AppsTabViewBloc>().add(
-                                        AppsTabViewEvent.toggleAppSelection(
-                                            index));
-                                  }
-                                },
-                                child: AppIconWithName(
-                                    app: state.apps[index]))),
+                        AppIconWithName(
+                            index: index),
                   ),
               hasFailed: (state) =>
               const Center(

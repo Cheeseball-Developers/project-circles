@@ -8,6 +8,7 @@ class MediaTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MediaTabViewBloc, MediaTabViewState>(
+      buildWhen: (a, b) => !(a.runtimeType == b.runtimeType),
       builder: (context, state) => state.map(
           initial: (_) => Container(),
           isLoading: (_) => Container(),
@@ -25,11 +26,7 @@ class MediaTabView extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4),
                 itemCount: 20,
-                itemBuilder: (context, index) => GestureDetector(
-                    onTap: () => context
-                        .bloc<MediaTabViewBloc>()
-                        .add(MediaTabViewEvent.toggleSelection(index)),
-                    child: MediaThumbnail(mediaObject: state.media[index])),
+                itemBuilder: (context, index) => MediaThumbnail(index: index),
               ),
           hasFailed: (_) => Container()),
     );
