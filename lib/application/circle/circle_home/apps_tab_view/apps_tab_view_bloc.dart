@@ -49,10 +49,8 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
             ? state.selectedApps + 1
             : state.selectedApps - 1;
         yield state.copyWith(
-            apps: state.apps,
             selectedApps: selectedApps,
-          tapToSelect: selectedApps==0?false:state.tapToSelect
-        );
+            tapToSelect: selectedApps == 0 ? false : state.tapToSelect);
       }, orElse: () async* {
         yield const AppsTabViewState.hasFailed(
             AppsLoadFailure.unexpectedFailure());
