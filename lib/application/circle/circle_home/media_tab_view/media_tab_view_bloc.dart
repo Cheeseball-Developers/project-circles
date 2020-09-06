@@ -24,7 +24,7 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
     yield* event.map(loadMedia: (e) async* {
       if (await MediaRepository.getPermission()) {
         yield MediaTabViewState.hasLoaded(
-            media: await MediaRepository.getRecent(), tapToSelect: false,
+            media: await MediaRepository.getRecentImages(), tapToSelect: false,
             selectedMedia: 0);
       }
     }, toggleTapToSelect: (e) async* {

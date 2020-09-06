@@ -13,7 +13,7 @@ class MediaRepository {
     return result;
   }
 
-  static Future<List<MediaObject>> getRecent() async {
+  static Future<List<MediaObject>> getRecentImages() async {
     final List<AssetPathEntity> albums =
     await PhotoManager.getAssetPathList(onlyAll: true);
     final List<AssetEntity> media = await albums[0].getAssetListPaged(0, 20);

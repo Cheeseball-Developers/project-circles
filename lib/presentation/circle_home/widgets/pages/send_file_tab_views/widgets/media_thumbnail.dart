@@ -10,13 +10,13 @@ class MediaThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: FutureBuilder(
-          future: mediaObject.getOrCrash().thumbDataWithSize(200, 200),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Stack(
+    return FutureBuilder(
+        future: mediaObject.getOrCrash().thumbDataWithSize(200, 200),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Padding(
+              padding: EdgeInsets.all(mediaObject.selected?4.0:1.0),
+              child: Stack(
                 children: [
                   Image.memory(
                     snapshot.data as Uint8List,
@@ -29,11 +29,11 @@ class MediaThumbnail extends StatelessWidget {
                     ),
                   ) else Container()
                 ],
-              );
-            } else {
-              return Container();
-            }
-          }),
-    );
+              ),
+            );
+          } else {
+            return Container();
+          }
+        });
   }
 }
