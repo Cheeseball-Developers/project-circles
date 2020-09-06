@@ -10,30 +10,38 @@ class MediaThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: FutureBuilder(
-          future: mediaObject.getOrCrash().thumbDataWithSize(200, 200),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              return Stack(
+    return FutureBuilder(
+        future: mediaObject.getOrCrash().thumbDataWithSize(200, 200),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Padding(
+              padding: EdgeInsets.all(mediaObject.selected ? 4.0 : 1.0),
+              child: Stack(
                 children: [
-                  Image.memory(
-                    snapshot.data as Uint8List,
-                    fit: BoxFit.cover,
-                  ),
-                  if (!mediaObject.selected) Material(
-                    color: Theme.of(context).accentColor.withOpacity(0.5),
-                    child: Center(
-                      child: Icon(Icons.check_circle, color: Theme.of(context).accentIconTheme.color,),
+                  Positioned.fill(
+                    child: Image.memory(
+                      snapshot.data as Uint8List,
+                      fit: BoxFit.cover,
                     ),
-                  ) else Container()
+                  ),
+                  if (mediaObject.selected)
+                    Material(
+                      color: Theme.of(context).accentColor.withOpacity(0.5),
+                      child: Center(
+                        child: Icon(
+                          Icons.check_circle,
+                          color: Theme.of(context).accentIconTheme.color,
+                        ),
+                      ),
+                    )
+                  else
+                    Container()
                 ],
-              );
-            } else {
-              return Container();
-            }
-          }),
-    );
+              ),
+            );
+          } else {
+            return Container();
+          }
+        });
   }
 }

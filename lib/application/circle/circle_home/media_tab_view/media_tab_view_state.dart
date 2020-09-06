@@ -6,7 +6,11 @@ abstract class MediaTabViewState with _$MediaTabViewState {
 
   const factory MediaTabViewState.isLoading() = _IsLoading;
 
-  const factory MediaTabViewState.hasLoaded(
+  const factory MediaTabViewState.hasLoadedAlbums({
+    @required List<AssetPathEntity> albums
+  }) = _HasLoadedAlbums;
+
+  const factory MediaTabViewState.hasLoadedMedia(
       {@required List<MediaObject> media,
         @required bool tapToSelect,
         @required int selectedMedia}) = _HasLoaded;

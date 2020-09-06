@@ -4,7 +4,7 @@ import 'package:projectcircles/application/circle/circle_home/apps_tab_view/apps
 import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/apps_tab_view.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/photos_tab_view.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/media_tab_view.dart';
 
 class SendFile extends StatelessWidget {
   final appsTab = BlocProvider(
@@ -14,28 +14,27 @@ class SendFile extends StatelessWidget {
 
   final photosTab = BlocProvider(
     create: (context) =>
-        getIt<MediaTabViewBloc>()..add(const MediaTabViewEvent.loadMedia()),
-    child: PhotosTabView(),
+        getIt<MediaTabViewBloc>()..add(const MediaTabViewEvent.loadAlbums()),
+    child: MediaTabView(),
   );
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       child: Scaffold(
         appBar: const PreferredSize(
           preferredSize: Size(100.0, 200.0),
           child: TabBar(
             tabs: [
               Tab(text: 'Apps'),
-              Tab(text: 'Photos'),
-              Tab(text: 'Videos'),
+              Tab(text: 'Media'),
               Tab(text: 'Files'),
             ],
           ),
         ),
         body: TabBarView(
-            children: [appsTab, photosTab, Text('Videos'), Text('Files')]),
+            children: [appsTab, photosTab, Text('Files')]),
       ),
     );
   }
