@@ -14,7 +14,7 @@ class SendFile extends StatelessWidget {
 
   final photosTab = BlocProvider(
     create: (context) =>
-        getIt<MediaTabViewBloc>()..add(const MediaTabViewEvent.loadMedia()),
+        getIt<MediaTabViewBloc>()..add(const MediaTabViewEvent.loadAlbums()),
     child: MediaTabView(),
   );
 

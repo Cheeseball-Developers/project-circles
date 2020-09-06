@@ -13,10 +13,15 @@ class MediaRepository {
     return result;
   }
 
-  static Future<List<MediaObject>> getRecentImages() async {
+  static Future<List<AssetPathEntity>> getAlbums() async {
     final List<AssetPathEntity> albums =
-    await PhotoManager.getAssetPathList(onlyAll: true);
-    final List<AssetEntity> media = await albums[0].getAssetListPaged(0, 20);
+    await PhotoManager.getAssetPathList(hasAll: true);
+    albums.sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase()));
+    return albums;
+  }
+
+  static Future<List<MediaObject>> getAlbumMedia(AssetPathEntity album) async {
+    final List<AssetEntity> media = await album.getAssetListPaged(0, 20);
     final List<MediaObject> mediaObjects = [];
     media.forEach((assetEntity) {
       mediaObjects.add(MediaObject(assetEntity, selected: false));

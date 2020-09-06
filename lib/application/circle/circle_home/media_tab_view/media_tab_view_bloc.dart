@@ -20,19 +20,49 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
   MediaTabViewBloc() : super(const MediaTabViewState.initial());
 
   @override
-  Stream<MediaTabViewState> mapEventToState(MediaTabViewEvent event,) async* {
-    yield* event.map(loadMedia: (e) async* {
-      if (await MediaRepository.getPermission()) {
-        yield MediaTabViewState.hasLoaded(
-            media: await MediaRepository.getRecentImages(), tapToSelect: false,
-            selectedMedia: 0);
-      }
-    }, toggleTapToSelect: (e) async* {
-      yield* state.maybeMap(hasLoaded: (state) async* {
-        yield state.copyWith(tapToSelect: !state.tapToSelect);
-      }, orElse: () async* {
-        yield const MediaTabViewState.hasFailed(AppsLoadFailure.unexpectedFailure());
-      });
-    }, toggleSelection: (state) async* {});
+  Stream<MediaTabViewState> mapEventToState(
+    MediaTabViewEvent event,
+  ) async* {
+    yield* event.map(
+        loadAlbums: (e) async* {
+          if (await MediaRepository.getPermission()) {
+            yield MediaTabViewState.hasLoadedAlbums(
+              albums: await MediaRepository.getAlbums()
+            );
+          }
+        },
+        loadMedia: (e) async* {
+          if (await MediaRepository.getPermission()) {
+            yield MediaTabViewState.hasLoadedMedia(
+                media: await MediaRepository.getAlbumMedia(e.album),
+                tapToSelect: false,
+                selectedMedia: 0);
+          }
+        },
+        toggleTapToSelect: (e) async* {
+          yield* state.maybeMap(hasLoadedMedia: (state) async* {
+            yield state.copyWith(tapToSelect: !state.tapToSelect);
+          }, orElse: () async* {
+            yield const MediaTabViewState.hasFailed(
+                AppsLoadFailure.unexpectedFailure());
+          });
+        },
+        toggleSelection: (e) async* {
+          yield* state.maybeMap(hasLoadedMedia: (state) async* {
+            state.media[e.index] =MediaObject(state.media[e.index].getOrCrash(),
+                selected: !state.media[e.index].selected);
+            final int selectedMedia = state.media[e.index].selected
+                ? state.selectedMedia + 1
+                : state.selectedMedia - 1;
+            yield state.copyWith(
+                media: state.media,
+                selectedMedia: selectedMedia,
+                tapToSelect: selectedMedia==0?false:state.tapToSelect
+            );
+          }, orElse: () async* {
+            yield const MediaTabViewState.hasFailed(
+                AppsLoadFailure.unexpectedFailure());
+          });
+        });
   }
 }

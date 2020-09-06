@@ -13,8 +13,15 @@ class _$MediaTabViewEventTearOff {
   const _$MediaTabViewEventTearOff();
 
 // ignore: unused_element
-  LoadMedia loadMedia() {
-    return const LoadMedia();
+  LoadAlbums loadAlbums() {
+    return const LoadAlbums();
+  }
+
+// ignore: unused_element
+  LoadMedia loadMedia({@required AssetPathEntity album}) {
+    return LoadMedia(
+      album: album,
+    );
   }
 
 // ignore: unused_element
@@ -36,25 +43,29 @@ const $MediaTabViewEvent = _$MediaTabViewEventTearOff();
 mixin _$MediaTabViewEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result loadMedia(),
+    @required Result loadAlbums(),
+    @required Result loadMedia(AssetPathEntity album),
     @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result loadMedia(),
+    Result loadAlbums(),
+    Result loadMedia(AssetPathEntity album),
     Result toggleTapToSelect(),
     Result toggleSelection(int index),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
     @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
     Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
@@ -77,9 +88,109 @@ class _$MediaTabViewEventCopyWithImpl<$Res>
   final $Res Function(MediaTabViewEvent) _then;
 }
 
+abstract class $LoadAlbumsCopyWith<$Res> {
+  factory $LoadAlbumsCopyWith(
+          LoadAlbums value, $Res Function(LoadAlbums) then) =
+      _$LoadAlbumsCopyWithImpl<$Res>;
+}
+
+class _$LoadAlbumsCopyWithImpl<$Res>
+    extends _$MediaTabViewEventCopyWithImpl<$Res>
+    implements $LoadAlbumsCopyWith<$Res> {
+  _$LoadAlbumsCopyWithImpl(LoadAlbums _value, $Res Function(LoadAlbums) _then)
+      : super(_value, (v) => _then(v as LoadAlbums));
+
+  @override
+  LoadAlbums get _value => super._value as LoadAlbums;
+}
+
+class _$LoadAlbums implements LoadAlbums {
+  const _$LoadAlbums();
+
+  @override
+  String toString() {
+    return 'MediaTabViewEvent.loadAlbums()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LoadAlbums);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loadAlbums(),
+    @required Result loadMedia(AssetPathEntity album),
+    @required Result toggleTapToSelect(),
+    @required Result toggleSelection(int index),
+  }) {
+    assert(loadAlbums != null);
+    assert(loadMedia != null);
+    assert(toggleTapToSelect != null);
+    assert(toggleSelection != null);
+    return loadAlbums();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loadAlbums(),
+    Result loadMedia(AssetPathEntity album),
+    Result toggleTapToSelect(),
+    Result toggleSelection(int index),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadAlbums != null) {
+      return loadAlbums();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loadAlbums(LoadAlbums value),
+    @required Result loadMedia(LoadMedia value),
+    @required Result toggleTapToSelect(ToggleTapToSelect value),
+    @required Result toggleSelection(ToggleSelection value),
+  }) {
+    assert(loadAlbums != null);
+    assert(loadMedia != null);
+    assert(toggleTapToSelect != null);
+    assert(toggleSelection != null);
+    return loadAlbums(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loadAlbums(LoadAlbums value),
+    Result loadMedia(LoadMedia value),
+    Result toggleTapToSelect(ToggleTapToSelect value),
+    Result toggleSelection(ToggleSelection value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (loadAlbums != null) {
+      return loadAlbums(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadAlbums implements MediaTabViewEvent {
+  const factory LoadAlbums() = _$LoadAlbums;
+}
+
 abstract class $LoadMediaCopyWith<$Res> {
   factory $LoadMediaCopyWith(LoadMedia value, $Res Function(LoadMedia) then) =
       _$LoadMediaCopyWithImpl<$Res>;
+  $Res call({AssetPathEntity album});
 }
 
 class _$LoadMediaCopyWithImpl<$Res>
@@ -90,48 +201,71 @@ class _$LoadMediaCopyWithImpl<$Res>
 
   @override
   LoadMedia get _value => super._value as LoadMedia;
+
+  @override
+  $Res call({
+    Object album = freezed,
+  }) {
+    return _then(LoadMedia(
+      album: album == freezed ? _value.album : album as AssetPathEntity,
+    ));
+  }
 }
 
 class _$LoadMedia implements LoadMedia {
-  const _$LoadMedia();
+  const _$LoadMedia({@required this.album}) : assert(album != null);
+
+  @override
+  final AssetPathEntity album;
 
   @override
   String toString() {
-    return 'MediaTabViewEvent.loadMedia()';
+    return 'MediaTabViewEvent.loadMedia(album: $album)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is LoadMedia);
+    return identical(this, other) ||
+        (other is LoadMedia &&
+            (identical(other.album, album) ||
+                const DeepCollectionEquality().equals(other.album, album)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(album);
+
+  @override
+  $LoadMediaCopyWith<LoadMedia> get copyWith =>
+      _$LoadMediaCopyWithImpl<LoadMedia>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result loadMedia(),
+    @required Result loadAlbums(),
+    @required Result loadMedia(AssetPathEntity album),
     @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
   }) {
+    assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
-    return loadMedia();
+    return loadMedia(album);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result loadMedia(),
+    Result loadAlbums(),
+    Result loadMedia(AssetPathEntity album),
     Result toggleTapToSelect(),
     Result toggleSelection(int index),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (loadMedia != null) {
-      return loadMedia();
+      return loadMedia(album);
     }
     return orElse();
   }
@@ -139,10 +273,12 @@ class _$LoadMedia implements LoadMedia {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
     @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
   }) {
+    assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
@@ -152,6 +288,7 @@ class _$LoadMedia implements LoadMedia {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
     Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
@@ -166,7 +303,10 @@ class _$LoadMedia implements LoadMedia {
 }
 
 abstract class LoadMedia implements MediaTabViewEvent {
-  const factory LoadMedia() = _$LoadMedia;
+  const factory LoadMedia({@required AssetPathEntity album}) = _$LoadMedia;
+
+  AssetPathEntity get album;
+  $LoadMediaCopyWith<LoadMedia> get copyWith;
 }
 
 abstract class $ToggleTapToSelectCopyWith<$Res> {
@@ -205,10 +345,12 @@ class _$ToggleTapToSelect implements ToggleTapToSelect {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result loadMedia(),
+    @required Result loadAlbums(),
+    @required Result loadMedia(AssetPathEntity album),
     @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
   }) {
+    assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
@@ -218,7 +360,8 @@ class _$ToggleTapToSelect implements ToggleTapToSelect {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result loadMedia(),
+    Result loadAlbums(),
+    Result loadMedia(AssetPathEntity album),
     Result toggleTapToSelect(),
     Result toggleSelection(int index),
     @required Result orElse(),
@@ -233,10 +376,12 @@ class _$ToggleTapToSelect implements ToggleTapToSelect {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
     @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
   }) {
+    assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
@@ -246,6 +391,7 @@ class _$ToggleTapToSelect implements ToggleTapToSelect {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
     Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
@@ -320,10 +466,12 @@ class _$ToggleSelection implements ToggleSelection {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result loadMedia(),
+    @required Result loadAlbums(),
+    @required Result loadMedia(AssetPathEntity album),
     @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
   }) {
+    assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
@@ -333,7 +481,8 @@ class _$ToggleSelection implements ToggleSelection {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result loadMedia(),
+    Result loadAlbums(),
+    Result loadMedia(AssetPathEntity album),
     Result toggleTapToSelect(),
     Result toggleSelection(int index),
     @required Result orElse(),
@@ -348,10 +497,12 @@ class _$ToggleSelection implements ToggleSelection {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
     @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
   }) {
+    assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
@@ -361,6 +512,7 @@ class _$ToggleSelection implements ToggleSelection {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
     Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
@@ -395,7 +547,14 @@ class _$MediaTabViewStateTearOff {
   }
 
 // ignore: unused_element
-  _HasLoaded hasLoaded(
+  _HasLoadedAlbums hasLoadedAlbums({@required List<AssetPathEntity> albums}) {
+    return _HasLoadedAlbums(
+      albums: albums,
+    );
+  }
+
+// ignore: unused_element
+  _HasLoaded hasLoadedMedia(
       {@required List<MediaObject> media,
       @required bool tapToSelect,
       @required int selectedMedia}) {
@@ -422,8 +581,9 @@ mixin _$MediaTabViewState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
+    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoaded(
+        Result hasLoadedMedia(
             List<MediaObject> media, bool tapToSelect, int selectedMedia),
     @required Result hasFailed(AppsLoadFailure failure),
   });
@@ -431,7 +591,8 @@ mixin _$MediaTabViewState {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(
+    Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    Result hasLoadedMedia(
         List<MediaObject> media, bool tapToSelect, int selectedMedia),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
@@ -440,14 +601,16 @@ mixin _$MediaTabViewState {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
+    @required Result hasLoadedMedia(_HasLoaded value),
     @required Result hasFailed(_HasFailed value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
+    Result hasLoadedAlbums(_HasLoadedAlbums value),
+    Result hasLoadedMedia(_HasLoaded value),
     Result hasFailed(_HasFailed value),
     @required Result orElse(),
   });
@@ -503,14 +666,16 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
+    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoaded(
+        Result hasLoadedMedia(
             List<MediaObject> media, bool tapToSelect, int selectedMedia),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
     return initial();
   }
@@ -520,7 +685,8 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(
+    Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    Result hasLoadedMedia(
         List<MediaObject> media, bool tapToSelect, int selectedMedia),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
@@ -537,12 +703,14 @@ class _$_Initial implements _Initial {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
+    @required Result hasLoadedMedia(_HasLoaded value),
     @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
     return initial(this);
   }
@@ -552,7 +720,8 @@ class _$_Initial implements _Initial {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
+    Result hasLoadedAlbums(_HasLoadedAlbums value),
+    Result hasLoadedMedia(_HasLoaded value),
     Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
@@ -605,14 +774,16 @@ class _$_IsLoading implements _IsLoading {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
+    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoaded(
+        Result hasLoadedMedia(
             List<MediaObject> media, bool tapToSelect, int selectedMedia),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
     return isLoading();
   }
@@ -622,7 +793,8 @@ class _$_IsLoading implements _IsLoading {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(
+    Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    Result hasLoadedMedia(
         List<MediaObject> media, bool tapToSelect, int selectedMedia),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
@@ -639,12 +811,14 @@ class _$_IsLoading implements _IsLoading {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
+    @required Result hasLoadedMedia(_HasLoaded value),
     @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
     return isLoading(this);
   }
@@ -654,7 +828,8 @@ class _$_IsLoading implements _IsLoading {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
+    Result hasLoadedAlbums(_HasLoadedAlbums value),
+    Result hasLoadedMedia(_HasLoaded value),
     Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
@@ -668,6 +843,141 @@ class _$_IsLoading implements _IsLoading {
 
 abstract class _IsLoading implements MediaTabViewState {
   const factory _IsLoading() = _$_IsLoading;
+}
+
+abstract class _$HasLoadedAlbumsCopyWith<$Res> {
+  factory _$HasLoadedAlbumsCopyWith(
+          _HasLoadedAlbums value, $Res Function(_HasLoadedAlbums) then) =
+      __$HasLoadedAlbumsCopyWithImpl<$Res>;
+  $Res call({List<AssetPathEntity> albums});
+}
+
+class __$HasLoadedAlbumsCopyWithImpl<$Res>
+    extends _$MediaTabViewStateCopyWithImpl<$Res>
+    implements _$HasLoadedAlbumsCopyWith<$Res> {
+  __$HasLoadedAlbumsCopyWithImpl(
+      _HasLoadedAlbums _value, $Res Function(_HasLoadedAlbums) _then)
+      : super(_value, (v) => _then(v as _HasLoadedAlbums));
+
+  @override
+  _HasLoadedAlbums get _value => super._value as _HasLoadedAlbums;
+
+  @override
+  $Res call({
+    Object albums = freezed,
+  }) {
+    return _then(_HasLoadedAlbums(
+      albums:
+          albums == freezed ? _value.albums : albums as List<AssetPathEntity>,
+    ));
+  }
+}
+
+class _$_HasLoadedAlbums implements _HasLoadedAlbums {
+  const _$_HasLoadedAlbums({@required this.albums}) : assert(albums != null);
+
+  @override
+  final List<AssetPathEntity> albums;
+
+  @override
+  String toString() {
+    return 'MediaTabViewState.hasLoadedAlbums(albums: $albums)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _HasLoadedAlbums &&
+            (identical(other.albums, albums) ||
+                const DeepCollectionEquality().equals(other.albums, albums)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(albums);
+
+  @override
+  _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith =>
+      __$HasLoadedAlbumsCopyWithImpl<_HasLoadedAlbums>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required Result isLoading(),
+    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    @required
+        Result hasLoadedMedia(
+            List<MediaObject> media, bool tapToSelect, int selectedMedia),
+    @required Result hasFailed(AppsLoadFailure failure),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
+    assert(hasFailed != null);
+    return hasLoadedAlbums(albums);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result isLoading(),
+    Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    Result hasLoadedMedia(
+        List<MediaObject> media, bool tapToSelect, int selectedMedia),
+    Result hasFailed(AppsLoadFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasLoadedAlbums != null) {
+      return hasLoadedAlbums(albums);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required Result isLoading(_IsLoading value),
+    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
+    @required Result hasLoadedMedia(_HasLoaded value),
+    @required Result hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(isLoading != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
+    assert(hasFailed != null);
+    return hasLoadedAlbums(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result isLoading(_IsLoading value),
+    Result hasLoadedAlbums(_HasLoadedAlbums value),
+    Result hasLoadedMedia(_HasLoaded value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasLoadedAlbums != null) {
+      return hasLoadedAlbums(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HasLoadedAlbums implements MediaTabViewState {
+  const factory _HasLoadedAlbums({@required List<AssetPathEntity> albums}) =
+      _$_HasLoadedAlbums;
+
+  List<AssetPathEntity> get albums;
+  _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith;
 }
 
 abstract class _$HasLoadedCopyWith<$Res> {
@@ -721,7 +1031,7 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   String toString() {
-    return 'MediaTabViewState.hasLoaded(media: $media, tapToSelect: $tapToSelect, selectedMedia: $selectedMedia)';
+    return 'MediaTabViewState.hasLoadedMedia(media: $media, tapToSelect: $tapToSelect, selectedMedia: $selectedMedia)';
   }
 
   @override
@@ -754,16 +1064,18 @@ class _$_HasLoaded implements _HasLoaded {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
+    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoaded(
+        Result hasLoadedMedia(
             List<MediaObject> media, bool tapToSelect, int selectedMedia),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
-    return hasLoaded(media, tapToSelect, selectedMedia);
+    return hasLoadedMedia(media, tapToSelect, selectedMedia);
   }
 
   @override
@@ -771,14 +1083,15 @@ class _$_HasLoaded implements _HasLoaded {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(
+    Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    Result hasLoadedMedia(
         List<MediaObject> media, bool tapToSelect, int selectedMedia),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (hasLoaded != null) {
-      return hasLoaded(media, tapToSelect, selectedMedia);
+    if (hasLoadedMedia != null) {
+      return hasLoadedMedia(media, tapToSelect, selectedMedia);
     }
     return orElse();
   }
@@ -788,14 +1101,16 @@ class _$_HasLoaded implements _HasLoaded {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
+    @required Result hasLoadedMedia(_HasLoaded value),
     @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
-    return hasLoaded(this);
+    return hasLoadedMedia(this);
   }
 
   @override
@@ -803,13 +1118,14 @@ class _$_HasLoaded implements _HasLoaded {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
+    Result hasLoadedAlbums(_HasLoadedAlbums value),
+    Result hasLoadedMedia(_HasLoaded value),
     Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (hasLoaded != null) {
-      return hasLoaded(this);
+    if (hasLoadedMedia != null) {
+      return hasLoadedMedia(this);
     }
     return orElse();
   }
@@ -897,14 +1213,16 @@ class _$_HasFailed implements _HasFailed {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
+    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoaded(
+        Result hasLoadedMedia(
             List<MediaObject> media, bool tapToSelect, int selectedMedia),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
     return hasFailed(failure);
   }
@@ -914,7 +1232,8 @@ class _$_HasFailed implements _HasFailed {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(
+    Result hasLoadedAlbums(List<AssetPathEntity> albums),
+    Result hasLoadedMedia(
         List<MediaObject> media, bool tapToSelect, int selectedMedia),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
@@ -931,12 +1250,14 @@ class _$_HasFailed implements _HasFailed {
   Result map<Result extends Object>({
     @required Result initial(_Initial value),
     @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
+    @required Result hasLoadedMedia(_HasLoaded value),
     @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
-    assert(hasLoaded != null);
+    assert(hasLoadedAlbums != null);
+    assert(hasLoadedMedia != null);
     assert(hasFailed != null);
     return hasFailed(this);
   }
@@ -946,7 +1267,8 @@ class _$_HasFailed implements _HasFailed {
   Result maybeMap<Result extends Object>({
     Result initial(_Initial value),
     Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
+    Result hasLoadedAlbums(_HasLoadedAlbums value),
+    Result hasLoadedMedia(_HasLoaded value),
     Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
