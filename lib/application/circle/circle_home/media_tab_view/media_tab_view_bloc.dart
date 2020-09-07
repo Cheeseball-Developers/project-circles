@@ -25,6 +25,7 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
   ) async* {
     yield* event.map(
         loadAlbums: (e) async* {
+          yield const MediaTabViewState.isLoading();
           if (await MediaRepository.getPermission()) {
             yield MediaTabViewState.hasLoadedAlbums(
               albums: await MediaRepository.getAlbums()
@@ -32,6 +33,7 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
           }
         },
         loadMedia: (e) async* {
+          yield const MediaTabViewState.isLoading();
           if (await MediaRepository.getPermission()) {
             yield MediaTabViewState.hasLoadedMedia(
                 media: await MediaRepository.getAlbumMedia(e.album),

@@ -11,7 +11,7 @@ class MediaTabView extends StatelessWidget {
       buildWhen: (a, b) => !(a.runtimeType == b.runtimeType),
       builder: (context, state) => state.map(
           initial: (_) => Container(),
-          isLoading: (_) => Container(),
+          isLoading: (_) => const Center(child: CircularProgressIndicator()),
           hasLoadedAlbums: (state) => GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2),

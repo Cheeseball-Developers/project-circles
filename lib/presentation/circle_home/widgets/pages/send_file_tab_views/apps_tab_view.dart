@@ -12,7 +12,7 @@ class AppsTabView extends StatelessWidget {
       builder: (context, state) =>
           state.map(
               initial: (_) => Container(),
-              isLoading: (_) => const Text('Loading'),
+              isLoading: (_) => const Center(child: CircularProgressIndicator()),
               hasLoaded: (state) =>
                   GridView.builder(
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

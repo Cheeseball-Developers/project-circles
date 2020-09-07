@@ -1,9 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/apps_tab_view/apps_tab_view_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
+import 'package:projectcircles/application/circle/circle_home/files_tab_view/files_tab_view_bloc.dart';
+import 'package:projectcircles/infrastructure/circle/files_repository.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/apps_tab_view.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/files_tab_view.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/media_tab_view.dart';
 
 class SendFile extends StatelessWidget {
@@ -16,6 +21,12 @@ class SendFile extends StatelessWidget {
     create: (context) =>
         getIt<MediaTabViewBloc>()..add(const MediaTabViewEvent.loadAlbums()),
     child: MediaTabView(),
+  );
+
+  final filesTab = BlocProvider(
+    create: (context) => getIt<FilesTabViewBloc>()
+      ..add(FilesTabViewEvent.loadDirectory(Directory('/storage/emulated/0/'))),
+    child: FilesTabView(),
   );
 
   @override
@@ -33,8 +44,7 @@ class SendFile extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(
-            children: [appsTab, photosTab, Text('Files')]),
+        body: TabBarView(children: [appsTab, photosTab, filesTab]),
       ),
     );
   }
