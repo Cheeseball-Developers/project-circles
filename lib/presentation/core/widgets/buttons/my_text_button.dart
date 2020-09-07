@@ -5,9 +5,6 @@ class MyTextButton extends StatelessWidget {
   final VoidCallback onTap;
   final ButtonType type;
 
-  final borderRadius = 24.0;
-  final buttonBorderRadius = 12.0;
-
   const MyTextButton({Key key, this.text, this.onTap, @required this.type})
       : super(key: key);
 
@@ -18,7 +15,7 @@ class MyTextButton extends StatelessWidget {
           color: type == ButtonType.primary
               ? Theme.of(context).buttonColor
               : Colors.transparent,
-          borderRadius: BorderRadius.circular(buttonBorderRadius),
+          borderRadius: BorderRadius.circular(8.0),
           border: Border.all(color: Theme.of(context).buttonColor)),
       child: InkWell(
           onTap: onTap,

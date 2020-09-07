@@ -42,13 +42,9 @@ class CircleHome extends StatelessWidget {
                         preferredSize: Size(MediaQuery.of(context).size.width,
                             MediaQuery.of(context).size.height / 6),
                         child: Material(
-                            elevation: 8.0,
-                            borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(24.0),
-                                bottomRight: Radius.circular(24.0)),
-                            color: Theme.of(context).cardColor,
-                            child: SafeArea(
-                                child: Row(
+                          color: Theme.of(context).appBarTheme.color,
+                          child: SafeArea(
+                            child: Row(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -90,61 +86,58 @@ class CircleHome extends StatelessWidget {
                                           orElse: () => Container())),
                                 )
                               ],
-                            ))),
+                            ),
+                          ),
+                        ),
                       ),
                       backgroundColor:
                           Theme.of(context).scaffoldBackgroundColor,
                       extendBody: true,
                       bottomNavigationBar: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Material(
-                            borderRadius: BorderRadius.circular(24.0),
-                            color: Theme.of(context).cardColor,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 16.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () => context
-                                        .bloc<CircleHomeBloc>()
-                                        .add(const CircleHomeEvent
-                                            .changePageIndex(0)),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Icon(Icons.file_upload),
-                                        Text('Send File')
-                                      ],
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () => context
-                                        .bloc<CircleHomeBloc>()
-                                        .add(const CircleHomeEvent
-                                            .changePageIndex(1)),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Icon(Icons.save_alt),
-                                        Text('Received Files')
-                                      ],
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Icon(Icons.settings),
-                                        Text('Settings')
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 12.0, horizontal: 24.0),
+                              child: Material(
+                                  elevation: 16.0,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  color: Theme.of(context).bottomAppBarColor,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () => context
+                                            .bloc<CircleHomeBloc>()
+                                            .add(const CircleHomeEvent
+                                                .changePageIndex(0)),
+                                        child: Icon(Icons.file_upload),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () => context
+                                            .bloc<CircleHomeBloc>()
+                                            .add(const CircleHomeEvent
+                                                .changePageIndex(1)),
+                                        child: Icon(Icons.save_alt),
+                                      ),
+                                      IconButton(
+                                        icon: Icon(Icons.people),
+                                        onPressed: () {},
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                            Positioned.fill(
+                              child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                child: InkWell(
+                                      onTap: () {}, child: Icon(Icons.send)),
                               ),
-                            )),
+                              ),
+                          ],
+                        ),
                       ),
                       body: circleHomeState.pageIndex == 0
                           ? SendFile()
