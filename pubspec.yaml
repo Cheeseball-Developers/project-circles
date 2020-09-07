@@ -31,6 +31,8 @@ dependencies:
   auto_route:
   uuid:
   shared_preferences:
+  permission_handler:
+  path_provider:
   folder_picker:
   device_apps:
   photo_manager:
