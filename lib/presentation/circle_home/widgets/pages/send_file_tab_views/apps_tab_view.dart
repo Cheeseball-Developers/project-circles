@@ -14,13 +14,16 @@ class AppsTabView extends StatelessWidget {
               initial: (_) => Container(),
               isLoading: (_) => const Center(child: CircularProgressIndicator()),
               hasLoaded: (state) =>
-                  GridView.builder(
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5),
-                    itemCount: state.apps.length,
-                    itemBuilder: (context, index) =>
-                        AppIconWithName(
-                            index: index),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 5),
+                      itemCount: state.apps.length,
+                      itemBuilder: (context, index) =>
+                          AppIconWithName(
+                              index: index),
+                    ),
                   ),
               hasFailed: (state) =>
               const Center(

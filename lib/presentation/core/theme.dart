@@ -9,7 +9,7 @@ ThemeData defaultTheme() {
             fontFamily: 'Quicksand',
             fontWeight: FontWeight.w400),
         headline6: const TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 20.0,
             fontFamily: 'Quicksand',
             fontWeight: FontWeight.w500),
@@ -25,8 +25,10 @@ ThemeData defaultTheme() {
             fontWeight: FontWeight.w600),
         bodyText2: const TextStyle(
             color: Colors.black87, fontSize: 14.0, fontFamily: 'Quicksand'),
+        button: const TextStyle(
+            color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'),
         caption: const TextStyle(
-            color: Colors.black54,
+            color: Colors.white,
             fontSize: 12.0,
             fontWeight: FontWeight.w300,
             fontFamily: 'Quicksand'));
@@ -37,8 +39,16 @@ ThemeData defaultTheme() {
     textTheme: _defaultTextTheme(base.textTheme),
     primaryColor: Colors.lightBlue,
     accentColor: Colors.white,
+    cardColor: Colors.white,
+    appBarTheme: AppBarTheme(color: Colors.blue),
+    tabBarTheme: const TabBarTheme(
+        labelColor: Colors.white,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicator: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.white, width: 2.0)))),
+    dialogBackgroundColor: Colors.white,
+    bottomAppBarColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
-    iconTheme: const IconThemeData(color: Colors.lightBlue),
+    iconTheme: const IconThemeData(color: Colors.white),
     accentIconTheme: const IconThemeData(color: Colors.white),
     buttonColor: Colors.lightBlue,
     backgroundColor: Colors.white,
@@ -71,8 +81,7 @@ ThemeData darkTheme() {
         bodyText2: const TextStyle(
             color: Colors.white70, fontSize: 14.0, fontFamily: 'Quicksand'),
         button: const TextStyle(
-          color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'
-        ),
+            color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'),
         caption: const TextStyle(
             color: Colors.white54,
             fontSize: 12.0,

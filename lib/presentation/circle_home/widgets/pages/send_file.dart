@@ -34,14 +34,21 @@ class SendFile extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        appBar: const PreferredSize(
+        appBar: PreferredSize(
           preferredSize: Size(100.0, 200.0),
-          child: TabBar(
-            tabs: [
-              Tab(text: 'Apps'),
-              Tab(text: 'Media'),
-              Tab(text: 'Files'),
-            ],
+          child: Material(
+            color: Theme.of(context).appBarTheme.color,
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(16.0),
+                bottomRight: Radius.circular(16.0)),
+            elevation: 8.0,
+            child: TabBar(
+              tabs: [
+                Tab(text: 'Apps'),
+                Tab(text: 'Media'),
+                Tab(text: 'Files'),
+              ],
+            ),
           ),
         ),
         body: TabBarView(children: [appsTab, photosTab, filesTab]),

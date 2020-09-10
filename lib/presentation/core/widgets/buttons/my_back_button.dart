@@ -2,10 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 class MyBackButton extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const MyBackButton({this.onTap});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => ExtendedNavigator.of(context).pop(),
+      onTap: onTap ?? () => ExtendedNavigator.of(context).pop(),
       child: Row(
         children: [
           Icon(
