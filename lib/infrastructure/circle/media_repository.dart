@@ -20,8 +20,9 @@ class MediaRepository {
     return albums;
   }
 
-  static Future<List<MediaObject>> getAlbumMedia(AssetPathEntity album) async {
-    final List<AssetEntity> media = await album.getAssetListPaged(0, 20);
+  static Future<List<MediaObject>> getAlbumMedia(AssetPathEntity album,
+      int page) async {
+    final List<AssetEntity> media = await album.getAssetListPaged(page, 50);
     final List<MediaObject> mediaObjects = [];
     media.forEach((assetEntity) {
       mediaObjects.add(MediaObject(assetEntity, selected: false));

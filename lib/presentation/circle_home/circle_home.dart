@@ -74,16 +74,21 @@ class CircleHome extends StatelessWidget {
                                 IconButton(
                                   padding: const EdgeInsets.all(16.0),
                                   icon: const Icon(Icons.cancel,
-                                      color: Colors.redAccent),
+                                      color: Colors.white),
                                   onPressed: () => showDialog(
-                                      context: context,
-                                      child: context.bloc<SettingsBloc>().state.maybeMap(
+                                    context: context,
+                                    child: context
+                                        .bloc<SettingsBloc>()
+                                        .state
+                                        .maybeMap(
                                           hasLoaded: (settingsState) => settingsState
                                                       .user ==
                                                   currentCircleState.host
                                               ? CloseCircleConfirmationDialog()
                                               : LeaveCircleConfirmationDialog(),
-                                          orElse: () => Container())),
+                                          orElse: () => Container(),
+                                        ),
+                                  ),
                                 )
                               ],
                             ),
@@ -108,22 +113,22 @@ class CircleHome extends StatelessWidget {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      GestureDetector(
-                                        onTap: () => context
+                                      IconButton(
+                                        icon: const Icon(Icons.save_alt),
+                                        onPressed: () => context
                                             .bloc<CircleHomeBloc>()
                                             .add(const CircleHomeEvent
                                                 .changePageIndex(0)),
-                                        child: Icon(Icons.file_upload),
                                       ),
-                                      GestureDetector(
-                                        onTap: () => context
+                                      IconButton(
+                                        icon: const Icon(Icons.send),
+                                        onPressed: () => context
                                             .bloc<CircleHomeBloc>()
                                             .add(const CircleHomeEvent
                                                 .changePageIndex(1)),
-                                        child: Icon(Icons.save_alt),
                                       ),
                                       IconButton(
-                                        icon: Icon(Icons.people),
+                                        icon: const Icon(Icons.people),
                                         onPressed: () {},
                                       ),
                                     ],
@@ -133,9 +138,11 @@ class CircleHome extends StatelessWidget {
                               child: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 child: InkWell(
-                                      onTap: () {}, child: Icon(Icons.send)),
+                                  onTap: () {},
+                                  child: const Icon(Icons.send),
+                                ),
                               ),
-                              ),
+                            ),
                           ],
                         ),
                       ),
