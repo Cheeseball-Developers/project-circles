@@ -68,6 +68,7 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
     }, toggleSelection: (e) async* {
       yield* state.maybeMap(hasLoadedMedia: (state) async* {
         state.media[e.index] = MediaObject(state.media[e.index].getOrCrash(),
+            state.media[e.index].thumbnail,
             selected: !state.media[e.index].selected);
         final int selectedMedia = state.media[e.index].selected
             ? state.selectedMedia + 1

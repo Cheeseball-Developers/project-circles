@@ -14,50 +14,35 @@ class MediaThumbnail extends StatelessWidget {
     return BlocBuilder<MediaTabViewBloc, MediaTabViewState>(
         builder: (context, state) => state.maybeMap(
             hasLoadedMedia: (state) => GestureDetector(
-              onTap: () =>
-                  context
-                      .bloc<MediaTabViewBloc>()
-                      .add(
-                      MediaTabViewEvent.toggleSelection(index)),
-              child: FutureBuilder(
-                  future:
-                      state.media[index].getOrCrash().thumbDataWithSize(200, 200),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.done) {
-                      return Padding(
-                        padding: EdgeInsets.all(
-                            state.media[index].selected ? 4.0 : 1.0),
-                        child: Stack(
-                          children: [
-                            Positioned.fill(
-                              child: Image.memory(
-                                snapshot.data as Uint8List,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            if (state.media[index].selected)
-                              Material(
-                                color: Theme.of(context)
-                                    .accentColor
-                                    .withOpacity(0.5),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.check_circle,
-                                    color:
-                                        Theme.of(context).accentIconTheme.color,
-                                  ),
-                                ),
-                              )
-                            else
-                              Container()
-                          ],
+                onTap: () => context
+                    .bloc<MediaTabViewBloc>()
+                    .add(MediaTabViewEvent.toggleSelection(index)),
+                child: Padding(
+                  padding:
+                      EdgeInsets.all(state.media[index].selected ? 4.0 : 1.0),
+                  child: Stack(
+                    children: [
+                      Positioned.fill(
+                        child: Image.memory(
+                          state.media[index].thumbnail,
+                          fit: BoxFit.cover,
                         ),
-                      );
-                    } else {
-                      return Container();
-                    }
-                  }),
-            ),
+                      ),
+                      if (state.media[index].selected)
+                        Material(
+                          color: Theme.of(context).accentColor.withOpacity(0.5),
+                          child: Center(
+                            child: Icon(
+                              Icons.check_circle,
+                              color: Theme.of(context).accentIconTheme.color,
+                            ),
+                          ),
+                        )
+                      else
+                        Container()
+                    ],
+                  ),
+                )),
             orElse: () => Container()));
   }
 }

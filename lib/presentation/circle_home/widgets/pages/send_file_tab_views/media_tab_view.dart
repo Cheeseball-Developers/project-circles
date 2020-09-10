@@ -39,7 +39,6 @@ class MediaTabView extends StatelessWidget {
                         if ((scrollInfo.metrics.pixels ==
                             scrollInfo.metrics.maxScrollExtent) &&
                             (state.previousPage != state.currentPage)) {
-                          print('Load');
                           context.bloc<MediaTabViewBloc>().add(
                             MediaTabViewEvent.loadMedia(album: state.album)
                           );
@@ -50,7 +49,7 @@ class MediaTabView extends StatelessWidget {
                         shrinkWrap: true,
                         gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4),
+                            crossAxisCount: 3),
                         itemCount: state.media.length,
                         itemBuilder: (context, index) =>
                             MediaThumbnail(index: index),
