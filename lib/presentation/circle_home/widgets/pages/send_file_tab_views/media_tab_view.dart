@@ -10,51 +10,67 @@ class MediaTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MediaTabViewBloc, MediaTabViewState>(
-        builder: (context, state) =>
-            state.map(
-                initial: (_) => Container(),
-                isLoading: (_) =>
-                const Center(child: CircularProgressIndicator()),
-                hasLoadedAlbums: (state) =>
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: GridView.builder(
-                        gridDelegate:
+        builder: (context, state) => state.map(
+            initial: (_) => Container(),
+            isLoading: (_) => const Center(child: CircularProgressIndicator()),
+            hasLoadedAlbums: (state) => Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                  child: GridView.builder(
+                    gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2),
-                        itemCount: state.albums.length,
-                        itemBuilder: (context, index) =>
-                            GestureDetector(
-                              onTap: () =>
-                                  context.bloc<MediaTabViewBloc>().add(
-                                      MediaTabViewEvent.loadMedia(
-                                          album: state.albums[index])),
-                              child: AlbumThumbnail(album: state.albums[index]),
-                            ),
-                      ),
+                    itemCount: state.albums.length,
+                    itemBuilder: (context, index) => GestureDetector(
+                      onTap: () => context.bloc<MediaTabViewBloc>().add(
+                          MediaTabViewEvent.loadMedia(
+                              album: state.albums[index])),
+                      child: AlbumThumbnail(album: state.albums[index]),
                     ),
-                hasLoadedMedia: (state) =>
-                    NotificationListener(
-                      onNotification: (ScrollNotification scrollInfo) {
-                        if ((scrollInfo.metrics.pixels ==
-                            scrollInfo.metrics.maxScrollExtent) &&
-                            (state.previousPage != state.currentPage)) {
-                          context.bloc<MediaTabViewBloc>().add(
-                            MediaTabViewEvent.loadMedia(album: state.album)
-                          );
-                        }
-                        return true;
-                      },
-                      child: GridView.builder(
-                        shrinkWrap: true,
-                        gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3),
-                        itemCount: state.media.length,
-                        itemBuilder: (context, index) =>
-                            MediaThumbnail(index: index),
+                  ),
+                ),
+            hasLoadedMedia: (state) => Scaffold(
+                  appBar: state.maybeMap(
+                    hasLoadedMedia: (state) => AppBar(
+                      elevation: 8.0,
+                      toolbarHeight: 40.0,
+                      backgroundColor: Theme.of(context).cardColor,
+                      leading: MyBackButton(
+                        onTap: () => context
+                            .bloc<MediaTabViewBloc>()
+                            .add(const MediaTabViewEvent.loadAlbums()),
                       ),
+                      title: Text(
+                        state.album.name,
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ),
+                      centerTitle: true,
                     ),
-                hasFailed: (_) => ErrorRetry()));
+                    orElse: () => PreferredSize(
+                      preferredSize: const Size(0.0, 0.0),
+                      child: Container(),
+                    ),
+                  ),
+                  body: NotificationListener(
+                    onNotification: (ScrollNotification scrollInfo) {
+                      if ((scrollInfo.metrics.pixels ==
+                              scrollInfo.metrics.maxScrollExtent) &&
+                          (state.previousPage != state.currentPage)) {
+                        context.bloc<MediaTabViewBloc>().add(
+                            MediaTabViewEvent.loadMedia(album: state.album));
+                      }
+                      return true;
+                    },
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3),
+                      itemCount: state.media.length,
+                      itemBuilder: (context, index) =>
+                          MediaThumbnail(index: index),
+                    ),
+                  ),
+                ),
+            hasFailed: (_) => ErrorRetry()));
   }
 }
