@@ -8,18 +8,19 @@ import 'package:projectcircles/domain/core/failures.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 
 @immutable
-class AppObject extends ValueObject<ApplicationWithIcon> {
+class AppObject extends ValueObject<Application> {
   @override
-  final Either<ValueFailure<ApplicationWithIcon>, ApplicationWithIcon> value;
+  final Either<ValueFailure<ApplicationWithIcon>, Application> value;
+  final Uint8List icon;
   final bool selected;
 
   bool get isSelected => selected;
 
-  factory AppObject(ApplicationWithIcon app, {@required bool selected}) {
-    return AppObject._(right(app), selected);
+  factory AppObject(Application app, Uint8List icon, {@required bool selected}) {
+    return AppObject._(right(app), icon, selected);
   }
 
-  const AppObject._(this.value, this.selected);
+  const AppObject._(this.value, this.icon, this.selected);
 }
 
 @immutable

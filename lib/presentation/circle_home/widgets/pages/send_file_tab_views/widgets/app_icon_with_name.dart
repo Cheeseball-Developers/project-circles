@@ -51,7 +51,7 @@ class AppIconWithName extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                           MediaQuery.of(context).size.width / 20),
                       child: Image.memory(
-                        state.apps[index].getOrCrash().icon,
+                        state.apps[index].icon,
                         width: MediaQuery.of(context).size.width / 10,
                       ),
                     ),
