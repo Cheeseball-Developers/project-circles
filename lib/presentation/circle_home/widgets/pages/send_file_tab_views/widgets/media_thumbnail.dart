@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_manager/photo_manager.dart';
@@ -35,7 +33,7 @@ class MediaThumbnail extends StatelessWidget {
                               ),
                               if (state.media[index]
                                   .getOrCrash()
-                                  .type == AssetType.video) Positioned(
+                                  .type == AssetType.video) const Positioned(
                                 bottom: 0.0,
                                 right: 0.0,
                                   child: Icon(Icons.videocam))
