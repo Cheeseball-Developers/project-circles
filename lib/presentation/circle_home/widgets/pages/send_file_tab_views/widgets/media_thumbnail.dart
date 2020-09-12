@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/media_preview.dart';
 
 class MediaThumbnail extends StatelessWidget {
   final int index;
@@ -19,6 +20,7 @@ class MediaThumbnail extends StatelessWidget {
                             context
                                 .bloc<MediaTabViewBloc>()
                                 .add(MediaTabViewEvent.toggleSelection(index)),
+                        onLongPress: () => showDialog(context: context, child: MediaPreview(mediaObject: state.media[index],)),
                         child: Padding(
                           padding:
                           EdgeInsets.all(
