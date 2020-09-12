@@ -12,6 +12,12 @@ import 'package:projectcircles/presentation/circle_home/widgets/pages/received_f
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
 
 class CircleHome extends StatelessWidget {
+  final List<Widget> pages = [
+    SendFile(),
+    ReceivedFiles(),
+    ReceivedFiles()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -118,28 +124,34 @@ class CircleHome extends StatelessWidget {
                                         onPressed: () => context
                                             .bloc<CircleHomeBloc>()
                                             .add(const CircleHomeEvent
-                                                .changePageIndex(0)),
+                                                .changePageIndex(1)),
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.send),
                                         onPressed: () => context
                                             .bloc<CircleHomeBloc>()
                                             .add(const CircleHomeEvent
-                                                .changePageIndex(1)),
+                                                .changePageIndex(0)),
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.people),
-                                        onPressed: () {},
+                                        onPressed: () => context
+                                            .bloc<CircleHomeBloc>()
+                                            .add(const CircleHomeEvent
+                                            .changePageIndex(2)),
                                       ),
                                     ],
                                   )),
                             ),
                             Positioned.fill(
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: const Icon(Icons.send),
+                              child: GestureDetector(
+                                onTap: () => context
+                                    .bloc<CircleHomeBloc>()
+                                    .add(const CircleHomeEvent
+                                    .changePageIndex(0)),
+                                child: const CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Icon(Icons.send),
                                 ),
                               ),
                             ),
