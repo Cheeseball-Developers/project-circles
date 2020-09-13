@@ -4,12 +4,10 @@ import 'dart:typed_data';
 import 'package:auto_route/auto_route.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
 import 'package:projectcircles/domain/files/value_objects.dart';
-import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
+import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
 import 'package:video_player/video_player.dart';
 
 class MediaPreview extends StatelessWidget {
@@ -19,14 +17,8 @@ class MediaPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32.0),
-        child: Material(
-          elevation: 8.0,
-          color: Theme.of(context).cardColor,
-          borderRadius: BorderRadius.circular(16.0),
-          child: Column(
+    return LargePopUp(
+      child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
@@ -52,7 +44,6 @@ class MediaPreview extends StatelessWidget {
                               if (snapshot.connectionState ==
                                   ConnectionState.done) {
                                 final File videoFile = snapshot.data as File;
-                                print(videoFile);
                                 final videoPlayerController =
                                     VideoPlayerController.file(
                                         videoFile)
@@ -97,8 +88,6 @@ class MediaPreview extends StatelessWidget {
               )
             ],
           ),
-        ),
-      ),
     );
   }
 }

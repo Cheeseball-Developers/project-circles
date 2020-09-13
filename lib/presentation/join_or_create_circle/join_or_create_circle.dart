@@ -5,6 +5,7 @@ import 'package:projectcircles/application/circle/current_circle/current_circle_
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
+import 'package:projectcircles/presentation/join_or_create_circle/widgets/available_circles_overlay.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/search_button.dart';
 
 class JoinOrCreateCircle extends StatelessWidget {
@@ -25,7 +26,16 @@ class JoinOrCreateCircle extends StatelessWidget {
           ],
         ),
         body: Center(
-          child: SearchButton(),
+          child: Material(
+            color: Colors.red,
+            child: Stack(
+              alignment: AlignmentDirectional.center,
+              children: [
+                SearchButton(),
+                AvailableCirclesOverlay()
+              ],
+            ),
+          ),
         ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(8.0),
