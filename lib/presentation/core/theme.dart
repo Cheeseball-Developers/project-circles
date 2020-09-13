@@ -48,8 +48,8 @@ ThemeData defaultTheme() {
     dialogBackgroundColor: Colors.white,
     bottomAppBarColor: Colors.blue,
     scaffoldBackgroundColor: Colors.white,
-    iconTheme: const IconThemeData(color: Colors.white),
-    accentIconTheme: const IconThemeData(color: Colors.blue, size: 18.0),
+    iconTheme: const IconThemeData(color: Colors.blue),
+    accentIconTheme: const IconThemeData(color: Colors.white),
     buttonColor: Colors.lightBlue,
     backgroundColor: Colors.white,
   );

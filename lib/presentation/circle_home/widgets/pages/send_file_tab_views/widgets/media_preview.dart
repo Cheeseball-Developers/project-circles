@@ -52,8 +52,11 @@ class MediaPreview extends StatelessWidget {
                               if (snapshot.connectionState ==
                                   ConnectionState.done) {
                                 final File videoFile = snapshot.data as File;
+                                print(videoFile);
                                 final videoPlayerController =
-                                    VideoPlayerController.file(videoFile);
+                                    VideoPlayerController.file(
+                                        videoFile)
+                                      ..initialize();
                                 final controller = ChewieController(
                                   aspectRatio: mediaObject.getOrCrash().width /
                                       mediaObject.getOrCrash().height,
@@ -70,7 +73,6 @@ class MediaPreview extends StatelessWidget {
                     return Container();
                   }),
               SizedBox(
-                width: MediaQuery.of(context).size.width * 0.75,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
