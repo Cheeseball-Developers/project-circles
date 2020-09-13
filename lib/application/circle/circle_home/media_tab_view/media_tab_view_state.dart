@@ -11,7 +11,10 @@ abstract class MediaTabViewState with _$MediaTabViewState {
   }) = _HasLoadedAlbums;
 
   const factory MediaTabViewState.hasLoadedMedia(
-      {@required List<MediaObject> media,
+      {@required AssetPathEntity album,
+        @required List<MediaObject> media,
+        @required int previousPage,
+        @required int currentPage,
         @required bool tapToSelect,
         @required int selectedMedia}) = _HasLoaded;
 

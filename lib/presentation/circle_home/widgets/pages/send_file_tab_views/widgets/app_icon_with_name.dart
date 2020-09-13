@@ -14,45 +14,54 @@ class AppIconWithName extends StatelessWidget {
         hasLoaded: (state) => Padding(
           padding: const EdgeInsets.all(2.0),
           child: Material(
-            borderRadius: BorderRadius.circular(5.0),
+            borderRadius: BorderRadius.circular(8.0),
             color: state.apps[index].isSelected
-                ? Colors.teal
+                ? Theme.of(context).buttonColor
                 : Colors.transparent,
             child: InkWell(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(8.0),
               onTap: () {
                 if (state.tapToSelect) {
-                  context.bloc<AppsTabViewBloc>().add(
-                      AppsTabViewEvent.toggleAppSelection(
-                          index));
+                  context
+                      .bloc<AppsTabViewBloc>()
+                      .add(AppsTabViewEvent.toggleAppSelection(index));
                 }
               },
               onLongPress: () {
                 if (!state.tapToSelect) {
-                  context.bloc<AppsTabViewBloc>().add(
-                      AppsTabViewEvent.toggleAppSelection(
-                          index));
-                  context.bloc<AppsTabViewBloc>().add(
-                      const AppsTabViewEvent
-                          .toggleTapToSelect());
+                  context
+                      .bloc<AppsTabViewBloc>()
+                      .add(AppsTabViewEvent.toggleAppSelection(index));
+                  context
+                      .bloc<AppsTabViewBloc>()
+                      .add(const AppsTabViewEvent.toggleTapToSelect());
                 } else {
-                  context.bloc<AppsTabViewBloc>().add(
-                      AppsTabViewEvent.toggleAppSelection(
-                          index));
+                  context
+                      .bloc<AppsTabViewBloc>()
+                      .add(AppsTabViewEvent.toggleAppSelection(index));
                 }
               },
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Image.memory(
-                      state.apps[index].getOrCrash().icon,
-                      width: MediaQuery.of(context).size.width / 10,
+                    Material(
+                      elevation: 2.0,
+                      borderRadius: BorderRadius.circular(
+                          MediaQuery.of(context).size.width / 20),
+                      child: Image.memory(
+                        state.apps[index].icon,
+                        width: MediaQuery.of(context).size.width / 10,
+                      ),
                     ),
                     Text(
                       state.apps[index].getOrCrash().appName,
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
+                      style: state.apps[index].selected
+                          ? Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.white)
+                          : Theme.of(context).textTheme.bodyText2,
                     )
                   ],
                 ),

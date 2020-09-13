@@ -9,8 +9,7 @@ class ConfirmationDialog extends StatelessWidget {
   final VoidCallback noTap;
   final VoidCallback yesTap;
 
-  final borderRadius = 24.0;
-  final buttonBorderRadius = 12.0;
+  final borderRadius = 16.0;
 
   const ConfirmationDialog(
       {@required this.title,

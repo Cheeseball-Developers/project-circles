@@ -43,7 +43,8 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
       });
     }, toggleAppSelection: (e) async* {
       yield* state.maybeMap(hasLoaded: (state) async* {
-        state.apps[e.index] = AppObject(state.apps[e.index].getOrCrash(),
+        state.apps[e.index] = AppObject(
+            state.apps[e.index].getOrCrash(), state.apps[e.index].icon,
             selected: !state.apps[e.index].selected);
         final int selectedApps = state.apps[e.index].selected
             ? state.selectedApps + 1

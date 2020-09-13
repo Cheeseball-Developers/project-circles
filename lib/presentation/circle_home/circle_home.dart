@@ -12,6 +12,12 @@ import 'package:projectcircles/presentation/circle_home/widgets/pages/received_f
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
 
 class CircleHome extends StatelessWidget {
+  final List<Widget> pages = [
+    SendFile(),
+    ReceivedFiles(),
+    ReceivedFiles()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -42,13 +48,9 @@ class CircleHome extends StatelessWidget {
                         preferredSize: Size(MediaQuery.of(context).size.width,
                             MediaQuery.of(context).size.height / 6),
                         child: Material(
-                            elevation: 8.0,
-                            borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(24.0),
-                                bottomRight: Radius.circular(24.0)),
-                            color: Theme.of(context).cardColor,
-                            child: SafeArea(
-                                child: Row(
+                          color: Theme.of(context).appBarTheme.color,
+                          child: SafeArea(
+                            child: Row(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -78,73 +80,85 @@ class CircleHome extends StatelessWidget {
                                 IconButton(
                                   padding: const EdgeInsets.all(16.0),
                                   icon: const Icon(Icons.cancel,
-                                      color: Colors.redAccent),
+                                      color: Colors.white),
                                   onPressed: () => showDialog(
-                                      context: context,
-                                      child: context.bloc<SettingsBloc>().state.maybeMap(
+                                    context: context,
+                                    child: context
+                                        .bloc<SettingsBloc>()
+                                        .state
+                                        .maybeMap(
                                           hasLoaded: (settingsState) => settingsState
                                                       .user ==
                                                   currentCircleState.host
                                               ? CloseCircleConfirmationDialog()
                                               : LeaveCircleConfirmationDialog(),
-                                          orElse: () => Container())),
+                                          orElse: () => Container(),
+                                        ),
+                                  ),
                                 )
                               ],
-                            ))),
+                            ),
+                          ),
+                        ),
                       ),
                       backgroundColor:
                           Theme.of(context).scaffoldBackgroundColor,
                       extendBody: true,
                       bottomNavigationBar: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Material(
-                            borderRadius: BorderRadius.circular(24.0),
-                            color: Theme.of(context).cardColor,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 16.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  GestureDetector(
-                                    onTap: () => context
-                                        .bloc<CircleHomeBloc>()
-                                        .add(const CircleHomeEvent
-                                            .changePageIndex(0)),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Icon(Icons.file_upload),
-                                        Text('Send File')
-                                      ],
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    onTap: () => context
-                                        .bloc<CircleHomeBloc>()
-                                        .add(const CircleHomeEvent
-                                            .changePageIndex(1)),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Icon(Icons.save_alt),
-                                        Text('Received Files')
-                                      ],
-                                    ),
-                                  ),
-                                  GestureDetector(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: const [
-                                        Icon(Icons.settings),
-                                        Text('Settings')
-                                      ],
-                                    ),
-                                  ),
-                                ],
+                        child: Stack(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 12.0, horizontal: 24.0),
+                              child: Material(
+                                  elevation: 16.0,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  color: Theme.of(context).bottomAppBarColor,
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      IconButton(
+                                        icon: const Icon(Icons.save_alt),
+                                        color: Theme.of(context).accentIconTheme.color,
+                                        onPressed: () => context
+                                            .bloc<CircleHomeBloc>()
+                                            .add(const CircleHomeEvent
+                                                .changePageIndex(1)),
+                                      ),
+                                      IconButton(
+                                        icon: const Icon(Icons.send),
+                                        onPressed: () => context
+                                            .bloc<CircleHomeBloc>()
+                                            .add(const CircleHomeEvent
+                                                .changePageIndex(0)),
+                                      ),
+                                      IconButton(
+                                        icon: const Icon(Icons.people),
+                                        color: Theme.of(context).accentIconTheme.color,
+                                        onPressed: () => context
+                                            .bloc<CircleHomeBloc>()
+                                            .add(const CircleHomeEvent
+                                            .changePageIndex(2)),
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                            Positioned.fill(
+                              child: GestureDetector(
+                                onTap: () => context
+                                    .bloc<CircleHomeBloc>()
+                                    .add(const CircleHomeEvent
+                                    .changePageIndex(0)),
+                                child: const CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  child: Icon(Icons.send),
+                                ),
                               ),
-                            )),
+                            ),
+                          ],
+                        ),
                       ),
                       body: circleHomeState.pageIndex == 0
                           ? SendFile()

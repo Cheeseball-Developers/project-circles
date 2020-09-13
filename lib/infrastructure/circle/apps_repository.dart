@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:device_apps/device_apps.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
 import 'package:projectcircles/domain/files/value_objects.dart';
 
@@ -11,7 +12,8 @@ class AppsRepository {
           await DeviceApps.getInstalledApplications(includeAppIcons: true);
       final List<AppObject> iconApps = [];
       apps.forEach((app) {
-        iconApps.add(AppObject(app as ApplicationWithIcon, selected: false));
+        final ApplicationWithIcon appWithIcon = app as ApplicationWithIcon;
+        iconApps.add(AppObject(app, appWithIcon.icon, selected: false));
       });
       iconApps.sort((appA, appB) => appA.getOrCrash().appName.compareTo(appB.getOrCrash().appName));
       return right(iconApps);
