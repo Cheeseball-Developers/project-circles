@@ -121,6 +121,7 @@ class CircleHome extends StatelessWidget {
                                     children: [
                                       IconButton(
                                         icon: const Icon(Icons.save_alt),
+                                        color: Theme.of(context).accentIconTheme.color,
                                         onPressed: () => context
                                             .bloc<CircleHomeBloc>()
                                             .add(const CircleHomeEvent
@@ -135,6 +136,7 @@ class CircleHome extends StatelessWidget {
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.people),
+                                        color: Theme.of(context).accentIconTheme.color,
                                         onPressed: () => context
                                             .bloc<CircleHomeBloc>()
                                             .add(const CircleHomeEvent

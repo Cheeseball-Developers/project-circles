@@ -17,8 +17,8 @@ class SelectionBar extends StatelessWidget {
           onTap: onCancel,
           child: Icon(
             Icons.clear,
-            color: Theme.of(context).accentIconTheme.color,
-            size: Theme.of(context).accentIconTheme.size,
+            color: Theme.of(context).iconTheme.color,
+            size: 18.0,
           ),
         ),
         title: Text(
