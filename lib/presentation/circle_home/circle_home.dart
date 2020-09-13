@@ -8,16 +8,11 @@ import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/close_circle_confirmation_dialog.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/leave_circle_confirmation_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/received_files.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
 
 class CircleHome extends StatelessWidget {
-  final List<Widget> pages = [
-    SendFile(),
-    ReceivedFiles(),
-    ReceivedFiles()
-  ];
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -121,11 +116,13 @@ class CircleHome extends StatelessWidget {
                                     children: [
                                       IconButton(
                                         icon: const Icon(Icons.save_alt),
-                                        color: Theme.of(context).accentIconTheme.color,
-                                        onPressed: () => context
-                                            .bloc<CircleHomeBloc>()
-                                            .add(const CircleHomeEvent
-                                                .changePageIndex(1)),
+                                        color: Theme.of(context)
+                                            .accentIconTheme
+                                            .color,
+                                        onPressed: () => showDialog(
+                                          context: context,
+                                          child: ReceivedFiles(),
+                                        ),
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.send),
@@ -136,21 +133,21 @@ class CircleHome extends StatelessWidget {
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.people),
-                                        color: Theme.of(context).accentIconTheme.color,
-                                        onPressed: () => context
-                                            .bloc<CircleHomeBloc>()
-                                            .add(const CircleHomeEvent
-                                            .changePageIndex(2)),
+                                        color: Theme.of(context)
+                                            .accentIconTheme
+                                            .color,
+                                        onPressed: () => showDialog(
+                                          context: context,
+                                          child: MembersPage(),
+                                        ),
                                       ),
                                     ],
                                   )),
                             ),
                             Positioned.fill(
                               child: GestureDetector(
-                                onTap: () => context
-                                    .bloc<CircleHomeBloc>()
-                                    .add(const CircleHomeEvent
-                                    .changePageIndex(0)),
+                                onTap: () => context.bloc<CircleHomeBloc>().add(
+                                    const CircleHomeEvent.changePageIndex(0)),
                                 child: const CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Icon(Icons.send),
@@ -160,9 +157,7 @@ class CircleHome extends StatelessWidget {
                           ],
                         ),
                       ),
-                      body: circleHomeState.pageIndex == 0
-                          ? SendFile()
-                          : ReceivedFiles(),
+                      body: SendFile(),
                     ),
                   ),
                 ),
