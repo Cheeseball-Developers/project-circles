@@ -52,7 +52,7 @@ class MembersPage extends StatelessWidget {
                         title: Text(members[index].name.getOrCrash()),
                         subtitle: Text(
                           members[index].uid.getOrCrash(),
-                          style: const TextStyle(color: Colors.black),
+                          style: Theme.of(context).textTheme.caption.copyWith(color: Colors.black87),
                         ),
                         trailing: BlocBuilder<SettingsBloc, SettingsState>(
                             builder: (context, settingsState) =>
@@ -78,7 +78,7 @@ class MembersPage extends StatelessWidget {
                         children: [
                           MyTextButton(
                             type: ButtonType.primary,
-                            text: 'Okay',
+                            text: 'Done',
                             onTap: () => ExtendedNavigator.of(context).pop(),
                           ),
                         ],
