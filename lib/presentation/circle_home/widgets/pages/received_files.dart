@@ -29,7 +29,10 @@ class ReceivedFiles extends StatelessWidget {
               title: Text(File(filesUrls[index]).path),
               trailing: IconButton(
                 onPressed: () {}, //TODO: Add function to delete file
-                icon: Icon(Icons.remove, color: Colors.red,),
+                icon: const Icon(
+                  Icons.remove,
+                  color: Colors.red,
+                ),
               ),
             ),
           ),

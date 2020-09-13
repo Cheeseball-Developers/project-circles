@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projectcircles/application/circle/circle_home/circle_home_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
@@ -26,10 +25,7 @@ class CircleHome extends StatelessWidget {
               initial: (_) => Container(),
               isStarting: (_) => Container(),
               isJoining: (_) => Container(),
-              hasJoined: (currentCircleState) => BlocProvider(
-                create: (context) => getIt<CircleHomeBloc>(),
-                child: BlocBuilder<CircleHomeBloc, CircleHomeState>(
-                  builder: (context, circleHomeState) => WillPopScope(
+              hasJoined: (currentCircleState) => WillPopScope(
                     onWillPop: () => showDialog(
                         context: context,
                         child: context.bloc<SettingsBloc>().state.maybeMap(
@@ -126,10 +122,7 @@ class CircleHome extends StatelessWidget {
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.send),
-                                        onPressed: () => context
-                                            .bloc<CircleHomeBloc>()
-                                            .add(const CircleHomeEvent
-                                                .changePageIndex(0)),
+                                        onPressed: () {},
                                       ),
                                       IconButton(
                                         icon: const Icon(Icons.people),
@@ -146,8 +139,7 @@ class CircleHome extends StatelessWidget {
                             ),
                             Positioned.fill(
                               child: GestureDetector(
-                                onTap: () => context.bloc<CircleHomeBloc>().add(
-                                    const CircleHomeEvent.changePageIndex(0)),
+                                onTap: () {}, //TODO: Add functionality to send button
                                 child: const CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Icon(Icons.send),
@@ -160,8 +152,6 @@ class CircleHome extends StatelessWidget {
                       body: SendFile(),
                     ),
                   ),
-                ),
-              ),
             ));
   }
 }
