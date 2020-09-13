@@ -36,6 +36,9 @@ dependencies:
   folder_picker:
   device_apps:
   photo_manager:
+  nearby_connections:
+  device_info:
+  file_picker:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

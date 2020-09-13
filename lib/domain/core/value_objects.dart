@@ -51,3 +51,4 @@ class Name extends ValueObject<String> {
 
   const Name._(this.value);
 }
+
