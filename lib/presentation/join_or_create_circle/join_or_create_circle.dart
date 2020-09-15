@@ -11,7 +11,7 @@ class JoinOrCreateCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<SearchBloc>(),
+      create: (context) => getIt<SearchBloc>()..add(const SearchEvent.startSearching()),
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
         appBar: AppBar(

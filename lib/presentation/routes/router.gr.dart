@@ -14,15 +14,18 @@ import 'package:flutter/material.dart';
 import 'package:folder_picker/folder_picker.dart';
 
 import '../circle_home/circle_home.dart';
+import '../core/splash.dart';
 import '../join_or_create_circle/join_or_create_circle.dart';
 import '../settings/settings.dart';
 
 class Routes {
-  static const String joinOrCreateCircle = '/';
+  static const String splash = '/';
+  static const String joinOrCreateCircle = '/join-or-create-circle';
   static const String circleHome = '/circle-home';
   static const String settings = '/Settings';
   static const String folderPickerPage = '/folder-picker-page';
   static const all = <String>{
+    splash,
     joinOrCreateCircle,
     circleHome,
     settings,
@@ -34,6 +37,7 @@ class Router extends RouterBase {
   @override
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
+    RouteDef(Routes.splash, page: Splash),
     RouteDef(Routes.joinOrCreateCircle, page: JoinOrCreateCircle),
     RouteDef(Routes.circleHome, page: CircleHome),
     RouteDef(Routes.settings, page: Settings),
@@ -42,6 +46,12 @@ class Router extends RouterBase {
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
   final _pagesMap = <Type, AutoRouteFactory>{
+    Splash: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => Splash(),
+        settings: data,
+      );
+    },
     JoinOrCreateCircle: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => JoinOrCreateCircle(),

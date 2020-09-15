@@ -13,6 +13,7 @@ import 'application/circle/current_circle/current_circle_bloc.dart';
 import 'infrastructure/circle/files_repository.dart';
 import 'application/circle/circle_home/files_tab_view/files_tab_view_bloc.dart';
 import 'application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
+import 'infrastructure/nearby_connections/nearby_connections_repository.dart';
 import 'application/circle/join_or_create_circle/search_bloc.dart';
 import 'application/settings/settings_bloc.dart';
 
@@ -35,5 +36,6 @@ GetIt $initGetIt(
 
   // Eager singletons must be registered in the right order
   gh.singleton<FilesRepository>(FilesRepository());
+  gh.singleton<NearbyConnections>(NearbyConnections(username: get<String>()));
   return get;
 }
