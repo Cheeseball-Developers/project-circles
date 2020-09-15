@@ -21,25 +21,9 @@ class AppIconWithName extends StatelessWidget {
             child: InkWell(
               borderRadius: BorderRadius.circular(8.0),
               onTap: () {
-                if (state.tapToSelect) {
                   context
                       .bloc<AppsTabViewBloc>()
                       .add(AppsTabViewEvent.toggleAppSelection(index));
-                }
-              },
-              onLongPress: () {
-                if (!state.tapToSelect) {
-                  context
-                      .bloc<AppsTabViewBloc>()
-                      .add(AppsTabViewEvent.toggleAppSelection(index));
-                  context
-                      .bloc<AppsTabViewBloc>()
-                      .add(const AppsTabViewEvent.toggleTapToSelect());
-                } else {
-                  context
-                      .bloc<AppsTabViewBloc>()
-                      .add(AppsTabViewEvent.toggleAppSelection(index));
-                }
               },
               child: Padding(
                 padding: const EdgeInsets.all(4.0),

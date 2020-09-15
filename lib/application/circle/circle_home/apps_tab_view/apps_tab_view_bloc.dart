@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:device_apps/device_apps.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -32,14 +31,7 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
         yield AppsTabViewState.hasFailed(failure);
       }, (apps) async* {
         yield AppsTabViewState.hasLoaded(
-            apps: apps, tapToSelect: false, selectedApps: 0);
-      });
-    }, toggleTapToSelect: (e) async* {
-      yield* state.maybeMap(hasLoaded: (state) async* {
-        yield state.copyWith(tapToSelect: !state.tapToSelect);
-      }, orElse: () async* {
-        yield const AppsTabViewState.hasFailed(
-            AppsLoadFailure.unexpectedFailure());
+            apps: apps, selectedApps: 0);
       });
     }, toggleAppSelection: (e) async* {
       yield* state.maybeMap(hasLoaded: (state) async* {
@@ -50,8 +42,21 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
             ? state.selectedApps + 1
             : state.selectedApps - 1;
         yield state.copyWith(
-            selectedApps: selectedApps,
-            tapToSelect: selectedApps == 0 ? false : state.tapToSelect);
+            selectedApps: selectedApps);
+      }, orElse: () async* {
+        yield const AppsTabViewState.hasFailed(
+            AppsLoadFailure.unexpectedFailure());
+      });
+    }, deselectAll: (e) async* {
+      yield* state.maybeMap(hasLoaded: (state) async* {
+        final List<AppObject> apps = state.apps;
+        for (int i=0; i<state.apps.length; ++i) {
+          apps[i] = AppObject(apps[i].getOrCrash(), apps[i].icon,
+              selected: false);
+        }
+        yield state.copyWith(
+          apps: apps
+            selectedApps: 0);
       }, orElse: () async* {
         yield const AppsTabViewState.hasFailed(
             AppsLoadFailure.unexpectedFailure());

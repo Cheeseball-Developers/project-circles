@@ -8,7 +8,6 @@ abstract class AppsTabViewState with _$AppsTabViewState {
 
   const factory AppsTabViewState.hasLoaded(
       {@required List<AppObject> apps,
-      @required bool tapToSelect,
       @required int selectedApps}) = _HasLoaded;
 
   const factory AppsTabViewState.hasFailed(AppsLoadFailure failure) =

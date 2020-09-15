@@ -18,15 +18,15 @@ class _$AppsTabViewEventTearOff {
   }
 
 // ignore: unused_element
-  ToggleTapToSelect toggleTapToSelect() {
-    return const ToggleTapToSelect();
-  }
-
-// ignore: unused_element
   ToggleAppSelection toggleAppSelection(int index) {
     return ToggleAppSelection(
       index,
     );
+  }
+
+// ignore: unused_element
+  DeselectAll deselectAll() {
+    return const DeselectAll();
   }
 }
 
@@ -37,27 +37,27 @@ mixin _$AppsTabViewEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleTapToSelect(),
     @required Result toggleAppSelection(int index),
+    @required Result deselectAll(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleTapToSelect(),
     Result toggleAppSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result loadApps(LoadApps value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleAppSelection(ToggleAppSelection value),
+    @required Result deselectAll(DeselectAll value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result loadApps(LoadApps value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleAppSelection(ToggleAppSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   });
 }
@@ -111,12 +111,12 @@ class _$LoadApps implements LoadApps {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleTapToSelect(),
     @required Result toggleAppSelection(int index),
+    @required Result deselectAll(),
   }) {
     assert(loadApps != null);
-    assert(toggleTapToSelect != null);
     assert(toggleAppSelection != null);
+    assert(deselectAll != null);
     return loadApps();
   }
 
@@ -124,8 +124,8 @@ class _$LoadApps implements LoadApps {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleTapToSelect(),
     Result toggleAppSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -139,12 +139,12 @@ class _$LoadApps implements LoadApps {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result loadApps(LoadApps value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleAppSelection(ToggleAppSelection value),
+    @required Result deselectAll(DeselectAll value),
   }) {
     assert(loadApps != null);
-    assert(toggleTapToSelect != null);
     assert(toggleAppSelection != null);
+    assert(deselectAll != null);
     return loadApps(this);
   }
 
@@ -152,8 +152,8 @@ class _$LoadApps implements LoadApps {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result loadApps(LoadApps value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleAppSelection(ToggleAppSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -166,100 +166,6 @@ class _$LoadApps implements LoadApps {
 
 abstract class LoadApps implements AppsTabViewEvent {
   const factory LoadApps() = _$LoadApps;
-}
-
-abstract class $ToggleTapToSelectCopyWith<$Res> {
-  factory $ToggleTapToSelectCopyWith(
-          ToggleTapToSelect value, $Res Function(ToggleTapToSelect) then) =
-      _$ToggleTapToSelectCopyWithImpl<$Res>;
-}
-
-class _$ToggleTapToSelectCopyWithImpl<$Res>
-    extends _$AppsTabViewEventCopyWithImpl<$Res>
-    implements $ToggleTapToSelectCopyWith<$Res> {
-  _$ToggleTapToSelectCopyWithImpl(
-      ToggleTapToSelect _value, $Res Function(ToggleTapToSelect) _then)
-      : super(_value, (v) => _then(v as ToggleTapToSelect));
-
-  @override
-  ToggleTapToSelect get _value => super._value as ToggleTapToSelect;
-}
-
-class _$ToggleTapToSelect implements ToggleTapToSelect {
-  const _$ToggleTapToSelect();
-
-  @override
-  String toString() {
-    return 'AppsTabViewEvent.toggleTapToSelect()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ToggleTapToSelect);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadApps(),
-    @required Result toggleTapToSelect(),
-    @required Result toggleAppSelection(int index),
-  }) {
-    assert(loadApps != null);
-    assert(toggleTapToSelect != null);
-    assert(toggleAppSelection != null);
-    return toggleTapToSelect();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadApps(),
-    Result toggleTapToSelect(),
-    Result toggleAppSelection(int index),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (toggleTapToSelect != null) {
-      return toggleTapToSelect();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadApps(LoadApps value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
-    @required Result toggleAppSelection(ToggleAppSelection value),
-  }) {
-    assert(loadApps != null);
-    assert(toggleTapToSelect != null);
-    assert(toggleAppSelection != null);
-    return toggleTapToSelect(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadApps(LoadApps value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
-    Result toggleAppSelection(ToggleAppSelection value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (toggleTapToSelect != null) {
-      return toggleTapToSelect(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ToggleTapToSelect implements AppsTabViewEvent {
-  const factory ToggleTapToSelect() = _$ToggleTapToSelect;
 }
 
 abstract class $ToggleAppSelectionCopyWith<$Res> {
@@ -320,12 +226,12 @@ class _$ToggleAppSelection implements ToggleAppSelection {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleTapToSelect(),
     @required Result toggleAppSelection(int index),
+    @required Result deselectAll(),
   }) {
     assert(loadApps != null);
-    assert(toggleTapToSelect != null);
     assert(toggleAppSelection != null);
+    assert(deselectAll != null);
     return toggleAppSelection(index);
   }
 
@@ -333,8 +239,8 @@ class _$ToggleAppSelection implements ToggleAppSelection {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleTapToSelect(),
     Result toggleAppSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -348,12 +254,12 @@ class _$ToggleAppSelection implements ToggleAppSelection {
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result loadApps(LoadApps value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleAppSelection(ToggleAppSelection value),
+    @required Result deselectAll(DeselectAll value),
   }) {
     assert(loadApps != null);
-    assert(toggleTapToSelect != null);
     assert(toggleAppSelection != null);
+    assert(deselectAll != null);
     return toggleAppSelection(this);
   }
 
@@ -361,8 +267,8 @@ class _$ToggleAppSelection implements ToggleAppSelection {
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result loadApps(LoadApps value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleAppSelection(ToggleAppSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -380,6 +286,100 @@ abstract class ToggleAppSelection implements AppsTabViewEvent {
   $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith;
 }
 
+abstract class $DeselectAllCopyWith<$Res> {
+  factory $DeselectAllCopyWith(
+          DeselectAll value, $Res Function(DeselectAll) then) =
+      _$DeselectAllCopyWithImpl<$Res>;
+}
+
+class _$DeselectAllCopyWithImpl<$Res>
+    extends _$AppsTabViewEventCopyWithImpl<$Res>
+    implements $DeselectAllCopyWith<$Res> {
+  _$DeselectAllCopyWithImpl(
+      DeselectAll _value, $Res Function(DeselectAll) _then)
+      : super(_value, (v) => _then(v as DeselectAll));
+
+  @override
+  DeselectAll get _value => super._value as DeselectAll;
+}
+
+class _$DeselectAll implements DeselectAll {
+  const _$DeselectAll();
+
+  @override
+  String toString() {
+    return 'AppsTabViewEvent.deselectAll()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DeselectAll);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loadApps(),
+    @required Result toggleAppSelection(int index),
+    @required Result deselectAll(),
+  }) {
+    assert(loadApps != null);
+    assert(toggleAppSelection != null);
+    assert(deselectAll != null);
+    return deselectAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loadApps(),
+    Result toggleAppSelection(int index),
+    Result deselectAll(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAll != null) {
+      return deselectAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loadApps(LoadApps value),
+    @required Result toggleAppSelection(ToggleAppSelection value),
+    @required Result deselectAll(DeselectAll value),
+  }) {
+    assert(loadApps != null);
+    assert(toggleAppSelection != null);
+    assert(deselectAll != null);
+    return deselectAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loadApps(LoadApps value),
+    Result toggleAppSelection(ToggleAppSelection value),
+    Result deselectAll(DeselectAll value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAll != null) {
+      return deselectAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeselectAll implements AppsTabViewEvent {
+  const factory DeselectAll() = _$DeselectAll;
+}
+
 class _$AppsTabViewStateTearOff {
   const _$AppsTabViewStateTearOff();
 
@@ -395,12 +395,9 @@ class _$AppsTabViewStateTearOff {
 
 // ignore: unused_element
   _HasLoaded hasLoaded(
-      {@required List<AppObject> apps,
-      @required bool tapToSelect,
-      @required int selectedApps}) {
+      {@required List<AppObject> apps, @required int selectedApps}) {
     return _HasLoaded(
       apps: apps,
-      tapToSelect: tapToSelect,
       selectedApps: selectedApps,
     );
   }
@@ -421,16 +418,14 @@ mixin _$AppsTabViewState {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required
-        Result hasLoaded(
-            List<AppObject> apps, bool tapToSelect, int selectedApps),
+    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
     @required Result hasFailed(AppsLoadFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, bool tapToSelect, int selectedApps),
+    Result hasLoaded(List<AppObject> apps, int selectedApps),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   });
@@ -501,9 +496,7 @@ class _$_Initial implements _Initial {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required
-        Result hasLoaded(
-            List<AppObject> apps, bool tapToSelect, int selectedApps),
+    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -518,7 +511,7 @@ class _$_Initial implements _Initial {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, bool tapToSelect, int selectedApps),
+    Result hasLoaded(List<AppObject> apps, int selectedApps),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -602,9 +595,7 @@ class _$_IsLoading implements _IsLoading {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required
-        Result hasLoaded(
-            List<AppObject> apps, bool tapToSelect, int selectedApps),
+    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -619,7 +610,7 @@ class _$_IsLoading implements _IsLoading {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, bool tapToSelect, int selectedApps),
+    Result hasLoaded(List<AppObject> apps, int selectedApps),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -670,7 +661,7 @@ abstract class _$HasLoadedCopyWith<$Res> {
   factory _$HasLoadedCopyWith(
           _HasLoaded value, $Res Function(_HasLoaded) then) =
       __$HasLoadedCopyWithImpl<$Res>;
-  $Res call({List<AppObject> apps, bool tapToSelect, int selectedApps});
+  $Res call({List<AppObject> apps, int selectedApps});
 }
 
 class __$HasLoadedCopyWithImpl<$Res>
@@ -685,13 +676,10 @@ class __$HasLoadedCopyWithImpl<$Res>
   @override
   $Res call({
     Object apps = freezed,
-    Object tapToSelect = freezed,
     Object selectedApps = freezed,
   }) {
     return _then(_HasLoaded(
       apps: apps == freezed ? _value.apps : apps as List<AppObject>,
-      tapToSelect:
-          tapToSelect == freezed ? _value.tapToSelect : tapToSelect as bool,
       selectedApps:
           selectedApps == freezed ? _value.selectedApps : selectedApps as int,
     ));
@@ -699,24 +687,18 @@ class __$HasLoadedCopyWithImpl<$Res>
 }
 
 class _$_HasLoaded implements _HasLoaded {
-  const _$_HasLoaded(
-      {@required this.apps,
-      @required this.tapToSelect,
-      @required this.selectedApps})
+  const _$_HasLoaded({@required this.apps, @required this.selectedApps})
       : assert(apps != null),
-        assert(tapToSelect != null),
         assert(selectedApps != null);
 
   @override
   final List<AppObject> apps;
   @override
-  final bool tapToSelect;
-  @override
   final int selectedApps;
 
   @override
   String toString() {
-    return 'AppsTabViewState.hasLoaded(apps: $apps, tapToSelect: $tapToSelect, selectedApps: $selectedApps)';
+    return 'AppsTabViewState.hasLoaded(apps: $apps, selectedApps: $selectedApps)';
   }
 
   @override
@@ -725,9 +707,6 @@ class _$_HasLoaded implements _HasLoaded {
         (other is _HasLoaded &&
             (identical(other.apps, apps) ||
                 const DeepCollectionEquality().equals(other.apps, apps)) &&
-            (identical(other.tapToSelect, tapToSelect) ||
-                const DeepCollectionEquality()
-                    .equals(other.tapToSelect, tapToSelect)) &&
             (identical(other.selectedApps, selectedApps) ||
                 const DeepCollectionEquality()
                     .equals(other.selectedApps, selectedApps)));
@@ -737,7 +716,6 @@ class _$_HasLoaded implements _HasLoaded {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(apps) ^
-      const DeepCollectionEquality().hash(tapToSelect) ^
       const DeepCollectionEquality().hash(selectedApps);
 
   @override
@@ -749,16 +727,14 @@ class _$_HasLoaded implements _HasLoaded {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required
-        Result hasLoaded(
-            List<AppObject> apps, bool tapToSelect, int selectedApps),
+    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
     assert(hasLoaded != null);
     assert(hasFailed != null);
-    return hasLoaded(apps, tapToSelect, selectedApps);
+    return hasLoaded(apps, selectedApps);
   }
 
   @override
@@ -766,13 +742,13 @@ class _$_HasLoaded implements _HasLoaded {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, bool tapToSelect, int selectedApps),
+    Result hasLoaded(List<AppObject> apps, int selectedApps),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
-      return hasLoaded(apps, tapToSelect, selectedApps);
+      return hasLoaded(apps, selectedApps);
     }
     return orElse();
   }
@@ -812,11 +788,9 @@ class _$_HasLoaded implements _HasLoaded {
 abstract class _HasLoaded implements AppsTabViewState {
   const factory _HasLoaded(
       {@required List<AppObject> apps,
-      @required bool tapToSelect,
       @required int selectedApps}) = _$_HasLoaded;
 
   List<AppObject> get apps;
-  bool get tapToSelect;
   int get selectedApps;
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
@@ -891,9 +865,7 @@ class _$_HasFailed implements _HasFailed {
   Result when<Result extends Object>({
     @required Result initial(),
     @required Result isLoading(),
-    @required
-        Result hasLoaded(
-            List<AppObject> apps, bool tapToSelect, int selectedApps),
+    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -908,7 +880,7 @@ class _$_HasFailed implements _HasFailed {
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, bool tapToSelect, int selectedApps),
+    Result hasLoaded(List<AppObject> apps, int selectedApps),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
