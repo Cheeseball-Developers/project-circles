@@ -33,8 +33,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             //TODO Show in the ui that eror has occured
             debugPrint("Some error has occured, more precisely $failure");
           }, (bool success) async* {
-            final Map<String, String> members = nearbyConnections.members;
-            print(members);
+            print(nearbyConnections.members);
             //e.host = nearbyConnections.host;
           });
 
@@ -52,6 +51,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         },
         leaveCircle: (e) async* {
           nearbyConnections.stopAllEndpoints();
+          nearbyConnections.stopAdvertising();
         },
         closeCircle: (e) async* {
           yield const CurrentCircleState.initial();

@@ -23,10 +23,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
     final nearbyConnections = getIt<NearbyConnections>();
-    //nearbyConnections.setUsername = "hehe";
     yield* event.map(startSearching: (e) async* {
       nearbyConnections.permitLocation();
       nearbyConnections.enableLocation();
+
 
       final Either<AppsLoadFailure, bool> startDiscovering =
           await nearbyConnections.startDiscovering();
