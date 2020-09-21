@@ -22,38 +22,51 @@ class FilesTabViewBloc extends Bloc<FilesTabViewEvent, FilesTabViewState> {
   Stream<FilesTabViewState> mapEventToState(
     FilesTabViewEvent event,
   ) async* {
-    yield* event.map(loadDirectory: (e) async* {
-      yield const FilesTabViewState.isLoading();
-      final List<FileSystemEntity> entities = await getIt<FilesRepository>()
-          .getFoldersAndFiles(e.directory);
-      try {
-        final List<FileSystemEntity> files = [];
-        final List<FileSystemEntity> folders = [];
+    yield* event.map(
+      loadDirectory: (e) async* {
+        yield FilesTabViewState.isLoading(
+            directory: e.directory,
+            isHome: e.directory.absolute.path ==
+                getIt<FilesRepository>().root.absolute.path);
+        final List<FileSystemEntity> entities =
+            getIt<FilesRepository>().getFoldersAndFiles(e.directory);
+        try {
+          final List<FileSystemEntity> files = [];
+          final List<FileSystemEntity> folders = [];
 
-        for (var v in entities) {
-          if (v.path.substring(
-                  v.parent.path.length + 1, v.parent.path.length + 2) ==
-              '.') {
-            continue;
+          for (final v in entities) {
+            if (v.path.substring(
+                    v.parent.path.length + 1, v.parent.path.length + 2) ==
+                '.') {
+              continue;
+            }
+            if (FileSystemEntity.isFileSync(v.path)) {
+              files.add(v);
+            } else {
+              folders.add(v);
+            }
           }
-          if (FileSystemEntity.isFileSync(v.path)) {
-            files.add(v);
-          } else {
-            folders.add(v);
-          }
+
+          files.sort(
+              (a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
+          folders.sort(
+              (a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
+
+          yield FilesTabViewState.hasLoaded(
+              directory: e.directory,
+              isHome:  e.directory.absolute.path ==
+                  getIt<FilesRepository>().root.absolute.path,
+              folders: folders,
+              files: files);
+        } catch (error) {
+          print(error);
+          print("Directory does not exist！");
+          yield FilesTabViewState.isLoading(
+              directory: e.directory,
+              isHome:  e.directory.absolute.path ==
+                  getIt<FilesRepository>().root.absolute.path);
         }
-
-        files.sort(
-            (a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
-        folders.sort(
-            (a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
-
-        yield FilesTabViewState.hasLoaded(folders: folders, files: files);
-      } catch (e) {
-        print(e);
-        print("Directory does not exist！");
-        yield const FilesTabViewState.isLoading();
-      }
-    });
+      },
+    );
   }
 }

@@ -194,15 +194,22 @@ class _$FilesTabViewStateTearOff {
   }
 
 // ignore: unused_element
-  _IsLoading isLoading() {
-    return const _IsLoading();
+  _IsLoading isLoading({@required bool isHome, @required Directory directory}) {
+    return _IsLoading(
+      isHome: isHome,
+      directory: directory,
+    );
   }
 
 // ignore: unused_element
   _HasLoaded hasLoaded(
-      {@required List<FileSystemEntity> folders,
+      {@required Directory directory,
+      @required bool isHome,
+      @required List<FileSystemEntity> folders,
       @required List<FileSystemEntity> files}) {
     return _HasLoaded(
+      directory: directory,
+      isHome: isHome,
       folders: folders,
       files: files,
     );
@@ -216,16 +223,16 @@ mixin _$FilesTabViewState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(),
+    @required Result isLoading(bool isHome, Directory directory),
     @required
-        Result hasLoaded(
+        Result hasLoaded(Directory directory, bool isHome,
             List<FileSystemEntity> folders, List<FileSystemEntity> files),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+    Result isLoading(bool isHome, Directory directory),
+    Result hasLoaded(Directory directory, bool isHome,
         List<FileSystemEntity> folders, List<FileSystemEntity> files),
     @required Result orElse(),
   });
@@ -293,9 +300,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(),
+    @required Result isLoading(bool isHome, Directory directory),
     @required
-        Result hasLoaded(
+        Result hasLoaded(Directory directory, bool isHome,
             List<FileSystemEntity> folders, List<FileSystemEntity> files),
   }) {
     assert(initial != null);
@@ -308,8 +315,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+    Result isLoading(bool isHome, Directory directory),
+    Result hasLoaded(Directory directory, bool isHome,
         List<FileSystemEntity> folders, List<FileSystemEntity> files),
     @required Result orElse(),
   }) {
@@ -357,6 +364,7 @@ abstract class _$IsLoadingCopyWith<$Res> {
   factory _$IsLoadingCopyWith(
           _IsLoading value, $Res Function(_IsLoading) then) =
       __$IsLoadingCopyWithImpl<$Res>;
+  $Res call({bool isHome, Directory directory});
 }
 
 class __$IsLoadingCopyWithImpl<$Res>
@@ -367,51 +375,83 @@ class __$IsLoadingCopyWithImpl<$Res>
 
   @override
   _IsLoading get _value => super._value as _IsLoading;
+
+  @override
+  $Res call({
+    Object isHome = freezed,
+    Object directory = freezed,
+  }) {
+    return _then(_IsLoading(
+      isHome: isHome == freezed ? _value.isHome : isHome as bool,
+      directory:
+          directory == freezed ? _value.directory : directory as Directory,
+    ));
+  }
 }
 
 class _$_IsLoading implements _IsLoading {
-  const _$_IsLoading();
+  const _$_IsLoading({@required this.isHome, @required this.directory})
+      : assert(isHome != null),
+        assert(directory != null);
+
+  @override
+  final bool isHome;
+  @override
+  final Directory directory;
 
   @override
   String toString() {
-    return 'FilesTabViewState.isLoading()';
+    return 'FilesTabViewState.isLoading(isHome: $isHome, directory: $directory)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _IsLoading);
+    return identical(this, other) ||
+        (other is _IsLoading &&
+            (identical(other.isHome, isHome) ||
+                const DeepCollectionEquality().equals(other.isHome, isHome)) &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(isHome) ^
+      const DeepCollectionEquality().hash(directory);
+
+  @override
+  _$IsLoadingCopyWith<_IsLoading> get copyWith =>
+      __$IsLoadingCopyWithImpl<_IsLoading>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(),
+    @required Result isLoading(bool isHome, Directory directory),
     @required
-        Result hasLoaded(
+        Result hasLoaded(Directory directory, bool isHome,
             List<FileSystemEntity> folders, List<FileSystemEntity> files),
   }) {
     assert(initial != null);
     assert(isLoading != null);
     assert(hasLoaded != null);
-    return isLoading();
+    return isLoading(isHome, directory);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+    Result isLoading(bool isHome, Directory directory),
+    Result hasLoaded(Directory directory, bool isHome,
         List<FileSystemEntity> folders, List<FileSystemEntity> files),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
-      return isLoading();
+      return isLoading(isHome, directory);
     }
     return orElse();
   }
@@ -446,14 +486,23 @@ class _$_IsLoading implements _IsLoading {
 }
 
 abstract class _IsLoading implements FilesTabViewState {
-  const factory _IsLoading() = _$_IsLoading;
+  const factory _IsLoading(
+      {@required bool isHome, @required Directory directory}) = _$_IsLoading;
+
+  bool get isHome;
+  Directory get directory;
+  _$IsLoadingCopyWith<_IsLoading> get copyWith;
 }
 
 abstract class _$HasLoadedCopyWith<$Res> {
   factory _$HasLoadedCopyWith(
           _HasLoaded value, $Res Function(_HasLoaded) then) =
       __$HasLoadedCopyWithImpl<$Res>;
-  $Res call({List<FileSystemEntity> folders, List<FileSystemEntity> files});
+  $Res call(
+      {Directory directory,
+      bool isHome,
+      List<FileSystemEntity> folders,
+      List<FileSystemEntity> files});
 }
 
 class __$HasLoadedCopyWithImpl<$Res>
@@ -467,10 +516,15 @@ class __$HasLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object directory = freezed,
+    Object isHome = freezed,
     Object folders = freezed,
     Object files = freezed,
   }) {
     return _then(_HasLoaded(
+      directory:
+          directory == freezed ? _value.directory : directory as Directory,
+      isHome: isHome == freezed ? _value.isHome : isHome as bool,
       folders: folders == freezed
           ? _value.folders
           : folders as List<FileSystemEntity>,
@@ -480,10 +534,20 @@ class __$HasLoadedCopyWithImpl<$Res>
 }
 
 class _$_HasLoaded implements _HasLoaded {
-  const _$_HasLoaded({@required this.folders, @required this.files})
-      : assert(folders != null),
+  const _$_HasLoaded(
+      {@required this.directory,
+      @required this.isHome,
+      @required this.folders,
+      @required this.files})
+      : assert(directory != null),
+        assert(isHome != null),
+        assert(folders != null),
         assert(files != null);
 
+  @override
+  final Directory directory;
+  @override
+  final bool isHome;
   @override
   final List<FileSystemEntity> folders;
   @override
@@ -491,13 +555,18 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   String toString() {
-    return 'FilesTabViewState.hasLoaded(folders: $folders, files: $files)';
+    return 'FilesTabViewState.hasLoaded(directory: $directory, isHome: $isHome, folders: $folders, files: $files)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _HasLoaded &&
+            (identical(other.directory, directory) ||
+                const DeepCollectionEquality()
+                    .equals(other.directory, directory)) &&
+            (identical(other.isHome, isHome) ||
+                const DeepCollectionEquality().equals(other.isHome, isHome)) &&
             (identical(other.folders, folders) ||
                 const DeepCollectionEquality()
                     .equals(other.folders, folders)) &&
@@ -508,6 +577,8 @@ class _$_HasLoaded implements _HasLoaded {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(directory) ^
+      const DeepCollectionEquality().hash(isHome) ^
       const DeepCollectionEquality().hash(folders) ^
       const DeepCollectionEquality().hash(files);
 
@@ -519,29 +590,29 @@ class _$_HasLoaded implements _HasLoaded {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(),
+    @required Result isLoading(bool isHome, Directory directory),
     @required
-        Result hasLoaded(
+        Result hasLoaded(Directory directory, bool isHome,
             List<FileSystemEntity> folders, List<FileSystemEntity> files),
   }) {
     assert(initial != null);
     assert(isLoading != null);
     assert(hasLoaded != null);
-    return hasLoaded(folders, files);
+    return hasLoaded(directory, isHome, folders, files);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+    Result isLoading(bool isHome, Directory directory),
+    Result hasLoaded(Directory directory, bool isHome,
         List<FileSystemEntity> folders, List<FileSystemEntity> files),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
-      return hasLoaded(folders, files);
+      return hasLoaded(directory, isHome, folders, files);
     }
     return orElse();
   }
@@ -577,9 +648,13 @@ class _$_HasLoaded implements _HasLoaded {
 
 abstract class _HasLoaded implements FilesTabViewState {
   const factory _HasLoaded(
-      {@required List<FileSystemEntity> folders,
+      {@required Directory directory,
+      @required bool isHome,
+      @required List<FileSystemEntity> folders,
       @required List<FileSystemEntity> files}) = _$_HasLoaded;
 
+  Directory get directory;
+  bool get isHome;
   List<FileSystemEntity> get folders;
   List<FileSystemEntity> get files;
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
