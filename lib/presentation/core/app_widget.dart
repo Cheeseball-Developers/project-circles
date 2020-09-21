@@ -7,25 +7,28 @@ import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/presentation/core/theme.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart' as router;
+import 'package:projectcircles/presentation/routes/router.gr.dart';
 
 class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-            create: (context) =>
-            getIt<CurrentCircleBloc>()),
+        BlocProvider(create: (context) => getIt<CurrentCircleBloc>()),
         BlocProvider(
             create: (context) =>
                 getIt<SettingsBloc>()..add(const SettingsEvent.loadPrefs()))
       ],
-      child: BlocBuilder<SettingsBloc, SettingsState>(
+      child: BlocConsumer<SettingsBloc, SettingsState>(
+        listener: (context, state) => state.maybeMap(
+            hasLoaded: (state) =>
+                ExtendedNavigator.named('nav').replace(Routes.joinOrCreateCircle),
+            orElse: () => null),
         builder: (context, state) => MaterialApp(
           builder: ExtendedNavigator(
             name: 'nav',
             router: router.Router(),
-            initialRoute: router.Routes.joinOrCreateCircle,
+            initialRoute: router.Routes.splash,
           ),
           title: 'Circles',
           theme: state.maybeMap(

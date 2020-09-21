@@ -36,6 +36,8 @@ dependencies:
   folder_picker:
   device_apps:
   photo_manager:
+  nearby_connections:
+  device_info:
   video_player:
   chewie:
 
