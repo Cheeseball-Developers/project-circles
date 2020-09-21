@@ -25,15 +25,15 @@ class _$MediaTabViewEventTearOff {
   }
 
 // ignore: unused_element
-  ToggleTapToSelect toggleTapToSelect() {
-    return const ToggleTapToSelect();
-  }
-
-// ignore: unused_element
   ToggleSelection toggleSelection(int index) {
     return ToggleSelection(
       index,
     );
+  }
+
+// ignore: unused_element
+  DeselectAll deselectAll() {
+    return const DeselectAll();
   }
 }
 
@@ -45,30 +45,30 @@ mixin _$MediaTabViewEvent {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
+    @required Result deselectAll(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleTapToSelect(),
     Result toggleSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   });
 }
@@ -125,13 +125,13 @@ class _$LoadAlbums implements LoadAlbums {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
+    @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
+    assert(deselectAll != null);
     return loadAlbums();
   }
 
@@ -140,8 +140,8 @@ class _$LoadAlbums implements LoadAlbums {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleTapToSelect(),
     Result toggleSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -156,13 +156,13 @@ class _$LoadAlbums implements LoadAlbums {
   Result map<Result extends Object>({
     @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
+    assert(deselectAll != null);
     return loadAlbums(this);
   }
 
@@ -171,8 +171,8 @@ class _$LoadAlbums implements LoadAlbums {
   Result maybeMap<Result extends Object>({
     Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -244,13 +244,13 @@ class _$LoadMedia implements LoadMedia {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
+    @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
+    assert(deselectAll != null);
     return loadMedia(album);
   }
 
@@ -259,8 +259,8 @@ class _$LoadMedia implements LoadMedia {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleTapToSelect(),
     Result toggleSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -275,13 +275,13 @@ class _$LoadMedia implements LoadMedia {
   Result map<Result extends Object>({
     @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
+    assert(deselectAll != null);
     return loadMedia(this);
   }
 
@@ -290,8 +290,8 @@ class _$LoadMedia implements LoadMedia {
   Result maybeMap<Result extends Object>({
     Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -307,106 +307,6 @@ abstract class LoadMedia implements MediaTabViewEvent {
 
   AssetPathEntity get album;
   $LoadMediaCopyWith<LoadMedia> get copyWith;
-}
-
-abstract class $ToggleTapToSelectCopyWith<$Res> {
-  factory $ToggleTapToSelectCopyWith(
-          ToggleTapToSelect value, $Res Function(ToggleTapToSelect) then) =
-      _$ToggleTapToSelectCopyWithImpl<$Res>;
-}
-
-class _$ToggleTapToSelectCopyWithImpl<$Res>
-    extends _$MediaTabViewEventCopyWithImpl<$Res>
-    implements $ToggleTapToSelectCopyWith<$Res> {
-  _$ToggleTapToSelectCopyWithImpl(
-      ToggleTapToSelect _value, $Res Function(ToggleTapToSelect) _then)
-      : super(_value, (v) => _then(v as ToggleTapToSelect));
-
-  @override
-  ToggleTapToSelect get _value => super._value as ToggleTapToSelect;
-}
-
-class _$ToggleTapToSelect implements ToggleTapToSelect {
-  const _$ToggleTapToSelect();
-
-  @override
-  String toString() {
-    return 'MediaTabViewEvent.toggleTapToSelect()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ToggleTapToSelect);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadAlbums(),
-    @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleTapToSelect(),
-    @required Result toggleSelection(int index),
-  }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
-    assert(toggleSelection != null);
-    return toggleTapToSelect();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadAlbums(),
-    Result loadMedia(AssetPathEntity album),
-    Result toggleTapToSelect(),
-    Result toggleSelection(int index),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (toggleTapToSelect != null) {
-      return toggleTapToSelect();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadAlbums(LoadAlbums value),
-    @required Result loadMedia(LoadMedia value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
-    @required Result toggleSelection(ToggleSelection value),
-  }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
-    assert(toggleSelection != null);
-    return toggleTapToSelect(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadAlbums(LoadAlbums value),
-    Result loadMedia(LoadMedia value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
-    Result toggleSelection(ToggleSelection value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (toggleTapToSelect != null) {
-      return toggleTapToSelect(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ToggleTapToSelect implements MediaTabViewEvent {
-  const factory ToggleTapToSelect() = _$ToggleTapToSelect;
 }
 
 abstract class $ToggleSelectionCopyWith<$Res> {
@@ -468,13 +368,13 @@ class _$ToggleSelection implements ToggleSelection {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleTapToSelect(),
     @required Result toggleSelection(int index),
+    @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
+    assert(deselectAll != null);
     return toggleSelection(index);
   }
 
@@ -483,8 +383,8 @@ class _$ToggleSelection implements ToggleSelection {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleTapToSelect(),
     Result toggleSelection(int index),
+    Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -499,13 +399,13 @@ class _$ToggleSelection implements ToggleSelection {
   Result map<Result extends Object>({
     @required Result loadAlbums(LoadAlbums value),
     @required Result loadMedia(LoadMedia value),
-    @required Result toggleTapToSelect(ToggleTapToSelect value),
     @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
-    assert(toggleTapToSelect != null);
     assert(toggleSelection != null);
+    assert(deselectAll != null);
     return toggleSelection(this);
   }
 
@@ -514,8 +414,8 @@ class _$ToggleSelection implements ToggleSelection {
   Result maybeMap<Result extends Object>({
     Result loadAlbums(LoadAlbums value),
     Result loadMedia(LoadMedia value),
-    Result toggleTapToSelect(ToggleTapToSelect value),
     Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -531,6 +431,106 @@ abstract class ToggleSelection implements MediaTabViewEvent {
 
   int get index;
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
+}
+
+abstract class $DeselectAllCopyWith<$Res> {
+  factory $DeselectAllCopyWith(
+          DeselectAll value, $Res Function(DeselectAll) then) =
+      _$DeselectAllCopyWithImpl<$Res>;
+}
+
+class _$DeselectAllCopyWithImpl<$Res>
+    extends _$MediaTabViewEventCopyWithImpl<$Res>
+    implements $DeselectAllCopyWith<$Res> {
+  _$DeselectAllCopyWithImpl(
+      DeselectAll _value, $Res Function(DeselectAll) _then)
+      : super(_value, (v) => _then(v as DeselectAll));
+
+  @override
+  DeselectAll get _value => super._value as DeselectAll;
+}
+
+class _$DeselectAll implements DeselectAll {
+  const _$DeselectAll();
+
+  @override
+  String toString() {
+    return 'MediaTabViewEvent.deselectAll()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DeselectAll);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result loadAlbums(),
+    @required Result loadMedia(AssetPathEntity album),
+    @required Result toggleSelection(int index),
+    @required Result deselectAll(),
+  }) {
+    assert(loadAlbums != null);
+    assert(loadMedia != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return deselectAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result loadAlbums(),
+    Result loadMedia(AssetPathEntity album),
+    Result toggleSelection(int index),
+    Result deselectAll(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAll != null) {
+      return deselectAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result loadAlbums(LoadAlbums value),
+    @required Result loadMedia(LoadMedia value),
+    @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
+  }) {
+    assert(loadAlbums != null);
+    assert(loadMedia != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return deselectAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result loadAlbums(LoadAlbums value),
+    Result loadMedia(LoadMedia value),
+    Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAll != null) {
+      return deselectAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeselectAll implements MediaTabViewEvent {
+  const factory DeselectAll() = _$DeselectAll;
 }
 
 class _$MediaTabViewStateTearOff {

@@ -58,13 +58,6 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
             yield const MediaTabViewState.hasFailed(
                 AppsLoadFailure.unexpectedFailure());
           });
-    }, toggleTapToSelect: (e) async* {
-      yield* state.maybeMap(hasLoadedMedia: (state) async* {
-        yield state.copyWith(tapToSelect: !state.tapToSelect);
-      }, orElse: () async* {
-        yield const MediaTabViewState.hasFailed(
-            AppsLoadFailure.unexpectedFailure());
-      });
     }, toggleSelection: (e) async* {
       yield* state.maybeMap(hasLoadedMedia: (state) async* {
         state.media[e.index] = MediaObject(state.media[e.index].getOrCrash(),
@@ -77,6 +70,21 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
             media: state.media,
             selectedMedia: selectedMedia,
             tapToSelect: selectedMedia == 0 ? false : state.tapToSelect);
+      }, orElse: () async* {
+        yield const MediaTabViewState.hasFailed(
+            AppsLoadFailure.unexpectedFailure());
+      });
+    }, deselectAll: (e) async* {
+      yield* state.maybeMap(hasLoadedMedia: (state) async* {
+        final List<MediaObject> media = state.media;
+        for (int i = 0; i < state.media.length; ++i) {
+          media[i] =
+              MediaObject(media[i].getOrCrash(), media[i].thumbnail, selected: false);
+        }
+        yield state.copyWith(
+          media: media,
+          selectedMedia: 0,
+        );
       }, orElse: () async* {
         yield const MediaTabViewState.hasFailed(
             AppsLoadFailure.unexpectedFailure());
