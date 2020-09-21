@@ -1,10 +1,8 @@
 import 'dart:core';
 import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nearby_connections/nearby_connections.dart';
@@ -314,10 +312,8 @@ class NearbyConnections {
         /// You must also send a bytes payload to send the filename and extension
         /// so that receiver can rename the file accordingly
         /// Send the payloadID and filename to receiver as bytes payload
-
         payLoadId = await _nearby.sendFilePayload(key, file.path);
         debugPrint("Sending File to $value");
-
         /// Sending the fileName and payloadId to the receiver
         _nearby.sendBytesPayload(
             _endId,
@@ -325,11 +321,9 @@ class NearbyConnections {
                 "$payLoadId:${file.path.split('/').last}".codeUnits));
       });
     });
-
     if (payLoadId != null) {
       return right(true);
     }
-
     return left(const AppsLoadFailure.unexpectedFailure());
   }
 }

@@ -27,11 +27,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       nearbyConnections.permitLocation();
       nearbyConnections.enableLocation();
 
-
       final Either<AppsLoadFailure, bool> startDiscovering =
           await nearbyConnections.startDiscovering();
       yield* startDiscovering.fold((failure) async* {
-        //TODO display this in ui that error has occured error aane pr text me mai aa jaunga idhar
+        //TODO display this in ui about error
       }, (success) async* {});
       yield state.copyWith(
           isSearching: true, connectionFailureOrSuccessOption: none());
