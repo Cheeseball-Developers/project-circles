@@ -4,6 +4,7 @@ import 'package:projectcircles/application/circle/circle_home/media_tab_view/med
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/album_thumbnail.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/error_retry.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/media_thumbnail.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/selection_bar.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_back_button.dart';
 
 class MediaTabView extends StatelessWidget {
@@ -30,7 +31,7 @@ class MediaTabView extends StatelessWidget {
                 ),
             hasLoadedMedia: (state) => Scaffold(
                   appBar: state.maybeMap(
-                    hasLoadedMedia: (state) => AppBar(
+                    hasLoadedMedia: (state) => state.selectedMedia == 0 ? AppBar(
                       elevation: 8.0,
                       toolbarHeight: 40.0,
                       backgroundColor: Theme.of(context).cardColor,
@@ -44,6 +45,15 @@ class MediaTabView extends StatelessWidget {
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
                       centerTitle: true,
+                    ) : PreferredSize(
+                      preferredSize:
+                      Size(MediaQuery.of(context).size.width, 40.0),
+                      child: SelectionBar(
+                        count: state.selectedMedia,
+                        onCancel: () => context.bloc<MediaTabViewBloc>().add(
+                          const MediaTabViewEvent.deselectAll(),
+                        ),
+                      ),
                     ),
                     orElse: () => PreferredSize(
                       preferredSize: const Size(0.0, 0.0),

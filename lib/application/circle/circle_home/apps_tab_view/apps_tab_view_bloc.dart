@@ -30,8 +30,7 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
       yield* apps.fold((failure) async* {
         yield AppsTabViewState.hasFailed(failure);
       }, (apps) async* {
-        yield AppsTabViewState.hasLoaded(
-            apps: apps, selectedApps: 0);
+        yield AppsTabViewState.hasLoaded(apps: apps, selectedApps: 0);
       });
     }, toggleAppSelection: (e) async* {
       yield* state.maybeMap(hasLoaded: (state) async* {
@@ -41,8 +40,7 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
         final int selectedApps = state.apps[e.index].selected
             ? state.selectedApps + 1
             : state.selectedApps - 1;
-        yield state.copyWith(
-            selectedApps: selectedApps);
+        yield state.copyWith(selectedApps: selectedApps);
       }, orElse: () async* {
         yield const AppsTabViewState.hasFailed(
             AppsLoadFailure.unexpectedFailure());
@@ -50,13 +48,14 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
     }, deselectAll: (e) async* {
       yield* state.maybeMap(hasLoaded: (state) async* {
         final List<AppObject> apps = state.apps;
-        for (int i=0; i<state.apps.length; ++i) {
-          apps[i] = AppObject(apps[i].getOrCrash(), apps[i].icon,
-              selected: false);
+        for (int i = 0; i < state.apps.length; ++i) {
+          apps[i] =
+              AppObject(apps[i].getOrCrash(), apps[i].icon, selected: false);
         }
         yield state.copyWith(
-          apps: apps
-            selectedApps: 0);
+          apps: apps,
+          selectedApps: 0,
+        );
       }, orElse: () async* {
         yield const AppsTabViewState.hasFailed(
             AppsLoadFailure.unexpectedFailure());

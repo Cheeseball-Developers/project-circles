@@ -8,44 +8,38 @@ class AppsTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppsTabViewBloc, AppsTabViewState>(
-      builder: (context, state) =>
-          state.map(
-              initial: (_) => Container(),
-              isLoading: (_) =>
-              const Center(child: CircularProgressIndicator()),
-              hasLoaded: (state) =>
-                  Scaffold(
-                    appBar: state.selectedApps == 0
-                        ? PreferredSize(
-                      preferredSize: const Size(0.0, 0.0),
-                      child: Container(),
-                    )
-                        : PreferredSize(
-                      preferredSize:
-                      Size(MediaQuery
-                          .of(context)
-                          .size
-                          .width, 40.0),
-                      child: SelectionBar(
+      builder: (context, state) => state.map(
+          initial: (_) => Container(),
+          isLoading: (_) => const Center(child: CircularProgressIndicator()),
+          hasLoaded: (state) => Scaffold(
+                appBar: state.selectedApps == 0
+                    ? PreferredSize(
+                        preferredSize: const Size(0.0, 0.0),
+                        child: Container(),
+                      )
+                    : PreferredSize(
+                        preferredSize:
+                            Size(MediaQuery.of(context).size.width, 40.0),
+                        child: SelectionBar(
                           count: state.selectedApps,
-                          onCancel: () =>
-                              context.bloc<AppsTabViewBloc>().add(
-                                  AppsTabViewEvent.deselectAll())),
-                    ),
-                    body: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: GridView.builder(
-                        gridDelegate:
+                          onCancel: () => context.bloc<AppsTabViewBloc>().add(
+                                const AppsTabViewEvent.deselectAll(),
+                              ),
+                        ),
+                      ),
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: GridView.builder(
+                    gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 5),
-                        itemCount: state.apps.length,
-                        itemBuilder: (context, index) =>
-                            AppIconWithName(index: index),
-                      ),
-                    ),
+                    itemCount: state.apps.length,
+                    itemBuilder: (context, index) =>
+                        AppIconWithName(index: index),
                   ),
-              hasFailed: (state) =>
-              const Center(
+                ),
+              ),
+          hasFailed: (state) => const Center(
                 child: Text('Error loading apps'),
               )),
     );

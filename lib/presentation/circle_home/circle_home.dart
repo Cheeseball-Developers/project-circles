@@ -138,7 +138,7 @@ class CircleHome extends StatelessWidget {
                             ),
                             Positioned.fill(
                               child: GestureDetector(
-                                onTap: () {}, //TODO: Add functionality to send button
+                                onTap: () {}, // TODO: Add functionality to send button
                                 child: const CircleAvatar(
                                   backgroundColor: Colors.white,
                                   child: Icon(Icons.send),
