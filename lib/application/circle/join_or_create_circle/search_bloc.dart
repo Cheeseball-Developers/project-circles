@@ -23,7 +23,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
     final nearbyConnections = getIt<NearbyConnections>();
-
+    //nearbyConnections.setUsername = "hehe";
     yield* event.map(startSearching: (e) async* {
       nearbyConnections.permitLocation();
       nearbyConnections.enableLocation();
@@ -31,7 +31,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       final Either<AppsLoadFailure, bool> startDiscovering =
           await nearbyConnections.startDiscovering();
       yield* startDiscovering.fold((failure) async* {
-        //TODO display this in ui that error has occured
+        //TODO display this in ui that error has occured error aane pr text me mai aa jaunga idhar
       }, (success) async* {});
       yield state.copyWith(
           isSearching: true, connectionFailureOrSuccessOption: none());

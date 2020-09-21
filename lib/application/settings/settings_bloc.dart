@@ -33,10 +33,10 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     yield* event.map(loadPrefs: (e) async* {
       yield const SettingsState.isLoading();
       final failureOrSettingsObject = await _mySharedPreferences.load();
+      getIt<NearbyConnections>().setUsername = "hehe"; //If this works we makeout, okay?Yes maine settings.uid hata di because username unique nahi chiye,
       yield failureOrSettingsObject.fold(
           (failure) => SettingsState.hasFailed(failure), (settingsObject) {
         _settingsObject = settingsObject;
-        getIt<NearbyConnections>().username = _settingsObject.uid.getOrCrash()??"hehe";
 
         return SettingsState.hasLoaded(
             user: User(uid: _settingsObject.uid, name: _settingsObject.name),
