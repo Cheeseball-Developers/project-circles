@@ -6,15 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 @Singleton()
 class FilesRepository {
-  Directory root = Directory('/storage/emulated/0/');
-
-  Future<bool> loadRootDirectory() async {
-    if (await getPermission()) {
-      root = await getExternalStorageDirectory();
-      return true;
-    }
-    return false;
-  }
+  Directory root = Directory('/storage/emulated/0');
 
   Future<bool> getPermission() async {
     if (await Permission.storage.isUndetermined ||

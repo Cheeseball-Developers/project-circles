@@ -7,6 +7,6 @@ import 'package:projectcircles/presentation/core/app_widget.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   configureInjection(Environment.prod);
-  getIt<FilesRepository>().loadRootDirectory();
+  getIt<FilesRepository>();
   runApp(AppWidget());
 }
