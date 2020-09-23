@@ -7,8 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:dartz/dartz.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
-import 'package:projectcircles/domain/circle/discovered_device.dart';
-import 'package:projectcircles/domain/files/apps_load_failure.dart';
+import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 import 'package:projectcircles/injection.dart';
 
@@ -31,11 +30,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       nearbyConnections.permitLocation();
       nearbyConnections.enableLocation();
 
-      Either<ConnectionFailure, Map<String, String>> failureOrDiscoveredDevices;
+      List<Either<ConnectionFailure, User>> failureOrDiscoveredDevices;
 
       nearbyConnections.startDiscovering().listen((event) {
         print(event);
-        failureOrDiscoveredDevices = event;
+        failureOrDiscoveredDevices.add(event);
       }, onError: (e) {
         debugPrint("Can't get the device please try again $e");
       }, cancelOnError: false); //
@@ -52,12 +51,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isLoading: false,
           isSearching: false,
           connectionFailureOrSuccessOption: none());
-    }, acceptConnection: (AcceptConnection value) async* {
+    }, acceptConnection: (AcceptConnection user) async* {
       final Either<ConnectionFailure, Unit> requestOrFail =
           await nearbyConnections.requestConnection(
-              username: value.device.username,
-              endpointId: value.device.endId,
-              acceptConnection: value.device.acceptOrReject);
+              username: user.discoveredUser.name.getOrCrash(),
+              endpointId: user.discoveredUser.uid.getOrCrash(),
+              acceptConnection: user.acceptOrReject);
       yield state.copyWith(
           isLoading: true,
           isSearching: true,

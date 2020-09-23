@@ -9,7 +9,7 @@ abstract class SearchState with _$SearchState {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-        Option<Either<ConnectionFailure, Map<String, String>>> connectionFailureOrDiscoveredDevice
+        Option<List<Either<ConnectionFailure, User>>> connectionFailureOrDiscoveredDevice
   }
       ) = _SearchState;
 
