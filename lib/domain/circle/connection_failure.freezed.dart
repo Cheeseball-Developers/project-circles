@@ -21,6 +21,11 @@ class _$ConnectionFailureTearOff {
   TimedOut timedOut() {
     return const TimedOut();
   }
+
+// ignore: unused_element
+  Unexpected unexpected() {
+    return const Unexpected();
+  }
 }
 
 // ignore: unused_element
@@ -31,22 +36,26 @@ mixin _$ConnectionFailure {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result timedOut(),
+    @required Result unexpected(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result timedOut(),
+    Result unexpected(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
+    @required Result unexpected(Unexpected value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
+    Result unexpected(Unexpected value),
     @required Result orElse(),
   });
 }
@@ -104,9 +113,11 @@ class _$CancelledByUser implements CancelledByUser {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result timedOut(),
+    @required Result unexpected(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
+    assert(unexpected != null);
     return cancelledByUser();
   }
 
@@ -115,6 +126,7 @@ class _$CancelledByUser implements CancelledByUser {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result timedOut(),
+    Result unexpected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -129,9 +141,11 @@ class _$CancelledByUser implements CancelledByUser {
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
+    @required Result unexpected(Unexpected value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
+    assert(unexpected != null);
     return cancelledByUser(this);
   }
 
@@ -140,6 +154,7 @@ class _$CancelledByUser implements CancelledByUser {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
+    Result unexpected(Unexpected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -189,9 +204,11 @@ class _$TimedOut implements TimedOut {
   Result when<Result extends Object>({
     @required Result cancelledByUser(),
     @required Result timedOut(),
+    @required Result unexpected(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
+    assert(unexpected != null);
     return timedOut();
   }
 
@@ -200,6 +217,7 @@ class _$TimedOut implements TimedOut {
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result timedOut(),
+    Result unexpected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -214,9 +232,11 @@ class _$TimedOut implements TimedOut {
   Result map<Result extends Object>({
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
+    @required Result unexpected(Unexpected value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
+    assert(unexpected != null);
     return timedOut(this);
   }
 
@@ -225,6 +245,7 @@ class _$TimedOut implements TimedOut {
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
+    Result unexpected(Unexpected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -237,4 +258,97 @@ class _$TimedOut implements TimedOut {
 
 abstract class TimedOut implements ConnectionFailure {
   const factory TimedOut() = _$TimedOut;
+}
+
+abstract class $UnexpectedCopyWith<$Res> {
+  factory $UnexpectedCopyWith(
+          Unexpected value, $Res Function(Unexpected) then) =
+      _$UnexpectedCopyWithImpl<$Res>;
+}
+
+class _$UnexpectedCopyWithImpl<$Res>
+    extends _$ConnectionFailureCopyWithImpl<$Res>
+    implements $UnexpectedCopyWith<$Res> {
+  _$UnexpectedCopyWithImpl(Unexpected _value, $Res Function(Unexpected) _then)
+      : super(_value, (v) => _then(v as Unexpected));
+
+  @override
+  Unexpected get _value => super._value as Unexpected;
+}
+
+class _$Unexpected implements Unexpected {
+  const _$Unexpected();
+
+  @override
+  String toString() {
+    return 'ConnectionFailure.unexpected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Unexpected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result timedOut(),
+    @required Result unexpected(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(timedOut != null);
+    assert(unexpected != null);
+    return unexpected();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result timedOut(),
+    Result unexpected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpected != null) {
+      return unexpected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result timedOut(TimedOut value),
+    @required Result unexpected(Unexpected value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(timedOut != null);
+    assert(unexpected != null);
+    return unexpected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(CancelledByUser value),
+    Result timedOut(TimedOut value),
+    Result unexpected(Unexpected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpected != null) {
+      return unexpected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Unexpected implements ConnectionFailure {
+  const factory Unexpected() = _$Unexpected;
 }
