@@ -37,6 +37,8 @@ class UniqueId extends ValueObject<String> {
     return UniqueId._(right(Uuid().v1()));
   }
 
+  factory UniqueId.fromUniqueString(String input) => UniqueId._(right(input));
+
   const UniqueId._(this.value);
 }
 
