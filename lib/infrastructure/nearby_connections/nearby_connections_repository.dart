@@ -6,6 +6,9 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nearby_connections/nearby_connections.dart';
+import 'package:projectcircles/domain/circle/connection_failure.dart';
+import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
 
 @LazySingleton()
@@ -16,7 +19,7 @@ class NearbyConnections {
   String _endName = ""; //currently connected device name
   File _tempFile; //store file mapped to corresponding payloadId
   Map<int, String> map = {};
-  Map<String, String> discoveredDevices;
+  User discoveredDevice;
   Map<String, String> members; //all the devices connected to host
   String host; // host username
 
@@ -68,26 +71,25 @@ class NearbyConnections {
   /// Network and Connection
 
   ///host starts advertising
-  Future<Either<AppsLoadFailure, bool>> startAdvertising() async {
+  Future<Either<ConnectionFailure, Unit>> startAdvertising() async {
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
       debugPrint("Initiating a connection to $endId");
       final Either<AppsLoadFailure, bool> _onConnectionInit =
-          await onConnectionInit(endId, connectionInfo, acceptConnection: true); //host will default accept the connection
+          await onConnectionInit(endId, connectionInfo,
+              acceptConnection: true); //host will default accept the connection
       _onConnectionInit.fold((failure) {
         debugPrint("Failure occurred more precisely $failure");
-
-        return left(const AppsLoadFailure.unexpectedFailure());
+        return left(const ConnectionFailure.unexpected());
       }, (success) {
         host = _username;
         _endName = connectionInfo.endpointName;
         debugPrint("Connection Initiated : $success");
       });
     }, onConnectionResult: (id, Status status) {
-      debugPrint(
-          "Status of the connection to $_endName ,id: $id,  : $status");
+      debugPrint("Status of the connection to $_endName ,id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           _endId = id;
@@ -102,13 +104,14 @@ class NearbyConnections {
       }
     }, onDisconnected: (String id) {
       debugPrint("Disconnected to : $id start advertising again");
+
       members.remove(id);
     });
     if (a) {
       //TODO: Return according to the retuned values of the above functions
-      return right(a);
+      return right(unit);
     }
-    return left(const AppsLoadFailure.unexpectedFailure());
+    return left(const ConnectionFailure.unexpected());
   }
 
   //Stop Adverting
@@ -117,7 +120,8 @@ class NearbyConnections {
   }
 
   //Start Discovering
-  Future<Either<AppsLoadFailure, bool>> startDiscovering() async {
+  Stream<Either<ConnectionFailure, User>>
+      startDiscovering() async* {
     debugPrint("Discovering....");
     debugPrint("this is my username: $_username");
     final bool a = await _nearby.startDiscovery(
@@ -126,29 +130,32 @@ class NearbyConnections {
       serviceId: _serviceId,
       onEndpointFound: (String id, String name, String serviceId) async {
         //TODO: stream the device names found
-        discoveredDevices[id] = name;
+
+        discoveredDevice = User(uid: UniqueId.fromUniqueString(id) , name: Name(name));
+
         debugPrint("Connection found at id: $id and name: $name");
+
         //request a connection which thereby calls onConnection init
-        final Either<AppsLoadFailure, bool> _requestConnection =
-            await requestConnection(_username, id);
-        _requestConnection.fold((failure) {
-          debugPrint(
-              "Failure occurred in requesting a connection more precisely $failure");
-          return left(const AppsLoadFailure.unexpectedFailure());
-        }, (success) {
-          debugPrint("Successfully accepted a connection $success");
-        });
+
+        //final Either<ConnectionFailure, Unit> _requestConnection =
+        //  await requestConnection(_username, id);
+        //_requestConnection.fold((failure){
+        //debugPrint(
+        //  "Failure occurred in requesting a connection more precisely $failure");
+        //return left(const ConnectionFailure.unexpected());
+        //}, (success) {
+        //debugPrint("Successfully accepted a connection $success");
+        //});
       },
       onEndpointLost: (String id) {
         //TODO: Print that endpoint is lost or disconnected to the endpoint and remove a member
-        discoveredDevices.remove(id);
         debugPrint("Endpoint lost to host $id");
       },
     );
     if (a) {
-      return right(a);
+      yield right(discoveredDevice);
     }
-    return left(const AppsLoadFailure.unexpectedFailure());
+    yield left(const ConnectionFailure.unexpected());
   }
 
   ///Stop Discovering
@@ -164,22 +171,24 @@ class NearbyConnections {
   }
 
   ///request Connection
-  Future<Either<AppsLoadFailure, bool>> requestConnection(
-      String username, String endpointId) async {
+  Future<Either<ConnectionFailure, Unit>> requestConnection(
+      {@required String username,
+      @required String endpointId,
+      @required bool acceptConnection}) async {
     final bool a = await _nearby.requestConnection(username, endpointId,
         onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
       debugPrint("Initiating a connection to $endId");
       final Either<AppsLoadFailure, bool> _onConnectionInit =
-          await onConnectionInit(endId, connectionInfo, acceptConnection: true);
+          await onConnectionInit(endId, connectionInfo,
+              acceptConnection: acceptConnection);
       _onConnectionInit.fold((failure) {
         debugPrint(
             "Failure occurred on Initiating a connection more precisely $failure");
-        return left(const AppsLoadFailure.unexpectedFailure());
+        return left(const ConnectionFailure.unexpected());
       }, (success) => {debugPrint("Connection Initiated yo: $success")});
     }, onConnectionResult: (id, Status status) {
       debugPrint("Status of the connection to host $host $id : $status");
-
       if (status == Status.CONNECTED) {
         debugPrint("Connection accepted by the host : $host");
       } else if (status == Status.REJECTED) {
@@ -192,9 +201,9 @@ class NearbyConnections {
       debugPrint("Disconnected! Connect again to: $id");
     });
     if (a) {
-      return right(a);
+      return right(unit);
     } else {
-      return left(const AppsLoadFailure.unexpectedFailure());
+      return left(const ConnectionFailure.unexpected());
     }
   }
 
@@ -314,6 +323,7 @@ class NearbyConnections {
         /// Send the payloadID and filename to receiver as bytes payload
         payLoadId = await _nearby.sendFilePayload(key, file.path);
         debugPrint("Sending File to $value");
+
         /// Sending the fileName and payloadId to the receiver
         _nearby.sendBytesPayload(
             _endId,

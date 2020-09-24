@@ -12,7 +12,6 @@ import 'package:projectcircles/infrastructure/nearby_connections/nearby_connecti
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
 
-
 part 'current_circle_event.dart';
 
 part 'current_circle_state.dart';
