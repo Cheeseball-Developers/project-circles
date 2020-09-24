@@ -10,7 +10,6 @@ import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 import 'package:projectcircles/injection.dart';
-import 'package:projectcircles/domain/files/apps_load_failure.dart';
 
 part 'current_circle_event.dart';
 
@@ -27,20 +26,20 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
     final nearbyConnections = getIt<NearbyConnections>();
     yield* event.map(
         startCircle: (e) async* {
-          final Either<AppsLoadFailure,
-              bool> startAdvertising = await nearbyConnections
+          final Either<ConnectionFailure,
+              Unit> startAdvertising = await nearbyConnections
               .startAdvertising();
-          yield* startAdvertising.fold((AppsLoadFailure failure) async* {
+          yield* startAdvertising.fold((ConnectionFailure failure) async* {
             //TODO Show in the ui that eror has occured
             debugPrint("Some error has occured, more precisely $failure");
-          }, (bool success) async* {
+          }, (_) async* {
             print(nearbyConnections.members);
             //e.host = nearbyConnections.host;
           });
 
           yield CurrentCircleState.hasJoined(host: e.host,
               members: <User>[],
-              selectedFiles: <File>[],
+              selectedFiles: <File, double>{},
               filesSentPopUp: false);
         },
         sendFiles: (e) async* {
