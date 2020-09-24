@@ -8,21 +8,23 @@ class LeaveCircleConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
-        listener: (context, state) {},
-        builder: (context, state) => state.map(
-            initial: (_) => Container(),
-            isStarting: (state) => Container(),
-            isJoining: (state) => Container(),
-            hasJoined: (state) => ConfirmationDialog(
-              title: 'Disconnect',
-              subtitle:
-              'Are you sure you want to disconnect from the circle?',
-              noText: 'Cancel',
-              yesText: 'Disconnect',
-              noTap: () => ExtendedNavigator.of(context).pop(),
-              yesTap: () => context
-                  .bloc<CurrentCircleBloc>()
-                  .add(const CurrentCircleEvent.leaveCircle()),
-            )));
+      listener: (context, state) {},
+      builder: (context, state) => state.map(
+        initial: (_) => Container(),
+        isStarting: (state) => Container(),
+        isJoining: (state) => Container(),
+        hasJoined: (state) => ConfirmationDialog(
+          title: 'Disconnect',
+          subtitle: 'Are you sure you want to disconnect from the circle?',
+          noText: 'Cancel',
+          yesText: 'Disconnect',
+          noTap: () => ExtendedNavigator.of(context).pop(),
+          yesTap: () => context
+              .bloc<CurrentCircleBloc>()
+              .add(const CurrentCircleEvent.leaveCircle()),
+        ),
+        hasFailed: (state) => Container(),
+      ), // TODO: Implement UI for other states
+    );
   }
 }

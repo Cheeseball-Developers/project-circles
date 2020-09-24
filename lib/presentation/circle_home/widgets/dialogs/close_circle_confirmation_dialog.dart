@@ -8,21 +8,23 @@ class CloseCircleConfirmationDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
-        listener: (context, state) {},
-        builder: (context, state) => state.map(
-            initial: (_) => Container(),
-            isStarting: (state) => Container(),
-            isJoining: (state) => Container(),
-            hasJoined: (state) => ConfirmationDialog(
-              title: 'Close Circle',
-              subtitle:
-              'Are you sure you want to close the circle?',
-              noText: 'Cancel',
-              yesText: 'Close Circle',
-              noTap: () => ExtendedNavigator.of(context).pop(),
-              yesTap: () => context
-                  .bloc<CurrentCircleBloc>()
-                  .add(const CurrentCircleEvent.closeCircle()),
-            )));
+      listener: (context, state) {},
+      builder: (context, state) => state.map(
+        initial: (_) => Container(),
+        isStarting: (state) => Container(),
+        isJoining: (state) => Container(),
+        hasJoined: (state) => ConfirmationDialog(
+          title: 'Close Circle',
+          subtitle: 'Are you sure you want to close the circle?',
+          noText: 'Cancel',
+          yesText: 'Close Circle',
+          noTap: () => ExtendedNavigator.of(context).pop(),
+          yesTap: () => context
+              .bloc<CurrentCircleBloc>()
+              .add(const CurrentCircleEvent.closeCircle()),
+        ),
+        hasFailed: (state) => Container(),
+      ), // TODO: Implement UI for other states
+    );
   }
 }

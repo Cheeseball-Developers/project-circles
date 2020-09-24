@@ -151,6 +151,7 @@ class CircleHome extends StatelessWidget {
                       body: SendFile(),
                     ),
                   ),
+          hasFailed: (_) => Container(), // TODO: Implement UI for other states
             ));
   }
 }
