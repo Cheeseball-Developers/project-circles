@@ -23,9 +23,11 @@ class _$SearchEventTearOff {
   }
 
 // ignore: unused_element
-  AcceptConnection acceptConnection({@required DiscoveredDevice device}) {
+  AcceptConnection acceptConnection(
+      {@required User discoveredUser, @required bool acceptOrReject}) {
     return AcceptConnection(
-      device: device,
+      discoveredUser: discoveredUser,
+      acceptOrReject: acceptOrReject,
     );
   }
 }
@@ -38,13 +40,13 @@ mixin _$SearchEvent {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(DiscoveredDevice device),
+    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(DiscoveredDevice device),
+    Result acceptConnection(User discoveredUser, bool acceptOrReject),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -113,7 +115,7 @@ class _$StartSearching implements StartSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(DiscoveredDevice device),
+    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
@@ -126,7 +128,7 @@ class _$StartSearching implements StartSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(DiscoveredDevice device),
+    Result acceptConnection(User discoveredUser, bool acceptOrReject),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -206,7 +208,7 @@ class _$StopSearching implements StopSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(DiscoveredDevice device),
+    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
@@ -219,7 +221,7 @@ class _$StopSearching implements StopSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(DiscoveredDevice device),
+    Result acceptConnection(User discoveredUser, bool acceptOrReject),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -266,9 +268,9 @@ abstract class $AcceptConnectionCopyWith<$Res> {
   factory $AcceptConnectionCopyWith(
           AcceptConnection value, $Res Function(AcceptConnection) then) =
       _$AcceptConnectionCopyWithImpl<$Res>;
-  $Res call({DiscoveredDevice device});
+  $Res call({User discoveredUser, bool acceptOrReject});
 
-  $DiscoveredDeviceCopyWith<$Res> get device;
+  $UserCopyWith<$Res> get discoveredUser;
 }
 
 class _$AcceptConnectionCopyWithImpl<$Res>
@@ -283,46 +285,63 @@ class _$AcceptConnectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object device = freezed,
+    Object discoveredUser = freezed,
+    Object acceptOrReject = freezed,
   }) {
     return _then(AcceptConnection(
-      device: device == freezed ? _value.device : device as DiscoveredDevice,
+      discoveredUser: discoveredUser == freezed
+          ? _value.discoveredUser
+          : discoveredUser as User,
+      acceptOrReject: acceptOrReject == freezed
+          ? _value.acceptOrReject
+          : acceptOrReject as bool,
     ));
   }
 
   @override
-  $DiscoveredDeviceCopyWith<$Res> get device {
-    if (_value.device == null) {
+  $UserCopyWith<$Res> get discoveredUser {
+    if (_value.discoveredUser == null) {
       return null;
     }
-    return $DiscoveredDeviceCopyWith<$Res>(_value.device, (value) {
-      return _then(_value.copyWith(device: value));
+    return $UserCopyWith<$Res>(_value.discoveredUser, (value) {
+      return _then(_value.copyWith(discoveredUser: value));
     });
   }
 }
 
 class _$AcceptConnection implements AcceptConnection {
-  const _$AcceptConnection({@required this.device}) : assert(device != null);
+  const _$AcceptConnection(
+      {@required this.discoveredUser, @required this.acceptOrReject})
+      : assert(discoveredUser != null),
+        assert(acceptOrReject != null);
 
   @override
-  final DiscoveredDevice device;
+  final User discoveredUser;
+  @override
+  final bool acceptOrReject;
 
   @override
   String toString() {
-    return 'SearchEvent.acceptConnection(device: $device)';
+    return 'SearchEvent.acceptConnection(discoveredUser: $discoveredUser, acceptOrReject: $acceptOrReject)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is AcceptConnection &&
-            (identical(other.device, device) ||
-                const DeepCollectionEquality().equals(other.device, device)));
+            (identical(other.discoveredUser, discoveredUser) ||
+                const DeepCollectionEquality()
+                    .equals(other.discoveredUser, discoveredUser)) &&
+            (identical(other.acceptOrReject, acceptOrReject) ||
+                const DeepCollectionEquality()
+                    .equals(other.acceptOrReject, acceptOrReject)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(device);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(discoveredUser) ^
+      const DeepCollectionEquality().hash(acceptOrReject);
 
   @override
   $AcceptConnectionCopyWith<AcceptConnection> get copyWith =>
@@ -333,12 +352,12 @@ class _$AcceptConnection implements AcceptConnection {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(DiscoveredDevice device),
+    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
     assert(acceptConnection != null);
-    return acceptConnection(device);
+    return acceptConnection(discoveredUser, acceptOrReject);
   }
 
   @override
@@ -346,12 +365,12 @@ class _$AcceptConnection implements AcceptConnection {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(DiscoveredDevice device),
+    Result acceptConnection(User discoveredUser, bool acceptOrReject),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (acceptConnection != null) {
-      return acceptConnection(device);
+      return acceptConnection(discoveredUser, acceptOrReject);
     }
     return orElse();
   }
@@ -386,10 +405,12 @@ class _$AcceptConnection implements AcceptConnection {
 }
 
 abstract class AcceptConnection implements SearchEvent {
-  const factory AcceptConnection({@required DiscoveredDevice device}) =
-      _$AcceptConnection;
+  const factory AcceptConnection(
+      {@required User discoveredUser,
+      @required bool acceptOrReject}) = _$AcceptConnection;
 
-  DiscoveredDevice get device;
+  User get discoveredUser;
+  bool get acceptOrReject;
   $AcceptConnectionCopyWith<AcceptConnection> get copyWith;
 }
 
@@ -405,7 +426,7 @@ class _$SearchStateTearOff {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      Option<Either<ConnectionFailure, Map<String, String>>>
+      Option<List<Either<ConnectionFailure, User>>>
           connectionFailureOrDiscoveredDevice}) {
     return _SearchState(
       isSearching: isSearching,
@@ -423,7 +444,7 @@ mixin _$SearchState {
   bool get isSearching;
   bool get isLoading;
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
-  Option<Either<ConnectionFailure, Map<String, String>>>
+  Option<List<Either<ConnectionFailure, User>>>
       get connectionFailureOrDiscoveredDevice;
 
   $SearchStateCopyWith<SearchState> get copyWith;
@@ -437,7 +458,7 @@ abstract class $SearchStateCopyWith<$Res> {
       {bool isSearching,
       bool isLoading,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
-      Option<Either<ConnectionFailure, Map<String, String>>>
+      Option<List<Either<ConnectionFailure, User>>>
           connectionFailureOrDiscoveredDevice});
 }
 
@@ -468,7 +489,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
           connectionFailureOrDiscoveredDevice == freezed
               ? _value.connectionFailureOrDiscoveredDevice
               : connectionFailureOrDiscoveredDevice
-                  as Option<Either<ConnectionFailure, Map<String, String>>>,
+                  as Option<List<Either<ConnectionFailure, User>>>,
     ));
   }
 }
@@ -483,7 +504,7 @@ abstract class _$SearchStateCopyWith<$Res>
       {bool isSearching,
       bool isLoading,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
-      Option<Either<ConnectionFailure, Map<String, String>>>
+      Option<List<Either<ConnectionFailure, User>>>
           connectionFailureOrDiscoveredDevice});
 }
 
@@ -516,7 +537,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
           connectionFailureOrDiscoveredDevice == freezed
               ? _value.connectionFailureOrDiscoveredDevice
               : connectionFailureOrDiscoveredDevice
-                  as Option<Either<ConnectionFailure, Map<String, String>>>,
+                  as Option<List<Either<ConnectionFailure, User>>>,
     ));
   }
 }
@@ -539,7 +560,7 @@ class _$_SearchState implements _SearchState {
   final Option<Either<ConnectionFailure, Unit>>
       connectionFailureOrSuccessOption;
   @override
-  final Option<Either<ConnectionFailure, Map<String, String>>>
+  final Option<List<Either<ConnectionFailure, User>>>
       connectionFailureOrDiscoveredDevice;
 
   @override
@@ -591,7 +612,7 @@ abstract class _SearchState implements SearchState {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      Option<Either<ConnectionFailure, Map<String, String>>>
+      Option<List<Either<ConnectionFailure, User>>>
           connectionFailureOrDiscoveredDevice}) = _$_SearchState;
 
   @override
@@ -601,7 +622,7 @@ abstract class _SearchState implements SearchState {
   @override
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
   @override
-  Option<Either<ConnectionFailure, Map<String, String>>>
+  Option<List<Either<ConnectionFailure, User>>>
       get connectionFailureOrDiscoveredDevice;
   @override
   _$SearchStateCopyWith<_SearchState> get copyWith;

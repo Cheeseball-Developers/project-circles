@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
+import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
 
 @LazySingleton()
@@ -17,7 +19,7 @@ class NearbyConnections {
   String _endName = ""; //currently connected device name
   File _tempFile; //store file mapped to corresponding payloadId
   Map<int, String> map = {};
-  Map<String, String> discoveredDevices;
+  User discoveredDevice;
   Map<String, String> members; //all the devices connected to host
   String host; // host username
 
@@ -118,7 +120,7 @@ class NearbyConnections {
   }
 
   //Start Discovering
-  Stream<Either<ConnectionFailure, Map<String, String>>>
+  Stream<Either<ConnectionFailure, User>>
       startDiscovering() async* {
     debugPrint("Discovering....");
     debugPrint("this is my username: $_username");
@@ -128,7 +130,9 @@ class NearbyConnections {
       serviceId: _serviceId,
       onEndpointFound: (String id, String name, String serviceId) async {
         //TODO: stream the device names found
-        discoveredDevices[id] = name;
+
+        discoveredDevice = User(uid: UniqueId.fromUniqueString(id) , name: Name(name));
+
         debugPrint("Connection found at id: $id and name: $name");
 
         //request a connection which thereby calls onConnection init
@@ -145,12 +149,11 @@ class NearbyConnections {
       },
       onEndpointLost: (String id) {
         //TODO: Print that endpoint is lost or disconnected to the endpoint and remove a member
-        discoveredDevices.remove(id);
         debugPrint("Endpoint lost to host $id");
       },
     );
     if (a) {
-      yield right(discoveredDevices);
+      yield right(discoveredDevice);
     }
     yield left(const ConnectionFailure.unexpected());
   }
