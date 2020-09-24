@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -22,36 +23,50 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   CurrentCircleBloc() : super(const CurrentCircleState.initial());
 
   @override
-  Stream<CurrentCircleState> mapEventToState(
-    CurrentCircleEvent event,
-  ) async* {
+  Stream<CurrentCircleState> mapEventToState(CurrentCircleEvent event,) async* {
     final nearbyConnections = getIt<NearbyConnections>();
-    yield* event.map(startCircle: (e) async* {
-      yield const CurrentCircleState.isStarting();
-      final Either<ConnectionFailure, Unit> startAdvertising =
-          await nearbyConnections.startAdvertising();
+    yield* event.map(
+        startCircle: (e) async* {
+          final Either<AppsLoadFailure,
+              bool> startAdvertising = await nearbyConnections
+              .startAdvertising();
+          yield* startAdvertising.fold((AppsLoadFailure failure) async* {
+            //TODO Show in the ui that eror has occured
+            debugPrint("Some error has occured, more precisely $failure");
+          }, (bool success) async* {
+            print(nearbyConnections.members);
+            //e.host = nearbyConnections.host;
+          });
 
-      yield* startAdvertising.fold((failure) async* {
-        //TODO Show in the ui that error has occurred
-        debugPrint("Some error has occurred, more precisely $failure");
-      }, (success) async* {
-        print(nearbyConnections.members);
-        //e.host = nearbyConnections.host;
-      });
-
-      yield CurrentCircleState.hasJoined(host: e.host, members: <User>[]);
-    }, fileSent: (e) async* {
-      //nearbyConnections.sendFilePayload(files: tu bata de files ke list);
-      yield null;
-    }, fileReceived: (e) async* {
-      yield null;
-    }, memberLeft: (e) async* {
-      yield null;
-    }, leaveCircle: (e) async* {
-      nearbyConnections.stopAllEndpoints();
-    }, closeCircle: (e) async* {
-      nearbyConnections.stopAdvertising();
-      yield const CurrentCircleState.initial();
-    });
+          yield CurrentCircleState.hasJoined(host: e.host,
+              members: <User>[],
+              selectedFiles: <File>[],
+              filesSentPopUp: false);
+        },
+        sendFiles: (e) async* {
+          // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+          // TODO: nearbyConnections.sendFilePayload(files: tu bata de files ke list);
+        },
+        filesSent: (e) async* {
+          // TODO: Call this when files are sent successfully
+          yield* state.maybeMap(hasJoined: (state) async* {
+            yield state.copyWith(filesSentPopUp: true);
+          }, orElse: () async* {
+            yield const CurrentCircleState.hasFailed(failure: ConnectionFailure.unexpected());
+          },);
+        },
+        fileReceived: (e) async* {
+          yield null;
+        },
+        memberLeft: (e) async* {
+          yield null;
+        },
+        leaveCircle: (e) async* {
+          nearbyConnections.stopAllEndpoints();
+        },
+        closeCircle: (e) async* {
+          nearbyConnections.stopAdvertising();
+          yield const CurrentCircleState.initial();
+        });
   }
 }
