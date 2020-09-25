@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -31,11 +30,18 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       nearbyConnections.enableLocation();
 
       List<Either<ConnectionFailure, User>> failureOrDiscoveredDevices;
-
-      nearbyConnections.startDiscovering().listen((event) {
+      StreamSubscription <Either<ConnectionFailure,User>> _discoveredDevicesStreamSubsciption;
+      _discoveredDevicesStreamSubsciption = nearbyConnections.startDiscovering().listen((event) {
+        debugPrint("this should be invoked only when the event is sent");
         print(event);
-        failureOrDiscoveredDevices.add(event);
-      }, onError: (e) {
+        if (event==Right(User)){
+          failureOrDiscoveredDevices.add(event);
+        }
+        else {
+          return;
+            }
+        }
+      , onError: (e) {
         debugPrint("Can't get the device please try again $e");
       }, cancelOnError: false); //
       yield state.copyWith(

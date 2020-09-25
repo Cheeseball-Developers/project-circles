@@ -44,7 +44,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         },
         sendFiles: (e) async* {
           // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
-          // TODO: nearbyConnections.sendFilePayload(files: tu bata de files ke list);
+          yield* state.maybeMap(
+            hasJoined: (state) async* {
+              nearbyConnections.sendFilePayload(files: state.selectedFiles);
+            },
+            orElse: () async* {yield null;}
+          );
         },
         filesSent: (e) async* {
           // TODO: Call this when files are sent successfully
