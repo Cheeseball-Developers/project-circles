@@ -9,12 +9,13 @@ abstract class SearchState with _$SearchState {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-        Option<List<Either<ConnectionFailure, User>>> connectionFailureOrDiscoveredDevice
+        @required Option<List<Either<ConnectionFailure, User>>> connectionFailureOrDiscoveredDevice
   }
       ) = _SearchState;
 
   factory SearchState.initial() => SearchState(
       isSearching: true,
       isLoading: false,
-      connectionFailureOrSuccessOption: none());
+      connectionFailureOrSuccessOption: none(),
+  connectionFailureOrDiscoveredDevice: none());
 }

@@ -28,7 +28,7 @@ class JoinOrCreateCircle extends StatelessWidget {
         ),
         body: Center(
           child: Material(
-            color: Colors.red,
+            color: Colors.transparent,
             child: Stack(
               alignment: AlignmentDirectional.center,
               children: [SearchButton(), AvailableCirclesOverlay()],
