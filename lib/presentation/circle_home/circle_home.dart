@@ -23,18 +23,29 @@ class CircleHome extends StatelessWidget {
       builder: (context, currentCircleState) => currentCircleState.map(
         initial: (_) => Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
-          body: Center(child: Text('Loading...', style: Theme.of(context).accentTextTheme.bodyText2,)),
+          body: Center(
+              child: Text(
+            'Loading...',
+            style: Theme.of(context).accentTextTheme.bodyText2,
+          )),
         ),
         isStarting: (_) => Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
-          body: Center(child: Text('Creating Circle...', style: Theme.of(context).accentTextTheme.bodyText2,)),
+          body: Center(
+              child: Text(
+            'Creating Circle...',
+            style: Theme.of(context).accentTextTheme.bodyText2,
+          )),
         ),
         isJoining: (_) => Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
-          body: Center(child: Text('Joining Circle...', style: Theme.of(context).accentTextTheme.bodyText2,)),
+          body: Center(
+              child: Text(
+            'Joining Circle...',
+            style: Theme.of(context).accentTextTheme.bodyText2,
+          )),
         ),
-        hasJoined: (currentCircleState) => 
-        WillPopScope(
+        hasJoined: (currentCircleState) => WillPopScope(
           onWillPop: () => showDialog(
               context: context,
               child: context.bloc<SettingsBloc>().state.maybeMap(
@@ -117,7 +128,11 @@ class CircleHome extends StatelessWidget {
                             ),
                             IconButton(
                               icon: const Icon(Icons.send),
-                              onPressed: () {},
+                              onPressed: () {
+                                context.bloc<CurrentCircleBloc>().add(
+                                      const CurrentCircleEvent.sendFiles(),
+                                    );
+                              },
                             ),
                             IconButton(
                               icon: const Icon(Icons.people),

@@ -410,8 +410,9 @@ class _$SearchStateTearOff {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      Option<List<Either<ConnectionFailure, User>>>
-          connectionFailureOrDiscoveredDevice}) {
+      @required
+          Option<List<Either<ConnectionFailure, User>>>
+              connectionFailureOrDiscoveredDevice}) {
     return _SearchState(
       isSearching: isSearching,
       isLoading: isLoading,
@@ -531,10 +532,11 @@ class _$_SearchState implements _SearchState {
       {@required this.isSearching,
       @required this.isLoading,
       @required this.connectionFailureOrSuccessOption,
-      this.connectionFailureOrDiscoveredDevice})
+      @required this.connectionFailureOrDiscoveredDevice})
       : assert(isSearching != null),
         assert(isLoading != null),
-        assert(connectionFailureOrSuccessOption != null);
+        assert(connectionFailureOrSuccessOption != null),
+        assert(connectionFailureOrDiscoveredDevice != null);
 
   @override
   final bool isSearching;
@@ -596,8 +598,9 @@ abstract class _SearchState implements SearchState {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      Option<List<Either<ConnectionFailure, User>>>
-          connectionFailureOrDiscoveredDevice}) = _$_SearchState;
+      @required
+          Option<List<Either<ConnectionFailure, User>>>
+              connectionFailureOrDiscoveredDevice}) = _$_SearchState;
 
   @override
   bool get isSearching;

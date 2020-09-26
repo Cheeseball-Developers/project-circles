@@ -65,7 +65,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           }
 
         },
-
+        addFile: (e) async* {
+          yield* state.maybeMap(hasJoined: (state) async*  {
+            state.selectedFiles.addAll({e.file: 0.0});
+            yield state.copyWith(selectedFiles: state.selectedFiles);
+          }, orElse: () async* {yield null;});
+        },
         sendFiles: (e) async* {
           // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
           yield* state.maybeMap(
