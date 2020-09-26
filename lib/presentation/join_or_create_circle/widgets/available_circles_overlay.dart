@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
@@ -19,26 +20,12 @@ class AvailableCirclesOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final discoveredDevices = [
-      User(uid: UniqueId(), name: Name('1')),
-      User(uid: UniqueId(), name: Name('2')),
-      User(uid: UniqueId(), name: Name('3')),
-      User(uid: UniqueId(), name: Name('4')),
-      User(uid: UniqueId(), name: Name('5')),
-      User(uid: UniqueId(), name: Name('6')),
-      User(uid: UniqueId(), name: Name('7')),
-      User(uid: UniqueId(), name: Name('8')),
-      User(uid: UniqueId(), name: Name('9')),
-      User(uid: UniqueId(), name: Name('10')),
-      User(uid: UniqueId(), name: Name('11')),
-      User(uid: UniqueId(), name: Name('12')),
-    ];
     final mediaQuery = MediaQuery.of(context);
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) => state.isSearching
           ? state.connectionFailureOrDiscoveredDevice.fold(
               () => Container(),
-              (discoveredDevice) => Stack(
+              (discoveredDevices) => Stack(
                 children: List.generate(
                     discoveredDevices.length > 8 ? 8 : discoveredDevices.length,
                     (index) {
@@ -46,7 +33,7 @@ class AvailableCirclesOverlay extends StatelessWidget {
                     left: getX(index, mediaQuery.size.width / 2),
                     bottom: getY(index, mediaQuery.size.height / 2),
                     child: index < 7 ? DiscoveredCircleIcon(
-                      user: discoveredDevices[index],
+                      user: discoveredDevices[index].fold((l) => null, id),
                     ) : GestureDetector(
                       onTap: () => showDialog(context: context, child: AllDiscoveredDevicesPopUp()), // TODO: Add list UI to show all devices
                       child: Column(
@@ -60,7 +47,7 @@ class AvailableCirclesOverlay extends StatelessWidget {
                 }), // TODO: Handle this plx
               ),
             )
-          : Container(),
+          : Container(), // TODO: Handle error state
     );
   }
 }

@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/apps_tab_view/apps_tab_view_bloc.dart';
+import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 
 class AppIconWithName extends StatelessWidget {
   final int index;
@@ -21,9 +24,14 @@ class AppIconWithName extends StatelessWidget {
             child: InkWell(
               borderRadius: BorderRadius.circular(8.0),
               onTap: () {
-                  context
-                      .bloc<AppsTabViewBloc>()
-                      .add(AppsTabViewEvent.toggleAppSelection(index));
+                context.bloc<AppsTabViewBloc>().add(
+                      AppsTabViewEvent.toggleAppSelection(index),
+                    );
+                context.bloc<CurrentCircleBloc>().add(
+                      CurrentCircleEvent.addFile(
+                        file: File(state.apps[index].getOrCrash().apkFilePath),
+                      ),
+                    );
               },
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
@@ -44,7 +52,10 @@ class AppIconWithName extends StatelessWidget {
                       textAlign: TextAlign.center,
                       overflow: TextOverflow.ellipsis,
                       style: state.apps[index].selected
-                          ? Theme.of(context).textTheme.bodyText2.copyWith(color: Colors.white)
+                          ? Theme.of(context)
+                              .textTheme
+                              .bodyText2
+                              .copyWith(color: Colors.white)
                           : Theme.of(context).textTheme.bodyText2,
                     )
                   ],
