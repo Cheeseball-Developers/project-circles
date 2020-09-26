@@ -27,25 +27,53 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
     yield* event.map(
         startCircle: (e) async* {
           yield const CurrentCircleState.isStarting();
-          final Either<ConnectionFailure,
-              Unit> startAdvertising = await nearbyConnections
-              .startAdvertising();
-          yield* startAdvertising.fold((ConnectionFailure failure) async* {
-            //TODO Show in the ui that eror has occured
-            debugPrint("Some error has occured, more precisely $failure");
-          }, (_) async* {
-            print(nearbyConnections.members);
-            //e.host = nearbyConnections.host;
-          });
+          List<Either<ConnectionFailure, User>> failureOrIncomingRequests;
+          StreamSubscription <Either<ConnectionFailure,User>> _incomingRequestsStreamSubsciption;
+           nearbyConnections.startAdvertising().listen((event) {
+             if(event!=null){
+               failureOrIncomingRequests.add(event);
+             }
+           },
+           onError: (_){
+             debugPrint("Error! $_");
+           },);
 
           yield CurrentCircleState.hasJoined(host: e.host,
               members: <User>[],
               selectedFiles: <File, double>{},
               filesSentPopUp: false);
         },
+        acceptOrReject: (AcceptOrReject request) async* {
+          if(request.acceptConnection){
+            final Either<ConnectionFailure,Unit> _acceptOrFailure = await nearbyConnections.acceptInConnection(
+                endId: request.requestingUser.uid.getOrCrash());
+                yield* state.maybeMap(
+                    hasJoined: (state) async*{
+                      yield state.copyWith(
+                        members: nearbyConnections.members
+                      );
+                    },
+                    orElse: ()async*{
+                      yield null;
+                    });
+
+          }
+          else{
+            //reject a connection
+            final Either<ConnectionFailure, Unit> _rejectOrFailure = await nearbyConnections.rejectConnection(endId:
+            request.requestingUser.uid.getOrCrash());
+          }
+
+        },
+
         sendFiles: (e) async* {
           // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
-          // TODO: nearbyConnections.sendFilePayload(files: tu bata de files ke list);
+          yield* state.maybeMap(
+            hasJoined: (state) async* {
+              nearbyConnections.sendFilePayload(files: state.selectedFiles);
+            },
+            orElse: () async* {yield null;}
+          );
         },
         filesSent: (e) async* {
           // TODO: Call this when files are sent successfully
@@ -67,6 +95,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         closeCircle: (e) async* {
           nearbyConnections.stopAdvertising();
           yield const CurrentCircleState.initial();
-        });
+        }, );
   }
 }

@@ -23,11 +23,9 @@ class _$SearchEventTearOff {
   }
 
 // ignore: unused_element
-  AcceptConnection acceptConnection(
-      {@required User discoveredUser, @required bool acceptOrReject}) {
+  AcceptConnection requestConnection({@required User discoveredUser}) {
     return AcceptConnection(
       discoveredUser: discoveredUser,
-      acceptOrReject: acceptOrReject,
     );
   }
 }
@@ -40,26 +38,26 @@ mixin _$SearchEvent {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    @required Result requestConnection(User discoveredUser),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    Result requestConnection(User discoveredUser),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result stopSearching(StopSearching value),
-    @required Result acceptConnection(AcceptConnection value),
+    @required Result requestConnection(AcceptConnection value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result stopSearching(StopSearching value),
-    Result acceptConnection(AcceptConnection value),
+    Result requestConnection(AcceptConnection value),
     @required Result orElse(),
   });
 }
@@ -115,11 +113,11 @@ class _$StartSearching implements StartSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
-    assert(acceptConnection != null);
+    assert(requestConnection != null);
     return startSearching();
   }
 
@@ -128,7 +126,7 @@ class _$StartSearching implements StartSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    Result requestConnection(User discoveredUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -143,11 +141,11 @@ class _$StartSearching implements StartSearching {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result stopSearching(StopSearching value),
-    @required Result acceptConnection(AcceptConnection value),
+    @required Result requestConnection(AcceptConnection value),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
-    assert(acceptConnection != null);
+    assert(requestConnection != null);
     return startSearching(this);
   }
 
@@ -156,7 +154,7 @@ class _$StartSearching implements StartSearching {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result stopSearching(StopSearching value),
-    Result acceptConnection(AcceptConnection value),
+    Result requestConnection(AcceptConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -208,11 +206,11 @@ class _$StopSearching implements StopSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
-    assert(acceptConnection != null);
+    assert(requestConnection != null);
     return stopSearching();
   }
 
@@ -221,7 +219,7 @@ class _$StopSearching implements StopSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    Result requestConnection(User discoveredUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -236,11 +234,11 @@ class _$StopSearching implements StopSearching {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result stopSearching(StopSearching value),
-    @required Result acceptConnection(AcceptConnection value),
+    @required Result requestConnection(AcceptConnection value),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
-    assert(acceptConnection != null);
+    assert(requestConnection != null);
     return stopSearching(this);
   }
 
@@ -249,7 +247,7 @@ class _$StopSearching implements StopSearching {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result stopSearching(StopSearching value),
-    Result acceptConnection(AcceptConnection value),
+    Result requestConnection(AcceptConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -268,7 +266,7 @@ abstract class $AcceptConnectionCopyWith<$Res> {
   factory $AcceptConnectionCopyWith(
           AcceptConnection value, $Res Function(AcceptConnection) then) =
       _$AcceptConnectionCopyWithImpl<$Res>;
-  $Res call({User discoveredUser, bool acceptOrReject});
+  $Res call({User discoveredUser});
 
   $UserCopyWith<$Res> get discoveredUser;
 }
@@ -286,15 +284,11 @@ class _$AcceptConnectionCopyWithImpl<$Res>
   @override
   $Res call({
     Object discoveredUser = freezed,
-    Object acceptOrReject = freezed,
   }) {
     return _then(AcceptConnection(
       discoveredUser: discoveredUser == freezed
           ? _value.discoveredUser
           : discoveredUser as User,
-      acceptOrReject: acceptOrReject == freezed
-          ? _value.acceptOrReject
-          : acceptOrReject as bool,
     ));
   }
 
@@ -310,19 +304,15 @@ class _$AcceptConnectionCopyWithImpl<$Res>
 }
 
 class _$AcceptConnection implements AcceptConnection {
-  const _$AcceptConnection(
-      {@required this.discoveredUser, @required this.acceptOrReject})
-      : assert(discoveredUser != null),
-        assert(acceptOrReject != null);
+  const _$AcceptConnection({@required this.discoveredUser})
+      : assert(discoveredUser != null);
 
   @override
   final User discoveredUser;
-  @override
-  final bool acceptOrReject;
 
   @override
   String toString() {
-    return 'SearchEvent.acceptConnection(discoveredUser: $discoveredUser, acceptOrReject: $acceptOrReject)';
+    return 'SearchEvent.requestConnection(discoveredUser: $discoveredUser)';
   }
 
   @override
@@ -331,17 +321,13 @@ class _$AcceptConnection implements AcceptConnection {
         (other is AcceptConnection &&
             (identical(other.discoveredUser, discoveredUser) ||
                 const DeepCollectionEquality()
-                    .equals(other.discoveredUser, discoveredUser)) &&
-            (identical(other.acceptOrReject, acceptOrReject) ||
-                const DeepCollectionEquality()
-                    .equals(other.acceptOrReject, acceptOrReject)));
+                    .equals(other.discoveredUser, discoveredUser)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(discoveredUser) ^
-      const DeepCollectionEquality().hash(acceptOrReject);
+      const DeepCollectionEquality().hash(discoveredUser);
 
   @override
   $AcceptConnectionCopyWith<AcceptConnection> get copyWith =>
@@ -352,12 +338,12 @@ class _$AcceptConnection implements AcceptConnection {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result stopSearching(),
-    @required Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
-    assert(acceptConnection != null);
-    return acceptConnection(discoveredUser, acceptOrReject);
+    assert(requestConnection != null);
+    return requestConnection(discoveredUser);
   }
 
   @override
@@ -365,12 +351,12 @@ class _$AcceptConnection implements AcceptConnection {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result stopSearching(),
-    Result acceptConnection(User discoveredUser, bool acceptOrReject),
+    Result requestConnection(User discoveredUser),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (acceptConnection != null) {
-      return acceptConnection(discoveredUser, acceptOrReject);
+    if (requestConnection != null) {
+      return requestConnection(discoveredUser);
     }
     return orElse();
   }
@@ -380,12 +366,12 @@ class _$AcceptConnection implements AcceptConnection {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result stopSearching(StopSearching value),
-    @required Result acceptConnection(AcceptConnection value),
+    @required Result requestConnection(AcceptConnection value),
   }) {
     assert(startSearching != null);
     assert(stopSearching != null);
-    assert(acceptConnection != null);
-    return acceptConnection(this);
+    assert(requestConnection != null);
+    return requestConnection(this);
   }
 
   @override
@@ -393,24 +379,22 @@ class _$AcceptConnection implements AcceptConnection {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result stopSearching(StopSearching value),
-    Result acceptConnection(AcceptConnection value),
+    Result requestConnection(AcceptConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (acceptConnection != null) {
-      return acceptConnection(this);
+    if (requestConnection != null) {
+      return requestConnection(this);
     }
     return orElse();
   }
 }
 
 abstract class AcceptConnection implements SearchEvent {
-  const factory AcceptConnection(
-      {@required User discoveredUser,
-      @required bool acceptOrReject}) = _$AcceptConnection;
+  const factory AcceptConnection({@required User discoveredUser}) =
+      _$AcceptConnection;
 
   User get discoveredUser;
-  bool get acceptOrReject;
   $AcceptConnectionCopyWith<AcceptConnection> get copyWith;
 }
 
@@ -426,9 +410,8 @@ class _$SearchStateTearOff {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      @required
-          Option<List<Either<ConnectionFailure, User>>>
-              connectionFailureOrDiscoveredDevice}) {
+      Option<List<Either<ConnectionFailure, User>>>
+          connectionFailureOrDiscoveredDevice}) {
     return _SearchState(
       isSearching: isSearching,
       isLoading: isLoading,
@@ -548,11 +531,10 @@ class _$_SearchState implements _SearchState {
       {@required this.isSearching,
       @required this.isLoading,
       @required this.connectionFailureOrSuccessOption,
-      @required this.connectionFailureOrDiscoveredDevice})
+      this.connectionFailureOrDiscoveredDevice})
       : assert(isSearching != null),
         assert(isLoading != null),
-        assert(connectionFailureOrSuccessOption != null),
-        assert(connectionFailureOrDiscoveredDevice != null);
+        assert(connectionFailureOrSuccessOption != null);
 
   @override
   final bool isSearching;
@@ -614,9 +596,8 @@ abstract class _SearchState implements SearchState {
       @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      @required
-          Option<List<Either<ConnectionFailure, User>>>
-              connectionFailureOrDiscoveredDevice}) = _$_SearchState;
+      Option<List<Either<ConnectionFailure, User>>>
+          connectionFailureOrDiscoveredDevice}) = _$_SearchState;
 
   @override
   bool get isSearching;
