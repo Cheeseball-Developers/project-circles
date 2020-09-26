@@ -39,7 +39,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         }
         else {
           return;
-            }
+        }
         }
       , onError: (e) {
         debugPrint("Can't get the device please try again $e");
@@ -57,12 +57,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isLoading: false,
           isSearching: false,
           connectionFailureOrSuccessOption: none());
-    }, acceptConnection: (AcceptConnection user) async* {
+    }, requestConnection: (AcceptConnection user) async* {
       final Either<ConnectionFailure, Unit> requestOrFail =
           await nearbyConnections.requestConnection(
               username: user.discoveredUser.name.getOrCrash(),
               endpointId: user.discoveredUser.uid.getOrCrash(),
-              acceptConnection: user.acceptOrReject);
+              acceptConnection: true);
       yield state.copyWith(
           isLoading: true,
           isSearching: true,
