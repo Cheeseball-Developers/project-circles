@@ -9,7 +9,7 @@ ThemeData defaultTheme() {
             fontFamily: 'Quicksand',
             fontWeight: FontWeight.w400),
         headline6: const TextStyle(
-            color: Colors.white,
+            color: Colors.black87,
             fontSize: 20.0,
             fontFamily: 'Quicksand',
             fontWeight: FontWeight.w500),
@@ -26,7 +26,7 @@ ThemeData defaultTheme() {
         bodyText2: const TextStyle(
             color: Colors.black87, fontSize: 14.0, fontFamily: 'Quicksand'),
         button: const TextStyle(
-            color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'),
+            color: Colors.lightBlue, fontSize: 14.0, fontFamily: 'Quicksand'),
         caption: const TextStyle(
             color: Colors.white,
             fontSize: 12.0,
@@ -36,6 +36,7 @@ ThemeData defaultTheme() {
 
   final ThemeData base = ThemeData.light();
   return base.copyWith(
+    indicatorColor: Colors.lightBlue,
     textTheme: _defaultTextTheme(base.textTheme),
     primaryColor: Colors.lightBlue,
     accentColor: Colors.white,
@@ -91,6 +92,7 @@ ThemeData darkTheme() {
 
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
+    indicatorColor: Colors.teal,
     textTheme: _defaultTextTheme(base.textTheme),
     primaryColor: Colors.black,
     accentColor: Colors.teal,
