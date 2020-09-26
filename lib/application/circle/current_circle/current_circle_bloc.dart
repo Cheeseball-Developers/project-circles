@@ -26,6 +26,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
     final nearbyConnections = getIt<NearbyConnections>();
     yield* event.map(
         startCircle: (e) async* {
+          yield const CurrentCircleState.isStarting();
           final Either<ConnectionFailure,
               Unit> startAdvertising = await nearbyConnections
               .startAdvertising();

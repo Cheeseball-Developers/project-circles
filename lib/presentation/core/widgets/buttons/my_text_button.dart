@@ -18,18 +18,20 @@ class MyTextButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(8.0),
           border: Border.all(color: Theme.of(context).buttonColor)),
       child: InkWell(
-          onTap: onTap,
-          child: Padding(
-            padding:
-            const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text(text,
-                style: Theme.of(context).textTheme.button),
-          )),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.button.copyWith(
+                color: type == ButtonType.primary
+                    ? Theme.of(context).cardColor
+                    : Theme.of(context).textTheme.button.color),
+          ),
+        ),
+      ),
     );
   }
 }
 
-enum ButtonType {
-  primary,
-  secondary
-}
+enum ButtonType { primary, secondary }
