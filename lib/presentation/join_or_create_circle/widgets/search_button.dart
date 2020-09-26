@@ -110,17 +110,19 @@ class _SearchButtonState extends State<SearchButton>
                   radius: radius1.value),
             ),
             GestureDetector(
-              onTap: state.isSearching
-                  ? () => context
-                      .bloc<SearchBloc>()
-                      .add(const SearchEvent.stopSearching())
-                  : () => context
-                      .bloc<SearchBloc>()
-                      .add(const SearchEvent.startSearching()),
+              onTap: !state.isLoading
+                  ? state.isSearching
+                      ? () => context
+                          .bloc<SearchBloc>()
+                          .add(const SearchEvent.stopSearching())
+                      : () => context
+                          .bloc<SearchBloc>()
+                          .add(const SearchEvent.startSearching())
+                  : () {},
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: radius.value,
-                child: const Icon(Icons.search),
+                child: state.isLoading ? const CircularProgressIndicator() : const Icon(Icons.search),
               ),
             ),
           ],

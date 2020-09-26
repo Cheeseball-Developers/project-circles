@@ -465,7 +465,6 @@ abstract class AcceptOrReject implements CurrentCircleEvent {
   bool get acceptConnection;
   $AcceptOrRejectCopyWith<AcceptOrReject> get copyWith;
 }
-
 abstract class $SendFilesCopyWith<$Res> {
   factory $SendFilesCopyWith(SendFiles value, $Res Function(SendFiles) then) =
       _$SendFilesCopyWithImpl<$Res>;
