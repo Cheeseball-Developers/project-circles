@@ -65,6 +65,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       }); // TODO: Throw an error on illegal states to crash app
     }, selectDefaultDirectory: (e) async* {
       yield* state.maybeMap(hasLoaded: (state) async* {
+        state.copyWith(isLoading: true);
         final Option<SettingsFailure> failureOption =
             await _mySharedPreferences.setDirectory(
           directory: e.directory,
@@ -103,6 +104,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           key: 'darMode',
           value: !state.darkMode,
         );
+        print(failureOption.toString());
         yield state.copyWith(
           darkMode: failureOption.isNone() ? !state.darkMode : state.darkMode,
           isLoading: false,

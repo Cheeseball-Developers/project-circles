@@ -34,10 +34,18 @@ ThemeData defaultTheme() {
             fontFamily: 'Quicksand'));
   }
 
+  TextTheme _accentTextTheme(TextTheme base) {
+    return base.copyWith(
+      bodyText2: const TextStyle(
+        color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'),
+    );
+  }
+
   final ThemeData base = ThemeData.light();
   return base.copyWith(
     indicatorColor: Colors.lightBlue,
     textTheme: _defaultTextTheme(base.textTheme),
+    accentTextTheme: _accentTextTheme(base.textTheme),
     primaryColor: Colors.lightBlue,
     accentColor: Colors.white,
     cardColor: Colors.white,
