@@ -52,7 +52,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       acceptOrReject: (AcceptOrReject request) async* {
         if (request.acceptConnection) {
           final Either<ConnectionFailure, Unit> _acceptOrFailure =
-              await nearbyConnections.acceptInConnection(
+              await nearbyConnections.acceptConnection(
                   endId: request.requestingUser.uid.getOrCrash());
           yield* state.maybeMap(hasJoined: (state) async* {
             yield state.copyWith(members: nearbyConnections.members);

@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
+import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/all_discovered_devices_pop_up.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/discovered_circle_icon.dart';
 
