@@ -20,42 +20,43 @@ part 'current_circle_bloc.freezed.dart';
 @injectable
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   CurrentCircleBloc() : super(const CurrentCircleState.initial());
-
+  final nearbyConnections = getIt<NearbyConnections>();
   @override
   Stream<CurrentCircleState> mapEventToState(
     CurrentCircleEvent event,
   ) async* {
-    final nearbyConnections = getIt<NearbyConnections>();
+    StreamSubscription<User> _incomingRequestsStreamSubsciption;
     yield* event.map(
       startCircle: (e) async* {
         yield const CurrentCircleState.isStarting();
-        List<Either<ConnectionFailure, User>> failureOrIncomingRequests;
-        StreamSubscription<Either<ConnectionFailure, User>>
-            _incomingRequestsStreamSubsciption;
-        nearbyConnections.startAdvertising().listen(
-          (event) {
-            if (event != null) {
-              failureOrIncomingRequests.add(event);
-            }
-          },
-          onError: (_) {
-            debugPrint("Error! $_");
-          },
-        );
-
-        yield CurrentCircleState.hasJoined(
-            host: e.host,
-            members: <User>[],
-            selectedFiles: <File, double>{},
-            filesSentPopUp: false);
+        final Either<ConnectionFailure, Unit> failureOrStartAdvertising =
+            await nearbyConnections.startAdvertising();
+        _incomingRequestsStreamSubsciption =
+            nearbyConnections.incomingRequestStream.listen((event) {
+          debugPrint("A device found, wants to join");
+          add(CurrentCircleEvent.deviceRequestedConnection(user: event));
+        });
+      },
+      deviceRequestedConnection: (e) async* {
+        yield* state.maybeMap(
+            hasJoined: (state) async* {
+              state.members.addAll({e.user: true});
+              yield CurrentCircleState.hasJoined(
+                  host: nearbyConnections.host,
+                  members: state.members,
+                  selectedFiles: <File, double>{},
+                  filesSentPopUp: false);
+            },
+            orElse: () async* {});
       },
       acceptOrReject: (AcceptOrReject request) async* {
         if (request.acceptConnection) {
           final Either<ConnectionFailure, Unit> _acceptOrFailure =
-              await nearbyConnections.acceptInConnection(
+              await nearbyConnections.acceptConnection(
                   endId: request.requestingUser.uid.getOrCrash());
           yield* state.maybeMap(hasJoined: (state) async* {
-            yield state.copyWith(members: nearbyConnections.members);
+            state.members.update(request.requestingUser, (value) => true);
+            yield state.copyWith(members: state.members);
           }, orElse: () async* {
             yield null;
           });
@@ -64,6 +65,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           final Either<ConnectionFailure, Unit> _rejectOrFailure =
               await nearbyConnections.rejectConnection(
                   endId: request.requestingUser.uid.getOrCrash());
+          yield* state.maybeMap(
+              hasJoined: (state) async* {
+                state.members.remove(request.requestingUser);
+                yield state.copyWith(members: state.members);
+              },
+              orElse: () async* {});
         }
       },
       addFile: (e) async* {
@@ -106,6 +113,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       closeCircle: (e) async* {
         nearbyConnections.stopAdvertising();
         yield const CurrentCircleState.initial();
+        _incomingRequestsStreamSubsciption.cancel();
       },
     );
   }

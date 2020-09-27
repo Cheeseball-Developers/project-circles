@@ -30,8 +30,8 @@ class _$SearchEventTearOff {
   }
 
 // ignore: unused_element
-  AcceptConnection requestConnection({@required User discoveredUser}) {
-    return AcceptConnection(
+  RequestConnection requestConnection({@required User discoveredUser}) {
+    return RequestConnection(
       discoveredUser: discoveredUser,
     );
   }
@@ -61,14 +61,14 @@ mixin _$SearchEvent {
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
     @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(AcceptConnection value),
+    @required Result requestConnection(RequestConnection value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
     Result stopSearching(StopSearching value),
-    Result requestConnection(AcceptConnection value),
+    Result requestConnection(RequestConnection value),
     @required Result orElse(),
   });
 }
@@ -156,7 +156,7 @@ class _$StartSearching implements StartSearching {
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
     @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(AcceptConnection value),
+    @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -171,7 +171,7 @@ class _$StartSearching implements StartSearching {
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
     Result stopSearching(StopSearching value),
-    Result requestConnection(AcceptConnection value),
+    Result requestConnection(RequestConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -289,7 +289,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
     @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(AcceptConnection value),
+    @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -304,7 +304,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
     Result stopSearching(StopSearching value),
-    Result requestConnection(AcceptConnection value),
+    Result requestConnection(RequestConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -391,7 +391,7 @@ class _$StopSearching implements StopSearching {
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
     @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(AcceptConnection value),
+    @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -406,7 +406,7 @@ class _$StopSearching implements StopSearching {
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
     Result stopSearching(StopSearching value),
-    Result requestConnection(AcceptConnection value),
+    Result requestConnection(RequestConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -421,30 +421,30 @@ abstract class StopSearching implements SearchEvent {
   const factory StopSearching() = _$StopSearching;
 }
 
-abstract class $AcceptConnectionCopyWith<$Res> {
-  factory $AcceptConnectionCopyWith(
-          AcceptConnection value, $Res Function(AcceptConnection) then) =
-      _$AcceptConnectionCopyWithImpl<$Res>;
+abstract class $RequestConnectionCopyWith<$Res> {
+  factory $RequestConnectionCopyWith(
+          RequestConnection value, $Res Function(RequestConnection) then) =
+      _$RequestConnectionCopyWithImpl<$Res>;
   $Res call({User discoveredUser});
 
   $UserCopyWith<$Res> get discoveredUser;
 }
 
-class _$AcceptConnectionCopyWithImpl<$Res>
+class _$RequestConnectionCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
-    implements $AcceptConnectionCopyWith<$Res> {
-  _$AcceptConnectionCopyWithImpl(
-      AcceptConnection _value, $Res Function(AcceptConnection) _then)
-      : super(_value, (v) => _then(v as AcceptConnection));
+    implements $RequestConnectionCopyWith<$Res> {
+  _$RequestConnectionCopyWithImpl(
+      RequestConnection _value, $Res Function(RequestConnection) _then)
+      : super(_value, (v) => _then(v as RequestConnection));
 
   @override
-  AcceptConnection get _value => super._value as AcceptConnection;
+  RequestConnection get _value => super._value as RequestConnection;
 
   @override
   $Res call({
     Object discoveredUser = freezed,
   }) {
-    return _then(AcceptConnection(
+    return _then(RequestConnection(
       discoveredUser: discoveredUser == freezed
           ? _value.discoveredUser
           : discoveredUser as User,
@@ -462,8 +462,8 @@ class _$AcceptConnectionCopyWithImpl<$Res>
   }
 }
 
-class _$AcceptConnection implements AcceptConnection {
-  const _$AcceptConnection({@required this.discoveredUser})
+class _$RequestConnection implements RequestConnection {
+  const _$RequestConnection({@required this.discoveredUser})
       : assert(discoveredUser != null);
 
   @override
@@ -477,7 +477,7 @@ class _$AcceptConnection implements AcceptConnection {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is AcceptConnection &&
+        (other is RequestConnection &&
             (identical(other.discoveredUser, discoveredUser) ||
                 const DeepCollectionEquality()
                     .equals(other.discoveredUser, discoveredUser)));
@@ -489,8 +489,8 @@ class _$AcceptConnection implements AcceptConnection {
       const DeepCollectionEquality().hash(discoveredUser);
 
   @override
-  $AcceptConnectionCopyWith<AcceptConnection> get copyWith =>
-      _$AcceptConnectionCopyWithImpl<AcceptConnection>(this, _$identity);
+  $RequestConnectionCopyWith<RequestConnection> get copyWith =>
+      _$RequestConnectionCopyWithImpl<RequestConnection>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -529,7 +529,7 @@ class _$AcceptConnection implements AcceptConnection {
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
     @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(AcceptConnection value),
+    @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -544,7 +544,7 @@ class _$AcceptConnection implements AcceptConnection {
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
     Result stopSearching(StopSearching value),
-    Result requestConnection(AcceptConnection value),
+    Result requestConnection(RequestConnection value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -555,12 +555,12 @@ class _$AcceptConnection implements AcceptConnection {
   }
 }
 
-abstract class AcceptConnection implements SearchEvent {
-  const factory AcceptConnection({@required User discoveredUser}) =
-      _$AcceptConnection;
+abstract class RequestConnection implements SearchEvent {
+  const factory RequestConnection({@required User discoveredUser}) =
+      _$RequestConnection;
 
   User get discoveredUser;
-  $AcceptConnectionCopyWith<AcceptConnection> get copyWith;
+  $RequestConnectionCopyWith<RequestConnection> get copyWith;
 }
 
 class _$SearchStateTearOff {

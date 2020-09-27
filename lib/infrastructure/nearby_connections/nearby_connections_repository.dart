@@ -23,8 +23,12 @@ class NearbyConnections {
   User incomingRequest;
   List<User> members = <User>[]; //all the devices connected to host
   String host; // host username
-  final StreamController<User> onEndFound = StreamController<User>();
-  Stream<User> stream;
+  final StreamController<User> onEndFound = StreamController<User>.broadcast();
+  Stream<User> discoveredDeviceStream;
+
+  final StreamController<User> onRequestSent =
+      StreamController<User>.broadcast();
+  Stream<User> incomingRequestStream;
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///
@@ -74,17 +78,20 @@ class NearbyConnections {
 
   /// Network and Connection
   ///host starts advertising
-  Stream<Either<ConnectionFailure, User>> startAdvertising() async* {
+  Future<Either<ConnectionFailure, Unit>> startAdvertising() async {
+    incomingRequestStream = onRequestSent.stream;
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
-      debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
+      debugPrint(
+          "A connection is being initated to ${connectionInfo.endpointName}");
       host = _username;
+      _endName = connectionInfo.endpointName;
       incomingRequest = User(
           uid: UniqueId.fromUniqueString(endId),
           name: Name(connectionInfo.endpointName));
-      _endName = connectionInfo.endpointName;
+      onRequestSent.sink.add(incomingRequest);
     }, onConnectionResult: (id, Status status) {
       debugPrint("Status of the connection to $_endName ,id: $id,  : $status");
       {
@@ -105,12 +112,10 @@ class NearbyConnections {
       members.remove(
           User(uid: UniqueId.fromUniqueString(id), name: Name(_endName)));
     });
-    if (a && incomingRequest != null) {
-      yield right(incomingRequest);
-    } else if (incomingRequest == null) {
-      debugPrint("No incoming request for connection...continue discovering");
+    if (a) {
+      return right(unit);
     } else {
-      yield left(const ConnectionFailure.unexpected());
+      return left(const ConnectionFailure.unexpected());
     }
   }
 
@@ -123,7 +128,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> startDiscovering() async {
     debugPrint("Discovering....");
     debugPrint("this is my username: $_username");
-    stream = onEndFound.stream;
+    discoveredDeviceStream = onEndFound.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -346,7 +351,7 @@ class NearbyConnections {
             await _nearby.sendFilePayload(user.uid.getOrCrash(), file.path);
         debugPrint("Sending File to ${user.name}");
 
-        /// Sending the fileName and payloadId to the receiver
+        //Sending the fileName and payloadId to the receiver
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
             Uint8List.fromList(

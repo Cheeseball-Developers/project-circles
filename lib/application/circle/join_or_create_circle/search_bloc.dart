@@ -36,7 +36,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
       errorOrDiscovering = await nearbyConnections.startDiscovering();
       streamSubscriptionDiscoveredDevice =
-          nearbyConnections.stream.listen((event) {
+          nearbyConnections.discoveredDeviceStream.listen((event) {
         add(SearchEvent.deviceDiscovered(event));
       }, onError: (e) {
         debugPrint('Error $e');
