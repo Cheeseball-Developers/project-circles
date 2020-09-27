@@ -8,9 +8,11 @@ abstract class SettingsState with _$SettingsState {
 
   const factory SettingsState.hasLoaded(
       {@required User user,
-      @required Directory path,
+      @required Directory directory,
       @required bool askBeforeReceiving,
-      @required bool darkMode}) = _HasLoaded;
+      @required bool darkMode,
+      @required bool isLoading,
+      @required Option<SettingsFailure> settingsFailureOption}) = _HasLoaded;
 
-  const factory SettingsState.hasFailed(PrefsLoadFailure failure) = _HasFailed;
+  const factory SettingsState.hasFailed(SettingsFailure failure) = _HasFailed;
 }
