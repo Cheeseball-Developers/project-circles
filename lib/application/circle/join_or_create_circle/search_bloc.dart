@@ -20,49 +20,48 @@ part 'search_bloc.freezed.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchState.initial());
 
+  final List<User> discoveredDevices = <User>[];
+  final nearbyConnections = getIt<NearbyConnections>();
+
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
-    final nearbyConnections = getIt<NearbyConnections>();
+    StreamSubscription<User> streamSubscriptionDiscoveredDevice;
+    Either<ConnectionFailure, Unit> errorOrDiscovering;
+
     yield* event.map(startSearching: (e) async* {
-      yield state.copyWith(isLoading: true);
+      yield state.copyWith(isLoading: true, discoveredDevices: []);
 
       nearbyConnections.permitLocation();
       nearbyConnections.enableLocation();
 
-      List<Either<ConnectionFailure, User>> failureOrDiscoveredDevices;
-      StreamSubscription<Either<ConnectionFailure, User>>
-          _discoveredDevicesStreamSubsciption;
-      _discoveredDevicesStreamSubsciption =
-          nearbyConnections.startDiscovering().listen((event) {
-        debugPrint("this should be invoked only when the event is sent");
-        print(event);
-        if (event == Right(User)) {
-          failureOrDiscoveredDevices.add(event);
-        } else {
-          return;
-        }
+      errorOrDiscovering = await nearbyConnections.startDiscovering();
+      streamSubscriptionDiscoveredDevice =
+          nearbyConnections.stream.listen((event) {
+        add(SearchEvent.deviceDiscovered(event));
       }, onError: (e) {
-        debugPrint("Can't get the device please try again $e");
-      }, cancelOnError: false); //
+        debugPrint('Error $e');
+      }, cancelOnError: false);
+    }, deviceDiscovered: (e) async* {
+      discoveredDevices.add(e.user);
       yield state.copyWith(
           isLoading: false,
           isSearching: true,
-          connectionFailureOrSuccessOption: none(),
-          connectionFailureOrDiscoveredDevice:
-              some(failureOrDiscoveredDevices));
+          connectionFailureOrSuccessOption: some(
+              errorOrDiscovering), //change this to some(errorOnDiscovering)
+          discoveredDevices: discoveredDevices);
     }, stopSearching: (e) async* {
       yield state.copyWith(isLoading: false);
+      streamSubscriptionDiscoveredDevice.cancel();
       nearbyConnections.stopDiscovering();
       yield state.copyWith(
           isLoading: false,
           isSearching: false,
           connectionFailureOrSuccessOption: none());
-    }, requestConnection: (AcceptConnection user) async* {
+    }, requestConnection: (user) async* {
       final Either<ConnectionFailure, Unit> requestOrFail =
           await nearbyConnections.requestConnection(
               username: user.discoveredUser.name.getOrCrash(),
-              endpointId: user.discoveredUser.uid.getOrCrash(),
-              acceptConnection: true);
+              endpointId: user.discoveredUser.uid.getOrCrash());
       yield state.copyWith(
           isLoading: false,
           isSearching: true,
@@ -72,3 +71,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 }
 
 //TODO: Add functionality to join and create
+
+//TODO: Add somewhere in the ui to stop discovery as soon as the preferred devices are found
+/// It is reccomended to call this method
+/// once you have connected to an endPoint
+/// as discovery uses heavy radio operations
+/// which may affect connection speed and integrity
