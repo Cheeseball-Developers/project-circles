@@ -64,7 +64,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               endpointId: user.discoveredUser.uid.getOrCrash(),
               acceptConnection: true);
       yield state.copyWith(
-          isLoading: true,
+          isLoading: false,
           isSearching: true,
           connectionFailureOrSuccessOption: some(requestOrFail));
     });
