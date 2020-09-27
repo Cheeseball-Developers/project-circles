@@ -12,7 +12,7 @@ class DiscoveredCircleIcon extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {}, // TODO: Add event to join circle
-          child: CircleAvatar(
+          child: const CircleAvatar(
             radius: 24.0,
             child: Icon(Icons.person),
           ),

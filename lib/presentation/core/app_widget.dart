@@ -20,6 +20,7 @@ class AppWidget extends StatelessWidget {
                 getIt<SettingsBloc>()..add(const SettingsEvent.loadPrefs()))
       ],
       child: BlocConsumer<SettingsBloc, SettingsState>(
+        listenWhen: (stateA, stateB) => stateA.runtimeType != stateB.runtimeType,
         listener: (context, state) => state.maybeMap(
             hasLoaded: (state) =>
                 ExtendedNavigator.named('nav').replace(Routes.joinOrCreateCircle),
