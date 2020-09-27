@@ -20,9 +20,11 @@ class NearbyConnections {
   File _tempFile; //store file mapped to corresponding payloadId
   Map<int, String> map = {};
   User discoveredDevice;
-  User incomingRequests;
-  List<User> members; //all the devices connected to host
+  User incomingRequest;
+  List<User> members = <User>[]; //all the devices connected to host
   String host; // host username
+  final StreamController<User> onEndFound = StreamController<User>();
+  Stream<User> stream;
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///
@@ -46,7 +48,7 @@ class NearbyConnections {
     return false;
   }
 
-  // asks for permission only if its not given
+  /// asks for permission only if its not given
   Future<void> permitLocation() async {
     if (!await isLocationPermitted()) {
       _nearby.askLocationPermission();
@@ -54,6 +56,7 @@ class NearbyConnections {
     return;
   }
 
+  /// asks for enabling loaction only if it is not enabled
   Future<bool> isLocationEnabled() async {
     if (await _nearby.checkLocationEnabled()) {
       return true;
@@ -70,23 +73,25 @@ class NearbyConnections {
   }
 
   /// Network and Connection
-
   ///host starts advertising
   Stream<Either<ConnectionFailure, User>> startAdvertising() async* {
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
-        serviceId: _serviceId,
-        onConnectionInitiated: (String endId, ConnectionInfo connectionInfo) async {
+        serviceId: _serviceId, onConnectionInitiated:
+            (String endId, ConnectionInfo connectionInfo) async {
       debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
       host = _username;
-      incomingRequests = User(uid: UniqueId.fromUniqueString(endId), name: Name(connectionInfo.endpointName) );
+      incomingRequest = User(
+          uid: UniqueId.fromUniqueString(endId),
+          name: Name(connectionInfo.endpointName));
       _endName = connectionInfo.endpointName;
     }, onConnectionResult: (id, Status status) {
       debugPrint("Status of the connection to $_endName ,id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
-          members.add(User( uid: UniqueId.fromUniqueString(id), name: Name(_endName)));
+          members.add(
+              User(uid: UniqueId.fromUniqueString(id), name: Name(_endName)));
           debugPrint(
               "Connection successfully established to the dicoverer $_endName");
         } else if (status == Status.REJECTED) {
@@ -97,39 +102,42 @@ class NearbyConnections {
       }
     }, onDisconnected: (String id) {
       debugPrint("Disconnected to : $id");
-      members.remove(User(uid: UniqueId.fromUniqueString(id),name: Name(_endName)));
+      members.remove(
+          User(uid: UniqueId.fromUniqueString(id), name: Name(_endName)));
     });
-    if (a && incomingRequests!=null ) {
-      yield right(incomingRequests);
-    }
-    else if (incomingRequests==null){
-      return;
-    }
-    else{
+    if (a && incomingRequest != null) {
+      yield right(incomingRequest);
+    } else if (incomingRequest == null) {
+      debugPrint("No incoming request for connection...continue discovering");
+    } else {
       yield left(const ConnectionFailure.unexpected());
     }
   }
 
-
-  //Stop Advertising
+  ///Stop Advertising
   Future<void> stopAdvertising() async {
     await _nearby.stopAdvertising();
   }
 
-  //Start Discovering
-  Stream<Either<ConnectionFailure, User>> startDiscovering() async* {
+  ///Start Discovering
+  Future<Either<ConnectionFailure, Unit>> startDiscovering() async {
     debugPrint("Discovering....");
     debugPrint("this is my username: $_username");
+    stream = onEndFound.stream;
+
     final bool a = await _nearby.startDiscovery(
       _username,
       strategy,
       serviceId: _serviceId,
-      onEndpointFound: (String id, String name, String serviceId) async {
-        discoveredDevice = User(uid: UniqueId.fromUniqueString(id) , name: Name(name));
+      onEndpointFound: (String id, String name, String serviceId) {
+        discoveredDevice =
+            User(uid: UniqueId.fromUniqueString(id), name: Name(name));
         debugPrint("Connection found at id: $id and name: $name");
 
-        //request a connection which thereby calls onConnection init
+        // add to the sink hehe
+        onEndFound.sink.add(discoveredDevice);
 
+        //request a connection which thereby calls onConnection init
         //final Either<ConnectionFailure, Unit> _requestConnection =
         //  await requestConnection(_username, id);
         //_requestConnection.fold((failure){
@@ -145,20 +153,20 @@ class NearbyConnections {
         debugPrint("Endpoint lost to host $id");
       },
     );
-    if (a && discoveredDevice!=null) {
-      yield right(discoveredDevice);
+    if (a && discoveredDevice != null) {
+      return right(unit);
+    } else {
+      return left(const ConnectionFailure.unexpected());
     }
-    else if (discoveredDevice==null){
-      print('No devices Found till now... continue advertising');
-      yield left (const ConnectionFailure.timedOut());
-    }
-    else{
-      yield left(const ConnectionFailure.unexpected());
-    }
-
   }
 
   ///Stop Discovering
+  ///
+  /// This doesn't disconnect from already connected Endpoint
+  /// It is reccomended to call this method
+  /// once you have connected to an endPoint
+  /// as discovery uses heavy radio operations
+  /// which may affect connection speed and integrity
   Future<void> stopDiscovering() async {
     debugPrint("Stop Discovering..");
     await _nearby.stopDiscovery();
@@ -172,30 +180,32 @@ class NearbyConnections {
 
   ///request Connection
   Future<Either<ConnectionFailure, Unit>> requestConnection(
-      {@required String username,
-      @required String endpointId,
-      @required bool acceptConnection}) async {
+      {@required String username, @required String endpointId}) async {
     final bool a = await _nearby.requestConnection(username, endpointId,
-
         onConnectionInitiated:
-                                (String endId, ConnectionInfo connectionInfo) async {
+            (String endId, ConnectionInfo connectionInfo) async {
       debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
       //TODO: Check the authentication token
-      debugPrint("Check if the token is same ${connectionInfo.authenticationToken}");
+      debugPrint(
+          "Check if the token is same ${connectionInfo.authenticationToken}");
 
       //accept by default in discoverer side
-      final Either<ConnectionFailure, Unit> _acceptConnection = await acceptInConnection(endId:endId);
+      final Either<ConnectionFailure, Unit> _acceptConnection =
+          await acceptConnection(endId: endId);
       _acceptConnection.fold((failure) {
         debugPrint(
             "Failure occurred on Initiating a connection more precisely $failure");
         return left(const ConnectionFailure.unexpected());
-      }, (success) => {debugPrint("Connection Initiated yo: $success")});
-    },
-
-        onConnectionResult: (id, Status status) {
+      },
+          (success) => {
+                debugPrint(
+                    "Connection is being Initiated yo: $success to $endId")
+              });
+    }, onConnectionResult: (id, Status status) {
       debugPrint("Status of the connection to host $host $id : $status");
       if (status == Status.CONNECTED) {
-        debugPrint("Connection accepted by the host : $host");
+        debugPrint(
+            "Connection accepted by the host and the connection is succesful: $host");
       } else if (status == Status.REJECTED) {
         debugPrint("Connection rejected by host$host : $id");
       } else if (status == Status.ERROR) {
@@ -216,25 +226,23 @@ class NearbyConnections {
   /// both the advertiser and discoverer has to call this
   /// Both need to accept connection to start sending/receiving
 
-
-   void onConnectionInit (
-      String endId, ConnectionInfo info) {
+  void onConnectionInit(String endId, ConnectionInfo info) {
     //TODO : connectionInfo code should match
     debugPrint(info.authenticationToken);
-    }
-
+  }
 
   //Accept Connection
-  Future<Either<ConnectionFailure, Unit>> acceptInConnection({@required String endId}) async {
+  Future<Either<ConnectionFailure, Unit>> acceptConnection(
+      {@required String endId}) async {
     final a = await _nearby.acceptConnection(endId,
         onPayLoadRecieved: (String endId, Payload payload) {
-          //TODO this is the called as soon as the file transfer is started
-              onPayloadRecieved(endId, payload);
-        }, onPayloadTransferUpdate:
+      //TODO this is the called as soon as the file transfer is started
+      onPayloadRecieved(endId, payload);
+    }, onPayloadTransferUpdate:
             (String endId, PayloadTransferUpdate payloadTransferUpdate) {
-          //TODO: Again with the values that are returned
-          onPayloadTransferUpdate(endId, payloadTransferUpdate);
-        });
+      //TODO: Again with the values that are returned
+      onPayloadTransferUpdate(endId, payloadTransferUpdate);
+    });
     if (a) {
       //TODO: return according to the returned values of thr above functions
       return right(unit);
@@ -244,8 +252,9 @@ class NearbyConnections {
   }
 
   //Reject Connection
-  Future<Either<ConnectionFailure, Unit>> rejectConnection({@required String endId}) async {
-    final a =  await _nearby.rejectConnection(endId);
+  Future<Either<ConnectionFailure, Unit>> rejectConnection(
+      {@required String endId}) async {
+    final a = await _nearby.rejectConnection(endId);
     if (a) {
       //TODO: return according to the returned values of thr above functions
       return right(unit);
@@ -254,11 +263,11 @@ class NearbyConnections {
     }
   }
 
-
   ///onPayload Recieved :
   ///we store the payload in a _tempFile which is reference
   ///to the current file being transferred
   ///also saves the fileName and extension
+
   Future<Either<AppsLoadFailure, bool>> onPayloadRecieved(
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
@@ -325,7 +334,7 @@ class NearbyConnections {
     int payLoadId;
 
     members.forEach((user) {
-      files.forEach( (file, progress)async {
+      files.forEach((file, progress) async {
         /// Returns the payloadID as soon as file transfer has begun
         ///
         /// File is received in DOWNLOADS_DIRECTORY and is given a generic name
@@ -333,8 +342,10 @@ class NearbyConnections {
         /// You must also send a bytes payload to send the filename and extension
         /// so that receiver can rename the file accordingly
         /// Send the payloadID and filename to receiver as bytes payload
-        payLoadId = await _nearby.sendFilePayload(user.uid.getOrCrash(), file.path);
+        payLoadId =
+            await _nearby.sendFilePayload(user.uid.getOrCrash(), file.path);
         debugPrint("Sending File to ${user.name}");
+
         /// Sending the fileName and payloadId to the receiver
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),

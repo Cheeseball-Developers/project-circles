@@ -11,34 +11,30 @@ class AllDiscoveredDevicesPopUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) => state.isSearching
-          ? state.connectionFailureOrDiscoveredDevice.fold(
-              () => Container(),
-              (discoveredDevices) => LargePopUp(
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Container(
-                            height: 0.25,
-                            color: Colors.black,
-                          ),
-                        ),
-                        shrinkWrap: true,
-                        itemCount: discoveredDevices.length,
-                        itemBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: MyListTile(
-                            leading:
-                                const CircleAvatar(child: Icon(Icons.person)),
-                            type: ListTileType.tapToOpen,
-                            title: discoveredDevices[index].fold((l) => null,
-                                (device) => device.name.getOrCrash()),
-                          ),
-                        ),
-                      ),
+          ? LargePopUp(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Container(
+                      height: 0.25,
+                      color: Colors.black,
                     ),
-                  ))
+                  ),
+                  shrinkWrap: true,
+                  itemCount: state.discoveredDevices.length,
+                  itemBuilder: (context, index) => Padding(
+                    padding: const EdgeInsets.all(2.0),
+                    child: MyListTile(
+                      leading: const CircleAvatar(child: Icon(Icons.person)),
+                      type: ListTileType.tapToOpen,
+                      title: state.discoveredDevices[index].name.getOrCrash(),
+                    ),
+                  ),
+                ),
+              ),
+            )
           : Container(), // TODO: Handle error state
     );
   }

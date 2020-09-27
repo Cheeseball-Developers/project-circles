@@ -22,84 +22,91 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   CurrentCircleBloc() : super(const CurrentCircleState.initial());
 
   @override
-  Stream<CurrentCircleState> mapEventToState(CurrentCircleEvent event,) async* {
+  Stream<CurrentCircleState> mapEventToState(
+    CurrentCircleEvent event,
+  ) async* {
     final nearbyConnections = getIt<NearbyConnections>();
     yield* event.map(
-        startCircle: (e) async* {
-          yield const CurrentCircleState.isStarting();
-          List<Either<ConnectionFailure, User>> failureOrIncomingRequests;
-          StreamSubscription <Either<ConnectionFailure,User>> _incomingRequestsStreamSubsciption;
-           nearbyConnections.startAdvertising().listen((event) {
-             if(event!=null){
-               failureOrIncomingRequests.add(event);
-             }
-           },
-           onError: (_){
-             debugPrint("Error! $_");
-           },);
+      startCircle: (e) async* {
+        yield const CurrentCircleState.isStarting();
+        List<Either<ConnectionFailure, User>> failureOrIncomingRequests;
+        StreamSubscription<Either<ConnectionFailure, User>>
+            _incomingRequestsStreamSubsciption;
+        nearbyConnections.startAdvertising().listen(
+          (event) {
+            if (event != null) {
+              failureOrIncomingRequests.add(event);
+            }
+          },
+          onError: (_) {
+            debugPrint("Error! $_");
+          },
+        );
 
-          yield CurrentCircleState.hasJoined(host: e.host,
-              members: <User>[],
-              selectedFiles: <File, double>{},
-              filesSentPopUp: false);
-        },
-        acceptOrReject: (AcceptOrReject request) async* {
-          if(request.acceptConnection){
-            final Either<ConnectionFailure,Unit> _acceptOrFailure = await nearbyConnections.acceptInConnection(
-                endId: request.requestingUser.uid.getOrCrash());
-                yield* state.maybeMap(
-                    hasJoined: (state) async*{
-                      yield state.copyWith(
-                        members: nearbyConnections.members
-                      );
-                    },
-                    orElse: ()async*{
-                      yield null;
-                    });
-
-          }
-          else{
-            //reject a connection
-            final Either<ConnectionFailure, Unit> _rejectOrFailure = await nearbyConnections.rejectConnection(endId:
-            request.requestingUser.uid.getOrCrash());
-          }
-
-        },
-        addFile: (e) async* {
-          yield* state.maybeMap(hasJoined: (state) async*  {
-            state.selectedFiles.addAll({e.file: 0.0});
-            yield state.copyWith(selectedFiles: state.selectedFiles);
-          }, orElse: () async* {yield null;});
-        },
-        sendFiles: (e) async* {
-          // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
-          yield* state.maybeMap(
-            hasJoined: (state) async* {
-              nearbyConnections.sendFilePayload(files: state.selectedFiles);
-            },
-            orElse: () async* {yield null;}
-          );
-        },
-        filesSent: (e) async* {
-          // TODO: Call this when files are sent successfully
+        yield CurrentCircleState.hasJoined(
+            host: e.host,
+            members: <User>[],
+            selectedFiles: <File, double>{},
+            filesSentPopUp: false);
+      },
+      acceptOrReject: (AcceptOrReject request) async* {
+        if (request.acceptConnection) {
+          final Either<ConnectionFailure, Unit> _acceptOrFailure =
+              await nearbyConnections.acceptInConnection(
+                  endId: request.requestingUser.uid.getOrCrash());
           yield* state.maybeMap(hasJoined: (state) async* {
-            yield state.copyWith(filesSentPopUp: true);
+            yield state.copyWith(members: nearbyConnections.members);
           }, orElse: () async* {
-            yield const CurrentCircleState.hasFailed(failure: ConnectionFailure.unexpected());
-          },);
-        },
-        fileReceived: (e) async* {
+            yield null;
+          });
+        } else {
+          //reject a connection
+          final Either<ConnectionFailure, Unit> _rejectOrFailure =
+              await nearbyConnections.rejectConnection(
+                  endId: request.requestingUser.uid.getOrCrash());
+        }
+      },
+      addFile: (e) async* {
+        yield* state.maybeMap(hasJoined: (state) async* {
+          state.selectedFiles.addAll({e.file: 0.0});
+          yield state.copyWith(selectedFiles: state.selectedFiles);
+        }, orElse: () async* {
           yield null;
-        },
-        memberLeft: (e) async* {
+        });
+      },
+      sendFiles: (e) async* {
+        // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+        yield* state.maybeMap(hasJoined: (state) async* {
+          nearbyConnections.sendFilePayload(files: state.selectedFiles);
+        }, orElse: () async* {
           yield null;
-        },
-        leaveCircle: (e) async* {
-          nearbyConnections.stopAllEndpoints();
-        },
-        closeCircle: (e) async* {
-          nearbyConnections.stopAdvertising();
-          yield const CurrentCircleState.initial();
-        }, );
+        });
+      },
+      filesSent: (e) async* {
+        // TODO: Call this when files are sent successfully
+        yield* state.maybeMap(
+          hasJoined: (state) async* {
+            yield state.copyWith(filesSentPopUp: true);
+          },
+          orElse: () async* {
+            yield const CurrentCircleState.hasFailed(
+                failure: ConnectionFailure.unexpected());
+          },
+        );
+      },
+      fileReceived: (e) async* {
+        yield null;
+      },
+      memberLeft: (e) async* {
+        yield null;
+      },
+      leaveCircle: (e) async* {
+        nearbyConnections.stopAllEndpoints();
+      },
+      closeCircle: (e) async* {
+        nearbyConnections.stopAdvertising();
+        yield const CurrentCircleState.initial();
+      },
+    );
   }
 }
