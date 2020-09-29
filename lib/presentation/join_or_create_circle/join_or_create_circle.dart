@@ -77,7 +77,7 @@ class JoinOrCreateCircle extends StatelessWidget {
                                                 initial: (_) => null,
                                                 isLoading: (_) => null,
                                                 hasLoaded: (state) =>
-                                                    state.user,
+                                                    state.user.toString(),
                                                 hasFailed: (_) => null)));
                                 ExtendedNavigator.named('nav')
                                     .push('/circle-home');
