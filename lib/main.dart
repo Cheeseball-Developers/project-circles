@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:projectcircles/presentation/core/theme.dart';
-import 'package:projectcircles/presentation/routes/router.gr.dart' as router;
+import 'package:injectable/injectable.dart';
+import 'package:projectcircles/infrastructure/circle/files_repository.dart';
+import 'package:projectcircles/injection.dart';
+import 'package:projectcircles/presentation/core/app_widget.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Circles',
-      theme: defaultTheme(),
-      initialRoute: router.Routes.joinOrCreateCircle,
-      onGenerateRoute: router.Router(),
-    );
-  }
+  WidgetsFlutterBinding.ensureInitialized();
+  configureInjection(Environment.prod);
+  getIt<FilesRepository>();
+  runApp(AppWidget());
 }

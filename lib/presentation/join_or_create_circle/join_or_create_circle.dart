@@ -1,130 +1,111 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
+import 'package:projectcircles/application/settings/settings_bloc.dart';
+import 'package:projectcircles/injection.dart';
+import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
+import 'package:projectcircles/presentation/join_or_create_circle/widgets/available_circles_overlay.dart';
+import 'package:projectcircles/presentation/join_or_create_circle/widgets/search_button.dart';
 
-class JoinOrCreateCircle extends StatefulWidget {
-  @override
-  _JoinOrCreateGroupState createState() => _JoinOrCreateGroupState();
-}
-
-class _JoinOrCreateGroupState extends State<JoinOrCreateCircle>
-    with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-
-  double baseRadius = 32.0;
-  Animation<double> radius, radius1, radius2, radius3;
-
-  MyConnectionState _connectionState = MyConnectionState.scanning;
-
-  // math function to calculate the begin radius of circle in pulse animation
-  double beginRadius(int index) {
-    return baseRadius + 8 * index + (baseRadius - 32.0) * index;
-  }
-
-  // math function to calculate the end radius of circle in pulse animation
-  double endRadius(int index) {
-    return baseRadius +
-        (baseRadius - 8.0 * (64.0 / baseRadius) * (64.0 / baseRadius)) * index;
-  }
-
-  // function to start device scanning
-  // also sets animation in motion
-  Future _startScanning() async {
-    _connectionState = MyConnectionState.scanning;
-    baseRadius = 64.0;
-    _assignAnimationRadius();
-    _controller.repeat();
-  }
-
-  // function to stop device scanning
-  // also sets animation in motion
-  Future _stopScanning() async {
-    _connectionState = MyConnectionState.notScanning;
-    baseRadius = 32.0;
-    _assignAnimationRadius();
-    _controller.repeat();
-  }
-
-  void _assignAnimationRadius() {
-    radius = Tween<double>(begin: beginRadius(0), end: endRadius(0)).animate(
-        CurvedAnimation(
-            parent: _controller,
-            curve: const Interval(0.1, 0.5, curve: Curves.easeIn)));
-    radius1 = Tween<double>(begin: beginRadius(1), end: endRadius(1)).animate(
-        CurvedAnimation(
-            parent: _controller,
-            curve: const Interval(0.15, 0.55, curve: Curves.easeIn)));
-    radius2 = Tween<double>(begin: beginRadius(2), end: endRadius(2)).animate(
-        CurvedAnimation(
-            parent: _controller,
-            curve: const Interval(0.2, 0.6, curve: Curves.easeIn)));
-    radius3 = Tween<double>(begin: beginRadius(3), end: endRadius(3)).animate(
-        CurvedAnimation(
-            parent: _controller,
-            curve: const Interval(0.25, 0.65, curve: Curves.easeIn)));
-  }
-
-  @override
-  void initState() {
-    _controller = AnimationController(duration: const Duration(milliseconds: 1800));
-    _assignAnimationRadius();
-    _controller.addListener(() {
-      setState(() {});
-    });
-    _startScanning();
-    super.initState();
-  }
-
+class JoinOrCreateCircle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.lightBlue,
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
-                radius: radius3.value),
-            CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
-                radius: radius2.value),
-            CircleAvatar(
-                backgroundColor: Colors.white.withOpacity(0.3),
-                radius: radius1.value),
-            GestureDetector(
-              onTap: _connectionState == MyConnectionState.scanning
-                  ? () => _stopScanning()
-                  : () => _startScanning(),
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: radius.value,
-                child: Icon(Icons.search),
-              ),
-            ),
+    return BlocProvider(
+      create: (context) =>
+          getIt<SearchBloc>()..add(const SearchEvent.startSearching()),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          actions: [
+            IconButton(
+              onPressed: () => ExtendedNavigator.named('nav').push('/Settings'),
+              icon: const Icon(Icons.settings),
+            )
           ],
         ),
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Material(
-            borderRadius: BorderRadius.circular(24.0),
-            color: Colors.white,
+        body: Center(
+          child: Material(
+            color: Colors.transparent,
+            child: Stack(
+              alignment: AlignmentDirectional.center,
+              children: [SearchButton(), AvailableCirclesOverlay()],
+            ),
+          ),
+        ),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Material(
+            borderRadius: BorderRadius.circular(10.0),
+            color: Theme.of(context).cardColor,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Group Name'),
-                  Text('Password ka option idhar'),
-                  Text('Create group button idhar')
+                  Text('Create Circle',
+                      style: Theme.of(context).textTheme.headline6),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            context.bloc<SettingsBloc>().state.maybeMap(
+                                hasLoaded: (state) =>
+                                    "${state.user.name.getOrCrash()}'s Circle",
+                                orElse: () => "Error"),
+                            style: Theme.of(context).textTheme.subtitle2,
+                          ),
+                        ),
+                      ),
+                      BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
+                        builder: (context, state) => state.map(
+                          initial: (state) => Material(
+                            borderRadius: BorderRadius.circular(10.0),
+                            color: Theme.of(context).buttonColor,
+                            child: InkWell(
+                              onTap: () {
+                                context.bloc<CurrentCircleBloc>().add(
+                                    CurrentCircleEvent.startCircle(
+                                        host: context
+                                            .bloc<SettingsBloc>()
+                                            .state
+                                            .map(
+                                                initial: (_) => null,
+                                                isLoading: (_) => null,
+                                                hasLoaded: (state) =>
+                                                    state.user.toString(),
+                                                hasFailed: (_) => null)));
+                                ExtendedNavigator.named('nav')
+                                    .push('/circle-home');
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.done,
+                                  color:
+                                      Theme.of(context).accentIconTheme.color,
+                                ),
+                              ),
+                            ),
+                          ),
+                          isStarting: (_) => Container(),
+                          isJoining: (_) => Container(),
+                          hasJoined: (_) => Container(),
+                          hasFailed: (_) => Container(),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
-            )),
+            ),
+          ),
+        ),
       ),
     );
   }
-}
-
-enum MyConnectionState {
-  scanning,
-  notScanning
 }
