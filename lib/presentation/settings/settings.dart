@@ -28,27 +28,35 @@ class Settings extends StatelessWidget {
                     (failure) {
                       Flushbar(
                         messageText: failure.map(
-                          instanceLoadFailure: (_) => Text(
-                            'Error Loading Settings',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).accentTextTheme.bodyText2,
-                          ),
-                          valueLoadFailure: (_) => Text(
-                            'Error Loading Setting Item',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).accentTextTheme.bodyText2,
-                          ),
-                          valueSaveFailure: (_) => Text(
-                            'Error Saving Setting Item',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).accentTextTheme.bodyText2,
-                          ),
-                          unexpected: (_) => Text(
-                            'Unexpected Error',
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).accentTextTheme.bodyText2,
-                          ),
-                        ),
+                            instanceLoadFailure: (_) => Text(
+                                  'Error Loading Settings',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .bodyText2,
+                                ),
+                            valueLoadFailure: (_) => Text(
+                                  'Error Loading Setting Item',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .bodyText2,
+                                ),
+                            valueSaveFailure: (_) => Text(
+                                  'Error Saving Setting Item',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .bodyText2,
+                                ),
+                            unexpected: (_) => Text(
+                                  'Unexpected Error',
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .bodyText2,
+                                ),
+                            idAndNameNotSet: (_) => Container()),
                         padding: const EdgeInsets.all(8.0),
                         backgroundColor: Colors.red,
                         animationDuration: const Duration(milliseconds: 500),
@@ -84,7 +92,7 @@ class Settings extends StatelessWidget {
                         CircleAvatar(
                           backgroundColor: Theme.of(context).buttonColor,
                           radius: 48.0,
-                          child: Text(
+                          child: const Text(
                             'AU',
                             style: TextStyle(fontSize: 48.0),
                           ),
@@ -94,15 +102,16 @@ class Settings extends StatelessWidget {
                         ),
                         Expanded(
                           child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  state.user.name.getOrCrash(),
-                                  style: Theme.of(context).textTheme.headline4,
-                                ),
-                                Text(state.user.uid.getOrCrash(),
-                                    style: Theme.of(context).textTheme.caption)
-                              ]),
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                state.user.name.getOrCrash(),
+                                style: Theme.of(context).textTheme.headline4,
+                              ),
+                              Text(state.user.uid.getOrCrash(),
+                                  style: Theme.of(context).textTheme.caption)
+                            ],
+                          ),
                         )
                       ],
                     ),

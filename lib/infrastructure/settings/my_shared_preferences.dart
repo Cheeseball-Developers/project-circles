@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/settings/settings_object.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:projectcircles/domain/settings/settings_failure.dart';
 
+@injectable
 class MySharedPreferences {
   SharedPreferences _prefs;
 
@@ -16,9 +18,12 @@ class MySharedPreferences {
             (error) => left(const SettingsFailure.instanceLoadFailure()))
         .then((prefs) async {
       _prefs = prefs;
+      if (_prefs.getString('name')==null) {
+        return left(const SettingsFailure.idAndNameNotSet());
+      }
       return right(SettingsObject(
-          name: Name(_prefs.getString('name') ?? 'Generic User'),
-          uid: _prefs.get('id') as UniqueId ?? UniqueId(),
+          name: Name(_prefs.getString('name')),
+          uid: UniqueId.fromUniqueString(_prefs.get('id') as String),
           directory: Directory(_prefs.getString('fileSavePath') ?? '/'),
           askBeforeReceiving: _prefs.getBool('askBeforeReceiving') ?? false,
           darkMode: _prefs.getBool('darkMode') ?? false));
