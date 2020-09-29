@@ -21,6 +21,7 @@ part 'current_circle_bloc.freezed.dart';
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   CurrentCircleBloc() : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
+
   @override
   Stream<CurrentCircleState> mapEventToState(
     CurrentCircleEvent event,
@@ -31,6 +32,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         yield const CurrentCircleState.isStarting();
         final Either<ConnectionFailure, Unit> failureOrStartAdvertising =
             await nearbyConnections.startAdvertising();
+        yield CurrentCircleState.hasJoined(
+            host: nearbyConnections.host,
+            members: <User, bool>{},
+            selectedFiles: <File, double>{},
+            filesSentPopUp: false);
+
         _incomingRequestsStreamSubsciption =
             nearbyConnections.incomingRequestStream.listen((event) {
           debugPrint("A device found, wants to join");
@@ -109,6 +116,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       },
       leaveCircle: (e) async* {
         nearbyConnections.stopAllEndpoints();
+        nearbyConnections.stopAdvertising();
       },
       closeCircle: (e) async* {
         nearbyConnections.stopAdvertising();

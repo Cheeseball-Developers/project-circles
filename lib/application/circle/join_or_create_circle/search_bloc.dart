@@ -19,12 +19,11 @@ part 'search_bloc.freezed.dart';
 @injectable
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchState.initial());
-
-  final List<User> discoveredDevices = <User>[];
   final nearbyConnections = getIt<NearbyConnections>();
-
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
+    final List<User> discoveredDevices = <User>[];
+
     StreamSubscription<User> streamSubscriptionDiscoveredDevice;
     Either<ConnectionFailure, Unit> errorOrDiscovering;
 
@@ -35,6 +34,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       nearbyConnections.enableLocation();
 
       errorOrDiscovering = await nearbyConnections.startDiscovering();
+      yield state.copyWith(
+          isLoading: false,
+          isSearching: true,
+          connectionFailureOrSuccessOption: some(errorOrDiscovering),
+          discoveredDevices: discoveredDevices);
+
       streamSubscriptionDiscoveredDevice =
           nearbyConnections.discoveredDeviceStream.listen((event) {
         add(SearchEvent.deviceDiscovered(event));
@@ -46,12 +51,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       yield state.copyWith(
           isLoading: false,
           isSearching: true,
-          connectionFailureOrSuccessOption: some(
-              errorOrDiscovering), //change this to some(errorOnDiscovering)
+          connectionFailureOrSuccessOption: some(errorOrDiscovering),
           discoveredDevices: discoveredDevices);
     }, stopSearching: (e) async* {
       yield state.copyWith(isLoading: false);
-      streamSubscriptionDiscoveredDevice.cancel();
+      streamSubscriptionDiscoveredDevice?.cancel();
       nearbyConnections.stopDiscovering();
       yield state.copyWith(
           isLoading: false,
