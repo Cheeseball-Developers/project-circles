@@ -7,6 +7,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/domain/settings/device_info_failure.dart';
+import 'package:projectcircles/domain/settings/i_device_info.dart';
 import 'package:projectcircles/domain/settings/settings_failure.dart';
 import 'package:projectcircles/infrastructure/settings/my_shared_preferences.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
@@ -21,9 +23,11 @@ part 'settings_bloc.freezed.dart';
 
 @injectable
 class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
-  SettingsBloc() : super(const SettingsState.initial());
+  final IDeviceInfo _deviceInfo;
+  final MySharedPreferences _mySharedPreferences;
 
-  final MySharedPreferences _mySharedPreferences = MySharedPreferences();
+  SettingsBloc(this._deviceInfo, this._mySharedPreferences)
+      : super(const SettingsState.initial());
 
   @override
   Stream<SettingsState> mapEventToState(
@@ -34,10 +38,27 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       final failureOrSettingsObject = await _mySharedPreferences.load();
       yield* failureOrSettingsObject.fold(
         (f) async* {
-          yield SettingsState.hasFailed(f);
+          if (f == const SettingsFailure.idAndNameNotSet()) {
+            final Either<DeviceInfoFailure, Name> failureOrDeviceName =
+                await _deviceInfo.getDeviceName();
+            yield* failureOrDeviceName.fold(
+              (f) async* {
+                yield const SettingsState.hasFailed(
+                    SettingsFailure.instanceLoadFailure());
+              },
+              (name) async* {
+                await _mySharedPreferences.setName(name: name);
+                await _mySharedPreferences.setUid(uid: UniqueId());
+                add(const SettingsEvent.loadPrefs());
+              },
+            );
+          } else {
+            yield SettingsState.hasFailed(f);
+          }
         },
         (settingsObject) async* {
-          getIt<NearbyConnections>().setUsername = "generic-user-name";
+          getIt<NearbyConnections>().setUsername =
+              settingsObject.name.getOrCrash();
           yield SettingsState.hasLoaded(
             user: User(uid: settingsObject.uid, name: settingsObject.name),
             directory: settingsObject.directory,
@@ -101,10 +122,9 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         yield state.copyWith(isLoading: true);
         final Option<SettingsFailure> failureOption =
             await _mySharedPreferences.setBool(
-          key: 'darMode',
+          key: 'darkMode',
           value: !state.darkMode,
         );
-        print(failureOption.toString());
         yield state.copyWith(
           darkMode: failureOption.isNone() ? !state.darkMode : state.darkMode,
           isLoading: false,

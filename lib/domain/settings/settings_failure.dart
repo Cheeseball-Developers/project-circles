@@ -4,6 +4,7 @@ part 'settings_failure.freezed.dart';
 
 @freezed
 abstract class SettingsFailure with _$SettingsFailure {
+  const factory SettingsFailure.idAndNameNotSet() = IdAndNameNotSet;
   const factory SettingsFailure.instanceLoadFailure() = InstanceLoadFailure;
   const factory SettingsFailure.valueLoadFailure() = ValueLoadFailure;
   const factory SettingsFailure.valueSaveFailure() = ValueSaveFailure;
