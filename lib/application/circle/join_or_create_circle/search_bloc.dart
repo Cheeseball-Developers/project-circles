@@ -20,11 +20,12 @@ part 'search_bloc.freezed.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
+  final List<User> discoveredDevices = <User>[];
+  StreamSubscription<User> streamSubscriptionDiscoveredDevice;
+  StreamSubscription<String> streamSubstciptionLostDevice;
+
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
-    final List<User> discoveredDevices = <User>[];
-
-    StreamSubscription<User> streamSubscriptionDiscoveredDevice;
     Either<ConnectionFailure, Unit> errorOrDiscovering;
 
     yield* event.map(startSearching: (e) async* {
@@ -53,11 +54,22 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       yield state.copyWith(
           isLoading: false,
           isSearching: true,
-          connectionFailureOrSuccessOption: some(errorOrDiscovering),
           discoveredDevices: discoveredDevices);
+    }, deviceLost: (e) async* {
+      streamSubstciptionLostDevice =
+          nearbyConnections.lostDeviceStream.listen((event) {
+        debugPrint("A device is lost");
+        discoveredDevices.removeWhere((user) => user.uid.getOrCrash() == event);
+      }, onError: (e) {
+        debugPrint("Error on removing $e");
+      }, cancelOnError: false);
+
+      yield state.copyWith(discoveredDevices: discoveredDevices);
     }, stopSearching: (e) async* {
       yield state.copyWith(isLoading: false);
       streamSubscriptionDiscoveredDevice?.cancel();
+      streamSubstciptionLostDevice?.cancel();
+      discoveredDevices.clear();
       nearbyConnections.stopDiscovering();
       yield state.copyWith(
           isLoading: false,

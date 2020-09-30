@@ -26,8 +26,13 @@ class NearbyConnections {
   final StreamController<User> onEndFound = StreamController<User>.broadcast();
   Stream<User> discoveredDeviceStream;
 
+  final StreamController<String> onEndLost =
+      StreamController<String>.broadcast();
+  Stream<String> lostDeviceStream;
+
   final StreamController<User> onRequestSent =
       StreamController<User>.broadcast();
+
   Stream<User> incomingRequestStream;
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
@@ -120,6 +125,11 @@ class NearbyConnections {
   }
 
   ///Stop Advertising
+  ///After calling stopAdvertising(), the advertiser can still receive connection
+  ///requests from discoverers that discovered while advertising was active.
+  ///After calling stopDiscovery(), the discoverer can still request connections
+  ///to advertisers that were discovered; however,the discoverer will not
+  /// discover any new advertisers until it starts discovery again.
   Future<void> stopAdvertising() async {
     await _nearby.stopAdvertising();
   }
@@ -129,6 +139,7 @@ class NearbyConnections {
     debugPrint("Discovering....");
     debugPrint("this is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
+    lostDeviceStream = onEndLost.stream;
     host = _username;
 
     final bool a = await _nearby.startDiscovery(
@@ -143,20 +154,9 @@ class NearbyConnections {
         // add to the sink hehe
         onEndFound.sink.add(discoveredDevice);
         _endName = name;
-
-        //request a connection which thereby calls onConnection init
-        //final Either<ConnectionFailure, Unit> _requestConnection =
-        //  await requestConnection(_username, id);
-        //_requestConnection.fold((failure){
-        //debugPrint(
-        //  "Failure occurred in requesting a connection more precisely $failure");
-        //return left(const ConnectionFailure.unexpected());
-        //}, (success) {
-        //debugPrint("Successfully accepted a connection $success");
-        //});
       },
       onEndpointLost: (String id) {
-        //TODO: Print that endpoint is lost or disconnected to the endpoint and remove a member
+        onEndLost.sink.add(id);
         debugPrint("Endpoint lost to host $id");
       },
     );
@@ -185,9 +185,11 @@ class NearbyConnections {
     debugPrint("Stopping all the endpoints");
   }
 
-  ///request Connection
+  ///request Connection called by the discoverer after succesfully finding an endpoint
   Future<Either<ConnectionFailure, Unit>> requestConnection(
       {@required String username, @required String endpointId}) async {
+    debugPrint("Requested a Connection to $username");
+    lostDeviceStream = onEndLost.stream;
     final bool a = await _nearby.requestConnection(username, endpointId,
         onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
@@ -205,21 +207,22 @@ class NearbyConnections {
       },
           (success) => {
                 debugPrint(
-                    "Connection is being Initiated yo: $success to $endId")
+                    "Connection is automatically accpeted from me waiting for host yo: $success to $endId")
               });
     }, onConnectionResult: (id, Status status) {
       debugPrint("Status of the connection to host $host $id : $status");
       if (status == Status.CONNECTED) {
         debugPrint(
-            "Connection accepted by the host and the connection is succesful: $host");
+            "Connection accepted by the host and the connection is successful: $host");
       } else if (status == Status.REJECTED) {
         debugPrint("Connection rejected by host$host : $id");
       } else if (status == Status.ERROR) {
         debugPrint("Error in connecting to $host..Please try again");
       }
     }, onDisconnected: (String id) {
-      //TODO: return that disconnected
+      //TODO: return that disconnected and remove that member
       debugPrint("Disconnected! Connect again to: $id");
+      onEndLost.sink.add(id);
     });
     if (a) {
       return right(unit);
@@ -237,7 +240,7 @@ class NearbyConnections {
     debugPrint(info.authenticationToken);
   }
 
-  //Accept Connection
+  //Accept Connection to connect successfuclly
   Future<Either<ConnectionFailure, Unit>> acceptConnection(
       {@required String endId}) async {
     final a = await _nearby.acceptConnection(endId,
