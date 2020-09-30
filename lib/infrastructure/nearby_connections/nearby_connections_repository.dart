@@ -129,6 +129,7 @@ class NearbyConnections {
     debugPrint("Discovering....");
     debugPrint("this is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
+    host = _username;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -141,6 +142,7 @@ class NearbyConnections {
 
         // add to the sink hehe
         onEndFound.sink.add(discoveredDevice);
+        _endName = name;
 
         //request a connection which thereby calls onConnection init
         //final Either<ConnectionFailure, Unit> _requestConnection =

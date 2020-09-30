@@ -129,6 +129,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       },
       leaveCircle: (e) async* {
         nearbyConnections.stopAllEndpoints();
+        nearbyConnections.stopAdvertising();
       },
       closeCircle: (e) async* {
         nearbyConnections.stopAdvertising();
