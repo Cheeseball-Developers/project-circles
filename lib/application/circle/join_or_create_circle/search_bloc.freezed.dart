@@ -25,6 +25,11 @@ class _$SearchEventTearOff {
   }
 
 // ignore: unused_element
+  DeviceLost deviceLost() {
+    return const DeviceLost();
+  }
+
+// ignore: unused_element
   StopSearching stopSearching() {
     return const StopSearching();
   }
@@ -45,6 +50,7 @@ mixin _$SearchEvent {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   });
@@ -52,6 +58,7 @@ mixin _$SearchEvent {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     @required Result orElse(),
@@ -60,6 +67,7 @@ mixin _$SearchEvent {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   });
@@ -67,6 +75,7 @@ mixin _$SearchEvent {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
     @required Result orElse(),
@@ -124,11 +133,13 @@ class _$StartSearching implements StartSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return startSearching();
@@ -139,6 +150,7 @@ class _$StartSearching implements StartSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     @required Result orElse(),
@@ -155,11 +167,13 @@ class _$StartSearching implements StartSearching {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return startSearching(this);
@@ -170,6 +184,7 @@ class _$StartSearching implements StartSearching {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
     @required Result orElse(),
@@ -257,11 +272,13 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return deviceDiscovered(user);
@@ -272,6 +289,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     @required Result orElse(),
@@ -288,11 +306,13 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return deviceDiscovered(this);
@@ -303,6 +323,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
     @required Result orElse(),
@@ -320,6 +341,110 @@ abstract class DeviceDiscovered implements SearchEvent {
 
   User get user;
   $DeviceDiscoveredCopyWith<DeviceDiscovered> get copyWith;
+}
+
+abstract class $DeviceLostCopyWith<$Res> {
+  factory $DeviceLostCopyWith(
+          DeviceLost value, $Res Function(DeviceLost) then) =
+      _$DeviceLostCopyWithImpl<$Res>;
+}
+
+class _$DeviceLostCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
+    implements $DeviceLostCopyWith<$Res> {
+  _$DeviceLostCopyWithImpl(DeviceLost _value, $Res Function(DeviceLost) _then)
+      : super(_value, (v) => _then(v as DeviceLost));
+
+  @override
+  DeviceLost get _value => super._value as DeviceLost;
+}
+
+class _$DeviceLost implements DeviceLost {
+  const _$DeviceLost();
+
+  @override
+  String toString() {
+    return 'SearchEvent.deviceLost()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DeviceLost);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startSearching(),
+    @required Result deviceDiscovered(User user),
+    @required Result deviceLost(),
+    @required Result stopSearching(),
+    @required Result requestConnection(User discoveredUser),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    return deviceLost();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startSearching(),
+    Result deviceDiscovered(User user),
+    Result deviceLost(),
+    Result stopSearching(),
+    Result requestConnection(User discoveredUser),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deviceLost != null) {
+      return deviceLost();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startSearching(StartSearching value),
+    @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result deviceLost(DeviceLost value),
+    @required Result stopSearching(StopSearching value),
+    @required Result requestConnection(RequestConnection value),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    return deviceLost(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startSearching(StartSearching value),
+    Result deviceDiscovered(DeviceDiscovered value),
+    Result deviceLost(DeviceLost value),
+    Result stopSearching(StopSearching value),
+    Result requestConnection(RequestConnection value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deviceLost != null) {
+      return deviceLost(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeviceLost implements SearchEvent {
+  const factory DeviceLost() = _$DeviceLost;
 }
 
 abstract class $StopSearchingCopyWith<$Res> {
@@ -359,11 +484,13 @@ class _$StopSearching implements StopSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return stopSearching();
@@ -374,6 +501,7 @@ class _$StopSearching implements StopSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     @required Result orElse(),
@@ -390,11 +518,13 @@ class _$StopSearching implements StopSearching {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return stopSearching(this);
@@ -405,6 +535,7 @@ class _$StopSearching implements StopSearching {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
     @required Result orElse(),
@@ -497,11 +628,13 @@ class _$RequestConnection implements RequestConnection {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return requestConnection(discoveredUser);
@@ -512,6 +645,7 @@ class _$RequestConnection implements RequestConnection {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     @required Result orElse(),
@@ -528,11 +662,13 @@ class _$RequestConnection implements RequestConnection {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
     return requestConnection(this);
@@ -543,6 +679,7 @@ class _$RequestConnection implements RequestConnection {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
     @required Result orElse(),
