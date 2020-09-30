@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 import 'package:projectcircles/injection.dart';
 
@@ -26,35 +27,37 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   Stream<CurrentCircleState> mapEventToState(
     CurrentCircleEvent event,
   ) async* {
-    StreamSubscription<User> _incomingRequestsStreamSubsciption;
+    StreamSubscription<User> _incomingRequestsStreamSubscription;
     yield* event.map(
       startCircle: (e) async* {
         yield const CurrentCircleState.isStarting();
         final Either<ConnectionFailure, Unit> failureOrStartAdvertising =
             await nearbyConnections.startAdvertising();
-        yield CurrentCircleState.hasJoined(
-            host: nearbyConnections.host,
-            members: <User, bool>{},
-            selectedFiles: <File, double>{},
-            filesSentPopUp: false);
-
-        _incomingRequestsStreamSubsciption =
+        _incomingRequestsStreamSubscription =
             nearbyConnections.incomingRequestStream.listen((event) {
           debugPrint("A device found, wants to join");
           add(CurrentCircleEvent.deviceRequestedConnection(user: event));
         });
+        yield CurrentCircleState.hasJoined(
+          host: e.host,
+          showUserRequestPopUp: false,
+          showFilesReceivedPopUp: false,
+          members: <User, bool>{},
+          selectedFiles: <File, double>{},
+          filesSentPopUp: false,
+        );
       },
       deviceRequestedConnection: (e) async* {
         yield* state.maybeMap(
-            hasJoined: (state) async* {
-              state.members.addAll({e.user: true});
-              yield CurrentCircleState.hasJoined(
-                  host: nearbyConnections.host,
-                  members: state.members,
-                  selectedFiles: <File, double>{},
-                  filesSentPopUp: false);
-            },
-            orElse: () async* {});
+          hasJoined: (state) async* {
+            state.members.addAll({e.user: true});
+            yield state.copyWith(
+              members: state.members,
+              showUserRequestPopUp: true,
+            );
+          },
+          orElse: () async* {},
+        );
       },
       acceptOrReject: (AcceptOrReject request) async* {
         if (request.acceptConnection) {
@@ -62,7 +65,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               await nearbyConnections.acceptConnection(
                   endId: request.requestingUser.uid.getOrCrash());
           yield* state.maybeMap(hasJoined: (state) async* {
-            state.members.update(request.requestingUser, (value) => true);
+            state.members.update(request.requestingUser, (value) => false);
             yield state.copyWith(members: state.members);
           }, orElse: () async* {
             yield null;
@@ -79,6 +82,16 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               },
               orElse: () async* {});
         }
+      },
+      joinCircle: (e) async* {
+        yield CurrentCircleState.hasJoined(
+          host: e.host,
+          showUserRequestPopUp: false,
+          showFilesReceivedPopUp: false,
+          members: <User, bool>{},
+          selectedFiles: <File, double>{},
+          filesSentPopUp: false,
+        );
       },
       addFile: (e) async* {
         yield* state.maybeMap(hasJoined: (state) async* {
@@ -121,7 +134,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       closeCircle: (e) async* {
         nearbyConnections.stopAdvertising();
         yield const CurrentCircleState.initial();
-        _incomingRequestsStreamSubsciption.cancel();
+        _incomingRequestsStreamSubscription.cancel();
       },
     );
   }

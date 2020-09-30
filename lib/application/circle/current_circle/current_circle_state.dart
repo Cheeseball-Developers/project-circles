@@ -8,11 +8,14 @@ abstract class CurrentCircleState with _$CurrentCircleState {
 
   const factory CurrentCircleState.isJoining() = _IsJoining;
 
-  const factory CurrentCircleState.hasJoined(
-      {@required String host,
-      @required Map<User, bool> members,
-      @required Map<File, double> selectedFiles,
-      @required bool filesSentPopUp}) = _HasJoined;
+  const factory CurrentCircleState.hasJoined({
+    @required User host,
+    @required bool showUserRequestPopUp,
+    @required bool showFilesReceivedPopUp,
+    @required Map<User, bool> members,
+    @required Map<File, double> selectedFiles,
+    @required bool filesSentPopUp,
+  }) = _HasJoined;
 
   const factory CurrentCircleState.hasFailed(
       {@required ConnectionFailure failure}) = _HasFailed;

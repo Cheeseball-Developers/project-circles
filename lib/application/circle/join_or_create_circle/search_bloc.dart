@@ -46,6 +46,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       }, onError: (e) {
         debugPrint('Error $e');
       }, cancelOnError: false);
+
+      yield state.copyWith(isLoading: false, isSearching: true);
     }, deviceDiscovered: (e) async* {
       discoveredDevices.add(e.user);
       yield state.copyWith(
@@ -66,6 +68,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           await nearbyConnections.requestConnection(
               username: user.discoveredUser.name.getOrCrash(),
               endpointId: user.discoveredUser.uid.getOrCrash());
+
       yield state.copyWith(
           isLoading: false,
           isSearching: true,
