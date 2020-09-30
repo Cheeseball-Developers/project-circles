@@ -15,10 +15,18 @@ class CircleHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
       listener: (context, currentCircleState) {
-        if (currentCircleState == const CurrentCircleState.initial()) {
-          ExtendedNavigator.of(context).pop();
-          ExtendedNavigator.of(context).pop();
-        }
+        currentCircleState.maybeMap(
+          initial: (_) {
+            ExtendedNavigator.of(context).pop();
+            ExtendedNavigator.of(context).pop();
+          },
+          hasJoined: (state) {
+            if (state.showUserRequestPopUp) {
+              showDialog(context: context, child: MembersPage());
+            }
+          },
+          orElse: () {},
+        );
       },
       builder: (context, currentCircleState) => currentCircleState.map(
         initial: (_) => Scaffold(
@@ -76,8 +84,8 @@ class CircleHome extends StatelessWidget {
                           children: [
                             Text('Connected to...',
                                 style: Theme.of(context).textTheme.caption),
-                            Text("${currentCircleState.host}'s Circle",
-                                style: Theme.of(context).textTheme.headline6)
+                            Text("${currentCircleState.host.name.getOrCrash()}'s Circle",
+                                style: Theme.of(context).accentTextTheme.headline6)
                           ],
                         ),
                       ),
@@ -146,7 +154,8 @@ class CircleHome extends StatelessWidget {
                   ),
                   Positioned.fill(
                     child: GestureDetector(
-                      onTap: () {}, // TODO: Add functionality to send button
+                      onTap: () {},
+                      // TODO: Add functionality to send button
                       child: const CircleAvatar(
                         backgroundColor: Colors.white,
                         child: Icon(Icons.send),

@@ -1,8 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/injection.dart';
+import 'package:projectcircles/presentation/join_or_create_circle/widgets/connection_request_pop_up.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
 
 class DiscoveredCircleIcon extends StatelessWidget {
@@ -18,14 +21,22 @@ class DiscoveredCircleIcon extends StatelessWidget {
           () => null,
           (failureOrSuccess) => failureOrSuccess.fold(
             (l) => null,
-            (_) => ExtendedNavigator.of(context).push(Routes.circleHome),
+            (_) {
+              print('Successfully Joined!');
+              getIt<CurrentCircleBloc>()
+                  .add(CurrentCircleEvent.joinCircle(host: user));
+              ExtendedNavigator.of(context).push(Routes.circleHome);
+            },
           ),
         );
       },
       builder: (context, state) => GestureDetector(
-        onTap: () => context.bloc<SearchBloc>().add(
-              SearchEvent.requestConnection(discoveredUser: user),
-            ),
+        onTap: () {
+          showDialog(context: context, child: ConnectionRequestPopUp(user));
+          context.bloc<SearchBloc>().add(
+                SearchEvent.requestConnection(discoveredUser: user),
+              );
+        },
         child: Column(
           children: [
             const CircleAvatar(

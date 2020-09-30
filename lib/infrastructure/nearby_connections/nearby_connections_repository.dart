@@ -44,7 +44,7 @@ class NearbyConnections {
     _username = username;
   }
 
-  // initail setup
+  // initial setup
   Future<bool> isLocationPermitted() async {
     if (await _nearby.checkLocationPermission()) {
       return true;
@@ -193,7 +193,6 @@ class NearbyConnections {
       //TODO: Check the authentication token
       debugPrint(
           "Check if the token is same ${connectionInfo.authenticationToken}");
-
       //accept by default in discoverer side
       final Either<ConnectionFailure, Unit> _acceptConnection =
           await acceptConnection(endId: endId);

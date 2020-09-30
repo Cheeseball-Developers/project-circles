@@ -38,6 +38,11 @@ ThemeData defaultTheme() {
     return base.copyWith(
       bodyText2: const TextStyle(
         color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'),
+      headline6: const TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+          fontFamily: 'Quicksand',
+          fontWeight: FontWeight.w500),
     );
   }
 
