@@ -25,6 +25,16 @@ class _$SearchEventTearOff {
   }
 
 // ignore: unused_element
+  ShowAllDiscoveredDevices showAllDiscoveredDevices() {
+    return const ShowAllDiscoveredDevices();
+  }
+
+// ignore: unused_element
+  DismissAllDiscoveredDevices dismissAllDiscoveredDevices() {
+    return const DismissAllDiscoveredDevices();
+  }
+
+// ignore: unused_element
   DeviceLost deviceLost() {
     return const DeviceLost();
   }
@@ -50,6 +60,8 @@ mixin _$SearchEvent {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
@@ -58,6 +70,8 @@ mixin _$SearchEvent {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
@@ -67,6 +81,9 @@ mixin _$SearchEvent {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
@@ -75,6 +92,8 @@ mixin _$SearchEvent {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
@@ -133,12 +152,16 @@ class _$StartSearching implements StartSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -150,6 +173,8 @@ class _$StartSearching implements StartSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
@@ -167,12 +192,17 @@ class _$StartSearching implements StartSearching {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -184,6 +214,8 @@ class _$StartSearching implements StartSearching {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
@@ -272,12 +304,16 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -289,6 +325,8 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
@@ -306,12 +344,17 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -323,6 +366,8 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
@@ -341,6 +386,247 @@ abstract class DeviceDiscovered implements SearchEvent {
 
   User get user;
   $DeviceDiscoveredCopyWith<DeviceDiscovered> get copyWith;
+}
+
+abstract class $ShowAllDiscoveredDevicesCopyWith<$Res> {
+  factory $ShowAllDiscoveredDevicesCopyWith(ShowAllDiscoveredDevices value,
+          $Res Function(ShowAllDiscoveredDevices) then) =
+      _$ShowAllDiscoveredDevicesCopyWithImpl<$Res>;
+}
+
+class _$ShowAllDiscoveredDevicesCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res>
+    implements $ShowAllDiscoveredDevicesCopyWith<$Res> {
+  _$ShowAllDiscoveredDevicesCopyWithImpl(ShowAllDiscoveredDevices _value,
+      $Res Function(ShowAllDiscoveredDevices) _then)
+      : super(_value, (v) => _then(v as ShowAllDiscoveredDevices));
+
+  @override
+  ShowAllDiscoveredDevices get _value =>
+      super._value as ShowAllDiscoveredDevices;
+}
+
+class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
+  const _$ShowAllDiscoveredDevices();
+
+  @override
+  String toString() {
+    return 'SearchEvent.showAllDiscoveredDevices()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ShowAllDiscoveredDevices);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startSearching(),
+    @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
+    @required Result deviceLost(),
+    @required Result stopSearching(),
+    @required Result requestConnection(User discoveredUser),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    return showAllDiscoveredDevices();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startSearching(),
+    Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
+    Result deviceLost(),
+    Result stopSearching(),
+    Result requestConnection(User discoveredUser),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (showAllDiscoveredDevices != null) {
+      return showAllDiscoveredDevices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startSearching(StartSearching value),
+    @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required Result deviceLost(DeviceLost value),
+    @required Result stopSearching(StopSearching value),
+    @required Result requestConnection(RequestConnection value),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    return showAllDiscoveredDevices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startSearching(StartSearching value),
+    Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    Result deviceLost(DeviceLost value),
+    Result stopSearching(StopSearching value),
+    Result requestConnection(RequestConnection value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (showAllDiscoveredDevices != null) {
+      return showAllDiscoveredDevices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ShowAllDiscoveredDevices implements SearchEvent {
+  const factory ShowAllDiscoveredDevices() = _$ShowAllDiscoveredDevices;
+}
+
+abstract class $DismissAllDiscoveredDevicesCopyWith<$Res> {
+  factory $DismissAllDiscoveredDevicesCopyWith(
+          DismissAllDiscoveredDevices value,
+          $Res Function(DismissAllDiscoveredDevices) then) =
+      _$DismissAllDiscoveredDevicesCopyWithImpl<$Res>;
+}
+
+class _$DismissAllDiscoveredDevicesCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res>
+    implements $DismissAllDiscoveredDevicesCopyWith<$Res> {
+  _$DismissAllDiscoveredDevicesCopyWithImpl(DismissAllDiscoveredDevices _value,
+      $Res Function(DismissAllDiscoveredDevices) _then)
+      : super(_value, (v) => _then(v as DismissAllDiscoveredDevices));
+
+  @override
+  DismissAllDiscoveredDevices get _value =>
+      super._value as DismissAllDiscoveredDevices;
+}
+
+class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
+  const _$DismissAllDiscoveredDevices();
+
+  @override
+  String toString() {
+    return 'SearchEvent.dismissAllDiscoveredDevices()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DismissAllDiscoveredDevices);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startSearching(),
+    @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
+    @required Result deviceLost(),
+    @required Result stopSearching(),
+    @required Result requestConnection(User discoveredUser),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    return dismissAllDiscoveredDevices();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startSearching(),
+    Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
+    Result deviceLost(),
+    Result stopSearching(),
+    Result requestConnection(User discoveredUser),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (dismissAllDiscoveredDevices != null) {
+      return dismissAllDiscoveredDevices();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startSearching(StartSearching value),
+    @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required Result deviceLost(DeviceLost value),
+    @required Result stopSearching(StopSearching value),
+    @required Result requestConnection(RequestConnection value),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    return dismissAllDiscoveredDevices(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startSearching(StartSearching value),
+    Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    Result deviceLost(DeviceLost value),
+    Result stopSearching(StopSearching value),
+    Result requestConnection(RequestConnection value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (dismissAllDiscoveredDevices != null) {
+      return dismissAllDiscoveredDevices(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DismissAllDiscoveredDevices implements SearchEvent {
+  const factory DismissAllDiscoveredDevices() = _$DismissAllDiscoveredDevices;
 }
 
 abstract class $DeviceLostCopyWith<$Res> {
@@ -379,12 +665,16 @@ class _$DeviceLost implements DeviceLost {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -396,6 +686,8 @@ class _$DeviceLost implements DeviceLost {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
@@ -413,12 +705,17 @@ class _$DeviceLost implements DeviceLost {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -430,6 +727,8 @@ class _$DeviceLost implements DeviceLost {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
@@ -484,12 +783,16 @@ class _$StopSearching implements StopSearching {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -501,6 +804,8 @@ class _$StopSearching implements StopSearching {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
@@ -518,12 +823,17 @@ class _$StopSearching implements StopSearching {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -535,6 +845,8 @@ class _$StopSearching implements StopSearching {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
@@ -628,12 +940,16 @@ class _$RequestConnection implements RequestConnection {
   Result when<Result extends Object>({
     @required Result startSearching(),
     @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -645,6 +961,8 @@ class _$RequestConnection implements RequestConnection {
   Result maybeWhen<Result extends Object>({
     Result startSearching(),
     Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
@@ -662,12 +980,17 @@ class _$RequestConnection implements RequestConnection {
   Result map<Result extends Object>({
     @required Result startSearching(StartSearching value),
     @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
@@ -679,6 +1002,8 @@ class _$RequestConnection implements RequestConnection {
   Result maybeMap<Result extends Object>({
     Result startSearching(StartSearching value),
     Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
@@ -710,6 +1035,8 @@ class _$SearchStateTearOff {
       @required
           bool isLoading,
       @required
+          bool showAllDiscoveredDevicesPopUp,
+      @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
       @required
@@ -717,6 +1044,7 @@ class _$SearchStateTearOff {
     return _SearchState(
       isSearching: isSearching,
       isLoading: isLoading,
+      showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp,
       connectionFailureOrSuccessOption: connectionFailureOrSuccessOption,
       discoveredDevices: discoveredDevices,
     );
@@ -729,6 +1057,7 @@ const $SearchState = _$SearchStateTearOff();
 mixin _$SearchState {
   bool get isSearching;
   bool get isLoading;
+  bool get showAllDiscoveredDevicesPopUp;
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
   List<User> get discoveredDevices;
 
@@ -742,6 +1071,7 @@ abstract class $SearchStateCopyWith<$Res> {
   $Res call(
       {bool isSearching,
       bool isLoading,
+      bool showAllDiscoveredDevicesPopUp,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
       List<User> discoveredDevices});
 }
@@ -757,6 +1087,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   $Res call({
     Object isSearching = freezed,
     Object isLoading = freezed,
+    Object showAllDiscoveredDevicesPopUp = freezed,
     Object connectionFailureOrSuccessOption = freezed,
     Object discoveredDevices = freezed,
   }) {
@@ -764,6 +1095,9 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
       isSearching:
           isSearching == freezed ? _value.isSearching : isSearching as bool,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp == freezed
+          ? _value.showAllDiscoveredDevicesPopUp
+          : showAllDiscoveredDevicesPopUp as bool,
       connectionFailureOrSuccessOption:
           connectionFailureOrSuccessOption == freezed
               ? _value.connectionFailureOrSuccessOption
@@ -785,6 +1119,7 @@ abstract class _$SearchStateCopyWith<$Res>
   $Res call(
       {bool isSearching,
       bool isLoading,
+      bool showAllDiscoveredDevicesPopUp,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
       List<User> discoveredDevices});
 }
@@ -802,6 +1137,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
   $Res call({
     Object isSearching = freezed,
     Object isLoading = freezed,
+    Object showAllDiscoveredDevicesPopUp = freezed,
     Object connectionFailureOrSuccessOption = freezed,
     Object discoveredDevices = freezed,
   }) {
@@ -809,6 +1145,9 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
       isSearching:
           isSearching == freezed ? _value.isSearching : isSearching as bool,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp == freezed
+          ? _value.showAllDiscoveredDevicesPopUp
+          : showAllDiscoveredDevicesPopUp as bool,
       connectionFailureOrSuccessOption:
           connectionFailureOrSuccessOption == freezed
               ? _value.connectionFailureOrSuccessOption
@@ -825,10 +1164,12 @@ class _$_SearchState implements _SearchState {
   const _$_SearchState(
       {@required this.isSearching,
       @required this.isLoading,
+      @required this.showAllDiscoveredDevicesPopUp,
       @required this.connectionFailureOrSuccessOption,
       @required this.discoveredDevices})
       : assert(isSearching != null),
         assert(isLoading != null),
+        assert(showAllDiscoveredDevicesPopUp != null),
         assert(connectionFailureOrSuccessOption != null),
         assert(discoveredDevices != null);
 
@@ -837,6 +1178,8 @@ class _$_SearchState implements _SearchState {
   @override
   final bool isLoading;
   @override
+  final bool showAllDiscoveredDevicesPopUp;
+  @override
   final Option<Either<ConnectionFailure, Unit>>
       connectionFailureOrSuccessOption;
   @override
@@ -844,7 +1187,7 @@ class _$_SearchState implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(isSearching: $isSearching, isLoading: $isLoading, connectionFailureOrSuccessOption: $connectionFailureOrSuccessOption, discoveredDevices: $discoveredDevices)';
+    return 'SearchState(isSearching: $isSearching, isLoading: $isLoading, showAllDiscoveredDevicesPopUp: $showAllDiscoveredDevicesPopUp, connectionFailureOrSuccessOption: $connectionFailureOrSuccessOption, discoveredDevices: $discoveredDevices)';
   }
 
   @override
@@ -857,6 +1200,11 @@ class _$_SearchState implements _SearchState {
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
+            (identical(other.showAllDiscoveredDevicesPopUp,
+                    showAllDiscoveredDevicesPopUp) ||
+                const DeepCollectionEquality().equals(
+                    other.showAllDiscoveredDevicesPopUp,
+                    showAllDiscoveredDevicesPopUp)) &&
             (identical(other.connectionFailureOrSuccessOption,
                     connectionFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -872,6 +1220,7 @@ class _$_SearchState implements _SearchState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(isSearching) ^
       const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(showAllDiscoveredDevicesPopUp) ^
       const DeepCollectionEquality().hash(connectionFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(discoveredDevices);
 
@@ -887,6 +1236,8 @@ abstract class _SearchState implements SearchState {
       @required
           bool isLoading,
       @required
+          bool showAllDiscoveredDevicesPopUp,
+      @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
       @required
@@ -896,6 +1247,8 @@ abstract class _SearchState implements SearchState {
   bool get isSearching;
   @override
   bool get isLoading;
+  @override
+  bool get showAllDiscoveredDevicesPopUp;
   @override
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
   @override
