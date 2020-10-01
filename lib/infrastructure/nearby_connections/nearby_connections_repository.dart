@@ -190,40 +190,48 @@ class NearbyConnections {
       {@required String username, @required String endpointId}) async {
     debugPrint("Requested a Connection to $username");
     lostDeviceStream = onEndLost.stream;
-    final bool a = await _nearby.requestConnection(username, endpointId,
-        onConnectionInitiated:
-            (String endId, ConnectionInfo connectionInfo) async {
-      debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
-      //TODO: Check the authentication token
-      debugPrint(
-          "Check if the token is same ${connectionInfo.authenticationToken}");
-      //accept by default in discoverer side
-      final Either<ConnectionFailure, Unit> _acceptConnection =
-          await acceptConnection(endId: endId);
-      _acceptConnection.fold((failure) {
+    bool a;
+    try {
+      a = await _nearby.requestConnection(username, endpointId,
+          onConnectionInitiated:
+              (String endId, ConnectionInfo connectionInfo) async {
+        debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
+        //TODO: Check the authentication token
         debugPrint(
-            "Failure occurred on Initiating a connection more precisely $failure");
-        return left(const ConnectionFailure.unexpected());
-      },
-          (success) => {
-                debugPrint(
-                    "Connection is automatically accpeted from me waiting for host yo: $success to $endId")
-              });
-    }, onConnectionResult: (id, Status status) {
-      debugPrint("Status of the connection to host $host $id : $status");
-      if (status == Status.CONNECTED) {
-        debugPrint(
-            "Connection accepted by the host and the connection is successful: $host");
-      } else if (status == Status.REJECTED) {
-        debugPrint("Connection rejected by host$host : $id");
-      } else if (status == Status.ERROR) {
-        debugPrint("Error in connecting to $host..Please try again");
-      }
-    }, onDisconnected: (String id) {
-      //TODO: return that disconnected and remove that member
-      debugPrint("Disconnected! Connect again to: $id");
-      onEndLost.sink.add(id);
-    });
+            "Check if the token is same ${connectionInfo.authenticationToken}");
+        //accept by default in discoverer side
+        final Either<ConnectionFailure, Unit> _acceptConnection =
+            await acceptConnection(endId: endId);
+        _acceptConnection.fold((failure) {
+          debugPrint(
+              "Failure occurred on Initiating a connection more precisely $failure");
+          return left(const ConnectionFailure.unexpected());
+        },
+            (success) => {
+                  debugPrint(
+                      "Connection is automatically accpeted from me waiting for host yo: $success to $endId")
+                });
+      }, onConnectionResult: (id, Status status) {
+        debugPrint("Status of the connection to host $host $id : $status");
+        if (status == Status.CONNECTED) {
+          debugPrint(
+              "Connection accepted by the host and the connection is successful: $host");
+        } else if (status == Status.REJECTED) {
+          debugPrint("Connection rejected by host$host : $id");
+        } else if (status == Status.ERROR) {
+          debugPrint("Error in connecting to $host..Please try again");
+        }
+      }, onDisconnected: (String id) {
+        //TODO: return that disconnected and remove that member
+        debugPrint("Disconnected! Connect again to: $id");
+        onEndLost.sink.add(id);
+      });
+    } catch (e) {
+      debugPrint('some error occurred in requesting a '
+          'connection, maybe due to host has closed the circle,\n more precisely the error is $e');
+      return left(const ConnectionFailure.unexpected());
+    }
+
     if (a) {
       return right(unit);
     } else {
