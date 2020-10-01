@@ -22,7 +22,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final nearbyConnections = getIt<NearbyConnections>();
   final List<User> discoveredDevices = <User>[];
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
-  StreamSubscription<String> streamSubstciptionLostDevice;
+  StreamSubscription<String> streamSubscriptionLostDevice;
 
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
@@ -55,8 +55,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isLoading: false,
           isSearching: true,
           discoveredDevices: discoveredDevices);
+    }, showAllDiscoveredDevices: (e) async* {
+      yield state.copyWith(showAllDiscoveredDevicesPopUp: true);
+    }, dismissAllDiscoveredDevices: (e) async* {
+      yield state.copyWith(showAllDiscoveredDevicesPopUp: false);
     }, deviceLost: (e) async* {
-      streamSubstciptionLostDevice =
+      streamSubscriptionLostDevice =
           nearbyConnections.lostDeviceStream.listen((event) {
         debugPrint("A device is lost");
         discoveredDevices.removeWhere((user) => user.uid.getOrCrash() == event);
@@ -68,7 +72,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     }, stopSearching: (e) async* {
       yield state.copyWith(isLoading: false);
       streamSubscriptionDiscoveredDevice?.cancel();
-      streamSubstciptionLostDevice?.cancel();
+      streamSubscriptionLostDevice?.cancel();
       discoveredDevices.clear();
       nearbyConnections.stopAllEndpoints();
       nearbyConnections.stopDiscovering();

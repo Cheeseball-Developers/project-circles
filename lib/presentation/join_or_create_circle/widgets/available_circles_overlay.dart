@@ -20,53 +20,58 @@ class AvailableCirclesOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    return BlocConsumer<SearchBloc, SearchState>(
-        listener: (context, state) {},
-        builder: (context, state) {
-          print(
-              'searching and found and built'); // this guy is not rebuilding for some weird reason, let's check
-          if (state.isSearching) {
-            return Stack(
-              children: List.generate(
-                state.discoveredDevices.length > 8
-                    ? 8
-                    : state.discoveredDevices.length,
+    return BlocConsumer<SearchBloc, SearchState>(listener: (context, state) {
+      if (state.showAllDiscoveredDevicesPopUp) {
+        showDialog(context: context, child: AllDiscoveredDevicesPopUp())
+            .whenComplete(() =>
+            context.bloc<SearchBloc>().add(
+              const SearchEvent.dismissAllDiscoveredDevices(),),);
+      }
+    }, builder: (context, state) {
+      print(
+          'searching and found and built'); // this guy is not rebuilding for some weird reason, let's check
+      if (state.isSearching) {
+        return Stack(
+          children: List.generate(
+            state.discoveredDevices.length > 8
+                ? 8
+                : state.discoveredDevices.length,
                 (index) {
-                  return Positioned(
-                    left: getX(index, mediaQuery.size.width / 2),
-                    bottom: getY(index, mediaQuery.size.height / 2),
-                    child: index < 7
-                        ? DiscoveredCircleIcon(
-                            user: User(
-                                uid: state.discoveredDevices[index].uid,
-                                name: state.discoveredDevices[index].name),
-                          )
-                        : GestureDetector(
-                            onTap: () => showDialog(
-                              context: context,
-                              child: AllDiscoveredDevicesPopUp(),
-                            ),
-                            // TODO: Add list UI to show all devices
-                            child: Column(
-                              children: [
-                                CircleAvatar(
-                                  backgroundColor:
-                                      Theme.of(context).backgroundColor,
-                                  radius: 24.0,
-                                  child: Text('...'),
-                                ),
-                                Text('Show All')
-                              ],
-                            ),
-                          ),
-                  );
-                },
-              ), // TODO: Handle this plx
-            );
-          } else {
-            return Container();
-          }
-        } // TODO: Handle error state
+              return Positioned(
+                left: getX(index, mediaQuery.size.width / 2),
+                bottom: getY(index, mediaQuery.size.height / 2),
+                child: index < 7
+                    ? DiscoveredCircleIcon(
+                  user: User(
+                      uid: state.discoveredDevices[index].uid,
+                      name: state.discoveredDevices[index].name),
+                )
+                    : GestureDetector(
+                  onTap: () =>
+                      context.bloc<SearchBloc>().add(
+                          SearchEvent.showAllDiscoveredDevices()),
+                  child: Column(
+                    children: [
+                      CircleAvatar(
+                        backgroundColor:
+                        Theme
+                            .of(context)
+                            .backgroundColor,
+                        radius: 24.0,
+                        child: Text('...'),
+                      ),
+                      Text('Show All')
+                    ],
+                  ),
+                ),
+              );
+            },
+          ), // TODO: Handle this plx
         );
+      } else {
+        return Container();
+      }
+    } // TODO: Handle error state
+    );
   }
 } // done, tanks a lot
