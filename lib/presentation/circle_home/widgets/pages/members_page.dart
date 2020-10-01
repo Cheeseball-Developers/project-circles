@@ -72,14 +72,14 @@ class MembersPage extends StatelessWidget {
                                                   onPressed: () => context
                                                       .bloc<CurrentCircleBloc>()
                                                       .add(
-                                                    CurrentCircleEvent
-                                                        .acceptOrReject(
-                                                        requestingUser:
-                                                        members[
-                                                        index],
-                                                        acceptConnection:
-                                                        false),
-                                                  ),
+                                                        CurrentCircleEvent
+                                                            .acceptOrReject(
+                                                                requestingUser:
+                                                                    members[
+                                                                        index],
+                                                                acceptConnection:
+                                                                    false),
+                                                      ),
                                                   icon: const Icon(
                                                     Icons.clear,
                                                     color: Colors.red,
