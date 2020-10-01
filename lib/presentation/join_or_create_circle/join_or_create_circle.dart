@@ -7,6 +7,7 @@ import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/available_circles_overlay.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/search_button.dart';
+import 'package:projectcircles/presentation/routes/router.gr.dart';
 
 class JoinOrCreateCircle extends StatelessWidget {
   @override
@@ -21,7 +22,7 @@ class JoinOrCreateCircle extends StatelessWidget {
           elevation: 0.0,
           actions: [
             IconButton(
-              onPressed: () => ExtendedNavigator.named('nav').push('/Settings'),
+              onPressed: () => ExtendedNavigator.named('nav').push(Routes.settings),
               icon: const Icon(Icons.settings),
             )
           ],
