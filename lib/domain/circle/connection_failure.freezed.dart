@@ -26,6 +26,11 @@ class _$ConnectionFailureTearOff {
   Unexpected unexpected() {
     return const Unexpected();
   }
+
+// ignore: unused_element
+  EndPointUnknown endPointUnknown() {
+    return const EndPointUnknown();
+  }
 }
 
 // ignore: unused_element
@@ -37,12 +42,14 @@ mixin _$ConnectionFailure {
     @required Result cancelledByUser(),
     @required Result timedOut(),
     @required Result unexpected(),
+    @required Result endPointUnknown(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result cancelledByUser(),
     Result timedOut(),
     Result unexpected(),
+    Result endPointUnknown(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -50,12 +57,14 @@ mixin _$ConnectionFailure {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
     @required Result unexpected(Unexpected value),
+    @required Result endPointUnknown(EndPointUnknown value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
     Result unexpected(Unexpected value),
+    Result endPointUnknown(EndPointUnknown value),
     @required Result orElse(),
   });
 }
@@ -92,12 +101,21 @@ class _$CancelledByUserCopyWithImpl<$Res>
   CancelledByUser get _value => super._value as CancelledByUser;
 }
 
-class _$CancelledByUser implements CancelledByUser {
+class _$CancelledByUser
+    with DiagnosticableTreeMixin
+    implements CancelledByUser {
   const _$CancelledByUser();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ConnectionFailure.cancelledByUser()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ConnectionFailure.cancelledByUser'));
   }
 
   @override
@@ -114,10 +132,12 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result cancelledByUser(),
     @required Result timedOut(),
     @required Result unexpected(),
+    @required Result endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
     assert(unexpected != null);
+    assert(endPointUnknown != null);
     return cancelledByUser();
   }
 
@@ -127,6 +147,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result cancelledByUser(),
     Result timedOut(),
     Result unexpected(),
+    Result endPointUnknown(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -142,10 +163,12 @@ class _$CancelledByUser implements CancelledByUser {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
     @required Result unexpected(Unexpected value),
+    @required Result endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
     assert(unexpected != null);
+    assert(endPointUnknown != null);
     return cancelledByUser(this);
   }
 
@@ -155,6 +178,7 @@ class _$CancelledByUser implements CancelledByUser {
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
     Result unexpected(Unexpected value),
+    Result endPointUnknown(EndPointUnknown value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -183,12 +207,18 @@ class _$TimedOutCopyWithImpl<$Res> extends _$ConnectionFailureCopyWithImpl<$Res>
   TimedOut get _value => super._value as TimedOut;
 }
 
-class _$TimedOut implements TimedOut {
+class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
   const _$TimedOut();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ConnectionFailure.timedOut()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties..add(DiagnosticsProperty('type', 'ConnectionFailure.timedOut'));
   }
 
   @override
@@ -205,10 +235,12 @@ class _$TimedOut implements TimedOut {
     @required Result cancelledByUser(),
     @required Result timedOut(),
     @required Result unexpected(),
+    @required Result endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
     assert(unexpected != null);
+    assert(endPointUnknown != null);
     return timedOut();
   }
 
@@ -218,6 +250,7 @@ class _$TimedOut implements TimedOut {
     Result cancelledByUser(),
     Result timedOut(),
     Result unexpected(),
+    Result endPointUnknown(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -233,10 +266,12 @@ class _$TimedOut implements TimedOut {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
     @required Result unexpected(Unexpected value),
+    @required Result endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
     assert(unexpected != null);
+    assert(endPointUnknown != null);
     return timedOut(this);
   }
 
@@ -246,6 +281,7 @@ class _$TimedOut implements TimedOut {
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
     Result unexpected(Unexpected value),
+    Result endPointUnknown(EndPointUnknown value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -276,12 +312,19 @@ class _$UnexpectedCopyWithImpl<$Res>
   Unexpected get _value => super._value as Unexpected;
 }
 
-class _$Unexpected implements Unexpected {
+class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
   const _$Unexpected();
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ConnectionFailure.unexpected()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ConnectionFailure.unexpected'));
   }
 
   @override
@@ -298,10 +341,12 @@ class _$Unexpected implements Unexpected {
     @required Result cancelledByUser(),
     @required Result timedOut(),
     @required Result unexpected(),
+    @required Result endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
     assert(unexpected != null);
+    assert(endPointUnknown != null);
     return unexpected();
   }
 
@@ -311,6 +356,7 @@ class _$Unexpected implements Unexpected {
     Result cancelledByUser(),
     Result timedOut(),
     Result unexpected(),
+    Result endPointUnknown(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -326,10 +372,12 @@ class _$Unexpected implements Unexpected {
     @required Result cancelledByUser(CancelledByUser value),
     @required Result timedOut(TimedOut value),
     @required Result unexpected(Unexpected value),
+    @required Result endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
     assert(unexpected != null);
+    assert(endPointUnknown != null);
     return unexpected(this);
   }
 
@@ -339,6 +387,7 @@ class _$Unexpected implements Unexpected {
     Result cancelledByUser(CancelledByUser value),
     Result timedOut(TimedOut value),
     Result unexpected(Unexpected value),
+    Result endPointUnknown(EndPointUnknown value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -351,4 +400,113 @@ class _$Unexpected implements Unexpected {
 
 abstract class Unexpected implements ConnectionFailure {
   const factory Unexpected() = _$Unexpected;
+}
+
+abstract class $EndPointUnknownCopyWith<$Res> {
+  factory $EndPointUnknownCopyWith(
+          EndPointUnknown value, $Res Function(EndPointUnknown) then) =
+      _$EndPointUnknownCopyWithImpl<$Res>;
+}
+
+class _$EndPointUnknownCopyWithImpl<$Res>
+    extends _$ConnectionFailureCopyWithImpl<$Res>
+    implements $EndPointUnknownCopyWith<$Res> {
+  _$EndPointUnknownCopyWithImpl(
+      EndPointUnknown _value, $Res Function(EndPointUnknown) _then)
+      : super(_value, (v) => _then(v as EndPointUnknown));
+
+  @override
+  EndPointUnknown get _value => super._value as EndPointUnknown;
+}
+
+class _$EndPointUnknown
+    with DiagnosticableTreeMixin
+    implements EndPointUnknown {
+  const _$EndPointUnknown();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'ConnectionFailure.endPointUnknown()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ConnectionFailure.endPointUnknown'));
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EndPointUnknown);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result cancelledByUser(),
+    @required Result timedOut(),
+    @required Result unexpected(),
+    @required Result endPointUnknown(),
+  }) {
+    assert(cancelledByUser != null);
+    assert(timedOut != null);
+    assert(unexpected != null);
+    assert(endPointUnknown != null);
+    return endPointUnknown();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result cancelledByUser(),
+    Result timedOut(),
+    Result unexpected(),
+    Result endPointUnknown(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (endPointUnknown != null) {
+      return endPointUnknown();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result cancelledByUser(CancelledByUser value),
+    @required Result timedOut(TimedOut value),
+    @required Result unexpected(Unexpected value),
+    @required Result endPointUnknown(EndPointUnknown value),
+  }) {
+    assert(cancelledByUser != null);
+    assert(timedOut != null);
+    assert(unexpected != null);
+    assert(endPointUnknown != null);
+    return endPointUnknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result cancelledByUser(CancelledByUser value),
+    Result timedOut(TimedOut value),
+    Result unexpected(Unexpected value),
+    Result endPointUnknown(EndPointUnknown value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (endPointUnknown != null) {
+      return endPointUnknown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EndPointUnknown implements ConnectionFailure {
+  const factory EndPointUnknown() = _$EndPointUnknown;
 }

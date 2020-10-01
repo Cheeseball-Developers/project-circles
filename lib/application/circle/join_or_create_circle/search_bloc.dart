@@ -70,12 +70,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       streamSubscriptionDiscoveredDevice?.cancel();
       streamSubstciptionLostDevice?.cancel();
       discoveredDevices.clear();
+      nearbyConnections.stopAllEndpoints();
       nearbyConnections.stopDiscovering();
       yield state.copyWith(
           isLoading: false,
           isSearching: false,
           connectionFailureOrSuccessOption: none());
     }, requestConnection: (user) async* {
+      nearbyConnections.stopDiscovering();
       final Either<ConnectionFailure, Unit> requestOrFail =
           await nearbyConnections.requestConnection(
               username: user.discoveredUser.name.getOrCrash(),
