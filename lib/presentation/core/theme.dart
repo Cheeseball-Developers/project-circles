@@ -28,7 +28,7 @@ ThemeData defaultTheme() {
         button: const TextStyle(
             color: Colors.lightBlue, fontSize: 14.0, fontFamily: 'Quicksand'),
         caption: const TextStyle(
-            color: Colors.white,
+            color: Colors.black54,
             fontSize: 12.0,
             fontWeight: FontWeight.w300,
             fontFamily: 'Quicksand'));

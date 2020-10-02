@@ -50,6 +50,11 @@ class _$SearchEventTearOff {
       discoveredUser: discoveredUser,
     );
   }
+
+// ignore: unused_element
+  EndConnectionRequest endConnectionRequest() {
+    return const EndConnectionRequest();
+  }
 }
 
 // ignore: unused_element
@@ -65,6 +70,7 @@ mixin _$SearchEvent {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -75,6 +81,7 @@ mixin _$SearchEvent {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -87,6 +94,7 @@ mixin _$SearchEvent {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -97,6 +105,7 @@ mixin _$SearchEvent {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   });
 }
@@ -157,6 +166,7 @@ class _$StartSearching implements StartSearching {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -165,6 +175,7 @@ class _$StartSearching implements StartSearching {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return startSearching();
   }
 
@@ -178,6 +189,7 @@ class _$StartSearching implements StartSearching {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -198,6 +210,7 @@ class _$StartSearching implements StartSearching {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -206,6 +219,7 @@ class _$StartSearching implements StartSearching {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return startSearching(this);
   }
 
@@ -219,6 +233,7 @@ class _$StartSearching implements StartSearching {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -309,6 +324,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -317,6 +333,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return deviceDiscovered(user);
   }
 
@@ -330,6 +347,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -350,6 +368,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -358,6 +377,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return deviceDiscovered(this);
   }
 
@@ -371,6 +391,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -432,6 +453,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -440,6 +462,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return showAllDiscoveredDevices();
   }
 
@@ -453,6 +476,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -473,6 +497,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -481,6 +506,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return showAllDiscoveredDevices(this);
   }
 
@@ -494,6 +520,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -553,6 +580,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -561,6 +589,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return dismissAllDiscoveredDevices();
   }
 
@@ -574,6 +603,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -594,6 +624,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -602,6 +633,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return dismissAllDiscoveredDevices(this);
   }
 
@@ -615,6 +647,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -670,6 +703,7 @@ class _$DeviceLost implements DeviceLost {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -678,6 +712,7 @@ class _$DeviceLost implements DeviceLost {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return deviceLost();
   }
 
@@ -691,6 +726,7 @@ class _$DeviceLost implements DeviceLost {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -711,6 +747,7 @@ class _$DeviceLost implements DeviceLost {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -719,6 +756,7 @@ class _$DeviceLost implements DeviceLost {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return deviceLost(this);
   }
 
@@ -732,6 +770,7 @@ class _$DeviceLost implements DeviceLost {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -788,6 +827,7 @@ class _$StopSearching implements StopSearching {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -796,6 +836,7 @@ class _$StopSearching implements StopSearching {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return stopSearching();
   }
 
@@ -809,6 +850,7 @@ class _$StopSearching implements StopSearching {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -829,6 +871,7 @@ class _$StopSearching implements StopSearching {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -837,6 +880,7 @@ class _$StopSearching implements StopSearching {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return stopSearching(this);
   }
 
@@ -850,6 +894,7 @@ class _$StopSearching implements StopSearching {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -945,6 +990,7 @@ class _$RequestConnection implements RequestConnection {
     @required Result deviceLost(),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -953,6 +999,7 @@ class _$RequestConnection implements RequestConnection {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return requestConnection(discoveredUser);
   }
 
@@ -966,6 +1013,7 @@ class _$RequestConnection implements RequestConnection {
     Result deviceLost(),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -986,6 +1034,7 @@ class _$RequestConnection implements RequestConnection {
     @required Result deviceLost(DeviceLost value),
     @required Result stopSearching(StopSearching value),
     @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -994,6 +1043,7 @@ class _$RequestConnection implements RequestConnection {
     assert(deviceLost != null);
     assert(stopSearching != null);
     assert(requestConnection != null);
+    assert(endConnectionRequest != null);
     return requestConnection(this);
   }
 
@@ -1007,6 +1057,7 @@ class _$RequestConnection implements RequestConnection {
     Result deviceLost(DeviceLost value),
     Result stopSearching(StopSearching value),
     Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1025,6 +1076,131 @@ abstract class RequestConnection implements SearchEvent {
   $RequestConnectionCopyWith<RequestConnection> get copyWith;
 }
 
+abstract class $EndConnectionRequestCopyWith<$Res> {
+  factory $EndConnectionRequestCopyWith(EndConnectionRequest value,
+          $Res Function(EndConnectionRequest) then) =
+      _$EndConnectionRequestCopyWithImpl<$Res>;
+}
+
+class _$EndConnectionRequestCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res>
+    implements $EndConnectionRequestCopyWith<$Res> {
+  _$EndConnectionRequestCopyWithImpl(
+      EndConnectionRequest _value, $Res Function(EndConnectionRequest) _then)
+      : super(_value, (v) => _then(v as EndConnectionRequest));
+
+  @override
+  EndConnectionRequest get _value => super._value as EndConnectionRequest;
+}
+
+class _$EndConnectionRequest implements EndConnectionRequest {
+  const _$EndConnectionRequest();
+
+  @override
+  String toString() {
+    return 'SearchEvent.endConnectionRequest()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EndConnectionRequest);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startSearching(),
+    @required Result deviceDiscovered(User user),
+    @required Result showAllDiscoveredDevices(),
+    @required Result dismissAllDiscoveredDevices(),
+    @required Result deviceLost(),
+    @required Result stopSearching(),
+    @required Result requestConnection(User discoveredUser),
+    @required Result endConnectionRequest(),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    assert(endConnectionRequest != null);
+    return endConnectionRequest();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startSearching(),
+    Result deviceDiscovered(User user),
+    Result showAllDiscoveredDevices(),
+    Result dismissAllDiscoveredDevices(),
+    Result deviceLost(),
+    Result stopSearching(),
+    Result requestConnection(User discoveredUser),
+    Result endConnectionRequest(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (endConnectionRequest != null) {
+      return endConnectionRequest();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startSearching(StartSearching value),
+    @required Result deviceDiscovered(DeviceDiscovered value),
+    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    @required
+        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required Result deviceLost(DeviceLost value),
+    @required Result stopSearching(StopSearching value),
+    @required Result requestConnection(RequestConnection value),
+    @required Result endConnectionRequest(EndConnectionRequest value),
+  }) {
+    assert(startSearching != null);
+    assert(deviceDiscovered != null);
+    assert(showAllDiscoveredDevices != null);
+    assert(dismissAllDiscoveredDevices != null);
+    assert(deviceLost != null);
+    assert(stopSearching != null);
+    assert(requestConnection != null);
+    assert(endConnectionRequest != null);
+    return endConnectionRequest(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startSearching(StartSearching value),
+    Result deviceDiscovered(DeviceDiscovered value),
+    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    Result deviceLost(DeviceLost value),
+    Result stopSearching(StopSearching value),
+    Result requestConnection(RequestConnection value),
+    Result endConnectionRequest(EndConnectionRequest value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (endConnectionRequest != null) {
+      return endConnectionRequest(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EndConnectionRequest implements SearchEvent {
+  const factory EndConnectionRequest() = _$EndConnectionRequest;
+}
+
 class _$SearchStateTearOff {
   const _$SearchStateTearOff();
 
@@ -1037,6 +1213,8 @@ class _$SearchStateTearOff {
       @required
           bool showAllDiscoveredDevicesPopUp,
       @required
+          bool showRequestConnectionPopUp,
+      @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
       @required
@@ -1045,6 +1223,7 @@ class _$SearchStateTearOff {
       isSearching: isSearching,
       isLoading: isLoading,
       showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp,
+      showRequestConnectionPopUp: showRequestConnectionPopUp,
       connectionFailureOrSuccessOption: connectionFailureOrSuccessOption,
       discoveredDevices: discoveredDevices,
     );
@@ -1058,6 +1237,7 @@ mixin _$SearchState {
   bool get isSearching;
   bool get isLoading;
   bool get showAllDiscoveredDevicesPopUp;
+  bool get showRequestConnectionPopUp;
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
   List<User> get discoveredDevices;
 
@@ -1072,6 +1252,7 @@ abstract class $SearchStateCopyWith<$Res> {
       {bool isSearching,
       bool isLoading,
       bool showAllDiscoveredDevicesPopUp,
+      bool showRequestConnectionPopUp,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
       List<User> discoveredDevices});
 }
@@ -1088,6 +1269,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
     Object isSearching = freezed,
     Object isLoading = freezed,
     Object showAllDiscoveredDevicesPopUp = freezed,
+    Object showRequestConnectionPopUp = freezed,
     Object connectionFailureOrSuccessOption = freezed,
     Object discoveredDevices = freezed,
   }) {
@@ -1098,6 +1280,9 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
       showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp == freezed
           ? _value.showAllDiscoveredDevicesPopUp
           : showAllDiscoveredDevicesPopUp as bool,
+      showRequestConnectionPopUp: showRequestConnectionPopUp == freezed
+          ? _value.showRequestConnectionPopUp
+          : showRequestConnectionPopUp as bool,
       connectionFailureOrSuccessOption:
           connectionFailureOrSuccessOption == freezed
               ? _value.connectionFailureOrSuccessOption
@@ -1120,6 +1305,7 @@ abstract class _$SearchStateCopyWith<$Res>
       {bool isSearching,
       bool isLoading,
       bool showAllDiscoveredDevicesPopUp,
+      bool showRequestConnectionPopUp,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
       List<User> discoveredDevices});
 }
@@ -1138,6 +1324,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     Object isSearching = freezed,
     Object isLoading = freezed,
     Object showAllDiscoveredDevicesPopUp = freezed,
+    Object showRequestConnectionPopUp = freezed,
     Object connectionFailureOrSuccessOption = freezed,
     Object discoveredDevices = freezed,
   }) {
@@ -1148,6 +1335,9 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
       showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp == freezed
           ? _value.showAllDiscoveredDevicesPopUp
           : showAllDiscoveredDevicesPopUp as bool,
+      showRequestConnectionPopUp: showRequestConnectionPopUp == freezed
+          ? _value.showRequestConnectionPopUp
+          : showRequestConnectionPopUp as bool,
       connectionFailureOrSuccessOption:
           connectionFailureOrSuccessOption == freezed
               ? _value.connectionFailureOrSuccessOption
@@ -1165,11 +1355,13 @@ class _$_SearchState implements _SearchState {
       {@required this.isSearching,
       @required this.isLoading,
       @required this.showAllDiscoveredDevicesPopUp,
+      @required this.showRequestConnectionPopUp,
       @required this.connectionFailureOrSuccessOption,
       @required this.discoveredDevices})
       : assert(isSearching != null),
         assert(isLoading != null),
         assert(showAllDiscoveredDevicesPopUp != null),
+        assert(showRequestConnectionPopUp != null),
         assert(connectionFailureOrSuccessOption != null),
         assert(discoveredDevices != null);
 
@@ -1180,6 +1372,8 @@ class _$_SearchState implements _SearchState {
   @override
   final bool showAllDiscoveredDevicesPopUp;
   @override
+  final bool showRequestConnectionPopUp;
+  @override
   final Option<Either<ConnectionFailure, Unit>>
       connectionFailureOrSuccessOption;
   @override
@@ -1187,7 +1381,7 @@ class _$_SearchState implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(isSearching: $isSearching, isLoading: $isLoading, showAllDiscoveredDevicesPopUp: $showAllDiscoveredDevicesPopUp, connectionFailureOrSuccessOption: $connectionFailureOrSuccessOption, discoveredDevices: $discoveredDevices)';
+    return 'SearchState(isSearching: $isSearching, isLoading: $isLoading, showAllDiscoveredDevicesPopUp: $showAllDiscoveredDevicesPopUp, showRequestConnectionPopUp: $showRequestConnectionPopUp, connectionFailureOrSuccessOption: $connectionFailureOrSuccessOption, discoveredDevices: $discoveredDevices)';
   }
 
   @override
@@ -1205,6 +1399,11 @@ class _$_SearchState implements _SearchState {
                 const DeepCollectionEquality().equals(
                     other.showAllDiscoveredDevicesPopUp,
                     showAllDiscoveredDevicesPopUp)) &&
+            (identical(other.showRequestConnectionPopUp,
+                    showRequestConnectionPopUp) ||
+                const DeepCollectionEquality().equals(
+                    other.showRequestConnectionPopUp,
+                    showRequestConnectionPopUp)) &&
             (identical(other.connectionFailureOrSuccessOption,
                     connectionFailureOrSuccessOption) ||
                 const DeepCollectionEquality().equals(
@@ -1221,6 +1420,7 @@ class _$_SearchState implements _SearchState {
       const DeepCollectionEquality().hash(isSearching) ^
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(showAllDiscoveredDevicesPopUp) ^
+      const DeepCollectionEquality().hash(showRequestConnectionPopUp) ^
       const DeepCollectionEquality().hash(connectionFailureOrSuccessOption) ^
       const DeepCollectionEquality().hash(discoveredDevices);
 
@@ -1238,6 +1438,8 @@ abstract class _SearchState implements SearchState {
       @required
           bool showAllDiscoveredDevicesPopUp,
       @required
+          bool showRequestConnectionPopUp,
+      @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
       @required
@@ -1249,6 +1451,8 @@ abstract class _SearchState implements SearchState {
   bool get isLoading;
   @override
   bool get showAllDiscoveredDevicesPopUp;
+  @override
+  bool get showRequestConnectionPopUp;
   @override
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
   @override

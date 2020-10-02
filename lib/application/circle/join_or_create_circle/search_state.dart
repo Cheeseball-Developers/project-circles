@@ -10,6 +10,8 @@ abstract class SearchState with _$SearchState {
       @required
           bool showAllDiscoveredDevicesPopUp,
       @required
+          bool showRequestConnectionPopUp,
+      @required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
       @required
@@ -19,6 +21,7 @@ abstract class SearchState with _$SearchState {
       isSearching: true,
       isLoading: false,
       showAllDiscoveredDevicesPopUp: false,
+      showRequestConnectionPopUp: false,
       connectionFailureOrSuccessOption: none(),
       discoveredDevices: <User>[]);
 }
