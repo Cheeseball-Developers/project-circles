@@ -28,77 +28,103 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
     Either<ConnectionFailure, Unit> errorOrDiscovering;
 
-    yield* event.map(startSearching: (e) async* {
-      yield state.copyWith(isLoading: true, discoveredDevices: []);
+    yield* event.map(
+      startSearching: (e) async* {
+        yield state.copyWith(isLoading: true, discoveredDevices: []);
 
-      nearbyConnections.permitLocation();
-      nearbyConnections.enableLocation();
+        nearbyConnections.permitLocation();
+        nearbyConnections.enableLocation();
 
-      errorOrDiscovering = await nearbyConnections.startDiscovering();
-      yield state.copyWith(
+        errorOrDiscovering = await nearbyConnections.startDiscovering();
+        yield state.copyWith(
           isLoading: false,
           isSearching: true,
           connectionFailureOrSuccessOption: some(errorOrDiscovering),
-          discoveredDevices: discoveredDevices);
+          discoveredDevices: discoveredDevices,
+        );
 
-      streamSubscriptionDiscoveredDevice =
-          nearbyConnections.discoveredDeviceStream.listen((event) {
-        add(SearchEvent.deviceDiscovered(event));
-      }, onError: (e) {
-        debugPrint('Error $e');
-      }, cancelOnError: false);
+        streamSubscriptionDiscoveredDevice =
+            nearbyConnections.discoveredDeviceStream.listen((event) {
+          add(SearchEvent.deviceDiscovered(event));
+        }, onError: (e) {
+          debugPrint('Error $e');
+        }, cancelOnError: false);
 
-      yield state.copyWith(isLoading: false, isSearching: true);
-    }, deviceDiscovered: (e) async* {
-      discoveredDevices.add(e.user);
-      yield state.copyWith(
+        yield state.copyWith(isLoading: false, isSearching: true);
+      },
+      deviceDiscovered: (e) async* {
+        discoveredDevices.add(e.user);
+        yield state.copyWith(
           isLoading: false,
           isSearching: true,
-          discoveredDevices: discoveredDevices);
-    }, showAllDiscoveredDevices: (e) async* {
-      yield state.copyWith(showAllDiscoveredDevicesPopUp: true);
-    }, dismissAllDiscoveredDevices: (e) async* {
-      yield state.copyWith(showAllDiscoveredDevicesPopUp: false);
-    }, deviceLost: (e) async* {
-      streamSubscriptionLostDevice =
-          nearbyConnections.lostDeviceStream.listen((event) {
-        debugPrint("A device is lost");
-        discoveredDevices.removeWhere((user) => user.uid.getOrCrash() == event);
-      }, onError: (e) {
-        debugPrint("Error on removing $e");
-      }, cancelOnError: false);
+          discoveredDevices: discoveredDevices,
+        );
+      },
+      showAllDiscoveredDevices: (e) async* {
+        yield state.copyWith(showAllDiscoveredDevicesPopUp: true);
+      },
+      dismissAllDiscoveredDevices: (e) async* {
+        yield state.copyWith(showAllDiscoveredDevicesPopUp: false);
+      },
+      deviceLost: (e) async* {
+        streamSubscriptionLostDevice =
+            nearbyConnections.lostDeviceStream.listen((event) {
+          debugPrint("A device is lost");
+          discoveredDevices
+              .removeWhere((user) => user.uid.getOrCrash() == event);
+        }, onError: (e) {
+          debugPrint("Error on removing $e");
+        }, cancelOnError: false);
 
-      yield state.copyWith(discoveredDevices: discoveredDevices);
-    }, stopSearching: (e) async* {
-      yield state.copyWith(isLoading: false);
-      streamSubscriptionDiscoveredDevice?.cancel();
-      streamSubscriptionLostDevice?.cancel();
-      discoveredDevices.clear();
-      nearbyConnections.stopAllEndpoints();
-      nearbyConnections.stopDiscovering();
-      yield state.copyWith(
+        yield state.copyWith(discoveredDevices: discoveredDevices);
+      },
+      stopSearching: (e) async* {
+        yield state.copyWith(isLoading: false);
+        streamSubscriptionDiscoveredDevice?.cancel();
+        streamSubscriptionLostDevice?.cancel();
+        discoveredDevices.clear();
+        nearbyConnections.stopAllEndpoints();
+        nearbyConnections.stopDiscovering();
+        yield state.copyWith(
           isLoading: false,
           isSearching: false,
-          connectionFailureOrSuccessOption: none());
-    }, requestConnection: (user) async* {
-      nearbyConnections.stopDiscovering();
-      final Either<ConnectionFailure, Unit> requestOrFail =
-          await nearbyConnections.requestConnection(
-              username: user.discoveredUser.name.getOrCrash(),
-              endpointId: user.discoveredUser.uid.getOrCrash());
+          connectionFailureOrSuccessOption: none(),
+        );
+      },
+      requestConnection: (user) async* {
+        yield* state.connectionFailureOrSuccessOption.fold(
+          () async* {
+            yield state.copyWith(
+              showRequestConnectionPopUp: true,
+            );
 
-      yield state.copyWith(
-          isLoading: false,
-          isSearching: true,
-          connectionFailureOrSuccessOption: some(requestOrFail));
-    });
+            nearbyConnections.stopDiscovering();
+            final Either<ConnectionFailure, Unit> requestOrFail =
+                await nearbyConnections.requestConnection(
+              username: user.discoveredUser.name.getOrCrash(),
+              endpointId: user.discoveredUser.uid.getOrCrash(),
+            );
+
+            yield state.copyWith(
+              showRequestConnectionPopUp: false,
+              connectionFailureOrSuccessOption: some(requestOrFail),
+            );
+          },
+          (_) => null,
+        );
+      },
+      endConnectionRequest: (e) async* {
+        // TODO: Add functionality to cancel request here
+        yield state.copyWith(
+          connectionFailureOrSuccessOption: none(),
+        );
+      },
+    );
   }
 }
 
-//TODO: Add functionality to join and create
-
 //TODO: Add somewhere in the ui to stop discovery as soon as the preferred devices are found
-/// It is reccomended to call this method
+/// It is recommended to call this method
 /// once you have connected to an endPoint
 /// as discovery uses heavy radio operations
 /// which may affect connection speed and integrity

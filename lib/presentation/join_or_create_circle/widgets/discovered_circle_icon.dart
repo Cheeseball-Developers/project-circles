@@ -16,44 +16,35 @@ class DiscoveredCircleIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SettingsBloc, SettingsState>(
-        builder: (settingsContext, state) => state.maybeMap(
-            hasLoaded: (settingsState) => BlocConsumer<SearchBloc, SearchState>(
-                  listener: (context, state) {
-                    state.connectionFailureOrSuccessOption.fold(
-                      () => null,
-                      (failureOrSuccess) => failureOrSuccess.fold(
-                        (l) => null,
-                        (_) {
-                          print('Successfully Joined!');
-                          getIt<CurrentCircleBloc>()
-                              .add(CurrentCircleEvent.joinCircle(host: user));
-                          ExtendedNavigator.of(context).push(Routes.circleHome);
-                        },
-                      ),
-                    );
-                  },
-                  builder: (context, state) => GestureDetector(
-                    onTap: () {
-                      context.bloc<SearchBloc>().add(
-                          SearchEvent.requestConnection(
-                              discoveredUser: user));
-                      showDialog(
-                        context: context,
-                        child: ConnectionRequestPopUp(user),
-                      );
-                    },
-                    child: Column(
-                      children: [
-                        const CircleAvatar(
-                          radius: 24.0,
-                          child: Icon(Icons.person),
-                        ),
-                        Text(user.name.getOrCrash())
-                      ],
-                    ),
-                  ),
-                ),
-            orElse: () => Container()));
+    return BlocConsumer<SearchBloc, SearchState>(
+      listener: (context, state) {
+        if (state.showRequestConnectionPopUp) {
+          showDialog(
+            context: context,
+            barrierDismissible: false,
+            child: BlocProvider.value(
+              value: context.bloc<SearchBloc>(),
+              child: ConnectionRequestPopUp(user),
+            ),
+          );
+        }
+      },
+      builder: (context, state) => GestureDetector(
+        onTap: () {
+          context
+              .bloc<SearchBloc>()
+              .add(SearchEvent.requestConnection(discoveredUser: user));
+        },
+        child: Column(
+          children: [
+            const CircleAvatar(
+              radius: 24.0,
+              child: Icon(Icons.person),
+            ),
+            Text(user.name.getOrCrash())
+          ],
+        ),
+      ),
+    );
   }
 }
