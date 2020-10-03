@@ -185,6 +185,11 @@ class NearbyConnections {
     debugPrint("Stopping all the endpoints");
   }
 
+  Future<void> disconnectFromEndPoint(String endpointId) async {
+    _nearby.disconnectFromEndpoint(endpointId);
+    debugPrint("Stopped an endPoint $endpointId");
+  }
+
   ///request Connection called by the discoverer after succesfully finding an endpoint
   Future<Either<ConnectionFailure, Unit>> requestConnection(
       {@required String username, @required String endpointId}) async {
@@ -229,7 +234,7 @@ class NearbyConnections {
     } catch (e) {
       debugPrint('some error occurred in requesting a '
           'connection, maybe due to host has closed the circle,\n more precisely the error is $e');
-      return left(const ConnectionFailure.unexpected());
+      return left(const ConnectionFailure.endPointUnknown());
     }
 
     if (a) {
@@ -291,6 +296,7 @@ class NearbyConnections {
       //TODO add the message of file transfer started
       debugPrint("File transfer started from $endId");
       _tempFile = File(payload.filePath);
+      debugPrint(payload.filePath);
       return right(true);
     } else if (payload.type == PayloadType.BYTES) {
       //converting the bytes recieved to string
@@ -321,12 +327,12 @@ class NearbyConnections {
 
   ///Gives the status of the payLoadRecieved
   //TODO : implement the states according to the status and show it in the UI
-  Either<AppsLoadFailure, bool> onPayloadTransferUpdate(
+  Either<ConnectionFailure, Unit> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       debugPrint(
           "Receiving files from $endId ${payloadTransferUpdate.bytesTransferred}");
-      return right(true);
+      return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       debugPrint(
           "Received files from $endId, ${payloadTransferUpdate.totalBytes}");
@@ -338,10 +344,10 @@ class NearbyConnections {
         //bytes not received till yet
         map[payloadTransferUpdate.id] = "";
       }
-      return right(true);
+      return right(unit);
     } else {
       debugPrint("Not received file, some error occurred");
-      return left(const AppsLoadFailure.unexpectedFailure());
+      return left(const ConnectionFailure.unexpected());
     }
   }
 
@@ -374,5 +380,9 @@ class NearbyConnections {
       return right(true);
     }
     return left(const AppsLoadFailure.unexpectedFailure());
+  }
+
+  Future<void> cancelPayload(int payloadId) async {
+    await _nearby.cancelPayload(payloadId);
   }
 }

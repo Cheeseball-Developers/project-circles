@@ -38,8 +38,6 @@ class AvailableCirclesOverlay extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        print(
-            'searching and found and built'); // this guy is not rebuilding for some weird reason, let's check
         if (state.isSearching) {
           return Stack(
             children: List.generate(
