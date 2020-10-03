@@ -99,6 +99,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             );
 
             nearbyConnections.stopDiscovering();
+            discoveredDevices.clear();
             final Either<ConnectionFailure, Unit> requestOrFail =
                 await nearbyConnections.requestConnection(
               username: user.discoveredUser.name.getOrCrash(),
@@ -106,6 +107,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             );
 
             yield state.copyWith(
+              isSearching: false,
               showRequestConnectionPopUp: false,
               connectionFailureOrSuccessOption: some(requestOrFail),
             );
@@ -115,9 +117,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       },
       endConnectionRequest: (e) async* {
         // TODO: Add functionality to cancel request here
+        //TODO: e should be user , if i change this parameter error occurs in the presentaion layer
+        nearbyConnections.stopAllEndpoints();
+        discoveredDevices.clear();
         yield state.copyWith(
-          connectionFailureOrSuccessOption: none(),
-        );
+            connectionFailureOrSuccessOption: none(),
+            discoveredDevices: discoveredDevices);
       },
     );
   }

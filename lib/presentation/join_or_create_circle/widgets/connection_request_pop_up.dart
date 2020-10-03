@@ -63,7 +63,8 @@ class ConnectionRequestPopUp extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     context.bloc<SearchBloc>().add(
-                          const SearchEvent.endConnectionRequest(),
+                          SearchEvent.endConnectionRequest(
+                              cancelRequestUser: user),
                         );
                     ExtendedNavigator.of(context).pop();
                   },
@@ -107,7 +108,8 @@ class ConnectionRequestPopUp extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       context.bloc<SearchBloc>().add(
-                            const SearchEvent.endConnectionRequest(),
+                            SearchEvent.endConnectionRequest(
+                                cancelRequestUser: user),
                           );
                       ExtendedNavigator.of(context).pop();
                     },
