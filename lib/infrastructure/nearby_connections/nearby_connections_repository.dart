@@ -190,14 +190,14 @@ class NearbyConnections {
     debugPrint("Stopped an endPoint $endpointId");
   }
 
-  ///request Connection called by the discoverer after succesfully finding an endpoint
+  ///request Connection called by the discoverer after successfully finding an endpoint
   Future<Either<ConnectionFailure, Unit>> requestConnection(
-      {@required String username, @required String endpointId}) async {
-    debugPrint("Requested a Connection to $username");
+      {@required String endpointId}) async {
+    debugPrint("Requested a Connection to $endpointId");
     lostDeviceStream = onEndLost.stream;
     bool a;
     try {
-      a = await _nearby.requestConnection(username, endpointId,
+      a = await _nearby.requestConnection(_username, endpointId,
           onConnectionInitiated:
               (String endId, ConnectionInfo connectionInfo) async {
         debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
@@ -253,7 +253,7 @@ class NearbyConnections {
     debugPrint(info.authenticationToken);
   }
 
-  //Accept Connection to connect successfuclly
+  //Accept Connection to connect successfully
   Future<Either<ConnectionFailure, Unit>> acceptConnection(
       {@required String endId}) async {
     final a = await _nearby.acceptConnection(endId,

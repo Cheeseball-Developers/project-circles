@@ -35,7 +35,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             await nearbyConnections.startAdvertising();
         _incomingRequestsStreamSubscription =
             nearbyConnections.incomingRequestStream.listen((event) {
-          debugPrint("A device found, wants to join");
+          debugPrint("A device found, wants to join: $event");
           add(CurrentCircleEvent.deviceRequestedConnection(user: event));
         });
         yield CurrentCircleState.hasJoined(
@@ -48,6 +48,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         );
       },
       deviceRequestedConnection: (e) async* {
+        print(e.user);
         yield* state.maybeMap(
           hasJoined: (state) async* {
             state.members.addAll({e.user: true});

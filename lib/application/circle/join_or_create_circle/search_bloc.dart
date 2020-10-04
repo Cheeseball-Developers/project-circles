@@ -94,7 +94,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           connectionFailureOrSuccessOption: none(),
         );
       },
-      requestConnection: (user) async* {
+      requestConnection: (e) async* {
         yield* state.connectionFailureOrSuccessOption.fold(
           () async* {
             yield state.copyWith(
@@ -105,8 +105,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             discoveredDevices.clear();
             final Either<ConnectionFailure, Unit> requestOrFail =
                 await nearbyConnections.requestConnection(
-              username: user.discoveredUser.name.getOrCrash(),
-              endpointId: user.discoveredUser.uid.getOrCrash(),
+              endpointId: e.discoveredUser.uid.getOrCrash(),
             );
             canCancelRequest = true;
 
