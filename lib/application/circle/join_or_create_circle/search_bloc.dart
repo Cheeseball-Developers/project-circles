@@ -23,6 +23,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final List<User> discoveredDevices = <User>[];
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
   StreamSubscription<String> streamSubscriptionLostDevice;
+  bool canCancelRequest = false;
 
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
@@ -53,7 +54,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         yield state.copyWith(isLoading: false, isSearching: true);
       },
       deviceDiscovered: (e) async* {
-        discoveredDevices.add(e.user);
+        if (!discoveredDevices.contains(e.user)) {
+          discoveredDevices.add(e.user);
+        }
         yield state.copyWith(
           isLoading: false,
           isSearching: true,
@@ -105,6 +108,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               username: user.discoveredUser.name.getOrCrash(),
               endpointId: user.discoveredUser.uid.getOrCrash(),
             );
+            canCancelRequest = true;
 
             yield state.copyWith(
               isSearching: false,
@@ -117,12 +121,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       },
       endConnectionRequest: (e) async* {
         // TODO: Add functionality to cancel request here
-        //TODO: e should be user , if i change this parameter error occurs in the presentaion layer
-        nearbyConnections.stopAllEndpoints();
-        discoveredDevices.clear();
-        yield state.copyWith(
-            connectionFailureOrSuccessOption: none(),
-            discoveredDevices: discoveredDevices);
+        nearbyConnections
+            .disconnectFromEndPoint(e.cancelRequestUser.uid.getOrCrash());
+        discoveredDevices.remove(e.cancelRequestUser);
+        if (canCancelRequest) {
+          yield state.copyWith(
+              connectionFailureOrSuccessOption: none(),
+              discoveredDevices: discoveredDevices);
+        }
       },
     );
   }
