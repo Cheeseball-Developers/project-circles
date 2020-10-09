@@ -83,7 +83,7 @@ class Settings extends StatelessWidget {
                       radius: 48.0,
                       child: Text(
                         state.user.name.getOrCrash().substring(0, 1),
-                        style: TextStyle(fontSize: 48.0),
+                        style: const TextStyle(fontSize: 48.0),
                       ),
                     ),
                     const Padding(
