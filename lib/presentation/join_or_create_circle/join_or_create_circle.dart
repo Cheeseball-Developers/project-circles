@@ -66,33 +66,55 @@ class JoinOrCreateCircle extends StatelessWidget {
                               child: Material(
                                 borderRadius: BorderRadius.circular(16.0),
                                 color: Theme.of(context).buttonColor,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        'Start ',
-                                        style: Theme.of(context)
-                                            .accentTextTheme
-                                            .subtitle1,
-                                      ),
-                                      Flexible(
-                                        child: Text(
-                                          'gheoirghergoidngdslknfwoifkewlncoeikfnlmsdfoiewkljcsmogeisklvn',
+                                child: InkWell(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  onTap: () {
+                                    context.bloc<CurrentCircleBloc>().add(
+                                          CurrentCircleEvent.startCircle(
+                                            host: context
+                                                .bloc<SettingsBloc>()
+                                                .state
+                                                .map(
+                                                  initial: (_) => null,
+                                                  isLoading: (_) => null,
+                                                  hasLoaded: (state) =>
+                                                      state.user,
+                                                  hasFailed: (_) => null,
+                                                ),
+                                          ),
+                                        );
+                                    ExtendedNavigator.named('nav')
+                                        .push('/circle-home');
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Start ',
                                           style: Theme.of(context)
                                               .accentTextTheme
                                               .subtitle1,
-                                          overflow: TextOverflow.ellipsis,
                                         ),
-                                      ),
-                                      Text(
-                                        "'s Circle",
-                                        style: Theme.of(context)
-                                            .accentTextTheme
-                                            .subtitle1,
-                                      )
-                                    ],
+                                        Flexible(
+                                          child: Text(
+                                            state.user.name.getOrCrash(),
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .subtitle1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        Text(
+                                          "'s Circle",
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle1,
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
