@@ -60,7 +60,8 @@ class NearbyConnections {
   /// asks for permission only if its not given
   Future<void> permitLocation() async {
     if (!await isLocationPermitted()) {
-      _nearby.askLocationPermission();
+      debugPrint("yay asking permsission");
+      await _nearby.askLocationPermission();
     }
     return;
   }
@@ -76,6 +77,7 @@ class NearbyConnections {
   // opens dialogue to enable location service
   Future<void> enableLocation() async {
     if (!await isLocationEnabled()) {
+      debugPrint("Yay enabling location");
       _nearby.enableLocationServices();
     }
     return;
