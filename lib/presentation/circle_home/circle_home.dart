@@ -40,10 +40,11 @@ class CircleHome extends StatelessWidget {
         isStarting: (_) => Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
           body: Center(
-              child: Text(
-            'Creating Circle...',
-            style: Theme.of(context).accentTextTheme.bodyText2,
-          )),
+            child: Text(
+              'Creating Circle...',
+              style: Theme.of(context).accentTextTheme.bodyText2,
+            ),
+          ),
         ),
         isJoining: (_) => Scaffold(
           backgroundColor: Theme.of(context).primaryColor,
@@ -84,8 +85,10 @@ class CircleHome extends StatelessWidget {
                           children: [
                             Text('Connected to...',
                                 style: Theme.of(context).textTheme.caption),
-                            Text("${currentCircleState.host.name.getOrCrash()}'s Circle",
-                                style: Theme.of(context).accentTextTheme.headline6)
+                            Text(
+                                "${currentCircleState.host.name.getOrCrash()}'s Circle",
+                                style:
+                                    Theme.of(context).accentTextTheme.headline6)
                           ],
                         ),
                       ),
