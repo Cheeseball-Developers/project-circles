@@ -21,6 +21,7 @@ class SettingsItemListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Theme.of(context).cardColor,
       elevation: toggleValue ? 12.0 : 1.0,
       child: InkWell(
         onTap: onTap,

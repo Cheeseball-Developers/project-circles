@@ -66,6 +66,7 @@ ThemeData defaultTheme() {
     accentIconTheme: const IconThemeData(color: Colors.white),
     buttonColor: Colors.lightBlue,
     backgroundColor: Colors.white,
+    canvasColor: Colors.transparent
   );
 }
 
@@ -115,5 +116,6 @@ ThemeData darkTheme() {
     accentIconTheme: const IconThemeData(color: Colors.white),
     buttonColor: Colors.teal,
     backgroundColor: Colors.white,
+    canvasColor: Colors.transparent
   );
 }
