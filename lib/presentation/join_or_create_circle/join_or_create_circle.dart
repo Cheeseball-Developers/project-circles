@@ -8,6 +8,7 @@ import 'package:projectcircles/application/circle/join_or_create_circle/search_b
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/available_circles_overlay.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/search_button.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
+import 'package:projectcircles/presentation/settings/settings.dart';
 
 class JoinOrCreateCircle extends StatelessWidget {
   @override
@@ -17,16 +18,6 @@ class JoinOrCreateCircle extends StatelessWidget {
           getIt<SearchBloc>()..add(const SearchEvent.startSearching()),
       child: Scaffold(
         backgroundColor: Theme.of(context).primaryColor,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0.0,
-          actions: [
-            IconButton(
-              onPressed: () => ExtendedNavigator.named('nav').push(Routes.settings),
-              icon: const Icon(Icons.settings),
-            )
-          ],
-        ),
         body: Center(
           child: Material(
             color: Colors.transparent,
@@ -36,72 +27,95 @@ class JoinOrCreateCircle extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Material(
-            borderRadius: BorderRadius.circular(10.0),
-            color: Theme.of(context).cardColor,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Create Circle',
-                      style: Theme.of(context).textTheme.headline6),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            context.bloc<SettingsBloc>().state.maybeMap(
-                                hasLoaded: (state) =>
-                                    "${state.user.name.getOrCrash()}'s Circle",
-                                orElse: () => "Error"),
-                            style: Theme.of(context).textTheme.subtitle2,
+        bottomSheet: DraggableScrollableSheet(
+          expand: false,
+          initialChildSize: 120.0 / MediaQuery.of(context).size.height,
+          minChildSize: 120.0 / MediaQuery.of(context).size.height,
+          maxChildSize: 750.0 / MediaQuery.of(context).size.height,
+          builder: (context, controller) => SingleChildScrollView(
+            controller: controller,
+            child: Material(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(16.0),
+                topRight: Radius.circular(16.0),
+              ),
+              color: Theme.of(context).cardColor,
+              elevation: 8.0,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      height: 4.0,
+                      width: 80.0,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).textTheme.caption.color,
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(bottom: 16.0),
+                    ),
+                    Text('Create Circle',
+                        style: Theme.of(context).textTheme.headline6),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              context.bloc<SettingsBloc>().state.maybeMap(
+                                  hasLoaded: (state) =>
+                                      "${state.user.name.getOrCrash()}'s Circle",
+                                  orElse: () => "Error"),
+                              style: Theme.of(context).textTheme.subtitle2,
+                            ),
                           ),
                         ),
-                      ),
-                      BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
-                        builder: (context, state) => state.map(
-                          initial: (state) => Material(
-                            borderRadius: BorderRadius.circular(10.0),
-                            color: Theme.of(context).buttonColor,
-                            child: InkWell(
-                              onTap: () {
-                                context.bloc<CurrentCircleBloc>().add(
-                                    CurrentCircleEvent.startCircle(
-                                        host: context
-                                            .bloc<SettingsBloc>()
-                                            .state
-                                            .map(
-                                                initial: (_) => null,
-                                                isLoading: (_) => null,
-                                                hasLoaded: (state) =>
-                                                    state.user,
-                                                hasFailed: (_) => null)));
-                                ExtendedNavigator.named('nav')
-                                    .push('/circle-home');
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.done,
-                                  color:
-                                      Theme.of(context).accentIconTheme.color,
+                        BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
+                          builder: (context, state) => state.map(
+                            initial: (state) => Material(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: Theme.of(context).buttonColor,
+                              child: InkWell(
+                                onTap: () {
+                                  context.bloc<CurrentCircleBloc>().add(
+                                      CurrentCircleEvent.startCircle(
+                                          host: context
+                                              .bloc<SettingsBloc>()
+                                              .state
+                                              .map(
+                                                  initial: (_) => null,
+                                                  isLoading: (_) => null,
+                                                  hasLoaded: (state) =>
+                                                      state.user,
+                                                  hasFailed: (_) => null)));
+                                  ExtendedNavigator.named('nav')
+                                      .push('/circle-home');
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Icon(
+                                    Icons.done,
+                                    color:
+                                        Theme.of(context).accentIconTheme.color,
+                                  ),
                                 ),
                               ),
                             ),
+                            isStarting: (_) => Container(),
+                            isJoining: (_) => Container(),
+                            hasJoined: (_) => Container(),
+                            hasFailed: (_) => Container(),
                           ),
-                          isStarting: (_) => Container(),
-                          isJoining: (_) => Container(),
-                          hasJoined: (_) => Container(),
-                          hasFailed: (_) => Container(),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
+                        )
+                      ],
+                    ),
+                    Text('Settings ↓'),
+                    Settings()
+                  ],
+                ),
               ),
             ),
           ),
