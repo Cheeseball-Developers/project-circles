@@ -5,6 +5,7 @@ import 'package:projectcircles/application/circle/current_circle/current_circle_
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
+import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/available_circles_overlay.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/search_button.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
@@ -46,72 +47,55 @@ class JoinOrCreateCircle extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      height: 4.0,
-                      width: 80.0,
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).textTheme.caption.color,
-                        borderRadius: BorderRadius.circular(10.0),
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Container(
+                        height: 4.0,
+                        width: 80.0,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).textTheme.caption.color,
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 16.0),
-                    ),
-                    Text('Create Circle',
-                        style: Theme.of(context).textTheme.headline6),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                              context.bloc<SettingsBloc>().state.maybeMap(
-                                  hasLoaded: (state) =>
-                                      "${state.user.name.getOrCrash()}'s Circle",
-                                  orElse: () => "Error"),
-                              style: Theme.of(context).textTheme.subtitle2,
-                            ),
-                          ),
-                        ),
-                        BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
-                          builder: (context, state) => state.map(
-                            initial: (state) => Material(
-                              borderRadius: BorderRadius.circular(10.0),
-                              color: Theme.of(context).buttonColor,
-                              child: InkWell(
-                                onTap: () {
-                                  context.bloc<CurrentCircleBloc>().add(
-                                      CurrentCircleEvent.startCircle(
-                                          host: context
-                                              .bloc<SettingsBloc>()
-                                              .state
-                                              .map(
-                                                  initial: (_) => null,
-                                                  isLoading: (_) => null,
-                                                  hasLoaded: (state) =>
-                                                      state.user,
-                                                  hasFailed: (_) => null)));
-                                  ExtendedNavigator.named('nav')
-                                      .push('/circle-home');
-                                },
+                    context.bloc<SettingsBloc>().state.maybeMap(
+                        hasLoaded: (state) => Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Material(
+                                borderRadius: BorderRadius.circular(16.0),
+                                color: Theme.of(context).buttonColor,
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Icon(
-                                    Icons.done,
-                                    color:
-                                        Theme.of(context).accentIconTheme.color,
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Start ',
+                                        style: Theme.of(context)
+                                            .accentTextTheme
+                                            .subtitle1,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          'gheoirghergoidngdslknfwoifkewlncoeikfnlmsdfoiewkljcsmogeisklvn',
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle1,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      Text(
+                                        "'s Circle",
+                                        style: Theme.of(context)
+                                            .accentTextTheme
+                                            .subtitle1,
+                                      )
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
-                            isStarting: (_) => Container(),
-                            isJoining: (_) => Container(),
-                            hasJoined: (_) => Container(),
-                            hasFailed: (_) => Container(),
-                          ),
-                        )
-                      ],
-                    ),
+                        orElse: () => const Text('Error')),
                     Text('Settings ↓'),
                     Settings()
                   ],

@@ -84,7 +84,7 @@ class CircleHome extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text('Connected to...',
-                                style: Theme.of(context).textTheme.caption),
+                                style: Theme.of(context).accentTextTheme.caption),
                             Text(
                                 "${currentCircleState.host.name.getOrCrash()}'s Circle",
                                 style:

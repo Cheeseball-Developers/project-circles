@@ -8,6 +8,7 @@ import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_back_button.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
+import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.dart';
 import 'package:projectcircles/presentation/settings/widgets/settings_item_list_tile.dart';
 import 'package:projectcircles/presentation/settings/widgets/settings_section.dart';
 
@@ -93,9 +94,25 @@ class Settings extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            state.user.name.getOrCrash(),
-                            style: Theme.of(context).textTheme.headline4,
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  state.user.name.getOrCrash(),
+                                  style: Theme.of(context).textTheme.headline4,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.edit),
+                                onPressed: () => showDialog(
+                                  context: context,
+                                  child: NameFormPopUp(),
+                                ),
+                              ),
+                            ],
                           ),
                           Text(state.user.uid.getOrCrash(),
                               style: Theme.of(context).textTheme.caption)

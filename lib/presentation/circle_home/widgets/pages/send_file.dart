@@ -35,14 +35,14 @@ class SendFile extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size(100.0, 200.0),
+          preferredSize: const Size(100.0, 200.0),
           child: Material(
             color: Theme.of(context).appBarTheme.color,
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(16.0),
                 bottomRight: Radius.circular(16.0)),
             elevation: 8.0,
-            child: TabBar(
+            child: const TabBar(
               tabs: [
                 Tab(text: 'Apps'),
                 Tab(text: 'Media'),

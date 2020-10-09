@@ -24,10 +24,11 @@ class MediaThumbnail extends StatelessWidget {
                       .add(MediaTabViewEvent.toggleSelection(index));
                 },
                 onLongPress: () => showDialog(
-                    context: context,
-                    child: MediaPreview(
-                      mediaObject: state.media[index],
-                    )),
+                      context: context,
+                      child: MediaPreview(
+                        mediaObject: state.media[index],
+                      ),
+                    ),
                 child: Padding(
                   padding:
                       EdgeInsets.all(state.media[index].selected ? 4.0 : 1.0),
@@ -44,7 +45,10 @@ class MediaThumbnail extends StatelessWidget {
                         const Positioned(
                             bottom: 0.0,
                             right: 0.0,
-                            child: Icon(Icons.videocam))
+                            child: Icon(
+                              Icons.videocam,
+                              color: Colors.white,
+                            ))
                       else
                         Container(),
                       if (state.media[index].selected)
