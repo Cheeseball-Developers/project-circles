@@ -33,8 +33,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       startSearching: (e) async* {
         yield state.copyWith(isLoading: true, discoveredDevices: []);
 
-        nearbyConnections.permitLocation();
-        nearbyConnections.enableLocation();
+        await nearbyConnections.permitLocation();
+        await nearbyConnections.enableLocation();
 
         errorOrDiscovering = await nearbyConnections.startDiscovering();
         yield state.copyWith(

@@ -31,7 +31,9 @@ class JoinOrCreateCircle extends StatelessWidget {
           expand: false,
           initialChildSize: 120.0 / MediaQuery.of(context).size.height,
           minChildSize: 120.0 / MediaQuery.of(context).size.height,
-          maxChildSize: 750.0 / MediaQuery.of(context).size.height,
+          maxChildSize: 750.0 / MediaQuery.of(context).size.height > 1.0
+              ? 1.0
+              : 750.0 / MediaQuery.of(context).size.height,
           builder: (context, controller) => SingleChildScrollView(
             controller: controller,
             child: Material(
