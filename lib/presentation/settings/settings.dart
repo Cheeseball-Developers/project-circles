@@ -5,7 +5,6 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
-import 'package:projectcircles/presentation/core/widgets/buttons/my_back_button.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
 import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.dart';

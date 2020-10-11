@@ -11,9 +11,11 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
       @required bool acceptConnection}) = AcceptOrReject;
   const factory CurrentCircleEvent.joinCircle({@required User host}) = JoinCircle;
   const factory CurrentCircleEvent.addFile({@required File file}) = AddFile;
+  const factory CurrentCircleEvent.showFilesPage() = ShowFilesPage;
+  const factory CurrentCircleEvent.showMembersPage() = ShowMembersPage;
   const factory CurrentCircleEvent.sendFiles() = SendFiles;
   const factory CurrentCircleEvent.filesSent() = FilesSent;
-  const factory CurrentCircleEvent.fileReceived() = FileReceived;
+  const factory CurrentCircleEvent.filesReceived() = FileReceived;
   const factory CurrentCircleEvent.memberLeft() = MemberLeft;
   const factory CurrentCircleEvent.leaveCircle() = LeaveCircle;
   const factory CurrentCircleEvent.closeCircle() = CloseCircle;
