@@ -23,7 +23,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final List<User> discoveredDevices = <User>[];
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
   StreamSubscription<String> streamSubscriptionLostDevice;
-  bool canCancelRequest = false;
 
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
@@ -101,14 +100,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               showRequestConnectionPopUp: true,
             );
 
-            nearbyConnections.stopDiscovering();
+            await nearbyConnections.stopDiscovering();
             discoveredDevices.clear();
             final Either<ConnectionFailure, Unit> requestOrFail =
                 await nearbyConnections.requestConnection(
               endpointId: e.discoveredUser.uid.getOrCrash(),
             );
-            canCancelRequest = true;
-
             yield state.copyWith(
               isSearching: false,
               showRequestConnectionPopUp: false,
@@ -123,11 +120,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         nearbyConnections
             .disconnectFromEndPoint(e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);
-        if (canCancelRequest) {
-          yield state.copyWith(
-              connectionFailureOrSuccessOption: none(),
-              discoveredDevices: discoveredDevices);
-        }
+        yield state.copyWith(
+            connectionFailureOrSuccessOption: none(),
+            discoveredDevices: discoveredDevices);
       },
     );
   }

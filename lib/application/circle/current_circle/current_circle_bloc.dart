@@ -134,6 +134,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       },
       closeCircle: (e) async* {
         //nearbyConnections.stopAllEndpoints();
+        await nearbyConnections.stopAllEndpoints();
         nearbyConnections.stopAdvertising();
         yield const CurrentCircleState.initial();
         _incomingRequestsStreamSubscription?.cancel();
