@@ -2629,6 +2629,7 @@ class _$CurrentCircleStateTearOff {
       @required List<File> selectedFiles,
       @required Map<File, double> outgoingFiles,
       @required Map<File, double> incomingFiles,
+      @required List<FileTransaction> transactions,
       @required bool showMembersPage,
       @required bool showFilesPage,
       @required bool isAcceptingRequest,
@@ -2638,6 +2639,7 @@ class _$CurrentCircleStateTearOff {
       selectedFiles: selectedFiles,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
+      transactions: transactions,
       showMembersPage: showMembersPage,
       showFilesPage: showFilesPage,
       isAcceptingRequest: isAcceptingRequest,
@@ -2652,6 +2654,7 @@ class _$CurrentCircleStateTearOff {
       @required List<File> selectedFiles,
       @required Map<File, double> outgoingFiles,
       @required Map<File, double> incomingFiles,
+      @required List<FileTransaction> transactions,
       @required bool showMembersPage,
       @required bool showFilesPage,
       @required bool isLeaving}) {
@@ -2661,6 +2664,7 @@ class _$CurrentCircleStateTearOff {
       selectedFiles: selectedFiles,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
+      transactions: transactions,
       showMembersPage: showMembersPage,
       showFilesPage: showFilesPage,
       isLeaving: isLeaving,
@@ -2689,6 +2693,7 @@ mixin _$CurrentCircleState {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isAcceptingRequest,
@@ -2700,6 +2705,7 @@ mixin _$CurrentCircleState {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isLeaving),
@@ -2714,6 +2720,7 @@ mixin _$CurrentCircleState {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isAcceptingRequest,
@@ -2724,6 +2731,7 @@ mixin _$CurrentCircleState {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isLeaving),
@@ -2806,6 +2814,7 @@ class _$_Initial implements _Initial {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isAcceptingRequest,
@@ -2817,6 +2826,7 @@ class _$_Initial implements _Initial {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isLeaving),
@@ -2840,6 +2850,7 @@ class _$_Initial implements _Initial {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isAcceptingRequest,
@@ -2850,6 +2861,7 @@ class _$_Initial implements _Initial {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isLeaving),
@@ -2969,6 +2981,7 @@ class _$_IsLoading implements _IsLoading {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isAcceptingRequest,
@@ -2980,6 +2993,7 @@ class _$_IsLoading implements _IsLoading {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isLeaving),
@@ -3003,6 +3017,7 @@ class _$_IsLoading implements _IsLoading {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isAcceptingRequest,
@@ -3013,6 +3028,7 @@ class _$_IsLoading implements _IsLoading {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isLeaving),
@@ -3077,6 +3093,7 @@ abstract class _$HasStartedCopyWith<$Res> {
       List<File> selectedFiles,
       Map<File, double> outgoingFiles,
       Map<File, double> incomingFiles,
+      List<FileTransaction> transactions,
       bool showMembersPage,
       bool showFilesPage,
       bool isAcceptingRequest,
@@ -3099,6 +3116,7 @@ class __$HasStartedCopyWithImpl<$Res>
     Object selectedFiles = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
+    Object transactions = freezed,
     Object showMembersPage = freezed,
     Object showFilesPage = freezed,
     Object isAcceptingRequest = freezed,
@@ -3115,6 +3133,9 @@ class __$HasStartedCopyWithImpl<$Res>
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
           : incomingFiles as Map<File, double>,
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions as List<FileTransaction>,
       showMembersPage: showMembersPage == freezed
           ? _value.showMembersPage
           : showMembersPage as bool,
@@ -3135,6 +3156,7 @@ class _$_HasStarted implements _HasStarted {
       @required this.selectedFiles,
       @required this.outgoingFiles,
       @required this.incomingFiles,
+      @required this.transactions,
       @required this.showMembersPage,
       @required this.showFilesPage,
       @required this.isAcceptingRequest,
@@ -3143,6 +3165,7 @@ class _$_HasStarted implements _HasStarted {
         assert(selectedFiles != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
+        assert(transactions != null),
         assert(showMembersPage != null),
         assert(showFilesPage != null),
         assert(isAcceptingRequest != null),
@@ -3157,6 +3180,8 @@ class _$_HasStarted implements _HasStarted {
   @override
   final Map<File, double> incomingFiles;
   @override
+  final List<FileTransaction> transactions;
+  @override
   final bool showMembersPage;
   @override
   final bool showFilesPage;
@@ -3167,7 +3192,7 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasStarted(members: $members, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
+    return 'CurrentCircleState.hasStarted(members: $members, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
   }
 
   @override
@@ -3186,6 +3211,9 @@ class _$_HasStarted implements _HasStarted {
             (identical(other.incomingFiles, incomingFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.incomingFiles, incomingFiles)) &&
+            (identical(other.transactions, transactions) ||
+                const DeepCollectionEquality()
+                    .equals(other.transactions, transactions)) &&
             (identical(other.showMembersPage, showMembersPage) ||
                 const DeepCollectionEquality()
                     .equals(other.showMembersPage, showMembersPage)) &&
@@ -3207,6 +3235,7 @@ class _$_HasStarted implements _HasStarted {
       const DeepCollectionEquality().hash(selectedFiles) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
+      const DeepCollectionEquality().hash(transactions) ^
       const DeepCollectionEquality().hash(showMembersPage) ^
       const DeepCollectionEquality().hash(showFilesPage) ^
       const DeepCollectionEquality().hash(isAcceptingRequest) ^
@@ -3227,6 +3256,7 @@ class _$_HasStarted implements _HasStarted {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isAcceptingRequest,
@@ -3238,6 +3268,7 @@ class _$_HasStarted implements _HasStarted {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isLeaving),
@@ -3248,8 +3279,16 @@ class _$_HasStarted implements _HasStarted {
     assert(hasStarted != null);
     assert(hasJoined != null);
     assert(hasFailed != null);
-    return hasStarted(members, selectedFiles, outgoingFiles, incomingFiles,
-        showMembersPage, showFilesPage, isAcceptingRequest, isClosing);
+    return hasStarted(
+        members,
+        selectedFiles,
+        outgoingFiles,
+        incomingFiles,
+        transactions,
+        showMembersPage,
+        showFilesPage,
+        isAcceptingRequest,
+        isClosing);
   }
 
   @override
@@ -3262,6 +3301,7 @@ class _$_HasStarted implements _HasStarted {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isAcceptingRequest,
@@ -3272,6 +3312,7 @@ class _$_HasStarted implements _HasStarted {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isLeaving),
@@ -3280,8 +3321,16 @@ class _$_HasStarted implements _HasStarted {
   }) {
     assert(orElse != null);
     if (hasStarted != null) {
-      return hasStarted(members, selectedFiles, outgoingFiles, incomingFiles,
-          showMembersPage, showFilesPage, isAcceptingRequest, isClosing);
+      return hasStarted(
+          members,
+          selectedFiles,
+          outgoingFiles,
+          incomingFiles,
+          transactions,
+          showMembersPage,
+          showFilesPage,
+          isAcceptingRequest,
+          isClosing);
     }
     return orElse();
   }
@@ -3327,6 +3376,7 @@ abstract class _HasStarted implements CurrentCircleState {
       @required List<File> selectedFiles,
       @required Map<File, double> outgoingFiles,
       @required Map<File, double> incomingFiles,
+      @required List<FileTransaction> transactions,
       @required bool showMembersPage,
       @required bool showFilesPage,
       @required bool isAcceptingRequest,
@@ -3336,6 +3386,7 @@ abstract class _HasStarted implements CurrentCircleState {
   List<File> get selectedFiles;
   Map<File, double> get outgoingFiles;
   Map<File, double> get incomingFiles;
+  List<FileTransaction> get transactions;
   bool get showMembersPage;
   bool get showFilesPage;
   bool get isAcceptingRequest;
@@ -3353,6 +3404,7 @@ abstract class _$HasJoinedCopyWith<$Res> {
       List<File> selectedFiles,
       Map<File, double> outgoingFiles,
       Map<File, double> incomingFiles,
+      List<FileTransaction> transactions,
       bool showMembersPage,
       bool showFilesPage,
       bool isLeaving});
@@ -3376,6 +3428,7 @@ class __$HasJoinedCopyWithImpl<$Res>
     Object selectedFiles = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
+    Object transactions = freezed,
     Object showMembersPage = freezed,
     Object showFilesPage = freezed,
     Object isLeaving = freezed,
@@ -3392,6 +3445,9 @@ class __$HasJoinedCopyWithImpl<$Res>
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
           : incomingFiles as Map<File, double>,
+      transactions: transactions == freezed
+          ? _value.transactions
+          : transactions as List<FileTransaction>,
       showMembersPage: showMembersPage == freezed
           ? _value.showMembersPage
           : showMembersPage as bool,
@@ -3420,6 +3476,7 @@ class _$_HasJoined implements _HasJoined {
       @required this.selectedFiles,
       @required this.outgoingFiles,
       @required this.incomingFiles,
+      @required this.transactions,
       @required this.showMembersPage,
       @required this.showFilesPage,
       @required this.isLeaving})
@@ -3428,6 +3485,7 @@ class _$_HasJoined implements _HasJoined {
         assert(selectedFiles != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
+        assert(transactions != null),
         assert(showMembersPage != null),
         assert(showFilesPage != null),
         assert(isLeaving != null);
@@ -3443,6 +3501,8 @@ class _$_HasJoined implements _HasJoined {
   @override
   final Map<File, double> incomingFiles;
   @override
+  final List<FileTransaction> transactions;
+  @override
   final bool showMembersPage;
   @override
   final bool showFilesPage;
@@ -3451,7 +3511,7 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasJoined(host: $host, members: $members, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isLeaving: $isLeaving)';
+    return 'CurrentCircleState.hasJoined(host: $host, members: $members, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isLeaving: $isLeaving)';
   }
 
   @override
@@ -3472,6 +3532,9 @@ class _$_HasJoined implements _HasJoined {
             (identical(other.incomingFiles, incomingFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.incomingFiles, incomingFiles)) &&
+            (identical(other.transactions, transactions) ||
+                const DeepCollectionEquality()
+                    .equals(other.transactions, transactions)) &&
             (identical(other.showMembersPage, showMembersPage) ||
                 const DeepCollectionEquality()
                     .equals(other.showMembersPage, showMembersPage)) &&
@@ -3491,6 +3554,7 @@ class _$_HasJoined implements _HasJoined {
       const DeepCollectionEquality().hash(selectedFiles) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
+      const DeepCollectionEquality().hash(transactions) ^
       const DeepCollectionEquality().hash(showMembersPage) ^
       const DeepCollectionEquality().hash(showFilesPage) ^
       const DeepCollectionEquality().hash(isLeaving);
@@ -3510,6 +3574,7 @@ class _$_HasJoined implements _HasJoined {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isAcceptingRequest,
@@ -3521,6 +3586,7 @@ class _$_HasJoined implements _HasJoined {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isLeaving),
@@ -3532,7 +3598,7 @@ class _$_HasJoined implements _HasJoined {
     assert(hasJoined != null);
     assert(hasFailed != null);
     return hasJoined(host, members, selectedFiles, outgoingFiles, incomingFiles,
-        showMembersPage, showFilesPage, isLeaving);
+        transactions, showMembersPage, showFilesPage, isLeaving);
   }
 
   @override
@@ -3545,6 +3611,7 @@ class _$_HasJoined implements _HasJoined {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isAcceptingRequest,
@@ -3555,6 +3622,7 @@ class _$_HasJoined implements _HasJoined {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isLeaving),
@@ -3563,8 +3631,16 @@ class _$_HasJoined implements _HasJoined {
   }) {
     assert(orElse != null);
     if (hasJoined != null) {
-      return hasJoined(host, members, selectedFiles, outgoingFiles,
-          incomingFiles, showMembersPage, showFilesPage, isLeaving);
+      return hasJoined(
+          host,
+          members,
+          selectedFiles,
+          outgoingFiles,
+          incomingFiles,
+          transactions,
+          showMembersPage,
+          showFilesPage,
+          isLeaving);
     }
     return orElse();
   }
@@ -3611,6 +3687,7 @@ abstract class _HasJoined implements CurrentCircleState {
       @required List<File> selectedFiles,
       @required Map<File, double> outgoingFiles,
       @required Map<File, double> incomingFiles,
+      @required List<FileTransaction> transactions,
       @required bool showMembersPage,
       @required bool showFilesPage,
       @required bool isLeaving}) = _$_HasJoined;
@@ -3620,6 +3697,7 @@ abstract class _HasJoined implements CurrentCircleState {
   List<File> get selectedFiles;
   Map<File, double> get outgoingFiles;
   Map<File, double> get incomingFiles;
+  List<FileTransaction> get transactions;
   bool get showMembersPage;
   bool get showFilesPage;
   bool get isLeaving;
@@ -3703,6 +3781,7 @@ class _$_HasFailed implements _HasFailed {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isAcceptingRequest,
@@ -3714,6 +3793,7 @@ class _$_HasFailed implements _HasFailed {
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
+            List<FileTransaction> transactions,
             bool showMembersPage,
             bool showFilesPage,
             bool isLeaving),
@@ -3737,6 +3817,7 @@ class _$_HasFailed implements _HasFailed {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isAcceptingRequest,
@@ -3747,6 +3828,7 @@ class _$_HasFailed implements _HasFailed {
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
+        List<FileTransaction> transactions,
         bool showMembersPage,
         bool showFilesPage,
         bool isLeaving),

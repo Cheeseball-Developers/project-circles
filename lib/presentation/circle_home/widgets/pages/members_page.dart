@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
-import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
 
