@@ -85,19 +85,21 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       hasStarted: (state) async* {
         yield* event.maybeMap(
           deviceRequestedConnection: (e) async* {
-            state.members.addAll({e.user: true});
+            final Map<User, bool> members = Map.from(state.members);
+            members.addAll({e.user: true});
             yield state.copyWith(
-              members: state.members,
+              members: members,
               showMembersPage: true,
             );
           },
           acceptOrReject: (AcceptOrReject request) async* {
             if (request.acceptConnection) {
+              yield state.copyWith(isAcceptingRequest: true);
               final Either<ConnectionFailure, Unit> acceptOrFailure =
                   await nearbyConnections.acceptConnection(
                       endId: request.requestingUser.uid.getOrCrash());
               state.members.update(request.requestingUser, (value) => false);
-              yield state.copyWith(members: state.members);
+              yield state.copyWith(members: state.members, isAcceptingRequest: false);
             } else {
               //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
@@ -111,21 +113,20 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(
               showFilesPage: true,
             );
-            yield state.copyWith(
-              showFilesPage: false,
-            );
           },
           showMembersPage: (_) async* {
             yield state.copyWith(
               showMembersPage: true,
             );
+          },
+          pageOpened: (_) async* {
             yield state.copyWith(
-              showMembersPage: false,
+              showFilesPage: false,
+              showMembersPage: false
             );
           },
           addFile: (e) async* {
-              state.selectedFiles.add(e.file);
-              yield state.copyWith(selectedFiles: state.selectedFiles);
+            yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
           },
           sendFiles: (e) async* {
             // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
@@ -156,21 +157,20 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(
               showFilesPage: true,
             );
-            yield state.copyWith(
-              showFilesPage: false,
-            );
           },
           showMembersPage: (_) async* {
             yield state.copyWith(
               showMembersPage: true,
             );
+          },
+          pageOpened: (_) async* {
             yield state.copyWith(
-              showMembersPage: false,
+              showFilesPage: false,
+              showMembersPage: false
             );
           },
           addFile: (e) async* {
-              state.selectedFiles.add(e.file);
-              yield state.copyWith(selectedFiles: state.selectedFiles);
+            yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
           },
           sendFiles: (e) async* {
             // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI

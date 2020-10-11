@@ -5,10 +5,30 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_circle_confirmation_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
 
 class CircleHome extends StatelessWidget {
+  void _showFilesPage(BuildContext context) {
+    showDialog(
+      context: context,
+      child: FilesPage(),
+    );
+    context
+        .bloc<CurrentCircleBloc>()
+        .add(const CurrentCircleEvent.pageOpened());
+  }
+
+  void _showMembersPage(BuildContext context) {
+    showDialog(
+      context: context,
+      child: MembersPage(),
+    );
+    context
+        .bloc<CurrentCircleBloc>()
+        .add(const CurrentCircleEvent.pageOpened());
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -18,9 +38,20 @@ class CircleHome extends StatelessWidget {
             ExtendedNavigator.of(context).pop();
             ExtendedNavigator.of(context).pop();
           },
-          hasJoined: (state) {
+          hasStarted: (state) {
+            if (state.showFilesPage) {
+              _showFilesPage(context);
+            }
             if (state.showMembersPage) {
-              showDialog(context: context, child: MembersPage());
+              _showMembersPage(context);
+            }
+          },
+          hasJoined: (state) {
+            if (state.showFilesPage) {
+              _showFilesPage(context);
+            }
+            if (state.showMembersPage) {
+              _showMembersPage(context);
             }
           },
           orElse: () {},

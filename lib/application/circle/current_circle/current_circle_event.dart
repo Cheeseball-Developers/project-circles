@@ -13,6 +13,7 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
   const factory CurrentCircleEvent.addFile({@required File file}) = AddFile;
   const factory CurrentCircleEvent.showFilesPage() = ShowFilesPage;
   const factory CurrentCircleEvent.showMembersPage() = ShowMembersPage;
+  const factory CurrentCircleEvent.pageOpened() = PageOpened;
   const factory CurrentCircleEvent.sendFiles() = SendFiles;
   const factory CurrentCircleEvent.filesSent() = FilesSent;
   const factory CurrentCircleEvent.filesReceived() = FileReceived;

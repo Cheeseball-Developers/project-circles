@@ -62,7 +62,7 @@ class JoinOrCreateCircle extends StatelessWidget {
                     ),
                     context.bloc<SettingsBloc>().state.maybeMap(
                         hasLoaded: (state) => Padding(
-                              padding: const EdgeInsets.all(16.0),
+                              padding: const EdgeInsets.only(top: 16.0, bottom: 4.0, left: 16.0, right: 16.0,),
                               child: Material(
                                 borderRadius: BorderRadius.circular(16.0),
                                 color: Theme.of(context).buttonColor,
