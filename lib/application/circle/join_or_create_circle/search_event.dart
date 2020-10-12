@@ -12,6 +12,8 @@ abstract class SearchEvent with _$SearchEvent {
   const factory SearchEvent.stopSearching() = StopSearching;
   const factory SearchEvent.requestConnection({@required User discoveredUser}) =
       RequestConnection;
+  const factory SearchEvent.connectionResult(
+      Either<ConnectionFailure, Unit> connectionStatus) = ConnectionResult;
   const factory SearchEvent.endConnectionRequest(
       {@required User cancelRequestUser}) = EndConnectionRequest;
 }

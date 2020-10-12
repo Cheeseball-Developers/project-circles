@@ -28,12 +28,20 @@ class NearbyConnections {
 
   final StreamController<String> onEndLost =
       StreamController<String>.broadcast();
+
   Stream<String> lostDeviceStream;
 
   final StreamController<User> onRequestSent =
       StreamController<User>.broadcast();
 
   Stream<User> incomingRequestStream;
+
+  final StreamController<Either<ConnectionFailure, Unit>>
+      onConnectionResultDisc =
+      StreamController<Either<ConnectionFailure, Unit>>.broadcast();
+  Stream<Either<ConnectionFailure, Unit>> onConnectionResultDiscStream;
+
+  Either<ConnectionFailure, Unit> connectionResult;
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///
@@ -78,7 +86,7 @@ class NearbyConnections {
   Future<void> enableLocation() async {
     if (!await isLocationEnabled()) {
       debugPrint("Yay enabling location");
-      _nearby.enableLocationServices();
+      await _nearby.enableLocationServices();
     }
     return;
   }
@@ -92,7 +100,7 @@ class NearbyConnections {
         serviceId: _serviceId, onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
       debugPrint(
-          "A connection is being initated to ${connectionInfo.endpointName}");
+          "A connection is being initiated to ${connectionInfo.endpointName}");
       host = _username;
       _endName = connectionInfo.endpointName;
       incomingRequest = User(
@@ -100,7 +108,8 @@ class NearbyConnections {
           name: Name(connectionInfo.endpointName));
       onRequestSent.sink.add(incomingRequest);
     }, onConnectionResult: (id, Status status) {
-      debugPrint("Status of the connection to $_endName ,id: $id,  : $status");
+      debugPrint(
+          "Status of the connection to yyo $_endName ,id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
@@ -142,7 +151,7 @@ class NearbyConnections {
     debugPrint("this is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
     lostDeviceStream = onEndLost.stream;
-    host = _username;
+    onConnectionResultDiscStream = onConnectionResultDisc.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -207,6 +216,7 @@ class NearbyConnections {
         debugPrint(
             "Check if the token is same ${connectionInfo.authenticationToken}");
         //accept by default in discoverer side
+        //TODO: Accept only after the host has accepeted the connection
         final Either<ConnectionFailure, Unit> _acceptConnection =
             await acceptConnection(endId: endId);
         _acceptConnection.fold((failure) {
@@ -219,13 +229,21 @@ class NearbyConnections {
                       "Connection is automatically accpeted from me waiting for host yo: $success to $endId")
                 });
       }, onConnectionResult: (id, Status status) {
-        debugPrint("Status of the connection to host $host $id : $status");
+        debugPrint(
+          "Status of the connection to host $id : $status,\n status values: ${status.index}",
+        );
         if (status == Status.CONNECTED) {
+          onConnectionResultDisc.sink.add(right(unit));
+          onConnectionResultDisc.close();
           debugPrint(
-              "Connection accepted by the host and the connection is successful: $host");
+              "Connection accepted by the host and the connection is successful");
         } else if (status == Status.REJECTED) {
-          debugPrint("Connection rejected by host$host : $id");
+          onConnectionResultDisc.sink
+              .add(left(const ConnectionFailure.cancelledByUser()));
+          debugPrint("Connection rejected by host : $id");
         } else if (status == Status.ERROR) {
+          onConnectionResultDisc.sink
+              .add(left(const ConnectionFailure.unexpected()));
           debugPrint("Error in connecting to $host..Please try again");
         }
       }, onDisconnected: (String id) {

@@ -102,7 +102,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                   await nearbyConnections.acceptConnection(
                       endId: request.requestingUser.uid.getOrCrash());
               state.members.update(request.requestingUser, (value) => false);
-              yield state.copyWith(members: state.members, isAcceptingRequest: false);
+              yield state.copyWith(
+                  members: state.members, isAcceptingRequest: false);
             } else {
               //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
@@ -123,10 +124,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
           },
           pageOpened: (_) async* {
-            yield state.copyWith(
-              showFilesPage: false,
-              showMembersPage: false
-            );
+            yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
           addFile: (e) async* {
             yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
@@ -137,7 +135,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           },
           filesSent: (e) async* {
             // TODO: Call this when files are sent successfully
-                yield state.copyWith(showFilesPage: true);
+            yield state.copyWith(showFilesPage: true);
           },
           filesReceived: (e) async* {
             yield null;
@@ -167,34 +165,31 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
           },
           pageOpened: (_) async* {
-            yield state.copyWith(
-              showFilesPage: false,
-              showMembersPage: false
-            );
+            yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
           addFile: (e) async* {
             yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
           },
           sendFiles: (e) async* {
             // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
           },
           filesSent: (e) async* {
             // TODO: Call this when files are sent successfully
-                yield state.copyWith(showFilesPage: true);
+            yield state.copyWith(showFilesPage: true);
           },
           filesReceived: (e) async* {
             yield null;
           },
           leaveCircle: (e) async* {
             nearbyConnections.stopAllEndpoints();
-            nearbyConnections.stopAdvertising();
+            yield const CurrentCircleState.initial();
           },
           orElse: () async* {},
         );
       },
-      hasFailed: (state) async* {
-      },
+      hasFailed: (state) async* {},
     );
   }
 }

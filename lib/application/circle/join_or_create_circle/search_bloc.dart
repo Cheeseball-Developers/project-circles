@@ -23,7 +23,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   final List<User> discoveredDevices = <User>[];
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
   StreamSubscription<String> streamSubscriptionLostDevice;
-  bool canCancelRequest = false;
+
+  StreamSubscription<Either<ConnectionFailure, Unit>>
+      streamSubscriptionOnConnectionResult;
 
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
@@ -95,39 +97,49 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
       },
       requestConnection: (e) async* {
+        Either<ConnectionFailure, Unit> onConnectionResult;
+        bool connectionResult = false;
         yield* state.connectionFailureOrSuccessOption.fold(
           () async* {
             yield state.copyWith(
               showRequestConnectionPopUp: true,
             );
 
-            nearbyConnections.stopDiscovering();
+            await nearbyConnections.stopDiscovering();
             discoveredDevices.clear();
             final Either<ConnectionFailure, Unit> requestOrFail =
                 await nearbyConnections.requestConnection(
               endpointId: e.discoveredUser.uid.getOrCrash(),
             );
-            canCancelRequest = true;
-
             yield state.copyWith(
-              isSearching: false,
-              showRequestConnectionPopUp: false,
-              connectionFailureOrSuccessOption: some(requestOrFail),
+                isSearching: false,
+                showRequestConnectionPopUp: false,
+                connectionFailureOrRequestSent: some(requestOrFail),
+                connectionFailureOrSuccessOption: none());
+
+            streamSubscriptionOnConnectionResult =
+                nearbyConnections.onConnectionResultDiscStream.listen(
+              (event) {
+                print(event);
+                add(SearchEvent.connectionResult(event));
+              },
             );
           },
           (_) => null,
         );
+      },
+      connectionResult: (e) async* {
+        yield state.copyWith(
+            connectionFailureOrSuccessOption: some(e.connectionStatus));
       },
       endConnectionRequest: (e) async* {
         // TODO: Add functionality to cancel request here
         nearbyConnections
             .disconnectFromEndPoint(e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);
-        if (canCancelRequest) {
-          yield state.copyWith(
-              connectionFailureOrSuccessOption: none(),
-              discoveredDevices: discoveredDevices);
-        }
+        yield state.copyWith(
+            connectionFailureOrSuccessOption: none(),
+            discoveredDevices: discoveredDevices);
       },
     );
   }
