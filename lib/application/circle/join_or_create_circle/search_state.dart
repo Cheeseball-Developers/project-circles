@@ -15,6 +15,9 @@ abstract class SearchState with _$SearchState {
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
       @required
+          Option<Either<ConnectionFailure, Unit>>
+              connectionFailureOrRequestSent,
+      @required
           List<User> discoveredDevices}) = _SearchState;
 
   factory SearchState.initial() => SearchState(
@@ -23,5 +26,6 @@ abstract class SearchState with _$SearchState {
       showAllDiscoveredDevicesPopUp: false,
       showRequestConnectionPopUp: false,
       connectionFailureOrSuccessOption: none(),
+      connectionFailureOrRequestSent: none(),
       discoveredDevices: <User>[]);
 }

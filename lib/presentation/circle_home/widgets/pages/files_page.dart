@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
 
-class ReceivedFiles extends StatelessWidget {
+class FilesPage extends StatelessWidget {
   final List<String> filesUrls = ['Documents/we.mp4', 'Downloads/a.png'];
 
   @override

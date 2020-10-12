@@ -28,12 +28,20 @@ class NearbyConnections {
 
   final StreamController<String> onEndLost =
       StreamController<String>.broadcast();
+
   Stream<String> lostDeviceStream;
 
   final StreamController<User> onRequestSent =
       StreamController<User>.broadcast();
 
   Stream<User> incomingRequestStream;
+
+  final StreamController<Either<ConnectionFailure, Unit>>
+      onConnectionResultDisc =
+      StreamController<Either<ConnectionFailure, Unit>>.broadcast();
+  Stream<Either<ConnectionFailure, Unit>> onConnectionResultDiscStream;
+
+  Either<ConnectionFailure, Unit> connectionResult;
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///
@@ -143,6 +151,7 @@ class NearbyConnections {
     debugPrint("this is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
     lostDeviceStream = onEndLost.stream;
+    onConnectionResultDiscStream = onConnectionResultDisc.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -221,14 +230,20 @@ class NearbyConnections {
                 });
       }, onConnectionResult: (id, Status status) {
         debugPrint(
-          "Status of the connection to host $host $id : $status,\n status values: ${status.index}",
+          "Status of the connection to host $id : $status,\n status values: ${status.index}",
         );
         if (status == Status.CONNECTED) {
+          onConnectionResultDisc.sink.add(right(unit));
+          onConnectionResultDisc.close();
           debugPrint(
-              "Connection accepted by the host and the connection is successful: $host");
+              "Connection accepted by the host and the connection is successful");
         } else if (status == Status.REJECTED) {
-          debugPrint("Connection rejected by host$host : $id");
+          onConnectionResultDisc.sink
+              .add(left(const ConnectionFailure.cancelledByUser()));
+          debugPrint("Connection rejected by host : $id");
         } else if (status == Status.ERROR) {
+          onConnectionResultDisc.sink
+              .add(left(const ConnectionFailure.unexpected()));
           debugPrint("Error in connecting to $host..Please try again");
         }
       }, onDisconnected: (String id) {

@@ -24,6 +24,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
   StreamSubscription<String> streamSubscriptionLostDevice;
 
+  StreamSubscription<Either<ConnectionFailure, Unit>>
+      streamSubscriptionOnConnectionResult;
+
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
     Either<ConnectionFailure, Unit> errorOrDiscovering;
@@ -94,6 +97,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
       },
       requestConnection: (e) async* {
+        Either<ConnectionFailure, Unit> onConnectionResult;
+        bool connectionResult = false;
         yield* state.connectionFailureOrSuccessOption.fold(
           () async* {
             yield state.copyWith(
@@ -107,13 +112,25 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               endpointId: e.discoveredUser.uid.getOrCrash(),
             );
             yield state.copyWith(
-              isSearching: false,
-              showRequestConnectionPopUp: false,
-              connectionFailureOrSuccessOption: some(requestOrFail),
+                isSearching: false,
+                showRequestConnectionPopUp: false,
+                connectionFailureOrRequestSent: some(requestOrFail),
+                connectionFailureOrSuccessOption: none());
+
+            streamSubscriptionOnConnectionResult =
+                nearbyConnections.onConnectionResultDiscStream.listen(
+              (event) {
+                print(event);
+                add(SearchEvent.connectionResult(event));
+              },
             );
           },
           (_) => null,
         );
+      },
+      connectionResult: (e) async* {
+        yield state.copyWith(
+            connectionFailureOrSuccessOption: some(e.connectionStatus));
       },
       endConnectionRequest: (e) async* {
         // TODO: Add functionality to cancel request here

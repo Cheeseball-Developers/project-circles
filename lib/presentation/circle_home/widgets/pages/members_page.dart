@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
-import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
 
@@ -13,7 +12,7 @@ class MembersPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
       builder: (context, state) => state.maybeMap(
-        hasJoined: (state) {
+        hasStarted: (state) {
           final List<User> members = List<User>.from(state.members.keys);
           return LargePopUp(
             child: state.members.isEmpty
@@ -58,66 +57,56 @@ class MembersPage extends StatelessWidget {
                                 .copyWith(color: Colors.black87),
                           ),
                           trailing: BlocBuilder<SettingsBloc, SettingsState>(
-                              builder: (settingsContext, settingsState) =>
-                                  settingsState.maybeMap(
-                                      hasLoaded: (settingsState) {
-                                        if (settingsState.user.uid
-                                                .getOrCrash() ==
-                                            state.host.uid.getOrCrash()) {
-                                          if (state.members[members[index]]) {
-                                            return Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                IconButton(
-                                                  onPressed: () => context
-                                                      .bloc<CurrentCircleBloc>()
-                                                      .add(
-                                                        CurrentCircleEvent
-                                                            .acceptOrReject(
-                                                                requestingUser:
-                                                                    members[
-                                                                        index],
-                                                                acceptConnection:
-                                                                    false),
-                                                      ),
-                                                  icon: const Icon(
-                                                    Icons.clear,
-                                                    color: Colors.red,
-                                                  ),
-                                                ),
-                                                IconButton(
-                                                  onPressed: () => context
-                                                      .bloc<CurrentCircleBloc>()
-                                                      .add(
-                                                        CurrentCircleEvent
-                                                            .acceptOrReject(
-                                                                requestingUser:
-                                                                    members[
-                                                                        index],
-                                                                acceptConnection:
-                                                                    true),
-                                                      ),
-                                                  icon: const Icon(
-                                                    Icons.done,
-                                                    color: Colors.green,
-                                                  ),
-                                                ),
-                                              ],
-                                            );
-                                          } else {
-                                            return IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.remove,
-                                                color: Colors.red,
-                                              ),
-                                            ); //TODO: Add function to remove user
-                                          }
-                                        } else {
-                                          return Container();
-                                        }
-                                      },
-                                      orElse: () => const Text("Error"))),
+                            builder: (settingsContext, settingsState) =>
+                                settingsState.maybeMap(
+                              hasLoaded: (settingsState) {
+                                if (state.members[members[index]]) {
+                                  return Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      IconButton(
+                                        onPressed: () => context
+                                            .bloc<CurrentCircleBloc>()
+                                            .add(
+                                              CurrentCircleEvent.acceptOrReject(
+                                                  requestingUser:
+                                                      members[index],
+                                                  acceptConnection: false),
+                                            ),
+                                        icon: const Icon(
+                                          Icons.clear,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () => context
+                                            .bloc<CurrentCircleBloc>()
+                                            .add(
+                                              CurrentCircleEvent.acceptOrReject(
+                                                  requestingUser:
+                                                      members[index],
+                                                  acceptConnection: true),
+                                            ),
+                                        icon: const Icon(
+                                          Icons.done,
+                                          color: Colors.green,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                } else {
+                                  return IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.remove,
+                                      color: Colors.red,
+                                    ),
+                                  ); //TODO: Add function to remove user
+                                }
+                              },
+                              orElse: () => const Text("Error"),
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -137,6 +126,7 @@ class MembersPage extends StatelessWidget {
                   ),
           );
         },
+        hasJoined: (state) => Text('Will implement this soon, it is implemented for host'),
         orElse: () => Container(),
       ),
     );
