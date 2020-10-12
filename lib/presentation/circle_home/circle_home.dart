@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,6 +9,7 @@ import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_cir
 import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/files_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page/members_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/transfer_progress_bottom_bar.dart';
 
 class CircleHome extends StatelessWidget {
   void _showFilesPage(BuildContext context) {
@@ -29,6 +31,7 @@ class CircleHome extends StatelessWidget {
         .bloc<CurrentCircleBloc>()
         .add(const CurrentCircleEvent.pageOpened());
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -43,7 +46,11 @@ class CircleHome extends StatelessWidget {
               _showFilesPage(context);
             }
             if (state.showMembersPage) {
-              _showMembersPage(context);
+              //_showMembersPage(context);
+              Flushbar(
+                message: 'Files Sent 2/10',
+                isDismissible: false,
+              ).show(context);
             }
           },
           hasJoined: (state) {
@@ -114,7 +121,17 @@ class CircleHome extends StatelessWidget {
             ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             extendBody: true,
-            bottomNavigationBar: BottomBar(),
+            bottomNavigationBar: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (currentCircleState.incomingFiles.isNotEmpty ||
+                    currentCircleState.outgoingFiles.isNotEmpty)
+                  TransferProgressBottomBar()
+                else
+                  Container(),
+                BottomBar(),
+              ],
+            ),
             body: SendFile(),
           ),
         ),

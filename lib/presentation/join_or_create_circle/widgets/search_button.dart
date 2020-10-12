@@ -122,7 +122,20 @@ class _SearchButtonState extends State<SearchButton>
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 radius: radius.value,
-                child: state.isLoading ? CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Theme.of(context).indicatorColor),) : const Icon(Icons.search),
+                child: state.isLoading
+                    ? CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation(
+                            Theme.of(context).indicatorColor),
+                      )
+                    : state.isSearching
+                        ? const CircleAvatar(
+                            radius: 40.0,
+                            child: Icon(
+                              Icons.person,
+                              size: 40.0,
+                            ),
+                          )
+                        : const Icon(Icons.search),
               ),
             ),
           ],
