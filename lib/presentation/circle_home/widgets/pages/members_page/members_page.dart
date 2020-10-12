@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page/widgets/no_members_placeholder.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
 
@@ -16,21 +17,7 @@ class MembersPage extends StatelessWidget {
           final List<User> members = List<User>.from(state.members.keys);
           return LargePopUp(
             child: state.members.isEmpty
-                ? Padding(
-                    padding: const EdgeInsets.all(32.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(Icons.people,
-                            color: Theme.of(context)
-                                .iconTheme
-                                .color
-                                .withOpacity(0.25),
-                            size: 64.0),
-                        const Text('There are no members in your circle'),
-                      ],
-                    ),
-                  )
+                ? NoMembersPlaceholder()
                 : Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [

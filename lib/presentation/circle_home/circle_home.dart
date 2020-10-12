@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_circle_confirmation_dialog.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/files_page.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page/members_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
 
 class CircleHome extends StatelessWidget {
