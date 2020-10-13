@@ -20,7 +20,6 @@ part 'search_bloc.freezed.dart';
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
-  final List<User> discoveredDevices = <User>[];
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
   StreamSubscription<String> streamSubscriptionLostDevice;
 
@@ -43,7 +42,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           isLoading: false,
           isSearching: true,
           connectionFailureOrSuccessOption: some(errorOrDiscovering),
-          discoveredDevices: discoveredDevices,
         );
 
         streamSubscriptionDiscoveredDevice =
@@ -52,10 +50,17 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         }, onError: (e) {
           debugPrint('Error $e');
         }, cancelOnError: false);
+        streamSubscriptionLostDevice =
+            nearbyConnections.lostDeviceStream.listen((event) {
+          add(SearchEvent.deviceLost(uidString: event));
+        }, onError: (e) {
+          debugPrint("Error on removing $e");
+        }, cancelOnError: false);
 
         yield state.copyWith(isLoading: false, isSearching: true);
       },
       deviceDiscovered: (e) async* {
+        final List<User> discoveredDevices = List.from(state.discoveredDevices);
         if (!discoveredDevices.contains(e.user)) {
           discoveredDevices.add(e.user);
         }
@@ -72,28 +77,23 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         yield state.copyWith(showAllDiscoveredDevicesPopUp: false);
       },
       deviceLost: (e) async* {
-        streamSubscriptionLostDevice =
-            nearbyConnections.lostDeviceStream.listen((event) {
-          debugPrint("A device is lost");
+        debugPrint("A device is lost");
+        final List<User> discoveredDevices = List.from(state.discoveredDevices);
           discoveredDevices
-              .removeWhere((user) => user.uid.getOrCrash() == event);
-        }, onError: (e) {
-          debugPrint("Error on removing $e");
-        }, cancelOnError: false);
-
+              .removeWhere((user) => user.uid.getOrCrash() == e.uidString);
         yield state.copyWith(discoveredDevices: discoveredDevices);
       },
       stopSearching: (e) async* {
         yield state.copyWith(isLoading: false);
         streamSubscriptionDiscoveredDevice?.cancel();
         streamSubscriptionLostDevice?.cancel();
-        discoveredDevices.clear();
         nearbyConnections.stopAllEndpoints();
         nearbyConnections.stopDiscovering();
         yield state.copyWith(
           isLoading: false,
           isSearching: false,
           connectionFailureOrSuccessOption: none(),
+          discoveredDevices: [],
         );
       },
       requestConnection: (e) async* {
@@ -106,13 +106,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             );
 
             await nearbyConnections.stopDiscovering();
-            discoveredDevices.clear();
             final Either<ConnectionFailure, Unit> requestOrFail =
                 await nearbyConnections.requestConnection(
               endpointId: e.discoveredUser.uid.getOrCrash(),
             );
             yield state.copyWith(
                 isSearching: false,
+                discoveredDevices: [],
                 showRequestConnectionPopUp: false,
                 connectionFailureOrRequestSent: some(requestOrFail),
                 connectionFailureOrSuccessOption: none());
@@ -133,7 +133,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             connectionFailureOrSuccessOption: some(e.connectionStatus));
       },
       endConnectionRequest: (e) async* {
-        // TODO: Add functionality to cancel request here
+        final List<User> discoveredDevices = List.from(state.discoveredDevices);
         nearbyConnections
             .disconnectFromEndPoint(e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);

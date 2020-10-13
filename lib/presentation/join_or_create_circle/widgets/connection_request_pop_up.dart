@@ -59,7 +59,6 @@ class ConnectionRequestPopUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return LargePopUp(
       child: Padding(
         padding: const EdgeInsets.all(32.0),
@@ -97,8 +96,19 @@ class ConnectionRequestPopUp extends StatelessWidget {
                 },
               ),
               (failureOrRequestSent) => failureOrRequestSent.fold(
-                (f) => const Center(
-                  child: Text('Failure text here'),
+                (f) => _body(
+                  context,
+                  topText: 'Device Lost',
+                  bigBottomText: user.name.getOrCrash(),
+                  smallBottomText: user.uid.getOrCrash(),
+                  buttonText: 'Close',
+                  onTap: () {
+                    context.bloc<SearchBloc>().add(
+                          SearchEvent.endConnectionRequest(
+                              cancelRequestUser: user),
+                        );
+                    ExtendedNavigator.of(context).pop();
+                  },
                 ),
                 (_) => state.connectionFailureOrSuccessOption.fold(
                   () => _body(
