@@ -49,7 +49,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             _lostDiscovererStreamSubscription =
                 nearbyConnections.onDiscovererLostStream.listen((event) {
               print("i am removed");
-              add(const CurrentCircleEvent.memberLeft(id: event));
+              add(CurrentCircleEvent.memberLeft(id: event));
             });
 
             yield* failureOrCircleStarted.fold(
@@ -82,6 +82,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             }, onError: (e) {});
             yield CurrentCircleState.hasJoined(
               host: e.host,
+              members: <User>[],
               selectedFiles: <File>[],
               outgoingFiles: <File, double>{},
               incomingFiles: <File, double>{},
