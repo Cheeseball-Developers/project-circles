@@ -82,7 +82,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             }, onError: (e) {});
             yield CurrentCircleState.hasJoined(
               host: e.host,
-              members: <User>[],
               selectedFiles: <File>[],
               outgoingFiles: <File, double>{},
               incomingFiles: <File, double>{},

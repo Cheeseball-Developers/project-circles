@@ -5,9 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_circle_confirmation_dialog.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/files_page.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page/members_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/transfer_progress_bottom_bar.dart';
 
 class CircleHome extends StatelessWidget {
   void _showFilesPage(BuildContext context) {
@@ -29,6 +30,7 @@ class CircleHome extends StatelessWidget {
         .bloc<CurrentCircleBloc>()
         .add(const CurrentCircleEvent.pageOpened());
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -114,7 +116,17 @@ class CircleHome extends StatelessWidget {
             ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             extendBody: true,
-            bottomNavigationBar: BottomBar(),
+            bottomNavigationBar: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (currentCircleState.incomingFiles.isNotEmpty ||
+                    currentCircleState.outgoingFiles.isNotEmpty)
+                  TransferProgressBottomBar()
+                else
+                  Container(),
+                BottomBar(),
+              ],
+            ),
             body: SendFile(),
           ),
         ),

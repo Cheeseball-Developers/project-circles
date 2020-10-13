@@ -9,7 +9,7 @@ class LargePopUp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(32.0),
+        padding: const EdgeInsets.all(48.0),
         child: Material(
             elevation: 8.0,
             color: Theme.of(context).cardColor,

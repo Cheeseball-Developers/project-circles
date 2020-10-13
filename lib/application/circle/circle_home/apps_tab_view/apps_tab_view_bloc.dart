@@ -25,7 +25,7 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
   ) async* {
     yield* event.map(loadApps: (e) async* {
       yield const AppsTabViewState.isLoading();
-      Either<AppsLoadFailure, List<AppObject>> apps =
+      final Either<AppsLoadFailure, List<AppObject>> apps =
           await AppsRepository.getApps();
       yield* apps.fold((failure) async* {
         yield AppsTabViewState.hasFailed(failure);

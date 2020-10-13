@@ -2935,7 +2935,6 @@ class _$CurrentCircleStateTearOff {
 // ignore: unused_element
   _HasJoined hasJoined(
       {@required User host,
-      @required List<User> members,
       @required List<File> selectedFiles,
       @required Map<File, double> outgoingFiles,
       @required Map<File, double> incomingFiles,
@@ -2945,7 +2944,6 @@ class _$CurrentCircleStateTearOff {
       @required bool isLeaving}) {
     return _HasJoined(
       host: host,
-      members: members,
       selectedFiles: selectedFiles,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
@@ -2986,7 +2984,6 @@ mixin _$CurrentCircleState {
     @required
         Result hasJoined(
             User host,
-            List<User> members,
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
@@ -3012,7 +3009,6 @@ mixin _$CurrentCircleState {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<User> members,
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
@@ -3107,7 +3103,6 @@ class _$_Initial implements _Initial {
     @required
         Result hasJoined(
             User host,
-            List<User> members,
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
@@ -3142,7 +3137,6 @@ class _$_Initial implements _Initial {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<User> members,
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
@@ -3274,7 +3268,6 @@ class _$_IsLoading implements _IsLoading {
     @required
         Result hasJoined(
             User host,
-            List<User> members,
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
@@ -3309,7 +3302,6 @@ class _$_IsLoading implements _IsLoading {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<User> members,
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
@@ -3549,7 +3541,6 @@ class _$_HasStarted implements _HasStarted {
     @required
         Result hasJoined(
             User host,
-            List<User> members,
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
@@ -3593,7 +3584,6 @@ class _$_HasStarted implements _HasStarted {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<User> members,
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
@@ -3685,7 +3675,6 @@ abstract class _$HasJoinedCopyWith<$Res> {
       __$HasJoinedCopyWithImpl<$Res>;
   $Res call(
       {User host,
-      List<User> members,
       List<File> selectedFiles,
       Map<File, double> outgoingFiles,
       Map<File, double> incomingFiles,
@@ -3709,7 +3698,6 @@ class __$HasJoinedCopyWithImpl<$Res>
   @override
   $Res call({
     Object host = freezed,
-    Object members = freezed,
     Object selectedFiles = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
@@ -3720,7 +3708,6 @@ class __$HasJoinedCopyWithImpl<$Res>
   }) {
     return _then(_HasJoined(
       host: host == freezed ? _value.host : host as User,
-      members: members == freezed ? _value.members : members as List<User>,
       selectedFiles: selectedFiles == freezed
           ? _value.selectedFiles
           : selectedFiles as List<File>,
@@ -3757,7 +3744,6 @@ class __$HasJoinedCopyWithImpl<$Res>
 class _$_HasJoined implements _HasJoined {
   const _$_HasJoined(
       {@required this.host,
-      @required this.members,
       @required this.selectedFiles,
       @required this.outgoingFiles,
       @required this.incomingFiles,
@@ -3766,7 +3752,6 @@ class _$_HasJoined implements _HasJoined {
       @required this.showFilesPage,
       @required this.isLeaving})
       : assert(host != null),
-        assert(members != null),
         assert(selectedFiles != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
@@ -3777,8 +3762,6 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   final User host;
-  @override
-  final List<User> members;
   @override
   final List<File> selectedFiles;
   @override
@@ -3796,7 +3779,7 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasJoined(host: $host, members: $members, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isLeaving: $isLeaving)';
+    return 'CurrentCircleState.hasJoined(host: $host, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isLeaving: $isLeaving)';
   }
 
   @override
@@ -3805,9 +3788,6 @@ class _$_HasJoined implements _HasJoined {
         (other is _HasJoined &&
             (identical(other.host, host) ||
                 const DeepCollectionEquality().equals(other.host, host)) &&
-            (identical(other.members, members) ||
-                const DeepCollectionEquality()
-                    .equals(other.members, members)) &&
             (identical(other.selectedFiles, selectedFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.selectedFiles, selectedFiles)) &&
@@ -3835,7 +3815,6 @@ class _$_HasJoined implements _HasJoined {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(host) ^
-      const DeepCollectionEquality().hash(members) ^
       const DeepCollectionEquality().hash(selectedFiles) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
@@ -3867,7 +3846,6 @@ class _$_HasJoined implements _HasJoined {
     @required
         Result hasJoined(
             User host,
-            List<User> members,
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
@@ -3882,7 +3860,7 @@ class _$_HasJoined implements _HasJoined {
     assert(hasStarted != null);
     assert(hasJoined != null);
     assert(hasFailed != null);
-    return hasJoined(host, members, selectedFiles, outgoingFiles, incomingFiles,
+    return hasJoined(host, selectedFiles, outgoingFiles, incomingFiles,
         transactions, showMembersPage, showFilesPage, isLeaving);
   }
 
@@ -3903,7 +3881,6 @@ class _$_HasJoined implements _HasJoined {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<User> members,
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
@@ -3916,16 +3893,8 @@ class _$_HasJoined implements _HasJoined {
   }) {
     assert(orElse != null);
     if (hasJoined != null) {
-      return hasJoined(
-          host,
-          members,
-          selectedFiles,
-          outgoingFiles,
-          incomingFiles,
-          transactions,
-          showMembersPage,
-          showFilesPage,
-          isLeaving);
+      return hasJoined(host, selectedFiles, outgoingFiles, incomingFiles,
+          transactions, showMembersPage, showFilesPage, isLeaving);
     }
     return orElse();
   }
@@ -3968,7 +3937,6 @@ class _$_HasJoined implements _HasJoined {
 abstract class _HasJoined implements CurrentCircleState {
   const factory _HasJoined(
       {@required User host,
-      @required List<User> members,
       @required List<File> selectedFiles,
       @required Map<File, double> outgoingFiles,
       @required Map<File, double> incomingFiles,
@@ -3978,7 +3946,6 @@ abstract class _HasJoined implements CurrentCircleState {
       @required bool isLeaving}) = _$_HasJoined;
 
   User get host;
-  List<User> get members;
   List<File> get selectedFiles;
   Map<File, double> get outgoingFiles;
   Map<File, double> get incomingFiles;
@@ -4074,7 +4041,6 @@ class _$_HasFailed implements _HasFailed {
     @required
         Result hasJoined(
             User host,
-            List<User> members,
             List<File> selectedFiles,
             Map<File, double> outgoingFiles,
             Map<File, double> incomingFiles,
@@ -4109,7 +4075,6 @@ class _$_HasFailed implements _HasFailed {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<User> members,
         List<File> selectedFiles,
         Map<File, double> outgoingFiles,
         Map<File, double> incomingFiles,
