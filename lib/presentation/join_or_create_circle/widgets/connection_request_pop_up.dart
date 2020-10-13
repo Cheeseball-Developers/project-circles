@@ -12,6 +12,51 @@ class ConnectionRequestPopUp extends StatelessWidget {
 
   const ConnectionRequestPopUp(this.user);
 
+  Widget _body(
+    BuildContext context, {
+    String topText = '',
+    String bigBottomText = '',
+    String smallBottomText = '',
+    String buttonText = '',
+    VoidCallback onTap,
+  }) {
+    final theme = Theme.of(context);
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(topText),
+        const Padding(
+          padding: EdgeInsets.all(16.0),
+          child: CircleAvatar(
+            radius: 48.0,
+            child: Icon(
+              Icons.person,
+              size: 48.0,
+            ),
+          ),
+        ),
+        Text(
+          bigBottomText,
+          style: theme.textTheme.subtitle1,
+        ),
+        Text(
+          smallBottomText,
+          style: theme.textTheme.caption,
+        ),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 8.0),
+        ),
+        GestureDetector(
+          onTap: onTap,
+          child: Text(
+            buttonText,
+            style: theme.textTheme.button,
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -36,33 +81,32 @@ class ConnectionRequestPopUp extends StatelessWidget {
               );
             },
             builder: (context, state) =>
-                state.connectionFailureOrSuccessOption.fold(
-              () => Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Text('Connecting to...'),
-                  const Padding(
-                    padding: EdgeInsets.all(16.0),
-                    child: CircleAvatar(
-                      radius: 48.0,
-                      child: Icon(
-                        Icons.person,
-                        size: 48.0,
-                      ),
-                    ),
-                  ),
-                  Text(
-                    user.name.getOrCrash(),
-                    style: theme.textTheme.subtitle1,
-                  ),
-                  Text(
-                    user.uid.getOrCrash(),
-                    style: theme.textTheme.caption,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                  ),
-                  GestureDetector(
+                state.connectionFailureOrRequestSent.fold(
+              () => _body(
+                context,
+                topText: 'Sending Request...',
+                bigBottomText: user.name.getOrCrash(),
+                smallBottomText: user.uid.getOrCrash(),
+                buttonText: 'Cancel',
+                onTap: () {
+                  context.bloc<SearchBloc>().add(
+                        SearchEvent.endConnectionRequest(
+                            cancelRequestUser: user),
+                      );
+                  ExtendedNavigator.of(context).pop();
+                },
+              ),
+              (failureOrRequestSent) => failureOrRequestSent.fold(
+                (f) => const Center(
+                  child: Text('Failure text here'),
+                ),
+                (_) => state.connectionFailureOrSuccessOption.fold(
+                  () => _body(
+                    context,
+                    topText: 'Waiting Approval...',
+                    bigBottomText: user.name.getOrCrash(),
+                    smallBottomText: user.uid.getOrCrash(),
+                    buttonText: 'Cancel',
                     onTap: () {
                       context.bloc<SearchBloc>().add(
                             SearchEvent.endConnectionRequest(
@@ -70,44 +114,19 @@ class ConnectionRequestPopUp extends StatelessWidget {
                           );
                       ExtendedNavigator.of(context).pop();
                     },
-                    child: Text(
-                      'Cancel',
-                      style: theme.textTheme.button,
-                    ),
                   ),
-                ],
-              ),
-              (connectionFailureOrSuccess) => connectionFailureOrSuccess.fold(
-                (failure) => Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Text('Failed to Connect!'),
-                    const Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: CircleAvatar(
-                        radius: 48.0,
-                        child: Icon(
-                          Icons.person,
-                          size: 48.0,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      failure.map(
+                  (connectionFailureOrSuccess) =>
+                      connectionFailureOrSuccess.fold(
+                    (failure) => _body(
+                      context,
+                      topText: 'Failed to Connect!',
+                      bigBottomText: failure.map(
                         cancelledByUser: (_) => 'Request Denied',
                         timedOut: (_) => 'Request Timed Out',
                         unexpected: (_) => 'Unexpected Failure',
                         endPointUnknown: (_) => 'Device Lost',
                       ),
-                      style: Theme.of(context)
-                          .textTheme
-                          .subtitle1
-                          .copyWith(color: Colors.red),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(bottom: 8.0),
-                    ),
-                    GestureDetector(
+                      buttonText: 'Close',
                       onTap: () {
                         context.bloc<SearchBloc>().add(
                               SearchEvent.endConnectionRequest(
@@ -115,15 +134,11 @@ class ConnectionRequestPopUp extends StatelessWidget {
                             );
                         ExtendedNavigator.of(context).pop();
                       },
-                      child: Text(
-                        'Close',
-                        style: theme.textTheme.button,
-                      ),
                     ),
-                  ],
-                ),
-                (_) => const Center(
-                  child: Text('Initializing...'),
+                    (_) => const Center(
+                      child: Text('Initializing...'),
+                    ),
+                  ),
                 ),
               ),
             ),
