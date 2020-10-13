@@ -35,8 +35,10 @@ class _$SearchEventTearOff {
   }
 
 // ignore: unused_element
-  DeviceLost deviceLost() {
-    return const DeviceLost();
+  DeviceLost deviceLost({@required String uidString}) {
+    return DeviceLost(
+      uidString: uidString,
+    );
   }
 
 // ignore: unused_element
@@ -78,7 +80,7 @@ mixin _$SearchEvent {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -92,7 +94,7 @@ mixin _$SearchEvent {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -180,7 +182,7 @@ class _$StartSearching implements StartSearching {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -207,7 +209,7 @@ class _$StartSearching implements StartSearching {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -346,7 +348,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -373,7 +375,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -483,7 +485,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -510,7 +512,7 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -618,7 +620,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -645,7 +647,7 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -715,6 +717,7 @@ abstract class $DeviceLostCopyWith<$Res> {
   factory $DeviceLostCopyWith(
           DeviceLost value, $Res Function(DeviceLost) then) =
       _$DeviceLostCopyWithImpl<$Res>;
+  $Res call({String uidString});
 }
 
 class _$DeviceLostCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
@@ -724,23 +727,44 @@ class _$DeviceLostCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
 
   @override
   DeviceLost get _value => super._value as DeviceLost;
+
+  @override
+  $Res call({
+    Object uidString = freezed,
+  }) {
+    return _then(DeviceLost(
+      uidString: uidString == freezed ? _value.uidString : uidString as String,
+    ));
+  }
 }
 
 class _$DeviceLost implements DeviceLost {
-  const _$DeviceLost();
+  const _$DeviceLost({@required this.uidString}) : assert(uidString != null);
+
+  @override
+  final String uidString;
 
   @override
   String toString() {
-    return 'SearchEvent.deviceLost()';
+    return 'SearchEvent.deviceLost(uidString: $uidString)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is DeviceLost);
+    return identical(this, other) ||
+        (other is DeviceLost &&
+            (identical(other.uidString, uidString) ||
+                const DeepCollectionEquality()
+                    .equals(other.uidString, uidString)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(uidString);
+
+  @override
+  $DeviceLostCopyWith<DeviceLost> get copyWith =>
+      _$DeviceLostCopyWithImpl<DeviceLost>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -749,7 +773,7 @@ class _$DeviceLost implements DeviceLost {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -766,7 +790,7 @@ class _$DeviceLost implements DeviceLost {
     assert(requestConnection != null);
     assert(connectionResult != null);
     assert(endConnectionRequest != null);
-    return deviceLost();
+    return deviceLost(uidString);
   }
 
   @override
@@ -776,7 +800,7 @@ class _$DeviceLost implements DeviceLost {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -785,7 +809,7 @@ class _$DeviceLost implements DeviceLost {
   }) {
     assert(orElse != null);
     if (deviceLost != null) {
-      return deviceLost();
+      return deviceLost(uidString);
     }
     return orElse();
   }
@@ -839,7 +863,10 @@ class _$DeviceLost implements DeviceLost {
 }
 
 abstract class DeviceLost implements SearchEvent {
-  const factory DeviceLost() = _$DeviceLost;
+  const factory DeviceLost({@required String uidString}) = _$DeviceLost;
+
+  String get uidString;
+  $DeviceLostCopyWith<DeviceLost> get copyWith;
 }
 
 abstract class $StopSearchingCopyWith<$Res> {
@@ -881,7 +908,7 @@ class _$StopSearching implements StopSearching {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -908,7 +935,7 @@ class _$StopSearching implements StopSearching {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -1052,7 +1079,7 @@ class _$RequestConnection implements RequestConnection {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -1079,7 +1106,7 @@ class _$RequestConnection implements RequestConnection {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -1215,7 +1242,7 @@ class _$ConnectionResult implements ConnectionResult {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -1242,7 +1269,7 @@ class _$ConnectionResult implements ConnectionResult {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
@@ -1391,7 +1418,7 @@ class _$EndConnectionRequest implements EndConnectionRequest {
     @required Result deviceDiscovered(User user),
     @required Result showAllDiscoveredDevices(),
     @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(),
+    @required Result deviceLost(String uidString),
     @required Result stopSearching(),
     @required Result requestConnection(User discoveredUser),
     @required
@@ -1418,7 +1445,7 @@ class _$EndConnectionRequest implements EndConnectionRequest {
     Result deviceDiscovered(User user),
     Result showAllDiscoveredDevices(),
     Result dismissAllDiscoveredDevices(),
-    Result deviceLost(),
+    Result deviceLost(String uidString),
     Result stopSearching(),
     Result requestConnection(User discoveredUser),
     Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
