@@ -172,9 +172,10 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(incomingFiles: _incomingFiles);
           },
           memberLeft: (e) async* {
-            state.members
+            final Map<User, bool> members = Map.from(state.members);
+            members
                 .removeWhere((key, value) => key.uid.getOrCrash() == e.id);
-            yield state.copyWith(members: state.members);
+            yield state.copyWith(members: members);
           },
           closeCircle: (e) async* {
             nearbyConnections.stopAllEndpoints();
@@ -235,6 +236,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.initial();
           },
           disconnected: (e) async* {
+            print('Disconnected');
             _incomingFileInfoStreamSubscription?.cancel();
             _lostHostStreamSubscription?.cancel();
             yield const CurrentCircleState.initial();
