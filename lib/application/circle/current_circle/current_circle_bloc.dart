@@ -8,6 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/file_transaction.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 import 'package:projectcircles/injection.dart';
@@ -61,7 +62,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                   members: <User, bool>{},
                   selectedFiles: <File>[],
                   outgoingFiles: <File, double>{},
-                  incomingFiles: <File, double>{},
+                  incomingFiles: <FileInfo, double>{},
                   transactions: <FileTransaction>[],
                   showMembersPage: false,
                   showFilesPage: false,
@@ -85,7 +86,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               members: <User>[],
               selectedFiles: <File>[],
               outgoingFiles: <File, double>{},
-              incomingFiles: <File, double>{},
+              incomingFiles: <FileInfo, double>{},
               transactions: <FileTransaction>[],
               showMembersPage: false,
               showFilesPage: false,
