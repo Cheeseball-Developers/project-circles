@@ -9,36 +9,40 @@ class AppsTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AppsTabViewBloc, AppsTabViewState>(
-      builder: (context, state) => state.map(
-        initial: (_) => Container(),
-        isLoading: (_) => LoadingPage(),
-        hasLoaded: (state) => Scaffold(
-          appBar: state.selectedApps == 0
-              ? PreferredSize(
-                  preferredSize: const Size(0.0, 0.0),
-                  child: Container(),
-                )
-              : PreferredSize(
-                  preferredSize: Size(MediaQuery.of(context).size.width, 40.0),
-                  child: SelectionBar(
-                    count: state.selectedApps,
-                    onCancel: () => context.bloc<AppsTabViewBloc>().add(
-                          const AppsTabViewEvent.deselectAll(),
-                        ),
+      builder: (context, state) => state.failureOrAppsOption.fold(
+        () => LoadingPage(),
+        (failureOrApps) => failureOrApps.fold(
+          (f) => const Center(
+            child: Text('Some Error lolz, show error here'), // TODO: Show error
+          ),
+          (apps) => Scaffold(
+            appBar: !apps.containsValue(true)
+                ? PreferredSize(
+                    preferredSize: const Size(0.0, 0.0),
+                    child: Container(),
+                  )
+                : PreferredSize(
+                    preferredSize:
+                        Size(MediaQuery.of(context).size.width, 40.0),
+                    child: SelectionBar(
+                      count: apps.values.where((selected) => selected).length,
+                      onCancel: () => context.bloc<AppsTabViewBloc>().add(
+                            const AppsTabViewEvent.deselectAll(),
+                          ),
+                    ),
                   ),
+            body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 5),
+                itemCount: apps.length,
+                itemBuilder: (context, index) => AppIconWithName(
+                  appInfo: apps.keys.elementAt(index),
                 ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5),
-              itemCount: state.apps.length,
-              itemBuilder: (context, index) => AppIconWithName(index: index),
+              ),
             ),
           ),
-        ),
-        hasFailed: (state) => const Center(
-          child: Text('Error loading apps'),
         ),
       ),
     );

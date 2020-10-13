@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:projectcircles/infrastructure/circle/apps_repository.dart';
 import 'package:projectcircles/application/circle/circle_home/apps_tab_view/apps_tab_view_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/infrastructure/settings/device_info_injectable_module.dart';
@@ -21,7 +22,9 @@ import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final deviceInfoInjectableModule = _$DeviceInfoInjectableModule();
-  g.registerFactory<AppsTabViewBloc>(() => AppsTabViewBloc());
+  g.registerLazySingleton<AppsRepository>(() => AppsRepository());
+  g.registerFactory<AppsTabViewBloc>(
+      () => AppsTabViewBloc(g<AppsRepository>()));
   g.registerFactory<CurrentCircleBloc>(() => CurrentCircleBloc());
   g.registerLazySingleton<DeviceInfoPlugin>(
       () => deviceInfoInjectableModule.deviceInfo);
