@@ -23,12 +23,16 @@ part 'current_circle_bloc.freezed.dart';
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   CurrentCircleBloc() : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
+  Map<FileInfo, double> _incomingFiles;
 
   @override
   Stream<CurrentCircleState> mapEventToState(
     CurrentCircleEvent event,
   ) async* {
     StreamSubscription<User> _incomingRequestsStreamSubscription;
+    StreamSubscription<String> _lostHostStreamSubscription;
+    StreamSubscription<String> _lostDiscovererStreamSubscription;
+    StreamSubscription<FileInfo> _incomingFileInfoStreamSubscription;
     yield* state.map(
       initial: (state) async* {
         yield* event.maybeMap(
@@ -43,6 +47,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 nearbyConnections.incomingRequestStream.listen((event) {
               debugPrint("A device found, wants to join: $event");
               add(CurrentCircleEvent.deviceRequestedConnection(user: event));
+            });
+
+            _lostDiscovererStreamSubscription =
+                nearbyConnections.onDiscovererLostStream.listen((event) {
+              print("i am removed");
+              add(CurrentCircleEvent.memberLeft(id: event));
             });
 
             yield* failureOrCircleStarted.fold(
@@ -68,6 +78,11 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.isLoading(
                 loadingText: 'Joining Circle...');
             //TODO: Add logic to join circle here
+            _lostHostStreamSubscription =
+                nearbyConnections.onHostLostStream.listen((event) {
+              debugPrint("Host $event lost");
+              add(const CurrentCircleEvent.disconnected());
+            }, onError: (e) {});
             yield CurrentCircleState.hasJoined(
               host: e.host,
               selectedFiles: <File>[],
@@ -94,6 +109,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               members: members,
               showMembersPage: true,
             );
+            _incomingFileInfoStreamSubscription =
+                nearbyConnections.sendingFileInfoStream.listen((event) {
+              add(CurrentCircleEvent.filesReceived(fileInfo: event));
+            }, onError: (e) {
+              print(e);
+            });
           },
           acceptOrReject: (AcceptOrReject request) async* {
             if (request.acceptConnection) {
@@ -131,23 +152,36 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           },
           sendFiles: (e) async* {
             // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
+            //this function is in host side, for member side create this in ,is wahi mai sochu, one more doubt remains
+
+            nearbyConnections.sendFilenameSizeBytesPayload(
+                users: List.from(state.members.keys),
+                outgoingFiles: [
+                  const FileInfo(fileName: 'That_oneThing.dart', bytesSize: 50)
+                ]);
           },
           filesSent: (e) async* {
             // TODO: Call this when files are sent successfully
             yield state.copyWith(showFilesPage: true);
           },
           filesReceived: (e) async* {
-            yield null;
+            _incomingFiles[e.fileInfo] = 0.0;
+            debugPrint("Yay the files to be recieved are ${e.fileInfo}");
+            yield state.copyWith(incomingFiles: _incomingFiles);
           },
           memberLeft: (e) async* {
-            yield null;
+            state.members
+                .removeWhere((key, value) => key.uid.getOrCrash() == e.id);
+            yield state.copyWith(members: state.members);
           },
           closeCircle: (e) async* {
-            //nearbyConnections.stopAllEndpoints();
+            nearbyConnections.stopAllEndpoints();
             nearbyConnections.stopAdvertising();
             yield const CurrentCircleState.initial();
             _incomingRequestsStreamSubscription?.cancel();
+            _lostDiscovererStreamSubscription?.cancel();
           },
           orElse: () async* {},
         );
@@ -158,6 +192,10 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(
               showFilesPage: true,
             );
+            _incomingFileInfoStreamSubscription =
+                nearbyConnections.sendingFileInfoStream.listen((event) {
+              add(CurrentCircleEvent.filesReceived(fileInfo: event));
+            }, onError: (e) {});
           },
           showMembersPage: (_) async* {
             yield state.copyWith(
@@ -171,19 +209,34 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
           },
           sendFiles: (e) async* {
-            // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+            // TODO: Implement sending files from here by using [state.selectedFiles],
+            //also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
+            nearbyConnections.sendFilenameSizeBytesPayload(users: [
+              state.host
+            ], outgoingFiles: [
+              const FileInfo(fileName: 'generic-file-name.exe', bytesSize: 20)
+            ]);
           },
           filesSent: (e) async* {
             // TODO: Call this when files are sent successfully
             yield state.copyWith(showFilesPage: true);
           },
           filesReceived: (e) async* {
-            yield null;
+            _incomingFiles[e.fileInfo] = 0.0;
+            debugPrint("Yay the files to be recieved are ${e.fileInfo}");
+            yield state.copyWith(incomingFiles: _incomingFiles);
           },
           leaveCircle: (e) async* {
-            nearbyConnections.stopAllEndpoints();
+            _incomingFileInfoStreamSubscription?.cancel();
+            nearbyConnections
+                .disconnectFromEndPoint(state.host.uid.getOrCrash());
+            yield const CurrentCircleState.initial();
+          },
+          disconnected: (e) async* {
+            _incomingFileInfoStreamSubscription?.cancel();
+            _lostHostStreamSubscription?.cancel();
             yield const CurrentCircleState.initial();
           },
           orElse: () async* {},

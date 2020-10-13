@@ -11,6 +11,7 @@ import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
+import 'package:projectcircles/domain/files/file_info.dart';
 
 @LazySingleton()
 class NearbyConnections {
@@ -21,7 +22,6 @@ class NearbyConnections {
   Map<int, String> map = {};
   User discoveredDevice;
   User incomingRequest;
-  List<User> members = <User>[]; //all the devices connected to host
   String host; // host username
   final StreamController<User> onEndFound = StreamController<User>.broadcast();
   Stream<User> discoveredDeviceStream;
@@ -30,6 +30,16 @@ class NearbyConnections {
       StreamController<String>.broadcast();
 
   Stream<String> lostDeviceStream;
+
+  final StreamController<String> onHostLost =
+      StreamController<String>.broadcast();
+
+  Stream<String> onHostLostStream;
+
+  final StreamController<String> onDiscovererLost =
+      StreamController<String>.broadcast();
+
+  Stream<String> onDiscovererLostStream;
 
   final StreamController<User> onRequestSent =
       StreamController<User>.broadcast();
@@ -40,6 +50,10 @@ class NearbyConnections {
       onConnectionResultDisc =
       StreamController<Either<ConnectionFailure, Unit>>.broadcast();
   Stream<Either<ConnectionFailure, Unit>> onConnectionResultDiscStream;
+
+  final StreamController<FileInfo> sendingFileInfo =
+      StreamController<FileInfo>.broadcast();
+  Stream<FileInfo> sendingFileInfoStream;
 
   Either<ConnectionFailure, Unit> connectionResult;
 
@@ -95,6 +109,7 @@ class NearbyConnections {
   ///host starts advertising
   Future<Either<ConnectionFailure, Unit>> startAdvertising() async {
     incomingRequestStream = onRequestSent.stream;
+    onDiscovererLostStream = onDiscovererLost.stream;
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
@@ -113,8 +128,6 @@ class NearbyConnections {
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
-          members.add(
-              User(uid: UniqueId.fromUniqueString(id), name: Name(_endName)));
           debugPrint(
               "Connection successfully established to the dicoverer $_endName");
         } else if (status == Status.REJECTED) {
@@ -124,9 +137,8 @@ class NearbyConnections {
         }
       }
     }, onDisconnected: (String id) {
+      onDiscovererLost.sink.add(id);
       debugPrint("Disconnected to : $id");
-      members.remove(
-          User(uid: UniqueId.fromUniqueString(id), name: Name(_endName)));
     });
     if (a) {
       return right(unit);
@@ -205,7 +217,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> requestConnection(
       {@required String endpointId}) async {
     debugPrint("Requested a Connection to $endpointId");
-    lostDeviceStream = onEndLost.stream;
+    onHostLostStream = onHostLost.stream;
     bool a;
     try {
       a = await _nearby.requestConnection(_username, endpointId,
@@ -247,9 +259,8 @@ class NearbyConnections {
           debugPrint("Error in connecting to $host..Please try again");
         }
       }, onDisconnected: (String id) {
-        //TODO: return that disconnected and remove that member
         debugPrint("Disconnected! Connect again to: $id");
-        onEndLost.sink.add(id);
+        onHostLost.sink.add(id);
       });
     } catch (e) {
       debugPrint('some error occurred in requesting a '
@@ -276,6 +287,8 @@ class NearbyConnections {
   //Accept Connection to connect successfully
   Future<Either<ConnectionFailure, Unit>> acceptConnection(
       {@required String endId}) async {
+    sendingFileInfoStream = sendingFileInfo.stream;
+
     final a = await _nearby.acceptConnection(endId,
         onPayLoadRecieved: (String endId, Payload payload) {
       //TODO this is the called as soon as the file transfer is started
@@ -310,22 +323,33 @@ class NearbyConnections {
   ///to the current file being transferred
   ///also saves the fileName and extension
 
-  Future<Either<AppsLoadFailure, bool>> onPayloadRecieved(
+  Future<Either<ConnectionFailure, Unit>> onPayloadRecieved(
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
       //TODO add the message of file transfer started
       debugPrint("File transfer started from $endId");
       _tempFile = File(payload.filePath);
       debugPrint(payload.filePath);
-      return right(true);
+      return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
+      debugPrint("bytes payload recieved");
       //converting the bytes recieved to string
       final String str = String.fromCharCodes(payload.bytes);
-      debugPrint("File name received from $endId:  $str");
 
+      debugPrint("Bytes recieved from $endId:  $str");
+
+      //receiving the fileInfo
+      if (str.contains('-')) {
+        final String keyFileName = str.split('-').first;
+        final double fileSize = double.parse(str.split('-').last);
+
+        //streaming the fileInfo
+        sendingFileInfo.sink
+            .add(FileInfo(fileName: keyFileName, bytesSize: fileSize));
+      }
       // used for file payload as file payload is mapped as
       // payloadId:filename
-      if (str.contains(':')) {
+      else if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':')[1];
         if (map.containsKey(payloadId)) {
@@ -339,9 +363,9 @@ class NearbyConnections {
           map[payloadId] = fileName;
         }
       }
-      return right(true);
+      return right(unit);
     } else {
-      return left(const AppsLoadFailure.unexpectedFailure());
+      return left(const ConnectionFailure.unexpected());
     }
   }
 
@@ -351,11 +375,11 @@ class NearbyConnections {
       String endId, PayloadTransferUpdate payloadTransferUpdate) {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       debugPrint(
-          "Receiving files from $endId ${payloadTransferUpdate.bytesTransferred}");
+          "Receiving/sending files/data  $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       debugPrint(
-          "Received files from $endId, ${payloadTransferUpdate.totalBytes}");
+          "Received/sent files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (map.containsKey(payloadTransferUpdate.id)) {
         //rename the file now
         final String name = map[payloadTransferUpdate.id];
@@ -372,11 +396,13 @@ class NearbyConnections {
   }
 
   ///Sending Files
-  Future<Either<AppsLoadFailure, bool>> sendFilePayload(
-      {@required Map<File, double> files}) async {
+  Future<Either<ConnectionFailure, Unit>> sendFilePayload(
+      {@required Map<File, double> files, List<User> members}) async {
     int payLoadId;
 
     members.forEach((user) {
+      //Sending the number of files that are being sent
+
       files.forEach((file, progress) async {
         /// Returns the payloadID as soon as file transfer has begun
         ///
@@ -390,6 +416,7 @@ class NearbyConnections {
         debugPrint("Sending File to ${user.name}");
 
         //Sending the fileName and payloadId to the receiver
+        debugPrint("Currently sending file is: ${file.path.split('/').last}");
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
             Uint8List.fromList(
@@ -397,11 +424,25 @@ class NearbyConnections {
       });
     });
     if (payLoadId != null) {
-      return right(true);
+      return right(unit);
     }
-    return left(const AppsLoadFailure.unexpectedFailure());
+    return left(const ConnectionFailure.unexpected());
   }
 
+  //2 doubts the
+  Future<void> sendFilenameSizeBytesPayload(
+      {@required List<User> users,
+      @required List<FileInfo> outgoingFiles}) async {
+    debugPrint("sending the file name and size");
+    users.forEach((user) {
+      outgoingFiles.forEach((file) {
+        _nearby.sendBytesPayload(user.uid.getOrCrash(),
+            Uint8List.fromList("${file.fileName}-${file.bytesSize}".codeUnits));
+      });
+    });
+  }
+
+// one sec ab bta
   Future<void> cancelPayload(int payloadId) async {
     await _nearby.cancelPayload(payloadId);
   }
