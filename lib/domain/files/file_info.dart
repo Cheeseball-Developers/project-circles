@@ -9,5 +9,5 @@ abstract class FileInfo with _$FileInfo {
     @required double bytesSize,
   }) = _FileInfo;
 
-  FileInfo._();
+  const FileInfo._();
 }

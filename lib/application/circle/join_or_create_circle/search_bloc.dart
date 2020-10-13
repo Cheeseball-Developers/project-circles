@@ -97,6 +97,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
       },
       requestConnection: (e) async* {
+        streamSubscriptionDiscoveredDevice?.cancel();
+
         yield* state.connectionFailureOrSuccessOption.fold(
           () async* {
             yield state.copyWith(

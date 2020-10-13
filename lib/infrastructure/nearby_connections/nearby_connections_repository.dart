@@ -11,6 +11,7 @@ import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
+import 'package:projectcircles/domain/files/file_info.dart';
 
 @LazySingleton()
 class NearbyConnections {
@@ -49,6 +50,10 @@ class NearbyConnections {
       onConnectionResultDisc =
       StreamController<Either<ConnectionFailure, Unit>>.broadcast();
   Stream<Either<ConnectionFailure, Unit>> onConnectionResultDiscStream;
+
+  final StreamController<FileInfo> sendingFileInfo =
+      StreamController<FileInfo>.broadcast();
+  Stream<FileInfo> sendingFileInfoStream;
 
   Either<ConnectionFailure, Unit> connectionResult;
 
@@ -282,6 +287,8 @@ class NearbyConnections {
   //Accept Connection to connect successfully
   Future<Either<ConnectionFailure, Unit>> acceptConnection(
       {@required String endId}) async {
+    sendingFileInfoStream = sendingFileInfo.stream;
+
     final a = await _nearby.acceptConnection(endId,
         onPayLoadRecieved: (String endId, Payload payload) {
       //TODO this is the called as soon as the file transfer is started
@@ -325,20 +332,24 @@ class NearbyConnections {
       debugPrint(payload.filePath);
       return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
+      debugPrint("bytes payload recieved");
       //converting the bytes recieved to string
       final String str = String.fromCharCodes(payload.bytes);
 
       debugPrint("Bytes recieved from $endId:  $str");
 
-      //receiving the number of files
-      //TODO: Show in the ui the number of files wanting to send.
+      //receiving the fileInfo
       if (str.contains('-')) {
-        final int filelength = int.parse(str.split('-').last);
-      }
+        final String keyFileName = str.split('-').first;
+        final double fileSize = double.parse(str.split('-').last);
 
+        //streaming the fileInfo
+        sendingFileInfo.sink
+            .add(FileInfo(fileName: keyFileName, bytesSize: fileSize));
+      }
       // used for file payload as file payload is mapped as
       // payloadId:filename
-      if (str.contains(':')) {
+      else if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':')[1];
         if (map.containsKey(payloadId)) {
@@ -364,11 +375,11 @@ class NearbyConnections {
       String endId, PayloadTransferUpdate payloadTransferUpdate) {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       debugPrint(
-          "Receiving files from $endId ${payloadTransferUpdate.bytesTransferred}");
+          "Receiving/sending files/data  $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       debugPrint(
-          "Received files from $endId, ${payloadTransferUpdate.totalBytes}");
+          "Received/sent files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (map.containsKey(payloadTransferUpdate.id)) {
         //rename the file now
         final String name = map[payloadTransferUpdate.id];
@@ -391,8 +402,7 @@ class NearbyConnections {
 
     members.forEach((user) {
       //Sending the number of files that are being sent
-      _nearby.sendBytesPayload(user.uid.getOrCrash(),
-          Uint8List.fromList("-filelength-${files.length}".codeUnits));
+
       files.forEach((file, progress) async {
         /// Returns the payloadID as soon as file transfer has begun
         ///
@@ -419,6 +429,20 @@ class NearbyConnections {
     return left(const ConnectionFailure.unexpected());
   }
 
+  //2 doubts the
+  Future<void> sendFilenameSizeBytesPayload(
+      {@required List<User> users,
+      @required List<FileInfo> outgoingFiles}) async {
+    debugPrint("sending the file name and size");
+    users.forEach((user) {
+      outgoingFiles.forEach((file) {
+        _nearby.sendBytesPayload(user.uid.getOrCrash(),
+            Uint8List.fromList("${file.fileName}-${file.bytesSize}".codeUnits));
+      });
+    });
+  }
+
+// one sec ab bta
   Future<void> cancelPayload(int payloadId) async {
     await _nearby.cancelPayload(payloadId);
   }

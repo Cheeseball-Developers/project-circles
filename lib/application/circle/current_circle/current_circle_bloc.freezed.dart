@@ -75,8 +75,10 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
-  FileReceived filesReceived() {
-    return const FileReceived();
+  FileReceived filesReceived({@required FileInfo fileInfo}) {
+    return FileReceived(
+      fileInfo: fileInfo,
+    );
   }
 
 // ignore: unused_element
@@ -118,7 +120,7 @@ mixin _$CurrentCircleEvent {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -136,7 +138,7 @@ mixin _$CurrentCircleEvent {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -276,7 +278,7 @@ class _$StartCircle implements StartCircle {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -313,7 +315,7 @@ class _$StartCircle implements StartCircle {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -481,7 +483,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -518,7 +520,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -701,7 +703,7 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -738,7 +740,7 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -905,7 +907,7 @@ class _$JoinCircle implements JoinCircle {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -942,7 +944,7 @@ class _$JoinCircle implements JoinCircle {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1092,7 +1094,7 @@ class _$AddFile implements AddFile {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1129,7 +1131,7 @@ class _$AddFile implements AddFile {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1261,7 +1263,7 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1298,7 +1300,7 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1427,7 +1429,7 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1464,7 +1466,7 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1592,7 +1594,7 @@ class _$PageOpened implements PageOpened {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1629,7 +1631,7 @@ class _$PageOpened implements PageOpened {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1756,7 +1758,7 @@ class _$SendFiles implements SendFiles {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1793,7 +1795,7 @@ class _$SendFiles implements SendFiles {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1920,7 +1922,7 @@ class _$FilesSent implements FilesSent {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1957,7 +1959,7 @@ class _$FilesSent implements FilesSent {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2044,6 +2046,9 @@ abstract class $FileReceivedCopyWith<$Res> {
   factory $FileReceivedCopyWith(
           FileReceived value, $Res Function(FileReceived) then) =
       _$FileReceivedCopyWithImpl<$Res>;
+  $Res call({FileInfo fileInfo});
+
+  $FileInfoCopyWith<$Res> get fileInfo;
 }
 
 class _$FileReceivedCopyWithImpl<$Res>
@@ -2055,23 +2060,54 @@ class _$FileReceivedCopyWithImpl<$Res>
 
   @override
   FileReceived get _value => super._value as FileReceived;
+
+  @override
+  $Res call({
+    Object fileInfo = freezed,
+  }) {
+    return _then(FileReceived(
+      fileInfo: fileInfo == freezed ? _value.fileInfo : fileInfo as FileInfo,
+    ));
+  }
+
+  @override
+  $FileInfoCopyWith<$Res> get fileInfo {
+    if (_value.fileInfo == null) {
+      return null;
+    }
+    return $FileInfoCopyWith<$Res>(_value.fileInfo, (value) {
+      return _then(_value.copyWith(fileInfo: value));
+    });
+  }
 }
 
 class _$FileReceived implements FileReceived {
-  const _$FileReceived();
+  const _$FileReceived({@required this.fileInfo}) : assert(fileInfo != null);
+
+  @override
+  final FileInfo fileInfo;
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.filesReceived()';
+    return 'CurrentCircleEvent.filesReceived(fileInfo: $fileInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is FileReceived);
+    return identical(this, other) ||
+        (other is FileReceived &&
+            (identical(other.fileInfo, fileInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.fileInfo, fileInfo)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileInfo);
+
+  @override
+  $FileReceivedCopyWith<FileReceived> get copyWith =>
+      _$FileReceivedCopyWithImpl<FileReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2086,7 +2122,7 @@ class _$FileReceived implements FileReceived {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2107,7 +2143,7 @@ class _$FileReceived implements FileReceived {
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return filesReceived();
+    return filesReceived(fileInfo);
   }
 
   @override
@@ -2123,7 +2159,7 @@ class _$FileReceived implements FileReceived {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2132,7 +2168,7 @@ class _$FileReceived implements FileReceived {
   }) {
     assert(orElse != null);
     if (filesReceived != null) {
-      return filesReceived();
+      return filesReceived(fileInfo);
     }
     return orElse();
   }
@@ -2203,7 +2239,10 @@ class _$FileReceived implements FileReceived {
 }
 
 abstract class FileReceived implements CurrentCircleEvent {
-  const factory FileReceived() = _$FileReceived;
+  const factory FileReceived({@required FileInfo fileInfo}) = _$FileReceived;
+
+  FileInfo get fileInfo;
+  $FileReceivedCopyWith<FileReceived> get copyWith;
 }
 
 abstract class $MemberLeftCopyWith<$Res> {
@@ -2272,7 +2311,7 @@ class _$MemberLeft implements MemberLeft {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2309,7 +2348,7 @@ class _$MemberLeft implements MemberLeft {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2441,7 +2480,7 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2478,7 +2517,7 @@ class _$LeaveCircle implements LeaveCircle {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2607,7 +2646,7 @@ class _$CloseCircle implements CloseCircle {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2644,7 +2683,7 @@ class _$CloseCircle implements CloseCircle {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2773,7 +2812,7 @@ class _$Disconnected implements Disconnected {
     @required Result pageOpened(),
     @required Result sendFiles(),
     @required Result filesSent(),
-    @required Result filesReceived(),
+    @required Result filesReceived(FileInfo fileInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2810,7 +2849,7 @@ class _$Disconnected implements Disconnected {
     Result pageOpened(),
     Result sendFiles(),
     Result filesSent(),
-    Result filesReceived(),
+    Result filesReceived(FileInfo fileInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
