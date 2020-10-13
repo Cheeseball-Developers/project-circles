@@ -18,9 +18,9 @@ class _$AppsTabViewEventTearOff {
   }
 
 // ignore: unused_element
-  ToggleAppSelection toggleAppSelection(int index) {
+  ToggleAppSelection toggleAppSelection({@required AppInfo appInfo}) {
     return ToggleAppSelection(
-      index,
+      appInfo: appInfo,
     );
   }
 
@@ -37,13 +37,13 @@ mixin _$AppsTabViewEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleAppSelection(int index),
+    @required Result toggleAppSelection(AppInfo appInfo),
     @required Result deselectAll(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleAppSelection(int index),
+    Result toggleAppSelection(AppInfo appInfo),
     Result deselectAll(),
     @required Result orElse(),
   });
@@ -111,7 +111,7 @@ class _$LoadApps implements LoadApps {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleAppSelection(int index),
+    @required Result toggleAppSelection(AppInfo appInfo),
     @required Result deselectAll(),
   }) {
     assert(loadApps != null);
@@ -124,7 +124,7 @@ class _$LoadApps implements LoadApps {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleAppSelection(int index),
+    Result toggleAppSelection(AppInfo appInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
@@ -172,7 +172,9 @@ abstract class $ToggleAppSelectionCopyWith<$Res> {
   factory $ToggleAppSelectionCopyWith(
           ToggleAppSelection value, $Res Function(ToggleAppSelection) then) =
       _$ToggleAppSelectionCopyWithImpl<$Res>;
-  $Res call({int index});
+  $Res call({AppInfo appInfo});
+
+  $AppInfoCopyWith<$Res> get appInfo;
 }
 
 class _$ToggleAppSelectionCopyWithImpl<$Res>
@@ -187,36 +189,47 @@ class _$ToggleAppSelectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object index = freezed,
+    Object appInfo = freezed,
   }) {
     return _then(ToggleAppSelection(
-      index == freezed ? _value.index : index as int,
+      appInfo: appInfo == freezed ? _value.appInfo : appInfo as AppInfo,
     ));
+  }
+
+  @override
+  $AppInfoCopyWith<$Res> get appInfo {
+    if (_value.appInfo == null) {
+      return null;
+    }
+    return $AppInfoCopyWith<$Res>(_value.appInfo, (value) {
+      return _then(_value.copyWith(appInfo: value));
+    });
   }
 }
 
 class _$ToggleAppSelection implements ToggleAppSelection {
-  const _$ToggleAppSelection(this.index) : assert(index != null);
+  const _$ToggleAppSelection({@required this.appInfo})
+      : assert(appInfo != null);
 
   @override
-  final int index;
+  final AppInfo appInfo;
 
   @override
   String toString() {
-    return 'AppsTabViewEvent.toggleAppSelection(index: $index)';
+    return 'AppsTabViewEvent.toggleAppSelection(appInfo: $appInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ToggleAppSelection &&
-            (identical(other.index, index) ||
-                const DeepCollectionEquality().equals(other.index, index)));
+            (identical(other.appInfo, appInfo) ||
+                const DeepCollectionEquality().equals(other.appInfo, appInfo)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(appInfo);
 
   @override
   $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith =>
@@ -226,26 +239,26 @@ class _$ToggleAppSelection implements ToggleAppSelection {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleAppSelection(int index),
+    @required Result toggleAppSelection(AppInfo appInfo),
     @required Result deselectAll(),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
     assert(deselectAll != null);
-    return toggleAppSelection(index);
+    return toggleAppSelection(appInfo);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleAppSelection(int index),
+    Result toggleAppSelection(AppInfo appInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (toggleAppSelection != null) {
-      return toggleAppSelection(index);
+      return toggleAppSelection(appInfo);
     }
     return orElse();
   }
@@ -280,9 +293,10 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 }
 
 abstract class ToggleAppSelection implements AppsTabViewEvent {
-  const factory ToggleAppSelection(int index) = _$ToggleAppSelection;
+  const factory ToggleAppSelection({@required AppInfo appInfo}) =
+      _$ToggleAppSelection;
 
-  int get index;
+  AppInfo get appInfo;
   $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith;
 }
 
@@ -323,7 +337,7 @@ class _$DeselectAll implements DeselectAll {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result loadApps(),
-    @required Result toggleAppSelection(int index),
+    @required Result toggleAppSelection(AppInfo appInfo),
     @required Result deselectAll(),
   }) {
     assert(loadApps != null);
@@ -336,7 +350,7 @@ class _$DeselectAll implements DeselectAll {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadApps(),
-    Result toggleAppSelection(int index),
+    Result toggleAppSelection(AppInfo appInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
@@ -384,28 +398,15 @@ class _$AppsTabViewStateTearOff {
   const _$AppsTabViewStateTearOff();
 
 // ignore: unused_element
-  _Initial initial() {
-    return const _Initial();
-  }
-
-// ignore: unused_element
-  _IsLoading isLoading() {
-    return const _IsLoading();
-  }
-
-// ignore: unused_element
-  _HasLoaded hasLoaded(
-      {@required List<AppObject> apps, @required int selectedApps}) {
-    return _HasLoaded(
-      apps: apps,
-      selectedApps: selectedApps,
-    );
-  }
-
-// ignore: unused_element
-  _HasFailed hasFailed(AppsLoadFailure failure) {
-    return _HasFailed(
-      failure,
+  _AppsTabViewState call(
+      {@required
+          bool isLoading,
+      @required
+          Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>
+              failureOrAppsOption}) {
+    return _AppsTabViewState(
+      isLoading: isLoading,
+      failureOrAppsOption: failureOrAppsOption,
     );
   }
 }
@@ -414,42 +415,19 @@ class _$AppsTabViewStateTearOff {
 const $AppsTabViewState = _$AppsTabViewStateTearOff();
 
 mixin _$AppsTabViewState {
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
-    @required Result hasFailed(AppsLoadFailure failure),
-  });
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, int selectedApps),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
-  });
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
-  });
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
-  });
+  bool get isLoading;
+  Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
+
+  $AppsTabViewStateCopyWith<AppsTabViewState> get copyWith;
 }
 
 abstract class $AppsTabViewStateCopyWith<$Res> {
   factory $AppsTabViewStateCopyWith(
           AppsTabViewState value, $Res Function(AppsTabViewState) then) =
       _$AppsTabViewStateCopyWithImpl<$Res>;
+  $Res call(
+      {bool isLoading,
+      Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> failureOrAppsOption});
 }
 
 class _$AppsTabViewStateCopyWithImpl<$Res>
@@ -459,473 +437,109 @@ class _$AppsTabViewStateCopyWithImpl<$Res>
   final AppsTabViewState _value;
   // ignore: unused_field
   final $Res Function(AppsTabViewState) _then;
-}
-
-abstract class _$InitialCopyWith<$Res> {
-  factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
-      __$InitialCopyWithImpl<$Res>;
-}
-
-class __$InitialCopyWithImpl<$Res> extends _$AppsTabViewStateCopyWithImpl<$Res>
-    implements _$InitialCopyWith<$Res> {
-  __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
-      : super(_value, (v) => _then(v as _Initial));
-
-  @override
-  _Initial get _value => super._value as _Initial;
-}
-
-class _$_Initial implements _Initial {
-  const _$_Initial();
-
-  @override
-  String toString() {
-    return 'AppsTabViewState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
-    @required Result hasFailed(AppsLoadFailure failure),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, int selectedApps),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements AppsTabViewState {
-  const factory _Initial() = _$_Initial;
-}
-
-abstract class _$IsLoadingCopyWith<$Res> {
-  factory _$IsLoadingCopyWith(
-          _IsLoading value, $Res Function(_IsLoading) then) =
-      __$IsLoadingCopyWithImpl<$Res>;
-}
-
-class __$IsLoadingCopyWithImpl<$Res>
-    extends _$AppsTabViewStateCopyWithImpl<$Res>
-    implements _$IsLoadingCopyWith<$Res> {
-  __$IsLoadingCopyWithImpl(_IsLoading _value, $Res Function(_IsLoading) _then)
-      : super(_value, (v) => _then(v as _IsLoading));
-
-  @override
-  _IsLoading get _value => super._value as _IsLoading;
-}
-
-class _$_IsLoading implements _IsLoading {
-  const _$_IsLoading();
-
-  @override
-  String toString() {
-    return 'AppsTabViewState.isLoading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _IsLoading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
-    @required Result hasFailed(AppsLoadFailure failure),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return isLoading();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, int selectedApps),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (isLoading != null) {
-      return isLoading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return isLoading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (isLoading != null) {
-      return isLoading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _IsLoading implements AppsTabViewState {
-  const factory _IsLoading() = _$_IsLoading;
-}
-
-abstract class _$HasLoadedCopyWith<$Res> {
-  factory _$HasLoadedCopyWith(
-          _HasLoaded value, $Res Function(_HasLoaded) then) =
-      __$HasLoadedCopyWithImpl<$Res>;
-  $Res call({List<AppObject> apps, int selectedApps});
-}
-
-class __$HasLoadedCopyWithImpl<$Res>
-    extends _$AppsTabViewStateCopyWithImpl<$Res>
-    implements _$HasLoadedCopyWith<$Res> {
-  __$HasLoadedCopyWithImpl(_HasLoaded _value, $Res Function(_HasLoaded) _then)
-      : super(_value, (v) => _then(v as _HasLoaded));
-
-  @override
-  _HasLoaded get _value => super._value as _HasLoaded;
 
   @override
   $Res call({
-    Object apps = freezed,
-    Object selectedApps = freezed,
+    Object isLoading = freezed,
+    Object failureOrAppsOption = freezed,
   }) {
-    return _then(_HasLoaded(
-      apps: apps == freezed ? _value.apps : apps as List<AppObject>,
-      selectedApps:
-          selectedApps == freezed ? _value.selectedApps : selectedApps as int,
+    return _then(_value.copyWith(
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      failureOrAppsOption: failureOrAppsOption == freezed
+          ? _value.failureOrAppsOption
+          : failureOrAppsOption
+              as Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>,
     ));
   }
 }
 
-class _$_HasLoaded implements _HasLoaded {
-  const _$_HasLoaded({@required this.apps, @required this.selectedApps})
-      : assert(apps != null),
-        assert(selectedApps != null);
+abstract class _$AppsTabViewStateCopyWith<$Res>
+    implements $AppsTabViewStateCopyWith<$Res> {
+  factory _$AppsTabViewStateCopyWith(
+          _AppsTabViewState value, $Res Function(_AppsTabViewState) then) =
+      __$AppsTabViewStateCopyWithImpl<$Res>;
+  @override
+  $Res call(
+      {bool isLoading,
+      Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> failureOrAppsOption});
+}
+
+class __$AppsTabViewStateCopyWithImpl<$Res>
+    extends _$AppsTabViewStateCopyWithImpl<$Res>
+    implements _$AppsTabViewStateCopyWith<$Res> {
+  __$AppsTabViewStateCopyWithImpl(
+      _AppsTabViewState _value, $Res Function(_AppsTabViewState) _then)
+      : super(_value, (v) => _then(v as _AppsTabViewState));
 
   @override
-  final List<AppObject> apps;
+  _AppsTabViewState get _value => super._value as _AppsTabViewState;
+
   @override
-  final int selectedApps;
+  $Res call({
+    Object isLoading = freezed,
+    Object failureOrAppsOption = freezed,
+  }) {
+    return _then(_AppsTabViewState(
+      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      failureOrAppsOption: failureOrAppsOption == freezed
+          ? _value.failureOrAppsOption
+          : failureOrAppsOption
+              as Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>,
+    ));
+  }
+}
+
+class _$_AppsTabViewState implements _AppsTabViewState {
+  const _$_AppsTabViewState(
+      {@required this.isLoading, @required this.failureOrAppsOption})
+      : assert(isLoading != null),
+        assert(failureOrAppsOption != null);
+
+  @override
+  final bool isLoading;
+  @override
+  final Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> failureOrAppsOption;
 
   @override
   String toString() {
-    return 'AppsTabViewState.hasLoaded(apps: $apps, selectedApps: $selectedApps)';
+    return 'AppsTabViewState(isLoading: $isLoading, failureOrAppsOption: $failureOrAppsOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _HasLoaded &&
-            (identical(other.apps, apps) ||
-                const DeepCollectionEquality().equals(other.apps, apps)) &&
-            (identical(other.selectedApps, selectedApps) ||
+        (other is _AppsTabViewState &&
+            (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
-                    .equals(other.selectedApps, selectedApps)));
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.failureOrAppsOption, failureOrAppsOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.failureOrAppsOption, failureOrAppsOption)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(apps) ^
-      const DeepCollectionEquality().hash(selectedApps);
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(failureOrAppsOption);
 
   @override
-  _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
-      __$HasLoadedCopyWithImpl<_HasLoaded>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
-    @required Result hasFailed(AppsLoadFailure failure),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return hasLoaded(apps, selectedApps);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, int selectedApps),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (hasLoaded != null) {
-      return hasLoaded(apps, selectedApps);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return hasLoaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (hasLoaded != null) {
-      return hasLoaded(this);
-    }
-    return orElse();
-  }
+  _$AppsTabViewStateCopyWith<_AppsTabViewState> get copyWith =>
+      __$AppsTabViewStateCopyWithImpl<_AppsTabViewState>(this, _$identity);
 }
 
-abstract class _HasLoaded implements AppsTabViewState {
-  const factory _HasLoaded(
-      {@required List<AppObject> apps,
-      @required int selectedApps}) = _$_HasLoaded;
-
-  List<AppObject> get apps;
-  int get selectedApps;
-  _$HasLoadedCopyWith<_HasLoaded> get copyWith;
-}
-
-abstract class _$HasFailedCopyWith<$Res> {
-  factory _$HasFailedCopyWith(
-          _HasFailed value, $Res Function(_HasFailed) then) =
-      __$HasFailedCopyWithImpl<$Res>;
-  $Res call({AppsLoadFailure failure});
-
-  $AppsLoadFailureCopyWith<$Res> get failure;
-}
-
-class __$HasFailedCopyWithImpl<$Res>
-    extends _$AppsTabViewStateCopyWithImpl<$Res>
-    implements _$HasFailedCopyWith<$Res> {
-  __$HasFailedCopyWithImpl(_HasFailed _value, $Res Function(_HasFailed) _then)
-      : super(_value, (v) => _then(v as _HasFailed));
+abstract class _AppsTabViewState implements AppsTabViewState {
+  const factory _AppsTabViewState(
+      {@required
+          bool isLoading,
+      @required
+          Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>
+              failureOrAppsOption}) = _$_AppsTabViewState;
 
   @override
-  _HasFailed get _value => super._value as _HasFailed;
-
+  bool get isLoading;
   @override
-  $Res call({
-    Object failure = freezed,
-  }) {
-    return _then(_HasFailed(
-      failure == freezed ? _value.failure : failure as AppsLoadFailure,
-    ));
-  }
-
+  Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
   @override
-  $AppsLoadFailureCopyWith<$Res> get failure {
-    if (_value.failure == null) {
-      return null;
-    }
-    return $AppsLoadFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
-  }
-}
-
-class _$_HasFailed implements _HasFailed {
-  const _$_HasFailed(this.failure) : assert(failure != null);
-
-  @override
-  final AppsLoadFailure failure;
-
-  @override
-  String toString() {
-    return 'AppsTabViewState.hasFailed(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _HasFailed &&
-            (identical(other.failure, failure) ||
-                const DeepCollectionEquality().equals(other.failure, failure)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
-
-  @override
-  _$HasFailedCopyWith<_HasFailed> get copyWith =>
-      __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoaded(List<AppObject> apps, int selectedApps),
-    @required Result hasFailed(AppsLoadFailure failure),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return hasFailed(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(List<AppObject> apps, int selectedApps),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (hasFailed != null) {
-      return hasFailed(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
-  }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoaded != null);
-    assert(hasFailed != null);
-    return hasFailed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (hasFailed != null) {
-      return hasFailed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _HasFailed implements AppsTabViewState {
-  const factory _HasFailed(AppsLoadFailure failure) = _$_HasFailed;
-
-  AppsLoadFailure get failure;
-  _$HasFailedCopyWith<_HasFailed> get copyWith;
+  _$AppsTabViewStateCopyWith<_AppsTabViewState> get copyWith;
 }
