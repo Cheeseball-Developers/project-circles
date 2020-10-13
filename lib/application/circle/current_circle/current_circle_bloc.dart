@@ -28,6 +28,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
     CurrentCircleEvent event,
   ) async* {
     StreamSubscription<User> _incomingRequestsStreamSubscription;
+    StreamSubscription<String> _lostHostStreamSubscription;
+    StreamSubscription<String> _lostDiscovererStreamSubscription;
     yield* state.map(
       initial: (state) async* {
         yield* event.maybeMap(
@@ -42,6 +44,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 nearbyConnections.incomingRequestStream.listen((event) {
               debugPrint("A device found, wants to join: $event");
               add(CurrentCircleEvent.deviceRequestedConnection(user: event));
+            });
+
+            _lostDiscovererStreamSubscription =
+                nearbyConnections.onDiscovererLostStream.listen((event) {
+              print("i am removed");
+              add(const CurrentCircleEvent.memberLeft(id: event));
             });
 
             yield* failureOrCircleStarted.fold(
@@ -67,6 +75,11 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.isLoading(
                 loadingText: 'Joining Circle...');
             //TODO: Add logic to join circle here
+            _lostHostStreamSubscription =
+                nearbyConnections.onHostLostStream.listen((event) {
+              debugPrint("Host $event lost");
+              add(const CurrentCircleEvent.disconnected());
+            }, onError: (e) {});
             yield CurrentCircleState.hasJoined(
               host: e.host,
               members: <User>[],
@@ -141,10 +154,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield null;
           },
           memberLeft: (e) async* {
-            yield null;
+            state.members
+                .removeWhere((key, value) => key.uid.getOrCrash() == e.id);
+            yield state.copyWith(members: state.members);
           },
           closeCircle: (e) async* {
-            //nearbyConnections.stopAllEndpoints();
+            nearbyConnections.stopAllEndpoints();
             nearbyConnections.stopAdvertising();
             yield const CurrentCircleState.initial();
             _incomingRequestsStreamSubscription?.cancel();
@@ -171,7 +186,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
           },
           sendFiles: (e) async* {
-            // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+            // TODO: Implement sending files from here by using [state.selectedFiles],
+            //also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
           },
@@ -183,7 +199,13 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield null;
           },
           leaveCircle: (e) async* {
+            //TODO: This should be the diconnect from end point rather than stopping all,pass the param endId here.
             nearbyConnections.stopAllEndpoints();
+            yield const CurrentCircleState.initial();
+          },
+          disconnected: (e) async* {
+            // dude you're lolz why lemme tell you
+            _lostHostStreamSubscription?.cancel();
             yield const CurrentCircleState.initial();
           },
           orElse: () async* {},

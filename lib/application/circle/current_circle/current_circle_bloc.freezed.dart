@@ -80,8 +80,10 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
-  MemberLeft memberLeft() {
-    return const MemberLeft();
+  MemberLeft memberLeft({@required String id}) {
+    return MemberLeft(
+      id: id,
+    );
   }
 
 // ignore: unused_element
@@ -92,6 +94,11 @@ class _$CurrentCircleEventTearOff {
 // ignore: unused_element
   CloseCircle closeCircle() {
     return const CloseCircle();
+  }
+
+// ignore: unused_element
+  Disconnected disconnected() {
+    return const Disconnected();
   }
 }
 
@@ -112,9 +119,10 @@ mixin _$CurrentCircleEvent {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -129,9 +137,10 @@ mixin _$CurrentCircleEvent {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -150,6 +159,7 @@ mixin _$CurrentCircleEvent {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -167,6 +177,7 @@ mixin _$CurrentCircleEvent {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   });
 }
@@ -266,9 +277,10 @@ class _$StartCircle implements StartCircle {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -284,6 +296,7 @@ class _$StartCircle implements StartCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return startCircle(host);
   }
 
@@ -301,9 +314,10 @@ class _$StartCircle implements StartCircle {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -330,6 +344,7 @@ class _$StartCircle implements StartCircle {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -345,6 +360,7 @@ class _$StartCircle implements StartCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return startCircle(this);
   }
 
@@ -365,6 +381,7 @@ class _$StartCircle implements StartCircle {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -465,9 +482,10 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -483,6 +501,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return deviceRequestedConnection(user);
   }
 
@@ -500,9 +519,10 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -529,6 +549,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -544,6 +565,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return deviceRequestedConnection(this);
   }
 
@@ -564,6 +586,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -679,9 +702,10 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -697,6 +721,7 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return acceptOrReject(requestingUser, acceptConnection);
   }
 
@@ -714,9 +739,10 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -743,6 +769,7 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -758,6 +785,7 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return acceptOrReject(this);
   }
 
@@ -778,6 +806,7 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -877,9 +906,10 @@ class _$JoinCircle implements JoinCircle {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -895,6 +925,7 @@ class _$JoinCircle implements JoinCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return joinCircle(host);
   }
 
@@ -912,9 +943,10 @@ class _$JoinCircle implements JoinCircle {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -941,6 +973,7 @@ class _$JoinCircle implements JoinCircle {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -956,6 +989,7 @@ class _$JoinCircle implements JoinCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return joinCircle(this);
   }
 
@@ -976,6 +1010,7 @@ class _$JoinCircle implements JoinCircle {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1058,9 +1093,10 @@ class _$AddFile implements AddFile {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1076,6 +1112,7 @@ class _$AddFile implements AddFile {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return addFile(file);
   }
 
@@ -1093,9 +1130,10 @@ class _$AddFile implements AddFile {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1122,6 +1160,7 @@ class _$AddFile implements AddFile {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1137,6 +1176,7 @@ class _$AddFile implements AddFile {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return addFile(this);
   }
 
@@ -1157,6 +1197,7 @@ class _$AddFile implements AddFile {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1221,9 +1262,10 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1239,6 +1281,7 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return showFilesPage();
   }
 
@@ -1256,9 +1299,10 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1285,6 +1329,7 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1300,6 +1345,7 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return showFilesPage(this);
   }
 
@@ -1320,6 +1366,7 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1381,9 +1428,10 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1399,6 +1447,7 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return showMembersPage();
   }
 
@@ -1416,9 +1465,10 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1445,6 +1495,7 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1460,6 +1511,7 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return showMembersPage(this);
   }
 
@@ -1480,6 +1532,7 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1540,9 +1593,10 @@ class _$PageOpened implements PageOpened {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1558,6 +1612,7 @@ class _$PageOpened implements PageOpened {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return pageOpened();
   }
 
@@ -1575,9 +1630,10 @@ class _$PageOpened implements PageOpened {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1604,6 +1660,7 @@ class _$PageOpened implements PageOpened {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1619,6 +1676,7 @@ class _$PageOpened implements PageOpened {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return pageOpened(this);
   }
 
@@ -1639,6 +1697,7 @@ class _$PageOpened implements PageOpened {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1698,9 +1757,10 @@ class _$SendFiles implements SendFiles {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1716,6 +1776,7 @@ class _$SendFiles implements SendFiles {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return sendFiles();
   }
 
@@ -1733,9 +1794,10 @@ class _$SendFiles implements SendFiles {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1762,6 +1824,7 @@ class _$SendFiles implements SendFiles {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1777,6 +1840,7 @@ class _$SendFiles implements SendFiles {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return sendFiles(this);
   }
 
@@ -1797,6 +1861,7 @@ class _$SendFiles implements SendFiles {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1856,9 +1921,10 @@ class _$FilesSent implements FilesSent {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1874,6 +1940,7 @@ class _$FilesSent implements FilesSent {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return filesSent();
   }
 
@@ -1891,9 +1958,10 @@ class _$FilesSent implements FilesSent {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1920,6 +1988,7 @@ class _$FilesSent implements FilesSent {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -1935,6 +2004,7 @@ class _$FilesSent implements FilesSent {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return filesSent(this);
   }
 
@@ -1955,6 +2025,7 @@ class _$FilesSent implements FilesSent {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2016,9 +2087,10 @@ class _$FileReceived implements FileReceived {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2034,6 +2106,7 @@ class _$FileReceived implements FileReceived {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return filesReceived();
   }
 
@@ -2051,9 +2124,10 @@ class _$FileReceived implements FileReceived {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2080,6 +2154,7 @@ class _$FileReceived implements FileReceived {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2095,6 +2170,7 @@ class _$FileReceived implements FileReceived {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return filesReceived(this);
   }
 
@@ -2115,6 +2191,7 @@ class _$FileReceived implements FileReceived {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2133,6 +2210,7 @@ abstract class $MemberLeftCopyWith<$Res> {
   factory $MemberLeftCopyWith(
           MemberLeft value, $Res Function(MemberLeft) then) =
       _$MemberLeftCopyWithImpl<$Res>;
+  $Res call({String id});
 }
 
 class _$MemberLeftCopyWithImpl<$Res>
@@ -2143,23 +2221,43 @@ class _$MemberLeftCopyWithImpl<$Res>
 
   @override
   MemberLeft get _value => super._value as MemberLeft;
+
+  @override
+  $Res call({
+    Object id = freezed,
+  }) {
+    return _then(MemberLeft(
+      id: id == freezed ? _value.id : id as String,
+    ));
+  }
 }
 
 class _$MemberLeft implements MemberLeft {
-  const _$MemberLeft();
+  const _$MemberLeft({@required this.id}) : assert(id != null);
+
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.memberLeft()';
+    return 'CurrentCircleEvent.memberLeft(id: $id)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is MemberLeft);
+    return identical(this, other) ||
+        (other is MemberLeft &&
+            (identical(other.id, id) ||
+                const DeepCollectionEquality().equals(other.id, id)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
+
+  @override
+  $MemberLeftCopyWith<MemberLeft> get copyWith =>
+      _$MemberLeftCopyWithImpl<MemberLeft>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2175,9 +2273,10 @@ class _$MemberLeft implements MemberLeft {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2193,7 +2292,8 @@ class _$MemberLeft implements MemberLeft {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
-    return memberLeft();
+    assert(disconnected != null);
+    return memberLeft(id);
   }
 
   @override
@@ -2210,14 +2310,15 @@ class _$MemberLeft implements MemberLeft {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (memberLeft != null) {
-      return memberLeft();
+      return memberLeft(id);
     }
     return orElse();
   }
@@ -2239,6 +2340,7 @@ class _$MemberLeft implements MemberLeft {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2254,6 +2356,7 @@ class _$MemberLeft implements MemberLeft {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return memberLeft(this);
   }
 
@@ -2274,6 +2377,7 @@ class _$MemberLeft implements MemberLeft {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2285,7 +2389,10 @@ class _$MemberLeft implements MemberLeft {
 }
 
 abstract class MemberLeft implements CurrentCircleEvent {
-  const factory MemberLeft() = _$MemberLeft;
+  const factory MemberLeft({@required String id}) = _$MemberLeft;
+
+  String get id;
+  $MemberLeftCopyWith<MemberLeft> get copyWith;
 }
 
 abstract class $LeaveCircleCopyWith<$Res> {
@@ -2335,9 +2442,10 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2353,6 +2461,7 @@ class _$LeaveCircle implements LeaveCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return leaveCircle();
   }
 
@@ -2370,9 +2479,10 @@ class _$LeaveCircle implements LeaveCircle {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2399,6 +2509,7 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2414,6 +2525,7 @@ class _$LeaveCircle implements LeaveCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return leaveCircle(this);
   }
 
@@ -2434,6 +2546,7 @@ class _$LeaveCircle implements LeaveCircle {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2495,9 +2608,10 @@ class _$CloseCircle implements CloseCircle {
     @required Result sendFiles(),
     @required Result filesSent(),
     @required Result filesReceived(),
-    @required Result memberLeft(),
+    @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
+    @required Result disconnected(),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2513,6 +2627,7 @@ class _$CloseCircle implements CloseCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return closeCircle();
   }
 
@@ -2530,9 +2645,10 @@ class _$CloseCircle implements CloseCircle {
     Result sendFiles(),
     Result filesSent(),
     Result filesReceived(),
-    Result memberLeft(),
+    Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
+    Result disconnected(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2559,6 +2675,7 @@ class _$CloseCircle implements CloseCircle {
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
   }) {
     assert(startCircle != null);
     assert(deviceRequestedConnection != null);
@@ -2574,6 +2691,7 @@ class _$CloseCircle implements CloseCircle {
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
+    assert(disconnected != null);
     return closeCircle(this);
   }
 
@@ -2594,6 +2712,7 @@ class _$CloseCircle implements CloseCircle {
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2606,6 +2725,172 @@ class _$CloseCircle implements CloseCircle {
 
 abstract class CloseCircle implements CurrentCircleEvent {
   const factory CloseCircle() = _$CloseCircle;
+}
+
+abstract class $DisconnectedCopyWith<$Res> {
+  factory $DisconnectedCopyWith(
+          Disconnected value, $Res Function(Disconnected) then) =
+      _$DisconnectedCopyWithImpl<$Res>;
+}
+
+class _$DisconnectedCopyWithImpl<$Res>
+    extends _$CurrentCircleEventCopyWithImpl<$Res>
+    implements $DisconnectedCopyWith<$Res> {
+  _$DisconnectedCopyWithImpl(
+      Disconnected _value, $Res Function(Disconnected) _then)
+      : super(_value, (v) => _then(v as Disconnected));
+
+  @override
+  Disconnected get _value => super._value as Disconnected;
+}
+
+class _$Disconnected implements Disconnected {
+  const _$Disconnected();
+
+  @override
+  String toString() {
+    return 'CurrentCircleEvent.disconnected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Disconnected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startCircle(User host),
+    @required Result deviceRequestedConnection(User user),
+    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
+    @required Result joinCircle(User host),
+    @required Result addFile(File file),
+    @required Result showFilesPage(),
+    @required Result showMembersPage(),
+    @required Result pageOpened(),
+    @required Result sendFiles(),
+    @required Result filesSent(),
+    @required Result filesReceived(),
+    @required Result memberLeft(String id),
+    @required Result leaveCircle(),
+    @required Result closeCircle(),
+    @required Result disconnected(),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(addFile != null);
+    assert(showFilesPage != null);
+    assert(showMembersPage != null);
+    assert(pageOpened != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(filesReceived != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return disconnected();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startCircle(User host),
+    Result deviceRequestedConnection(User user),
+    Result acceptOrReject(User requestingUser, bool acceptConnection),
+    Result joinCircle(User host),
+    Result addFile(File file),
+    Result showFilesPage(),
+    Result showMembersPage(),
+    Result pageOpened(),
+    Result sendFiles(),
+    Result filesSent(),
+    Result filesReceived(),
+    Result memberLeft(String id),
+    Result leaveCircle(),
+    Result closeCircle(),
+    Result disconnected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (disconnected != null) {
+      return disconnected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startCircle(StartCircle value),
+    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
+    @required Result acceptOrReject(AcceptOrReject value),
+    @required Result joinCircle(JoinCircle value),
+    @required Result addFile(AddFile value),
+    @required Result showFilesPage(ShowFilesPage value),
+    @required Result showMembersPage(ShowMembersPage value),
+    @required Result pageOpened(PageOpened value),
+    @required Result sendFiles(SendFiles value),
+    @required Result filesSent(FilesSent value),
+    @required Result filesReceived(FileReceived value),
+    @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
+    @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(addFile != null);
+    assert(showFilesPage != null);
+    assert(showMembersPage != null);
+    assert(pageOpened != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(filesReceived != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return disconnected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startCircle(StartCircle value),
+    Result deviceRequestedConnection(DeviceRequestedConnection value),
+    Result acceptOrReject(AcceptOrReject value),
+    Result joinCircle(JoinCircle value),
+    Result addFile(AddFile value),
+    Result showFilesPage(ShowFilesPage value),
+    Result showMembersPage(ShowMembersPage value),
+    Result pageOpened(PageOpened value),
+    Result sendFiles(SendFiles value),
+    Result filesSent(FilesSent value),
+    Result filesReceived(FileReceived value),
+    Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
+    Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (disconnected != null) {
+      return disconnected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Disconnected implements CurrentCircleEvent {
+  const factory Disconnected() = _$Disconnected;
 }
 
 class _$CurrentCircleStateTearOff {
