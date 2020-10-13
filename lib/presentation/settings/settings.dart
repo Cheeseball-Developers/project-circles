@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
+import 'package:projectcircles/presentation/core/widgets/buttons/square_button_tile.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
 import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.dart';
 import 'package:projectcircles/presentation/settings/widgets/settings_item_list_tile.dart';
@@ -124,11 +125,12 @@ class Settings extends StatelessWidget {
               SettingsSection(
                 title: 'File Transfer',
                 items: [
-                  SettingsItemListTile(
-                    icon: Icons.save,
+                  SquareButtonTile(
+                    leading: Container(),
+                    toggleValue: false,
                     title: 'Default Save Location',
                     subtitle: 'Downloads/Circles',
-                    type: SettingsItemType.tapToOpen,
+                    type: ButtonTileType.tapToOpen,
                     onTap: () => ExtendedNavigator.named('nav').push(
                       Routes.folderPickerPage,
                       arguments: FolderPickerPageArguments(
