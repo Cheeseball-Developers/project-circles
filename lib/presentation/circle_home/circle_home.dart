@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,11 +45,7 @@ class CircleHome extends StatelessWidget {
               _showFilesPage(context);
             }
             if (state.showMembersPage) {
-              //_showMembersPage(context);
-              Flushbar(
-                message: 'Files Sent 2/10',
-                isDismissible: false,
-              ).show(context);
+              _showMembersPage(context);
             }
           },
           hasJoined: (state) {

@@ -22,7 +22,6 @@ class MyListTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      elevation: 0.0,
       child: InkWell(
         onTap: onTap,
         child: Padding(

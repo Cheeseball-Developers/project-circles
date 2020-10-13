@@ -123,7 +123,7 @@ class BottomBar extends StatelessWidget {
               ),
             ],
           ),
-          orElse: null,
+          orElse: () => Container(),
         ),
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:device_apps/device_apps.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
 import 'package:projectcircles/domain/files/value_objects.dart';
 

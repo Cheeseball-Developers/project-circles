@@ -70,7 +70,7 @@ ThemeData defaultTheme() {
       primaryColor: Colors.lightBlue,
       accentColor: Colors.white,
       cardColor: Colors.white,
-      appBarTheme: AppBarTheme(color: Colors.blue),
+      appBarTheme: const AppBarTheme(color: Colors.blue),
       tabBarTheme: const TabBarTheme(
           labelColor: Colors.white,
           indicatorSize: TabBarIndicatorSize.label,

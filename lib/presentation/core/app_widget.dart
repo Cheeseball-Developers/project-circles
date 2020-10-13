@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
-import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/presentation/core/theme.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart' as router;
 import 'package:projectcircles/presentation/routes/router.gr.dart';
