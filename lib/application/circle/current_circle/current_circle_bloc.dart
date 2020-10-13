@@ -69,7 +69,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             //TODO: Add logic to join circle here
             yield CurrentCircleState.hasJoined(
               host: e.host,
-              members: <User>[],
               selectedFiles: <File>[],
               outgoingFiles: <File, double>{},
               incomingFiles: <File, double>{},

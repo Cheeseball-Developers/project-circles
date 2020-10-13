@@ -24,7 +24,7 @@ class TransferProgressBottomBar extends StatelessWidget {
                     style: Theme.of(context).accentTextTheme.bodyText2,
                   ),
                 ),
-                LinearProgressIndicator(minHeight: 4.0, value: 0.15, backgroundColor: Colors.transparent,),
+                const LinearProgressIndicator(minHeight: 4.0, value: 0.15, backgroundColor: Colors.transparent,),
               ],
             ),
           ),

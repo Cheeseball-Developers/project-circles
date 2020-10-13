@@ -5,10 +5,8 @@ import 'package:projectcircles/application/circle/current_circle/current_circle_
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
-import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/available_circles_overlay.dart';
 import 'package:projectcircles/presentation/join_or_create_circle/widgets/search_button.dart';
-import 'package:projectcircles/presentation/routes/router.gr.dart';
 import 'package:projectcircles/presentation/settings/settings.dart';
 
 class JoinOrCreateCircle extends StatelessWidget {
@@ -120,7 +118,7 @@ class JoinOrCreateCircle extends StatelessWidget {
                               ),
                             ),
                         orElse: () => const Text('Error')),
-                    Text('Settings ↓'),
+                    const Text('Settings ↓'),
                     Settings()
                   ],
                 ),

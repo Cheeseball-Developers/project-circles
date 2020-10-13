@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
-import 'package:projectcircles/domain/circle/user.dart';
-import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
 import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
 

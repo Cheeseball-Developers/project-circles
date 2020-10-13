@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
-import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page/widgets/no_members_placeholder.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
@@ -43,57 +42,45 @@ class MembersPage extends StatelessWidget {
                                 .caption
                                 .copyWith(color: Colors.black87),
                           ),
-                          trailing: BlocBuilder<SettingsBloc, SettingsState>(
-                            builder: (settingsContext, settingsState) =>
-                                settingsState.maybeMap(
-                              hasLoaded: (settingsState) {
-                                if (state.members[members[index]]) {
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      IconButton(
-                                        onPressed: () => context
-                                            .bloc<CurrentCircleBloc>()
-                                            .add(
-                                              CurrentCircleEvent.acceptOrReject(
-                                                  requestingUser:
-                                                      members[index],
-                                                  acceptConnection: false),
-                                            ),
-                                        icon: const Icon(
-                                          Icons.clear,
-                                          color: Colors.red,
-                                        ),
+                          trailing: state.members[members[index]]
+                              ? Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () => context
+                                          .bloc<CurrentCircleBloc>()
+                                          .add(
+                                            CurrentCircleEvent.acceptOrReject(
+                                                requestingUser: members[index],
+                                                acceptConnection: false),
+                                          ),
+                                      icon: const Icon(
+                                        Icons.clear,
+                                        color: Colors.red,
                                       ),
-                                      IconButton(
-                                        onPressed: () => context
-                                            .bloc<CurrentCircleBloc>()
-                                            .add(
-                                              CurrentCircleEvent.acceptOrReject(
-                                                  requestingUser:
-                                                      members[index],
-                                                  acceptConnection: true),
-                                            ),
-                                        icon: const Icon(
-                                          Icons.done,
-                                          color: Colors.green,
-                                        ),
-                                      ),
-                                    ],
-                                  );
-                                } else {
-                                  return IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.remove,
-                                      color: Colors.red,
                                     ),
-                                  ); //TODO: Add function to remove user
-                                }
-                              },
-                              orElse: () => const Text("Error"),
-                            ),
-                          ),
+                                    IconButton(
+                                      onPressed: () => context
+                                          .bloc<CurrentCircleBloc>()
+                                          .add(
+                                            CurrentCircleEvent.acceptOrReject(
+                                                requestingUser: members[index],
+                                                acceptConnection: true),
+                                          ),
+                                      icon: const Icon(
+                                        Icons.done,
+                                        color: Colors.green,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              : IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.remove,
+                                    color: Colors.red,
+                                  ),
+                                ), //TODO: Add function to remove user
                         ),
                       ),
                       Padding(
@@ -113,8 +100,47 @@ class MembersPage extends StatelessWidget {
                   ),
           );
         },
-        hasJoined: (state) => Text('Will implement this soon, it is implemented for host'),
-        orElse: () => Container(),
+        hasJoined: (state) => LargePopUp(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Host',
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+              ),
+              ListTile(
+                leading: const CircleAvatar(
+                  child: Icon(Icons.person),
+                ),
+                title: Text(state.host.name.getOrCrash()),
+                subtitle: Text(
+                  state.host.uid.getOrCrash(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .caption
+                      .copyWith(color: Colors.black87),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    MyTextButton(
+                      type: ButtonType.primary,
+                      text: 'Done',
+                      onTap: () => ExtendedNavigator.of(context).pop(),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
+        orElse: () => const Text('Error placeholder here'),
       ),
     );
   }
