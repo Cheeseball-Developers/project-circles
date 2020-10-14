@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:projectcircles/domain/files/file_info.dart';
 
 class FilesList extends StatelessWidget {
-  final Map<File, double> files;
+  final Map<FileInfo, double> files;
 
   const FilesList(this.files);
 
@@ -15,7 +16,7 @@ class FilesList extends StatelessWidget {
       itemBuilder: (context, index) => ListTile(
         leading: const Icon(Icons.image),
         title: Text(
-          files.keys.toList()[index].path,
+          files.keys.toList()[index].fileName,
         ),
         subtitle: Text('${files.values.toList()[index]*100}%'),
         trailing: IconButton(

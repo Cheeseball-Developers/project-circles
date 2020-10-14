@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:folder_picker/folder_picker.dart';
 
 import '../circle_home/circle_home.dart';
-import '../circle_home/files_transfer_page/files_transfer_page.dart';
 import '../core/splash.dart';
 import '../join_or_create_circle/join_or_create_circle.dart';
 import '../settings/settings.dart';
@@ -23,14 +22,12 @@ class Routes {
   static const String splash = '/';
   static const String joinOrCreateCircle = '/join-or-create-circle';
   static const String circleHome = '/circle-home';
-  static const String filesTransferPage = '/files-transfer-page';
   static const String settings = '/Settings';
   static const String folderPickerPage = '/folder-picker-page';
   static const all = <String>{
     splash,
     joinOrCreateCircle,
     circleHome,
-    filesTransferPage,
     settings,
     folderPickerPage,
   };
@@ -43,7 +40,6 @@ class Router extends RouterBase {
     RouteDef(Routes.splash, page: Splash),
     RouteDef(Routes.joinOrCreateCircle, page: JoinOrCreateCircle),
     RouteDef(Routes.circleHome, page: CircleHome),
-    RouteDef(Routes.filesTransferPage, page: FilesTransferPage),
     RouteDef(Routes.settings, page: Settings),
     RouteDef(Routes.folderPickerPage, page: FolderPickerPage),
   ];
@@ -65,12 +61,6 @@ class Router extends RouterBase {
     CircleHome: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => CircleHome(),
-        settings: data,
-      );
-    },
-    FilesTransferPage: (data) {
-      return MaterialPageRoute<dynamic>(
-        builder: (context) => FilesTransferPage(),
         settings: data,
       );
     },

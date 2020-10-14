@@ -28,7 +28,7 @@ class AppWidget extends StatelessWidget {
           builder: ExtendedNavigator(
             name: 'nav',
             router: router.Router(),
-            initialRoute: router.Routes.filesTransferPage,
+            initialRoute: router.Routes.joinOrCreateCircle,
           ),
           title: 'Circles',
           theme: state.maybeMap(

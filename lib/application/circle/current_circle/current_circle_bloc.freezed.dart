@@ -2951,7 +2951,7 @@ class _$CurrentCircleStateTearOff {
   _HasStarted hasStarted(
       {@required Map<User, bool> members,
       @required List<File> selectedFiles,
-      @required Map<File, double> outgoingFiles,
+      @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
       @required bool showMembersPage,
@@ -2975,7 +2975,7 @@ class _$CurrentCircleStateTearOff {
   _HasJoined hasJoined(
       {@required User host,
       @required List<File> selectedFiles,
-      @required Map<File, double> outgoingFiles,
+      @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
       @required bool showMembersPage,
@@ -3013,7 +3013,7 @@ mixin _$CurrentCircleState {
         Result hasStarted(
             Map<User, bool> members,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3024,7 +3024,7 @@ mixin _$CurrentCircleState {
         Result hasJoined(
             User host,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3039,7 +3039,7 @@ mixin _$CurrentCircleState {
     Result hasStarted(
         Map<User, bool> members,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3049,7 +3049,7 @@ mixin _$CurrentCircleState {
     Result hasJoined(
         User host,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3132,7 +3132,7 @@ class _$_Initial implements _Initial {
         Result hasStarted(
             Map<User, bool> members,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3143,7 +3143,7 @@ class _$_Initial implements _Initial {
         Result hasJoined(
             User host,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3167,7 +3167,7 @@ class _$_Initial implements _Initial {
     Result hasStarted(
         Map<User, bool> members,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3177,7 +3177,7 @@ class _$_Initial implements _Initial {
     Result hasJoined(
         User host,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3297,7 +3297,7 @@ class _$_IsLoading implements _IsLoading {
         Result hasStarted(
             Map<User, bool> members,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3308,7 +3308,7 @@ class _$_IsLoading implements _IsLoading {
         Result hasJoined(
             User host,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3332,7 +3332,7 @@ class _$_IsLoading implements _IsLoading {
     Result hasStarted(
         Map<User, bool> members,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3342,7 +3342,7 @@ class _$_IsLoading implements _IsLoading {
     Result hasJoined(
         User host,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3407,7 +3407,7 @@ abstract class _$HasStartedCopyWith<$Res> {
   $Res call(
       {Map<User, bool> members,
       List<File> selectedFiles,
-      Map<File, double> outgoingFiles,
+      Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
       List<FileTransaction> transactions,
       bool showMembersPage,
@@ -3445,7 +3445,7 @@ class __$HasStartedCopyWithImpl<$Res>
           : selectedFiles as List<File>,
       outgoingFiles: outgoingFiles == freezed
           ? _value.outgoingFiles
-          : outgoingFiles as Map<File, double>,
+          : outgoingFiles as Map<FileInfo, double>,
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
           : incomingFiles as Map<FileInfo, double>,
@@ -3492,7 +3492,7 @@ class _$_HasStarted implements _HasStarted {
   @override
   final List<File> selectedFiles;
   @override
-  final Map<File, double> outgoingFiles;
+  final Map<FileInfo, double> outgoingFiles;
   @override
   final Map<FileInfo, double> incomingFiles;
   @override
@@ -3570,7 +3570,7 @@ class _$_HasStarted implements _HasStarted {
         Result hasStarted(
             Map<User, bool> members,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3581,7 +3581,7 @@ class _$_HasStarted implements _HasStarted {
         Result hasJoined(
             User host,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3614,7 +3614,7 @@ class _$_HasStarted implements _HasStarted {
     Result hasStarted(
         Map<User, bool> members,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3624,7 +3624,7 @@ class _$_HasStarted implements _HasStarted {
     Result hasJoined(
         User host,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3688,7 +3688,7 @@ abstract class _HasStarted implements CurrentCircleState {
   const factory _HasStarted(
       {@required Map<User, bool> members,
       @required List<File> selectedFiles,
-      @required Map<File, double> outgoingFiles,
+      @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
       @required bool showMembersPage,
@@ -3698,7 +3698,7 @@ abstract class _HasStarted implements CurrentCircleState {
 
   Map<User, bool> get members;
   List<File> get selectedFiles;
-  Map<File, double> get outgoingFiles;
+  Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
   List<FileTransaction> get transactions;
   bool get showMembersPage;
@@ -3715,7 +3715,7 @@ abstract class _$HasJoinedCopyWith<$Res> {
   $Res call(
       {User host,
       List<File> selectedFiles,
-      Map<File, double> outgoingFiles,
+      Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
       List<FileTransaction> transactions,
       bool showMembersPage,
@@ -3752,7 +3752,7 @@ class __$HasJoinedCopyWithImpl<$Res>
           : selectedFiles as List<File>,
       outgoingFiles: outgoingFiles == freezed
           ? _value.outgoingFiles
-          : outgoingFiles as Map<File, double>,
+          : outgoingFiles as Map<FileInfo, double>,
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
           : incomingFiles as Map<FileInfo, double>,
@@ -3804,7 +3804,7 @@ class _$_HasJoined implements _HasJoined {
   @override
   final List<File> selectedFiles;
   @override
-  final Map<File, double> outgoingFiles;
+  final Map<FileInfo, double> outgoingFiles;
   @override
   final Map<FileInfo, double> incomingFiles;
   @override
@@ -3875,7 +3875,7 @@ class _$_HasJoined implements _HasJoined {
         Result hasStarted(
             Map<User, bool> members,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3886,7 +3886,7 @@ class _$_HasJoined implements _HasJoined {
         Result hasJoined(
             User host,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -3911,7 +3911,7 @@ class _$_HasJoined implements _HasJoined {
     Result hasStarted(
         Map<User, bool> members,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3921,7 +3921,7 @@ class _$_HasJoined implements _HasJoined {
     Result hasJoined(
         User host,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -3977,7 +3977,7 @@ abstract class _HasJoined implements CurrentCircleState {
   const factory _HasJoined(
       {@required User host,
       @required List<File> selectedFiles,
-      @required Map<File, double> outgoingFiles,
+      @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
       @required bool showMembersPage,
@@ -3986,7 +3986,7 @@ abstract class _HasJoined implements CurrentCircleState {
 
   User get host;
   List<File> get selectedFiles;
-  Map<File, double> get outgoingFiles;
+  Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
   List<FileTransaction> get transactions;
   bool get showMembersPage;
@@ -4070,7 +4070,7 @@ class _$_HasFailed implements _HasFailed {
         Result hasStarted(
             Map<User, bool> members,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -4081,7 +4081,7 @@ class _$_HasFailed implements _HasFailed {
         Result hasJoined(
             User host,
             List<File> selectedFiles,
-            Map<File, double> outgoingFiles,
+            Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
             bool showMembersPage,
@@ -4105,7 +4105,7 @@ class _$_HasFailed implements _HasFailed {
     Result hasStarted(
         Map<User, bool> members,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
@@ -4115,7 +4115,7 @@ class _$_HasFailed implements _HasFailed {
     Result hasJoined(
         User host,
         List<File> selectedFiles,
-        Map<File, double> outgoingFiles,
+        Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
         bool showMembersPage,
