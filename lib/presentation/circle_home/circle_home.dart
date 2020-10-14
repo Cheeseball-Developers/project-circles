@@ -180,7 +180,15 @@ class CircleHome extends StatelessWidget {
             ),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             extendBody: true,
-            bottomNavigationBar: BottomBar(),
+            bottomNavigationBar: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                if (currentCircleState.incomingFiles.isNotEmpty ||
+                    currentCircleState.outgoingFiles.isNotEmpty)
+                  TransferProgressBottomBar(),
+                BottomBar(),
+              ],
+            ),
             body: SendFile(),
           ),
         ),

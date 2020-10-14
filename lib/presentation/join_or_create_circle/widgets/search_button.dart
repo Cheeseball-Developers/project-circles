@@ -57,6 +57,12 @@ class _SearchButtonState extends State<SearchButton>
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     _assignAnimationRadius();
     _controller.repeat();

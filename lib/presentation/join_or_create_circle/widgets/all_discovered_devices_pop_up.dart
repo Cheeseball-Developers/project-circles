@@ -26,7 +26,6 @@ class AllDiscoveredDevicesPopUp extends StatelessWidget {
                     padding: const EdgeInsets.all(2.0),
                     child: MyListTile(
                       leading: const CircleAvatar(child: Icon(Icons.person)),
-                      type: ListTileType.tapToOpen,
                       title: state.discoveredDevices[index].name.getOrCrash(),
                     ),
                   ),

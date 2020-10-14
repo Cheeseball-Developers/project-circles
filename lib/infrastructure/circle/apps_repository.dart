@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:device_apps/device_apps.dart';
 import 'package:flutter/foundation.dart';
@@ -40,7 +42,8 @@ class AppsRepository {
     }
   }
 
-  Either<AppsLoadFailure, Map<AppInfo, bool>> toggleAppSelection({@required AppInfo appInfo}) {
+  Either<AppsLoadFailure, Map<AppInfo, bool>> toggleAppSelection(
+      {@required AppInfo appInfo}) {
     try {
       apps.update(appInfo, (value) => !value);
       return right(apps);
@@ -54,6 +57,21 @@ class AppsRepository {
       apps.updateAll((key, value) => false);
       return right(apps);
     } catch (error) {
+      return left(const AppsLoadFailure.unexpectedFailure());
+    }
+  }
+
+  Future<Either<AppsLoadFailure, List<File>>> getFiles() async {
+    try {
+      final List<File> files = [];
+      for (final AppInfo appInfo in apps.keys) {
+        if (apps[appInfo]) {
+          final app = await DeviceApps.getApp(appInfo.packageName);
+          files.add(File(app.apkFilePath));
+        }
+      }
+      return right(files);
+    } catch (e) {
       return left(const AppsLoadFailure.unexpectedFailure());
     }
   }
