@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projectcircles/domain/files/file_transaction.dart';
+import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
 
 class FilesTransactionList extends StatelessWidget {
   final List<FileTransaction> transactions;
@@ -11,12 +12,11 @@ class FilesTransactionList extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: transactions.length,
-      itemBuilder: (context, index) => ListTile(
+      itemBuilder: (context, index) => MyListTile(
         leading: const Icon(Icons.image),
-        title: Text(
+        title: 
           transactions[index].fileName,
-        ),
-        subtitle: Text(transactions[index].dateTime.toString()),
+        subtitle: transactions[index].dateTime.toString(),
         trailing: IconButton(
           onPressed: () {}, //TODO: Add function to cancel transmission
           icon: const Icon(

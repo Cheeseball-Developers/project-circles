@@ -24,7 +24,8 @@ part 'current_circle_bloc.freezed.dart';
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   final AppsRepository _appsRepository;
 
-  CurrentCircleBloc(this._appsRepository) : super(const CurrentCircleState.initial());
+  CurrentCircleBloc(this._appsRepository)
+      : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
   final Map<FileInfo, double> _incomingFiles = <FileInfo, double>{};
 
@@ -158,12 +159,19 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
             //this function is in host side, for member side create this in ,is wahi mai sochu, one more doubt remains
-            
+            final failureOrAppFiles = await _appsRepository.getFiles();
+            final appFiles = failureOrAppFiles.getOrElse(() => null);
+
             nearbyConnections.sendFilenameSizeBytesPayload(
-                users: List.from(state.members.keys),
-                outgoingFiles: [
-                  const FileInfo(fileName: 'oneThing.dart', bytesSize: 50)
-                ]);
+              users: List.from(state.members.keys),
+              outgoingFiles: List.generate(
+                appFiles.length,
+                (index) => FileInfo(
+                  fileName: appFiles[index].path,
+                  bytesSize: appFiles[index].lengthSync().toDouble(),
+                ),
+              ),
+            );
           },
           filesSent: (e) async* {
             // TODO: Call this when files are sent successfully
@@ -172,12 +180,14 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           filesReceived: (e) async* {
             _incomingFiles?.putIfAbsent(e.fileInfo, () => 0.0);
             debugPrint("Yay the files to be recieved are ${e.fileInfo}");
-            yield state.copyWith(incomingFiles: _incomingFiles, showFilesPage: true,);
+            yield state.copyWith(
+              incomingFiles: _incomingFiles,
+              showFilesPage: true,
+            );
           },
           memberLeft: (e) async* {
             final Map<User, bool> members = Map.from(state.members);
-            members
-                .removeWhere((key, value) => key.uid.getOrCrash() == e.id);
+            members.removeWhere((key, value) => key.uid.getOrCrash() == e.id);
             yield state.copyWith(members: members);
           },
           closeCircle: (e) async* {
@@ -217,11 +227,19 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             //also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
-            nearbyConnections.sendFilenameSizeBytesPayload(users: [
-              state.host
-            ], outgoingFiles: [
-              const FileInfo(fileName: 'genericfilename.exe', bytesSize: 20)
-            ]);
+            final failureOrAppFiles = await _appsRepository.getFiles();
+            final appFiles = failureOrAppFiles.getOrElse(() => null);
+
+            nearbyConnections.sendFilenameSizeBytesPayload(
+              users: [state.host],
+              outgoingFiles: List.generate(
+                appFiles.length,
+                (index) => FileInfo(
+                  fileName: appFiles[index].path,
+                  bytesSize: appFiles[index].lengthSync().toDouble(),
+                ),
+              ),
+            );
           },
           filesSent: (e) async* {
             // TODO: Call this when files are sent successfully
@@ -231,7 +249,11 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             _incomingFiles[e.fileInfo] = 0.0;
             debugPrint(
                 "Yay the files to be recieved are ${e.fileInfo.toString()}");
-            yield state.copyWith(incomingFiles: _incomingFiles);
+            yield state.copyWith(
+              incomingFiles: _incomingFiles,
+              showFilesPage: true,
+            );
+            print(state.incomingFiles);
           },
           leaveCircle: (e) async* {
             _incomingFileInfoStreamSubscription?.cancel();

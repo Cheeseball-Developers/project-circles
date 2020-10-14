@@ -22,7 +22,7 @@ class FilesPage extends StatelessWidget {
                 : Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Padding(
+                      if (state.incomingFiles.isNotEmpty) Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'Incoming Files',
@@ -30,7 +30,7 @@ class FilesPage extends StatelessWidget {
                         ),
                       ),
                       FilesList(state.incomingFiles),
-                      Padding(
+                      if (state.outgoingFiles.isNotEmpty) Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'Outgoing Files',
@@ -38,7 +38,7 @@ class FilesPage extends StatelessWidget {
                         ),
                       ),
                       FilesList(state.outgoingFiles),
-                      Padding(
+                      if (state.transactions.isNotEmpty) Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'History',
@@ -68,10 +68,10 @@ class FilesPage extends StatelessWidget {
             child: (state.incomingFiles.isEmpty &&
                     state.outgoingFiles.isEmpty &&
                     state.transactions.isEmpty)
-                ? Column(
+                ? NoTransactionsPlaceholder() : Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Padding(
+                      if (state.incomingFiles.isNotEmpty) Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'Incoming Files',
@@ -79,7 +79,7 @@ class FilesPage extends StatelessWidget {
                         ),
                       ),
                       FilesList(state.incomingFiles),
-                      Padding(
+                      if (state.outgoingFiles.isNotEmpty) Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'Outgoing Files',
@@ -87,7 +87,7 @@ class FilesPage extends StatelessWidget {
                         ),
                       ),
                       FilesList(state.outgoingFiles),
-                      Padding(
+                      if (state.transactions.isNotEmpty) Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           'History',
@@ -96,7 +96,7 @@ class FilesPage extends StatelessWidget {
                       ),
                       FilesTransactionList(state.transactions),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(16.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
@@ -109,8 +109,7 @@ class FilesPage extends StatelessWidget {
                         ),
                       )
                     ],
-                  )
-                : NoTransactionsPlaceholder(),
+                  ),
           ),
         ),
         orElse: () => Container(),

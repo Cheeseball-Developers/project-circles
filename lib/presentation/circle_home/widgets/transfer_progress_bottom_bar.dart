@@ -19,12 +19,25 @@ class TransferProgressBottomBar extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text(
-                    'Sending: image.jpeg (2/9)',
-                    style: Theme.of(context).accentTextTheme.bodyText2,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Sending: image.jpeg (2/9)',
+                        style: Theme.of(context).accentTextTheme.bodyText2,
+                      ),
+                      Icon(
+                        Icons.chevron_right,
+                        color: Theme.of(context).accentColor,
+                      ),
+                    ],
                   ),
                 ),
-                const LinearProgressIndicator(minHeight: 4.0, value: 0.15, backgroundColor: Colors.transparent,),
+                const LinearProgressIndicator(
+                  minHeight: 4.0,
+                  value: 0.15,
+                  backgroundColor: Colors.transparent,
+                ),
               ],
             ),
           ),

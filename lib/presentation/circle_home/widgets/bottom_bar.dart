@@ -117,7 +117,7 @@ class BottomBar extends StatelessWidget {
                     child: Icon((state.incomingFiles.isEmpty &&
                             state.outgoingFiles.isEmpty)
                         ? Icons.send
-                        : Icons.cancel),
+                        : Icons.cancel_schedule_send),
                   ),
                 ),
               ),
