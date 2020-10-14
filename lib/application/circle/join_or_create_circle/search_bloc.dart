@@ -79,8 +79,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       deviceLost: (e) async* {
         debugPrint("A device is lost");
         final List<User> discoveredDevices = List.from(state.discoveredDevices);
-          discoveredDevices
-              .removeWhere((user) => user.uid.getOrCrash() == e.uidString);
+        discoveredDevices
+            .removeWhere((user) => user.uid.getOrCrash() == e.uidString);
         yield state.copyWith(discoveredDevices: discoveredDevices);
       },
       stopSearching: (e) async* {
@@ -98,6 +98,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       },
       requestConnection: (e) async* {
         streamSubscriptionDiscoveredDevice?.cancel();
+        await nearbyConnections.stopDiscovering();
 
         yield* state.connectionFailureOrSuccessOption.fold(
           () async* {
@@ -105,7 +106,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               showRequestConnectionPopUp: true,
             );
 
-            await nearbyConnections.stopDiscovering();
             final Either<ConnectionFailure, Unit> requestOrFail =
                 await nearbyConnections.requestConnection(
               endpointId: e.discoveredUser.uid.getOrCrash(),
