@@ -23,7 +23,7 @@ part 'current_circle_bloc.freezed.dart';
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   CurrentCircleBloc() : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
-  Map<FileInfo, double> _incomingFiles;
+  final Map<FileInfo, double> _incomingFiles = <FileInfo, double>{};
 
   @override
   Stream<CurrentCircleState> mapEventToState(
@@ -159,7 +159,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             nearbyConnections.sendFilenameSizeBytesPayload(
                 users: List.from(state.members.keys),
                 outgoingFiles: [
-                  const FileInfo(fileName: 'That_oneThing.dart', bytesSize: 50)
+                  const FileInfo(fileName: 'oneThing.dart', bytesSize: 50)
                 ]);
           },
           filesSent: (e) async* {
@@ -167,7 +167,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(showFilesPage: true);
           },
           filesReceived: (e) async* {
-            _incomingFiles[e.fileInfo] = 0.0;
+            _incomingFiles?.putIfAbsent(e.fileInfo, () => 0.0);
             debugPrint("Yay the files to be recieved are ${e.fileInfo}");
             yield state.copyWith(incomingFiles: _incomingFiles);
           },
@@ -216,7 +216,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             nearbyConnections.sendFilenameSizeBytesPayload(users: [
               state.host
             ], outgoingFiles: [
-              const FileInfo(fileName: 'generic-file-name.exe', bytesSize: 20)
+              const FileInfo(fileName: 'genericfilename.exe', bytesSize: 20)
             ]);
           },
           filesSent: (e) async* {
@@ -225,7 +225,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           },
           filesReceived: (e) async* {
             _incomingFiles[e.fileInfo] = 0.0;
-            debugPrint("Yay the files to be recieved are ${e.fileInfo}");
+            debugPrint(
+                "Yay the files to be recieved are ${e.fileInfo.toString()}");
             yield state.copyWith(incomingFiles: _incomingFiles);
           },
           leaveCircle: (e) async* {

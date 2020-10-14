@@ -110,6 +110,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> startAdvertising() async {
     incomingRequestStream = onRequestSent.stream;
     onDiscovererLostStream = onDiscovererLost.stream;
+    sendingFileInfoStream = sendingFileInfo.stream;
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
@@ -164,6 +165,7 @@ class NearbyConnections {
     discoveredDeviceStream = onEndFound.stream;
     lostDeviceStream = onEndLost.stream;
     onConnectionResultDiscStream = onConnectionResultDisc.stream;
+    sendingFileInfoStream = sendingFileInfo.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -287,8 +289,6 @@ class NearbyConnections {
   //Accept Connection to connect successfully
   Future<Either<ConnectionFailure, Unit>> acceptConnection(
       {@required String endId}) async {
-    sendingFileInfoStream = sendingFileInfo.stream;
-
     final a = await _nearby.acceptConnection(endId,
         onPayLoadRecieved: (String endId, Payload payload) {
       //TODO this is the called as soon as the file transfer is started
@@ -340,8 +340,8 @@ class NearbyConnections {
 
       //receiving the fileInfo
       if (str.contains('-')) {
-        final String keyFileName = str.split('-').first;
-        final double fileSize = double.parse(str.split('-').last);
+        final String keyFileName = str.split('::').first;
+        final double fileSize = double.parse(str.split('::').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink
@@ -436,8 +436,10 @@ class NearbyConnections {
     debugPrint("sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
-        _nearby.sendBytesPayload(user.uid.getOrCrash(),
-            Uint8List.fromList("${file.fileName}-${file.bytesSize}".codeUnits));
+        _nearby.sendBytesPayload(
+            user.uid.getOrCrash(),
+            Uint8List.fromList(
+                "${file.fileName}::${file.bytesSize}".codeUnits));
       });
     });
   }
