@@ -25,7 +25,8 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<AppsRepository>(() => AppsRepository());
   g.registerFactory<AppsTabViewBloc>(
       () => AppsTabViewBloc(g<AppsRepository>()));
-  g.registerFactory<CurrentCircleBloc>(() => CurrentCircleBloc());
+  g.registerFactory<CurrentCircleBloc>(
+      () => CurrentCircleBloc(g<AppsRepository>()));
   g.registerLazySingleton<DeviceInfoPlugin>(
       () => deviceInfoInjectableModule.deviceInfo);
   g.registerFactory<FilesTabViewBloc>(() => FilesTabViewBloc());

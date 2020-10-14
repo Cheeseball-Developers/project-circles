@@ -10,6 +10,7 @@ import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/file_transaction.dart';
+import 'package:projectcircles/infrastructure/circle/apps_repository.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 import 'package:projectcircles/injection.dart';
 
@@ -21,7 +22,9 @@ part 'current_circle_bloc.freezed.dart';
 
 @injectable
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
-  CurrentCircleBloc() : super(const CurrentCircleState.initial());
+  final AppsRepository _appsRepository;
+
+  CurrentCircleBloc(this._appsRepository) : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
   final Map<FileInfo, double> _incomingFiles = <FileInfo, double>{};
 
@@ -63,7 +66,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 yield const CurrentCircleState.hasStarted(
                   members: <User, bool>{},
                   selectedFiles: <File>[],
-                  outgoingFiles: <File, double>{},
+                  outgoingFiles: <FileInfo, double>{},
                   incomingFiles: <FileInfo, double>{},
                   transactions: <FileTransaction>[],
                   showMembersPage: false,
@@ -86,7 +89,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield CurrentCircleState.hasJoined(
               host: e.host,
               selectedFiles: <File>[],
-              outgoingFiles: <File, double>{},
+              outgoingFiles: <FileInfo, double>{},
               incomingFiles: <FileInfo, double>{},
               transactions: <FileTransaction>[],
               showMembersPage: false,
@@ -155,7 +158,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
             //this function is in host side, for member side create this in ,is wahi mai sochu, one more doubt remains
-
+            
             nearbyConnections.sendFilenameSizeBytesPayload(
                 users: List.from(state.members.keys),
                 outgoingFiles: [
@@ -169,7 +172,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           filesReceived: (e) async* {
             _incomingFiles?.putIfAbsent(e.fileInfo, () => 0.0);
             debugPrint("Yay the files to be recieved are ${e.fileInfo}");
-            yield state.copyWith(incomingFiles: _incomingFiles);
+            yield state.copyWith(incomingFiles: _incomingFiles, showFilesPage: true,);
           },
           memberLeft: (e) async* {
             final Map<User, bool> members = Map.from(state.members);

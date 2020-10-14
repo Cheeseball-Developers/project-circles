@@ -29,7 +29,7 @@ class FilesPage extends StatelessWidget {
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ),
-                      //FilesList(state.incomingFiles),
+                      FilesList(state.incomingFiles),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
@@ -78,7 +78,7 @@ class FilesPage extends StatelessWidget {
                           style: Theme.of(context).textTheme.subtitle1,
                         ),
                       ),
-                      //FilesList(state.incomingFiles),
+                      FilesList(state.incomingFiles),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
