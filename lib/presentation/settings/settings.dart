@@ -6,10 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
-import 'package:projectcircles/presentation/core/widgets/buttons/square_button_tile.dart';
+import 'package:projectcircles/presentation/core/widgets/buttons/button_tile.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
 import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.dart';
-import 'package:projectcircles/presentation/settings/widgets/settings_item_list_tile.dart';
 import 'package:projectcircles/presentation/settings/widgets/settings_section.dart';
 
 class Settings extends StatelessWidget {
@@ -122,63 +121,85 @@ class Settings extends StatelessWidget {
                   ],
                 ),
               ),
-              SettingsSection(
-                title: 'File Transfer',
-                items: [
-                  SquareButtonTile(
-                    leading: Container(),
-                    toggleValue: false,
-                    title: 'Default Save Location',
-                    subtitle: 'Downloads/Circles',
-                    type: ButtonTileType.tapToOpen,
-                    onTap: () => ExtendedNavigator.named('nav').push(
-                      Routes.folderPickerPage,
-                      arguments: FolderPickerPageArguments(
-                        action: (context, directory) async {
-                          context.bloc<SettingsBloc>().add(
-                                SettingsEvent.selectDefaultDirectory(
-                                  directory,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SettingsSection(
+                          title: 'File Transfer',
+                          items: [
+                            ButtonTile(
+                              icon: Icons.save,
+                              toggleValue: false,
+                              title: 'Save Location',
+                              subtitle: 'Downloads/Circles',
+                              type: ButtonTileType.tapToOpen,
+                              onTap: () => ExtendedNavigator.named('nav').push(
+                                Routes.folderPickerPage,
+                                arguments: FolderPickerPageArguments(
+                                  action: (context, directory) async {
+                                    context.bloc<SettingsBloc>().add(
+                                          SettingsEvent.selectDefaultDirectory(
+                                            directory,
+                                          ),
+                                        );
+                                  },
+                                  rootDirectory:
+                                      Directory('/storage/emulated/0'),
                                 ),
-                              );
-                        },
-                        rootDirectory: Directory('/storage/emulated/0'),
-                      ),
+                              ),
+                            ),
+                            ButtonTile(
+                              icon: Icons.save_alt,
+                              title: 'Ask Before Receiving',
+                              subtitle:
+                                  'Ask for permission before downloading file sent by other users',
+                              type: ButtonTileType.toggle,
+                              toggleValue: state.askBeforeReceiving,
+                              onTap: () => context.bloc<SettingsBloc>().add(
+                                    const SettingsEvent
+                                        .toggleAskBeforeReceiving(),
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
                   ),
-                  SettingsItemListTile(
-                      icon: Icons.save_alt,
-                      title: 'Ask Before Receiving',
-                      subtitle:
-                          'Ask for permission before downloading file sent by other users',
-                      type: SettingsItemType.toggle,
-                      toggleValue: state.askBeforeReceiving,
-                      onTap: () => context
-                          .bloc<SettingsBloc>()
-                          .add(const SettingsEvent.toggleAskBeforeReceiving())),
-                ],
-              ),
-              SettingsSection(
-                title: 'Theme',
-                items: [
-                  SettingsItemListTile(
-                      icon: Icons.brightness_4,
-                      title: 'Dark Mode',
-                      subtitle: 'Dark Mode it is!',
-                      type: SettingsItemType.toggle,
-                      toggleValue: state.darkMode,
-                      onTap: () => context
-                          .bloc<SettingsBloc>()
-                          .add(const SettingsEvent.toggleDarkMode())),
-                ],
-              ),
-              SettingsSection(
-                title: 'About',
-                items: [
-                  SettingsItemListTile(
-                      icon: Icons.info,
-                      title: 'About Circles',
-                      type: SettingsItemType.tapToOpen,
-                      onTap: () {}),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        SettingsSection(
+                          title: 'Theme',
+                          items: [
+                            ButtonTile(
+                                icon: Icons.brightness_4,
+                                title: 'Dark Mode',
+                                subtitle: 'Dark Mode it is!',
+                                type: ButtonTileType.toggle,
+                                toggleValue: state.darkMode,
+                                onTap: () => context
+                                    .bloc<SettingsBloc>()
+                                    .add(const SettingsEvent.toggleDarkMode())),
+                          ],
+                        ),
+                        SettingsSection(
+                          title: 'About',
+                          items: [
+                            ButtonTile(
+                                icon: Icons.info,
+                                title: 'About Circles',
+                                type: ButtonTileType.tapToOpen,
+                                onTap: () {}),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ],

@@ -74,7 +74,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
                     circleContext.bloc<CurrentCircleBloc>().add(
                           CurrentCircleEvent.joinCircle(host: user),
                         );
-                    ExtendedNavigator.of(context).push(Routes.circleHome);
+                    ExtendedNavigator.of(context).popAndPush(Routes.circleHome);
                   },
                 ),
               );
