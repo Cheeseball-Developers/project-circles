@@ -57,6 +57,12 @@ class NearbyConnections {
 
   Either<ConnectionFailure, Unit> connectionResult;
 
+  final StreamController<double> progressOfFile =
+      StreamController<double>.broadcast();
+  Stream<double> progressOfFileStream;
+
+  bool _isFile = false;
+
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///
   /// **P2P_STAR** - best for medium payloads, higher bandwidth than cluster
@@ -326,6 +332,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> onPayloadRecieved(
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
+      _isFile = true;
       //TODO add the message of file transfer started
       debugPrint("File transfer started from $endId");
       _tempFile = File(payload.filePath);
@@ -340,8 +347,8 @@ class NearbyConnections {
 
       //receiving the fileInfo
       if (str.contains('-')) {
-        final String keyFileName = str.split('::').first;
-        final double fileSize = double.parse(str.split('::').last);
+        final String keyFileName = str.split('-').first;
+        final double fileSize = double.parse(str.split('-').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink
@@ -374,8 +381,9 @@ class NearbyConnections {
   Either<ConnectionFailure, Unit> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
+      debugPrint(' yaya ${payloadTransferUpdate.totalBytes}');
       debugPrint(
-          "Receiving/sending files/data  $endId ${payloadTransferUpdate.bytesTransferred}");
+          "Receiving files/data  $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       debugPrint(
@@ -436,10 +444,8 @@ class NearbyConnections {
     debugPrint("sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
-        _nearby.sendBytesPayload(
-            user.uid.getOrCrash(),
-            Uint8List.fromList(
-                "${file.fileName}::${file.bytesSize}".codeUnits));
+        _nearby.sendBytesPayload(user.uid.getOrCrash(),
+            Uint8List.fromList("${file.fileName}-${file.bytesSize}".codeUnits));
       });
     });
   }

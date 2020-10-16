@@ -70,14 +70,23 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
-  FilesSent filesSent() {
-    return const FilesSent();
+  FilesSent filesSent({@required PayloadInfo payloadInfo}) {
+    return FilesSent(
+      payloadInfo: payloadInfo,
+    );
   }
 
 // ignore: unused_element
-  FileReceived filesReceived({@required FileInfo fileInfo}) {
-    return FileReceived(
+  FileInfoReceived fileInfoReceived({FileInfo fileInfo}) {
+    return FileInfoReceived(
       fileInfo: fileInfo,
+    );
+  }
+
+// ignore: unused_element
+  FileReceived fileReceived({@required PayloadInfo payloadInfo}) {
+    return FileReceived(
+      payloadInfo: payloadInfo,
     );
   }
 
@@ -119,8 +128,9 @@ mixin _$CurrentCircleEvent {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -137,8 +147,9 @@ mixin _$CurrentCircleEvent {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -157,7 +168,8 @@ mixin _$CurrentCircleEvent {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -175,7 +187,8 @@ mixin _$CurrentCircleEvent {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -277,8 +290,9 @@ class _$StartCircle implements StartCircle {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -294,7 +308,8 @@ class _$StartCircle implements StartCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -314,8 +329,9 @@ class _$StartCircle implements StartCircle {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -342,7 +358,8 @@ class _$StartCircle implements StartCircle {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -358,7 +375,8 @@ class _$StartCircle implements StartCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -379,7 +397,8 @@ class _$StartCircle implements StartCircle {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -482,8 +501,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -499,7 +519,8 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -519,8 +540,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -547,7 +569,8 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -563,7 +586,8 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -584,7 +608,8 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -702,8 +727,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -719,7 +745,8 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -739,8 +766,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -767,7 +795,8 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -783,7 +812,8 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -804,7 +834,8 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -906,8 +937,9 @@ class _$JoinCircle implements JoinCircle {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -923,7 +955,8 @@ class _$JoinCircle implements JoinCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -943,8 +976,9 @@ class _$JoinCircle implements JoinCircle {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -971,7 +1005,8 @@ class _$JoinCircle implements JoinCircle {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -987,7 +1022,8 @@ class _$JoinCircle implements JoinCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1008,7 +1044,8 @@ class _$JoinCircle implements JoinCircle {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1093,8 +1130,9 @@ class _$AddFile implements AddFile {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1110,7 +1148,8 @@ class _$AddFile implements AddFile {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1130,8 +1169,9 @@ class _$AddFile implements AddFile {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1158,7 +1198,8 @@ class _$AddFile implements AddFile {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1174,7 +1215,8 @@ class _$AddFile implements AddFile {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1195,7 +1237,8 @@ class _$AddFile implements AddFile {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1262,8 +1305,9 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1279,7 +1323,8 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1299,8 +1344,9 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1327,7 +1373,8 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1343,7 +1390,8 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1364,7 +1412,8 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1428,8 +1477,9 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1445,7 +1495,8 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1465,8 +1516,9 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1493,7 +1545,8 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1509,7 +1562,8 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1530,7 +1584,8 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1593,8 +1648,9 @@ class _$PageOpened implements PageOpened {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1610,7 +1666,8 @@ class _$PageOpened implements PageOpened {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1630,8 +1687,9 @@ class _$PageOpened implements PageOpened {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1658,7 +1716,8 @@ class _$PageOpened implements PageOpened {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1674,7 +1733,8 @@ class _$PageOpened implements PageOpened {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1695,7 +1755,8 @@ class _$PageOpened implements PageOpened {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1757,8 +1818,9 @@ class _$SendFiles implements SendFiles {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1774,7 +1836,8 @@ class _$SendFiles implements SendFiles {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1794,8 +1857,9 @@ class _$SendFiles implements SendFiles {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1822,7 +1886,8 @@ class _$SendFiles implements SendFiles {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1838,7 +1903,8 @@ class _$SendFiles implements SendFiles {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1859,7 +1925,8 @@ class _$SendFiles implements SendFiles {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1881,6 +1948,9 @@ abstract class SendFiles implements CurrentCircleEvent {
 abstract class $FilesSentCopyWith<$Res> {
   factory $FilesSentCopyWith(FilesSent value, $Res Function(FilesSent) then) =
       _$FilesSentCopyWithImpl<$Res>;
+  $Res call({PayloadInfo payloadInfo});
+
+  $PayloadInfoCopyWith<$Res> get payloadInfo;
 }
 
 class _$FilesSentCopyWithImpl<$Res>
@@ -1891,23 +1961,56 @@ class _$FilesSentCopyWithImpl<$Res>
 
   @override
   FilesSent get _value => super._value as FilesSent;
+
+  @override
+  $Res call({
+    Object payloadInfo = freezed,
+  }) {
+    return _then(FilesSent(
+      payloadInfo: payloadInfo == freezed
+          ? _value.payloadInfo
+          : payloadInfo as PayloadInfo,
+    ));
+  }
+
+  @override
+  $PayloadInfoCopyWith<$Res> get payloadInfo {
+    if (_value.payloadInfo == null) {
+      return null;
+    }
+    return $PayloadInfoCopyWith<$Res>(_value.payloadInfo, (value) {
+      return _then(_value.copyWith(payloadInfo: value));
+    });
+  }
 }
 
 class _$FilesSent implements FilesSent {
-  const _$FilesSent();
+  const _$FilesSent({@required this.payloadInfo}) : assert(payloadInfo != null);
+
+  @override
+  final PayloadInfo payloadInfo;
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.filesSent()';
+    return 'CurrentCircleEvent.filesSent(payloadInfo: $payloadInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is FilesSent);
+    return identical(this, other) ||
+        (other is FilesSent &&
+            (identical(other.payloadInfo, payloadInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.payloadInfo, payloadInfo)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(payloadInfo);
+
+  @override
+  $FilesSentCopyWith<FilesSent> get copyWith =>
+      _$FilesSentCopyWithImpl<FilesSent>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1921,8 +2024,9 @@ class _$FilesSent implements FilesSent {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1938,12 +2042,13 @@ class _$FilesSent implements FilesSent {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return filesSent();
+    return filesSent(payloadInfo);
   }
 
   @override
@@ -1958,8 +2063,9 @@ class _$FilesSent implements FilesSent {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1968,7 +2074,7 @@ class _$FilesSent implements FilesSent {
   }) {
     assert(orElse != null);
     if (filesSent != null) {
-      return filesSent();
+      return filesSent(payloadInfo);
     }
     return orElse();
   }
@@ -1986,7 +2092,8 @@ class _$FilesSent implements FilesSent {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2002,7 +2109,8 @@ class _$FilesSent implements FilesSent {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2023,7 +2131,8 @@ class _$FilesSent implements FilesSent {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -2039,33 +2148,36 @@ class _$FilesSent implements FilesSent {
 }
 
 abstract class FilesSent implements CurrentCircleEvent {
-  const factory FilesSent() = _$FilesSent;
+  const factory FilesSent({@required PayloadInfo payloadInfo}) = _$FilesSent;
+
+  PayloadInfo get payloadInfo;
+  $FilesSentCopyWith<FilesSent> get copyWith;
 }
 
-abstract class $FileReceivedCopyWith<$Res> {
-  factory $FileReceivedCopyWith(
-          FileReceived value, $Res Function(FileReceived) then) =
-      _$FileReceivedCopyWithImpl<$Res>;
+abstract class $FileInfoReceivedCopyWith<$Res> {
+  factory $FileInfoReceivedCopyWith(
+          FileInfoReceived value, $Res Function(FileInfoReceived) then) =
+      _$FileInfoReceivedCopyWithImpl<$Res>;
   $Res call({FileInfo fileInfo});
 
   $FileInfoCopyWith<$Res> get fileInfo;
 }
 
-class _$FileReceivedCopyWithImpl<$Res>
+class _$FileInfoReceivedCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
-    implements $FileReceivedCopyWith<$Res> {
-  _$FileReceivedCopyWithImpl(
-      FileReceived _value, $Res Function(FileReceived) _then)
-      : super(_value, (v) => _then(v as FileReceived));
+    implements $FileInfoReceivedCopyWith<$Res> {
+  _$FileInfoReceivedCopyWithImpl(
+      FileInfoReceived _value, $Res Function(FileInfoReceived) _then)
+      : super(_value, (v) => _then(v as FileInfoReceived));
 
   @override
-  FileReceived get _value => super._value as FileReceived;
+  FileInfoReceived get _value => super._value as FileInfoReceived;
 
   @override
   $Res call({
     Object fileInfo = freezed,
   }) {
-    return _then(FileReceived(
+    return _then(FileInfoReceived(
       fileInfo: fileInfo == freezed ? _value.fileInfo : fileInfo as FileInfo,
     ));
   }
@@ -2081,21 +2193,21 @@ class _$FileReceivedCopyWithImpl<$Res>
   }
 }
 
-class _$FileReceived implements FileReceived {
-  const _$FileReceived({@required this.fileInfo}) : assert(fileInfo != null);
+class _$FileInfoReceived implements FileInfoReceived {
+  const _$FileInfoReceived({this.fileInfo});
 
   @override
   final FileInfo fileInfo;
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.filesReceived(fileInfo: $fileInfo)';
+    return 'CurrentCircleEvent.fileInfoReceived(fileInfo: $fileInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is FileReceived &&
+        (other is FileInfoReceived &&
             (identical(other.fileInfo, fileInfo) ||
                 const DeepCollectionEquality()
                     .equals(other.fileInfo, fileInfo)));
@@ -2106,8 +2218,8 @@ class _$FileReceived implements FileReceived {
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileInfo);
 
   @override
-  $FileReceivedCopyWith<FileReceived> get copyWith =>
-      _$FileReceivedCopyWithImpl<FileReceived>(this, _$identity);
+  $FileInfoReceivedCopyWith<FileInfoReceived> get copyWith =>
+      _$FileInfoReceivedCopyWithImpl<FileInfoReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2121,8 +2233,9 @@ class _$FileReceived implements FileReceived {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2138,12 +2251,13 @@ class _$FileReceived implements FileReceived {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return filesReceived(fileInfo);
+    return fileInfoReceived(fileInfo);
   }
 
   @override
@@ -2158,8 +2272,9 @@ class _$FileReceived implements FileReceived {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2167,8 +2282,8 @@ class _$FileReceived implements FileReceived {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (filesReceived != null) {
-      return filesReceived(fileInfo);
+    if (fileInfoReceived != null) {
+      return fileInfoReceived(fileInfo);
     }
     return orElse();
   }
@@ -2186,7 +2301,8 @@ class _$FileReceived implements FileReceived {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2202,12 +2318,13 @@ class _$FileReceived implements FileReceived {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return filesReceived(this);
+    return fileInfoReceived(this);
   }
 
   @override
@@ -2223,7 +2340,8 @@ class _$FileReceived implements FileReceived {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -2231,17 +2349,230 @@ class _$FileReceived implements FileReceived {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (filesReceived != null) {
-      return filesReceived(this);
+    if (fileInfoReceived != null) {
+      return fileInfoReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FileInfoReceived implements CurrentCircleEvent {
+  const factory FileInfoReceived({FileInfo fileInfo}) = _$FileInfoReceived;
+
+  FileInfo get fileInfo;
+  $FileInfoReceivedCopyWith<FileInfoReceived> get copyWith;
+}
+
+abstract class $FileReceivedCopyWith<$Res> {
+  factory $FileReceivedCopyWith(
+          FileReceived value, $Res Function(FileReceived) then) =
+      _$FileReceivedCopyWithImpl<$Res>;
+  $Res call({PayloadInfo payloadInfo});
+
+  $PayloadInfoCopyWith<$Res> get payloadInfo;
+}
+
+class _$FileReceivedCopyWithImpl<$Res>
+    extends _$CurrentCircleEventCopyWithImpl<$Res>
+    implements $FileReceivedCopyWith<$Res> {
+  _$FileReceivedCopyWithImpl(
+      FileReceived _value, $Res Function(FileReceived) _then)
+      : super(_value, (v) => _then(v as FileReceived));
+
+  @override
+  FileReceived get _value => super._value as FileReceived;
+
+  @override
+  $Res call({
+    Object payloadInfo = freezed,
+  }) {
+    return _then(FileReceived(
+      payloadInfo: payloadInfo == freezed
+          ? _value.payloadInfo
+          : payloadInfo as PayloadInfo,
+    ));
+  }
+
+  @override
+  $PayloadInfoCopyWith<$Res> get payloadInfo {
+    if (_value.payloadInfo == null) {
+      return null;
+    }
+    return $PayloadInfoCopyWith<$Res>(_value.payloadInfo, (value) {
+      return _then(_value.copyWith(payloadInfo: value));
+    });
+  }
+}
+
+class _$FileReceived implements FileReceived {
+  const _$FileReceived({@required this.payloadInfo})
+      : assert(payloadInfo != null);
+
+  @override
+  final PayloadInfo payloadInfo;
+
+  @override
+  String toString() {
+    return 'CurrentCircleEvent.fileReceived(payloadInfo: $payloadInfo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is FileReceived &&
+            (identical(other.payloadInfo, payloadInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.payloadInfo, payloadInfo)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(payloadInfo);
+
+  @override
+  $FileReceivedCopyWith<FileReceived> get copyWith =>
+      _$FileReceivedCopyWithImpl<FileReceived>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startCircle(User host),
+    @required Result deviceRequestedConnection(User user),
+    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
+    @required Result joinCircle(User host),
+    @required Result addFile(File file),
+    @required Result showFilesPage(),
+    @required Result showMembersPage(),
+    @required Result pageOpened(),
+    @required Result sendFiles(),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
+    @required Result memberLeft(String id),
+    @required Result leaveCircle(),
+    @required Result closeCircle(),
+    @required Result disconnected(),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(addFile != null);
+    assert(showFilesPage != null);
+    assert(showMembersPage != null);
+    assert(pageOpened != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return fileReceived(payloadInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startCircle(User host),
+    Result deviceRequestedConnection(User user),
+    Result acceptOrReject(User requestingUser, bool acceptConnection),
+    Result joinCircle(User host),
+    Result addFile(File file),
+    Result showFilesPage(),
+    Result showMembersPage(),
+    Result pageOpened(),
+    Result sendFiles(),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
+    Result memberLeft(String id),
+    Result leaveCircle(),
+    Result closeCircle(),
+    Result disconnected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fileReceived != null) {
+      return fileReceived(payloadInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startCircle(StartCircle value),
+    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
+    @required Result acceptOrReject(AcceptOrReject value),
+    @required Result joinCircle(JoinCircle value),
+    @required Result addFile(AddFile value),
+    @required Result showFilesPage(ShowFilesPage value),
+    @required Result showMembersPage(ShowMembersPage value),
+    @required Result pageOpened(PageOpened value),
+    @required Result sendFiles(SendFiles value),
+    @required Result filesSent(FilesSent value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
+    @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
+    @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(addFile != null);
+    assert(showFilesPage != null);
+    assert(showMembersPage != null);
+    assert(pageOpened != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return fileReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startCircle(StartCircle value),
+    Result deviceRequestedConnection(DeviceRequestedConnection value),
+    Result acceptOrReject(AcceptOrReject value),
+    Result joinCircle(JoinCircle value),
+    Result addFile(AddFile value),
+    Result showFilesPage(ShowFilesPage value),
+    Result showMembersPage(ShowMembersPage value),
+    Result pageOpened(PageOpened value),
+    Result sendFiles(SendFiles value),
+    Result filesSent(FilesSent value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
+    Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
+    Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fileReceived != null) {
+      return fileReceived(this);
     }
     return orElse();
   }
 }
 
 abstract class FileReceived implements CurrentCircleEvent {
-  const factory FileReceived({@required FileInfo fileInfo}) = _$FileReceived;
+  const factory FileReceived({@required PayloadInfo payloadInfo}) =
+      _$FileReceived;
 
-  FileInfo get fileInfo;
+  PayloadInfo get payloadInfo;
   $FileReceivedCopyWith<FileReceived> get copyWith;
 }
 
@@ -2310,8 +2641,9 @@ class _$MemberLeft implements MemberLeft {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2327,7 +2659,8 @@ class _$MemberLeft implements MemberLeft {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2347,8 +2680,9 @@ class _$MemberLeft implements MemberLeft {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2375,7 +2709,8 @@ class _$MemberLeft implements MemberLeft {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2391,7 +2726,8 @@ class _$MemberLeft implements MemberLeft {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2412,7 +2748,8 @@ class _$MemberLeft implements MemberLeft {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -2479,8 +2816,9 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2496,7 +2834,8 @@ class _$LeaveCircle implements LeaveCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2516,8 +2855,9 @@ class _$LeaveCircle implements LeaveCircle {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2544,7 +2884,8 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2560,7 +2901,8 @@ class _$LeaveCircle implements LeaveCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2581,7 +2923,8 @@ class _$LeaveCircle implements LeaveCircle {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -2645,8 +2988,9 @@ class _$CloseCircle implements CloseCircle {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2662,7 +3006,8 @@ class _$CloseCircle implements CloseCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2682,8 +3027,9 @@ class _$CloseCircle implements CloseCircle {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2710,7 +3056,8 @@ class _$CloseCircle implements CloseCircle {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2726,7 +3073,8 @@ class _$CloseCircle implements CloseCircle {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2747,7 +3095,8 @@ class _$CloseCircle implements CloseCircle {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -2811,8 +3160,9 @@ class _$Disconnected implements Disconnected {
     @required Result showMembersPage(),
     @required Result pageOpened(),
     @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
+    @required Result filesSent(PayloadInfo payloadInfo),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result fileReceived(PayloadInfo payloadInfo),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2828,7 +3178,8 @@ class _$Disconnected implements Disconnected {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2848,8 +3199,9 @@ class _$Disconnected implements Disconnected {
     Result showMembersPage(),
     Result pageOpened(),
     Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
+    Result filesSent(PayloadInfo payloadInfo),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result fileReceived(PayloadInfo payloadInfo),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2876,7 +3228,8 @@ class _$Disconnected implements Disconnected {
     @required Result pageOpened(PageOpened value),
     @required Result sendFiles(SendFiles value),
     @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
+    @required Result fileInfoReceived(FileInfoReceived value),
+    @required Result fileReceived(FileReceived value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2892,7 +3245,8 @@ class _$Disconnected implements Disconnected {
     assert(pageOpened != null);
     assert(sendFiles != null);
     assert(filesSent != null);
-    assert(filesReceived != null);
+    assert(fileInfoReceived != null);
+    assert(fileReceived != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2913,7 +3267,8 @@ class _$Disconnected implements Disconnected {
     Result pageOpened(PageOpened value),
     Result sendFiles(SendFiles value),
     Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
+    Result fileInfoReceived(FileInfoReceived value),
+    Result fileReceived(FileReceived value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
