@@ -16,7 +16,7 @@ class FilesList extends StatelessWidget {
       itemCount: files.length,
       itemBuilder: (context, index) => MyListTile(
         leading: const Icon(Icons.image),
-        title: files.keys.toList()[index].fileName,
+        title: files.keys.toList()[index].path,
         subtitle: '${files.values.toList()[index]*100}%',
         trailing: IconButton(
           onPressed: () {}, //TODO: Add function to cancel transmission

@@ -9,7 +9,6 @@ abstract class CurrentCircleState with _$CurrentCircleState {
 
   const factory CurrentCircleState.hasStarted({
     @required Map<User, bool> members,
-    @required List<File> selectedFiles,
     @required Map<FileInfo, double> outgoingFiles,
     @required Map<FileInfo, double> incomingFiles,
     @required List<FileTransaction> transactions,
@@ -21,7 +20,6 @@ abstract class CurrentCircleState with _$CurrentCircleState {
 
   const factory CurrentCircleState.hasJoined({
     @required User host,
-    @required List<File> selectedFiles,
     @required Map<FileInfo, double> outgoingFiles,
     @required Map<FileInfo, double> incomingFiles,
     @required List<FileTransaction> transactions,

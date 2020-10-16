@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -66,7 +65,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               (_) async* {
                 yield const CurrentCircleState.hasStarted(
                   members: <User, bool>{},
-                  selectedFiles: <File>[],
                   outgoingFiles: <FileInfo, double>{},
                   incomingFiles: <FileInfo, double>{},
                   transactions: <FileTransaction>[],
@@ -89,7 +87,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             }, onError: (e) {});
             yield CurrentCircleState.hasJoined(
               host: e.host,
-              selectedFiles: <File>[],
               outgoingFiles: <FileInfo, double>{},
               incomingFiles: <FileInfo, double>{},
               transactions: <FileTransaction>[],
@@ -151,26 +148,17 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           pageOpened: (_) async* {
             yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
-          addFile: (e) async* {
-            yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
-          },
           sendFiles: (e) async* {
             // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
             //this function is in host side, for member side create this in ,is wahi mai sochu, one more doubt remains
-            final failureOrAppFiles = await _appsRepository.getFiles();
-            final appFiles = failureOrAppFiles.getOrElse(() => null);
+            final failureOrAppFiles = await _appsRepository.getFilesInfo();
+            final appFilesInfo = failureOrAppFiles.getOrElse(() => null);
 
             nearbyConnections.sendFilenameSizeBytesPayload(
-              users: List.from(state.members.keys),
-              outgoingFiles: List.generate(
-                appFiles.length,
-                (index) => FileInfo(
-                  fileName: appFiles[index].path,
-                  bytesSize: appFiles[index].lengthSync().toDouble(),
-                ),
-              ),
+              users: List.from(state.members.entries.map((e) => !e.value)),
+              outgoingFiles: appFilesInfo,
             );
           },
           filesSent: (e) async* {
@@ -219,26 +207,17 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           pageOpened: (_) async* {
             yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
-          addFile: (e) async* {
-            yield state.copyWith(selectedFiles: state.selectedFiles + [e.file]);
-          },
           sendFiles: (e) async* {
             // TODO: Implement sending files from here by using [state.selectedFiles],
             //also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
-            final failureOrAppFiles = await _appsRepository.getFiles();
-            final appFiles = failureOrAppFiles.getOrElse(() => null);
+            final failureOrAppFiles = await _appsRepository.getFilesInfo();
+            final appFilesInfo = failureOrAppFiles.getOrElse(() => null);
 
             nearbyConnections.sendFilenameSizeBytesPayload(
               users: [state.host],
-              outgoingFiles: List.generate(
-                appFiles.length,
-                (index) => FileInfo(
-                  fileName: appFiles[index].path,
-                  bytesSize: appFiles[index].lengthSync().toDouble(),
-                ),
-              ),
+              outgoingFiles: appFilesInfo,
             );
           },
           filesSent: (e) async* {

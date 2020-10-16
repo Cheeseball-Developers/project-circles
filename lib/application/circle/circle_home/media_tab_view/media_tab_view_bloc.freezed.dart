@@ -25,9 +25,9 @@ class _$MediaTabViewEventTearOff {
   }
 
 // ignore: unused_element
-  ToggleSelection toggleSelection(int index) {
+  ToggleSelection toggleSelection({@required FileInfo fileInfo}) {
     return ToggleSelection(
-      index,
+      fileInfo: fileInfo,
     );
   }
 
@@ -45,14 +45,14 @@ mixin _$MediaTabViewEvent {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(int index),
+    @required Result toggleSelection(FileInfo fileInfo),
     @required Result deselectAll(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(int index),
+    Result toggleSelection(FileInfo fileInfo),
     Result deselectAll(),
     @required Result orElse(),
   });
@@ -125,7 +125,7 @@ class _$LoadAlbums implements LoadAlbums {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(int index),
+    @required Result toggleSelection(FileInfo fileInfo),
     @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
@@ -140,7 +140,7 @@ class _$LoadAlbums implements LoadAlbums {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(int index),
+    Result toggleSelection(FileInfo fileInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
@@ -244,7 +244,7 @@ class _$LoadMedia implements LoadMedia {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(int index),
+    @required Result toggleSelection(FileInfo fileInfo),
     @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
@@ -259,7 +259,7 @@ class _$LoadMedia implements LoadMedia {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(int index),
+    Result toggleSelection(FileInfo fileInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
@@ -313,7 +313,9 @@ abstract class $ToggleSelectionCopyWith<$Res> {
   factory $ToggleSelectionCopyWith(
           ToggleSelection value, $Res Function(ToggleSelection) then) =
       _$ToggleSelectionCopyWithImpl<$Res>;
-  $Res call({int index});
+  $Res call({FileInfo fileInfo});
+
+  $FileInfoCopyWith<$Res> get fileInfo;
 }
 
 class _$ToggleSelectionCopyWithImpl<$Res>
@@ -328,36 +330,47 @@ class _$ToggleSelectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object index = freezed,
+    Object fileInfo = freezed,
   }) {
     return _then(ToggleSelection(
-      index == freezed ? _value.index : index as int,
+      fileInfo: fileInfo == freezed ? _value.fileInfo : fileInfo as FileInfo,
     ));
+  }
+
+  @override
+  $FileInfoCopyWith<$Res> get fileInfo {
+    if (_value.fileInfo == null) {
+      return null;
+    }
+    return $FileInfoCopyWith<$Res>(_value.fileInfo, (value) {
+      return _then(_value.copyWith(fileInfo: value));
+    });
   }
 }
 
 class _$ToggleSelection implements ToggleSelection {
-  const _$ToggleSelection(this.index) : assert(index != null);
+  const _$ToggleSelection({@required this.fileInfo}) : assert(fileInfo != null);
 
   @override
-  final int index;
+  final FileInfo fileInfo;
 
   @override
   String toString() {
-    return 'MediaTabViewEvent.toggleSelection(index: $index)';
+    return 'MediaTabViewEvent.toggleSelection(fileInfo: $fileInfo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is ToggleSelection &&
-            (identical(other.index, index) ||
-                const DeepCollectionEquality().equals(other.index, index)));
+            (identical(other.fileInfo, fileInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.fileInfo, fileInfo)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(index);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileInfo);
 
   @override
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith =>
@@ -368,14 +381,14 @@ class _$ToggleSelection implements ToggleSelection {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(int index),
+    @required Result toggleSelection(FileInfo fileInfo),
     @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
     assert(toggleSelection != null);
     assert(deselectAll != null);
-    return toggleSelection(index);
+    return toggleSelection(fileInfo);
   }
 
   @override
@@ -383,13 +396,13 @@ class _$ToggleSelection implements ToggleSelection {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(int index),
+    Result toggleSelection(FileInfo fileInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelection != null) {
-      return toggleSelection(index);
+      return toggleSelection(fileInfo);
     }
     return orElse();
   }
@@ -427,9 +440,10 @@ class _$ToggleSelection implements ToggleSelection {
 }
 
 abstract class ToggleSelection implements MediaTabViewEvent {
-  const factory ToggleSelection(int index) = _$ToggleSelection;
+  const factory ToggleSelection({@required FileInfo fileInfo}) =
+      _$ToggleSelection;
 
-  int get index;
+  FileInfo get fileInfo;
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
 }
 
@@ -471,7 +485,7 @@ class _$DeselectAll implements DeselectAll {
   Result when<Result extends Object>({
     @required Result loadAlbums(),
     @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(int index),
+    @required Result toggleSelection(FileInfo fileInfo),
     @required Result deselectAll(),
   }) {
     assert(loadAlbums != null);
@@ -486,7 +500,7 @@ class _$DeselectAll implements DeselectAll {
   Result maybeWhen<Result extends Object>({
     Result loadAlbums(),
     Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(int index),
+    Result toggleSelection(FileInfo fileInfo),
     Result deselectAll(),
     @required Result orElse(),
   }) {
@@ -556,18 +570,14 @@ class _$MediaTabViewStateTearOff {
 // ignore: unused_element
   _HasLoaded hasLoadedMedia(
       {@required AssetPathEntity album,
-      @required List<MediaObject> media,
+      @required Map<FileInfo, bool> media,
       @required int previousPage,
-      @required int currentPage,
-      @required bool tapToSelect,
-      @required int selectedMedia}) {
+      @required int currentPage}) {
     return _HasLoaded(
       album: album,
       media: media,
       previousPage: previousPage,
       currentPage: currentPage,
-      tapToSelect: tapToSelect,
-      selectedMedia: selectedMedia,
     );
   }
 
@@ -589,13 +599,8 @@ mixin _$MediaTabViewState {
     @required Result isLoading(),
     @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(
-            AssetPathEntity album,
-            List<MediaObject> media,
-            int previousPage,
-            int currentPage,
-            bool tapToSelect,
-            int selectedMedia),
+        Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+            int previousPage, int currentPage),
     @required Result hasFailed(AppsLoadFailure failure),
   });
   @optionalTypeArgs
@@ -603,8 +608,8 @@ mixin _$MediaTabViewState {
     Result initial(),
     Result isLoading(),
     Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, List<MediaObject> media,
-        int previousPage, int currentPage, bool tapToSelect, int selectedMedia),
+    Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+        int previousPage, int currentPage),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   });
@@ -679,13 +684,8 @@ class _$_Initial implements _Initial {
     @required Result isLoading(),
     @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(
-            AssetPathEntity album,
-            List<MediaObject> media,
-            int previousPage,
-            int currentPage,
-            bool tapToSelect,
-            int selectedMedia),
+        Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+            int previousPage, int currentPage),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -702,8 +702,8 @@ class _$_Initial implements _Initial {
     Result initial(),
     Result isLoading(),
     Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, List<MediaObject> media,
-        int previousPage, int currentPage, bool tapToSelect, int selectedMedia),
+    Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+        int previousPage, int currentPage),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -792,13 +792,8 @@ class _$_IsLoading implements _IsLoading {
     @required Result isLoading(),
     @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(
-            AssetPathEntity album,
-            List<MediaObject> media,
-            int previousPage,
-            int currentPage,
-            bool tapToSelect,
-            int selectedMedia),
+        Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+            int previousPage, int currentPage),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -815,8 +810,8 @@ class _$_IsLoading implements _IsLoading {
     Result initial(),
     Result isLoading(),
     Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, List<MediaObject> media,
-        int previousPage, int currentPage, bool tapToSelect, int selectedMedia),
+    Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+        int previousPage, int currentPage),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -928,13 +923,8 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
     @required Result isLoading(),
     @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(
-            AssetPathEntity album,
-            List<MediaObject> media,
-            int previousPage,
-            int currentPage,
-            bool tapToSelect,
-            int selectedMedia),
+        Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+            int previousPage, int currentPage),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -951,8 +941,8 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
     Result initial(),
     Result isLoading(),
     Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, List<MediaObject> media,
-        int previousPage, int currentPage, bool tapToSelect, int selectedMedia),
+    Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+        int previousPage, int currentPage),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
@@ -1012,11 +1002,9 @@ abstract class _$HasLoadedCopyWith<$Res> {
       __$HasLoadedCopyWithImpl<$Res>;
   $Res call(
       {AssetPathEntity album,
-      List<MediaObject> media,
+      Map<FileInfo, bool> media,
       int previousPage,
-      int currentPage,
-      bool tapToSelect,
-      int selectedMedia});
+      int currentPage});
 }
 
 class __$HasLoadedCopyWithImpl<$Res>
@@ -1034,21 +1022,14 @@ class __$HasLoadedCopyWithImpl<$Res>
     Object media = freezed,
     Object previousPage = freezed,
     Object currentPage = freezed,
-    Object tapToSelect = freezed,
-    Object selectedMedia = freezed,
   }) {
     return _then(_HasLoaded(
       album: album == freezed ? _value.album : album as AssetPathEntity,
-      media: media == freezed ? _value.media : media as List<MediaObject>,
+      media: media == freezed ? _value.media : media as Map<FileInfo, bool>,
       previousPage:
           previousPage == freezed ? _value.previousPage : previousPage as int,
       currentPage:
           currentPage == freezed ? _value.currentPage : currentPage as int,
-      tapToSelect:
-          tapToSelect == freezed ? _value.tapToSelect : tapToSelect as bool,
-      selectedMedia: selectedMedia == freezed
-          ? _value.selectedMedia
-          : selectedMedia as int,
     ));
   }
 }
@@ -1058,32 +1039,24 @@ class _$_HasLoaded implements _HasLoaded {
       {@required this.album,
       @required this.media,
       @required this.previousPage,
-      @required this.currentPage,
-      @required this.tapToSelect,
-      @required this.selectedMedia})
+      @required this.currentPage})
       : assert(album != null),
         assert(media != null),
         assert(previousPage != null),
-        assert(currentPage != null),
-        assert(tapToSelect != null),
-        assert(selectedMedia != null);
+        assert(currentPage != null);
 
   @override
   final AssetPathEntity album;
   @override
-  final List<MediaObject> media;
+  final Map<FileInfo, bool> media;
   @override
   final int previousPage;
   @override
   final int currentPage;
-  @override
-  final bool tapToSelect;
-  @override
-  final int selectedMedia;
 
   @override
   String toString() {
-    return 'MediaTabViewState.hasLoadedMedia(album: $album, media: $media, previousPage: $previousPage, currentPage: $currentPage, tapToSelect: $tapToSelect, selectedMedia: $selectedMedia)';
+    return 'MediaTabViewState.hasLoadedMedia(album: $album, media: $media, previousPage: $previousPage, currentPage: $currentPage)';
   }
 
   @override
@@ -1099,13 +1072,7 @@ class _$_HasLoaded implements _HasLoaded {
                     .equals(other.previousPage, previousPage)) &&
             (identical(other.currentPage, currentPage) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentPage, currentPage)) &&
-            (identical(other.tapToSelect, tapToSelect) ||
-                const DeepCollectionEquality()
-                    .equals(other.tapToSelect, tapToSelect)) &&
-            (identical(other.selectedMedia, selectedMedia) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedMedia, selectedMedia)));
+                    .equals(other.currentPage, currentPage)));
   }
 
   @override
@@ -1114,9 +1081,7 @@ class _$_HasLoaded implements _HasLoaded {
       const DeepCollectionEquality().hash(album) ^
       const DeepCollectionEquality().hash(media) ^
       const DeepCollectionEquality().hash(previousPage) ^
-      const DeepCollectionEquality().hash(currentPage) ^
-      const DeepCollectionEquality().hash(tapToSelect) ^
-      const DeepCollectionEquality().hash(selectedMedia);
+      const DeepCollectionEquality().hash(currentPage);
 
   @override
   _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
@@ -1129,13 +1094,8 @@ class _$_HasLoaded implements _HasLoaded {
     @required Result isLoading(),
     @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(
-            AssetPathEntity album,
-            List<MediaObject> media,
-            int previousPage,
-            int currentPage,
-            bool tapToSelect,
-            int selectedMedia),
+        Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+            int previousPage, int currentPage),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -1143,8 +1103,7 @@ class _$_HasLoaded implements _HasLoaded {
     assert(hasLoadedAlbums != null);
     assert(hasLoadedMedia != null);
     assert(hasFailed != null);
-    return hasLoadedMedia(
-        album, media, previousPage, currentPage, tapToSelect, selectedMedia);
+    return hasLoadedMedia(album, media, previousPage, currentPage);
   }
 
   @override
@@ -1153,15 +1112,14 @@ class _$_HasLoaded implements _HasLoaded {
     Result initial(),
     Result isLoading(),
     Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, List<MediaObject> media,
-        int previousPage, int currentPage, bool tapToSelect, int selectedMedia),
+    Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+        int previousPage, int currentPage),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (hasLoadedMedia != null) {
-      return hasLoadedMedia(
-          album, media, previousPage, currentPage, tapToSelect, selectedMedia);
+      return hasLoadedMedia(album, media, previousPage, currentPage);
     }
     return orElse();
   }
@@ -1204,18 +1162,14 @@ class _$_HasLoaded implements _HasLoaded {
 abstract class _HasLoaded implements MediaTabViewState {
   const factory _HasLoaded(
       {@required AssetPathEntity album,
-      @required List<MediaObject> media,
+      @required Map<FileInfo, bool> media,
       @required int previousPage,
-      @required int currentPage,
-      @required bool tapToSelect,
-      @required int selectedMedia}) = _$_HasLoaded;
+      @required int currentPage}) = _$_HasLoaded;
 
   AssetPathEntity get album;
-  List<MediaObject> get media;
+  Map<FileInfo, bool> get media;
   int get previousPage;
   int get currentPage;
-  bool get tapToSelect;
-  int get selectedMedia;
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
 
@@ -1291,13 +1245,8 @@ class _$_HasFailed implements _HasFailed {
     @required Result isLoading(),
     @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(
-            AssetPathEntity album,
-            List<MediaObject> media,
-            int previousPage,
-            int currentPage,
-            bool tapToSelect,
-            int selectedMedia),
+        Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+            int previousPage, int currentPage),
     @required Result hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
@@ -1314,8 +1263,8 @@ class _$_HasFailed implements _HasFailed {
     Result initial(),
     Result isLoading(),
     Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, List<MediaObject> media,
-        int previousPage, int currentPage, bool tapToSelect, int selectedMedia),
+    Result hasLoadedMedia(AssetPathEntity album, Map<FileInfo, bool> media,
+        int previousPage, int currentPage),
     Result hasFailed(AppsLoadFailure failure),
     @required Result orElse(),
   }) {

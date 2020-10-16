@@ -341,11 +341,11 @@ class NearbyConnections {
       //receiving the fileInfo
       if (str.contains('-')) {
         final String keyFileName = str.split('::').first;
-        final double fileSize = double.parse(str.split('::').last);
+        final int fileSize = int.parse(str.split('::').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink
-            .add(FileInfo(fileName: keyFileName, bytesSize: fileSize));
+            .add(FileInfo(hash: null, path: keyFileName, bytesSize: fileSize, thumbnail: null));
       }
       // used for file payload as file payload is mapped as
       // payloadId:filename
@@ -439,7 +439,7 @@ class NearbyConnections {
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
             Uint8List.fromList(
-                "${file.fileName}::${file.bytesSize}".codeUnits));
+                "${file.path}::${file.bytesSize}".codeUnits));
       });
     });
   }

@@ -14,7 +14,9 @@ part 'files_tab_view_bloc.freezed.dart';
 
 @injectable
 class FilesTabViewBloc extends Bloc<FilesTabViewEvent, FilesTabViewState> {
-  FilesTabViewBloc() : super(const FilesTabViewState.initial());
+  final FilesRepository _filesRepository;
+
+  FilesTabViewBloc(this._filesRepository) : super(const FilesTabViewState.initial());
 
   @override
   Stream<FilesTabViewState> mapEventToState(
@@ -27,7 +29,7 @@ class FilesTabViewBloc extends Bloc<FilesTabViewEvent, FilesTabViewState> {
             isHome: e.directory.absolute.path ==
                 getIt<FilesRepository>().root.absolute.path);
         final List<FileSystemEntity> entities =
-            getIt<FilesRepository>().getFoldersAndFiles(e.directory);
+            _filesRepository.openDirectory(e.directory);
         try {
           final List<FileSystemEntity> files = [];
           final List<FileSystemEntity> folders = [];

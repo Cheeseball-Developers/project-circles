@@ -43,13 +43,6 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
-  AddFile addFile({@required File file}) {
-    return AddFile(
-      file: file,
-    );
-  }
-
-// ignore: unused_element
   ShowFilesPage showFilesPage() {
     return const ShowFilesPage();
   }
@@ -114,7 +107,6 @@ mixin _$CurrentCircleEvent {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -132,7 +124,6 @@ mixin _$CurrentCircleEvent {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -151,7 +142,6 @@ mixin _$CurrentCircleEvent {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -169,7 +159,6 @@ mixin _$CurrentCircleEvent {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -272,7 +261,6 @@ class _$StartCircle implements StartCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -288,7 +276,6 @@ class _$StartCircle implements StartCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -309,7 +296,6 @@ class _$StartCircle implements StartCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -336,7 +322,6 @@ class _$StartCircle implements StartCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -352,7 +337,6 @@ class _$StartCircle implements StartCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -373,7 +357,6 @@ class _$StartCircle implements StartCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -477,7 +460,6 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -493,7 +475,6 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -514,7 +495,6 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -541,7 +521,6 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -557,7 +536,6 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -578,7 +556,6 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -697,7 +674,6 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -713,7 +689,6 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -734,7 +709,6 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -761,7 +735,6 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -777,7 +750,6 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -798,7 +770,6 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -901,7 +872,6 @@ class _$JoinCircle implements JoinCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -917,7 +887,6 @@ class _$JoinCircle implements JoinCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -938,7 +907,6 @@ class _$JoinCircle implements JoinCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -965,7 +933,6 @@ class _$JoinCircle implements JoinCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -981,7 +948,6 @@ class _$JoinCircle implements JoinCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1002,7 +968,6 @@ class _$JoinCircle implements JoinCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -1028,193 +993,6 @@ abstract class JoinCircle implements CurrentCircleEvent {
 
   User get host;
   $JoinCircleCopyWith<JoinCircle> get copyWith;
-}
-
-abstract class $AddFileCopyWith<$Res> {
-  factory $AddFileCopyWith(AddFile value, $Res Function(AddFile) then) =
-      _$AddFileCopyWithImpl<$Res>;
-  $Res call({File file});
-}
-
-class _$AddFileCopyWithImpl<$Res> extends _$CurrentCircleEventCopyWithImpl<$Res>
-    implements $AddFileCopyWith<$Res> {
-  _$AddFileCopyWithImpl(AddFile _value, $Res Function(AddFile) _then)
-      : super(_value, (v) => _then(v as AddFile));
-
-  @override
-  AddFile get _value => super._value as AddFile;
-
-  @override
-  $Res call({
-    Object file = freezed,
-  }) {
-    return _then(AddFile(
-      file: file == freezed ? _value.file : file as File,
-    ));
-  }
-}
-
-class _$AddFile implements AddFile {
-  const _$AddFile({@required this.file}) : assert(file != null);
-
-  @override
-  final File file;
-
-  @override
-  String toString() {
-    return 'CurrentCircleEvent.addFile(file: $file)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is AddFile &&
-            (identical(other.file, file) ||
-                const DeepCollectionEquality().equals(other.file, file)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(file);
-
-  @override
-  $AddFileCopyWith<AddFile> get copyWith =>
-      _$AddFileCopyWithImpl<AddFile>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startCircle(User host),
-    @required Result deviceRequestedConnection(User user),
-    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
-    @required Result joinCircle(User host),
-    @required Result addFile(File file),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result pageOpened(),
-    @required Result sendFiles(),
-    @required Result filesSent(),
-    @required Result filesReceived(FileInfo fileInfo),
-    @required Result memberLeft(String id),
-    @required Result leaveCircle(),
-    @required Result closeCircle(),
-    @required Result disconnected(),
-  }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(addFile != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(pageOpened != null);
-    assert(sendFiles != null);
-    assert(filesSent != null);
-    assert(filesReceived != null);
-    assert(memberLeft != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
-    return addFile(file);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startCircle(User host),
-    Result deviceRequestedConnection(User user),
-    Result acceptOrReject(User requestingUser, bool acceptConnection),
-    Result joinCircle(User host),
-    Result addFile(File file),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result pageOpened(),
-    Result sendFiles(),
-    Result filesSent(),
-    Result filesReceived(FileInfo fileInfo),
-    Result memberLeft(String id),
-    Result leaveCircle(),
-    Result closeCircle(),
-    Result disconnected(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (addFile != null) {
-      return addFile(file);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startCircle(StartCircle value),
-    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
-    @required Result acceptOrReject(AcceptOrReject value),
-    @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result pageOpened(PageOpened value),
-    @required Result sendFiles(SendFiles value),
-    @required Result filesSent(FilesSent value),
-    @required Result filesReceived(FileReceived value),
-    @required Result memberLeft(MemberLeft value),
-    @required Result leaveCircle(LeaveCircle value),
-    @required Result closeCircle(CloseCircle value),
-    @required Result disconnected(Disconnected value),
-  }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(addFile != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(pageOpened != null);
-    assert(sendFiles != null);
-    assert(filesSent != null);
-    assert(filesReceived != null);
-    assert(memberLeft != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
-    return addFile(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startCircle(StartCircle value),
-    Result deviceRequestedConnection(DeviceRequestedConnection value),
-    Result acceptOrReject(AcceptOrReject value),
-    Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result pageOpened(PageOpened value),
-    Result sendFiles(SendFiles value),
-    Result filesSent(FilesSent value),
-    Result filesReceived(FileReceived value),
-    Result memberLeft(MemberLeft value),
-    Result leaveCircle(LeaveCircle value),
-    Result closeCircle(CloseCircle value),
-    Result disconnected(Disconnected value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (addFile != null) {
-      return addFile(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class AddFile implements CurrentCircleEvent {
-  const factory AddFile({@required File file}) = _$AddFile;
-
-  File get file;
-  $AddFileCopyWith<AddFile> get copyWith;
 }
 
 abstract class $ShowFilesPageCopyWith<$Res> {
@@ -1257,7 +1035,6 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -1273,7 +1050,6 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1294,7 +1070,6 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -1321,7 +1096,6 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -1337,7 +1111,6 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1358,7 +1131,6 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -1423,7 +1195,6 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -1439,7 +1210,6 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1460,7 +1230,6 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -1487,7 +1256,6 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -1503,7 +1271,6 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1524,7 +1291,6 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -1588,7 +1354,6 @@ class _$PageOpened implements PageOpened {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -1604,7 +1369,6 @@ class _$PageOpened implements PageOpened {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1625,7 +1389,6 @@ class _$PageOpened implements PageOpened {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -1652,7 +1415,6 @@ class _$PageOpened implements PageOpened {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -1668,7 +1430,6 @@ class _$PageOpened implements PageOpened {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1689,7 +1450,6 @@ class _$PageOpened implements PageOpened {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -1752,7 +1512,6 @@ class _$SendFiles implements SendFiles {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -1768,7 +1527,6 @@ class _$SendFiles implements SendFiles {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1789,7 +1547,6 @@ class _$SendFiles implements SendFiles {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -1816,7 +1573,6 @@ class _$SendFiles implements SendFiles {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -1832,7 +1588,6 @@ class _$SendFiles implements SendFiles {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1853,7 +1608,6 @@ class _$SendFiles implements SendFiles {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -1916,7 +1670,6 @@ class _$FilesSent implements FilesSent {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -1932,7 +1685,6 @@ class _$FilesSent implements FilesSent {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -1953,7 +1705,6 @@ class _$FilesSent implements FilesSent {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -1980,7 +1731,6 @@ class _$FilesSent implements FilesSent {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -1996,7 +1746,6 @@ class _$FilesSent implements FilesSent {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2017,7 +1766,6 @@ class _$FilesSent implements FilesSent {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -2116,7 +1864,6 @@ class _$FileReceived implements FileReceived {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -2132,7 +1879,6 @@ class _$FileReceived implements FileReceived {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2153,7 +1899,6 @@ class _$FileReceived implements FileReceived {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -2180,7 +1925,6 @@ class _$FileReceived implements FileReceived {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -2196,7 +1940,6 @@ class _$FileReceived implements FileReceived {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2217,7 +1960,6 @@ class _$FileReceived implements FileReceived {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -2305,7 +2047,6 @@ class _$MemberLeft implements MemberLeft {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -2321,7 +2062,6 @@ class _$MemberLeft implements MemberLeft {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2342,7 +2082,6 @@ class _$MemberLeft implements MemberLeft {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -2369,7 +2108,6 @@ class _$MemberLeft implements MemberLeft {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -2385,7 +2123,6 @@ class _$MemberLeft implements MemberLeft {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2406,7 +2143,6 @@ class _$MemberLeft implements MemberLeft {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -2474,7 +2210,6 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -2490,7 +2225,6 @@ class _$LeaveCircle implements LeaveCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2511,7 +2245,6 @@ class _$LeaveCircle implements LeaveCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -2538,7 +2271,6 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -2554,7 +2286,6 @@ class _$LeaveCircle implements LeaveCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2575,7 +2306,6 @@ class _$LeaveCircle implements LeaveCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -2640,7 +2370,6 @@ class _$CloseCircle implements CloseCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -2656,7 +2385,6 @@ class _$CloseCircle implements CloseCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2677,7 +2405,6 @@ class _$CloseCircle implements CloseCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -2704,7 +2431,6 @@ class _$CloseCircle implements CloseCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -2720,7 +2446,6 @@ class _$CloseCircle implements CloseCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2741,7 +2466,6 @@ class _$CloseCircle implements CloseCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -2806,7 +2530,6 @@ class _$Disconnected implements Disconnected {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result addFile(File file),
     @required Result showFilesPage(),
     @required Result showMembersPage(),
     @required Result pageOpened(),
@@ -2822,7 +2545,6 @@ class _$Disconnected implements Disconnected {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2843,7 +2565,6 @@ class _$Disconnected implements Disconnected {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result addFile(File file),
     Result showFilesPage(),
     Result showMembersPage(),
     Result pageOpened(),
@@ -2870,7 +2591,6 @@ class _$Disconnected implements Disconnected {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result addFile(AddFile value),
     @required Result showFilesPage(ShowFilesPage value),
     @required Result showMembersPage(ShowMembersPage value),
     @required Result pageOpened(PageOpened value),
@@ -2886,7 +2606,6 @@ class _$Disconnected implements Disconnected {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(addFile != null);
     assert(showFilesPage != null);
     assert(showMembersPage != null);
     assert(pageOpened != null);
@@ -2907,7 +2626,6 @@ class _$Disconnected implements Disconnected {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result addFile(AddFile value),
     Result showFilesPage(ShowFilesPage value),
     Result showMembersPage(ShowMembersPage value),
     Result pageOpened(PageOpened value),
@@ -2950,7 +2668,6 @@ class _$CurrentCircleStateTearOff {
 // ignore: unused_element
   _HasStarted hasStarted(
       {@required Map<User, bool> members,
-      @required List<File> selectedFiles,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
@@ -2960,7 +2677,6 @@ class _$CurrentCircleStateTearOff {
       @required bool isClosing}) {
     return _HasStarted(
       members: members,
-      selectedFiles: selectedFiles,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
       transactions: transactions,
@@ -2974,7 +2690,6 @@ class _$CurrentCircleStateTearOff {
 // ignore: unused_element
   _HasJoined hasJoined(
       {@required User host,
-      @required List<File> selectedFiles,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
@@ -2983,7 +2698,6 @@ class _$CurrentCircleStateTearOff {
       @required bool isLeaving}) {
     return _HasJoined(
       host: host,
-      selectedFiles: selectedFiles,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
       transactions: transactions,
@@ -3012,7 +2726,6 @@ mixin _$CurrentCircleState {
     @required
         Result hasStarted(
             Map<User, bool> members,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3023,7 +2736,6 @@ mixin _$CurrentCircleState {
     @required
         Result hasJoined(
             User host,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3038,7 +2750,6 @@ mixin _$CurrentCircleState {
     Result isLoading(String loadingText),
     Result hasStarted(
         Map<User, bool> members,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3048,7 +2759,6 @@ mixin _$CurrentCircleState {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3131,7 +2841,6 @@ class _$_Initial implements _Initial {
     @required
         Result hasStarted(
             Map<User, bool> members,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3142,7 +2851,6 @@ class _$_Initial implements _Initial {
     @required
         Result hasJoined(
             User host,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3166,7 +2874,6 @@ class _$_Initial implements _Initial {
     Result isLoading(String loadingText),
     Result hasStarted(
         Map<User, bool> members,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3176,7 +2883,6 @@ class _$_Initial implements _Initial {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3296,7 +3002,6 @@ class _$_IsLoading implements _IsLoading {
     @required
         Result hasStarted(
             Map<User, bool> members,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3307,7 +3012,6 @@ class _$_IsLoading implements _IsLoading {
     @required
         Result hasJoined(
             User host,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3331,7 +3035,6 @@ class _$_IsLoading implements _IsLoading {
     Result isLoading(String loadingText),
     Result hasStarted(
         Map<User, bool> members,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3341,7 +3044,6 @@ class _$_IsLoading implements _IsLoading {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3406,7 +3108,6 @@ abstract class _$HasStartedCopyWith<$Res> {
       __$HasStartedCopyWithImpl<$Res>;
   $Res call(
       {Map<User, bool> members,
-      List<File> selectedFiles,
       Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
       List<FileTransaction> transactions,
@@ -3429,7 +3130,6 @@ class __$HasStartedCopyWithImpl<$Res>
   @override
   $Res call({
     Object members = freezed,
-    Object selectedFiles = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
     Object transactions = freezed,
@@ -3440,9 +3140,6 @@ class __$HasStartedCopyWithImpl<$Res>
   }) {
     return _then(_HasStarted(
       members: members == freezed ? _value.members : members as Map<User, bool>,
-      selectedFiles: selectedFiles == freezed
-          ? _value.selectedFiles
-          : selectedFiles as List<File>,
       outgoingFiles: outgoingFiles == freezed
           ? _value.outgoingFiles
           : outgoingFiles as Map<FileInfo, double>,
@@ -3469,7 +3166,6 @@ class __$HasStartedCopyWithImpl<$Res>
 class _$_HasStarted implements _HasStarted {
   const _$_HasStarted(
       {@required this.members,
-      @required this.selectedFiles,
       @required this.outgoingFiles,
       @required this.incomingFiles,
       @required this.transactions,
@@ -3478,7 +3174,6 @@ class _$_HasStarted implements _HasStarted {
       @required this.isAcceptingRequest,
       @required this.isClosing})
       : assert(members != null),
-        assert(selectedFiles != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
         assert(transactions != null),
@@ -3489,8 +3184,6 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   final Map<User, bool> members;
-  @override
-  final List<File> selectedFiles;
   @override
   final Map<FileInfo, double> outgoingFiles;
   @override
@@ -3508,7 +3201,7 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasStarted(members: $members, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
+    return 'CurrentCircleState.hasStarted(members: $members, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
   }
 
   @override
@@ -3518,9 +3211,6 @@ class _$_HasStarted implements _HasStarted {
             (identical(other.members, members) ||
                 const DeepCollectionEquality()
                     .equals(other.members, members)) &&
-            (identical(other.selectedFiles, selectedFiles) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedFiles, selectedFiles)) &&
             (identical(other.outgoingFiles, outgoingFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.outgoingFiles, outgoingFiles)) &&
@@ -3548,7 +3238,6 @@ class _$_HasStarted implements _HasStarted {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(members) ^
-      const DeepCollectionEquality().hash(selectedFiles) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
       const DeepCollectionEquality().hash(transactions) ^
@@ -3569,7 +3258,6 @@ class _$_HasStarted implements _HasStarted {
     @required
         Result hasStarted(
             Map<User, bool> members,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3580,7 +3268,6 @@ class _$_HasStarted implements _HasStarted {
     @required
         Result hasJoined(
             User host,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3594,16 +3281,8 @@ class _$_HasStarted implements _HasStarted {
     assert(hasStarted != null);
     assert(hasJoined != null);
     assert(hasFailed != null);
-    return hasStarted(
-        members,
-        selectedFiles,
-        outgoingFiles,
-        incomingFiles,
-        transactions,
-        showMembersPage,
-        showFilesPage,
-        isAcceptingRequest,
-        isClosing);
+    return hasStarted(members, outgoingFiles, incomingFiles, transactions,
+        showMembersPage, showFilesPage, isAcceptingRequest, isClosing);
   }
 
   @override
@@ -3613,7 +3292,6 @@ class _$_HasStarted implements _HasStarted {
     Result isLoading(String loadingText),
     Result hasStarted(
         Map<User, bool> members,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3623,7 +3301,6 @@ class _$_HasStarted implements _HasStarted {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3635,16 +3312,8 @@ class _$_HasStarted implements _HasStarted {
   }) {
     assert(orElse != null);
     if (hasStarted != null) {
-      return hasStarted(
-          members,
-          selectedFiles,
-          outgoingFiles,
-          incomingFiles,
-          transactions,
-          showMembersPage,
-          showFilesPage,
-          isAcceptingRequest,
-          isClosing);
+      return hasStarted(members, outgoingFiles, incomingFiles, transactions,
+          showMembersPage, showFilesPage, isAcceptingRequest, isClosing);
     }
     return orElse();
   }
@@ -3687,7 +3356,6 @@ class _$_HasStarted implements _HasStarted {
 abstract class _HasStarted implements CurrentCircleState {
   const factory _HasStarted(
       {@required Map<User, bool> members,
-      @required List<File> selectedFiles,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
@@ -3697,7 +3365,6 @@ abstract class _HasStarted implements CurrentCircleState {
       @required bool isClosing}) = _$_HasStarted;
 
   Map<User, bool> get members;
-  List<File> get selectedFiles;
   Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
   List<FileTransaction> get transactions;
@@ -3714,7 +3381,6 @@ abstract class _$HasJoinedCopyWith<$Res> {
       __$HasJoinedCopyWithImpl<$Res>;
   $Res call(
       {User host,
-      List<File> selectedFiles,
       Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
       List<FileTransaction> transactions,
@@ -3737,7 +3403,6 @@ class __$HasJoinedCopyWithImpl<$Res>
   @override
   $Res call({
     Object host = freezed,
-    Object selectedFiles = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
     Object transactions = freezed,
@@ -3747,9 +3412,6 @@ class __$HasJoinedCopyWithImpl<$Res>
   }) {
     return _then(_HasJoined(
       host: host == freezed ? _value.host : host as User,
-      selectedFiles: selectedFiles == freezed
-          ? _value.selectedFiles
-          : selectedFiles as List<File>,
       outgoingFiles: outgoingFiles == freezed
           ? _value.outgoingFiles
           : outgoingFiles as Map<FileInfo, double>,
@@ -3783,7 +3445,6 @@ class __$HasJoinedCopyWithImpl<$Res>
 class _$_HasJoined implements _HasJoined {
   const _$_HasJoined(
       {@required this.host,
-      @required this.selectedFiles,
       @required this.outgoingFiles,
       @required this.incomingFiles,
       @required this.transactions,
@@ -3791,7 +3452,6 @@ class _$_HasJoined implements _HasJoined {
       @required this.showFilesPage,
       @required this.isLeaving})
       : assert(host != null),
-        assert(selectedFiles != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
         assert(transactions != null),
@@ -3801,8 +3461,6 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   final User host;
-  @override
-  final List<File> selectedFiles;
   @override
   final Map<FileInfo, double> outgoingFiles;
   @override
@@ -3818,7 +3476,7 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasJoined(host: $host, selectedFiles: $selectedFiles, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isLeaving: $isLeaving)';
+    return 'CurrentCircleState.hasJoined(host: $host, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, isLeaving: $isLeaving)';
   }
 
   @override
@@ -3827,9 +3485,6 @@ class _$_HasJoined implements _HasJoined {
         (other is _HasJoined &&
             (identical(other.host, host) ||
                 const DeepCollectionEquality().equals(other.host, host)) &&
-            (identical(other.selectedFiles, selectedFiles) ||
-                const DeepCollectionEquality()
-                    .equals(other.selectedFiles, selectedFiles)) &&
             (identical(other.outgoingFiles, outgoingFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.outgoingFiles, outgoingFiles)) &&
@@ -3854,7 +3509,6 @@ class _$_HasJoined implements _HasJoined {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(host) ^
-      const DeepCollectionEquality().hash(selectedFiles) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
       const DeepCollectionEquality().hash(transactions) ^
@@ -3874,7 +3528,6 @@ class _$_HasJoined implements _HasJoined {
     @required
         Result hasStarted(
             Map<User, bool> members,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3885,7 +3538,6 @@ class _$_HasJoined implements _HasJoined {
     @required
         Result hasJoined(
             User host,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -3899,8 +3551,8 @@ class _$_HasJoined implements _HasJoined {
     assert(hasStarted != null);
     assert(hasJoined != null);
     assert(hasFailed != null);
-    return hasJoined(host, selectedFiles, outgoingFiles, incomingFiles,
-        transactions, showMembersPage, showFilesPage, isLeaving);
+    return hasJoined(host, outgoingFiles, incomingFiles, transactions,
+        showMembersPage, showFilesPage, isLeaving);
   }
 
   @override
@@ -3910,7 +3562,6 @@ class _$_HasJoined implements _HasJoined {
     Result isLoading(String loadingText),
     Result hasStarted(
         Map<User, bool> members,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3920,7 +3571,6 @@ class _$_HasJoined implements _HasJoined {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -3932,8 +3582,8 @@ class _$_HasJoined implements _HasJoined {
   }) {
     assert(orElse != null);
     if (hasJoined != null) {
-      return hasJoined(host, selectedFiles, outgoingFiles, incomingFiles,
-          transactions, showMembersPage, showFilesPage, isLeaving);
+      return hasJoined(host, outgoingFiles, incomingFiles, transactions,
+          showMembersPage, showFilesPage, isLeaving);
     }
     return orElse();
   }
@@ -3976,7 +3626,6 @@ class _$_HasJoined implements _HasJoined {
 abstract class _HasJoined implements CurrentCircleState {
   const factory _HasJoined(
       {@required User host,
-      @required List<File> selectedFiles,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
@@ -3985,7 +3634,6 @@ abstract class _HasJoined implements CurrentCircleState {
       @required bool isLeaving}) = _$_HasJoined;
 
   User get host;
-  List<File> get selectedFiles;
   Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
   List<FileTransaction> get transactions;
@@ -4069,7 +3717,6 @@ class _$_HasFailed implements _HasFailed {
     @required
         Result hasStarted(
             Map<User, bool> members,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -4080,7 +3727,6 @@ class _$_HasFailed implements _HasFailed {
     @required
         Result hasJoined(
             User host,
-            List<File> selectedFiles,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
@@ -4104,7 +3750,6 @@ class _$_HasFailed implements _HasFailed {
     Result isLoading(String loadingText),
     Result hasStarted(
         Map<User, bool> members,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
@@ -4114,7 +3759,6 @@ class _$_HasFailed implements _HasFailed {
         bool isClosing),
     Result hasJoined(
         User host,
-        List<File> selectedFiles,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
