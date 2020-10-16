@@ -32,7 +32,7 @@ class MediaTabView extends StatelessWidget {
                 ),
             hasLoadedMedia: (state) => Scaffold(
                   appBar: state.maybeMap(
-                    hasLoadedMedia: (state) => state.selectedMedia == 0 ? AppBar(
+                    hasLoadedMedia: (state) => !state.media.containsValue(true) ? AppBar(
                       elevation: 8.0,
                       toolbarHeight: 40.0,
                       backgroundColor: Theme.of(context).cardColor,
@@ -50,7 +50,7 @@ class MediaTabView extends StatelessWidget {
                       preferredSize:
                       Size(MediaQuery.of(context).size.width, 40.0),
                       child: SelectionBar(
-                        count: state.selectedMedia,
+                        count: state.media.values.where((selected) => selected).length,
                         onCancel: () => context.bloc<MediaTabViewBloc>().add(
                           const MediaTabViewEvent.deselectAll(),
                         ),

@@ -31,11 +31,6 @@ class AppIconWithName extends StatelessWidget {
                   context.bloc<AppsTabViewBloc>().add(
                         AppsTabViewEvent.toggleAppSelection(appInfo: appInfo),
                       );
-                  context.bloc<CurrentCircleBloc>().add(
-                        CurrentCircleEvent.addFile(
-                          file: File(''),
-                        ),
-                      );
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),

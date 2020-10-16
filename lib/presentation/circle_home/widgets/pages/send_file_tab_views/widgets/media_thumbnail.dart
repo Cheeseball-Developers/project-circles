@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
-import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/media_preview.dart';
 
 class MediaThumbnail extends StatelessWidget {
@@ -16,32 +14,30 @@ class MediaThumbnail extends StatelessWidget {
         builder: (context, state) => state.maybeMap(
             hasLoadedMedia: (state) => GestureDetector(
                 onTap: () async {
-                  context.bloc<CurrentCircleBloc>().add(
-                      CurrentCircleEvent.addFile(
-                          file: await state.media[index].getOrCrash().file));
-                  context
-                      .bloc<MediaTabViewBloc>()
-                      .add(MediaTabViewEvent.toggleSelection(index));
+                  context.bloc<MediaTabViewBloc>().add(
+                        MediaTabViewEvent.toggleSelection(
+                          fileInfo: state.media.keys.elementAt(index),
+                        ),
+                      );
                 },
                 onLongPress: () => showDialog(
                       context: context,
                       child: MediaPreview(
-                        mediaObject: state.media[index],
+                        mediaFileInfo: state.media.keys.elementAt(index),
                       ),
                     ),
                 child: Padding(
                   padding:
-                      EdgeInsets.all(state.media[index].selected ? 4.0 : 1.0),
+                      EdgeInsets.all(state.media.values.elementAt(index) ? 4.0 : 1.0),
                   child: Stack(
                     children: [
                       Positioned.fill(
                         child: Image.memory(
-                          state.media[index].thumbnail,
+                          state.media.keys.elementAt(index).thumbnail,
                           fit: BoxFit.cover,
                         ),
                       ),
-                      if (state.media[index].getOrCrash().type ==
-                          AssetType.video)
+                      if (true) // TODO: Find out if the media is video or image
                         const Positioned(
                             bottom: 0.0,
                             right: 0.0,
@@ -51,7 +47,7 @@ class MediaThumbnail extends StatelessWidget {
                             ))
                       else
                         Container(),
-                      if (state.media[index].selected)
+                      if (state.media.values.elementAt(index))
                         Material(
                           color: Theme.of(context).buttonColor.withOpacity(0.5),
                           child: Center(

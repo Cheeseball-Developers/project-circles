@@ -13,10 +13,16 @@ class _$FileInfoTearOff {
   const _$FileInfoTearOff();
 
 // ignore: unused_element
-  _FileInfo call({@required String fileName, @required double bytesSize}) {
+  _FileInfo call(
+      {@required int hash,
+      @required String path,
+      @required int bytesSize,
+      @required Uint8List thumbnail}) {
     return _FileInfo(
-      fileName: fileName,
+      hash: hash,
+      path: path,
       bytesSize: bytesSize,
+      thumbnail: thumbnail,
     );
   }
 }
@@ -25,8 +31,10 @@ class _$FileInfoTearOff {
 const $FileInfo = _$FileInfoTearOff();
 
 mixin _$FileInfo {
-  String get fileName;
-  double get bytesSize;
+  int get hash;
+  String get path;
+  int get bytesSize;
+  Uint8List get thumbnail;
 
   $FileInfoCopyWith<FileInfo> get copyWith;
 }
@@ -34,7 +42,7 @@ mixin _$FileInfo {
 abstract class $FileInfoCopyWith<$Res> {
   factory $FileInfoCopyWith(FileInfo value, $Res Function(FileInfo) then) =
       _$FileInfoCopyWithImpl<$Res>;
-  $Res call({String fileName, double bytesSize});
+  $Res call({int hash, String path, int bytesSize, Uint8List thumbnail});
 }
 
 class _$FileInfoCopyWithImpl<$Res> implements $FileInfoCopyWith<$Res> {
@@ -46,12 +54,17 @@ class _$FileInfoCopyWithImpl<$Res> implements $FileInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object fileName = freezed,
+    Object hash = freezed,
+    Object path = freezed,
     Object bytesSize = freezed,
+    Object thumbnail = freezed,
   }) {
     return _then(_value.copyWith(
-      fileName: fileName == freezed ? _value.fileName : fileName as String,
-      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as double,
+      hash: hash == freezed ? _value.hash : hash as int,
+      path: path == freezed ? _value.path : path as String,
+      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
+      thumbnail:
+          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
     ));
   }
 }
@@ -60,7 +73,7 @@ abstract class _$FileInfoCopyWith<$Res> implements $FileInfoCopyWith<$Res> {
   factory _$FileInfoCopyWith(_FileInfo value, $Res Function(_FileInfo) then) =
       __$FileInfoCopyWithImpl<$Res>;
   @override
-  $Res call({String fileName, double bytesSize});
+  $Res call({int hash, String path, int bytesSize, Uint8List thumbnail});
 }
 
 class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
@@ -73,49 +86,70 @@ class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object fileName = freezed,
+    Object hash = freezed,
+    Object path = freezed,
     Object bytesSize = freezed,
+    Object thumbnail = freezed,
   }) {
     return _then(_FileInfo(
-      fileName: fileName == freezed ? _value.fileName : fileName as String,
-      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as double,
+      hash: hash == freezed ? _value.hash : hash as int,
+      path: path == freezed ? _value.path : path as String,
+      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
+      thumbnail:
+          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
     ));
   }
 }
 
 class _$_FileInfo extends _FileInfo {
-  const _$_FileInfo({@required this.fileName, @required this.bytesSize})
-      : assert(fileName != null),
+  const _$_FileInfo(
+      {@required this.hash,
+      @required this.path,
+      @required this.bytesSize,
+      @required this.thumbnail})
+      : assert(hash != null),
+        assert(path != null),
         assert(bytesSize != null),
+        assert(thumbnail != null),
         super._();
 
   @override
-  final String fileName;
+  final int hash;
   @override
-  final double bytesSize;
+  final String path;
+  @override
+  final int bytesSize;
+  @override
+  final Uint8List thumbnail;
 
   @override
   String toString() {
-    return 'FileInfo(fileName: $fileName, bytesSize: $bytesSize)';
+    return 'FileInfo(hash: $hash, path: $path, bytesSize: $bytesSize, thumbnail: $thumbnail)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FileInfo &&
-            (identical(other.fileName, fileName) ||
-                const DeepCollectionEquality()
-                    .equals(other.fileName, fileName)) &&
+            (identical(other.hash, hash) ||
+                const DeepCollectionEquality().equals(other.hash, hash)) &&
+            (identical(other.path, path) ||
+                const DeepCollectionEquality().equals(other.path, path)) &&
             (identical(other.bytesSize, bytesSize) ||
                 const DeepCollectionEquality()
-                    .equals(other.bytesSize, bytesSize)));
+                    .equals(other.bytesSize, bytesSize)) &&
+            (identical(other.thumbnail, thumbnail) ||
+                const DeepCollectionEquality()
+                    .equals(other.thumbnail, thumbnail)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(fileName) ^
-      const DeepCollectionEquality().hash(bytesSize);
+      const DeepCollectionEquality().hash(hash) ^
+      const DeepCollectionEquality().hash(path) ^
+      const DeepCollectionEquality().hash(bytesSize) ^
+      const DeepCollectionEquality().hash(thumbnail);
 
   @override
   _$FileInfoCopyWith<_FileInfo> get copyWith =>
@@ -125,12 +159,19 @@ class _$_FileInfo extends _FileInfo {
 abstract class _FileInfo extends FileInfo {
   const _FileInfo._() : super._();
   const factory _FileInfo(
-      {@required String fileName, @required double bytesSize}) = _$_FileInfo;
+      {@required int hash,
+      @required String path,
+      @required int bytesSize,
+      @required Uint8List thumbnail}) = _$_FileInfo;
 
   @override
-  String get fileName;
+  int get hash;
   @override
-  double get bytesSize;
+  String get path;
+  @override
+  int get bytesSize;
+  @override
+  Uint8List get thumbnail;
   @override
   _$FileInfoCopyWith<_FileInfo> get copyWith;
 }
