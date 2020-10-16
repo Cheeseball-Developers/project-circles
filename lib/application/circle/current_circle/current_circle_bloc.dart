@@ -28,8 +28,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
   final Map<FileInfo, double> _incomingFiles = <FileInfo, double>{};
-  int _payloadId;
+  int _incomingFilePayloadId;
   int _i = 0;
+  bool _isSending = false;
 
   @override
   Stream<CurrentCircleState> mapEventToState(
@@ -122,7 +123,11 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             });
             _progressOfFileStreamSubscription =
                 nearbyConnections.progressOfFileStream.listen((event) {
-              add(CurrentCircleEvent.fileReceived(payloadInfo: event));
+              if (_isSending) {
+                //add(CurrentCircleEvent.filesSent(payloadInfo: event));
+              } else {
+                add(CurrentCircleEvent.fileReceived(payloadInfo: event));
+              }
             }, onError: (e) {
               print(e);
             });
@@ -159,6 +164,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
           sendFiles: (e) async* {
+            _isSending = true;
             // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
@@ -184,17 +190,17 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
           },
           fileReceived: (e) async* {
-            if (_payloadId == null) {
+            if (_incomingFilePayloadId == null) {
+              _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
+              _incomingFilePayloadId = e.payloadInfo.payloadId;
+              yield state.copyWith(incomingFiles: _incomingFiles);
+            } else if (_incomingFilePayloadId == e.payloadInfo.payloadId) {
               state.incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
-              _payloadId = e.payloadInfo.payloadId;
-            } 
-            else if (_payloadId == e.payloadInfo.payloadId) {
+            } else if (_incomingFilePayloadId != e.payloadInfo.payloadId) {
               _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
-            } 
-            else if( _payloadId!=e.payloadInfo.payloadId) {
-              _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
-              _payloadId = e.payloadInfo.payloadId;
+              _incomingFilePayloadId = e.payloadInfo.payloadId;
               _i++;
+              yield state.copyWith(incomingFiles: _incomingFiles);
             }
           },
           memberLeft: (e) async* {
@@ -208,6 +214,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.initial();
             _incomingRequestsStreamSubscription?.cancel();
             _lostDiscovererStreamSubscription?.cancel();
+            _progressOfFileStreamSubscription?.cancel();
           },
           orElse: () async* {},
         );
@@ -222,6 +229,13 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 nearbyConnections.sendingFileInfoStream.listen((event) {
               add(CurrentCircleEvent.fileInfoReceived(fileInfo: event));
             }, onError: (e) {});
+
+            _progressOfFileStreamSubscription =
+                nearbyConnections.progressOfFileStream.listen((event) {
+              add(CurrentCircleEvent.fileReceived(payloadInfo: event));
+            }, onError: (e) {
+              print(e);
+            }); // Ye wala error teri side se hi h, look i
           },
           showMembersPage: (_) async* {
             yield state.copyWith(
@@ -249,7 +263,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(showFilesPage: true);
           },
           fileInfoReceived: (e) async* {
-            _incomingFiles[e.fileInfo] = 0.0;
+            _incomingFiles?.putIfAbsent(e.fileInfo, () => 0.0);
             debugPrint(
                 "Yay the files to be recieved are ${e.fileInfo.toString()}");
             yield state.copyWith(
@@ -258,6 +272,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
             print(state.incomingFiles);
           },
+          fileReceived: (e) async* {},
           leaveCircle: (e) async* {
             _incomingFileInfoStreamSubscription?.cancel();
             nearbyConnections

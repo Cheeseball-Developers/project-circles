@@ -10,8 +10,8 @@ import 'package:nearby_connections/nearby_connections.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
-import 'package:projectcircles/domain/files/apps_load_failure.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
+import 'package:projectcircles/domain/files/payload_info.dart';
 
 @LazySingleton()
 class NearbyConnections {
@@ -57,9 +57,9 @@ class NearbyConnections {
 
   Either<ConnectionFailure, Unit> connectionResult;
 
-  final StreamController<double> progressOfFile =
-      StreamController<double>.broadcast();
-  Stream<double> progressOfFileStream;
+  final StreamController<PayloadInfo> progressOfFile =
+      StreamController<PayloadInfo>.broadcast();
+  Stream<PayloadInfo> progressOfFileStream;
 
   bool _isFile = false;
 
@@ -117,6 +117,7 @@ class NearbyConnections {
     incomingRequestStream = onRequestSent.stream;
     onDiscovererLostStream = onDiscovererLost.stream;
     sendingFileInfoStream = sendingFileInfo.stream;
+    progressOfFileStream = progressOfFile.stream;
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
@@ -172,6 +173,7 @@ class NearbyConnections {
     lostDeviceStream = onEndLost.stream;
     onConnectionResultDiscStream = onConnectionResultDisc.stream;
     sendingFileInfoStream = sendingFileInfo.stream;
+    progressOfFileStream = progressOfFile.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -351,8 +353,11 @@ class NearbyConnections {
         final int fileSize = int.parse(str.split('::').last);
 
         //streaming the fileInfo
-        sendingFileInfo.sink
-            .add(FileInfo(hash: null, path: keyFileName, bytesSize: fileSize, thumbnail: null));
+        sendingFileInfo.sink.add(FileInfo(
+            hash: null,
+            path: keyFileName,
+            bytesSize: fileSize,
+            thumbnail: null));
       }
       // used for file payload as file payload is mapped as
       // payloadId:filename
@@ -381,6 +386,10 @@ class NearbyConnections {
   Either<ConnectionFailure, Unit> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
+      if (_isFile) {
+        progressOfFile.sink.add(PayloadInfo(payloadId: payloadTransferUpdate.id, 
+        progress: (payloadTransferUpdate.bytesTransferred/payloadTransferUpdate.totalBytes)*100));
+      }
       debugPrint(' yaya ${payloadTransferUpdate.totalBytes}');
       debugPrint(
           "Receiving files/data  $endId ${payloadTransferUpdate.bytesTransferred}");
@@ -444,10 +453,8 @@ class NearbyConnections {
     debugPrint("sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
-        _nearby.sendBytesPayload(
-            user.uid.getOrCrash(),
-            Uint8List.fromList(
-                "${file.path}::${file.bytesSize}".codeUnits));
+        _nearby.sendBytesPayload(user.uid.getOrCrash(),
+            Uint8List.fromList("${file.path}::${file.bytesSize}".codeUnits));
       });
     });
   }
