@@ -15,9 +15,12 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
   const factory CurrentCircleEvent.showMembersPage() = ShowMembersPage;
   const factory CurrentCircleEvent.pageOpened() = PageOpened;
   const factory CurrentCircleEvent.sendFiles() = SendFiles;
-  const factory CurrentCircleEvent.filesSent() = FilesSent;
-  const factory CurrentCircleEvent.filesReceived(
-      {@required FileInfo fileInfo}) = FileReceived;
+  const factory CurrentCircleEvent.filesSent(
+      {@required PayloadInfo payloadInfo}) = FilesSent;
+  const factory CurrentCircleEvent.fileInfoReceived({FileInfo fileInfo}) =
+      FileInfoReceived;
+  const factory CurrentCircleEvent.fileReceived(
+      {@required PayloadInfo payloadInfo}) = FileReceived;
   const factory CurrentCircleEvent.memberLeft({@required String id}) =
       MemberLeft;
   const factory CurrentCircleEvent.leaveCircle() = LeaveCircle;
