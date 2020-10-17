@@ -84,7 +84,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           joinCircle: (e) async* {
             yield const CurrentCircleState.isLoading(
                 loadingText: 'Joining Circle...');
-            //TODO: Add logic to join circle here
             _lostHostStreamSubscription =
                 nearbyConnections.onHostLostStream.listen((event) {
               debugPrint("Host $event lost");
@@ -235,7 +234,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               add(CurrentCircleEvent.fileReceived(payloadInfo: event));
             }, onError: (e) {
               print(e);
-            }); // Ye wala error teri side se hi h, look i
+            });
           },
           showMembersPage: (_) async* {
             yield state.copyWith(

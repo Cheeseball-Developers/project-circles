@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/media_preview.dart';
 
@@ -16,19 +17,19 @@ class MediaThumbnail extends StatelessWidget {
                 onTap: () async {
                   context.bloc<MediaTabViewBloc>().add(
                         MediaTabViewEvent.toggleSelection(
-                          fileInfo: state.media.keys.elementAt(index),
+                          mediaInfo: state.media.keys.elementAt(index),
                         ),
                       );
                 },
                 onLongPress: () => showDialog(
                       context: context,
                       child: MediaPreview(
-                        mediaFileInfo: state.media.keys.elementAt(index),
+                        mediaInfo: state.media.keys.elementAt(index),
                       ),
                     ),
                 child: Padding(
-                  padding:
-                      EdgeInsets.all(state.media.values.elementAt(index) ? 4.0 : 1.0),
+                  padding: EdgeInsets.all(
+                      state.media.values.elementAt(index) ? 4.0 : 1.0),
                   child: Stack(
                     children: [
                       Positioned.fill(
@@ -37,14 +38,16 @@ class MediaThumbnail extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      if (true) // TODO: Find out if the media is video or image
+                      if (state.media.keys.elementAt(index).entity.type ==
+                          AssetType.video)
                         const Positioned(
-                            bottom: 0.0,
-                            right: 0.0,
-                            child: Icon(
-                              Icons.videocam,
-                              color: Colors.white,
-                            ))
+                          bottom: 0.0,
+                          right: 0.0,
+                          child: Icon(
+                            Icons.videocam,
+                            color: Colors.white,
+                          ),
+                        )
                       else
                         Container(),
                       if (state.media.values.elementAt(index))

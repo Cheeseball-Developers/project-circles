@@ -7,6 +7,7 @@ import 'package:meta/meta.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
+import 'package:projectcircles/domain/files/media_info.dart';
 import 'package:projectcircles/infrastructure/circle/media_repository.dart';
 
 part 'media_tab_view_event.dart';
@@ -38,7 +39,8 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
         yield* state.maybeMap(hasLoadedAlbums: (state) async* {
           if (await MediaRepository.getPermission()) {
             yield const MediaTabViewState.isLoading();
-            final Map<FileInfo, bool> albumMedia = await _mediaRepository.getAlbumMedia(e.album, 0);
+            final Map<MediaInfo, bool> albumMedia =
+                await _mediaRepository.getAlbumMedia(e.album, 0);
             yield MediaTabViewState.hasLoadedMedia(
               media: albumMedia,
               album: e.album,
@@ -47,7 +49,7 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
             );
           }
         }, hasLoadedMedia: (state) async* {
-          final Map<FileInfo, bool> albumMedia = Map.from(state.media);
+          final Map<MediaInfo, bool> albumMedia = Map.from(state.media);
           final int currentPage = state.currentPage;
           yield state.copyWith(media: state.media, previousPage: currentPage);
           albumMedia.addAll(
@@ -55,7 +57,9 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
           yield state.copyWith(
               media: albumMedia,
               previousPage: currentPage,
-              currentPage: currentPage + 1);
+              currentPage: state.media.length == albumMedia.length
+                  ? currentPage
+                  : currentPage + 1);
         }, orElse: () async* {
           yield const MediaTabViewState.hasFailed(
               AppsLoadFailure.unexpectedFailure());
@@ -64,11 +68,14 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
       toggleSelection: (e) async* {
         yield* state.maybeMap(
           hasLoadedMedia: (state) async* {
-            final Map<FileInfo, bool> media =
-                _mediaRepository.toggleSelection(fileInfo: e.fileInfo);
-            yield state.copyWith(
-              media: media,
-            );
+            if (_mediaRepository.toggleSelection(mediaInfo: e.mediaInfo)) {
+              final Map<MediaInfo, bool> media = state.media;
+              media.update(e.mediaInfo, (value) => !value);
+              yield state.copyWith(media: {});
+              yield state.copyWith(
+                media: media,
+              );
+            }
           },
           orElse: () async* {
             yield const MediaTabViewState.hasFailed(
@@ -79,10 +86,13 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
       deselectAll: (e) async* {
         yield* state.maybeMap(
           hasLoadedMedia: (state) async* {
-            final Map<FileInfo, bool> media = _mediaRepository.deselectAll();
-            yield state.copyWith(
-              media: media,
-            );
+            if (_mediaRepository.deselectAll()) {
+              final Map<MediaInfo, bool> media = Map.from(state.media);
+              media.updateAll((key, value) => false);
+              yield state.copyWith(
+                media: media,
+              );
+            }
           },
           orElse: () async* {
             yield const MediaTabViewState.hasFailed(
