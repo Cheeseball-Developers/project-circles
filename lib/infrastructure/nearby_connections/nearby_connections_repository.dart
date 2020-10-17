@@ -414,13 +414,12 @@ class NearbyConnections {
 
   ///Sending Files
   Future<Either<ConnectionFailure, Unit>> sendFilePayload(
-      {@required Map<File, double> files, List<User> members}) async {
+      {@required List<User> members, @required List<File> files}) async {
     int payLoadId;
-
     members.forEach((user) {
       //Sending the number of files that are being sent
 
-      files.forEach((file, progress) async {
+      files.forEach((file) async {
         /// Returns the payloadID as soon as file transfer has begun
         ///
         /// File is received in DOWNLOADS_DIRECTORY and is given a generic name
@@ -434,10 +433,10 @@ class NearbyConnections {
 
         //Sending the fileName and payloadId to the receiver
         debugPrint("Currently sending file is: ${file.path.split('/').last}");
-        _nearby.sendBytesPayload(
-            user.uid.getOrCrash(),
-            Uint8List.fromList(
-                "$payLoadId:${file.path.split('/').last}".codeUnits));
+        //_nearby.sendBytesPayload(
+           // user.uid.getOrCrash(),
+            //Uint8List.fromList(
+              //  "$payLoadId:${file.path.split('/').last}".codeUnits));
       });
     });
     if (payLoadId != null) {
