@@ -35,6 +35,7 @@ class AppsTabViewBloc extends Bloc<AppsTabViewEvent, AppsTabViewState> {
       toggleAppSelection: (e) async* {
         final Either<AppsLoadFailure, Map<AppInfo, bool>> failureOrApps =
             _appsRepository.toggleAppSelection(appInfo: e.appInfo);
+            yield state.copyWith(failureOrAppsOption: none());
         yield state.copyWith(failureOrAppsOption: some(failureOrApps));
       },
       deselectAll: (e) async* {

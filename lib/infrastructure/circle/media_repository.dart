@@ -5,10 +5,11 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
+import 'package:projectcircles/domain/files/media_info.dart';
 
 @LazySingleton()
 class MediaRepository {
-  Map<FileInfo, bool> mediaMap;
+  Map<MediaInfo, bool> mediaMap = {};
 
   static Future<bool> getPermission() async {
     final result = await PhotoManager.requestPermission();
@@ -24,56 +25,56 @@ class MediaRepository {
     return albums;
   }
 
-  Future<Map<FileInfo, bool>> getAlbumMedia(
+  Future<Map<MediaInfo, bool>> getAlbumMedia(
       AssetPathEntity album, int page) async {
-    final List<AssetEntity> media = await album.getAssetListPaged(page, 30);
-    for (final AssetEntity entity in media) {
-      final Uint8List thumbnail =
-          await entity.thumbDataWithSize(192, 192, quality: 80);
-      mediaMap.addAll(
-        {
-          FileInfo(
-              hash: entity.hashCode,
-              path: entity.title,
-              bytesSize: 1000,
-              thumbnail: thumbnail): false
-        },
-      );
+    if (page == 0) {
+      mediaMap = {};
     }
-    return mediaMap;
+    final Map<MediaInfo, bool> newMedia = {};
+    final List<AssetEntity> media = await album.getAssetListPaged(page, 30);
+    for (final assetEntity in media) {
+      final Uint8List thumbnail = await assetEntity.thumbDataWithSize(192, 192);
+      newMedia.addAll({MediaInfo(entity: assetEntity, thumbnail: thumbnail): false});
+    }
+    mediaMap.addAll(newMedia);
+    return newMedia;
   }
 
-  Map<FileInfo, bool> toggleSelection({@required FileInfo fileInfo}) {
-    mediaMap.update(fileInfo, (value) => !value);
-    return mediaMap;
+  bool toggleSelection({@required MediaInfo mediaInfo}) {
+    mediaMap.update(mediaInfo, (value) => !value);
+    return true;
   }
 
-  Map<FileInfo, bool> deselectAll() {
+  bool deselectAll() {
     mediaMap.updateAll((key, value) => false);
-    return mediaMap;
+    return true;
   }
 
-  Future<Uint8List> getThumbnail({@required FileInfo fileInfo}) {
-    return null;
-  }
-
-  List<FileInfo> getFilesInfo() {
+  Future<List<FileInfo>> getFilesInfo() async {
     final List<FileInfo> filesInfo = [];
-    mediaMap.forEach((key, value) {
-      if (value) {
-        filesInfo.add(key);
+    for (final key in mediaMap.keys) {
+      if (mediaMap[key]) {
+        final Uint8List thumbnail = await key.entity.thumbDataWithSize(64, 64, quality: 80);
+        final File file = await key.entity.originFile;
+        filesInfo.add(FileInfo(
+          hash: file.hashCode,
+          path: file.path,
+          bytesSize: file.lengthSync(),
+          thumbnail: thumbnail,
+        ));
       }
-    });
+    }
     return filesInfo;
   }
 
-  List<File> getFiles() {
+  Future<List<File>> getFiles() async {
     final List<File> files = [];
-    mediaMap.forEach((key, value) {
-      if (value) {
-        files.add(File(key.path));
+    for (final key in mediaMap.keys) {
+      if (mediaMap[key]) {
+        final File file = await key.entity.originFile;
+        files.add(file);
       }
-    });
+    }
     return files;
   }
 }

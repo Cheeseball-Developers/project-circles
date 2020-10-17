@@ -83,7 +83,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         );
       }, orElse: () async* {
         yield const SettingsState.hasFailed(SettingsFailure.unexpected());
-      }); // TODO: Throw an error on illegal states to crash app
+      });
     }, selectDefaultDirectory: (e) async* {
       yield* state.maybeMap(hasLoaded: (state) async* {
         state.copyWith(isLoading: true);
