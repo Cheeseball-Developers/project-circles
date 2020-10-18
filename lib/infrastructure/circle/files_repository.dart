@@ -7,10 +7,10 @@ import 'package:projectcircles/domain/files/file_info.dart';
 
 @LazySingleton()
 class FilesRepository {
-  final Directory root = Directory('/storage/emulated/0');
-  Directory current;
+  final String root = '/storage/emulated/0';
 
-  Map<FileSystemEntity, bool> filesMap;
+  List<FileSystemEntity> _foldersList = [];
+  Map<FileSystemEntity, bool> _filesMap = {};
 
   Future<bool> getPermission() async {
     if (await Permission.storage.isUndetermined ||
@@ -23,25 +23,43 @@ class FilesRepository {
     }
   }
 
-  List<FileSystemEntity> openDirectory(Directory dir) {
-    current = dir;
-    return dir.listSync();
+  String openDirectory(String relativePath) {
+    final Directory dir = Directory(root + relativePath);
+    final List<FileSystemEntity> entities = dir.listSync();
+    _foldersList = [];
+    _filesMap = {};
+    for (final entity in entities) {
+      if (entity.path.substring(
+              entity.parent.path.length + 1, entity.parent.path.length + 2) ==
+          '.') {
+        continue;
+      }
+      if (FileSystemEntity.isFileSync(entity.path)) {
+        _filesMap.addAll({entity: false});
+      } else {
+        _foldersList.add(entity);
+      }
+    }
+    return relativePath;
   }
 
-  Map<FileSystemEntity, bool> toggleAppSelection(
-      {@required FileSystemEntity entity}) {
-    filesMap.update(entity, (value) => !value);
-    return filesMap;
+  List<FileSystemEntity> getFolderEntities() => _foldersList;
+
+  Map<FileSystemEntity, bool> getFileEntities() => _filesMap;
+
+  bool toggleSelection({@required FileSystemEntity entity}) {
+    _filesMap.update(entity, (value) => !value);
+    return true;
   }
 
-  Map<FileSystemEntity, bool> deselectAllApps() {
-    filesMap.updateAll((key, value) => false);
-    return filesMap;
+  bool deselectAll() {
+    _filesMap.updateAll((key, value) => false);
+    return true;
   }
 
   List<FileInfo> getFilesInfo() {
     final List<FileInfo> filesInfo = [];
-    filesMap.forEach((key, value) {
+    _filesMap.forEach((key, value) {
       if (value) {
         filesInfo.add(FileInfo(
             hash: key.hashCode,
@@ -55,7 +73,7 @@ class FilesRepository {
 
   List<File> getFiles() {
     final List<File> files = [];
-    filesMap.forEach((key, value) {
+    _filesMap.forEach((key, value) {
       if (value) {
         files.add(File(key.path));
       }

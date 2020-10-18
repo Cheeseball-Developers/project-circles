@@ -13,10 +13,23 @@ class _$FilesTabViewEventTearOff {
   const _$FilesTabViewEventTearOff();
 
 // ignore: unused_element
-  LoadDirectory loadDirectory(Directory directory) {
+  LoadDirectory openDirectory({@required String relativePath}) {
     return LoadDirectory(
-      directory,
+      relativePath: relativePath,
     );
+  }
+
+// ignore: unused_element
+  ToggleSelection toggleSelection(
+      {@required FileSystemEntity fileSystemEntity}) {
+    return ToggleSelection(
+      fileSystemEntity: fileSystemEntity,
+    );
+  }
+
+// ignore: unused_element
+  DeselectAll deselectAll() {
+    return const DeselectAll();
   }
 }
 
@@ -24,35 +37,38 @@ class _$FilesTabViewEventTearOff {
 const $FilesTabViewEvent = _$FilesTabViewEventTearOff();
 
 mixin _$FilesTabViewEvent {
-  Directory get directory;
-
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result loadDirectory(Directory directory),
+    @required Result openDirectory(String relativePath),
+    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
+    @required Result deselectAll(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result loadDirectory(Directory directory),
+    Result openDirectory(String relativePath),
+    Result toggleSelection(FileSystemEntity fileSystemEntity),
+    Result deselectAll(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result loadDirectory(LoadDirectory value),
+    @required Result openDirectory(LoadDirectory value),
+    @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result loadDirectory(LoadDirectory value),
+    Result openDirectory(LoadDirectory value),
+    Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   });
-
-  $FilesTabViewEventCopyWith<FilesTabViewEvent> get copyWith;
 }
 
 abstract class $FilesTabViewEventCopyWith<$Res> {
   factory $FilesTabViewEventCopyWith(
           FilesTabViewEvent value, $Res Function(FilesTabViewEvent) then) =
       _$FilesTabViewEventCopyWithImpl<$Res>;
-  $Res call({Directory directory});
 }
 
 class _$FilesTabViewEventCopyWithImpl<$Res>
@@ -62,25 +78,13 @@ class _$FilesTabViewEventCopyWithImpl<$Res>
   final FilesTabViewEvent _value;
   // ignore: unused_field
   final $Res Function(FilesTabViewEvent) _then;
-
-  @override
-  $Res call({
-    Object directory = freezed,
-  }) {
-    return _then(_value.copyWith(
-      directory:
-          directory == freezed ? _value.directory : directory as Directory,
-    ));
-  }
 }
 
-abstract class $LoadDirectoryCopyWith<$Res>
-    implements $FilesTabViewEventCopyWith<$Res> {
+abstract class $LoadDirectoryCopyWith<$Res> {
   factory $LoadDirectoryCopyWith(
           LoadDirectory value, $Res Function(LoadDirectory) then) =
       _$LoadDirectoryCopyWithImpl<$Res>;
-  @override
-  $Res call({Directory directory});
+  $Res call({String relativePath});
 }
 
 class _$LoadDirectoryCopyWithImpl<$Res>
@@ -95,37 +99,40 @@ class _$LoadDirectoryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object directory = freezed,
+    Object relativePath = freezed,
   }) {
     return _then(LoadDirectory(
-      directory == freezed ? _value.directory : directory as Directory,
+      relativePath: relativePath == freezed
+          ? _value.relativePath
+          : relativePath as String,
     ));
   }
 }
 
 class _$LoadDirectory implements LoadDirectory {
-  const _$LoadDirectory(this.directory) : assert(directory != null);
+  const _$LoadDirectory({@required this.relativePath})
+      : assert(relativePath != null);
 
   @override
-  final Directory directory;
+  final String relativePath;
 
   @override
   String toString() {
-    return 'FilesTabViewEvent.loadDirectory(directory: $directory)';
+    return 'FilesTabViewEvent.openDirectory(relativePath: $relativePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is LoadDirectory &&
-            (identical(other.directory, directory) ||
+            (identical(other.relativePath, relativePath) ||
                 const DeepCollectionEquality()
-                    .equals(other.directory, directory)));
+                    .equals(other.relativePath, relativePath)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(directory);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(relativePath);
 
   @override
   $LoadDirectoryCopyWith<LoadDirectory> get copyWith =>
@@ -134,21 +141,27 @@ class _$LoadDirectory implements LoadDirectory {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
-    @required Result loadDirectory(Directory directory),
+    @required Result openDirectory(String relativePath),
+    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
+    @required Result deselectAll(),
   }) {
-    assert(loadDirectory != null);
-    return loadDirectory(directory);
+    assert(openDirectory != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return openDirectory(relativePath);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
-    Result loadDirectory(Directory directory),
+    Result openDirectory(String relativePath),
+    Result toggleSelection(FileSystemEntity fileSystemEntity),
+    Result deselectAll(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadDirectory != null) {
-      return loadDirectory(directory);
+    if (openDirectory != null) {
+      return openDirectory(relativePath);
     }
     return orElse();
   }
@@ -156,33 +169,256 @@ class _$LoadDirectory implements LoadDirectory {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
-    @required Result loadDirectory(LoadDirectory value),
+    @required Result openDirectory(LoadDirectory value),
+    @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
   }) {
-    assert(loadDirectory != null);
-    return loadDirectory(this);
+    assert(openDirectory != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return openDirectory(this);
   }
 
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
-    Result loadDirectory(LoadDirectory value),
+    Result openDirectory(LoadDirectory value),
+    Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (loadDirectory != null) {
-      return loadDirectory(this);
+    if (openDirectory != null) {
+      return openDirectory(this);
     }
     return orElse();
   }
 }
 
 abstract class LoadDirectory implements FilesTabViewEvent {
-  const factory LoadDirectory(Directory directory) = _$LoadDirectory;
+  const factory LoadDirectory({@required String relativePath}) =
+      _$LoadDirectory;
+
+  String get relativePath;
+  $LoadDirectoryCopyWith<LoadDirectory> get copyWith;
+}
+
+abstract class $ToggleSelectionCopyWith<$Res> {
+  factory $ToggleSelectionCopyWith(
+          ToggleSelection value, $Res Function(ToggleSelection) then) =
+      _$ToggleSelectionCopyWithImpl<$Res>;
+  $Res call({FileSystemEntity fileSystemEntity});
+}
+
+class _$ToggleSelectionCopyWithImpl<$Res>
+    extends _$FilesTabViewEventCopyWithImpl<$Res>
+    implements $ToggleSelectionCopyWith<$Res> {
+  _$ToggleSelectionCopyWithImpl(
+      ToggleSelection _value, $Res Function(ToggleSelection) _then)
+      : super(_value, (v) => _then(v as ToggleSelection));
 
   @override
-  Directory get directory;
+  ToggleSelection get _value => super._value as ToggleSelection;
+
   @override
-  $LoadDirectoryCopyWith<LoadDirectory> get copyWith;
+  $Res call({
+    Object fileSystemEntity = freezed,
+  }) {
+    return _then(ToggleSelection(
+      fileSystemEntity: fileSystemEntity == freezed
+          ? _value.fileSystemEntity
+          : fileSystemEntity as FileSystemEntity,
+    ));
+  }
+}
+
+class _$ToggleSelection implements ToggleSelection {
+  const _$ToggleSelection({@required this.fileSystemEntity})
+      : assert(fileSystemEntity != null);
+
+  @override
+  final FileSystemEntity fileSystemEntity;
+
+  @override
+  String toString() {
+    return 'FilesTabViewEvent.toggleSelection(fileSystemEntity: $fileSystemEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is ToggleSelection &&
+            (identical(other.fileSystemEntity, fileSystemEntity) ||
+                const DeepCollectionEquality()
+                    .equals(other.fileSystemEntity, fileSystemEntity)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(fileSystemEntity);
+
+  @override
+  $ToggleSelectionCopyWith<ToggleSelection> get copyWith =>
+      _$ToggleSelectionCopyWithImpl<ToggleSelection>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result openDirectory(String relativePath),
+    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
+    @required Result deselectAll(),
+  }) {
+    assert(openDirectory != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return toggleSelection(fileSystemEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result openDirectory(String relativePath),
+    Result toggleSelection(FileSystemEntity fileSystemEntity),
+    Result deselectAll(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (toggleSelection != null) {
+      return toggleSelection(fileSystemEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result openDirectory(LoadDirectory value),
+    @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
+  }) {
+    assert(openDirectory != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return toggleSelection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result openDirectory(LoadDirectory value),
+    Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (toggleSelection != null) {
+      return toggleSelection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ToggleSelection implements FilesTabViewEvent {
+  const factory ToggleSelection({@required FileSystemEntity fileSystemEntity}) =
+      _$ToggleSelection;
+
+  FileSystemEntity get fileSystemEntity;
+  $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
+}
+
+abstract class $DeselectAllCopyWith<$Res> {
+  factory $DeselectAllCopyWith(
+          DeselectAll value, $Res Function(DeselectAll) then) =
+      _$DeselectAllCopyWithImpl<$Res>;
+}
+
+class _$DeselectAllCopyWithImpl<$Res>
+    extends _$FilesTabViewEventCopyWithImpl<$Res>
+    implements $DeselectAllCopyWith<$Res> {
+  _$DeselectAllCopyWithImpl(
+      DeselectAll _value, $Res Function(DeselectAll) _then)
+      : super(_value, (v) => _then(v as DeselectAll));
+
+  @override
+  DeselectAll get _value => super._value as DeselectAll;
+}
+
+class _$DeselectAll implements DeselectAll {
+  const _$DeselectAll();
+
+  @override
+  String toString() {
+    return 'FilesTabViewEvent.deselectAll()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is DeselectAll);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result openDirectory(String relativePath),
+    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
+    @required Result deselectAll(),
+  }) {
+    assert(openDirectory != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return deselectAll();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result openDirectory(String relativePath),
+    Result toggleSelection(FileSystemEntity fileSystemEntity),
+    Result deselectAll(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAll != null) {
+      return deselectAll();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result openDirectory(LoadDirectory value),
+    @required Result toggleSelection(ToggleSelection value),
+    @required Result deselectAll(DeselectAll value),
+  }) {
+    assert(openDirectory != null);
+    assert(toggleSelection != null);
+    assert(deselectAll != null);
+    return deselectAll(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result openDirectory(LoadDirectory value),
+    Result toggleSelection(ToggleSelection value),
+    Result deselectAll(DeselectAll value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (deselectAll != null) {
+      return deselectAll(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeselectAll implements FilesTabViewEvent {
+  const factory DeselectAll() = _$DeselectAll;
 }
 
 class _$FilesTabViewStateTearOff {
@@ -194,22 +430,19 @@ class _$FilesTabViewStateTearOff {
   }
 
 // ignore: unused_element
-  _IsLoading isLoading({@required bool isHome, @required Directory directory}) {
+  _IsLoading isLoading({@required String relativePath}) {
     return _IsLoading(
-      isHome: isHome,
-      directory: directory,
+      relativePath: relativePath,
     );
   }
 
 // ignore: unused_element
   _HasLoaded hasLoaded(
-      {@required Directory directory,
-      @required bool isHome,
+      {@required String relativePath,
       @required List<FileSystemEntity> folders,
-      @required List<FileSystemEntity> files}) {
+      @required Map<FileSystemEntity, bool> files}) {
     return _HasLoaded(
-      directory: directory,
-      isHome: isHome,
+      relativePath: relativePath,
       folders: folders,
       files: files,
     );
@@ -223,17 +456,17 @@ mixin _$FilesTabViewState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(bool isHome, Directory directory),
+    @required Result isLoading(String relativePath),
     @required
-        Result hasLoaded(Directory directory, bool isHome,
-            List<FileSystemEntity> folders, List<FileSystemEntity> files),
+        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+            Map<FileSystemEntity, bool> files),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(bool isHome, Directory directory),
-    Result hasLoaded(Directory directory, bool isHome,
-        List<FileSystemEntity> folders, List<FileSystemEntity> files),
+    Result isLoading(String relativePath),
+    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        Map<FileSystemEntity, bool> files),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -300,10 +533,10 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(bool isHome, Directory directory),
+    @required Result isLoading(String relativePath),
     @required
-        Result hasLoaded(Directory directory, bool isHome,
-            List<FileSystemEntity> folders, List<FileSystemEntity> files),
+        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+            Map<FileSystemEntity, bool> files),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -315,9 +548,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(bool isHome, Directory directory),
-    Result hasLoaded(Directory directory, bool isHome,
-        List<FileSystemEntity> folders, List<FileSystemEntity> files),
+    Result isLoading(String relativePath),
+    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        Map<FileSystemEntity, bool> files),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -364,7 +597,7 @@ abstract class _$IsLoadingCopyWith<$Res> {
   factory _$IsLoadingCopyWith(
           _IsLoading value, $Res Function(_IsLoading) then) =
       __$IsLoadingCopyWithImpl<$Res>;
-  $Res call({bool isHome, Directory directory});
+  $Res call({String relativePath});
 }
 
 class __$IsLoadingCopyWithImpl<$Res>
@@ -378,48 +611,40 @@ class __$IsLoadingCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isHome = freezed,
-    Object directory = freezed,
+    Object relativePath = freezed,
   }) {
     return _then(_IsLoading(
-      isHome: isHome == freezed ? _value.isHome : isHome as bool,
-      directory:
-          directory == freezed ? _value.directory : directory as Directory,
+      relativePath: relativePath == freezed
+          ? _value.relativePath
+          : relativePath as String,
     ));
   }
 }
 
 class _$_IsLoading implements _IsLoading {
-  const _$_IsLoading({@required this.isHome, @required this.directory})
-      : assert(isHome != null),
-        assert(directory != null);
+  const _$_IsLoading({@required this.relativePath})
+      : assert(relativePath != null);
 
   @override
-  final bool isHome;
-  @override
-  final Directory directory;
+  final String relativePath;
 
   @override
   String toString() {
-    return 'FilesTabViewState.isLoading(isHome: $isHome, directory: $directory)';
+    return 'FilesTabViewState.isLoading(relativePath: $relativePath)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _IsLoading &&
-            (identical(other.isHome, isHome) ||
-                const DeepCollectionEquality().equals(other.isHome, isHome)) &&
-            (identical(other.directory, directory) ||
+            (identical(other.relativePath, relativePath) ||
                 const DeepCollectionEquality()
-                    .equals(other.directory, directory)));
+                    .equals(other.relativePath, relativePath)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(isHome) ^
-      const DeepCollectionEquality().hash(directory);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(relativePath);
 
   @override
   _$IsLoadingCopyWith<_IsLoading> get copyWith =>
@@ -429,29 +654,29 @@ class _$_IsLoading implements _IsLoading {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(bool isHome, Directory directory),
+    @required Result isLoading(String relativePath),
     @required
-        Result hasLoaded(Directory directory, bool isHome,
-            List<FileSystemEntity> folders, List<FileSystemEntity> files),
+        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+            Map<FileSystemEntity, bool> files),
   }) {
     assert(initial != null);
     assert(isLoading != null);
     assert(hasLoaded != null);
-    return isLoading(isHome, directory);
+    return isLoading(relativePath);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(bool isHome, Directory directory),
-    Result hasLoaded(Directory directory, bool isHome,
-        List<FileSystemEntity> folders, List<FileSystemEntity> files),
+    Result isLoading(String relativePath),
+    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        Map<FileSystemEntity, bool> files),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
-      return isLoading(isHome, directory);
+      return isLoading(relativePath);
     }
     return orElse();
   }
@@ -486,11 +711,9 @@ class _$_IsLoading implements _IsLoading {
 }
 
 abstract class _IsLoading implements FilesTabViewState {
-  const factory _IsLoading(
-      {@required bool isHome, @required Directory directory}) = _$_IsLoading;
+  const factory _IsLoading({@required String relativePath}) = _$_IsLoading;
 
-  bool get isHome;
-  Directory get directory;
+  String get relativePath;
   _$IsLoadingCopyWith<_IsLoading> get copyWith;
 }
 
@@ -499,10 +722,9 @@ abstract class _$HasLoadedCopyWith<$Res> {
           _HasLoaded value, $Res Function(_HasLoaded) then) =
       __$HasLoadedCopyWithImpl<$Res>;
   $Res call(
-      {Directory directory,
-      bool isHome,
+      {String relativePath,
       List<FileSystemEntity> folders,
-      List<FileSystemEntity> files});
+      Map<FileSystemEntity, bool> files});
 }
 
 class __$HasLoadedCopyWithImpl<$Res>
@@ -516,57 +738,52 @@ class __$HasLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object directory = freezed,
-    Object isHome = freezed,
+    Object relativePath = freezed,
     Object folders = freezed,
     Object files = freezed,
   }) {
     return _then(_HasLoaded(
-      directory:
-          directory == freezed ? _value.directory : directory as Directory,
-      isHome: isHome == freezed ? _value.isHome : isHome as bool,
+      relativePath: relativePath == freezed
+          ? _value.relativePath
+          : relativePath as String,
       folders: folders == freezed
           ? _value.folders
           : folders as List<FileSystemEntity>,
-      files: files == freezed ? _value.files : files as List<FileSystemEntity>,
+      files: files == freezed
+          ? _value.files
+          : files as Map<FileSystemEntity, bool>,
     ));
   }
 }
 
 class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
-      {@required this.directory,
-      @required this.isHome,
+      {@required this.relativePath,
       @required this.folders,
       @required this.files})
-      : assert(directory != null),
-        assert(isHome != null),
+      : assert(relativePath != null),
         assert(folders != null),
         assert(files != null);
 
   @override
-  final Directory directory;
-  @override
-  final bool isHome;
+  final String relativePath;
   @override
   final List<FileSystemEntity> folders;
   @override
-  final List<FileSystemEntity> files;
+  final Map<FileSystemEntity, bool> files;
 
   @override
   String toString() {
-    return 'FilesTabViewState.hasLoaded(directory: $directory, isHome: $isHome, folders: $folders, files: $files)';
+    return 'FilesTabViewState.hasLoaded(relativePath: $relativePath, folders: $folders, files: $files)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _HasLoaded &&
-            (identical(other.directory, directory) ||
+            (identical(other.relativePath, relativePath) ||
                 const DeepCollectionEquality()
-                    .equals(other.directory, directory)) &&
-            (identical(other.isHome, isHome) ||
-                const DeepCollectionEquality().equals(other.isHome, isHome)) &&
+                    .equals(other.relativePath, relativePath)) &&
             (identical(other.folders, folders) ||
                 const DeepCollectionEquality()
                     .equals(other.folders, folders)) &&
@@ -577,8 +794,7 @@ class _$_HasLoaded implements _HasLoaded {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(directory) ^
-      const DeepCollectionEquality().hash(isHome) ^
+      const DeepCollectionEquality().hash(relativePath) ^
       const DeepCollectionEquality().hash(folders) ^
       const DeepCollectionEquality().hash(files);
 
@@ -590,29 +806,29 @@ class _$_HasLoaded implements _HasLoaded {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result initial(),
-    @required Result isLoading(bool isHome, Directory directory),
+    @required Result isLoading(String relativePath),
     @required
-        Result hasLoaded(Directory directory, bool isHome,
-            List<FileSystemEntity> folders, List<FileSystemEntity> files),
+        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+            Map<FileSystemEntity, bool> files),
   }) {
     assert(initial != null);
     assert(isLoading != null);
     assert(hasLoaded != null);
-    return hasLoaded(directory, isHome, folders, files);
+    return hasLoaded(relativePath, folders, files);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
-    Result isLoading(bool isHome, Directory directory),
-    Result hasLoaded(Directory directory, bool isHome,
-        List<FileSystemEntity> folders, List<FileSystemEntity> files),
+    Result isLoading(String relativePath),
+    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        Map<FileSystemEntity, bool> files),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
-      return hasLoaded(directory, isHome, folders, files);
+      return hasLoaded(relativePath, folders, files);
     }
     return orElse();
   }
@@ -648,14 +864,12 @@ class _$_HasLoaded implements _HasLoaded {
 
 abstract class _HasLoaded implements FilesTabViewState {
   const factory _HasLoaded(
-      {@required Directory directory,
-      @required bool isHome,
+      {@required String relativePath,
       @required List<FileSystemEntity> folders,
-      @required List<FileSystemEntity> files}) = _$_HasLoaded;
+      @required Map<FileSystemEntity, bool> files}) = _$_HasLoaded;
 
-  Directory get directory;
-  bool get isHome;
+  String get relativePath;
   List<FileSystemEntity> get folders;
-  List<FileSystemEntity> get files;
+  Map<FileSystemEntity, bool> get files;
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
