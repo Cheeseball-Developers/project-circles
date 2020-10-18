@@ -62,41 +62,33 @@ class AppsRepository {
     }
   }
 
-  Future<Either<AppsLoadFailure, List<FileInfo>>> getFilesInfo() async {
-    try {
-      final List<FileInfo> filesInfo = [];
-      for (final AppInfo appInfo in apps.keys) {
-        if (apps[appInfo]) {
-          final app = await DeviceApps.getApp(appInfo.packageName);
-          final File file = File(app.apkFilePath);
-          filesInfo.add(
-            FileInfo(
-              hash: file.hashCode,
-              path: app.apkFilePath,
-              bytesSize: file.lengthSync(),
-              thumbnail: appInfo.icon,
-            ),
-          );
-        }
+  Future<List<FileInfo>> getFilesInfo() async {
+    final List<FileInfo> filesInfo = [];
+    for (final AppInfo appInfo in apps.keys) {
+      if (apps[appInfo]) {
+        final app = await DeviceApps.getApp(appInfo.packageName);
+        final File file = File(app.apkFilePath);
+        filesInfo.add(
+          FileInfo(
+            hash: file.hashCode,
+            path: app.apkFilePath,
+            bytesSize: file.lengthSync(),
+            thumbnail: appInfo.icon,
+          ),
+        );
       }
-      return right(filesInfo);
-    } catch (e) {
-      return left(const AppsLoadFailure.unexpectedFailure());
     }
+    return filesInfo;
   }
 
-  Future<Either<AppsLoadFailure, List<File>>> getFiles() async {
-    try {
-      final List<File> files = [];
-      for (final AppInfo appInfo in apps.keys) {
-        if (apps[appInfo]) {
-          final app = await DeviceApps.getApp(appInfo.packageName);
-          files.add(File(app.apkFilePath));
-        }
+  Future<List<File>> getFiles() async {
+    final List<File> files = [];
+    for (final AppInfo appInfo in apps.keys) {
+      if (apps[appInfo]) {
+        final app = await DeviceApps.getApp(appInfo.packageName);
+        files.add(File(app.apkFilePath));
       }
-      return right(files);
-    } catch (e) {
-      return left(const AppsLoadFailure.unexpectedFailure());
     }
+    return files;
   }
 }
