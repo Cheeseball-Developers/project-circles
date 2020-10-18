@@ -33,106 +33,122 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   Stream<SettingsState> mapEventToState(
     SettingsEvent event,
   ) async* {
-    yield* event.map(loadPrefs: (e) async* {
-      yield const SettingsState.isLoading();
-      final failureOrSettingsObject = await _mySharedPreferences.load();
-      yield* failureOrSettingsObject.fold(
-        (f) async* {
-          if (f == const SettingsFailure.idAndNameNotSet()) {
-            final Either<DeviceInfoFailure, Name> failureOrDeviceName =
-                await _deviceInfo.getDeviceName();
-            yield* failureOrDeviceName.fold(
-              (f) async* {
-                yield const SettingsState.hasFailed(
-                    SettingsFailure.instanceLoadFailure());
-              },
-              (name) async* {
-                await _mySharedPreferences.setName(name: name);
-                await _mySharedPreferences.setUid(uid: UniqueId());
-                add(const SettingsEvent.loadPrefs());
-              },
+    yield* event.map(
+      loadPrefs: (e) async* {
+        yield const SettingsState.isLoading();
+        final failureOrSettingsObject = await _mySharedPreferences.load();
+        yield* failureOrSettingsObject.fold(
+          (f) async* {
+            if (f == const SettingsFailure.idAndNameNotSet()) {
+              final Either<DeviceInfoFailure, Name> failureOrDeviceName =
+                  await _deviceInfo.getDeviceName();
+              yield* failureOrDeviceName.fold(
+                (f) async* {
+                  yield const SettingsState.hasFailed(
+                      SettingsFailure.instanceLoadFailure());
+                },
+                (name) async* {
+                  await _mySharedPreferences.setName(name: name);
+                  await _mySharedPreferences.setUid(uid: UniqueId());
+                  add(const SettingsEvent.loadPrefs());
+                },
+              );
+            } else {
+              yield SettingsState.hasFailed(f);
+            }
+          },
+          (settingsObject) async* {
+            getIt<NearbyConnections>().setUsername =
+                settingsObject.name.getOrCrash();
+            yield SettingsState.hasLoaded(
+              user: User(uid: settingsObject.uid, name: settingsObject.name),
+              directory: settingsObject.directory,
+              askBeforeReceiving: settingsObject.askBeforeReceiving,
+              darkMode: settingsObject.darkMode,
+              isLoading: false,
+              settingsFailureOption: none(),
             );
-          } else {
-            yield SettingsState.hasFailed(f);
-          }
-        },
-        (settingsObject) async* {
-          getIt<NearbyConnections>().setUsername =
-              settingsObject.name.getOrCrash();
-          yield SettingsState.hasLoaded(
-            user: User(uid: settingsObject.uid, name: settingsObject.name),
-            directory: settingsObject.directory,
-            askBeforeReceiving: settingsObject.askBeforeReceiving,
-            darkMode: settingsObject.darkMode,
-            isLoading: false,
-            settingsFailureOption: none(),
+          },
+        );
+      },
+      nameChanged: (e) async* {
+        yield* state.maybeMap(
+          hasLoaded: (state) async* {
+            yield state.copyWith(isLoading: true);
+            final Option<SettingsFailure> failureOption =
+                await _mySharedPreferences.setName(name: e.name);
+            yield state.copyWith(
+              user: User(
+                  uid: state.user.uid,
+                  name: failureOption.isNone() ? e.name : state.user.name),
+              isLoading: false,
+              settingsFailureOption: failureOption,
+            );
+          },
+          orElse: () async* {
+            yield const SettingsState.hasFailed(SettingsFailure.unexpected());
+          },
+        );
+      },
+      selectDefaultDirectory: (e) async* {
+        yield* state.maybeMap(hasLoaded: (state) async* {
+          state.copyWith(isLoading: true);
+          final Option<SettingsFailure> failureOption =
+              await _mySharedPreferences.setDirectory(
+            directory: e.directory,
           );
-        },
-      );
-    }, nameChanged: (e) async* {
-      yield* state.maybeMap(hasLoaded: (state) async* {
-        yield state.copyWith(isLoading: true);
-        final Option<SettingsFailure> failureOption =
-            await _mySharedPreferences.setName(name: e.name);
-        yield state.copyWith(
-          user: User(
-              uid: state.user.uid,
-              name: failureOption.isNone() ? e.name : state.user.name),
-          isLoading: false,
-          settingsFailureOption: failureOption,
+          yield state.copyWith(
+            directory: failureOption.isNone() ? e.directory : state.directory,
+            isLoading: false,
+            settingsFailureOption: failureOption,
+          );
+        }, orElse: () async* {
+          yield const SettingsState.hasFailed(SettingsFailure.unexpected());
+        });
+      },
+      toggleAskBeforeReceiving: (e) async* {
+        yield* state.maybeMap(
+          hasLoaded: (state) async* {
+            yield state.copyWith(isLoading: true);
+            final Option<SettingsFailure> failureOption =
+                await _mySharedPreferences.setBool(
+              key: 'askBeforeReceiving',
+              value: !state.askBeforeReceiving,
+            );
+            yield state.copyWith(
+              askBeforeReceiving: failureOption.isNone()
+                  ? !state.askBeforeReceiving
+                  : state.askBeforeReceiving,
+              isLoading: false,
+              settingsFailureOption: failureOption,
+            );
+          },
+          orElse: () async* {
+            yield const SettingsState.hasFailed(SettingsFailure.unexpected());
+          },
         );
-      }, orElse: () async* {
-        yield const SettingsState.hasFailed(SettingsFailure.unexpected());
-      });
-    }, selectDefaultDirectory: (e) async* {
-      yield* state.maybeMap(hasLoaded: (state) async* {
-        state.copyWith(isLoading: true);
-        final Option<SettingsFailure> failureOption =
-            await _mySharedPreferences.setDirectory(
-          directory: e.directory,
+      },
+      toggleDarkMode: (e) async* {
+        yield* state.maybeMap(
+          hasLoaded: (state) async* {
+            yield state.copyWith(isLoading: true);
+            final Option<SettingsFailure> failureOption =
+                await _mySharedPreferences.setBool(
+              key: 'darkMode',
+              value: !state.darkMode,
+            );
+            yield state.copyWith(
+              darkMode:
+                  failureOption.isNone() ? !state.darkMode : state.darkMode,
+              isLoading: false,
+              settingsFailureOption: failureOption,
+            );
+          },
+          orElse: () async* {
+            yield const SettingsState.hasFailed(SettingsFailure.unexpected());
+          },
         );
-        yield state.copyWith(
-          directory: failureOption.isNone() ? e.directory : state.directory,
-          isLoading: false,
-          settingsFailureOption: failureOption,
-        );
-      }, orElse: () async* {
-        yield const SettingsState.hasFailed(SettingsFailure.unexpected());
-      });
-    }, toggleAskBeforeReceiving: (e) async* {
-      yield* state.maybeMap(hasLoaded: (state) async* {
-        yield state.copyWith(isLoading: true);
-        final Option<SettingsFailure> failureOption =
-            await _mySharedPreferences.setBool(
-          key: 'askBeforeReceiving',
-          value: !state.askBeforeReceiving,
-        );
-        yield state.copyWith(
-          askBeforeReceiving: failureOption.isNone()
-              ? !state.askBeforeReceiving
-              : state.askBeforeReceiving,
-          isLoading: false,
-          settingsFailureOption: failureOption,
-        );
-      }, orElse: () async* {
-        yield const SettingsState.hasFailed(SettingsFailure.unexpected());
-      });
-    }, toggleDarkMode: (e) async* {
-      yield* state.maybeMap(hasLoaded: (state) async* {
-        yield state.copyWith(isLoading: true);
-        final Option<SettingsFailure> failureOption =
-            await _mySharedPreferences.setBool(
-          key: 'darkMode',
-          value: !state.darkMode,
-        );
-        yield state.copyWith(
-          darkMode: failureOption.isNone() ? !state.darkMode : state.darkMode,
-          isLoading: false,
-          settingsFailureOption: failureOption,
-        );
-      }, orElse: () async* {
-        yield const SettingsState.hasFailed(SettingsFailure.unexpected());
-      });
-    });
+      },
+    );
   }
 }

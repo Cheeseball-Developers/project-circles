@@ -24,7 +24,7 @@ class SendFile extends StatelessWidget {
 
   final filesTab = BlocProvider(
     create: (context) => getIt<FilesTabViewBloc>()
-      ..add(FilesTabViewEvent.loadDirectory(Directory('/storage/emulated/0'))),
+      ..add(const FilesTabViewEvent.openDirectory(relativePath: '')),
     child: FilesTabView(),
   );
 
