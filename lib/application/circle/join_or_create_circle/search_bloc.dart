@@ -36,6 +36,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
         await nearbyConnections.permitLocation();
         await nearbyConnections.enableLocation();
+        await nearbyConnections.askStroragePermission();
 
         errorOrDiscovering = await nearbyConnections.startDiscovering();
         yield state.copyWith(

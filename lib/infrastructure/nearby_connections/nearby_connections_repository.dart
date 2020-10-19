@@ -111,6 +111,12 @@ class NearbyConnections {
     return;
   }
 
+  Future<void> askStroragePermission() async {
+    if (!await _nearby.checkExternalStoragePermission()) {
+      _nearby.askExternalStoragePermission();
+    }
+  }
+
   /// Network and Connection
   ///host starts advertising
   Future<Either<ConnectionFailure, Unit>> startAdvertising() async {
@@ -349,8 +355,8 @@ class NearbyConnections {
 
       //receiving the fileInfo
       if (str.contains('-')) {
-        final String keyFileName = str.split('::').first;
-        final int fileSize = int.parse(str.split('::').last);
+        final String keyFileName = str.split('-').first;
+        final int fileSize = int.parse(str.split('-').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
@@ -364,9 +370,11 @@ class NearbyConnections {
       else if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':')[1];
+        print('fileName: ${fileName}');
         if (map.containsKey(payloadId)) {
           if (await _tempFile.exists()) {
             _tempFile.rename("${_tempFile.parent.path}/$fileName");
+            debugPrint('parent dir:${_tempFile.parent}');
           } else {
             debugPrint("File doesn't exist");
           }
@@ -387,12 +395,19 @@ class NearbyConnections {
       String endId, PayloadTransferUpdate payloadTransferUpdate) {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       if (_isFile) {
-        progressOfFile.sink.add(PayloadInfo(payloadId: payloadTransferUpdate.id, 
-        progress: (payloadTransferUpdate.bytesTransferred/payloadTransferUpdate.totalBytes)*100));
+        debugPrint(
+            'check if the payloadId is same: ${payloadTransferUpdate.id}');
+        debugPrint(
+            'perecntage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
+        progressOfFile.sink.add(PayloadInfo(
+            payloadId: payloadTransferUpdate.id,
+            progress: (payloadTransferUpdate.bytesTransferred /
+                    payloadTransferUpdate.totalBytes) *
+                100));
       }
-      debugPrint(' yaya ${payloadTransferUpdate.totalBytes}');
+      debugPrint('total bytes: ${payloadTransferUpdate.totalBytes}');
       debugPrint(
-          "Receiving files/data  $endId ${payloadTransferUpdate.bytesTransferred}");
+          "Receiving/Sending files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       debugPrint(
@@ -420,6 +435,8 @@ class NearbyConnections {
       //Sending the number of files that are being sent
 
       files.forEach((file) async {
+        debugPrint('filePath: ${file.path}');
+
         /// Returns the payloadID as soon as file transfer has begun
         ///
         /// File is received in DOWNLOADS_DIRECTORY and is given a generic name
@@ -433,10 +450,10 @@ class NearbyConnections {
 
         //Sending the fileName and payloadId to the receiver
         debugPrint("Currently sending file is: ${file.path.split('/').last}");
-        //_nearby.sendBytesPayload(
-           // user.uid.getOrCrash(),
-            //Uint8List.fromList(
-              //  "$payLoadId:${file.path.split('/').last}".codeUnits));
+        _nearby.sendBytesPayload(
+            user.uid.getOrCrash(),
+            Uint8List.fromList(
+                "$payLoadId:${file.path.split('/').last}".codeUnits));
       });
     });
     if (payLoadId != null) {
@@ -453,12 +470,11 @@ class NearbyConnections {
     users.forEach((user) {
       outgoingFiles.forEach((file) {
         _nearby.sendBytesPayload(user.uid.getOrCrash(),
-            Uint8List.fromList("${file.path}::${file.bytesSize}".codeUnits));
+            Uint8List.fromList("${file.path}-${file.bytesSize}".codeUnits));
       });
     });
   }
 
-// one sec ab bta
   Future<void> cancelPayload(int payloadId) async {
     await _nearby.cancelPayload(payloadId);
   }
