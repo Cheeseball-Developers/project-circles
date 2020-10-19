@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/files_tab_view/files_tab_view_bloc.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/explorer_nav_bar.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/files_tab_view/widgets/explorer_nav_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/loading_page.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_back_button.dart';
 

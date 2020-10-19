@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:photo_manager/photo_manager.dart';
 
 part 'file_info.freezed.dart';
 

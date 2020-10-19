@@ -6,12 +6,12 @@ part 'file_transaction.freezed.dart';
 
 @freezed
 abstract class FileTransaction with _$FileTransaction {
-  const FileTransaction._();
-
   const factory FileTransaction({
     @required String fileName,
     @required DateTime dateTime,
     @required User sender,
     @required List<User> recievers,
   }) = _FileTransaction;
+
+  const FileTransaction._();
 }

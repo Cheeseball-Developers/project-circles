@@ -9,8 +9,6 @@ class ConfirmationDialog extends StatelessWidget {
   final VoidCallback noTap;
   final VoidCallback yesTap;
 
-  final borderRadius = 16.0;
-
   const ConfirmationDialog(
       {@required this.title,
         @required this.subtitle,
@@ -26,7 +24,7 @@ class ConfirmationDialog extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(32.0),
         child: Material(
-          borderRadius: BorderRadius.circular(borderRadius),
+          borderRadius: BorderRadius.circular(16.0),
           color: Theme.of(context).cardColor,
           child: Padding(
             padding: const EdgeInsets.all(16.0),

@@ -3,6 +3,31 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/files_tab_view/files_tab_view_bloc.dart';
 
 class ExplorerNavBar extends StatelessWidget {
+  Widget _navScroll(BuildContext context, String path) {
+    return AppBar(
+          titleSpacing: 0.0,
+          elevation: 8.0,
+          toolbarHeight: 40.0,
+          backgroundColor: Theme.of(context).cardColor,
+          leading: path != ''
+              ? GestureDetector(
+                  child: Icon(
+                    Icons.chevron_left,
+                    color: Theme.of(context).iconTheme.color,
+                    size: 18.0,
+                  ),
+                )
+              : null,
+          title: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: _children(context, path),
+            ),
+          ),
+        );
+  }
+
   List<Widget> _children(BuildContext context, String path) {
     final List<Widget> children = [
       GestureDetector(
@@ -16,9 +41,8 @@ class ExplorerNavBar extends StatelessWidget {
     folders.removeAt(0);
     String relative = '';
     for (final folder in folders) {
-      relative = relative + '/$folder';
+      relative = 'relative/$folder';
       final String rel = relative;
-      print(relative);
       children.add(
         GestureDetector(
           onTap: () => context.bloc<FilesTabViewBloc>().add(
@@ -48,29 +72,8 @@ class ExplorerNavBar extends StatelessWidget {
     return BlocBuilder<FilesTabViewBloc, FilesTabViewState>(
       builder: (context, state) => state.map(
         initial: (_) => Container(),
-        isLoading: (state) => Container(),
-        hasLoaded: (state) => AppBar(
-          titleSpacing: 0.0,
-          elevation: 8.0,
-          toolbarHeight: 40.0,
-          backgroundColor: Theme.of(context).cardColor,
-          leading: state.relativePath != ''
-              ? GestureDetector(
-                  child: Icon(
-                    Icons.chevron_left,
-                    color: Theme.of(context).iconTheme.color,
-                    size: 18.0,
-                  ),
-                )
-              : null,
-          title: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: _children(context, state.relativePath),
-            ),
-          ),
-        ),
+        isLoading: (state) => _navScroll(context, state.relativePath),
+        hasLoaded: (state) => _navScroll(context, state.relativePath),
       ),
     );
   }

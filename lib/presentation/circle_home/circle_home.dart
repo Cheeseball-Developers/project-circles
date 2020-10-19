@@ -121,9 +121,7 @@ class CircleHome extends StatelessWidget {
               children: [
                 if (currentCircleState.incomingFiles.isNotEmpty ||
                     currentCircleState.outgoingFiles.isNotEmpty)
-                  TransferProgressBottomBar()
-                else
-                  Container(),
+                  TransferProgressBottomBar(),
                 BottomBar(),
               ],
             ),
