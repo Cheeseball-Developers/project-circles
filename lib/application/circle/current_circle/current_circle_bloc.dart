@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:dartz/dartz.dart';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,7 +29,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   final MediaRepository _mediaRepository;
   final FilesRepository _filesRepository;
 
-  CurrentCircleBloc(this._appsRepository, this._mediaRepository, this._filesRepository)
+  CurrentCircleBloc(
+      this._appsRepository, this._mediaRepository, this._filesRepository)
       : super(const CurrentCircleState.initial());
   final nearbyConnections = getIt<NearbyConnections>();
   final Map<FileInfo, double> _incomingFiles = <FileInfo, double>{};
@@ -171,24 +173,40 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           },
           sendFiles: (e) async* {
             _isSending = true;
-            // TODO: Implement sending files from here by using [state.selectedFiles], also update the double [progress] from 0 to 1, will show its x100 in UI
+            // TODO: Implement sending files from here by using [state.selectedFiles],
+            //also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
             //this function is in host side, for member side create this in ,is wahi mai sochu, one more doubt remains
 
-            final List<FileInfo> appFilesInfo = await _appsRepository.getFilesInfo();
-            final List<FileInfo> mediaFilesInfo = await _mediaRepository.getFilesInfo();
-            final List<FileInfo> filesInfo = await _filesRepository.getFilesInfo();
+            //final List<FileInfo> appFilesInfo = await _appsRepository.getFilesInfo();
+            final List<FileInfo> mediaFilesInfo =
+                await _mediaRepository.getFilesInfo();
+            //final List<FileInfo> filesInfo = await _filesRepository.getFilesInfo();
+
+            final List<File> appFiles = await _appsRepository.getFiles();
+            final List<File> mediaFiles = await _mediaRepository.getFiles();
+            //final List<File> files = await _filesRepository.getFiles();
+
+            final List<User> users = [];
+
+            for (final user in state.members.keys) {
+              if (!state.members[user]) {
+                users.add(user);
+              }
+            }
 
             nearbyConnections.sendFilenameSizeBytesPayload(
-              users: List.from(state.members.entries.map((e) => !e.value)),
-              outgoingFiles: appFilesInfo + mediaFilesInfo + filesInfo,
+              // i didn't even touch this function , you did,
+              users: users,
+              outgoingFiles: mediaFilesInfo,
             );
 
             // TODO: create seperate events for sending file info and sending actual file
             // This is because after sending file info, we'll wait for confirmation before sending files
 
-            //nearbyConnections.sendFilePayload(files: state.selectedFiles, members: [state.host] );
+            nearbyConnections.sendFilePayload(
+                files: mediaFiles, members: users);
           },
           sendingFiles: (e) async* {
             if (_outgoingFilePayloadId == null) {
@@ -282,16 +300,24 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             //also update the double [progress] from 0 to 1, will show its x100 in UI
 
             // nearbyConnections.sendFilePayload(files: state.selectedFiles);
-            final List<FileInfo> appFilesInfo = await _appsRepository.getFilesInfo();
-            final List<FileInfo> mediaFilesInfo = await _mediaRepository.getFilesInfo();
-            final List<FileInfo> filesInfo = await _filesRepository.getFilesInfo();
+            //final List<FileInfo> appFilesInfo = await _appsRepository.getFilesInfo();
+            final List<FileInfo> mediaFilesInfo =
+                await _mediaRepository.getFilesInfo();
+            //final List<FileInfo> filesInfo = await _filesRepository.getFilesInfo();
+
+            // final List<File> appFiles = await _appsRepository.getFiles();
+            final List<File> mediaFiles = await _mediaRepository.getFiles();
+            //final List<File> files = await _filesRepository.getFiles();
 
             nearbyConnections.sendFilenameSizeBytesPayload(
               users: [state.host],
-              outgoingFiles: appFilesInfo + mediaFilesInfo + filesInfo,
+              outgoingFiles: mediaFilesInfo,
             );
 
-            // nearbyConnections.sendFilePayload(files:  ,members: [state.host] );
+            nearbyConnections.sendFilePayload(
+                files:
+                    mediaFiles, // run nhi ho rha app??? kaise? dekh le studi kal shai krte  ye
+                members: [state.host]);
           },
           sendingFiles: (e) async* {
             if (_outgoingFilePayloadId == null) {
@@ -358,3 +384,5 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
     );
   }
 }
+
+// where is the error?
