@@ -9,20 +9,15 @@ class ExplorerNavBar extends StatelessWidget {
           elevation: 8.0,
           toolbarHeight: 40.0,
           backgroundColor: Theme.of(context).cardColor,
-          leading: path != ''
-              ? GestureDetector(
-                  child: Icon(
-                    Icons.chevron_left,
-                    color: Theme.of(context).iconTheme.color,
-                    size: 18.0,
-                  ),
-                )
-              : null,
+          leadingWidth: 0.0,
           title: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: _children(context, path),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: _children(context, path),
+              ),
             ),
           ),
         );
@@ -41,7 +36,7 @@ class ExplorerNavBar extends StatelessWidget {
     folders.removeAt(0);
     String relative = '';
     for (final folder in folders) {
-      relative = 'relative/$folder';
+      relative = '$relative/$folder';
       final String rel = relative;
       children.add(
         GestureDetector(
