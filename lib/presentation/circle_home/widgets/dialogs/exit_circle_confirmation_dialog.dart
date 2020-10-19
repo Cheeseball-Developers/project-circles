@@ -30,8 +30,7 @@ class ExitCircleConfirmationDialog extends StatelessWidget {
               .bloc<CurrentCircleBloc>()
               .add(const CurrentCircleEvent.leaveCircle()),
         ),
-        orElse: () => const Text(
-            "Implement error state here, if seen, report to Abhishek Upmanyu"),
+        orElse: () => Container(),
       ), // TODO: Implement UI for other states
     );
   }

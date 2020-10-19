@@ -8,7 +8,7 @@ import 'package:photo_manager/photo_manager.dart';
 class AlbumThumbnail extends StatelessWidget {
   final AssetPathEntity album;
 
-  const AlbumThumbnail({Key key, this.album}) : super(key: key);
+  const AlbumThumbnail({this.album});
 
   Future getThumbnail() async {
     final List<AssetEntity> asset =
@@ -47,13 +47,18 @@ class AlbumThumbnail extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(album.name,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle1
-                                    .copyWith(fontWeight: FontWeight.w400, color: Colors.white)),
+                            Text(
+                              album.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .subtitle1
+                                  .copyWith(
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.white,
+                                  ),
+                            ),
                           ],
                         ),
                       ),

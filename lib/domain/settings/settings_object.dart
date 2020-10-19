@@ -15,11 +15,10 @@ class SettingsObject {
       @required this.uid,
       @required this.directory,
       @required this.askBeforeReceiving,
-      @required this.darkMode}) {
-    assert(name != null);
-    assert(uid != null);
-    assert(directory != null);
-    assert(askBeforeReceiving != null);
-    assert(darkMode != null);
-  }
+      @required this.darkMode})
+      : assert(name != null),
+        assert(uid != null),
+        assert(directory != null),
+        assert(askBeforeReceiving != null),
+        assert(darkMode != null);
 }

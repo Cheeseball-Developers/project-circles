@@ -6,7 +6,6 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/domain/files/apps_load_failure.dart';
-import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/media_info.dart';
 import 'package:projectcircles/infrastructure/circle/media_repository.dart';
 

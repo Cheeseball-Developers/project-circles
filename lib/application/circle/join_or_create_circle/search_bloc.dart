@@ -120,7 +120,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             streamSubscriptionOnConnectionResult =
                 nearbyConnections.onConnectionResultDiscStream.listen(
               (event) {
-                print(event);
                 add(SearchEvent.connectionResult(event));
               },
             );
