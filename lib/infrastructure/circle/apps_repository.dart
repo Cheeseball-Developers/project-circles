@@ -25,7 +25,7 @@ class AppsRepository {
                 appB.appName.toLowerCase(),
               ),
         );
-        rawApps.forEach((app) {
+        for (final app in rawApps) {
           final ApplicationWithIcon appWithIcon = app as ApplicationWithIcon;
           apps.addAll({
             AppInfo(
@@ -34,7 +34,7 @@ class AppsRepository {
               icon: appWithIcon.icon,
             ): false
           });
-        });
+        }
         return right(apps);
       } catch (error) {
         print(error);

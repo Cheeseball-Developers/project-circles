@@ -49,9 +49,8 @@ class AppIconWithName extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: apps[appInfo]
                             ? Theme.of(context)
-                                .textTheme
+                                .accentTextTheme
                                 .bodyText2
-                                .copyWith(color: Colors.white)
                             : Theme.of(context).textTheme.bodyText2,
                       )
                     ],
