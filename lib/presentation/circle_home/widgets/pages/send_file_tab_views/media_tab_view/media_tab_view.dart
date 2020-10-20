@@ -6,7 +6,6 @@ import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/loading_page.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/media_tab_view/widgets/media_thumbnail.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/widgets/selection_bar.dart';
-import 'package:projectcircles/presentation/core/widgets/buttons/my_back_button.dart';
 
 class MediaTabView extends StatelessWidget {
   @override
@@ -32,30 +31,37 @@ class MediaTabView extends StatelessWidget {
                 ),
             hasLoadedMedia: (state) => Scaffold(
                   appBar: state.maybeMap(
-                    hasLoadedMedia: (state) => !state.media.containsValue(true) ? AppBar(
-                      elevation: 8.0,
-                      toolbarHeight: 40.0,
-                      backgroundColor: Theme.of(context).cardColor,
-                      leading: MyBackButton(
-                        onTap: () => context
-                            .bloc<MediaTabViewBloc>()
-                            .add(const MediaTabViewEvent.loadAlbums()),
-                      ),
-                      title: Text(
-                        state.album.name,
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
-                      centerTitle: true,
-                    ) : PreferredSize(
-                      preferredSize:
-                      Size(MediaQuery.of(context).size.width, 40.0),
-                      child: SelectionBar(
-                        count: state.media.values.where((selected) => selected).length,
-                        onCancel: () => context.bloc<MediaTabViewBloc>().add(
-                          const MediaTabViewEvent.deselectAll(),
-                        ),
-                      ),
-                    ),
+                    hasLoadedMedia: (state) => !state.media.containsValue(true)
+                        ? AppBar(
+                            elevation: 8.0,
+                            toolbarHeight: 40.0,
+                            backgroundColor: Theme.of(context).cardColor,
+                            leading: GestureDetector(
+                              onTap: () => context
+                                  .bloc<MediaTabViewBloc>()
+                                  .add(const MediaTabViewEvent.loadAlbums()),
+                              child: Icon(Icons.chevron_left_rounded,
+                                  color: Theme.of(context).buttonColor),
+                            ),
+                            title: Text(
+                              state.album.name,
+                              style: Theme.of(context).textTheme.subtitle2,
+                            ),
+                            centerTitle: true,
+                          )
+                        : PreferredSize(
+                            preferredSize:
+                                Size(MediaQuery.of(context).size.width, 40.0),
+                            child: SelectionBar(
+                              count: state.media.values
+                                  .where((selected) => selected)
+                                  .length,
+                              onCancel: () =>
+                                  context.bloc<MediaTabViewBloc>().add(
+                                        const MediaTabViewEvent.deselectAll(),
+                                      ),
+                            ),
+                          ),
                     orElse: () => PreferredSize(
                       preferredSize: const Size(0.0, 0.0),
                       child: Container(),

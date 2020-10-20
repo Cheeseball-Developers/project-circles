@@ -4,7 +4,7 @@ import 'package:projectcircles/application/circle/current_circle/current_circle_
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
+import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
 
 class ConnectionRequestPopUp extends StatelessWidget {
@@ -59,9 +59,10 @@ class ConnectionRequestPopUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LargePopUp(
+    return DialogLayout(
+      dialogType: DialogType.empty,
       child: Padding(
-        padding: const EdgeInsets.all(32.0),
+        padding: const EdgeInsets.all(16.0),
         child: BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
           builder: (circleContext, state) =>
               BlocConsumer<SearchBloc, SearchState>(
