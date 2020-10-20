@@ -105,7 +105,7 @@ class NearbyConnections {
   // opens dialogue to enable location service
   Future<void> enableLocation() async {
     if (!await isLocationEnabled()) {
-      debugPrint("Yay enabling location");
+      debugPrint("enabling location");
       await _nearby.enableLocationServices();
     }
     return;
@@ -113,6 +113,7 @@ class NearbyConnections {
 
   Future<void> askStroragePermission() async {
     if (!await _nearby.checkExternalStoragePermission()) {
+      debugPrint('Asking for storage permission');
       _nearby.askExternalStoragePermission();
     }
   }
@@ -344,7 +345,6 @@ class NearbyConnections {
       //TODO add the message of file transfer started
       debugPrint("File transfer started from $endId");
       _tempFile = File(payload.filePath);
-      debugPrint(payload.filePath);
       return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
       debugPrint("bytes payload recieved");
@@ -354,23 +354,23 @@ class NearbyConnections {
       debugPrint("Bytes recieved from $endId:  $str");
 
       //receiving the fileInfo
-      if (str.contains('-')) {
-        final String keyFileName = str.split('-').first;
-        final int fileSize = int.parse(str.split('-').last);
+      if (str.contains('*')) {
+        final String keyFileName = str.split('*').first;
+        final int fileSize = int.parse(str.split('*').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
-            hash: null,
+            hash: 1234,
             path: keyFileName,
             bytesSize: fileSize,
             thumbnail: null));
       }
       // used for file payload as file payload is mapped as
       // payloadId:filename
-      else if (str.contains(':')) {
+      if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
-        final String fileName = str.split(':')[1];
-        print('fileName: ${fileName}');
+        final String fileName = str.split(':').last;
+        print('----fileName: ${fileName}');
         if (map.containsKey(payloadId)) {
           if (await _tempFile.exists()) {
             _tempFile.rename("${_tempFile.parent.path}/$fileName");
@@ -396,8 +396,6 @@ class NearbyConnections {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       if (_isFile) {
         debugPrint(
-            'check if the payloadId is same: ${payloadTransferUpdate.id}');
-        debugPrint(
             'perecntage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
@@ -415,7 +413,14 @@ class NearbyConnections {
       if (map.containsKey(payloadTransferUpdate.id)) {
         //rename the file now
         final String name = map[payloadTransferUpdate.id];
-        _tempFile.rename("${_tempFile.parent.path}/$name");
+
+        ///storage/emulated/0/Download/Nearby
+        List<String> prp = _tempFile.parent.path.split('/');
+        prp.removeLast();
+        prp.removeWhere((element) => element == 'Nearby');
+        String pp = prp.join('/') + '/Circles';
+        var cir_dir = Directory(pp).create();
+        _tempFile.rename("$pp/$name");
       } else {
         //bytes not received till yet
         map[payloadTransferUpdate.id] = "";
@@ -469,8 +474,10 @@ class NearbyConnections {
     debugPrint("sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
-        _nearby.sendBytesPayload(user.uid.getOrCrash(),
-            Uint8List.fromList("${file.path}-${file.bytesSize}".codeUnits));
+        _nearby.sendBytesPayload(
+            user.uid.getOrCrash(),
+            Uint8List.fromList(
+                "${file.path.split('/').last}*${file.bytesSize}".codeUnits));
       });
     });
   }
