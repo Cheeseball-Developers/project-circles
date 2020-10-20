@@ -51,7 +51,7 @@ class BottomBar extends StatelessWidget {
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 child:
-                    Icon((!transactionInProgress) ? Icons.send : Icons.cancel),
+                    Icon(transactionInProgress ? Icons.cancel_schedule_send: Icons.send),
               ),
             ),
           ),
@@ -66,11 +66,11 @@ class BottomBar extends StatelessWidget {
         builder: (context, state) => state.maybeMap(
           hasStarted: (state) => _bar(
             context,
-            state.incomingFiles.isEmpty && state.outgoingFiles.isEmpty,
+            state.incomingFiles.isNotEmpty || state.outgoingFiles.isNotEmpty,
           ),
           hasJoined: (state) => _bar(
             context,
-            state.incomingFiles.isEmpty && state.outgoingFiles.isEmpty,
+            state.incomingFiles.isNotEmpty || state.outgoingFiles.isNotEmpty,
           ),
           orElse: () => Container(),
         ),

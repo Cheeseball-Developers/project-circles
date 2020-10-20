@@ -10,14 +10,13 @@ import 'package:projectcircles/domain/files/file_info.dart';
 
 @LazySingleton()
 class AppsRepository {
-  Map<AppInfo, bool> apps;
+  final Map<AppInfo, bool> apps = {};
 
   Future<Either<AppsLoadFailure, Map<AppInfo, bool>>> getApps() async {
-    if (apps != null) {
+    if (apps.isNotEmpty) {
       return right(apps);
     } else {
       try {
-        apps = {};
         final List<Application> rawApps =
             await DeviceApps.getInstalledApplications(includeAppIcons: true);
         rawApps.sort(
