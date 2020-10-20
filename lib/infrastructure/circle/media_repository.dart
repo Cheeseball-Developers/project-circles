@@ -9,7 +9,7 @@ import 'package:projectcircles/domain/files/media_info.dart';
 
 @LazySingleton()
 class MediaRepository {
-  Map<MediaInfo, bool> mediaMap = {};
+  final Map<MediaInfo, bool> _mediaMap = {};
 
   static Future<bool> getPermission() async {
     final result = await PhotoManager.requestPermission();
@@ -28,7 +28,7 @@ class MediaRepository {
   Future<Map<MediaInfo, bool>> getAlbumMedia(
       AssetPathEntity album, int page) async {
     if (page == 0) {
-      mediaMap = {};
+      _mediaMap.clear();
     }
     final Map<MediaInfo, bool> newMedia = {};
     final List<AssetEntity> media = await album.getAssetListPaged(page, 30);
@@ -36,24 +36,24 @@ class MediaRepository {
       final Uint8List thumbnail = await assetEntity.thumbDataWithSize(192, 192);
       newMedia.addAll({MediaInfo(entity: assetEntity, thumbnail: thumbnail): false});
     }
-    mediaMap.addAll(newMedia);
+    _mediaMap.addAll(newMedia);
     return newMedia;
   }
 
   bool toggleSelection({@required MediaInfo mediaInfo}) {
-    mediaMap.update(mediaInfo, (value) => !value);
+    _mediaMap.update(mediaInfo, (value) => !value);
     return true;
   }
 
   bool deselectAll() {
-    mediaMap.updateAll((key, value) => false);
+    _mediaMap.updateAll((key, value) => false);
     return true;
   }
 
   Future<List<FileInfo>> getFilesInfo() async {
     final List<FileInfo> filesInfo = [];
-    for (final key in mediaMap.keys) {
-      if (mediaMap[key]) {
+    for (final key in _mediaMap.keys) {
+      if (_mediaMap[key]) {
         final Uint8List thumbnail = await key.entity.thumbDataWithSize(64, 64, quality: 80);
         final File file = await key.entity.originFile;
         filesInfo.add(FileInfo(
@@ -69,8 +69,8 @@ class MediaRepository {
 
   Future<List<File>> getFiles() async {
     final List<File> files = [];
-    for (final key in mediaMap.keys) {
-      if (mediaMap[key]) {
+    for (final key in _mediaMap.keys) {
+      if (_mediaMap[key]) {
         final File file = await key.entity.originFile;
         files.add(file);
       }
