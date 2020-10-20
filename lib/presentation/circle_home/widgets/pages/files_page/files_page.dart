@@ -6,9 +6,9 @@ import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/file_transaction.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/widgets/files_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/widgets/files_transaction_list.dart';
-import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
-import 'package:projectcircles/presentation/core/widgets/dialog_boxes/empty_pop_up_placeholder.dart';
-import 'package:projectcircles/presentation/core/widgets/dialog_boxes/large_pop_up.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/widgets/empty_pop_up_placeholder.dart';
+import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
+import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 
 class FilesPage extends StatelessWidget {
   Widget _body(
@@ -17,7 +17,15 @@ class FilesPage extends StatelessWidget {
     Map<FileInfo, double> outgoingFiles,
     List<FileTransaction> transactions,
   ) =>
-      LargePopUp(
+      DialogLayout(
+        primaryButtonText: 'Done',
+        primaryOnTap: () => ExtendedNavigator.of(context).pop(),
+        dialogType: (incomingFiles.isEmpty &&
+                outgoingFiles.isEmpty &&
+                transactions.isEmpty)
+            ? DialogType.empty
+            : DialogType.withButtons,
+        dialogButtonType: DialogButtonType.singleButton,
         child: SingleChildScrollView(
           child: (incomingFiles.isEmpty &&
                   outgoingFiles.isEmpty &&
@@ -56,19 +64,6 @@ class FilesPage extends StatelessWidget {
                         ),
                       ),
                     FilesTransactionList(transactions),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          MyTextButton(
-                            type: ButtonType.primary,
-                            text: 'Done',
-                            onTap: () => ExtendedNavigator.of(context).pop(),
-                          ),
-                        ],
-                      ),
-                    )
                   ],
                 ),
         ),
@@ -78,8 +73,10 @@ class FilesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
       builder: (context, state) => state.maybeMap(
-        hasStarted: (state) => _body(context, state.incomingFiles, state.outgoingFiles, state.transactions),
-        hasJoined: (state) => _body(context, state.incomingFiles, state.outgoingFiles, state.transactions),
+        hasStarted: (state) => _body(context, state.incomingFiles,
+            state.outgoingFiles, state.transactions),
+        hasJoined: (state) => _body(context, state.incomingFiles,
+            state.outgoingFiles, state.transactions),
         orElse: () => Container(),
       ),
     );

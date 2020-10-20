@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
-import 'package:projectcircles/presentation/core/widgets/dialog_boxes/confirmation_dialog.dart';
+import 'package:projectcircles/presentation/core/widgets/dialogs/confirmation_dialog.dart';
 
 class ExitCircleConfirmationDialog extends StatelessWidget {
   @override

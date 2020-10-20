@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:projectcircles/application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/media_tab_view/widgets/media_preview.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file_tab_views/media_tab_view/widgets/media_preview_dialog.dart';
 
 class MediaThumbnail extends StatelessWidget {
   final int index;
