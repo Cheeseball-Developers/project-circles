@@ -41,6 +41,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<SettingsBloc>(
       () => SettingsBloc(g<IDeviceInfo>(), g<MySharedPreferences>()));
   g.registerFactory<CurrentCircleBloc>(() => CurrentCircleBloc(
+        g<NearbyConnections>(),
         g<AppsRepository>(),
         g<MediaRepository>(),
         g<FilesRepository>(),

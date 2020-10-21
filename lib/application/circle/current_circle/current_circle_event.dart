@@ -14,12 +14,14 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
   const factory CurrentCircleEvent.showFilesPage() = ShowFilesPage;
   const factory CurrentCircleEvent.showMembersPage() = ShowMembersPage;
   const factory CurrentCircleEvent.pageOpened() = PageOpened;
+  const factory CurrentCircleEvent.sendFilesInfo() = SendFilesInfo;
   const factory CurrentCircleEvent.sendFiles() = SendFiles;
   const factory CurrentCircleEvent.sendingFiles(
       {@required PayloadInfo payloadInfo}) = SendingFiles;
   const factory CurrentCircleEvent.filesSent() = FilesSent;
   const factory CurrentCircleEvent.fileInfoReceived({FileInfo fileInfo}) =
       FileInfoReceived;
+  const factory CurrentCircleEvent.acceptOrRejectFiles() = AcceptOrRejectFiles;
   const factory CurrentCircleEvent.fileReceiving(
       {@required PayloadInfo payloadInfo}) = FileReceived;
   const factory CurrentCircleEvent.memberLeft({@required String id}) =

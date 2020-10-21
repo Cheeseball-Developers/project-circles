@@ -15,7 +15,6 @@ import 'package:projectcircles/infrastructure/circle/apps_repository.dart';
 import 'package:projectcircles/infrastructure/circle/files_repository.dart';
 import 'package:projectcircles/infrastructure/circle/media_repository.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
-import 'package:projectcircles/injection.dart';
 
 part 'current_circle_event.dart';
 
@@ -25,15 +24,15 @@ part 'current_circle_bloc.freezed.dart';
 
 @injectable
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
+  final NearbyConnections _nearbyConnections;
   final AppsRepository _appsRepository;
   final MediaRepository _mediaRepository;
   final FilesRepository _filesRepository;
 
-  CurrentCircleBloc(
-      this._appsRepository, this._mediaRepository, this._filesRepository)
+  CurrentCircleBloc(this._nearbyConnections, this._appsRepository,
+      this._mediaRepository, this._filesRepository)
       : super(const CurrentCircleState.initial());
-  final nearbyConnections = getIt<NearbyConnections>();
-  final Map<FileInfo, double> _incomingFiles = <FileInfo, double>{};
+
   final Map<FileInfo, double> _outgoingFiles = <FileInfo, double>{};
   int _incomingFilePayloadId;
   int _outgoingFilePayloadId;
@@ -58,18 +57,35 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 loadingText: 'Starting Circle...');
 
             final Either<ConnectionFailure, Unit> failureOrCircleStarted =
-                await nearbyConnections.startAdvertising();
+                await _nearbyConnections.startAdvertising();
 
             _incomingRequestsStreamSubscription =
-                nearbyConnections.incomingRequestStream.listen((event) {
+                _nearbyConnections.incomingRequestStream.listen((event) {
               debugPrint("A device found, wants to join: $event");
               add(CurrentCircleEvent.deviceRequestedConnection(user: event));
             });
 
             _lostDiscovererStreamSubscription =
-                nearbyConnections.onDiscovererLostStream.listen((event) {
+                _nearbyConnections.onDiscovererLostStream.listen((event) {
               print("i am removed");
               add(CurrentCircleEvent.memberLeft(id: event));
+            });
+            
+            _incomingFileInfoStreamSubscription =
+                _nearbyConnections.sendingFileInfoStream.listen((event) {
+              add(CurrentCircleEvent.fileInfoReceived(fileInfo: event));
+            }, onError: (e) {
+              print(e);
+            });
+            _progressOfFileStreamSubscription =
+                _nearbyConnections.progressOfFileStream.listen((event) {
+              if (_isSending) {
+                add(CurrentCircleEvent.sendingFiles(payloadInfo: event));
+              } else {
+                add(CurrentCircleEvent.fileReceiving(payloadInfo: event));
+              }
+            }, onError: (e) {
+              print(e);
             });
 
             yield* failureOrCircleStarted.fold(
@@ -94,10 +110,22 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.isLoading(
                 loadingText: 'Joining Circle...');
             _lostHostStreamSubscription =
-                nearbyConnections.onHostLostStream.listen((event) {
+                _nearbyConnections.onHostLostStream.listen((event) {
               debugPrint("Host $event lost");
               add(const CurrentCircleEvent.disconnected());
             }, onError: (e) {});
+            
+            _incomingFileInfoStreamSubscription =
+                _nearbyConnections.sendingFileInfoStream.listen((event) {
+              add(CurrentCircleEvent.fileInfoReceived(fileInfo: event));
+            }, onError: (e) {});
+
+            _progressOfFileStreamSubscription =
+                _nearbyConnections.progressOfFileStream.listen((event) {
+              add(CurrentCircleEvent.fileReceiving(payloadInfo: event));
+            }, onError: (e) {
+              print(e);
+            });
             yield CurrentCircleState.hasJoined(
               host: e.host,
               outgoingFiles: <FileInfo, double>{},
@@ -123,28 +151,12 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               members: members,
               showMembersPage: true,
             );
-            _incomingFileInfoStreamSubscription =
-                nearbyConnections.sendingFileInfoStream.listen((event) {
-              add(CurrentCircleEvent.fileInfoReceived(fileInfo: event));
-            }, onError: (e) {
-              print(e);
-            });
-            _progressOfFileStreamSubscription =
-                nearbyConnections.progressOfFileStream.listen((event) {
-              if (_isSending) {
-                add(CurrentCircleEvent.sendingFiles(payloadInfo: event));
-              } else {
-                add(CurrentCircleEvent.fileReceiving(payloadInfo: event));
-              }
-            }, onError: (e) {
-              print(e);
-            });
           },
           acceptOrReject: (AcceptOrReject request) async* {
             if (request.acceptConnection) {
               yield state.copyWith(isAcceptingRequest: true);
               final Either<ConnectionFailure, Unit> acceptOrFailure =
-                  await nearbyConnections.acceptConnection(
+                  await _nearbyConnections.acceptConnection(
                       endId: request.requestingUser.uid.getOrCrash());
               state.members.update(request.requestingUser, (value) => false);
               yield state.copyWith(
@@ -152,7 +164,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             } else {
               //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
-                  await nearbyConnections.rejectConnection(
+                  await _nearbyConnections.rejectConnection(
                       endId: request.requestingUser.uid.getOrCrash());
               state.members.remove(request.requestingUser);
               yield state.copyWith(members: state.members);
@@ -171,44 +183,26 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           pageOpened: (_) async* {
             yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
+          sendFilesInfo: (e) async* {
+            final List<User> users = [];
+            for (final user in state.members.keys) {
+              if (!state.members[user]) {
+                users.add(user);
+              }
+            }
+            sendFilesInfo(users: users);
+          },
           sendFiles: (e) async* {
             _isSending = true;
-            // TODO: Implement sending files from here by using [state.selectedFiles],
-            //also update the double [progress] from 0 to 1, will show its x100 in UI
-
-            // nearbyConnections.sendFilePayload(files: state.selectedFiles);
-            //this function is in host side, for member side create this in ,is wahi mai sochu, one more doubt remains
-
-            final List<FileInfo> appFilesInfo =
-                await _appsRepository.getFilesInfo();
-            final List<FileInfo> mediaFilesInfo =
-                await _mediaRepository.getFilesInfo();
-            final List<FileInfo> filesInfo = _filesRepository.getFilesInfo();
-
-            final List<File> appFiles = await _appsRepository.getFiles();
-            final List<File> mediaFiles = await _mediaRepository.getFiles();
-            final List<File> files = await _filesRepository.getFiles();
 
             final List<User> users = [];
-
             for (final user in state.members.keys) {
               if (!state.members[user]) {
                 users.add(user);
               }
             }
 
-            nearbyConnections.sendFilenameSizeBytesPayload(
-              users: users,
-              outgoingFiles: appFilesInfo + mediaFilesInfo + filesInfo,
-            );
-
-            // TODO: create seperate events for sending file info and sending actual file
-            // This is because after sending file info, we'll wait for confirmation before sending files
-
-            nearbyConnections.sendFilePayload(
-              files: appFiles + mediaFiles + files,
-              members: users,
-            );
+            sendFiles(users: users);
           },
           sendingFiles: (e) async* {
             if (_outgoingFilePayloadId == null) {
@@ -233,25 +227,28 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
           },
           fileInfoReceived: (e) async* {
-            _incomingFiles?.putIfAbsent(e.fileInfo, () => 0.0);
+            final Map<FileInfo, double> incomingFiles = Map.from(state.incomingFiles);
+            incomingFiles.putIfAbsent(e.fileInfo, () => 0.0);
             debugPrint("Yay the files to be recieved are ${e.fileInfo}");
             yield state.copyWith(
-              incomingFiles: _incomingFiles,
+              incomingFiles: incomingFiles,
               showFilesPage: true,
             );
           },
           fileReceiving: (e) async* {
+            final Map<FileInfo, double> incomingFiles = Map.from(state.incomingFiles);
+
             if (_incomingFilePayloadId == null) {
-              _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
+              incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
               _incomingFilePayloadId = e.payloadInfo.payloadId;
-              yield state.copyWith(incomingFiles: _incomingFiles);
+              yield state.copyWith(incomingFiles: incomingFiles);
             } else if (_incomingFilePayloadId == e.payloadInfo.payloadId) {
               state.incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
             } else if (_incomingFilePayloadId != e.payloadInfo.payloadId) {
-              _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
+              incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
               _incomingFilePayloadId = e.payloadInfo.payloadId;
               _i++;
-              yield state.copyWith(incomingFiles: _incomingFiles);
+              yield state.copyWith(incomingFiles: incomingFiles);
             }
           },
           memberLeft: (e) async* {
@@ -260,8 +257,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(members: members);
           },
           closeCircle: (e) async* {
-            nearbyConnections.stopAllEndpoints();
-            nearbyConnections.stopAdvertising();
+            _nearbyConnections.stopAllEndpoints();
+            _nearbyConnections.stopAdvertising();
             yield const CurrentCircleState.initial();
             _incomingRequestsStreamSubscription?.cancel();
             _lostDiscovererStreamSubscription?.cancel();
@@ -276,17 +273,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(
               showFilesPage: true,
             );
-            _incomingFileInfoStreamSubscription =
-                nearbyConnections.sendingFileInfoStream.listen((event) {
-              add(CurrentCircleEvent.fileInfoReceived(fileInfo: event));
-            }, onError: (e) {});
-
-            _progressOfFileStreamSubscription =
-                nearbyConnections.progressOfFileStream.listen((event) {
-              add(CurrentCircleEvent.fileReceiving(payloadInfo: event));
-            }, onError: (e) {
-              print(e);
-            });
           },
           showMembersPage: (_) async* {
             yield state.copyWith(
@@ -296,31 +282,14 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           pageOpened: (_) async* {
             yield state.copyWith(showFilesPage: false, showMembersPage: false);
           },
+          sendFilesInfo: (e) async* {
+            sendFilesInfo(users: [state.host]);
+          },
           sendFiles: (e) async* {
             _isSending = true;
             // TODO: Implement sending files from here by using [state.selectedFiles],
             //also update the double [progress] from 0 to 1, will show its x100 in UI
-
-            final List<FileInfo> appFilesInfo =
-                await _appsRepository.getFilesInfo();
-            final List<FileInfo> mediaFilesInfo =
-                await _mediaRepository.getFilesInfo();
-            final List<FileInfo> filesInfo =
-                await _filesRepository.getFilesInfo();
-
-            final List<File> appFiles = await _appsRepository.getFiles();
-            final List<File> mediaFiles = await _mediaRepository.getFiles();
-            final List<File> files = await _filesRepository.getFiles();
-
-            nearbyConnections.sendFilenameSizeBytesPayload(
-              users: [state.host],
-              outgoingFiles: appFilesInfo + mediaFilesInfo + filesInfo,
-            );
-
-            nearbyConnections.sendFilePayload(
-              files: appFiles + mediaFiles + files,
-              members: [state.host],
-            );
+            sendFiles(users: [state.host]);
           },
           sendingFiles: (e) async* {
             if (_outgoingFilePayloadId == null) {
@@ -345,32 +314,36 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
           },
           fileInfoReceived: (e) async* {
-            _incomingFiles?.putIfAbsent(e.fileInfo, () => 0.0);
+            final Map<FileInfo, double> incomingFiles = Map.from(state.incomingFiles);
+            incomingFiles.putIfAbsent(e.fileInfo, () => 0.0);
             debugPrint(
                 "Yay the files to be recieved are ${e.fileInfo.toString()}");
             yield state.copyWith(
-              incomingFiles: _incomingFiles,
+              incomingFiles: incomingFiles,
               showFilesPage: true,
             );
             print(state.incomingFiles);
           },
           fileReceiving: (e) async* {
+            final Map<FileInfo, double> incomingFiles = Map.from(state.incomingFiles);
+            debugPrint('File incoming!!!');
+
             if (_incomingFilePayloadId == null) {
-              _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
+              incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
               _incomingFilePayloadId = e.payloadInfo.payloadId;
-              yield state.copyWith(incomingFiles: _incomingFiles);
+              yield state.copyWith(incomingFiles: incomingFiles);
             } else if (_incomingFilePayloadId == e.payloadInfo.payloadId) {
               state.incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
             } else if (_incomingFilePayloadId != e.payloadInfo.payloadId) {
-              _incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
+              incomingFiles.values.toList()[_i] = e.payloadInfo.progress;
               _incomingFilePayloadId = e.payloadInfo.payloadId;
               _i++;
-              yield state.copyWith(incomingFiles: _incomingFiles);
+              yield state.copyWith(incomingFiles: incomingFiles);
             }
           },
           leaveCircle: (e) async* {
             _incomingFileInfoStreamSubscription?.cancel();
-            nearbyConnections
+            _nearbyConnections
                 .disconnectFromEndPoint(state.host.uid.getOrCrash());
             yield const CurrentCircleState.initial();
           },
@@ -386,6 +359,26 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       hasFailed: (state) async* {},
     );
   }
-}
 
-// where is the error?
+  Future sendFilesInfo({@required List<User> users}) async {
+    final List<FileInfo> appFilesInfo = await _appsRepository.getFilesInfo();
+    final List<FileInfo> mediaFilesInfo = await _mediaRepository.getFilesInfo();
+    final List<FileInfo> filesInfo = _filesRepository.getFilesInfo();
+
+    _nearbyConnections.sendFilenameSizeBytesPayload(
+      users: users,
+      outgoingFiles: appFilesInfo + mediaFilesInfo + filesInfo,
+    );
+  }
+
+  Future sendFiles({@required List<User> users}) async {
+    final List<File> appFiles = await _appsRepository.getFiles();
+    final List<File> mediaFiles = await _mediaRepository.getFiles();
+    final List<File> files = await _filesRepository.getFiles();
+
+    _nearbyConnections.sendFilePayload(
+      files: appFiles + mediaFiles + files,
+      members: users,
+    );
+  }
+}
