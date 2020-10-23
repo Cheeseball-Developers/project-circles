@@ -45,7 +45,7 @@ class BottomBar extends StatelessWidget {
                 if (!transactionInProgress) {
                   context
                       .bloc<CurrentCircleBloc>()
-                      .add(const CurrentCircleEvent.sendFiles());
+                      .add(const CurrentCircleEvent.sendFilesInfo());
                 }
               },
               child: CircleAvatar(

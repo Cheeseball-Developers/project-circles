@@ -112,7 +112,7 @@ packages:
       name: characters
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.0-nullsafety.2"
+    version: "1.1.0-nullsafety.3"
   charcode:
     dependency: transitive
     description:
@@ -154,7 +154,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.15.0-nullsafety.2"
+    version: "1.15.0-nullsafety.3"
   convert:
     dependency: transitive
     description:
@@ -409,7 +409,7 @@ packages:
       name: meta
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0-nullsafety.2"
+    version: "1.3.0-nullsafety.3"
   mime:
     dependency: transitive
     description:
@@ -708,7 +708,7 @@ packages:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0-nullsafety.2"
+    version: "1.3.0-nullsafety.3"
   uuid:
     dependency: "direct main"
     description:
@@ -722,7 +722,7 @@ packages:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0-nullsafety.2"
+    version: "2.1.0-nullsafety.3"
   video_player:
     dependency: "direct main"
     description:
@@ -780,5 +780,5 @@ packages:
     source: hosted
     version: "2.2.1"
 sdks:
-  dart: ">=2.10.0-0.0.dev <2.10.0"
+  dart: ">=2.10.0-110 <=2.11.0-186.0.dev"
   flutter: ">=1.20.0 <2.0.0"
