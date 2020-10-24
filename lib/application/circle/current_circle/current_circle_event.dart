@@ -11,10 +11,9 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
       @required bool acceptConnection}) = AcceptOrReject;
   const factory CurrentCircleEvent.joinCircle({@required User host}) =
       JoinCircle;
-  const factory CurrentCircleEvent.showFilesPage() = ShowFilesPage;
-  const factory CurrentCircleEvent.showMembersPage() = ShowMembersPage;
-  const factory CurrentCircleEvent.showFilesTransferDialog() = ShowFilesTransferDialog;
-  const factory CurrentCircleEvent.pageOpened() = PageOpened;
+  const factory CurrentCircleEvent.showFilesDialog() = ShowFilesDialog;
+  const factory CurrentCircleEvent.showMembersDialog() = ShowMembersDialog;
+  const factory CurrentCircleEvent.showFileTransferDialog() = ShowFileTransferDialog;
   const factory CurrentCircleEvent.memberLeft({@required String id}) =
       MemberLeft;
   const factory CurrentCircleEvent.leaveCircle() = LeaveCircle;

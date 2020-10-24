@@ -9,6 +9,7 @@ part of 'settings_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SettingsFailureTearOff {
   const _$SettingsFailureTearOff();
 
@@ -38,9 +39,11 @@ class _$SettingsFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SettingsFailure = _$SettingsFailureTearOff();
 
+/// @nodoc
 mixin _$SettingsFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -78,12 +81,14 @@ mixin _$SettingsFailure {
   });
 }
 
+/// @nodoc
 abstract class $SettingsFailureCopyWith<$Res> {
   factory $SettingsFailureCopyWith(
           SettingsFailure value, $Res Function(SettingsFailure) then) =
       _$SettingsFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SettingsFailureCopyWithImpl<$Res>
     implements $SettingsFailureCopyWith<$Res> {
   _$SettingsFailureCopyWithImpl(this._value, this._then);
@@ -93,12 +98,14 @@ class _$SettingsFailureCopyWithImpl<$Res>
   final $Res Function(SettingsFailure) _then;
 }
 
+/// @nodoc
 abstract class $IdAndNameNotSetCopyWith<$Res> {
   factory $IdAndNameNotSetCopyWith(
           IdAndNameNotSet value, $Res Function(IdAndNameNotSet) then) =
       _$IdAndNameNotSetCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$IdAndNameNotSetCopyWithImpl<$Res>
     extends _$SettingsFailureCopyWithImpl<$Res>
     implements $IdAndNameNotSetCopyWith<$Res> {
@@ -110,6 +117,7 @@ class _$IdAndNameNotSetCopyWithImpl<$Res>
   IdAndNameNotSet get _value => super._value as IdAndNameNotSet;
 }
 
+/// @nodoc
 class _$IdAndNameNotSet implements IdAndNameNotSet {
   const _$IdAndNameNotSet();
 
@@ -199,12 +207,14 @@ abstract class IdAndNameNotSet implements SettingsFailure {
   const factory IdAndNameNotSet() = _$IdAndNameNotSet;
 }
 
+/// @nodoc
 abstract class $InstanceLoadFailureCopyWith<$Res> {
   factory $InstanceLoadFailureCopyWith(
           InstanceLoadFailure value, $Res Function(InstanceLoadFailure) then) =
       _$InstanceLoadFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$InstanceLoadFailureCopyWithImpl<$Res>
     extends _$SettingsFailureCopyWithImpl<$Res>
     implements $InstanceLoadFailureCopyWith<$Res> {
@@ -216,6 +226,7 @@ class _$InstanceLoadFailureCopyWithImpl<$Res>
   InstanceLoadFailure get _value => super._value as InstanceLoadFailure;
 }
 
+/// @nodoc
 class _$InstanceLoadFailure implements InstanceLoadFailure {
   const _$InstanceLoadFailure();
 
@@ -305,12 +316,14 @@ abstract class InstanceLoadFailure implements SettingsFailure {
   const factory InstanceLoadFailure() = _$InstanceLoadFailure;
 }
 
+/// @nodoc
 abstract class $ValueLoadFailureCopyWith<$Res> {
   factory $ValueLoadFailureCopyWith(
           ValueLoadFailure value, $Res Function(ValueLoadFailure) then) =
       _$ValueLoadFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ValueLoadFailureCopyWithImpl<$Res>
     extends _$SettingsFailureCopyWithImpl<$Res>
     implements $ValueLoadFailureCopyWith<$Res> {
@@ -322,6 +335,7 @@ class _$ValueLoadFailureCopyWithImpl<$Res>
   ValueLoadFailure get _value => super._value as ValueLoadFailure;
 }
 
+/// @nodoc
 class _$ValueLoadFailure implements ValueLoadFailure {
   const _$ValueLoadFailure();
 
@@ -411,12 +425,14 @@ abstract class ValueLoadFailure implements SettingsFailure {
   const factory ValueLoadFailure() = _$ValueLoadFailure;
 }
 
+/// @nodoc
 abstract class $ValueSaveFailureCopyWith<$Res> {
   factory $ValueSaveFailureCopyWith(
           ValueSaveFailure value, $Res Function(ValueSaveFailure) then) =
       _$ValueSaveFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ValueSaveFailureCopyWithImpl<$Res>
     extends _$SettingsFailureCopyWithImpl<$Res>
     implements $ValueSaveFailureCopyWith<$Res> {
@@ -428,6 +444,7 @@ class _$ValueSaveFailureCopyWithImpl<$Res>
   ValueSaveFailure get _value => super._value as ValueSaveFailure;
 }
 
+/// @nodoc
 class _$ValueSaveFailure implements ValueSaveFailure {
   const _$ValueSaveFailure();
 
@@ -517,12 +534,14 @@ abstract class ValueSaveFailure implements SettingsFailure {
   const factory ValueSaveFailure() = _$ValueSaveFailure;
 }
 
+/// @nodoc
 abstract class $UnexpectedCopyWith<$Res> {
   factory $UnexpectedCopyWith(
           Unexpected value, $Res Function(Unexpected) then) =
       _$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$UnexpectedCopyWithImpl<$Res> extends _$SettingsFailureCopyWithImpl<$Res>
     implements $UnexpectedCopyWith<$Res> {
   _$UnexpectedCopyWithImpl(Unexpected _value, $Res Function(Unexpected) _then)
@@ -532,6 +551,7 @@ class _$UnexpectedCopyWithImpl<$Res> extends _$SettingsFailureCopyWithImpl<$Res>
   Unexpected get _value => super._value as Unexpected;
 }
 
+/// @nodoc
 class _$Unexpected implements Unexpected {
   const _$Unexpected();
 

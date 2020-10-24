@@ -9,6 +9,7 @@ part of 'media_tab_view_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MediaTabViewEventTearOff {
   const _$MediaTabViewEventTearOff();
 
@@ -37,9 +38,11 @@ class _$MediaTabViewEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MediaTabViewEvent = _$MediaTabViewEventTearOff();
 
+/// @nodoc
 mixin _$MediaTabViewEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -73,12 +76,14 @@ mixin _$MediaTabViewEvent {
   });
 }
 
+/// @nodoc
 abstract class $MediaTabViewEventCopyWith<$Res> {
   factory $MediaTabViewEventCopyWith(
           MediaTabViewEvent value, $Res Function(MediaTabViewEvent) then) =
       _$MediaTabViewEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$MediaTabViewEventCopyWithImpl<$Res>
     implements $MediaTabViewEventCopyWith<$Res> {
   _$MediaTabViewEventCopyWithImpl(this._value, this._then);
@@ -88,12 +93,14 @@ class _$MediaTabViewEventCopyWithImpl<$Res>
   final $Res Function(MediaTabViewEvent) _then;
 }
 
+/// @nodoc
 abstract class $LoadAlbumsCopyWith<$Res> {
   factory $LoadAlbumsCopyWith(
           LoadAlbums value, $Res Function(LoadAlbums) then) =
       _$LoadAlbumsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LoadAlbumsCopyWithImpl<$Res>
     extends _$MediaTabViewEventCopyWithImpl<$Res>
     implements $LoadAlbumsCopyWith<$Res> {
@@ -104,6 +111,7 @@ class _$LoadAlbumsCopyWithImpl<$Res>
   LoadAlbums get _value => super._value as LoadAlbums;
 }
 
+/// @nodoc
 class _$LoadAlbums implements LoadAlbums {
   const _$LoadAlbums();
 
@@ -187,12 +195,14 @@ abstract class LoadAlbums implements MediaTabViewEvent {
   const factory LoadAlbums() = _$LoadAlbums;
 }
 
+/// @nodoc
 abstract class $LoadMediaCopyWith<$Res> {
   factory $LoadMediaCopyWith(LoadMedia value, $Res Function(LoadMedia) then) =
       _$LoadMediaCopyWithImpl<$Res>;
   $Res call({AssetPathEntity album});
 }
 
+/// @nodoc
 class _$LoadMediaCopyWithImpl<$Res>
     extends _$MediaTabViewEventCopyWithImpl<$Res>
     implements $LoadMediaCopyWith<$Res> {
@@ -212,6 +222,7 @@ class _$LoadMediaCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$LoadMedia implements LoadMedia {
   const _$LoadMedia({@required this.album}) : assert(album != null);
 
@@ -309,6 +320,7 @@ abstract class LoadMedia implements MediaTabViewEvent {
   $LoadMediaCopyWith<LoadMedia> get copyWith;
 }
 
+/// @nodoc
 abstract class $ToggleSelectionCopyWith<$Res> {
   factory $ToggleSelectionCopyWith(
           ToggleSelection value, $Res Function(ToggleSelection) then) =
@@ -318,6 +330,7 @@ abstract class $ToggleSelectionCopyWith<$Res> {
   $MediaInfoCopyWith<$Res> get mediaInfo;
 }
 
+/// @nodoc
 class _$ToggleSelectionCopyWithImpl<$Res>
     extends _$MediaTabViewEventCopyWithImpl<$Res>
     implements $ToggleSelectionCopyWith<$Res> {
@@ -349,6 +362,7 @@ class _$ToggleSelectionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ToggleSelection implements ToggleSelection {
   const _$ToggleSelection({@required this.mediaInfo})
       : assert(mediaInfo != null);
@@ -449,12 +463,14 @@ abstract class ToggleSelection implements MediaTabViewEvent {
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
 }
 
+/// @nodoc
 abstract class $DeselectAllCopyWith<$Res> {
   factory $DeselectAllCopyWith(
           DeselectAll value, $Res Function(DeselectAll) then) =
       _$DeselectAllCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$DeselectAllCopyWithImpl<$Res>
     extends _$MediaTabViewEventCopyWithImpl<$Res>
     implements $DeselectAllCopyWith<$Res> {
@@ -466,6 +482,7 @@ class _$DeselectAllCopyWithImpl<$Res>
   DeselectAll get _value => super._value as DeselectAll;
 }
 
+/// @nodoc
 class _$DeselectAll implements DeselectAll {
   const _$DeselectAll();
 
@@ -549,6 +566,7 @@ abstract class DeselectAll implements MediaTabViewEvent {
   const factory DeselectAll() = _$DeselectAll;
 }
 
+/// @nodoc
 class _$MediaTabViewStateTearOff {
   const _$MediaTabViewStateTearOff();
 
@@ -591,9 +609,11 @@ class _$MediaTabViewStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MediaTabViewState = _$MediaTabViewStateTearOff();
 
+/// @nodoc
 mixin _$MediaTabViewState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -634,12 +654,14 @@ mixin _$MediaTabViewState {
   });
 }
 
+/// @nodoc
 abstract class $MediaTabViewStateCopyWith<$Res> {
   factory $MediaTabViewStateCopyWith(
           MediaTabViewState value, $Res Function(MediaTabViewState) then) =
       _$MediaTabViewStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$MediaTabViewStateCopyWithImpl<$Res>
     implements $MediaTabViewStateCopyWith<$Res> {
   _$MediaTabViewStateCopyWithImpl(this._value, this._then);
@@ -649,11 +671,13 @@ class _$MediaTabViewStateCopyWithImpl<$Res>
   final $Res Function(MediaTabViewState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$MediaTabViewStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -663,6 +687,7 @@ class __$InitialCopyWithImpl<$Res> extends _$MediaTabViewStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -755,12 +780,14 @@ abstract class _Initial implements MediaTabViewState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$IsLoadingCopyWith<$Res> {
   factory _$IsLoadingCopyWith(
           _IsLoading value, $Res Function(_IsLoading) then) =
       __$IsLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$IsLoadingCopyWithImpl<$Res>
     extends _$MediaTabViewStateCopyWithImpl<$Res>
     implements _$IsLoadingCopyWith<$Res> {
@@ -771,6 +798,7 @@ class __$IsLoadingCopyWithImpl<$Res>
   _IsLoading get _value => super._value as _IsLoading;
 }
 
+/// @nodoc
 class _$_IsLoading implements _IsLoading {
   const _$_IsLoading();
 
@@ -863,6 +891,7 @@ abstract class _IsLoading implements MediaTabViewState {
   const factory _IsLoading() = _$_IsLoading;
 }
 
+/// @nodoc
 abstract class _$HasLoadedAlbumsCopyWith<$Res> {
   factory _$HasLoadedAlbumsCopyWith(
           _HasLoadedAlbums value, $Res Function(_HasLoadedAlbums) then) =
@@ -870,6 +899,7 @@ abstract class _$HasLoadedAlbumsCopyWith<$Res> {
   $Res call({List<AssetPathEntity> albums});
 }
 
+/// @nodoc
 class __$HasLoadedAlbumsCopyWithImpl<$Res>
     extends _$MediaTabViewStateCopyWithImpl<$Res>
     implements _$HasLoadedAlbumsCopyWith<$Res> {
@@ -891,6 +921,7 @@ class __$HasLoadedAlbumsCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasLoadedAlbums implements _HasLoadedAlbums {
   const _$_HasLoadedAlbums({@required this.albums}) : assert(albums != null);
 
@@ -998,6 +1029,7 @@ abstract class _HasLoadedAlbums implements MediaTabViewState {
   _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasLoadedCopyWith<$Res> {
   factory _$HasLoadedCopyWith(
           _HasLoaded value, $Res Function(_HasLoaded) then) =
@@ -1009,6 +1041,7 @@ abstract class _$HasLoadedCopyWith<$Res> {
       int currentPage});
 }
 
+/// @nodoc
 class __$HasLoadedCopyWithImpl<$Res>
     extends _$MediaTabViewStateCopyWithImpl<$Res>
     implements _$HasLoadedCopyWith<$Res> {
@@ -1036,6 +1069,7 @@ class __$HasLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
       {@required this.album,
@@ -1175,6 +1209,7 @@ abstract class _HasLoaded implements MediaTabViewState {
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasFailedCopyWith<$Res> {
   factory _$HasFailedCopyWith(
           _HasFailed value, $Res Function(_HasFailed) then) =
@@ -1184,6 +1219,7 @@ abstract class _$HasFailedCopyWith<$Res> {
   $AppsLoadFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$HasFailedCopyWithImpl<$Res>
     extends _$MediaTabViewStateCopyWithImpl<$Res>
     implements _$HasFailedCopyWith<$Res> {
@@ -1213,6 +1249,7 @@ class __$HasFailedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasFailed implements _HasFailed {
   const _$_HasFailed(this.failure) : assert(failure != null);
 

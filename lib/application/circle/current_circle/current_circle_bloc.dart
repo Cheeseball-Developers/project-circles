@@ -64,10 +64,10 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                   outgoingFiles: <FileInfo, double>{},
                   incomingFiles: <FileInfo, double>{},
                   transactions: <FileTransaction>[],
-                  showMembersPage: false,
-                  showFilesPage: false,
+                  showMembersDialog: none(),
+                  showFilesDialog: none(),
+                  showFileTransferDialog: none(),
                   isAcceptingRequest: false,
-                  showFilesTransferDialog: false,
                   transferType: none(),
                   isClosing: false,
                 );
@@ -88,9 +88,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               outgoingFiles: <FileInfo, double>{},
               incomingFiles: <FileInfo, double>{},
               transactions: <FileTransaction>[],
-              showMembersPage: false,
-              showFilesPage: false,
-              showFilesTransferDialog: false,
+              showMembersDialog: none(),
+              showFilesDialog: none(),
+              showFileTransferDialog: none(),
               transferType: none(),
               isLeaving: false,
             );
@@ -106,9 +106,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           deviceRequestedConnection: (e) async* {
             final Map<User, bool> members = Map.from(state.members);
             members.addAll({e.user: true});
+            add(const CurrentCircleEvent.showMembersDialog());
             yield state.copyWith(
               members: members,
-              showMembersPage: true,
             );
           },
           acceptOrReject: (AcceptOrReject request) async* {
@@ -129,22 +129,28 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               yield state.copyWith(members: state.members);
             }
           },
-          showFilesPage: (_) async* {
+          showFilesDialog: (_) async* {
             yield state.copyWith(
-              showFilesPage: true,
+              showFilesDialog: some(true),
+            );
+            yield state.copyWith(
+              showFilesDialog: some(false),
             );
           },
-          showMembersPage: (_) async* {
+          showMembersDialog: (_) async* {
             yield state.copyWith(
-              showMembersPage: true,
+              showMembersDialog: some(true),
+            );
+            yield state.copyWith(
+              showMembersDialog: some(false),
             );
           },
-          pageOpened: (_) async* {
-            yield state.copyWith(showFilesPage: false, showMembersPage: false);
-          },
-          showFilesTransferDialog: (e) async* {
+          showFileTransferDialog: (_) async* {
             yield state.copyWith(
-              showFilesTransferDialog: false,
+              showFileTransferDialog: some(true),
+            );
+            yield state.copyWith(
+              showFileTransferDialog: some(false),
             );
           },
           memberLeft: (e) async* {
@@ -164,18 +170,21 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       },
       hasJoined: (state) async* {
         yield* event.maybeMap(
-          showFilesPage: (_) async* {
+          showFilesDialog: (_) async* {
             yield state.copyWith(
-              showFilesPage: true,
+              showFilesDialog: some(true),
+            );
+            yield state.copyWith(
+              showFilesDialog: some(false),
             );
           },
-          showMembersPage: (_) async* {
+          showMembersDialog: (_) async* {
             yield state.copyWith(
-              showMembersPage: true,
+              showMembersDialog: some(true),
             );
-          },
-          pageOpened: (_) async* {
-            yield state.copyWith(showFilesPage: false, showMembersPage: false);
+            yield state.copyWith(
+              showMembersDialog: some(false),
+            );
           },
           leaveCircle: (e) async* {
             _nearbyConnections

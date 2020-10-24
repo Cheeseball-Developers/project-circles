@@ -9,6 +9,7 @@ part of 'connection_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ConnectionFailureTearOff {
   const _$ConnectionFailureTearOff();
 
@@ -33,9 +34,11 @@ class _$ConnectionFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ConnectionFailure = _$ConnectionFailureTearOff();
 
+/// @nodoc
 mixin _$ConnectionFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -69,12 +72,14 @@ mixin _$ConnectionFailure {
   });
 }
 
+/// @nodoc
 abstract class $ConnectionFailureCopyWith<$Res> {
   factory $ConnectionFailureCopyWith(
           ConnectionFailure value, $Res Function(ConnectionFailure) then) =
       _$ConnectionFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ConnectionFailureCopyWithImpl<$Res>
     implements $ConnectionFailureCopyWith<$Res> {
   _$ConnectionFailureCopyWithImpl(this._value, this._then);
@@ -84,12 +89,14 @@ class _$ConnectionFailureCopyWithImpl<$Res>
   final $Res Function(ConnectionFailure) _then;
 }
 
+/// @nodoc
 abstract class $CancelledByUserCopyWith<$Res> {
   factory $CancelledByUserCopyWith(
           CancelledByUser value, $Res Function(CancelledByUser) then) =
       _$CancelledByUserCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CancelledByUserCopyWithImpl<$Res>
     extends _$ConnectionFailureCopyWithImpl<$Res>
     implements $CancelledByUserCopyWith<$Res> {
@@ -101,6 +108,7 @@ class _$CancelledByUserCopyWithImpl<$Res>
   CancelledByUser get _value => super._value as CancelledByUser;
 }
 
+/// @nodoc
 class _$CancelledByUser
     with DiagnosticableTreeMixin
     implements CancelledByUser {
@@ -193,11 +201,13 @@ abstract class CancelledByUser implements ConnectionFailure {
   const factory CancelledByUser() = _$CancelledByUser;
 }
 
+/// @nodoc
 abstract class $TimedOutCopyWith<$Res> {
   factory $TimedOutCopyWith(TimedOut value, $Res Function(TimedOut) then) =
       _$TimedOutCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$TimedOutCopyWithImpl<$Res> extends _$ConnectionFailureCopyWithImpl<$Res>
     implements $TimedOutCopyWith<$Res> {
   _$TimedOutCopyWithImpl(TimedOut _value, $Res Function(TimedOut) _then)
@@ -207,6 +217,7 @@ class _$TimedOutCopyWithImpl<$Res> extends _$ConnectionFailureCopyWithImpl<$Res>
   TimedOut get _value => super._value as TimedOut;
 }
 
+/// @nodoc
 class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
   const _$TimedOut();
 
@@ -296,12 +307,14 @@ abstract class TimedOut implements ConnectionFailure {
   const factory TimedOut() = _$TimedOut;
 }
 
+/// @nodoc
 abstract class $UnexpectedCopyWith<$Res> {
   factory $UnexpectedCopyWith(
           Unexpected value, $Res Function(Unexpected) then) =
       _$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$UnexpectedCopyWithImpl<$Res>
     extends _$ConnectionFailureCopyWithImpl<$Res>
     implements $UnexpectedCopyWith<$Res> {
@@ -312,6 +325,7 @@ class _$UnexpectedCopyWithImpl<$Res>
   Unexpected get _value => super._value as Unexpected;
 }
 
+/// @nodoc
 class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
   const _$Unexpected();
 
@@ -402,12 +416,14 @@ abstract class Unexpected implements ConnectionFailure {
   const factory Unexpected() = _$Unexpected;
 }
 
+/// @nodoc
 abstract class $EndPointUnknownCopyWith<$Res> {
   factory $EndPointUnknownCopyWith(
           EndPointUnknown value, $Res Function(EndPointUnknown) then) =
       _$EndPointUnknownCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$EndPointUnknownCopyWithImpl<$Res>
     extends _$ConnectionFailureCopyWithImpl<$Res>
     implements $EndPointUnknownCopyWith<$Res> {
@@ -419,6 +435,7 @@ class _$EndPointUnknownCopyWithImpl<$Res>
   EndPointUnknown get _value => super._value as EndPointUnknown;
 }
 
+/// @nodoc
 class _$EndPointUnknown
     with DiagnosticableTreeMixin
     implements EndPointUnknown {

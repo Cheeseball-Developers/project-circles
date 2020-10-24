@@ -9,6 +9,7 @@ part of 'circle.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CircleTearOff {
   const _$CircleTearOff();
 
@@ -21,9 +22,11 @@ class _$CircleTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $Circle = _$CircleTearOff();
 
+/// @nodoc
 mixin _$Circle {
   User get host;
   List<User> get members;
@@ -31,6 +34,7 @@ mixin _$Circle {
   $CircleCopyWith<Circle> get copyWith;
 }
 
+/// @nodoc
 abstract class $CircleCopyWith<$Res> {
   factory $CircleCopyWith(Circle value, $Res Function(Circle) then) =
       _$CircleCopyWithImpl<$Res>;
@@ -39,6 +43,7 @@ abstract class $CircleCopyWith<$Res> {
   $UserCopyWith<$Res> get host;
 }
 
+/// @nodoc
 class _$CircleCopyWithImpl<$Res> implements $CircleCopyWith<$Res> {
   _$CircleCopyWithImpl(this._value, this._then);
 
@@ -68,6 +73,7 @@ class _$CircleCopyWithImpl<$Res> implements $CircleCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$CircleCopyWith<$Res> implements $CircleCopyWith<$Res> {
   factory _$CircleCopyWith(_Circle value, $Res Function(_Circle) then) =
       __$CircleCopyWithImpl<$Res>;
@@ -78,6 +84,7 @@ abstract class _$CircleCopyWith<$Res> implements $CircleCopyWith<$Res> {
   $UserCopyWith<$Res> get host;
 }
 
+/// @nodoc
 class __$CircleCopyWithImpl<$Res> extends _$CircleCopyWithImpl<$Res>
     implements _$CircleCopyWith<$Res> {
   __$CircleCopyWithImpl(_Circle _value, $Res Function(_Circle) _then)
@@ -98,6 +105,7 @@ class __$CircleCopyWithImpl<$Res> extends _$CircleCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_Circle implements _Circle {
   const _$_Circle({@required this.host, @required this.members})
       : assert(host != null),
