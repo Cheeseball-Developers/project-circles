@@ -62,16 +62,22 @@ class FileTransferDialog extends StatelessWidget {
                 .bloc<FileTransferBloc>()
                 .add(const FileTransferEvent.sendFilesInfo()),
             awaitingSendApproval: (_) => null,
-            incomingFilesConfirmation: (_) => () {},
+            incomingFilesConfirmation: (_) => () => context
+                .bloc<FileTransferBloc>()
+                .add(const FileTransferEvent.confirmIncomingFiles(
+                    acceptOrReject: true)),
             transferringFiles: (_) => null,
-            transferComplete: (_) => () {},
+            transferComplete: (_) => () => ExtendedNavigator.of(context).pop(),
           ),
           secondaryOnTap: state.map(
             initial: (_) => null,
             outgoingFilesConfirmation: (_) =>
                 () => ExtendedNavigator.of(context).pop(),
             awaitingSendApproval: (_) => null,
-            incomingFilesConfirmation: (_) => () {},
+            incomingFilesConfirmation: (_) => () => context
+                .bloc<FileTransferBloc>()
+                .add(const FileTransferEvent.confirmIncomingFiles(
+                    acceptOrReject: false)),
             transferringFiles: (_) => null,
             transferComplete: (_) => null,
           ),
@@ -89,11 +95,12 @@ class FileTransferDialog extends StatelessWidget {
             ),
             awaitingSendApproval: (state) => FilesList(state.files),
             incomingFilesConfirmation: (state) => ListView.builder(
-                itemCount: state.files.length,
-                itemBuilder: (context, index) => MyListTile(
-                      title: state.files[index].path,
-                      leading: Container(),
-                    )),
+              itemCount: state.files.length,
+              itemBuilder: (context, index) => MyListTile(
+                title: state.files[index].path,
+                leading: Container(),
+              ),
+            ),
             transferringFiles: (state) => Container(),
             transferComplete: (state) => Container(),
           ),
