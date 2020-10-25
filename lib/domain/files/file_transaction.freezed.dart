@@ -9,6 +9,7 @@ part of 'file_transaction.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FileTransactionTearOff {
   const _$FileTransactionTearOff();
 
@@ -27,9 +28,11 @@ class _$FileTransactionTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FileTransaction = _$FileTransactionTearOff();
 
+/// @nodoc
 mixin _$FileTransaction {
   String get fileName;
   DateTime get dateTime;
@@ -39,6 +42,7 @@ mixin _$FileTransaction {
   $FileTransactionCopyWith<FileTransaction> get copyWith;
 }
 
+/// @nodoc
 abstract class $FileTransactionCopyWith<$Res> {
   factory $FileTransactionCopyWith(
           FileTransaction value, $Res Function(FileTransaction) then) =
@@ -49,6 +53,7 @@ abstract class $FileTransactionCopyWith<$Res> {
   $UserCopyWith<$Res> get sender;
 }
 
+/// @nodoc
 class _$FileTransactionCopyWithImpl<$Res>
     implements $FileTransactionCopyWith<$Res> {
   _$FileTransactionCopyWithImpl(this._value, this._then);
@@ -84,6 +89,7 @@ class _$FileTransactionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$FileTransactionCopyWith<$Res>
     implements $FileTransactionCopyWith<$Res> {
   factory _$FileTransactionCopyWith(
@@ -97,6 +103,7 @@ abstract class _$FileTransactionCopyWith<$Res>
   $UserCopyWith<$Res> get sender;
 }
 
+/// @nodoc
 class __$FileTransactionCopyWithImpl<$Res>
     extends _$FileTransactionCopyWithImpl<$Res>
     implements _$FileTransactionCopyWith<$Res> {
@@ -124,6 +131,7 @@ class __$FileTransactionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_FileTransaction extends _FileTransaction with DiagnosticableTreeMixin {
   const _$_FileTransaction(
       {@required this.fileName,

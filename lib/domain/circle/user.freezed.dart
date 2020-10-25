@@ -9,6 +9,7 @@ part of 'user.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$UserTearOff {
   const _$UserTearOff();
 
@@ -21,9 +22,11 @@ class _$UserTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $User = _$UserTearOff();
 
+/// @nodoc
 mixin _$User {
   UniqueId get uid;
   Name get name;
@@ -31,12 +34,14 @@ mixin _$User {
   $UserCopyWith<User> get copyWith;
 }
 
+/// @nodoc
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
   $Res call({UniqueId uid, Name name});
 }
 
+/// @nodoc
 class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   _$UserCopyWithImpl(this._value, this._then);
 
@@ -56,6 +61,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
@@ -63,6 +69,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   $Res call({UniqueId uid, Name name});
 }
 
+/// @nodoc
 class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     implements _$UserCopyWith<$Res> {
   __$UserCopyWithImpl(_User _value, $Res Function(_User) _then)
@@ -83,6 +90,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_User implements _User {
   const _$_User({@required this.uid, @required this.name})
       : assert(uid != null),

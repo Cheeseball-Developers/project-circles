@@ -9,6 +9,7 @@ part of 'app_info.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AppInfoTearOff {
   const _$AppInfoTearOff();
 
@@ -25,9 +26,11 @@ class _$AppInfoTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AppInfo = _$AppInfoTearOff();
 
+/// @nodoc
 mixin _$AppInfo {
   String get appName;
   String get packageName;
@@ -36,12 +39,14 @@ mixin _$AppInfo {
   $AppInfoCopyWith<AppInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $AppInfoCopyWith<$Res> {
   factory $AppInfoCopyWith(AppInfo value, $Res Function(AppInfo) then) =
       _$AppInfoCopyWithImpl<$Res>;
   $Res call({String appName, String packageName, Uint8List icon});
 }
 
+/// @nodoc
 class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
   _$AppInfoCopyWithImpl(this._value, this._then);
 
@@ -64,6 +69,7 @@ class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
   factory _$AppInfoCopyWith(_AppInfo value, $Res Function(_AppInfo) then) =
       __$AppInfoCopyWithImpl<$Res>;
@@ -71,6 +77,7 @@ abstract class _$AppInfoCopyWith<$Res> implements $AppInfoCopyWith<$Res> {
   $Res call({String appName, String packageName, Uint8List icon});
 }
 
+/// @nodoc
 class __$AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
     implements _$AppInfoCopyWith<$Res> {
   __$AppInfoCopyWithImpl(_AppInfo _value, $Res Function(_AppInfo) _then)
@@ -94,6 +101,7 @@ class __$AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AppInfo extends _AppInfo {
   const _$_AppInfo(
       {@required this.appName, @required this.packageName, @required this.icon})

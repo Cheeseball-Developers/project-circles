@@ -19,6 +19,7 @@ import 'package:projectcircles/infrastructure/nearby_connections/nearby_connecti
 import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
+import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -40,11 +41,13 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<SearchBloc>(() => SearchBloc());
   g.registerFactory<SettingsBloc>(
       () => SettingsBloc(g<IDeviceInfo>(), g<MySharedPreferences>()));
-  g.registerFactory<CurrentCircleBloc>(() => CurrentCircleBloc(
-        g<NearbyConnections>(),
+  g.registerFactory<CurrentCircleBloc>(
+      () => CurrentCircleBloc(g<NearbyConnections>()));
+  g.registerFactory<FileTransferBloc>(() => FileTransferBloc(
         g<AppsRepository>(),
         g<MediaRepository>(),
         g<FilesRepository>(),
+        g<NearbyConnections>(),
       ));
 }
 

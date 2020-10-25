@@ -20,20 +20,20 @@ class BottomBar extends StatelessWidget {
                     color: Theme.of(context).accentIconTheme.color,
                     onPressed: () => context
                         .bloc<CurrentCircleBloc>()
-                        .add(const CurrentCircleEvent.showFilesPage()),
+                        .add(const CurrentCircleEvent.showFilesDialog()),
                   ),
                   IconButton(
                     icon: const Icon(Icons.send),
-                    onPressed: () => context.bloc<CurrentCircleBloc>().add(
-                          const CurrentCircleEvent.sendFiles(),
-                        ),
+                    onPressed: () => context
+                        .bloc<CurrentCircleBloc>()
+                        .add(const CurrentCircleEvent.showFileTransferDialog()),
                   ),
                   IconButton(
                     icon: const Icon(Icons.people),
                     color: Theme.of(context).accentIconTheme.color,
                     onPressed: () => context
                         .bloc<CurrentCircleBloc>()
-                        .add(const CurrentCircleEvent.showMembersPage()),
+                        .add(const CurrentCircleEvent.showMembersDialog()),
                   ),
                 ],
               ),
@@ -41,17 +41,14 @@ class BottomBar extends StatelessWidget {
           ),
           Positioned.fill(
             child: GestureDetector(
-              onTap: () {
-                if (!transactionInProgress) {
-                  context
-                      .bloc<CurrentCircleBloc>()
-                      .add(const CurrentCircleEvent.sendFiles());
-                }
-              },
+              onTap: () => context
+                  .bloc<CurrentCircleBloc>()
+                  .add(const CurrentCircleEvent.showFileTransferDialog()),
               child: CircleAvatar(
                 backgroundColor: Colors.white,
-                child:
-                    Icon(transactionInProgress ? Icons.cancel_schedule_send: Icons.send),
+                child: Icon(transactionInProgress
+                    ? Icons.cancel_schedule_send
+                    : Icons.send),
               ),
             ),
           ),

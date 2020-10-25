@@ -9,6 +9,7 @@ part of 'payload_info.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$PayloadInfoTearOff {
   const _$PayloadInfoTearOff();
 
@@ -21,9 +22,11 @@ class _$PayloadInfoTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $PayloadInfo = _$PayloadInfoTearOff();
 
+/// @nodoc
 mixin _$PayloadInfo {
   int get payloadId;
   double get progress;
@@ -31,6 +34,7 @@ mixin _$PayloadInfo {
   $PayloadInfoCopyWith<PayloadInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $PayloadInfoCopyWith<$Res> {
   factory $PayloadInfoCopyWith(
           PayloadInfo value, $Res Function(PayloadInfo) then) =
@@ -38,6 +42,7 @@ abstract class $PayloadInfoCopyWith<$Res> {
   $Res call({int payloadId, double progress});
 }
 
+/// @nodoc
 class _$PayloadInfoCopyWithImpl<$Res> implements $PayloadInfoCopyWith<$Res> {
   _$PayloadInfoCopyWithImpl(this._value, this._then);
 
@@ -57,6 +62,7 @@ class _$PayloadInfoCopyWithImpl<$Res> implements $PayloadInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$PayloadInfoCopyWith<$Res>
     implements $PayloadInfoCopyWith<$Res> {
   factory _$PayloadInfoCopyWith(
@@ -66,6 +72,7 @@ abstract class _$PayloadInfoCopyWith<$Res>
   $Res call({int payloadId, double progress});
 }
 
+/// @nodoc
 class __$PayloadInfoCopyWithImpl<$Res> extends _$PayloadInfoCopyWithImpl<$Res>
     implements _$PayloadInfoCopyWith<$Res> {
   __$PayloadInfoCopyWithImpl(
@@ -87,6 +94,7 @@ class __$PayloadInfoCopyWithImpl<$Res> extends _$PayloadInfoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_PayloadInfo extends _PayloadInfo {
   const _$_PayloadInfo({@required this.payloadId, @required this.progress})
       : assert(payloadId != null),

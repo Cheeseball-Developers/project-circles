@@ -9,6 +9,7 @@ part of 'failures.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
@@ -27,9 +28,11 @@ class _$ValueFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $ValueFailure = _$ValueFailureTearOff();
 
+/// @nodoc
 mixin _$ValueFailure<T> {
   T get failedValue;
 
@@ -59,6 +62,7 @@ mixin _$ValueFailure<T> {
   $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
 }
 
+/// @nodoc
 abstract class $ValueFailureCopyWith<T, $Res> {
   factory $ValueFailureCopyWith(
           ValueFailure<T> value, $Res Function(ValueFailure<T>) then) =
@@ -66,6 +70,7 @@ abstract class $ValueFailureCopyWith<T, $Res> {
   $Res call({T failedValue});
 }
 
+/// @nodoc
 class _$ValueFailureCopyWithImpl<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
   _$ValueFailureCopyWithImpl(this._value, this._then);
@@ -85,6 +90,7 @@ class _$ValueFailureCopyWithImpl<T, $Res>
   }
 }
 
+/// @nodoc
 abstract class $EmptyCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
   factory $EmptyCopyWith(Empty<T> value, $Res Function(Empty<T>) then) =
@@ -93,6 +99,7 @@ abstract class $EmptyCopyWith<T, $Res>
   $Res call({T failedValue});
 }
 
+/// @nodoc
 class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $EmptyCopyWith<T, $Res> {
   _$EmptyCopyWithImpl(Empty<T> _value, $Res Function(Empty<T>) _then)
@@ -112,6 +119,7 @@ class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
   }
 }
 
+/// @nodoc
 class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
   const _$Empty({@required this.failedValue}) : assert(failedValue != null);
 
@@ -208,6 +216,7 @@ abstract class Empty<T> implements ValueFailure<T> {
   $EmptyCopyWith<T, Empty<T>> get copyWith;
 }
 
+/// @nodoc
 abstract class $ExceedingLengthCopyWith<T, $Res>
     implements $ValueFailureCopyWith<T, $Res> {
   factory $ExceedingLengthCopyWith(
@@ -217,6 +226,7 @@ abstract class $ExceedingLengthCopyWith<T, $Res>
   $Res call({T failedValue});
 }
 
+/// @nodoc
 class _$ExceedingLengthCopyWithImpl<T, $Res>
     extends _$ValueFailureCopyWithImpl<T, $Res>
     implements $ExceedingLengthCopyWith<T, $Res> {
@@ -238,6 +248,7 @@ class _$ExceedingLengthCopyWithImpl<T, $Res>
   }
 }
 
+/// @nodoc
 class _$ExceedingLength<T>
     with DiagnosticableTreeMixin
     implements ExceedingLength<T> {

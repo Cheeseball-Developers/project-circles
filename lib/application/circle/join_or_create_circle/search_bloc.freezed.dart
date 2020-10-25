@@ -9,6 +9,7 @@ part of 'search_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SearchEventTearOff {
   const _$SearchEventTearOff();
 
@@ -70,9 +71,11 @@ class _$SearchEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SearchEvent = _$SearchEventTearOff();
 
+/// @nodoc
 mixin _$SearchEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -129,12 +132,14 @@ mixin _$SearchEvent {
   });
 }
 
+/// @nodoc
 abstract class $SearchEventCopyWith<$Res> {
   factory $SearchEventCopyWith(
           SearchEvent value, $Res Function(SearchEvent) then) =
       _$SearchEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SearchEventCopyWithImpl<$Res> implements $SearchEventCopyWith<$Res> {
   _$SearchEventCopyWithImpl(this._value, this._then);
 
@@ -143,12 +148,14 @@ class _$SearchEventCopyWithImpl<$Res> implements $SearchEventCopyWith<$Res> {
   final $Res Function(SearchEvent) _then;
 }
 
+/// @nodoc
 abstract class $StartSearchingCopyWith<$Res> {
   factory $StartSearchingCopyWith(
           StartSearching value, $Res Function(StartSearching) then) =
       _$StartSearchingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$StartSearchingCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
     implements $StartSearchingCopyWith<$Res> {
   _$StartSearchingCopyWithImpl(
@@ -159,6 +166,7 @@ class _$StartSearchingCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
   StartSearching get _value => super._value as StartSearching;
 }
 
+/// @nodoc
 class _$StartSearching implements StartSearching {
   const _$StartSearching();
 
@@ -275,6 +283,7 @@ abstract class StartSearching implements SearchEvent {
   const factory StartSearching() = _$StartSearching;
 }
 
+/// @nodoc
 abstract class $DeviceDiscoveredCopyWith<$Res> {
   factory $DeviceDiscoveredCopyWith(
           DeviceDiscovered value, $Res Function(DeviceDiscovered) then) =
@@ -284,6 +293,7 @@ abstract class $DeviceDiscoveredCopyWith<$Res> {
   $UserCopyWith<$Res> get user;
 }
 
+/// @nodoc
 class _$DeviceDiscoveredCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
     implements $DeviceDiscoveredCopyWith<$Res> {
@@ -314,6 +324,7 @@ class _$DeviceDiscoveredCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$DeviceDiscovered implements DeviceDiscovered {
   const _$DeviceDiscovered(this.user) : assert(user != null);
 
@@ -444,12 +455,14 @@ abstract class DeviceDiscovered implements SearchEvent {
   $DeviceDiscoveredCopyWith<DeviceDiscovered> get copyWith;
 }
 
+/// @nodoc
 abstract class $ShowAllDiscoveredDevicesCopyWith<$Res> {
   factory $ShowAllDiscoveredDevicesCopyWith(ShowAllDiscoveredDevices value,
           $Res Function(ShowAllDiscoveredDevices) then) =
       _$ShowAllDiscoveredDevicesCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ShowAllDiscoveredDevicesCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
     implements $ShowAllDiscoveredDevicesCopyWith<$Res> {
@@ -462,6 +475,7 @@ class _$ShowAllDiscoveredDevicesCopyWithImpl<$Res>
       super._value as ShowAllDiscoveredDevices;
 }
 
+/// @nodoc
 class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
   const _$ShowAllDiscoveredDevices();
 
@@ -578,6 +592,7 @@ abstract class ShowAllDiscoveredDevices implements SearchEvent {
   const factory ShowAllDiscoveredDevices() = _$ShowAllDiscoveredDevices;
 }
 
+/// @nodoc
 abstract class $DismissAllDiscoveredDevicesCopyWith<$Res> {
   factory $DismissAllDiscoveredDevicesCopyWith(
           DismissAllDiscoveredDevices value,
@@ -585,6 +600,7 @@ abstract class $DismissAllDiscoveredDevicesCopyWith<$Res> {
       _$DismissAllDiscoveredDevicesCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$DismissAllDiscoveredDevicesCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
     implements $DismissAllDiscoveredDevicesCopyWith<$Res> {
@@ -597,6 +613,7 @@ class _$DismissAllDiscoveredDevicesCopyWithImpl<$Res>
       super._value as DismissAllDiscoveredDevices;
 }
 
+/// @nodoc
 class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
   const _$DismissAllDiscoveredDevices();
 
@@ -713,6 +730,7 @@ abstract class DismissAllDiscoveredDevices implements SearchEvent {
   const factory DismissAllDiscoveredDevices() = _$DismissAllDiscoveredDevices;
 }
 
+/// @nodoc
 abstract class $DeviceLostCopyWith<$Res> {
   factory $DeviceLostCopyWith(
           DeviceLost value, $Res Function(DeviceLost) then) =
@@ -720,6 +738,7 @@ abstract class $DeviceLostCopyWith<$Res> {
   $Res call({String uidString});
 }
 
+/// @nodoc
 class _$DeviceLostCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
     implements $DeviceLostCopyWith<$Res> {
   _$DeviceLostCopyWithImpl(DeviceLost _value, $Res Function(DeviceLost) _then)
@@ -738,6 +757,7 @@ class _$DeviceLostCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$DeviceLost implements DeviceLost {
   const _$DeviceLost({@required this.uidString}) : assert(uidString != null);
 
@@ -869,12 +889,14 @@ abstract class DeviceLost implements SearchEvent {
   $DeviceLostCopyWith<DeviceLost> get copyWith;
 }
 
+/// @nodoc
 abstract class $StopSearchingCopyWith<$Res> {
   factory $StopSearchingCopyWith(
           StopSearching value, $Res Function(StopSearching) then) =
       _$StopSearchingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$StopSearchingCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
     implements $StopSearchingCopyWith<$Res> {
   _$StopSearchingCopyWithImpl(
@@ -885,6 +907,7 @@ class _$StopSearchingCopyWithImpl<$Res> extends _$SearchEventCopyWithImpl<$Res>
   StopSearching get _value => super._value as StopSearching;
 }
 
+/// @nodoc
 class _$StopSearching implements StopSearching {
   const _$StopSearching();
 
@@ -1001,6 +1024,7 @@ abstract class StopSearching implements SearchEvent {
   const factory StopSearching() = _$StopSearching;
 }
 
+/// @nodoc
 abstract class $RequestConnectionCopyWith<$Res> {
   factory $RequestConnectionCopyWith(
           RequestConnection value, $Res Function(RequestConnection) then) =
@@ -1010,6 +1034,7 @@ abstract class $RequestConnectionCopyWith<$Res> {
   $UserCopyWith<$Res> get discoveredUser;
 }
 
+/// @nodoc
 class _$RequestConnectionCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
     implements $RequestConnectionCopyWith<$Res> {
@@ -1042,6 +1067,7 @@ class _$RequestConnectionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$RequestConnection implements RequestConnection {
   const _$RequestConnection({@required this.discoveredUser})
       : assert(discoveredUser != null);
@@ -1176,6 +1202,7 @@ abstract class RequestConnection implements SearchEvent {
   $RequestConnectionCopyWith<RequestConnection> get copyWith;
 }
 
+/// @nodoc
 abstract class $ConnectionResultCopyWith<$Res> {
   factory $ConnectionResultCopyWith(
           ConnectionResult value, $Res Function(ConnectionResult) then) =
@@ -1183,6 +1210,7 @@ abstract class $ConnectionResultCopyWith<$Res> {
   $Res call({Either<ConnectionFailure, Unit> connectionStatus});
 }
 
+/// @nodoc
 class _$ConnectionResultCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
     implements $ConnectionResultCopyWith<$Res> {
@@ -1205,6 +1233,7 @@ class _$ConnectionResultCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ConnectionResult implements ConnectionResult {
   const _$ConnectionResult(this.connectionStatus)
       : assert(connectionStatus != null);
@@ -1339,6 +1368,7 @@ abstract class ConnectionResult implements SearchEvent {
   $ConnectionResultCopyWith<ConnectionResult> get copyWith;
 }
 
+/// @nodoc
 abstract class $EndConnectionRequestCopyWith<$Res> {
   factory $EndConnectionRequestCopyWith(EndConnectionRequest value,
           $Res Function(EndConnectionRequest) then) =
@@ -1348,6 +1378,7 @@ abstract class $EndConnectionRequestCopyWith<$Res> {
   $UserCopyWith<$Res> get cancelRequestUser;
 }
 
+/// @nodoc
 class _$EndConnectionRequestCopyWithImpl<$Res>
     extends _$SearchEventCopyWithImpl<$Res>
     implements $EndConnectionRequestCopyWith<$Res> {
@@ -1380,6 +1411,7 @@ class _$EndConnectionRequestCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$EndConnectionRequest implements EndConnectionRequest {
   const _$EndConnectionRequest({@required this.cancelRequestUser})
       : assert(cancelRequestUser != null);
@@ -1515,6 +1547,7 @@ abstract class EndConnectionRequest implements SearchEvent {
   $EndConnectionRequestCopyWith<EndConnectionRequest> get copyWith;
 }
 
+/// @nodoc
 class _$SearchStateTearOff {
   const _$SearchStateTearOff();
 
@@ -1548,9 +1581,11 @@ class _$SearchStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SearchState = _$SearchStateTearOff();
 
+/// @nodoc
 mixin _$SearchState {
   bool get isSearching;
   bool get isLoading;
@@ -1563,6 +1598,7 @@ mixin _$SearchState {
   $SearchStateCopyWith<SearchState> get copyWith;
 }
 
+/// @nodoc
 abstract class $SearchStateCopyWith<$Res> {
   factory $SearchStateCopyWith(
           SearchState value, $Res Function(SearchState) then) =
@@ -1577,6 +1613,7 @@ abstract class $SearchStateCopyWith<$Res> {
       List<User> discoveredDevices});
 }
 
+/// @nodoc
 class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   _$SearchStateCopyWithImpl(this._value, this._then);
 
@@ -1620,6 +1657,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$SearchStateCopyWith<$Res>
     implements $SearchStateCopyWith<$Res> {
   factory _$SearchStateCopyWith(
@@ -1636,6 +1674,7 @@ abstract class _$SearchStateCopyWith<$Res>
       List<User> discoveredDevices});
 }
 
+/// @nodoc
 class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
     implements _$SearchStateCopyWith<$Res> {
   __$SearchStateCopyWithImpl(
@@ -1681,6 +1720,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SearchState implements _SearchState {
   const _$_SearchState(
       {@required this.isSearching,

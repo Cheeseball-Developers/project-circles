@@ -4,16 +4,19 @@ part of 'current_circle_bloc.dart';
 abstract class CurrentCircleState with _$CurrentCircleState {
   const factory CurrentCircleState.initial() = _Initial;
 
-  const factory CurrentCircleState.isLoading({@required String loadingText}) =
-      _IsLoading;
+  const factory CurrentCircleState.isLoading({
+    @required String loadingText,
+  }) = _IsLoading;
 
   const factory CurrentCircleState.hasStarted({
     @required Map<User, bool> members,
     @required Map<FileInfo, double> outgoingFiles,
     @required Map<FileInfo, double> incomingFiles,
     @required List<FileTransaction> transactions,
-    @required bool showMembersPage,
-    @required bool showFilesPage,
+    @required Option<bool> showMembersDialog,
+    @required Option<bool> showFilesDialog,
+    @required Option<bool> showFileTransferDialog,
+    @required Option<FileTransferType> transferType,
     @required bool isAcceptingRequest,
     @required bool isClosing,
   }) = _HasStarted;
@@ -23,11 +26,14 @@ abstract class CurrentCircleState with _$CurrentCircleState {
     @required Map<FileInfo, double> outgoingFiles,
     @required Map<FileInfo, double> incomingFiles,
     @required List<FileTransaction> transactions,
-    @required bool showMembersPage,
-    @required bool showFilesPage,
+    @required Option<bool> showMembersDialog,
+    @required Option<bool> showFilesDialog,
+    @required Option<bool> showFileTransferDialog,
+    @required Option<FileTransferType> transferType,
     @required bool isLeaving,
   }) = _HasJoined;
 
-  const factory CurrentCircleState.hasFailed(
-      {@required ConnectionFailure failure}) = _HasFailed;
+  const factory CurrentCircleState.hasFailed({
+    @required ConnectionFailure failure,
+  }) = _HasFailed;
 }

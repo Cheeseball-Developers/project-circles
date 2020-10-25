@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
+import 'package:projectcircles/presentation/circle_home/dialogs/file_transfer/file_transfer_dialog.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_circle_confirmation_dialog.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/files_page.dart';
@@ -11,26 +12,6 @@ import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.
 import 'package:projectcircles/presentation/circle_home/widgets/transfer_progress_bottom_bar.dart';
 
 class CircleHome extends StatelessWidget {
-  void _showFilesPage(BuildContext context) {
-    showDialog(
-      context: context,
-      child: FilesPage(),
-    );
-    context
-        .bloc<CurrentCircleBloc>()
-        .add(const CurrentCircleEvent.pageOpened());
-  }
-
-  void _showMembersPage(BuildContext context) {
-    showDialog(
-      context: context,
-      child: MembersPage(),
-    );
-    context
-        .bloc<CurrentCircleBloc>()
-        .add(const CurrentCircleEvent.pageOpened());
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
@@ -41,20 +22,74 @@ class CircleHome extends StatelessWidget {
             ExtendedNavigator.of(context).pop();
           },
           hasStarted: (state) {
-            if (state.showFilesPage) {
-              _showFilesPage(context);
-            }
-            if (state.showMembersPage) {
-              _showMembersPage(context);
-            }
+            state.showFilesDialog.fold(
+              () {},
+              (open) {
+                if (open) {
+                  showDialog(
+                    context: context,
+                    child: FilesPage(),
+                  );
+                }
+              },
+            );
+            state.showMembersDialog.fold(
+              () {},
+              (open) {
+                if (open) {
+                  showDialog(
+                    context: context,
+                    child: MembersPage(),
+                  );
+                }
+              },
+            );
+            state.showFileTransferDialog.fold(
+              () {},
+              (open) {
+                if (open) {
+                  showDialog(
+                    context: context,
+                    child: FileTransferDialog(),
+                  );
+                }
+              },
+            );
           },
           hasJoined: (state) {
-            if (state.showFilesPage) {
-              _showFilesPage(context);
-            }
-            if (state.showMembersPage) {
-              _showMembersPage(context);
-            }
+            state.showFilesDialog.fold(
+              () {},
+              (open) {
+                if (open) {
+                  showDialog(
+                    context: context,
+                    child: FilesPage(),
+                  );
+                }
+              },
+            );
+            state.showMembersDialog.fold(
+              () {},
+              (open) {
+                if (open) {
+                  showDialog(
+                    context: context,
+                    child: MembersPage(),
+                  );
+                }
+              },
+            );
+            state.showFileTransferDialog.fold(
+                  () {},
+                  (open) {
+                if (open) {
+                  showDialog(
+                    context: context,
+                    child: MembersPage(),
+                  );
+                }
+              },
+            );
           },
           orElse: () {},
         );

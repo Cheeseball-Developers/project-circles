@@ -9,6 +9,7 @@ part of 'apps_tab_view_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AppsTabViewEventTearOff {
   const _$AppsTabViewEventTearOff();
 
@@ -30,9 +31,11 @@ class _$AppsTabViewEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AppsTabViewEvent = _$AppsTabViewEventTearOff();
 
+/// @nodoc
 mixin _$AppsTabViewEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -62,12 +65,14 @@ mixin _$AppsTabViewEvent {
   });
 }
 
+/// @nodoc
 abstract class $AppsTabViewEventCopyWith<$Res> {
   factory $AppsTabViewEventCopyWith(
           AppsTabViewEvent value, $Res Function(AppsTabViewEvent) then) =
       _$AppsTabViewEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AppsTabViewEventCopyWithImpl<$Res>
     implements $AppsTabViewEventCopyWith<$Res> {
   _$AppsTabViewEventCopyWithImpl(this._value, this._then);
@@ -77,11 +82,13 @@ class _$AppsTabViewEventCopyWithImpl<$Res>
   final $Res Function(AppsTabViewEvent) _then;
 }
 
+/// @nodoc
 abstract class $LoadAppsCopyWith<$Res> {
   factory $LoadAppsCopyWith(LoadApps value, $Res Function(LoadApps) then) =
       _$LoadAppsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LoadAppsCopyWithImpl<$Res> extends _$AppsTabViewEventCopyWithImpl<$Res>
     implements $LoadAppsCopyWith<$Res> {
   _$LoadAppsCopyWithImpl(LoadApps _value, $Res Function(LoadApps) _then)
@@ -91,6 +98,7 @@ class _$LoadAppsCopyWithImpl<$Res> extends _$AppsTabViewEventCopyWithImpl<$Res>
   LoadApps get _value => super._value as LoadApps;
 }
 
+/// @nodoc
 class _$LoadApps implements LoadApps {
   const _$LoadApps();
 
@@ -168,6 +176,7 @@ abstract class LoadApps implements AppsTabViewEvent {
   const factory LoadApps() = _$LoadApps;
 }
 
+/// @nodoc
 abstract class $ToggleAppSelectionCopyWith<$Res> {
   factory $ToggleAppSelectionCopyWith(
           ToggleAppSelection value, $Res Function(ToggleAppSelection) then) =
@@ -177,6 +186,7 @@ abstract class $ToggleAppSelectionCopyWith<$Res> {
   $AppInfoCopyWith<$Res> get appInfo;
 }
 
+/// @nodoc
 class _$ToggleAppSelectionCopyWithImpl<$Res>
     extends _$AppsTabViewEventCopyWithImpl<$Res>
     implements $ToggleAppSelectionCopyWith<$Res> {
@@ -207,6 +217,7 @@ class _$ToggleAppSelectionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ToggleAppSelection implements ToggleAppSelection {
   const _$ToggleAppSelection({@required this.appInfo})
       : assert(appInfo != null);
@@ -300,12 +311,14 @@ abstract class ToggleAppSelection implements AppsTabViewEvent {
   $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith;
 }
 
+/// @nodoc
 abstract class $DeselectAllCopyWith<$Res> {
   factory $DeselectAllCopyWith(
           DeselectAll value, $Res Function(DeselectAll) then) =
       _$DeselectAllCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$DeselectAllCopyWithImpl<$Res>
     extends _$AppsTabViewEventCopyWithImpl<$Res>
     implements $DeselectAllCopyWith<$Res> {
@@ -317,6 +330,7 @@ class _$DeselectAllCopyWithImpl<$Res>
   DeselectAll get _value => super._value as DeselectAll;
 }
 
+/// @nodoc
 class _$DeselectAll implements DeselectAll {
   const _$DeselectAll();
 
@@ -394,6 +408,7 @@ abstract class DeselectAll implements AppsTabViewEvent {
   const factory DeselectAll() = _$DeselectAll;
 }
 
+/// @nodoc
 class _$AppsTabViewStateTearOff {
   const _$AppsTabViewStateTearOff();
 
@@ -411,9 +426,11 @@ class _$AppsTabViewStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AppsTabViewState = _$AppsTabViewStateTearOff();
 
+/// @nodoc
 mixin _$AppsTabViewState {
   bool get isLoading;
   Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
@@ -421,6 +438,7 @@ mixin _$AppsTabViewState {
   $AppsTabViewStateCopyWith<AppsTabViewState> get copyWith;
 }
 
+/// @nodoc
 abstract class $AppsTabViewStateCopyWith<$Res> {
   factory $AppsTabViewStateCopyWith(
           AppsTabViewState value, $Res Function(AppsTabViewState) then) =
@@ -430,6 +448,7 @@ abstract class $AppsTabViewStateCopyWith<$Res> {
       Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> failureOrAppsOption});
 }
 
+/// @nodoc
 class _$AppsTabViewStateCopyWithImpl<$Res>
     implements $AppsTabViewStateCopyWith<$Res> {
   _$AppsTabViewStateCopyWithImpl(this._value, this._then);
@@ -453,6 +472,7 @@ class _$AppsTabViewStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 abstract class _$AppsTabViewStateCopyWith<$Res>
     implements $AppsTabViewStateCopyWith<$Res> {
   factory _$AppsTabViewStateCopyWith(
@@ -464,6 +484,7 @@ abstract class _$AppsTabViewStateCopyWith<$Res>
       Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> failureOrAppsOption});
 }
 
+/// @nodoc
 class __$AppsTabViewStateCopyWithImpl<$Res>
     extends _$AppsTabViewStateCopyWithImpl<$Res>
     implements _$AppsTabViewStateCopyWith<$Res> {
@@ -489,6 +510,7 @@ class __$AppsTabViewStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AppsTabViewState implements _AppsTabViewState {
   const _$_AppsTabViewState(
       {@required this.isLoading, @required this.failureOrAppsOption})
