@@ -21,8 +21,8 @@ class AppWidget extends StatelessWidget {
       child: BlocConsumer<SettingsBloc, SettingsState>(
         listenWhen: (stateA, stateB) => stateA.runtimeType != stateB.runtimeType,
         listener: (context, state) => state.maybeMap(
-            hasLoaded: (state) =>
-                ExtendedNavigator.named('nav').replace(Routes.joinOrCreateCircle),
+            hasLoaded: (state) => ExtendedNavigator.named('nav')
+                .replace(Routes.joinOrCreateCircle),
             orElse: () => null),
         builder: (context, state) => MaterialApp(
           builder: ExtendedNavigator(

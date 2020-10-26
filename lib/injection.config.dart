@@ -16,6 +16,7 @@ import 'infrastructure/settings/device_info_injectable_module.dart';
 import 'application/files/file_transfer/file_transfer_bloc.dart';
 import 'infrastructure/circle/files_repository.dart';
 import 'application/circle/circle_home/files_tab_view/files_tab_view_bloc.dart';
+import 'application/settings/folder_picker/folder_picker_bloc.dart';
 import 'domain/settings/i_device_info.dart';
 import 'infrastructure/circle/media_repository.dart';
 import 'application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
@@ -40,6 +41,7 @@ GetIt $initGetIt(
       () => deviceInfoInjectableModule.deviceInfo);
   gh.lazySingleton<FilesRepository>(() => FilesRepository());
   gh.factory<FilesTabViewBloc>(() => FilesTabViewBloc(get<FilesRepository>()));
+  gh.factory<FolderPickerBloc>(() => FolderPickerBloc());
   gh.lazySingleton<IDeviceInfo>(() => DeviceInfo(get<DeviceInfoPlugin>()));
   gh.lazySingleton<MediaRepository>(() => MediaRepository());
   gh.factory<MediaTabViewBloc>(() => MediaTabViewBloc(get<MediaRepository>()));

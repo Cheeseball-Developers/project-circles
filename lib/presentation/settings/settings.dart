@@ -137,20 +137,7 @@ class Settings extends StatelessWidget {
                               title: 'Save Location',
                               subtitle: 'Downloads/Circles',
                               type: ButtonTileType.tapToOpen,
-                              onTap: () => ExtendedNavigator.named('nav').push(
-                                Routes.folderPickerPage,
-                                arguments: FolderPickerPageArguments(
-                                  action: (context, directory) async {
-                                    context.bloc<SettingsBloc>().add(
-                                          SettingsEvent.selectDefaultDirectory(
-                                            directory,
-                                          ),
-                                        );
-                                  },
-                                  rootDirectory:
-                                      Directory('/storage/emulated/0'),
-                                ),
-                              ),
+                              onTap: () {},
                             ),
                             ButtonTile(
                               icon: Icons.save_alt,
