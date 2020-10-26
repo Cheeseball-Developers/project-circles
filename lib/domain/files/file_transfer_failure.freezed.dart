@@ -9,6 +9,7 @@ part of 'file_transfer_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FileTransferFailureTearOff {
   const _$FileTransferFailureTearOff();
 
@@ -28,9 +29,11 @@ class _$FileTransferFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FileTransferFailure = _$FileTransferFailureTearOff();
 
+/// @nodoc
 mixin _$FileTransferFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -60,12 +63,14 @@ mixin _$FileTransferFailure {
   });
 }
 
+/// @nodoc
 abstract class $FileTransferFailureCopyWith<$Res> {
   factory $FileTransferFailureCopyWith(
           FileTransferFailure value, $Res Function(FileTransferFailure) then) =
       _$FileTransferFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FileTransferFailureCopyWithImpl<$Res>
     implements $FileTransferFailureCopyWith<$Res> {
   _$FileTransferFailureCopyWithImpl(this._value, this._then);
@@ -75,11 +80,13 @@ class _$FileTransferFailureCopyWithImpl<$Res>
   final $Res Function(FileTransferFailure) _then;
 }
 
+/// @nodoc
 abstract class _$DeniedCopyWith<$Res> {
   factory _$DeniedCopyWith(_Denied value, $Res Function(_Denied) then) =
       __$DeniedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$DeniedCopyWithImpl<$Res>
     extends _$FileTransferFailureCopyWithImpl<$Res>
     implements _$DeniedCopyWith<$Res> {
@@ -90,6 +97,7 @@ class __$DeniedCopyWithImpl<$Res>
   _Denied get _value => super._value as _Denied;
 }
 
+/// @nodoc
 class _$_Denied implements _Denied {
   const _$_Denied();
 
@@ -167,12 +175,14 @@ abstract class _Denied implements FileTransferFailure {
   const factory _Denied() = _$_Denied;
 }
 
+/// @nodoc
 abstract class _$CancelledCopyWith<$Res> {
   factory _$CancelledCopyWith(
           _Cancelled value, $Res Function(_Cancelled) then) =
       __$CancelledCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$CancelledCopyWithImpl<$Res>
     extends _$FileTransferFailureCopyWithImpl<$Res>
     implements _$CancelledCopyWith<$Res> {
@@ -183,6 +193,7 @@ class __$CancelledCopyWithImpl<$Res>
   _Cancelled get _value => super._value as _Cancelled;
 }
 
+/// @nodoc
 class _$_Cancelled implements _Cancelled {
   const _$_Cancelled();
 
@@ -260,12 +271,14 @@ abstract class _Cancelled implements FileTransferFailure {
   const factory _Cancelled() = _$_Cancelled;
 }
 
+/// @nodoc
 abstract class _$UnexpectedCopyWith<$Res> {
   factory _$UnexpectedCopyWith(
           _Unexpected value, $Res Function(_Unexpected) then) =
       __$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$UnexpectedCopyWithImpl<$Res>
     extends _$FileTransferFailureCopyWithImpl<$Res>
     implements _$UnexpectedCopyWith<$Res> {
@@ -277,6 +290,7 @@ class __$UnexpectedCopyWithImpl<$Res>
   _Unexpected get _value => super._value as _Unexpected;
 }
 
+/// @nodoc
 class _$_Unexpected implements _Unexpected {
   const _$_Unexpected();
 

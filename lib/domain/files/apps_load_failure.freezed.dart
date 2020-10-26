@@ -9,6 +9,7 @@ part of 'apps_load_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$AppsLoadFailureTearOff {
   const _$AppsLoadFailureTearOff();
 
@@ -18,9 +19,11 @@ class _$AppsLoadFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $AppsLoadFailure = _$AppsLoadFailureTearOff();
 
+/// @nodoc
 mixin _$AppsLoadFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -42,12 +45,14 @@ mixin _$AppsLoadFailure {
   });
 }
 
+/// @nodoc
 abstract class $AppsLoadFailureCopyWith<$Res> {
   factory $AppsLoadFailureCopyWith(
           AppsLoadFailure value, $Res Function(AppsLoadFailure) then) =
       _$AppsLoadFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$AppsLoadFailureCopyWithImpl<$Res>
     implements $AppsLoadFailureCopyWith<$Res> {
   _$AppsLoadFailureCopyWithImpl(this._value, this._then);
@@ -57,12 +62,14 @@ class _$AppsLoadFailureCopyWithImpl<$Res>
   final $Res Function(AppsLoadFailure) _then;
 }
 
+/// @nodoc
 abstract class $UnexpectedFailureCopyWith<$Res> {
   factory $UnexpectedFailureCopyWith(
           UnexpectedFailure value, $Res Function(UnexpectedFailure) then) =
       _$UnexpectedFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$UnexpectedFailureCopyWithImpl<$Res>
     extends _$AppsLoadFailureCopyWithImpl<$Res>
     implements $UnexpectedFailureCopyWith<$Res> {
@@ -74,6 +81,7 @@ class _$UnexpectedFailureCopyWithImpl<$Res>
   UnexpectedFailure get _value => super._value as UnexpectedFailure;
 }
 
+/// @nodoc
 class _$UnexpectedFailure implements UnexpectedFailure {
   const _$UnexpectedFailure();
 

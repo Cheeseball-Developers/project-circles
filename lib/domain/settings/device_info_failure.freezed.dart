@@ -9,6 +9,7 @@ part of 'device_info_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$DeviceInfoFailureTearOff {
   const _$DeviceInfoFailureTearOff();
 
@@ -23,9 +24,11 @@ class _$DeviceInfoFailureTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $DeviceInfoFailure = _$DeviceInfoFailureTearOff();
 
+/// @nodoc
 mixin _$DeviceInfoFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -51,12 +54,14 @@ mixin _$DeviceInfoFailure {
   });
 }
 
+/// @nodoc
 abstract class $DeviceInfoFailureCopyWith<$Res> {
   factory $DeviceInfoFailureCopyWith(
           DeviceInfoFailure value, $Res Function(DeviceInfoFailure) then) =
       _$DeviceInfoFailureCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$DeviceInfoFailureCopyWithImpl<$Res>
     implements $DeviceInfoFailureCopyWith<$Res> {
   _$DeviceInfoFailureCopyWithImpl(this._value, this._then);
@@ -66,12 +71,14 @@ class _$DeviceInfoFailureCopyWithImpl<$Res>
   final $Res Function(DeviceInfoFailure) _then;
 }
 
+/// @nodoc
 abstract class $UnrecognisedPlatformCopyWith<$Res> {
   factory $UnrecognisedPlatformCopyWith(UnrecognisedPlatform value,
           $Res Function(UnrecognisedPlatform) then) =
       _$UnrecognisedPlatformCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$UnrecognisedPlatformCopyWithImpl<$Res>
     extends _$DeviceInfoFailureCopyWithImpl<$Res>
     implements $UnrecognisedPlatformCopyWith<$Res> {
@@ -83,6 +90,7 @@ class _$UnrecognisedPlatformCopyWithImpl<$Res>
   UnrecognisedPlatform get _value => super._value as UnrecognisedPlatform;
 }
 
+/// @nodoc
 class _$UnrecognisedPlatform implements UnrecognisedPlatform {
   const _$UnrecognisedPlatform();
 
@@ -154,12 +162,14 @@ abstract class UnrecognisedPlatform implements DeviceInfoFailure {
   const factory UnrecognisedPlatform() = _$UnrecognisedPlatform;
 }
 
+/// @nodoc
 abstract class $UnexpectedCopyWith<$Res> {
   factory $UnexpectedCopyWith(
           Unexpected value, $Res Function(Unexpected) then) =
       _$UnexpectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$UnexpectedCopyWithImpl<$Res>
     extends _$DeviceInfoFailureCopyWithImpl<$Res>
     implements $UnexpectedCopyWith<$Res> {
@@ -170,6 +180,7 @@ class _$UnexpectedCopyWithImpl<$Res>
   Unexpected get _value => super._value as Unexpected;
 }
 
+/// @nodoc
 class _$Unexpected implements Unexpected {
   const _$Unexpected();
 

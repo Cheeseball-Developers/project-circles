@@ -9,6 +9,7 @@ part of 'files_tab_view_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FilesTabViewEventTearOff {
   const _$FilesTabViewEventTearOff();
 
@@ -33,9 +34,11 @@ class _$FilesTabViewEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FilesTabViewEvent = _$FilesTabViewEventTearOff();
 
+/// @nodoc
 mixin _$FilesTabViewEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -65,12 +68,14 @@ mixin _$FilesTabViewEvent {
   });
 }
 
+/// @nodoc
 abstract class $FilesTabViewEventCopyWith<$Res> {
   factory $FilesTabViewEventCopyWith(
           FilesTabViewEvent value, $Res Function(FilesTabViewEvent) then) =
       _$FilesTabViewEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FilesTabViewEventCopyWithImpl<$Res>
     implements $FilesTabViewEventCopyWith<$Res> {
   _$FilesTabViewEventCopyWithImpl(this._value, this._then);
@@ -80,6 +85,7 @@ class _$FilesTabViewEventCopyWithImpl<$Res>
   final $Res Function(FilesTabViewEvent) _then;
 }
 
+/// @nodoc
 abstract class $LoadDirectoryCopyWith<$Res> {
   factory $LoadDirectoryCopyWith(
           LoadDirectory value, $Res Function(LoadDirectory) then) =
@@ -87,6 +93,7 @@ abstract class $LoadDirectoryCopyWith<$Res> {
   $Res call({String relativePath});
 }
 
+/// @nodoc
 class _$LoadDirectoryCopyWithImpl<$Res>
     extends _$FilesTabViewEventCopyWithImpl<$Res>
     implements $LoadDirectoryCopyWith<$Res> {
@@ -109,6 +116,7 @@ class _$LoadDirectoryCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$LoadDirectory implements LoadDirectory {
   const _$LoadDirectory({@required this.relativePath})
       : assert(relativePath != null);
@@ -203,6 +211,7 @@ abstract class LoadDirectory implements FilesTabViewEvent {
   $LoadDirectoryCopyWith<LoadDirectory> get copyWith;
 }
 
+/// @nodoc
 abstract class $ToggleSelectionCopyWith<$Res> {
   factory $ToggleSelectionCopyWith(
           ToggleSelection value, $Res Function(ToggleSelection) then) =
@@ -210,6 +219,7 @@ abstract class $ToggleSelectionCopyWith<$Res> {
   $Res call({FileSystemEntity fileSystemEntity});
 }
 
+/// @nodoc
 class _$ToggleSelectionCopyWithImpl<$Res>
     extends _$FilesTabViewEventCopyWithImpl<$Res>
     implements $ToggleSelectionCopyWith<$Res> {
@@ -232,6 +242,7 @@ class _$ToggleSelectionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$ToggleSelection implements ToggleSelection {
   const _$ToggleSelection({@required this.fileSystemEntity})
       : assert(fileSystemEntity != null);
@@ -327,12 +338,14 @@ abstract class ToggleSelection implements FilesTabViewEvent {
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
 }
 
+/// @nodoc
 abstract class $DeselectAllCopyWith<$Res> {
   factory $DeselectAllCopyWith(
           DeselectAll value, $Res Function(DeselectAll) then) =
       _$DeselectAllCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$DeselectAllCopyWithImpl<$Res>
     extends _$FilesTabViewEventCopyWithImpl<$Res>
     implements $DeselectAllCopyWith<$Res> {
@@ -344,6 +357,7 @@ class _$DeselectAllCopyWithImpl<$Res>
   DeselectAll get _value => super._value as DeselectAll;
 }
 
+/// @nodoc
 class _$DeselectAll implements DeselectAll {
   const _$DeselectAll();
 
@@ -421,6 +435,7 @@ abstract class DeselectAll implements FilesTabViewEvent {
   const factory DeselectAll() = _$DeselectAll;
 }
 
+/// @nodoc
 class _$FilesTabViewStateTearOff {
   const _$FilesTabViewStateTearOff();
 
@@ -449,9 +464,11 @@ class _$FilesTabViewStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FilesTabViewState = _$FilesTabViewStateTearOff();
 
+/// @nodoc
 mixin _$FilesTabViewState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -484,12 +501,14 @@ mixin _$FilesTabViewState {
   });
 }
 
+/// @nodoc
 abstract class $FilesTabViewStateCopyWith<$Res> {
   factory $FilesTabViewStateCopyWith(
           FilesTabViewState value, $Res Function(FilesTabViewState) then) =
       _$FilesTabViewStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FilesTabViewStateCopyWithImpl<$Res>
     implements $FilesTabViewStateCopyWith<$Res> {
   _$FilesTabViewStateCopyWithImpl(this._value, this._then);
@@ -499,11 +518,13 @@ class _$FilesTabViewStateCopyWithImpl<$Res>
   final $Res Function(FilesTabViewState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$FilesTabViewStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -513,6 +534,7 @@ class __$InitialCopyWithImpl<$Res> extends _$FilesTabViewStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -593,6 +615,7 @@ abstract class _Initial implements FilesTabViewState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$IsLoadingCopyWith<$Res> {
   factory _$IsLoadingCopyWith(
           _IsLoading value, $Res Function(_IsLoading) then) =
@@ -600,6 +623,7 @@ abstract class _$IsLoadingCopyWith<$Res> {
   $Res call({String relativePath});
 }
 
+/// @nodoc
 class __$IsLoadingCopyWithImpl<$Res>
     extends _$FilesTabViewStateCopyWithImpl<$Res>
     implements _$IsLoadingCopyWith<$Res> {
@@ -621,6 +645,7 @@ class __$IsLoadingCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_IsLoading implements _IsLoading {
   const _$_IsLoading({@required this.relativePath})
       : assert(relativePath != null);
@@ -717,6 +742,7 @@ abstract class _IsLoading implements FilesTabViewState {
   _$IsLoadingCopyWith<_IsLoading> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasLoadedCopyWith<$Res> {
   factory _$HasLoadedCopyWith(
           _HasLoaded value, $Res Function(_HasLoaded) then) =
@@ -727,6 +753,7 @@ abstract class _$HasLoadedCopyWith<$Res> {
       Map<FileSystemEntity, bool> files});
 }
 
+/// @nodoc
 class __$HasLoadedCopyWithImpl<$Res>
     extends _$FilesTabViewStateCopyWithImpl<$Res>
     implements _$HasLoadedCopyWith<$Res> {
@@ -756,6 +783,7 @@ class __$HasLoadedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
       {@required this.relativePath,

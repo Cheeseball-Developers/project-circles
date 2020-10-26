@@ -51,7 +51,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           },
         );
 
-        event.maybeMap(
+        yield* event.maybeMap(
           confirmOutgoingFiles: (e) async* {
             yield FileTransferState.outgoingFilesConfirmation(
               users: e.users,
@@ -81,7 +81,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
       },
       outgoingFilesConfirmation: (state) async* {
-        event.maybeMap(
+        yield* event.maybeMap(
           cancelSend: (e) async* {
             // TODO: Implement cancellation
           },

@@ -9,6 +9,7 @@ part of 'current_circle_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$CurrentCircleEventTearOff {
   const _$CurrentCircleEventTearOff();
 
@@ -43,23 +44,18 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
-  ShowFilesPage showFilesPage() {
-    return const ShowFilesPage();
+  ShowFilesDialog showFilesDialog() {
+    return const ShowFilesDialog();
   }
 
 // ignore: unused_element
-  ShowMembersPage showMembersPage() {
-    return const ShowMembersPage();
+  ShowMembersDialog showMembersDialog() {
+    return const ShowMembersDialog();
   }
 
 // ignore: unused_element
-  ShowFilesTransferDialog showFilesTransferDialog() {
-    return const ShowFilesTransferDialog();
-  }
-
-// ignore: unused_element
-  PageOpened pageOpened() {
-    return const PageOpened();
+  ShowFileTransferDialog showFileTransferDialog() {
+    return const ShowFileTransferDialog();
   }
 
 // ignore: unused_element
@@ -85,9 +81,11 @@ class _$CurrentCircleEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CurrentCircleEvent = _$CurrentCircleEventTearOff();
 
+/// @nodoc
 mixin _$CurrentCircleEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -95,10 +93,9 @@ mixin _$CurrentCircleEvent {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -110,10 +107,9 @@ mixin _$CurrentCircleEvent {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -126,10 +122,9 @@ mixin _$CurrentCircleEvent {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -141,10 +136,9 @@ mixin _$CurrentCircleEvent {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -153,12 +147,14 @@ mixin _$CurrentCircleEvent {
   });
 }
 
+/// @nodoc
 abstract class $CurrentCircleEventCopyWith<$Res> {
   factory $CurrentCircleEventCopyWith(
           CurrentCircleEvent value, $Res Function(CurrentCircleEvent) then) =
       _$CurrentCircleEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CurrentCircleEventCopyWithImpl<$Res>
     implements $CurrentCircleEventCopyWith<$Res> {
   _$CurrentCircleEventCopyWithImpl(this._value, this._then);
@@ -168,6 +164,7 @@ class _$CurrentCircleEventCopyWithImpl<$Res>
   final $Res Function(CurrentCircleEvent) _then;
 }
 
+/// @nodoc
 abstract class $StartCircleCopyWith<$Res> {
   factory $StartCircleCopyWith(
           StartCircle value, $Res Function(StartCircle) then) =
@@ -177,6 +174,7 @@ abstract class $StartCircleCopyWith<$Res> {
   $UserCopyWith<$Res> get host;
 }
 
+/// @nodoc
 class _$StartCircleCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $StartCircleCopyWith<$Res> {
@@ -207,6 +205,7 @@ class _$StartCircleCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$StartCircle implements StartCircle {
   const _$StartCircle({@required this.host}) : assert(host != null);
 
@@ -241,10 +240,9 @@ class _$StartCircle implements StartCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -254,10 +252,9 @@ class _$StartCircle implements StartCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -272,10 +269,9 @@ class _$StartCircle implements StartCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -296,10 +292,9 @@ class _$StartCircle implements StartCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -309,10 +304,9 @@ class _$StartCircle implements StartCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -327,10 +321,9 @@ class _$StartCircle implements StartCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -352,6 +345,7 @@ abstract class StartCircle implements CurrentCircleEvent {
   $StartCircleCopyWith<StartCircle> get copyWith;
 }
 
+/// @nodoc
 abstract class $DeviceRequestedConnectionCopyWith<$Res> {
   factory $DeviceRequestedConnectionCopyWith(DeviceRequestedConnection value,
           $Res Function(DeviceRequestedConnection) then) =
@@ -361,6 +355,7 @@ abstract class $DeviceRequestedConnectionCopyWith<$Res> {
   $UserCopyWith<$Res> get user;
 }
 
+/// @nodoc
 class _$DeviceRequestedConnectionCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $DeviceRequestedConnectionCopyWith<$Res> {
@@ -392,6 +387,7 @@ class _$DeviceRequestedConnectionCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$DeviceRequestedConnection implements DeviceRequestedConnection {
   const _$DeviceRequestedConnection({@required this.user})
       : assert(user != null);
@@ -428,10 +424,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -441,10 +436,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -459,10 +453,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -483,10 +476,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -496,10 +488,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -514,10 +505,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -540,6 +530,7 @@ abstract class DeviceRequestedConnection implements CurrentCircleEvent {
   $DeviceRequestedConnectionCopyWith<DeviceRequestedConnection> get copyWith;
 }
 
+/// @nodoc
 abstract class $AcceptOrRejectCopyWith<$Res> {
   factory $AcceptOrRejectCopyWith(
           AcceptOrReject value, $Res Function(AcceptOrReject) then) =
@@ -549,6 +540,7 @@ abstract class $AcceptOrRejectCopyWith<$Res> {
   $UserCopyWith<$Res> get requestingUser;
 }
 
+/// @nodoc
 class _$AcceptOrRejectCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $AcceptOrRejectCopyWith<$Res> {
@@ -585,6 +577,7 @@ class _$AcceptOrRejectCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$AcceptOrReject implements AcceptOrReject {
   const _$AcceptOrReject(
       {@required this.requestingUser, @required this.acceptConnection})
@@ -630,10 +623,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -643,10 +635,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -661,10 +652,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -685,10 +675,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -698,10 +687,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -716,10 +704,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -744,6 +731,7 @@ abstract class AcceptOrReject implements CurrentCircleEvent {
   $AcceptOrRejectCopyWith<AcceptOrReject> get copyWith;
 }
 
+/// @nodoc
 abstract class $JoinCircleCopyWith<$Res> {
   factory $JoinCircleCopyWith(
           JoinCircle value, $Res Function(JoinCircle) then) =
@@ -753,6 +741,7 @@ abstract class $JoinCircleCopyWith<$Res> {
   $UserCopyWith<$Res> get host;
 }
 
+/// @nodoc
 class _$JoinCircleCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $JoinCircleCopyWith<$Res> {
@@ -782,6 +771,7 @@ class _$JoinCircleCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$JoinCircle implements JoinCircle {
   const _$JoinCircle({@required this.host}) : assert(host != null);
 
@@ -816,10 +806,9 @@ class _$JoinCircle implements JoinCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -829,10 +818,9 @@ class _$JoinCircle implements JoinCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -847,10 +835,9 @@ class _$JoinCircle implements JoinCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -871,10 +858,9 @@ class _$JoinCircle implements JoinCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -884,10 +870,9 @@ class _$JoinCircle implements JoinCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -902,10 +887,9 @@ class _$JoinCircle implements JoinCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -927,34 +911,37 @@ abstract class JoinCircle implements CurrentCircleEvent {
   $JoinCircleCopyWith<JoinCircle> get copyWith;
 }
 
-abstract class $ShowFilesPageCopyWith<$Res> {
-  factory $ShowFilesPageCopyWith(
-          ShowFilesPage value, $Res Function(ShowFilesPage) then) =
-      _$ShowFilesPageCopyWithImpl<$Res>;
+/// @nodoc
+abstract class $ShowFilesDialogCopyWith<$Res> {
+  factory $ShowFilesDialogCopyWith(
+          ShowFilesDialog value, $Res Function(ShowFilesDialog) then) =
+      _$ShowFilesDialogCopyWithImpl<$Res>;
 }
 
-class _$ShowFilesPageCopyWithImpl<$Res>
+/// @nodoc
+class _$ShowFilesDialogCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
-    implements $ShowFilesPageCopyWith<$Res> {
-  _$ShowFilesPageCopyWithImpl(
-      ShowFilesPage _value, $Res Function(ShowFilesPage) _then)
-      : super(_value, (v) => _then(v as ShowFilesPage));
+    implements $ShowFilesDialogCopyWith<$Res> {
+  _$ShowFilesDialogCopyWithImpl(
+      ShowFilesDialog _value, $Res Function(ShowFilesDialog) _then)
+      : super(_value, (v) => _then(v as ShowFilesDialog));
 
   @override
-  ShowFilesPage get _value => super._value as ShowFilesPage;
+  ShowFilesDialog get _value => super._value as ShowFilesDialog;
 }
 
-class _$ShowFilesPage implements ShowFilesPage {
-  const _$ShowFilesPage();
+/// @nodoc
+class _$ShowFilesDialog implements ShowFilesDialog {
+  const _$ShowFilesDialog();
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.showFilesPage()';
+    return 'CurrentCircleEvent.showFilesDialog()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ShowFilesPage);
+    return identical(this, other) || (other is ShowFilesDialog);
   }
 
   @override
@@ -967,10 +954,9 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -980,15 +966,14 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return showFilesPage();
+    return showFilesDialog();
   }
 
   @override
@@ -998,10 +983,9 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1009,8 +993,8 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showFilesPage != null) {
-      return showFilesPage();
+    if (showFilesDialog != null) {
+      return showFilesDialog();
     }
     return orElse();
   }
@@ -1022,10 +1006,9 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1035,15 +1018,14 @@ class _$ShowFilesPage implements ShowFilesPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return showFilesPage(this);
+    return showFilesDialog(this);
   }
 
   @override
@@ -1053,10 +1035,9 @@ class _$ShowFilesPage implements ShowFilesPage {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1064,45 +1045,48 @@ class _$ShowFilesPage implements ShowFilesPage {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showFilesPage != null) {
-      return showFilesPage(this);
+    if (showFilesDialog != null) {
+      return showFilesDialog(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowFilesPage implements CurrentCircleEvent {
-  const factory ShowFilesPage() = _$ShowFilesPage;
+abstract class ShowFilesDialog implements CurrentCircleEvent {
+  const factory ShowFilesDialog() = _$ShowFilesDialog;
 }
 
-abstract class $ShowMembersPageCopyWith<$Res> {
-  factory $ShowMembersPageCopyWith(
-          ShowMembersPage value, $Res Function(ShowMembersPage) then) =
-      _$ShowMembersPageCopyWithImpl<$Res>;
+/// @nodoc
+abstract class $ShowMembersDialogCopyWith<$Res> {
+  factory $ShowMembersDialogCopyWith(
+          ShowMembersDialog value, $Res Function(ShowMembersDialog) then) =
+      _$ShowMembersDialogCopyWithImpl<$Res>;
 }
 
-class _$ShowMembersPageCopyWithImpl<$Res>
+/// @nodoc
+class _$ShowMembersDialogCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
-    implements $ShowMembersPageCopyWith<$Res> {
-  _$ShowMembersPageCopyWithImpl(
-      ShowMembersPage _value, $Res Function(ShowMembersPage) _then)
-      : super(_value, (v) => _then(v as ShowMembersPage));
+    implements $ShowMembersDialogCopyWith<$Res> {
+  _$ShowMembersDialogCopyWithImpl(
+      ShowMembersDialog _value, $Res Function(ShowMembersDialog) _then)
+      : super(_value, (v) => _then(v as ShowMembersDialog));
 
   @override
-  ShowMembersPage get _value => super._value as ShowMembersPage;
+  ShowMembersDialog get _value => super._value as ShowMembersDialog;
 }
 
-class _$ShowMembersPage implements ShowMembersPage {
-  const _$ShowMembersPage();
+/// @nodoc
+class _$ShowMembersDialog implements ShowMembersDialog {
+  const _$ShowMembersDialog();
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.showMembersPage()';
+    return 'CurrentCircleEvent.showMembersDialog()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ShowMembersPage);
+    return identical(this, other) || (other is ShowMembersDialog);
   }
 
   @override
@@ -1115,10 +1099,9 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1128,15 +1111,14 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return showMembersPage();
+    return showMembersDialog();
   }
 
   @override
@@ -1146,10 +1128,9 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1157,8 +1138,8 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showMembersPage != null) {
-      return showMembersPage();
+    if (showMembersDialog != null) {
+      return showMembersDialog();
     }
     return orElse();
   }
@@ -1170,10 +1151,9 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1183,15 +1163,14 @@ class _$ShowMembersPage implements ShowMembersPage {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return showMembersPage(this);
+    return showMembersDialog(this);
   }
 
   @override
@@ -1201,10 +1180,9 @@ class _$ShowMembersPage implements ShowMembersPage {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1212,45 +1190,48 @@ class _$ShowMembersPage implements ShowMembersPage {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showMembersPage != null) {
-      return showMembersPage(this);
+    if (showMembersDialog != null) {
+      return showMembersDialog(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowMembersPage implements CurrentCircleEvent {
-  const factory ShowMembersPage() = _$ShowMembersPage;
+abstract class ShowMembersDialog implements CurrentCircleEvent {
+  const factory ShowMembersDialog() = _$ShowMembersDialog;
 }
 
-abstract class $ShowFilesTransferDialogCopyWith<$Res> {
-  factory $ShowFilesTransferDialogCopyWith(ShowFilesTransferDialog value,
-          $Res Function(ShowFilesTransferDialog) then) =
-      _$ShowFilesTransferDialogCopyWithImpl<$Res>;
+/// @nodoc
+abstract class $ShowFileTransferDialogCopyWith<$Res> {
+  factory $ShowFileTransferDialogCopyWith(ShowFileTransferDialog value,
+          $Res Function(ShowFileTransferDialog) then) =
+      _$ShowFileTransferDialogCopyWithImpl<$Res>;
 }
 
-class _$ShowFilesTransferDialogCopyWithImpl<$Res>
+/// @nodoc
+class _$ShowFileTransferDialogCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
-    implements $ShowFilesTransferDialogCopyWith<$Res> {
-  _$ShowFilesTransferDialogCopyWithImpl(ShowFilesTransferDialog _value,
-      $Res Function(ShowFilesTransferDialog) _then)
-      : super(_value, (v) => _then(v as ShowFilesTransferDialog));
+    implements $ShowFileTransferDialogCopyWith<$Res> {
+  _$ShowFileTransferDialogCopyWithImpl(ShowFileTransferDialog _value,
+      $Res Function(ShowFileTransferDialog) _then)
+      : super(_value, (v) => _then(v as ShowFileTransferDialog));
 
   @override
-  ShowFilesTransferDialog get _value => super._value as ShowFilesTransferDialog;
+  ShowFileTransferDialog get _value => super._value as ShowFileTransferDialog;
 }
 
-class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
-  const _$ShowFilesTransferDialog();
+/// @nodoc
+class _$ShowFileTransferDialog implements ShowFileTransferDialog {
+  const _$ShowFileTransferDialog();
 
   @override
   String toString() {
-    return 'CurrentCircleEvent.showFilesTransferDialog()';
+    return 'CurrentCircleEvent.showFileTransferDialog()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is ShowFilesTransferDialog);
+    return identical(this, other) || (other is ShowFileTransferDialog);
   }
 
   @override
@@ -1263,10 +1244,9 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1276,15 +1256,14 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return showFilesTransferDialog();
+    return showFileTransferDialog();
   }
 
   @override
@@ -1294,10 +1273,9 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1305,8 +1283,8 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showFilesTransferDialog != null) {
-      return showFilesTransferDialog();
+    if (showFileTransferDialog != null) {
+      return showFileTransferDialog();
     }
     return orElse();
   }
@@ -1318,10 +1296,9 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1331,15 +1308,14 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
     assert(disconnected != null);
-    return showFilesTransferDialog(this);
+    return showFileTransferDialog(this);
   }
 
   @override
@@ -1349,10 +1325,9 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1360,164 +1335,18 @@ class _$ShowFilesTransferDialog implements ShowFilesTransferDialog {
     @required Result orElse(),
   }) {
     assert(orElse != null);
-    if (showFilesTransferDialog != null) {
-      return showFilesTransferDialog(this);
+    if (showFileTransferDialog != null) {
+      return showFileTransferDialog(this);
     }
     return orElse();
   }
 }
 
-abstract class ShowFilesTransferDialog implements CurrentCircleEvent {
-  const factory ShowFilesTransferDialog() = _$ShowFilesTransferDialog;
+abstract class ShowFileTransferDialog implements CurrentCircleEvent {
+  const factory ShowFileTransferDialog() = _$ShowFileTransferDialog;
 }
 
-abstract class $PageOpenedCopyWith<$Res> {
-  factory $PageOpenedCopyWith(
-          PageOpened value, $Res Function(PageOpened) then) =
-      _$PageOpenedCopyWithImpl<$Res>;
-}
-
-class _$PageOpenedCopyWithImpl<$Res>
-    extends _$CurrentCircleEventCopyWithImpl<$Res>
-    implements $PageOpenedCopyWith<$Res> {
-  _$PageOpenedCopyWithImpl(PageOpened _value, $Res Function(PageOpened) _then)
-      : super(_value, (v) => _then(v as PageOpened));
-
-  @override
-  PageOpened get _value => super._value as PageOpened;
-}
-
-class _$PageOpened implements PageOpened {
-  const _$PageOpened();
-
-  @override
-  String toString() {
-    return 'CurrentCircleEvent.pageOpened()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is PageOpened);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startCircle(User host),
-    @required Result deviceRequestedConnection(User user),
-    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
-    @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
-    @required Result memberLeft(String id),
-    @required Result leaveCircle(),
-    @required Result closeCircle(),
-    @required Result disconnected(),
-  }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
-    assert(memberLeft != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
-    return pageOpened();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startCircle(User host),
-    Result deviceRequestedConnection(User user),
-    Result acceptOrReject(User requestingUser, bool acceptConnection),
-    Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
-    Result memberLeft(String id),
-    Result leaveCircle(),
-    Result closeCircle(),
-    Result disconnected(),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (pageOpened != null) {
-      return pageOpened();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startCircle(StartCircle value),
-    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
-    @required Result acceptOrReject(AcceptOrReject value),
-    @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
-    @required Result memberLeft(MemberLeft value),
-    @required Result leaveCircle(LeaveCircle value),
-    @required Result closeCircle(CloseCircle value),
-    @required Result disconnected(Disconnected value),
-  }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
-    assert(memberLeft != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
-    return pageOpened(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startCircle(StartCircle value),
-    Result deviceRequestedConnection(DeviceRequestedConnection value),
-    Result acceptOrReject(AcceptOrReject value),
-    Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
-    Result memberLeft(MemberLeft value),
-    Result leaveCircle(LeaveCircle value),
-    Result closeCircle(CloseCircle value),
-    Result disconnected(Disconnected value),
-    @required Result orElse(),
-  }) {
-    assert(orElse != null);
-    if (pageOpened != null) {
-      return pageOpened(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class PageOpened implements CurrentCircleEvent {
-  const factory PageOpened() = _$PageOpened;
-}
-
+/// @nodoc
 abstract class $MemberLeftCopyWith<$Res> {
   factory $MemberLeftCopyWith(
           MemberLeft value, $Res Function(MemberLeft) then) =
@@ -1525,6 +1354,7 @@ abstract class $MemberLeftCopyWith<$Res> {
   $Res call({String id});
 }
 
+/// @nodoc
 class _$MemberLeftCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $MemberLeftCopyWith<$Res> {
@@ -1544,6 +1374,7 @@ class _$MemberLeftCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$MemberLeft implements MemberLeft {
   const _$MemberLeft({@required this.id}) : assert(id != null);
 
@@ -1578,10 +1409,9 @@ class _$MemberLeft implements MemberLeft {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1591,10 +1421,9 @@ class _$MemberLeft implements MemberLeft {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1609,10 +1438,9 @@ class _$MemberLeft implements MemberLeft {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1633,10 +1461,9 @@ class _$MemberLeft implements MemberLeft {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1646,10 +1473,9 @@ class _$MemberLeft implements MemberLeft {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1664,10 +1490,9 @@ class _$MemberLeft implements MemberLeft {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1689,12 +1514,14 @@ abstract class MemberLeft implements CurrentCircleEvent {
   $MemberLeftCopyWith<MemberLeft> get copyWith;
 }
 
+/// @nodoc
 abstract class $LeaveCircleCopyWith<$Res> {
   factory $LeaveCircleCopyWith(
           LeaveCircle value, $Res Function(LeaveCircle) then) =
       _$LeaveCircleCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LeaveCircleCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $LeaveCircleCopyWith<$Res> {
@@ -1706,6 +1533,7 @@ class _$LeaveCircleCopyWithImpl<$Res>
   LeaveCircle get _value => super._value as LeaveCircle;
 }
 
+/// @nodoc
 class _$LeaveCircle implements LeaveCircle {
   const _$LeaveCircle();
 
@@ -1729,10 +1557,9 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1742,10 +1569,9 @@ class _$LeaveCircle implements LeaveCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1760,10 +1586,9 @@ class _$LeaveCircle implements LeaveCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1784,10 +1609,9 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1797,10 +1621,9 @@ class _$LeaveCircle implements LeaveCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1815,10 +1638,9 @@ class _$LeaveCircle implements LeaveCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1837,12 +1659,14 @@ abstract class LeaveCircle implements CurrentCircleEvent {
   const factory LeaveCircle() = _$LeaveCircle;
 }
 
+/// @nodoc
 abstract class $CloseCircleCopyWith<$Res> {
   factory $CloseCircleCopyWith(
           CloseCircle value, $Res Function(CloseCircle) then) =
       _$CloseCircleCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CloseCircleCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $CloseCircleCopyWith<$Res> {
@@ -1854,6 +1678,7 @@ class _$CloseCircleCopyWithImpl<$Res>
   CloseCircle get _value => super._value as CloseCircle;
 }
 
+/// @nodoc
 class _$CloseCircle implements CloseCircle {
   const _$CloseCircle();
 
@@ -1877,10 +1702,9 @@ class _$CloseCircle implements CloseCircle {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1890,10 +1714,9 @@ class _$CloseCircle implements CloseCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1908,10 +1731,9 @@ class _$CloseCircle implements CloseCircle {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1932,10 +1754,9 @@ class _$CloseCircle implements CloseCircle {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1945,10 +1766,9 @@ class _$CloseCircle implements CloseCircle {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1963,10 +1783,9 @@ class _$CloseCircle implements CloseCircle {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1985,12 +1804,14 @@ abstract class CloseCircle implements CurrentCircleEvent {
   const factory CloseCircle() = _$CloseCircle;
 }
 
+/// @nodoc
 abstract class $DisconnectedCopyWith<$Res> {
   factory $DisconnectedCopyWith(
           Disconnected value, $Res Function(Disconnected) then) =
       _$DisconnectedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$DisconnectedCopyWithImpl<$Res>
     extends _$CurrentCircleEventCopyWithImpl<$Res>
     implements $DisconnectedCopyWith<$Res> {
@@ -2002,6 +1823,7 @@ class _$DisconnectedCopyWithImpl<$Res>
   Disconnected get _value => super._value as Disconnected;
 }
 
+/// @nodoc
 class _$Disconnected implements Disconnected {
   const _$Disconnected();
 
@@ -2025,10 +1847,9 @@ class _$Disconnected implements Disconnected {
     @required Result deviceRequestedConnection(User user),
     @required Result acceptOrReject(User requestingUser, bool acceptConnection),
     @required Result joinCircle(User host),
-    @required Result showFilesPage(),
-    @required Result showMembersPage(),
-    @required Result showFilesTransferDialog(),
-    @required Result pageOpened(),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -2038,10 +1859,9 @@ class _$Disconnected implements Disconnected {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2056,10 +1876,9 @@ class _$Disconnected implements Disconnected {
     Result deviceRequestedConnection(User user),
     Result acceptOrReject(User requestingUser, bool acceptConnection),
     Result joinCircle(User host),
-    Result showFilesPage(),
-    Result showMembersPage(),
-    Result showFilesTransferDialog(),
-    Result pageOpened(),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -2080,10 +1899,9 @@ class _$Disconnected implements Disconnected {
     @required Result deviceRequestedConnection(DeviceRequestedConnection value),
     @required Result acceptOrReject(AcceptOrReject value),
     @required Result joinCircle(JoinCircle value),
-    @required Result showFilesPage(ShowFilesPage value),
-    @required Result showMembersPage(ShowMembersPage value),
-    @required Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    @required Result pageOpened(PageOpened value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -2093,10 +1911,9 @@ class _$Disconnected implements Disconnected {
     assert(deviceRequestedConnection != null);
     assert(acceptOrReject != null);
     assert(joinCircle != null);
-    assert(showFilesPage != null);
-    assert(showMembersPage != null);
-    assert(showFilesTransferDialog != null);
-    assert(pageOpened != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -2111,10 +1928,9 @@ class _$Disconnected implements Disconnected {
     Result deviceRequestedConnection(DeviceRequestedConnection value),
     Result acceptOrReject(AcceptOrReject value),
     Result joinCircle(JoinCircle value),
-    Result showFilesPage(ShowFilesPage value),
-    Result showMembersPage(ShowMembersPage value),
-    Result showFilesTransferDialog(ShowFilesTransferDialog value),
-    Result pageOpened(PageOpened value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -2133,6 +1949,7 @@ abstract class Disconnected implements CurrentCircleEvent {
   const factory Disconnected() = _$Disconnected;
 }
 
+/// @nodoc
 class _$CurrentCircleStateTearOff {
   const _$CurrentCircleStateTearOff();
 
@@ -2154,9 +1971,9 @@ class _$CurrentCircleStateTearOff {
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
-      @required bool showMembersPage,
-      @required bool showFilesPage,
-      @required bool showFilesTransferDialog,
+      @required Option<bool> showMembersDialog,
+      @required Option<bool> showFilesDialog,
+      @required Option<bool> showFileTransferDialog,
       @required Option<FileTransferType> transferType,
       @required bool isAcceptingRequest,
       @required bool isClosing}) {
@@ -2165,9 +1982,9 @@ class _$CurrentCircleStateTearOff {
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
       transactions: transactions,
-      showMembersPage: showMembersPage,
-      showFilesPage: showFilesPage,
-      showFilesTransferDialog: showFilesTransferDialog,
+      showMembersDialog: showMembersDialog,
+      showFilesDialog: showFilesDialog,
+      showFileTransferDialog: showFileTransferDialog,
       transferType: transferType,
       isAcceptingRequest: isAcceptingRequest,
       isClosing: isClosing,
@@ -2180,9 +1997,9 @@ class _$CurrentCircleStateTearOff {
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
-      @required bool showMembersPage,
-      @required bool showFilesPage,
-      @required bool showFilesTransferDialog,
+      @required Option<bool> showMembersDialog,
+      @required Option<bool> showFilesDialog,
+      @required Option<bool> showFileTransferDialog,
       @required Option<FileTransferType> transferType,
       @required bool isLeaving}) {
     return _HasJoined(
@@ -2190,9 +2007,9 @@ class _$CurrentCircleStateTearOff {
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
       transactions: transactions,
-      showMembersPage: showMembersPage,
-      showFilesPage: showFilesPage,
-      showFilesTransferDialog: showFilesTransferDialog,
+      showMembersDialog: showMembersDialog,
+      showFilesDialog: showFilesDialog,
+      showFileTransferDialog: showFileTransferDialog,
       transferType: transferType,
       isLeaving: isLeaving,
     );
@@ -2206,9 +2023,11 @@ class _$CurrentCircleStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $CurrentCircleState = _$CurrentCircleStateTearOff();
 
+/// @nodoc
 mixin _$CurrentCircleState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -2220,9 +2039,9 @@ mixin _$CurrentCircleState {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
             bool isClosing),
@@ -2232,9 +2051,9 @@ mixin _$CurrentCircleState {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isLeaving),
     @required Result hasFailed(ConnectionFailure failure),
@@ -2248,9 +2067,9 @@ mixin _$CurrentCircleState {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isAcceptingRequest,
         bool isClosing),
@@ -2259,9 +2078,9 @@ mixin _$CurrentCircleState {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isLeaving),
     Result hasFailed(ConnectionFailure failure),
@@ -2286,12 +2105,14 @@ mixin _$CurrentCircleState {
   });
 }
 
+/// @nodoc
 abstract class $CurrentCircleStateCopyWith<$Res> {
   factory $CurrentCircleStateCopyWith(
           CurrentCircleState value, $Res Function(CurrentCircleState) then) =
       _$CurrentCircleStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$CurrentCircleStateCopyWithImpl<$Res>
     implements $CurrentCircleStateCopyWith<$Res> {
   _$CurrentCircleStateCopyWithImpl(this._value, this._then);
@@ -2301,11 +2122,13 @@ class _$CurrentCircleStateCopyWithImpl<$Res>
   final $Res Function(CurrentCircleState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res>
     extends _$CurrentCircleStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
@@ -2316,6 +2139,7 @@ class __$InitialCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -2343,9 +2167,9 @@ class _$_Initial implements _Initial {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
             bool isClosing),
@@ -2355,9 +2179,9 @@ class _$_Initial implements _Initial {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isLeaving),
     @required Result hasFailed(ConnectionFailure failure),
@@ -2380,9 +2204,9 @@ class _$_Initial implements _Initial {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isAcceptingRequest,
         bool isClosing),
@@ -2391,9 +2215,9 @@ class _$_Initial implements _Initial {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isLeaving),
     Result hasFailed(ConnectionFailure failure),
@@ -2445,6 +2269,7 @@ abstract class _Initial implements CurrentCircleState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$IsLoadingCopyWith<$Res> {
   factory _$IsLoadingCopyWith(
           _IsLoading value, $Res Function(_IsLoading) then) =
@@ -2452,6 +2277,7 @@ abstract class _$IsLoadingCopyWith<$Res> {
   $Res call({String loadingText});
 }
 
+/// @nodoc
 class __$IsLoadingCopyWithImpl<$Res>
     extends _$CurrentCircleStateCopyWithImpl<$Res>
     implements _$IsLoadingCopyWith<$Res> {
@@ -2472,6 +2298,7 @@ class __$IsLoadingCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_IsLoading implements _IsLoading {
   const _$_IsLoading({@required this.loadingText})
       : assert(loadingText != null);
@@ -2512,9 +2339,9 @@ class _$_IsLoading implements _IsLoading {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
             bool isClosing),
@@ -2524,9 +2351,9 @@ class _$_IsLoading implements _IsLoading {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isLeaving),
     @required Result hasFailed(ConnectionFailure failure),
@@ -2549,9 +2376,9 @@ class _$_IsLoading implements _IsLoading {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isAcceptingRequest,
         bool isClosing),
@@ -2560,9 +2387,9 @@ class _$_IsLoading implements _IsLoading {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isLeaving),
     Result hasFailed(ConnectionFailure failure),
@@ -2617,6 +2444,7 @@ abstract class _IsLoading implements CurrentCircleState {
   _$IsLoadingCopyWith<_IsLoading> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasStartedCopyWith<$Res> {
   factory _$HasStartedCopyWith(
           _HasStarted value, $Res Function(_HasStarted) then) =
@@ -2626,14 +2454,15 @@ abstract class _$HasStartedCopyWith<$Res> {
       Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
       List<FileTransaction> transactions,
-      bool showMembersPage,
-      bool showFilesPage,
-      bool showFilesTransferDialog,
+      Option<bool> showMembersDialog,
+      Option<bool> showFilesDialog,
+      Option<bool> showFileTransferDialog,
       Option<FileTransferType> transferType,
       bool isAcceptingRequest,
       bool isClosing});
 }
 
+/// @nodoc
 class __$HasStartedCopyWithImpl<$Res>
     extends _$CurrentCircleStateCopyWithImpl<$Res>
     implements _$HasStartedCopyWith<$Res> {
@@ -2650,9 +2479,9 @@ class __$HasStartedCopyWithImpl<$Res>
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
     Object transactions = freezed,
-    Object showMembersPage = freezed,
-    Object showFilesPage = freezed,
-    Object showFilesTransferDialog = freezed,
+    Object showMembersDialog = freezed,
+    Object showFilesDialog = freezed,
+    Object showFileTransferDialog = freezed,
     Object transferType = freezed,
     Object isAcceptingRequest = freezed,
     Object isClosing = freezed,
@@ -2668,15 +2497,15 @@ class __$HasStartedCopyWithImpl<$Res>
       transactions: transactions == freezed
           ? _value.transactions
           : transactions as List<FileTransaction>,
-      showMembersPage: showMembersPage == freezed
-          ? _value.showMembersPage
-          : showMembersPage as bool,
-      showFilesPage: showFilesPage == freezed
-          ? _value.showFilesPage
-          : showFilesPage as bool,
-      showFilesTransferDialog: showFilesTransferDialog == freezed
-          ? _value.showFilesTransferDialog
-          : showFilesTransferDialog as bool,
+      showMembersDialog: showMembersDialog == freezed
+          ? _value.showMembersDialog
+          : showMembersDialog as Option<bool>,
+      showFilesDialog: showFilesDialog == freezed
+          ? _value.showFilesDialog
+          : showFilesDialog as Option<bool>,
+      showFileTransferDialog: showFileTransferDialog == freezed
+          ? _value.showFileTransferDialog
+          : showFileTransferDialog as Option<bool>,
       transferType: transferType == freezed
           ? _value.transferType
           : transferType as Option<FileTransferType>,
@@ -2688,15 +2517,16 @@ class __$HasStartedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasStarted implements _HasStarted {
   const _$_HasStarted(
       {@required this.members,
       @required this.outgoingFiles,
       @required this.incomingFiles,
       @required this.transactions,
-      @required this.showMembersPage,
-      @required this.showFilesPage,
-      @required this.showFilesTransferDialog,
+      @required this.showMembersDialog,
+      @required this.showFilesDialog,
+      @required this.showFileTransferDialog,
       @required this.transferType,
       @required this.isAcceptingRequest,
       @required this.isClosing})
@@ -2704,9 +2534,9 @@ class _$_HasStarted implements _HasStarted {
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
         assert(transactions != null),
-        assert(showMembersPage != null),
-        assert(showFilesPage != null),
-        assert(showFilesTransferDialog != null),
+        assert(showMembersDialog != null),
+        assert(showFilesDialog != null),
+        assert(showFileTransferDialog != null),
         assert(transferType != null),
         assert(isAcceptingRequest != null),
         assert(isClosing != null);
@@ -2720,11 +2550,11 @@ class _$_HasStarted implements _HasStarted {
   @override
   final List<FileTransaction> transactions;
   @override
-  final bool showMembersPage;
+  final Option<bool> showMembersDialog;
   @override
-  final bool showFilesPage;
+  final Option<bool> showFilesDialog;
   @override
-  final bool showFilesTransferDialog;
+  final Option<bool> showFileTransferDialog;
   @override
   final Option<FileTransferType> transferType;
   @override
@@ -2734,7 +2564,7 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasStarted(members: $members, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, showFilesTransferDialog: $showFilesTransferDialog, transferType: $transferType, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
+    return 'CurrentCircleState.hasStarted(members: $members, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersDialog: $showMembersDialog, showFilesDialog: $showFilesDialog, showFileTransferDialog: $showFileTransferDialog, transferType: $transferType, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
   }
 
   @override
@@ -2753,16 +2583,15 @@ class _$_HasStarted implements _HasStarted {
             (identical(other.transactions, transactions) ||
                 const DeepCollectionEquality()
                     .equals(other.transactions, transactions)) &&
-            (identical(other.showMembersPage, showMembersPage) ||
+            (identical(other.showMembersDialog, showMembersDialog) ||
                 const DeepCollectionEquality()
-                    .equals(other.showMembersPage, showMembersPage)) &&
-            (identical(other.showFilesPage, showFilesPage) ||
+                    .equals(other.showMembersDialog, showMembersDialog)) &&
+            (identical(other.showFilesDialog, showFilesDialog) ||
                 const DeepCollectionEquality()
-                    .equals(other.showFilesPage, showFilesPage)) &&
-            (identical(
-                    other.showFilesTransferDialog, showFilesTransferDialog) ||
+                    .equals(other.showFilesDialog, showFilesDialog)) &&
+            (identical(other.showFileTransferDialog, showFileTransferDialog) ||
                 const DeepCollectionEquality().equals(
-                    other.showFilesTransferDialog, showFilesTransferDialog)) &&
+                    other.showFileTransferDialog, showFileTransferDialog)) &&
             (identical(other.transferType, transferType) ||
                 const DeepCollectionEquality()
                     .equals(other.transferType, transferType)) &&
@@ -2781,9 +2610,9 @@ class _$_HasStarted implements _HasStarted {
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
       const DeepCollectionEquality().hash(transactions) ^
-      const DeepCollectionEquality().hash(showMembersPage) ^
-      const DeepCollectionEquality().hash(showFilesPage) ^
-      const DeepCollectionEquality().hash(showFilesTransferDialog) ^
+      const DeepCollectionEquality().hash(showMembersDialog) ^
+      const DeepCollectionEquality().hash(showFilesDialog) ^
+      const DeepCollectionEquality().hash(showFileTransferDialog) ^
       const DeepCollectionEquality().hash(transferType) ^
       const DeepCollectionEquality().hash(isAcceptingRequest) ^
       const DeepCollectionEquality().hash(isClosing);
@@ -2803,9 +2632,9 @@ class _$_HasStarted implements _HasStarted {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
             bool isClosing),
@@ -2815,9 +2644,9 @@ class _$_HasStarted implements _HasStarted {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isLeaving),
     @required Result hasFailed(ConnectionFailure failure),
@@ -2832,9 +2661,9 @@ class _$_HasStarted implements _HasStarted {
         outgoingFiles,
         incomingFiles,
         transactions,
-        showMembersPage,
-        showFilesPage,
-        showFilesTransferDialog,
+        showMembersDialog,
+        showFilesDialog,
+        showFileTransferDialog,
         transferType,
         isAcceptingRequest,
         isClosing);
@@ -2850,9 +2679,9 @@ class _$_HasStarted implements _HasStarted {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isAcceptingRequest,
         bool isClosing),
@@ -2861,9 +2690,9 @@ class _$_HasStarted implements _HasStarted {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isLeaving),
     Result hasFailed(ConnectionFailure failure),
@@ -2876,9 +2705,9 @@ class _$_HasStarted implements _HasStarted {
           outgoingFiles,
           incomingFiles,
           transactions,
-          showMembersPage,
-          showFilesPage,
-          showFilesTransferDialog,
+          showMembersDialog,
+          showFilesDialog,
+          showFileTransferDialog,
           transferType,
           isAcceptingRequest,
           isClosing);
@@ -2927,9 +2756,9 @@ abstract class _HasStarted implements CurrentCircleState {
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
-      @required bool showMembersPage,
-      @required bool showFilesPage,
-      @required bool showFilesTransferDialog,
+      @required Option<bool> showMembersDialog,
+      @required Option<bool> showFilesDialog,
+      @required Option<bool> showFileTransferDialog,
       @required Option<FileTransferType> transferType,
       @required bool isAcceptingRequest,
       @required bool isClosing}) = _$_HasStarted;
@@ -2938,15 +2767,16 @@ abstract class _HasStarted implements CurrentCircleState {
   Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
   List<FileTransaction> get transactions;
-  bool get showMembersPage;
-  bool get showFilesPage;
-  bool get showFilesTransferDialog;
+  Option<bool> get showMembersDialog;
+  Option<bool> get showFilesDialog;
+  Option<bool> get showFileTransferDialog;
   Option<FileTransferType> get transferType;
   bool get isAcceptingRequest;
   bool get isClosing;
   _$HasStartedCopyWith<_HasStarted> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasJoinedCopyWith<$Res> {
   factory _$HasJoinedCopyWith(
           _HasJoined value, $Res Function(_HasJoined) then) =
@@ -2956,15 +2786,16 @@ abstract class _$HasJoinedCopyWith<$Res> {
       Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
       List<FileTransaction> transactions,
-      bool showMembersPage,
-      bool showFilesPage,
-      bool showFilesTransferDialog,
+      Option<bool> showMembersDialog,
+      Option<bool> showFilesDialog,
+      Option<bool> showFileTransferDialog,
       Option<FileTransferType> transferType,
       bool isLeaving});
 
   $UserCopyWith<$Res> get host;
 }
 
+/// @nodoc
 class __$HasJoinedCopyWithImpl<$Res>
     extends _$CurrentCircleStateCopyWithImpl<$Res>
     implements _$HasJoinedCopyWith<$Res> {
@@ -2980,9 +2811,9 @@ class __$HasJoinedCopyWithImpl<$Res>
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
     Object transactions = freezed,
-    Object showMembersPage = freezed,
-    Object showFilesPage = freezed,
-    Object showFilesTransferDialog = freezed,
+    Object showMembersDialog = freezed,
+    Object showFilesDialog = freezed,
+    Object showFileTransferDialog = freezed,
     Object transferType = freezed,
     Object isLeaving = freezed,
   }) {
@@ -2997,15 +2828,15 @@ class __$HasJoinedCopyWithImpl<$Res>
       transactions: transactions == freezed
           ? _value.transactions
           : transactions as List<FileTransaction>,
-      showMembersPage: showMembersPage == freezed
-          ? _value.showMembersPage
-          : showMembersPage as bool,
-      showFilesPage: showFilesPage == freezed
-          ? _value.showFilesPage
-          : showFilesPage as bool,
-      showFilesTransferDialog: showFilesTransferDialog == freezed
-          ? _value.showFilesTransferDialog
-          : showFilesTransferDialog as bool,
+      showMembersDialog: showMembersDialog == freezed
+          ? _value.showMembersDialog
+          : showMembersDialog as Option<bool>,
+      showFilesDialog: showFilesDialog == freezed
+          ? _value.showFilesDialog
+          : showFilesDialog as Option<bool>,
+      showFileTransferDialog: showFileTransferDialog == freezed
+          ? _value.showFileTransferDialog
+          : showFileTransferDialog as Option<bool>,
       transferType: transferType == freezed
           ? _value.transferType
           : transferType as Option<FileTransferType>,
@@ -3024,24 +2855,25 @@ class __$HasJoinedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasJoined implements _HasJoined {
   const _$_HasJoined(
       {@required this.host,
       @required this.outgoingFiles,
       @required this.incomingFiles,
       @required this.transactions,
-      @required this.showMembersPage,
-      @required this.showFilesPage,
-      @required this.showFilesTransferDialog,
+      @required this.showMembersDialog,
+      @required this.showFilesDialog,
+      @required this.showFileTransferDialog,
       @required this.transferType,
       @required this.isLeaving})
       : assert(host != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
         assert(transactions != null),
-        assert(showMembersPage != null),
-        assert(showFilesPage != null),
-        assert(showFilesTransferDialog != null),
+        assert(showMembersDialog != null),
+        assert(showFilesDialog != null),
+        assert(showFileTransferDialog != null),
         assert(transferType != null),
         assert(isLeaving != null);
 
@@ -3054,11 +2886,11 @@ class _$_HasJoined implements _HasJoined {
   @override
   final List<FileTransaction> transactions;
   @override
-  final bool showMembersPage;
+  final Option<bool> showMembersDialog;
   @override
-  final bool showFilesPage;
+  final Option<bool> showFilesDialog;
   @override
-  final bool showFilesTransferDialog;
+  final Option<bool> showFileTransferDialog;
   @override
   final Option<FileTransferType> transferType;
   @override
@@ -3066,7 +2898,7 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasJoined(host: $host, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersPage: $showMembersPage, showFilesPage: $showFilesPage, showFilesTransferDialog: $showFilesTransferDialog, transferType: $transferType, isLeaving: $isLeaving)';
+    return 'CurrentCircleState.hasJoined(host: $host, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersDialog: $showMembersDialog, showFilesDialog: $showFilesDialog, showFileTransferDialog: $showFileTransferDialog, transferType: $transferType, isLeaving: $isLeaving)';
   }
 
   @override
@@ -3084,16 +2916,15 @@ class _$_HasJoined implements _HasJoined {
             (identical(other.transactions, transactions) ||
                 const DeepCollectionEquality()
                     .equals(other.transactions, transactions)) &&
-            (identical(other.showMembersPage, showMembersPage) ||
+            (identical(other.showMembersDialog, showMembersDialog) ||
                 const DeepCollectionEquality()
-                    .equals(other.showMembersPage, showMembersPage)) &&
-            (identical(other.showFilesPage, showFilesPage) ||
+                    .equals(other.showMembersDialog, showMembersDialog)) &&
+            (identical(other.showFilesDialog, showFilesDialog) ||
                 const DeepCollectionEquality()
-                    .equals(other.showFilesPage, showFilesPage)) &&
-            (identical(
-                    other.showFilesTransferDialog, showFilesTransferDialog) ||
+                    .equals(other.showFilesDialog, showFilesDialog)) &&
+            (identical(other.showFileTransferDialog, showFileTransferDialog) ||
                 const DeepCollectionEquality().equals(
-                    other.showFilesTransferDialog, showFilesTransferDialog)) &&
+                    other.showFileTransferDialog, showFileTransferDialog)) &&
             (identical(other.transferType, transferType) ||
                 const DeepCollectionEquality()
                     .equals(other.transferType, transferType)) &&
@@ -3109,9 +2940,9 @@ class _$_HasJoined implements _HasJoined {
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
       const DeepCollectionEquality().hash(transactions) ^
-      const DeepCollectionEquality().hash(showMembersPage) ^
-      const DeepCollectionEquality().hash(showFilesPage) ^
-      const DeepCollectionEquality().hash(showFilesTransferDialog) ^
+      const DeepCollectionEquality().hash(showMembersDialog) ^
+      const DeepCollectionEquality().hash(showFilesDialog) ^
+      const DeepCollectionEquality().hash(showFileTransferDialog) ^
       const DeepCollectionEquality().hash(transferType) ^
       const DeepCollectionEquality().hash(isLeaving);
 
@@ -3130,9 +2961,9 @@ class _$_HasJoined implements _HasJoined {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
             bool isClosing),
@@ -3142,9 +2973,9 @@ class _$_HasJoined implements _HasJoined {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isLeaving),
     @required Result hasFailed(ConnectionFailure failure),
@@ -3159,9 +2990,9 @@ class _$_HasJoined implements _HasJoined {
         outgoingFiles,
         incomingFiles,
         transactions,
-        showMembersPage,
-        showFilesPage,
-        showFilesTransferDialog,
+        showMembersDialog,
+        showFilesDialog,
+        showFileTransferDialog,
         transferType,
         isLeaving);
   }
@@ -3176,9 +3007,9 @@ class _$_HasJoined implements _HasJoined {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isAcceptingRequest,
         bool isClosing),
@@ -3187,9 +3018,9 @@ class _$_HasJoined implements _HasJoined {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isLeaving),
     Result hasFailed(ConnectionFailure failure),
@@ -3202,9 +3033,9 @@ class _$_HasJoined implements _HasJoined {
           outgoingFiles,
           incomingFiles,
           transactions,
-          showMembersPage,
-          showFilesPage,
-          showFilesTransferDialog,
+          showMembersDialog,
+          showFilesDialog,
+          showFileTransferDialog,
           transferType,
           isLeaving);
     }
@@ -3252,9 +3083,9 @@ abstract class _HasJoined implements CurrentCircleState {
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
       @required List<FileTransaction> transactions,
-      @required bool showMembersPage,
-      @required bool showFilesPage,
-      @required bool showFilesTransferDialog,
+      @required Option<bool> showMembersDialog,
+      @required Option<bool> showFilesDialog,
+      @required Option<bool> showFileTransferDialog,
       @required Option<FileTransferType> transferType,
       @required bool isLeaving}) = _$_HasJoined;
 
@@ -3262,14 +3093,15 @@ abstract class _HasJoined implements CurrentCircleState {
   Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
   List<FileTransaction> get transactions;
-  bool get showMembersPage;
-  bool get showFilesPage;
-  bool get showFilesTransferDialog;
+  Option<bool> get showMembersDialog;
+  Option<bool> get showFilesDialog;
+  Option<bool> get showFileTransferDialog;
   Option<FileTransferType> get transferType;
   bool get isLeaving;
   _$HasJoinedCopyWith<_HasJoined> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasFailedCopyWith<$Res> {
   factory _$HasFailedCopyWith(
           _HasFailed value, $Res Function(_HasFailed) then) =
@@ -3279,6 +3111,7 @@ abstract class _$HasFailedCopyWith<$Res> {
   $ConnectionFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$HasFailedCopyWithImpl<$Res>
     extends _$CurrentCircleStateCopyWithImpl<$Res>
     implements _$HasFailedCopyWith<$Res> {
@@ -3309,6 +3142,7 @@ class __$HasFailedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasFailed implements _HasFailed {
   const _$_HasFailed({@required this.failure}) : assert(failure != null);
 
@@ -3347,9 +3181,9 @@ class _$_HasFailed implements _HasFailed {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
             bool isClosing),
@@ -3359,9 +3193,9 @@ class _$_HasFailed implements _HasFailed {
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
             List<FileTransaction> transactions,
-            bool showMembersPage,
-            bool showFilesPage,
-            bool showFilesTransferDialog,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isLeaving),
     @required Result hasFailed(ConnectionFailure failure),
@@ -3384,9 +3218,9 @@ class _$_HasFailed implements _HasFailed {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isAcceptingRequest,
         bool isClosing),
@@ -3395,9 +3229,9 @@ class _$_HasFailed implements _HasFailed {
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
         List<FileTransaction> transactions,
-        bool showMembersPage,
-        bool showFilesPage,
-        bool showFilesTransferDialog,
+        Option<bool> showMembersDialog,
+        Option<bool> showFilesDialog,
+        Option<bool> showFileTransferDialog,
         Option<FileTransferType> transferType,
         bool isLeaving),
     Result hasFailed(ConnectionFailure failure),

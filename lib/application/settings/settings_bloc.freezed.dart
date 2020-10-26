@@ -9,6 +9,7 @@ part of 'settings_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$SettingsEventTearOff {
   const _$SettingsEventTearOff();
 
@@ -42,9 +43,11 @@ class _$SettingsEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SettingsEvent = _$SettingsEventTearOff();
 
+/// @nodoc
 mixin _$SettingsEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -82,12 +85,14 @@ mixin _$SettingsEvent {
   });
 }
 
+/// @nodoc
 abstract class $SettingsEventCopyWith<$Res> {
   factory $SettingsEventCopyWith(
           SettingsEvent value, $Res Function(SettingsEvent) then) =
       _$SettingsEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SettingsEventCopyWithImpl<$Res>
     implements $SettingsEventCopyWith<$Res> {
   _$SettingsEventCopyWithImpl(this._value, this._then);
@@ -97,11 +102,13 @@ class _$SettingsEventCopyWithImpl<$Res>
   final $Res Function(SettingsEvent) _then;
 }
 
+/// @nodoc
 abstract class $LoadPrefsCopyWith<$Res> {
   factory $LoadPrefsCopyWith(LoadPrefs value, $Res Function(LoadPrefs) then) =
       _$LoadPrefsCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$LoadPrefsCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
     implements $LoadPrefsCopyWith<$Res> {
   _$LoadPrefsCopyWithImpl(LoadPrefs _value, $Res Function(LoadPrefs) _then)
@@ -111,6 +118,7 @@ class _$LoadPrefsCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
   LoadPrefs get _value => super._value as LoadPrefs;
 }
 
+/// @nodoc
 class _$LoadPrefs implements LoadPrefs {
   const _$LoadPrefs();
 
@@ -200,6 +208,7 @@ abstract class LoadPrefs implements SettingsEvent {
   const factory LoadPrefs() = _$LoadPrefs;
 }
 
+/// @nodoc
 abstract class $NameChangedCopyWith<$Res> {
   factory $NameChangedCopyWith(
           NameChanged value, $Res Function(NameChanged) then) =
@@ -207,6 +216,7 @@ abstract class $NameChangedCopyWith<$Res> {
   $Res call({Name name});
 }
 
+/// @nodoc
 class _$NameChangedCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
     implements $NameChangedCopyWith<$Res> {
   _$NameChangedCopyWithImpl(
@@ -226,6 +236,7 @@ class _$NameChangedCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$NameChanged implements NameChanged {
   const _$NameChanged(this.name) : assert(name != null);
 
@@ -329,6 +340,7 @@ abstract class NameChanged implements SettingsEvent {
   $NameChangedCopyWith<NameChanged> get copyWith;
 }
 
+/// @nodoc
 abstract class $SelectDefaultDirectoryCopyWith<$Res> {
   factory $SelectDefaultDirectoryCopyWith(SelectDefaultDirectory value,
           $Res Function(SelectDefaultDirectory) then) =
@@ -336,6 +348,7 @@ abstract class $SelectDefaultDirectoryCopyWith<$Res> {
   $Res call({Directory directory});
 }
 
+/// @nodoc
 class _$SelectDefaultDirectoryCopyWithImpl<$Res>
     extends _$SettingsEventCopyWithImpl<$Res>
     implements $SelectDefaultDirectoryCopyWith<$Res> {
@@ -356,6 +369,7 @@ class _$SelectDefaultDirectoryCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   const _$SelectDefaultDirectory(this.directory) : assert(directory != null);
 
@@ -462,12 +476,14 @@ abstract class SelectDefaultDirectory implements SettingsEvent {
   $SelectDefaultDirectoryCopyWith<SelectDefaultDirectory> get copyWith;
 }
 
+/// @nodoc
 abstract class $ToggleAskBeforeReceivingCopyWith<$Res> {
   factory $ToggleAskBeforeReceivingCopyWith(ToggleAskBeforeReceiving value,
           $Res Function(ToggleAskBeforeReceiving) then) =
       _$ToggleAskBeforeReceivingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ToggleAskBeforeReceivingCopyWithImpl<$Res>
     extends _$SettingsEventCopyWithImpl<$Res>
     implements $ToggleAskBeforeReceivingCopyWith<$Res> {
@@ -480,6 +496,7 @@ class _$ToggleAskBeforeReceivingCopyWithImpl<$Res>
       super._value as ToggleAskBeforeReceiving;
 }
 
+/// @nodoc
 class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   const _$ToggleAskBeforeReceiving();
 
@@ -569,12 +586,14 @@ abstract class ToggleAskBeforeReceiving implements SettingsEvent {
   const factory ToggleAskBeforeReceiving() = _$ToggleAskBeforeReceiving;
 }
 
+/// @nodoc
 abstract class $ToggleDarkModeCopyWith<$Res> {
   factory $ToggleDarkModeCopyWith(
           ToggleDarkMode value, $Res Function(ToggleDarkMode) then) =
       _$ToggleDarkModeCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$ToggleDarkModeCopyWithImpl<$Res>
     extends _$SettingsEventCopyWithImpl<$Res>
     implements $ToggleDarkModeCopyWith<$Res> {
@@ -586,6 +605,7 @@ class _$ToggleDarkModeCopyWithImpl<$Res>
   ToggleDarkMode get _value => super._value as ToggleDarkMode;
 }
 
+/// @nodoc
 class _$ToggleDarkMode implements ToggleDarkMode {
   const _$ToggleDarkMode();
 
@@ -675,6 +695,7 @@ abstract class ToggleDarkMode implements SettingsEvent {
   const factory ToggleDarkMode() = _$ToggleDarkMode;
 }
 
+/// @nodoc
 class _$SettingsStateTearOff {
   const _$SettingsStateTearOff();
 
@@ -714,9 +735,11 @@ class _$SettingsStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $SettingsState = _$SettingsStateTearOff();
 
+/// @nodoc
 mixin _$SettingsState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -763,12 +786,14 @@ mixin _$SettingsState {
   });
 }
 
+/// @nodoc
 abstract class $SettingsStateCopyWith<$Res> {
   factory $SettingsStateCopyWith(
           SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$SettingsStateCopyWithImpl<$Res>
     implements $SettingsStateCopyWith<$Res> {
   _$SettingsStateCopyWithImpl(this._value, this._then);
@@ -778,11 +803,13 @@ class _$SettingsStateCopyWithImpl<$Res>
   final $Res Function(SettingsState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -792,6 +819,7 @@ class __$InitialCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -888,12 +916,14 @@ abstract class _Initial implements SettingsState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$IsLoadingCopyWith<$Res> {
   factory _$IsLoadingCopyWith(
           _IsLoading value, $Res Function(_IsLoading) then) =
       __$IsLoadingCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$IsLoadingCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
     implements _$IsLoadingCopyWith<$Res> {
   __$IsLoadingCopyWithImpl(_IsLoading _value, $Res Function(_IsLoading) _then)
@@ -903,6 +933,7 @@ class __$IsLoadingCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
   _IsLoading get _value => super._value as _IsLoading;
 }
 
+/// @nodoc
 class _$_IsLoading implements _IsLoading {
   const _$_IsLoading();
 
@@ -999,6 +1030,7 @@ abstract class _IsLoading implements SettingsState {
   const factory _IsLoading() = _$_IsLoading;
 }
 
+/// @nodoc
 abstract class _$HasLoadedCopyWith<$Res> {
   factory _$HasLoadedCopyWith(
           _HasLoaded value, $Res Function(_HasLoaded) then) =
@@ -1014,6 +1046,7 @@ abstract class _$HasLoadedCopyWith<$Res> {
   $UserCopyWith<$Res> get user;
 }
 
+/// @nodoc
 class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
     implements _$HasLoadedCopyWith<$Res> {
   __$HasLoadedCopyWithImpl(_HasLoaded _value, $Res Function(_HasLoaded) _then)
@@ -1057,6 +1090,7 @@ class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
       {@required this.user,
@@ -1223,6 +1257,7 @@ abstract class _HasLoaded implements SettingsState {
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
 
+/// @nodoc
 abstract class _$HasFailedCopyWith<$Res> {
   factory _$HasFailedCopyWith(
           _HasFailed value, $Res Function(_HasFailed) then) =
@@ -1232,6 +1267,7 @@ abstract class _$HasFailedCopyWith<$Res> {
   $SettingsFailureCopyWith<$Res> get failure;
 }
 
+/// @nodoc
 class __$HasFailedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
     implements _$HasFailedCopyWith<$Res> {
   __$HasFailedCopyWithImpl(_HasFailed _value, $Res Function(_HasFailed) _then)
@@ -1260,6 +1296,7 @@ class __$HasFailedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_HasFailed implements _HasFailed {
   const _$_HasFailed(this.failure) : assert(failure != null);
 

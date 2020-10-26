@@ -9,6 +9,7 @@ part of 'media_info.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$MediaInfoTearOff {
   const _$MediaInfoTearOff();
 
@@ -22,9 +23,11 @@ class _$MediaInfoTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $MediaInfo = _$MediaInfoTearOff();
 
+/// @nodoc
 mixin _$MediaInfo {
   AssetEntity get entity;
   Uint8List get thumbnail;
@@ -32,12 +35,14 @@ mixin _$MediaInfo {
   $MediaInfoCopyWith<MediaInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $MediaInfoCopyWith<$Res> {
   factory $MediaInfoCopyWith(MediaInfo value, $Res Function(MediaInfo) then) =
       _$MediaInfoCopyWithImpl<$Res>;
   $Res call({AssetEntity entity, Uint8List thumbnail});
 }
 
+/// @nodoc
 class _$MediaInfoCopyWithImpl<$Res> implements $MediaInfoCopyWith<$Res> {
   _$MediaInfoCopyWithImpl(this._value, this._then);
 
@@ -58,6 +63,7 @@ class _$MediaInfoCopyWithImpl<$Res> implements $MediaInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$MediaInfoCopyWith<$Res> implements $MediaInfoCopyWith<$Res> {
   factory _$MediaInfoCopyWith(
           _MediaInfo value, $Res Function(_MediaInfo) then) =
@@ -66,6 +72,7 @@ abstract class _$MediaInfoCopyWith<$Res> implements $MediaInfoCopyWith<$Res> {
   $Res call({AssetEntity entity, Uint8List thumbnail});
 }
 
+/// @nodoc
 class __$MediaInfoCopyWithImpl<$Res> extends _$MediaInfoCopyWithImpl<$Res>
     implements _$MediaInfoCopyWith<$Res> {
   __$MediaInfoCopyWithImpl(_MediaInfo _value, $Res Function(_MediaInfo) _then)
@@ -87,6 +94,7 @@ class __$MediaInfoCopyWithImpl<$Res> extends _$MediaInfoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_MediaInfo implements _MediaInfo {
   const _$_MediaInfo({@required this.entity, @required this.thumbnail})
       : assert(entity != null),

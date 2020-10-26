@@ -9,6 +9,7 @@ part of 'file_info.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FileInfoTearOff {
   const _$FileInfoTearOff();
 
@@ -27,9 +28,11 @@ class _$FileInfoTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FileInfo = _$FileInfoTearOff();
 
+/// @nodoc
 mixin _$FileInfo {
   int get hash;
   String get path;
@@ -39,12 +42,14 @@ mixin _$FileInfo {
   $FileInfoCopyWith<FileInfo> get copyWith;
 }
 
+/// @nodoc
 abstract class $FileInfoCopyWith<$Res> {
   factory $FileInfoCopyWith(FileInfo value, $Res Function(FileInfo) then) =
       _$FileInfoCopyWithImpl<$Res>;
   $Res call({int hash, String path, int bytesSize, Uint8List thumbnail});
 }
 
+/// @nodoc
 class _$FileInfoCopyWithImpl<$Res> implements $FileInfoCopyWith<$Res> {
   _$FileInfoCopyWithImpl(this._value, this._then);
 
@@ -69,6 +74,7 @@ class _$FileInfoCopyWithImpl<$Res> implements $FileInfoCopyWith<$Res> {
   }
 }
 
+/// @nodoc
 abstract class _$FileInfoCopyWith<$Res> implements $FileInfoCopyWith<$Res> {
   factory _$FileInfoCopyWith(_FileInfo value, $Res Function(_FileInfo) then) =
       __$FileInfoCopyWithImpl<$Res>;
@@ -76,6 +82,7 @@ abstract class _$FileInfoCopyWith<$Res> implements $FileInfoCopyWith<$Res> {
   $Res call({int hash, String path, int bytesSize, Uint8List thumbnail});
 }
 
+/// @nodoc
 class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
     implements _$FileInfoCopyWith<$Res> {
   __$FileInfoCopyWithImpl(_FileInfo _value, $Res Function(_FileInfo) _then)
@@ -101,6 +108,7 @@ class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_FileInfo extends _FileInfo {
   const _$_FileInfo(
       {@required this.hash,

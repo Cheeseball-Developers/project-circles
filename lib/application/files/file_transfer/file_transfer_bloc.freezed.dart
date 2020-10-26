@@ -9,6 +9,7 @@ part of 'file_transfer_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+/// @nodoc
 class _$FileTransferEventTearOff {
   const _$FileTransferEventTearOff();
 
@@ -70,9 +71,11 @@ class _$FileTransferEventTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FileTransferEvent = _$FileTransferEventTearOff();
 
+/// @nodoc
 mixin _$FileTransferEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -126,12 +129,14 @@ mixin _$FileTransferEvent {
   });
 }
 
+/// @nodoc
 abstract class $FileTransferEventCopyWith<$Res> {
   factory $FileTransferEventCopyWith(
           FileTransferEvent value, $Res Function(FileTransferEvent) then) =
       _$FileTransferEventCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FileTransferEventCopyWithImpl<$Res>
     implements $FileTransferEventCopyWith<$Res> {
   _$FileTransferEventCopyWithImpl(this._value, this._then);
@@ -141,6 +146,7 @@ class _$FileTransferEventCopyWithImpl<$Res>
   final $Res Function(FileTransferEvent) _then;
 }
 
+/// @nodoc
 abstract class _$ConfirmOutgoingFilesCopyWith<$Res> {
   factory _$ConfirmOutgoingFilesCopyWith(_ConfirmOutgoingFiles value,
           $Res Function(_ConfirmOutgoingFiles) then) =
@@ -148,6 +154,7 @@ abstract class _$ConfirmOutgoingFilesCopyWith<$Res> {
   $Res call({List<User> users});
 }
 
+/// @nodoc
 class __$ConfirmOutgoingFilesCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$ConfirmOutgoingFilesCopyWith<$Res> {
@@ -168,6 +175,7 @@ class __$ConfirmOutgoingFilesCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   const _$_ConfirmOutgoingFiles({@required this.users}) : assert(users != null);
 
@@ -297,12 +305,14 @@ abstract class _ConfirmOutgoingFiles implements FileTransferEvent {
   _$ConfirmOutgoingFilesCopyWith<_ConfirmOutgoingFiles> get copyWith;
 }
 
+/// @nodoc
 abstract class _$CancelSendCopyWith<$Res> {
   factory _$CancelSendCopyWith(
           _CancelSend value, $Res Function(_CancelSend) then) =
       __$CancelSendCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$CancelSendCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$CancelSendCopyWith<$Res> {
@@ -314,6 +324,7 @@ class __$CancelSendCopyWithImpl<$Res>
   _CancelSend get _value => super._value as _CancelSend;
 }
 
+/// @nodoc
 class _$_CancelSend implements _CancelSend {
   const _$_CancelSend();
 
@@ -427,12 +438,14 @@ abstract class _CancelSend implements FileTransferEvent {
   const factory _CancelSend() = _$_CancelSend;
 }
 
+/// @nodoc
 abstract class _$SendFilesInfoCopyWith<$Res> {
   factory _$SendFilesInfoCopyWith(
           _SendFilesInfo value, $Res Function(_SendFilesInfo) then) =
       __$SendFilesInfoCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$SendFilesInfoCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$SendFilesInfoCopyWith<$Res> {
@@ -444,6 +457,7 @@ class __$SendFilesInfoCopyWithImpl<$Res>
   _SendFilesInfo get _value => super._value as _SendFilesInfo;
 }
 
+/// @nodoc
 class _$_SendFilesInfo implements _SendFilesInfo {
   const _$_SendFilesInfo();
 
@@ -557,6 +571,7 @@ abstract class _SendFilesInfo implements FileTransferEvent {
   const factory _SendFilesInfo() = _$_SendFilesInfo;
 }
 
+/// @nodoc
 abstract class _$SendFilesCopyWith<$Res> {
   factory _$SendFilesCopyWith(
           _SendFiles value, $Res Function(_SendFiles) then) =
@@ -564,6 +579,7 @@ abstract class _$SendFilesCopyWith<$Res> {
   $Res call({String endPointId});
 }
 
+/// @nodoc
 class __$SendFilesCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$SendFilesCopyWith<$Res> {
@@ -584,6 +600,7 @@ class __$SendFilesCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_SendFiles implements _SendFiles {
   const _$_SendFiles({@required this.endPointId}) : assert(endPointId != null);
 
@@ -712,12 +729,14 @@ abstract class _SendFiles implements FileTransferEvent {
   _$SendFilesCopyWith<_SendFiles> get copyWith;
 }
 
+/// @nodoc
 abstract class _$FilesSentCopyWith<$Res> {
   factory _$FilesSentCopyWith(
           _FilesSent value, $Res Function(_FilesSent) then) =
       __$FilesSentCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$FilesSentCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$FilesSentCopyWith<$Res> {
@@ -728,6 +747,7 @@ class __$FilesSentCopyWithImpl<$Res>
   _FilesSent get _value => super._value as _FilesSent;
 }
 
+/// @nodoc
 class _$_FilesSent implements _FilesSent {
   const _$_FilesSent();
 
@@ -841,6 +861,7 @@ abstract class _FilesSent implements FileTransferEvent {
   const factory _FilesSent() = _$_FilesSent;
 }
 
+/// @nodoc
 abstract class _$FileInfoReceivedCopyWith<$Res> {
   factory _$FileInfoReceivedCopyWith(
           _FileInfoReceived value, $Res Function(_FileInfoReceived) then) =
@@ -850,6 +871,7 @@ abstract class _$FileInfoReceivedCopyWith<$Res> {
   $FileInfoCopyWith<$Res> get fileInfo;
 }
 
+/// @nodoc
 class __$FileInfoReceivedCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$FileInfoReceivedCopyWith<$Res> {
@@ -880,6 +902,7 @@ class __$FileInfoReceivedCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_FileInfoReceived implements _FileInfoReceived {
   const _$_FileInfoReceived({this.fileInfo});
 
@@ -1008,6 +1031,7 @@ abstract class _FileInfoReceived implements FileTransferEvent {
   _$FileInfoReceivedCopyWith<_FileInfoReceived> get copyWith;
 }
 
+/// @nodoc
 abstract class _$ConfirmIncomingFilesCopyWith<$Res> {
   factory _$ConfirmIncomingFilesCopyWith(_ConfirmIncomingFiles value,
           $Res Function(_ConfirmIncomingFiles) then) =
@@ -1015,6 +1039,7 @@ abstract class _$ConfirmIncomingFilesCopyWith<$Res> {
   $Res call({bool acceptOrReject, String endId});
 }
 
+/// @nodoc
 class __$ConfirmIncomingFilesCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$ConfirmIncomingFilesCopyWith<$Res> {
@@ -1039,6 +1064,7 @@ class __$ConfirmIncomingFilesCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
   const _$_ConfirmIncomingFiles(
       {@required this.acceptOrReject, @required this.endId})
@@ -1180,6 +1206,7 @@ abstract class _ConfirmIncomingFiles implements FileTransferEvent {
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith;
 }
 
+/// @nodoc
 abstract class _$UpdateProgressCopyWith<$Res> {
   factory _$UpdateProgressCopyWith(
           _UpdateProgress value, $Res Function(_UpdateProgress) then) =
@@ -1189,6 +1216,7 @@ abstract class _$UpdateProgressCopyWith<$Res> {
   $PayloadInfoCopyWith<$Res> get payloadInfo;
 }
 
+/// @nodoc
 class __$UpdateProgressCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$UpdateProgressCopyWith<$Res> {
@@ -1221,6 +1249,7 @@ class __$UpdateProgressCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_UpdateProgress implements _UpdateProgress {
   const _$_UpdateProgress({@required this.payloadInfo})
       : assert(payloadInfo != null);
@@ -1351,12 +1380,14 @@ abstract class _UpdateProgress implements FileTransferEvent {
   _$UpdateProgressCopyWith<_UpdateProgress> get copyWith;
 }
 
+/// @nodoc
 abstract class _$FilesReceivedCopyWith<$Res> {
   factory _$FilesReceivedCopyWith(
           _FilesReceived value, $Res Function(_FilesReceived) then) =
       __$FilesReceivedCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$FilesReceivedCopyWithImpl<$Res>
     extends _$FileTransferEventCopyWithImpl<$Res>
     implements _$FilesReceivedCopyWith<$Res> {
@@ -1368,6 +1399,7 @@ class __$FilesReceivedCopyWithImpl<$Res>
   _FilesReceived get _value => super._value as _FilesReceived;
 }
 
+/// @nodoc
 class _$_FilesReceived implements _FilesReceived {
   const _$_FilesReceived();
 
@@ -1481,6 +1513,7 @@ abstract class _FilesReceived implements FileTransferEvent {
   const factory _FilesReceived() = _$_FilesReceived;
 }
 
+/// @nodoc
 class _$FileTransferStateTearOff {
   const _$FileTransferStateTearOff();
 
@@ -1530,9 +1563,11 @@ class _$FileTransferStateTearOff {
   }
 }
 
+/// @nodoc
 // ignore: unused_element
 const $FileTransferState = _$FileTransferStateTearOff();
 
+/// @nodoc
 mixin _$FileTransferState {
   @optionalTypeArgs
   Result when<Result extends Object>({
@@ -1582,12 +1617,14 @@ mixin _$FileTransferState {
   });
 }
 
+/// @nodoc
 abstract class $FileTransferStateCopyWith<$Res> {
   factory $FileTransferStateCopyWith(
           FileTransferState value, $Res Function(FileTransferState) then) =
       _$FileTransferStateCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class _$FileTransferStateCopyWithImpl<$Res>
     implements $FileTransferStateCopyWith<$Res> {
   _$FileTransferStateCopyWithImpl(this._value, this._then);
@@ -1597,11 +1634,13 @@ class _$FileTransferStateCopyWithImpl<$Res>
   final $Res Function(FileTransferState) _then;
 }
 
+/// @nodoc
 abstract class _$InitialCopyWith<$Res> {
   factory _$InitialCopyWith(_Initial value, $Res Function(_Initial) then) =
       __$InitialCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$InitialCopyWithImpl<$Res> extends _$FileTransferStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
@@ -1611,6 +1650,7 @@ class __$InitialCopyWithImpl<$Res> extends _$FileTransferStateCopyWithImpl<$Res>
   _Initial get _value => super._value as _Initial;
 }
 
+/// @nodoc
 class _$_Initial implements _Initial {
   const _$_Initial();
 
@@ -1714,6 +1754,7 @@ abstract class _Initial implements FileTransferState {
   const factory _Initial() = _$_Initial;
 }
 
+/// @nodoc
 abstract class _$OutgoingFilesConfirmationCopyWith<$Res> {
   factory _$OutgoingFilesConfirmationCopyWith(_OutgoingFilesConfirmation value,
           $Res Function(_OutgoingFilesConfirmation) then) =
@@ -1721,6 +1762,7 @@ abstract class _$OutgoingFilesConfirmationCopyWith<$Res> {
   $Res call({Option<List<FileInfo>> filesOption, List<User> users});
 }
 
+/// @nodoc
 class __$OutgoingFilesConfirmationCopyWithImpl<$Res>
     extends _$FileTransferStateCopyWithImpl<$Res>
     implements _$OutgoingFilesConfirmationCopyWith<$Res> {
@@ -1746,6 +1788,7 @@ class __$OutgoingFilesConfirmationCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
   const _$_OutgoingFilesConfirmation(
       {@required this.filesOption, @required this.users})
@@ -1878,6 +1921,7 @@ abstract class _OutgoingFilesConfirmation implements FileTransferState {
   _$OutgoingFilesConfirmationCopyWith<_OutgoingFilesConfirmation> get copyWith;
 }
 
+/// @nodoc
 abstract class _$AwaitingSendApprovalCopyWith<$Res> {
   factory _$AwaitingSendApprovalCopyWith(_AwaitingSendApproval value,
           $Res Function(_AwaitingSendApproval) then) =
@@ -1885,6 +1929,7 @@ abstract class _$AwaitingSendApprovalCopyWith<$Res> {
   $Res call({List<FileInfo> files});
 }
 
+/// @nodoc
 class __$AwaitingSendApprovalCopyWithImpl<$Res>
     extends _$FileTransferStateCopyWithImpl<$Res>
     implements _$AwaitingSendApprovalCopyWith<$Res> {
@@ -1905,6 +1950,7 @@ class __$AwaitingSendApprovalCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_AwaitingSendApproval implements _AwaitingSendApproval {
   const _$_AwaitingSendApproval({@required this.files}) : assert(files != null);
 
@@ -2024,6 +2070,7 @@ abstract class _AwaitingSendApproval implements FileTransferState {
   _$AwaitingSendApprovalCopyWith<_AwaitingSendApproval> get copyWith;
 }
 
+/// @nodoc
 abstract class _$IncomingFilesConfirmationCopyWith<$Res> {
   factory _$IncomingFilesConfirmationCopyWith(_IncomingFilesConfirmation value,
           $Res Function(_IncomingFilesConfirmation) then) =
@@ -2031,6 +2078,7 @@ abstract class _$IncomingFilesConfirmationCopyWith<$Res> {
   $Res call({List<FileInfo> files});
 }
 
+/// @nodoc
 class __$IncomingFilesConfirmationCopyWithImpl<$Res>
     extends _$FileTransferStateCopyWithImpl<$Res>
     implements _$IncomingFilesConfirmationCopyWith<$Res> {
@@ -2052,6 +2100,7 @@ class __$IncomingFilesConfirmationCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
   const _$_IncomingFilesConfirmation({@required this.files})
       : assert(files != null);
@@ -2173,6 +2222,7 @@ abstract class _IncomingFilesConfirmation implements FileTransferState {
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation> get copyWith;
 }
 
+/// @nodoc
 abstract class _$TransferringFilesCopyWith<$Res> {
   factory _$TransferringFilesCopyWith(
           _TransferringFiles value, $Res Function(_TransferringFiles) then) =
@@ -2182,6 +2232,7 @@ abstract class _$TransferringFilesCopyWith<$Res> {
   $FileTransferTypeCopyWith<$Res> get type;
 }
 
+/// @nodoc
 class __$TransferringFilesCopyWithImpl<$Res>
     extends _$FileTransferStateCopyWithImpl<$Res>
     implements _$TransferringFilesCopyWith<$Res> {
@@ -2216,6 +2267,7 @@ class __$TransferringFilesCopyWithImpl<$Res>
   }
 }
 
+/// @nodoc
 class _$_TransferringFiles implements _TransferringFiles {
   const _$_TransferringFiles({@required this.type, @required this.filesMap})
       : assert(type != null),
@@ -2345,12 +2397,14 @@ abstract class _TransferringFiles implements FileTransferState {
   _$TransferringFilesCopyWith<_TransferringFiles> get copyWith;
 }
 
+/// @nodoc
 abstract class _$TransferCompleteCopyWith<$Res> {
   factory _$TransferCompleteCopyWith(
           _TransferComplete value, $Res Function(_TransferComplete) then) =
       __$TransferCompleteCopyWithImpl<$Res>;
 }
 
+/// @nodoc
 class __$TransferCompleteCopyWithImpl<$Res>
     extends _$FileTransferStateCopyWithImpl<$Res>
     implements _$TransferCompleteCopyWith<$Res> {
@@ -2362,6 +2416,7 @@ class __$TransferCompleteCopyWithImpl<$Res>
   _TransferComplete get _value => super._value as _TransferComplete;
 }
 
+/// @nodoc
 class _$_TransferComplete implements _TransferComplete {
   const _$_TransferComplete();
 
