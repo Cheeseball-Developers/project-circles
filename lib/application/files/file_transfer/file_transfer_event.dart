@@ -10,16 +10,17 @@ abstract class FileTransferEvent with _$FileTransferEvent {
 
   const factory FileTransferEvent.sendFilesInfo() = _SendFilesInfo;
 
-  const factory FileTransferEvent.sendFiles() = _SendFiles;
+  const factory FileTransferEvent.sendFiles({@required String endPointId}) =
+      _SendFiles;
 
   const factory FileTransferEvent.filesSent() = _FilesSent;
 
   const factory FileTransferEvent.fileInfoReceived({FileInfo fileInfo}) =
       _FileInfoReceived;
 
-  const factory FileTransferEvent.confirmIncomingFiles({
-    @required bool acceptOrReject,
-  }) = _ConfirmIncomingFiles;
+  const factory FileTransferEvent.confirmIncomingFiles(
+      {@required bool acceptOrReject,
+      @required String endId}) = _ConfirmIncomingFiles;
 
   const factory FileTransferEvent.updateProgress({
     @required PayloadInfo payloadInfo,
