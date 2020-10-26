@@ -38,6 +38,10 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   ) async* {
     StreamSubscription<FileInfo> incomingFileInfoStreamSubscription;
     StreamSubscription<PayloadInfo> progressOfFileStreamSubscription;
+    StreamSubscription<String> respondingUserStreamSubscription;
+    StreamSubscription<PayloadInfo> fileSharedSucessStreamSubscription;
+    int count = 0;
+    int fileCount = 0;
     yield* state.map(
       initial: (_) async* {
         // Starting necessary stream subscriptions
@@ -51,7 +55,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           },
         );
 
-        yield* event.maybeMap(
+        event.maybeMap(
           confirmOutgoingFiles: (e) async* {
             yield FileTransferState.outgoingFilesConfirmation(
               users: e.users,
@@ -81,7 +85,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
       },
       outgoingFilesConfirmation: (state) async* {
-        yield* event.maybeMap(
+        event.maybeMap(
           cancelSend: (e) async* {
             // TODO: Implement cancellation
           },
@@ -96,6 +100,10 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
               users: state.users,
               outgoingFiles: files,
             );
+            respondingUserStreamSubscription =
+                _nearbyConnections.responseStream.listen((event) {
+              add(FileTransferEvent.sendFiles(endPointId: event));
+            });
 
             yield FileTransferState.awaitingSendApproval(
               files: files,
@@ -116,9 +124,10 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             for (final fileInfo in state.files) {
               filesMap.putIfAbsent(fileInfo, () => 0.0);
             }
+            fileCount = filesMap.length;
 
             _nearbyConnections.sendFilePayload(
-              members: [],
+              receiver: e.endPointId,
               files: appFiles + mediaFiles + files,
             );
 
@@ -142,11 +151,14 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           },
           confirmIncomingFiles: (e) async* {
             // TODO: Send [e.acceptOrReject] to sender
+            _nearbyConnections.acceptOrRejectFiles(
+                response: e.acceptOrReject, endId: e.endId);
 
             final Map<FileInfo, double> filesMap = {};
             for (final fileInfo in state.files) {
               filesMap.putIfAbsent(fileInfo, () => 0.0);
             }
+            fileCount = filesMap.length;
 
             yield FileTransferState.transferringFiles(
               type: const FileTransferType.incoming(),
@@ -159,6 +171,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       transferringFiles: (state) async* {
         // Cancelling stream subscriptions that are no longer needed
         incomingFileInfoStreamSubscription?.cancel();
+        respondingUserStreamSubscription?.cancel();
 
         // Starting necessary stream subscriptions
         progressOfFileStreamSubscription =
@@ -168,6 +181,19 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           ));
         }, onError: (e) {
           print(e);
+        });
+        fileSharedSucessStreamSubscription =
+            _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
+          count += 1;
+          if (state.type == const FileTransferType.outgoing()) {
+            if (count == fileCount) {
+              add(const FileTransferEvent.filesSent());
+            }
+          } else if (state.type == const FileTransferType.incoming()) {
+            if (count == fileCount) {
+              add(const FileTransferEvent.filesReceived());
+            }
+          }
         });
 
         // Setting up variables to match incoming payloads to files
