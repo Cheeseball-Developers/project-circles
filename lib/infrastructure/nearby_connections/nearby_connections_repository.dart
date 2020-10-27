@@ -23,6 +23,7 @@ class NearbyConnections {
   User discoveredDevice;
   User incomingRequest;
   String host; // host username
+
   final StreamController<User> onEndFound = StreamController<User>.broadcast();
   Stream<User> discoveredDeviceStream;
 
@@ -70,6 +71,8 @@ class NearbyConnections {
   Stream<PayloadInfo> fileSharingSuccessfulStream;
 
   bool _isFile = false;
+
+  List<User> members = [];
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///

@@ -120,6 +120,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               state.members.update(request.requestingUser, (value) => false);
               yield state.copyWith(
                   members: state.members, isAcceptingRequest: false);
+              _nearbyConnections.members.add(request.requestingUser);
             } else {
               //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
@@ -169,6 +170,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         );
       },
       hasJoined: (state) async* {
+        _nearbyConnections.members.add(state.host);
         yield* event.maybeMap(
           showFilesDialog: (_) async* {
             yield state.copyWith(

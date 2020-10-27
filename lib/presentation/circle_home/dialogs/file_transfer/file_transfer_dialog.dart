@@ -65,7 +65,7 @@ class FileTransferDialog extends StatelessWidget {
             incomingFilesConfirmation: (_) => () => context
                 .bloc<FileTransferBloc>()
                 .add(const FileTransferEvent.confirmIncomingFiles(
-                    acceptOrReject: true)),
+                    acceptOrReject: true, endId: 'Mi a3',)), // but how wil i know
             transferringFiles: (_) => null,
             transferComplete: (_) => () => ExtendedNavigator.of(context).pop(),
           ),
@@ -94,7 +94,6 @@ class FileTransferDialog extends StatelessWidget {
               (files) => FilesList(files),
             ),
             awaitingSendApproval: (state) => FilesList(state.files),
-            incomingFilesConfirmation: (state) => ListView.builder(
               itemCount: state.files.length,
               itemBuilder: (context, index) => MyListTile(
                 title: state.files[index].path,
