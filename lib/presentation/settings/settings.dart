@@ -1,13 +1,17 @@
 import 'dart:io';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projectcircles/application/settings/folder_picker/folder_picker_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
+import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/button_tile.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
+import 'package:projectcircles/presentation/settings/widgets/folder_picker.dart';
 import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.dart';
 import 'package:projectcircles/presentation/settings/widgets/settings_section.dart';
 
@@ -137,7 +141,23 @@ class Settings extends StatelessWidget {
                               title: 'Save Location',
                               subtitle: 'Downloads/Circles',
                               type: ButtonTileType.tapToOpen,
-                              onTap: () {},
+                              onTap: () async {
+                                final Option<Directory> directory =
+                                    await showDialog(
+                                  context: context,
+                                  child: BlocProvider(
+                                    create: (context) =>
+                                        getIt<FolderPickerBloc>()
+                                          ..add(
+                                            FolderPickerEvent.openDirectory(
+                                              directory: Directory(
+                                                  '/storage/emulated/0'),
+                                            ),
+                                          ),
+                                    child: FolderPicker(),
+                                  ),
+                                );
+                              },
                             ),
                             ButtonTile(
                               icon: Icons.save_alt,

@@ -25,13 +25,13 @@ class FolderPickerBloc extends Bloc<FolderPickerEvent, FolderPickerState> {
       openDirectory: (e) async* {
         yield state.copyWith(directory: e.directory, folders: none());
         final List<FileSystemEntity> folders = _getFolders(e.directory);
-        yield state.copyWith(folders: some(folders));
+        yield state.copyWith(directory: e.directory, folders: some(folders));
       },
       up: (e) async* {
-        final Directory directory = state.directory.parent;
+        final Directory directory = Directory(state.directory.parent.path);
         yield state.copyWith(directory: directory, folders: none());
         final List<FileSystemEntity> folders = _getFolders(directory);
-        yield state.copyWith(folders: some(folders));
+        yield state.copyWith(directory: directory, folders: some(folders));
       },
       select: (e) async* {
         yield state.copyWith(isSelected: true);
