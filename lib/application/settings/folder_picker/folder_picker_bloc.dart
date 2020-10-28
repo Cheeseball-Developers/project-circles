@@ -46,6 +46,8 @@ class FolderPickerBloc extends Bloc<FolderPickerEvent, FolderPickerState> {
         folders.add(entity);
       }
     }
+    folders
+        .sort((a, b) => a.path.toLowerCase().compareTo(b.path.toLowerCase()));
     return folders;
   }
 }
