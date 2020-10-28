@@ -76,6 +76,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             );
           },
           fileInfoReceived: (e) async* {
+            String endId;
             final List<FileInfo> incomingFiles = [];
             incomingFiles.add(e.fileInfo);
             fileInfoSucessStreamSubscription = _nearbyConnections
@@ -83,11 +84,11 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 .listen((event) {
               print(
                   "Yay the files to be recieved from $event are ${e.fileInfo}");
-              add();
+              endId = event;
             });
 
             yield FileTransferState.incomingFilesConfirmation(
-                files: incomingFiles);
+                files: incomingFiles, endId: endId);
           },
           orElse: () async* {},
         );
@@ -155,7 +156,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             print("Yay the files to be recieved are ${e.fileInfo}");
             yield FileTransferState.incomingFilesConfirmation(
               files: incomingFiles,
-              endId: e.fileInfo.endId,
+              endId: state.endId,
             );
           },
           confirmIncomingFiles: (e) async* {

@@ -134,9 +134,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield state.copyWith(
               showFilesDialog: some(true),
             );
-            yield state.copyWith(
-              showFilesDialog: some(false),
-            );
+            yield state.copyWith(showFilesDialog: some(false));
           },
           showMembersDialog: (_) async* {
             yield state.copyWith(

@@ -66,11 +66,16 @@ class NearbyConnections {
       StreamController<String>.broadcast();
   Stream<String> responseStream;
 
-  final StreamController<PayloadInfo> fileSharingSuccessful =
-      StreamController<PayloadInfo>.broadcast();
-  Stream<PayloadInfo> fileSharingSuccessfulStream;
+  final StreamController<String> fileSharingSuccessful =
+      StreamController<String>.broadcast();
+  Stream<String> fileSharingSuccessfulStream;
+
+  final StreamController<String> fileInfoSharingSuccessful =
+      StreamController<String>.broadcast();
+  Stream<String> fileInfoSharingSuccessfulStream;
 
   bool _isFile = false;
+  bool _isFileInfo = false;
 
   List<User> members = [];
 
@@ -138,6 +143,7 @@ class NearbyConnections {
     progressOfFileStream = progressOfFile.stream;
     responseStream = response.stream;
     fileSharingSuccessfulStream = fileSharingSuccessful.stream;
+    fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
 
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
@@ -197,6 +203,7 @@ class NearbyConnections {
     progressOfFileStream = progressOfFile.stream;
     responseStream = response.stream;
     fileSharingSuccessfulStream = fileSharingSuccessful.stream;
+    fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -371,15 +378,17 @@ class NearbyConnections {
 
       //receiving the fileInfo
       if (str.contains('*')) {
+        _isFileInfo = true;
         final String keyFileName = str.split('*').first;
         final int fileSize = int.parse(str.split('*').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
-            hash: 1234,
-            path: keyFileName,
-            bytesSize: fileSize,
-            thumbnail: null));
+          hash: 1234,
+          path: keyFileName,
+          bytesSize: fileSize,
+          thumbnail: null,
+        ));
       }
 
       if (str.contains('@')) {
@@ -417,8 +426,8 @@ class NearbyConnections {
 
   ///Gives the status of the payLoadRecieved
   //TODO : implement the states according to the status and show it in the UI
-  Either<ConnectionFailure, Unit> onPayloadTransferUpdate(
-      String endId, PayloadTransferUpdate payloadTransferUpdate) {
+  Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
+      String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       if (_isFile) {
         debugPrint(
@@ -437,8 +446,10 @@ class NearbyConnections {
       debugPrint(
           "Received/sent files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (_isFile) {
-        fileSharingSuccessful.sink.add(
-            PayloadInfo(payloadId: payloadTransferUpdate.id, progress: 100));
+        fileSharingSuccessful.sink.add(endId);
+      }
+      if (_isFileInfo) {
+        fileInfoSharingSuccessful.sink.add(endId);
       }
       if (map.containsKey(payloadTransferUpdate.id)) {
         //rename the file now
@@ -449,7 +460,9 @@ class NearbyConnections {
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
         String pp = prp.join('/') + '/Circles';
-        var cir_dir = Directory(pp).create();
+        if (!await Directory(pp).exists()) {
+          Directory(pp).create();
+        }
         _tempFile.rename("$pp/$name");
       } else {
         //bytes not received till yet
