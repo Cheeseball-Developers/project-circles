@@ -23,6 +23,7 @@ class NearbyConnections {
   User discoveredDevice;
   User incomingRequest;
   String host; // host username
+
   final StreamController<User> onEndFound = StreamController<User>.broadcast();
   Stream<User> discoveredDeviceStream;
 
@@ -61,7 +62,22 @@ class NearbyConnections {
       StreamController<PayloadInfo>.broadcast();
   Stream<PayloadInfo> progressOfFileStream;
 
+  final StreamController<String> response =
+      StreamController<String>.broadcast();
+  Stream<String> responseStream;
+
+  final StreamController<String> fileSharingSuccessful =
+      StreamController<String>.broadcast();
+  Stream<String> fileSharingSuccessfulStream;
+
+  final StreamController<String> fileInfoSharingSuccessful =
+      StreamController<String>.broadcast();
+  Stream<String> fileInfoSharingSuccessfulStream;
+
   bool _isFile = false;
+  bool _isFileInfo = false;
+
+  List<User> members = [];
 
   /// **P2P_CLUSTER** - best for small payloads and multiplayer games
   ///
@@ -125,6 +141,10 @@ class NearbyConnections {
     onDiscovererLostStream = onDiscovererLost.stream;
     sendingFileInfoStream = sendingFileInfo.stream;
     progressOfFileStream = progressOfFile.stream;
+    responseStream = response.stream;
+    fileSharingSuccessfulStream = fileSharingSuccessful.stream;
+    fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
+
     debugPrint("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
@@ -181,6 +201,9 @@ class NearbyConnections {
     onConnectionResultDiscStream = onConnectionResultDisc.stream;
     sendingFileInfoStream = sendingFileInfo.stream;
     progressOfFileStream = progressOfFile.stream;
+    responseStream = response.stream;
+    fileSharingSuccessfulStream = fileSharingSuccessful.stream;
+    fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
 
     final bool a = await _nearby.startDiscovery(
       _username,
@@ -355,16 +378,28 @@ class NearbyConnections {
 
       //receiving the fileInfo
       if (str.contains('*')) {
+        _isFileInfo = true;
         final String keyFileName = str.split('*').first;
         final int fileSize = int.parse(str.split('*').last);
 
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
-            hash: 1234,
-            path: keyFileName,
-            bytesSize: fileSize,
-            thumbnail: null));
+          hash: 1234,
+          path: keyFileName,
+          bytesSize: fileSize,
+          thumbnail: null,
+        ));
       }
+
+      if (str.contains('@')) {
+        final responseGot = str.split('@').last;
+        if (responseGot == 'true') {
+          response.sink.add(endId);
+        } else {
+          debugPrint('$endId denied');
+        }
+      }
+
       // used for file payload as file payload is mapped as
       // payloadId:filename
       if (str.contains(':')) {
@@ -391,8 +426,8 @@ class NearbyConnections {
 
   ///Gives the status of the payLoadRecieved
   //TODO : implement the states according to the status and show it in the UI
-  Either<ConnectionFailure, Unit> onPayloadTransferUpdate(
-      String endId, PayloadTransferUpdate payloadTransferUpdate) {
+  Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
+      String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       if (_isFile) {
         debugPrint(
@@ -410,6 +445,12 @@ class NearbyConnections {
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       debugPrint(
           "Received/sent files/data to $endId, ${payloadTransferUpdate.totalBytes}");
+      if (_isFile) {
+        fileSharingSuccessful.sink.add(endId);
+      }
+      if (_isFileInfo) {
+        fileInfoSharingSuccessful.sink.add(endId);
+      }
       if (map.containsKey(payloadTransferUpdate.id)) {
         //rename the file now
         final String name = map[payloadTransferUpdate.id];
@@ -419,7 +460,9 @@ class NearbyConnections {
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
         String pp = prp.join('/') + '/Circles';
-        var cir_dir = Directory(pp).create();
+        if (!await Directory(pp).exists()) {
+          Directory(pp).create();
+        }
         _tempFile.rename("$pp/$name");
       } else {
         //bytes not received till yet
@@ -434,40 +477,43 @@ class NearbyConnections {
 
   ///Sending Files
   Future<Either<ConnectionFailure, Unit>> sendFilePayload(
-      {@required List<User> members, @required List<File> files}) async {
+      {@required String receiver, @required List<File> files}) async {
     int payLoadId;
-    members.forEach((user) {
-      //Sending the number of files that are being sent
+    //Sending the number of files that are being sent
+    files.forEach((file) async {
+      debugPrint('filePath: ${file.path}');
 
-      files.forEach((file) async {
-        debugPrint('filePath: ${file.path}');
+      /// Returns the payloadID as soon as file transfer has begun
+      ///
+      /// File is received in DOWNLOADS_DIRECTORY and is given a generic name
+      /// without extension
+      /// You must also send a bytes payload to send the filename and extension
+      /// so that receiver can rename the file accordingly
+      /// Send the payloadID and filename to receiver as bytes payload
+      payLoadId = await _nearby.sendFilePayload(receiver, file.path);
+      debugPrint("Sending File to ${receiver}");
 
-        /// Returns the payloadID as soon as file transfer has begun
-        ///
-        /// File is received in DOWNLOADS_DIRECTORY and is given a generic name
-        /// without extension
-        /// You must also send a bytes payload to send the filename and extension
-        /// so that receiver can rename the file accordingly
-        /// Send the payloadID and filename to receiver as bytes payload
-        payLoadId =
-            await _nearby.sendFilePayload(user.uid.getOrCrash(), file.path);
-        debugPrint("Sending File to ${user.name}");
-
-        //Sending the fileName and payloadId to the receiver
-        debugPrint("Currently sending file is: ${file.path.split('/').last}");
-        _nearby.sendBytesPayload(
-            user.uid.getOrCrash(),
-            Uint8List.fromList(
-                "$payLoadId:${file.path.split('/').last}".codeUnits));
-      });
+      //Sending the fileName and payloadId to the receiver
+      debugPrint("Currently sending file is: ${file.path.split('/').last}");
+      _nearby.sendBytesPayload(
+          receiver,
+          Uint8List.fromList(
+              "$payLoadId:${file.path.split('/').last}".codeUnits));
     });
+
     if (payLoadId != null) {
       return right(unit);
     }
     return left(const ConnectionFailure.unexpected());
   }
 
-  //2 doubts the
+  Future<void> acceptOrRejectFiles(
+      {@required bool response, @required String endId}) async {
+    debugPrint('Sending response $response to the host');
+    _nearby.sendBytesPayload(
+        endId, Uint8List.fromList("response@$response".codeUnits));
+  }
+
   Future<void> sendFilenameSizeBytesPayload(
       {@required List<User> users,
       @required List<FileInfo> outgoingFiles}) async {

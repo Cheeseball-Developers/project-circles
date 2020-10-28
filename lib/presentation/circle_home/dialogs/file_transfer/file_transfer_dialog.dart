@@ -65,7 +65,8 @@ class FileTransferDialog extends StatelessWidget {
             incomingFilesConfirmation: (_) => () => context
                 .bloc<FileTransferBloc>()
                 .add(const FileTransferEvent.confirmIncomingFiles(
-                    acceptOrReject: true)),
+                  acceptOrReject: true,
+                )),
             transferringFiles: (_) => null,
             transferComplete: (_) => () => ExtendedNavigator.of(context).pop(),
           ),
