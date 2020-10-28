@@ -139,10 +139,11 @@ class Settings extends StatelessWidget {
                               icon: Icons.save,
                               toggleValue: false,
                               title: 'Save Location',
-                              subtitle: 'Downloads/Circles',
+                              subtitle: state.directory.path.substring(
+                                  state.directory.path.lastIndexOf('/') + 1),
                               type: ButtonTileType.tapToOpen,
                               onTap: () async {
-                                final Option<Directory> directory =
+                                final Option<Directory> directoryOption =
                                     await showDialog(
                                   context: context,
                                   child: BlocProvider(
@@ -156,6 +157,15 @@ class Settings extends StatelessWidget {
                                           ),
                                     child: FolderPicker(),
                                   ),
+                                );
+                                directoryOption.fold(
+                                  () {},
+                                  (directory) => context
+                                      .bloc<SettingsBloc>()
+                                      .add(
+                                        SettingsEvent.selectDefaultDirectory(
+                                            directory),
+                                      ),
                                 );
                               },
                             ),
