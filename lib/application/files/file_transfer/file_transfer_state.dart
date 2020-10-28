@@ -15,6 +15,7 @@ abstract class FileTransferState with _$FileTransferState {
 
   const factory FileTransferState.incomingFilesConfirmation({
     @required List<FileInfo> files,
+    @required String endId,
   }) = _IncomingFilesConfirmation;
 
   const factory FileTransferState.transferringFiles({

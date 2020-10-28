@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:projectcircles/domain/circle/user.dart';
@@ -39,7 +40,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     StreamSubscription<FileInfo> incomingFileInfoStreamSubscription;
     StreamSubscription<PayloadInfo> progressOfFileStreamSubscription;
     StreamSubscription<String> respondingUserStreamSubscription;
-    StreamSubscription<PayloadInfo> fileSharedSucessStreamSubscription;
+    StreamSubscription<String> fileSharedSucessStreamSubscription;
+    StreamSubscription<String> fileInfoSucessStreamSubscription;
     int count = 0;
     int fileCount = 0;
     yield* state.map(
@@ -76,10 +78,16 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           fileInfoReceived: (e) async* {
             final List<FileInfo> incomingFiles = [];
             incomingFiles.add(e.fileInfo);
-            print("Yay the files to be recieved are ${e.fileInfo}");
+            fileInfoSucessStreamSubscription = _nearbyConnections
+                .fileInfoSharingSuccessfulStream
+                .listen((event) {
+              print(
+                  "Yay the files to be recieved from $event are ${e.fileInfo}");
+              add();
+            });
+
             yield FileTransferState.incomingFilesConfirmation(
-              files: incomingFiles,
-            );
+                files: incomingFiles);
           },
           orElse: () async* {},
         );
@@ -147,12 +155,13 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             print("Yay the files to be recieved are ${e.fileInfo}");
             yield FileTransferState.incomingFilesConfirmation(
               files: incomingFiles,
+              endId: e.fileInfo.endId,
             );
           },
           confirmIncomingFiles: (e) async* {
             // TODO: Send [e.acceptOrReject] to sender
             _nearbyConnections.acceptOrRejectFiles(
-                response: e.acceptOrReject, endId: e.endId);
+                response: e.acceptOrReject, endId: state.endId);
 
             final Map<FileInfo, double> filesMap = {};
             for (final fileInfo in state.files) {
@@ -182,15 +191,18 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         }, onError: (e) {
           print(e);
         });
+        //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSucessStreamSubscription =
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
           count += 1;
           if (state.type == const FileTransferType.outgoing()) {
             if (count == fileCount) {
+              debugPrint("FileSharing (outgoing) Successful to $event");
               add(const FileTransferEvent.filesSent());
             }
           } else if (state.type == const FileTransferType.incoming()) {
             if (count == fileCount) {
+              debugPrint("FileSharing (incoming) Successful from $event");
               add(const FileTransferEvent.filesReceived());
             }
           }
@@ -243,6 +255,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       },
       transferComplete: (state) async* {
         progressOfFileStreamSubscription?.cancel();
+        fileSharedSucessStreamSubscription?.cancel();
       },
     );
   }

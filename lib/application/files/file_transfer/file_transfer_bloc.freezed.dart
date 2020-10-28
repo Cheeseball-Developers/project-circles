@@ -50,11 +50,9 @@ class _$FileTransferEventTearOff {
   }
 
 // ignore: unused_element
-  _ConfirmIncomingFiles confirmIncomingFiles(
-      {@required bool acceptOrReject, @required String endId}) {
+  _ConfirmIncomingFiles confirmIncomingFiles({@required bool acceptOrReject}) {
     return _ConfirmIncomingFiles(
       acceptOrReject: acceptOrReject,
-      endId: endId,
     );
   }
 
@@ -85,7 +83,7 @@ mixin _$FileTransferEvent {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   });
@@ -97,7 +95,7 @@ mixin _$FileTransferEvent {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -213,7 +211,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -238,7 +236,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -350,7 +348,7 @@ class _$_CancelSend implements _CancelSend {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -375,7 +373,7 @@ class _$_CancelSend implements _CancelSend {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -483,7 +481,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -508,7 +506,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -638,7 +636,7 @@ class _$_SendFiles implements _SendFiles {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -663,7 +661,7 @@ class _$_SendFiles implements _SendFiles {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -773,7 +771,7 @@ class _$_FilesSent implements _FilesSent {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -798,7 +796,7 @@ class _$_FilesSent implements _FilesSent {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -940,7 +938,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -965,7 +963,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -1036,7 +1034,7 @@ abstract class _$ConfirmIncomingFilesCopyWith<$Res> {
   factory _$ConfirmIncomingFilesCopyWith(_ConfirmIncomingFiles value,
           $Res Function(_ConfirmIncomingFiles) then) =
       __$ConfirmIncomingFilesCopyWithImpl<$Res>;
-  $Res call({bool acceptOrReject, String endId});
+  $Res call({bool acceptOrReject});
 }
 
 /// @nodoc
@@ -1053,32 +1051,26 @@ class __$ConfirmIncomingFilesCopyWithImpl<$Res>
   @override
   $Res call({
     Object acceptOrReject = freezed,
-    Object endId = freezed,
   }) {
     return _then(_ConfirmIncomingFiles(
       acceptOrReject: acceptOrReject == freezed
           ? _value.acceptOrReject
           : acceptOrReject as bool,
-      endId: endId == freezed ? _value.endId : endId as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
-  const _$_ConfirmIncomingFiles(
-      {@required this.acceptOrReject, @required this.endId})
-      : assert(acceptOrReject != null),
-        assert(endId != null);
+  const _$_ConfirmIncomingFiles({@required this.acceptOrReject})
+      : assert(acceptOrReject != null);
 
   @override
   final bool acceptOrReject;
-  @override
-  final String endId;
 
   @override
   String toString() {
-    return 'FileTransferEvent.confirmIncomingFiles(acceptOrReject: $acceptOrReject, endId: $endId)';
+    return 'FileTransferEvent.confirmIncomingFiles(acceptOrReject: $acceptOrReject)';
   }
 
   @override
@@ -1087,16 +1079,13 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
         (other is _ConfirmIncomingFiles &&
             (identical(other.acceptOrReject, acceptOrReject) ||
                 const DeepCollectionEquality()
-                    .equals(other.acceptOrReject, acceptOrReject)) &&
-            (identical(other.endId, endId) ||
-                const DeepCollectionEquality().equals(other.endId, endId)));
+                    .equals(other.acceptOrReject, acceptOrReject)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(acceptOrReject) ^
-      const DeepCollectionEquality().hash(endId);
+      const DeepCollectionEquality().hash(acceptOrReject);
 
   @override
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith =>
@@ -1112,7 +1101,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -1125,7 +1114,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
-    return confirmIncomingFiles(acceptOrReject, endId);
+    return confirmIncomingFiles(acceptOrReject);
   }
 
   @override
@@ -1137,14 +1126,14 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (confirmIncomingFiles != null) {
-      return confirmIncomingFiles(acceptOrReject, endId);
+      return confirmIncomingFiles(acceptOrReject);
     }
     return orElse();
   }
@@ -1197,12 +1186,10 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
 }
 
 abstract class _ConfirmIncomingFiles implements FileTransferEvent {
-  const factory _ConfirmIncomingFiles(
-      {@required bool acceptOrReject,
-      @required String endId}) = _$_ConfirmIncomingFiles;
+  const factory _ConfirmIncomingFiles({@required bool acceptOrReject}) =
+      _$_ConfirmIncomingFiles;
 
   bool get acceptOrReject;
-  String get endId;
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith;
 }
 
@@ -1288,7 +1275,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -1313,7 +1300,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -1425,7 +1412,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
-    @required Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
@@ -1450,7 +1437,7 @@ class _$_FilesReceived implements _FilesReceived {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
-    Result confirmIncomingFiles(bool acceptOrReject, String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
     @required Result orElse(),
@@ -1541,9 +1528,10 @@ class _$FileTransferStateTearOff {
 
 // ignore: unused_element
   _IncomingFilesConfirmation incomingFilesConfirmation(
-      {@required List<FileInfo> files}) {
+      {@required List<FileInfo> files, @required String endId}) {
     return _IncomingFilesConfirmation(
       files: files,
+      endId: endId,
     );
   }
 
@@ -1576,7 +1564,8 @@ mixin _$FileTransferState {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -1588,7 +1577,7 @@ mixin _$FileTransferState {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
@@ -1675,7 +1664,8 @@ class _$_Initial implements _Initial {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -1697,7 +1687,7 @@ class _$_Initial implements _Initial {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
@@ -1836,7 +1826,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -1858,7 +1849,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
@@ -1987,7 +1978,8 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2009,7 +2001,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
@@ -2075,7 +2067,7 @@ abstract class _$IncomingFilesConfirmationCopyWith<$Res> {
   factory _$IncomingFilesConfirmationCopyWith(_IncomingFilesConfirmation value,
           $Res Function(_IncomingFilesConfirmation) then) =
       __$IncomingFilesConfirmationCopyWithImpl<$Res>;
-  $Res call({List<FileInfo> files});
+  $Res call({List<FileInfo> files, String endId});
 }
 
 /// @nodoc
@@ -2093,24 +2085,30 @@ class __$IncomingFilesConfirmationCopyWithImpl<$Res>
   @override
   $Res call({
     Object files = freezed,
+    Object endId = freezed,
   }) {
     return _then(_IncomingFilesConfirmation(
       files: files == freezed ? _value.files : files as List<FileInfo>,
+      endId: endId == freezed ? _value.endId : endId as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
-  const _$_IncomingFilesConfirmation({@required this.files})
-      : assert(files != null);
+  const _$_IncomingFilesConfirmation(
+      {@required this.files, @required this.endId})
+      : assert(files != null),
+        assert(endId != null);
 
   @override
   final List<FileInfo> files;
+  @override
+  final String endId;
 
   @override
   String toString() {
-    return 'FileTransferState.incomingFilesConfirmation(files: $files)';
+    return 'FileTransferState.incomingFilesConfirmation(files: $files, endId: $endId)';
   }
 
   @override
@@ -2118,12 +2116,16 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     return identical(this, other) ||
         (other is _IncomingFilesConfirmation &&
             (identical(other.files, files) ||
-                const DeepCollectionEquality().equals(other.files, files)));
+                const DeepCollectionEquality().equals(other.files, files)) &&
+            (identical(other.endId, endId) ||
+                const DeepCollectionEquality().equals(other.endId, endId)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(files);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(files) ^
+      const DeepCollectionEquality().hash(endId);
 
   @override
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation>
@@ -2139,7 +2141,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2151,7 +2154,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
-    return incomingFilesConfirmation(files);
+    return incomingFilesConfirmation(files, endId);
   }
 
   @override
@@ -2161,7 +2164,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
@@ -2169,7 +2172,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
   }) {
     assert(orElse != null);
     if (incomingFilesConfirmation != null) {
-      return incomingFilesConfirmation(files);
+      return incomingFilesConfirmation(files, endId);
     }
     return orElse();
   }
@@ -2215,10 +2218,12 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
 }
 
 abstract class _IncomingFilesConfirmation implements FileTransferState {
-  const factory _IncomingFilesConfirmation({@required List<FileInfo> files}) =
-      _$_IncomingFilesConfirmation;
+  const factory _IncomingFilesConfirmation(
+      {@required List<FileInfo> files,
+      @required String endId}) = _$_IncomingFilesConfirmation;
 
   List<FileInfo> get files;
+  String get endId;
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation> get copyWith;
 }
 
@@ -2312,7 +2317,8 @@ class _$_TransferringFiles implements _TransferringFiles {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2334,7 +2340,7 @@ class _$_TransferringFiles implements _TransferringFiles {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
@@ -2441,7 +2447,8 @@ class _$_TransferComplete implements _TransferComplete {
         Result outgoingFilesConfirmation(
             Option<List<FileInfo>> filesOption, List<User> users),
     @required Result awaitingSendApproval(List<FileInfo> files),
-    @required Result incomingFilesConfirmation(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     @required
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2463,7 +2470,7 @@ class _$_TransferComplete implements _TransferComplete {
     Result outgoingFilesConfirmation(
         Option<List<FileInfo>> filesOption, List<User> users),
     Result awaitingSendApproval(List<FileInfo> files),
-    Result incomingFilesConfirmation(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),

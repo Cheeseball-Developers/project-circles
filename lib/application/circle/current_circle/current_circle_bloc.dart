@@ -122,7 +122,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                   members: state.members, isAcceptingRequest: false);
               _nearbyConnections.members.add(request.requestingUser);
             } else {
-              //reject a connection
+              //reject a connaddection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
                   await _nearbyConnections.rejectConnection(
                       endId: request.requestingUser.uid.getOrCrash());
