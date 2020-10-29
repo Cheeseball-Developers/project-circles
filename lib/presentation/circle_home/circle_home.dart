@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
+import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
+import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/circle_home/dialogs/file_transfer/file_transfer_dialog.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_circle_confirmation_dialog.dart';
@@ -50,7 +52,14 @@ class CircleHome extends StatelessWidget {
                 if (open) {
                   showDialog(
                     context: context,
-                    child: FileTransferDialog(),
+                    child: BlocProvider(
+                        create: (context) => getIt<FileTransferBloc>()
+                          ..add(
+                            FileTransferEvent.confirmOutgoingFiles(
+                              users: state.members.keys.where((element) => false).toList(),
+                            ),
+                          ),
+                        child: FileTransferDialog()),
                   );
                 }
               },
@@ -80,12 +89,19 @@ class CircleHome extends StatelessWidget {
               },
             );
             state.showFileTransferDialog.fold(
-                  () {},
+              () {},
                   (open) {
                 if (open) {
                   showDialog(
                     context: context,
-                    child: MembersPage(),
+                    child: BlocProvider(
+                        create: (context) => getIt<FileTransferBloc>()
+                          ..add(
+                            FileTransferEvent.confirmOutgoingFiles(
+                              users: [state.host],
+                            ),
+                          ),
+                        child: FileTransferDialog()),
                   );
                 }
               },
