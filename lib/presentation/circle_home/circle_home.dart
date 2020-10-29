@@ -21,7 +21,6 @@ class CircleHome extends StatelessWidget {
         currentCircleState.maybeMap(
           initial: (_) {
             ExtendedNavigator.of(context).pop();
-            ExtendedNavigator.of(context).pop();
           },
           hasStarted: (state) {
             state.showFilesDialog.fold(
