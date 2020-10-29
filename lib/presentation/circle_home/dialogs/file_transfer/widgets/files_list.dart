@@ -13,7 +13,7 @@ class FilesList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: files.length,
       itemBuilder: (context, index) => MyListTile(
-        title: files[index].path,
+        title: files[index].name,
         leading: Image.memory(
           files[index].thumbnail,
           height: 32.0,

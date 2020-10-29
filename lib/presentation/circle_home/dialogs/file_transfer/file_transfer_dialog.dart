@@ -100,7 +100,7 @@ class FileTransferDialog extends StatelessWidget {
           incomingFilesConfirmation: (state) => ListView.builder(
             itemCount: state.files.length,
             itemBuilder: (context, index) => MyListTile(
-              title: state.files[index].path,
+              title: state.files[index].name,
               leading: Container(),
             ),
           ),
