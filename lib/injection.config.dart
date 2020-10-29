@@ -47,7 +47,7 @@ GetIt $initGetIt(
   gh.factory<MediaTabViewBloc>(() => MediaTabViewBloc(get<MediaRepository>()));
   gh.factory<MySharedPreferences>(() => MySharedPreferences());
   gh.lazySingleton<NearbyConnections>(() => NearbyConnections());
-  gh.factory<SearchBloc>(() => SearchBloc());
+  gh.factory<SearchBloc>(() => SearchBloc(get<NearbyConnections>()));
   gh.factory<SettingsBloc>(
       () => SettingsBloc(get<IDeviceInfo>(), get<MySharedPreferences>()));
   gh.factory<CurrentCircleBloc>(

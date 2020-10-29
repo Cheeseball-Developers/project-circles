@@ -62,6 +62,7 @@ class FilesRepository {
     _filesMap.forEach((key, value) {
       if (value) {
         filesInfo.add(FileInfo(
+            name: key.path.substring(key.path.lastIndexOf('/') + 1),
             hash: key.hashCode,
             path: key.path,
             bytesSize: key.statSync().size,

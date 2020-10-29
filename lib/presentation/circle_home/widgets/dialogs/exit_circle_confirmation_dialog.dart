@@ -16,9 +16,12 @@ class ExitCircleConfirmationDialog extends StatelessWidget {
           noText: 'Cancel',
           yesText: 'Close Circle',
           noTap: () => ExtendedNavigator.of(context).pop(),
-          yesTap: () => context.bloc<CurrentCircleBloc>().add(
-                const CurrentCircleEvent.closeCircle(),
-              ),
+          yesTap: () {
+            context.bloc<CurrentCircleBloc>().add(
+                  const CurrentCircleEvent.closeCircle(),
+                );
+            ExtendedNavigator.of(context).pop();
+          },
         ),
         hasJoined: (state) => ConfirmationDialog(
           title: 'Disconnect',
@@ -26,12 +29,15 @@ class ExitCircleConfirmationDialog extends StatelessWidget {
           noText: 'Cancel',
           yesText: 'Disconnect',
           noTap: () => ExtendedNavigator.of(context).pop(),
-          yesTap: () => context
-              .bloc<CurrentCircleBloc>()
-              .add(const CurrentCircleEvent.leaveCircle()),
+          yesTap: () {
+            context
+                .bloc<CurrentCircleBloc>()
+                .add(const CurrentCircleEvent.leaveCircle());
+            ExtendedNavigator.of(context).pop();
+          },
         ),
         orElse: () => Container(),
-      ), // TODO: Implement UI for other states
+      ),
     );
   }
 }

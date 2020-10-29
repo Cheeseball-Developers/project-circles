@@ -57,6 +57,7 @@ class MediaRepository {
         final Uint8List thumbnail = await key.entity.thumbDataWithSize(64, 64, quality: 80);
         final File file = await key.entity.originFile;
         filesInfo.add(FileInfo(
+          name: file.path.substring(file.path.lastIndexOf('/')+1),
           hash: file.hashCode,
           path: file.path,
           bytesSize: file.lengthSync(),

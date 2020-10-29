@@ -7,6 +7,7 @@ part 'file_info.freezed.dart';
 @freezed
 abstract class FileInfo with _$FileInfo {
   const factory FileInfo({
+    @required String name,
     @required int hash,
     @required String path,
     @required int bytesSize,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
+import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
+import 'package:projectcircles/injection.dart';
+import 'package:projectcircles/presentation/circle_home/dialogs/file_transfer/file_transfer_dialog.dart';
 
 class BottomBar extends StatelessWidget {
   Widget _bar(BuildContext context, bool transactionInProgress) => Stack(
@@ -41,9 +44,9 @@ class BottomBar extends StatelessWidget {
           ),
           Positioned.fill(
             child: GestureDetector(
-              onTap: () => context
-                  .bloc<CurrentCircleBloc>()
-                  .add(const CurrentCircleEvent.showFileTransferDialog()),
+              onTap: () => context.bloc<CurrentCircleBloc>().add(
+                    const CurrentCircleEvent.showFileTransferDialog(),
+                  ),
               child: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Icon(transactionInProgress
@@ -57,19 +60,35 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
-        builder: (context, state) => state.maybeMap(
-          hasStarted: (state) => _bar(
-            context,
-            state.incomingFiles.isNotEmpty || state.outgoingFiles.isNotEmpty,
+    return BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
+      builder: (context, currentCircleState) => BlocProvider(
+        create: (context) => getIt<FileTransferBloc>(),
+        child: BlocConsumer<FileTransferBloc, FileTransferState>(
+          listener: (context, fileTransferState) {
+            fileTransferState.maybeMap(
+              incomingFilesConfirmation: (_) => showDialog(
+                context: context,
+                child: FileTransferDialog(),
+              ),
+              orElse: () {},
+            );
+          },
+          builder: (context, fileTransferState) => Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: currentCircleState.maybeMap(
+              hasStarted: (state) => _bar(
+                context,
+                state.incomingFiles.isNotEmpty ||
+                    state.outgoingFiles.isNotEmpty,
+              ),
+              hasJoined: (state) => _bar(
+                context,
+                state.incomingFiles.isNotEmpty ||
+                    state.outgoingFiles.isNotEmpty,
+              ),
+              orElse: () => Container(),
+            ),
           ),
-          hasJoined: (state) => _bar(
-            context,
-            state.incomingFiles.isNotEmpty || state.outgoingFiles.isNotEmpty,
-          ),
-          orElse: () => Container(),
         ),
       ),
     );

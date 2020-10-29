@@ -36,7 +36,6 @@ class AppsRepository {
         }
         return right(apps);
       } catch (error) {
-        print(error);
         return left(const AppsLoadFailure.unexpectedFailure());
       }
     }
@@ -69,6 +68,7 @@ class AppsRepository {
         final File file = File(app.apkFilePath);
         filesInfo.add(
           FileInfo(
+            name: app.appName,
             hash: file.hashCode,
             path: app.apkFilePath,
             bytesSize: file.lengthSync(),

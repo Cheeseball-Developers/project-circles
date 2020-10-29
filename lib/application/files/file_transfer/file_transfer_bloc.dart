@@ -40,7 +40,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     StreamSubscription<FileInfo> incomingFileInfoStreamSubscription;
     StreamSubscription<PayloadInfo> progressOfFileStreamSubscription;
     StreamSubscription<String> respondingUserStreamSubscription;
-    StreamSubscription<String> fileSharedSucessStreamSubscription;
+    StreamSubscription<String> fileSharedSuccessStreamSubscription;
     StreamSubscription<String> fileInfoSucessStreamSubscription;
     int count = 0;
     int fileCount = 0;
@@ -57,7 +57,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           },
         );
 
-        event.maybeMap(
+        yield* event.maybeMap(
           confirmOutgoingFiles: (e) async* {
             yield FileTransferState.outgoingFilesConfirmation(
               users: e.users,
@@ -94,7 +94,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
       },
       outgoingFilesConfirmation: (state) async* {
-        event.maybeMap(
+        yield* event.maybeMap(
           cancelSend: (e) async* {
             // TODO: Implement cancellation
           },
@@ -193,7 +193,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           print(e);
         });
         //TODO : Display in the ui from which device the file sharing is successful
-        fileSharedSucessStreamSubscription =
+        fileSharedSuccessStreamSubscription =
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
           count += 1;
           if (state.type == const FileTransferType.outgoing()) {
@@ -256,7 +256,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       },
       transferComplete: (state) async* {
         progressOfFileStreamSubscription?.cancel();
-        fileSharedSucessStreamSubscription?.cancel();
+        fileSharedSuccessStreamSubscription?.cancel();
       },
     );
   }
