@@ -12,8 +12,10 @@ class AppsTabView extends StatelessWidget {
       builder: (context, state) => state.failureOrAppsOption.fold(
         () => LoadingPage(),
         (failureOrApps) => failureOrApps.fold(
-          (f) => const Center(
-            child: Text('Some Error lolz, show error here'), // TODO: Show error
+          (f) => Center(
+            child: f.map(
+              unexpectedFailure: (_) => const Text('An error occurred'),
+            ),
           ),
           (apps) => Scaffold(
             appBar: !apps.containsValue(true)

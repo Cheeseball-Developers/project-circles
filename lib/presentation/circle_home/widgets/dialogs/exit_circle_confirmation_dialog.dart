@@ -37,7 +37,7 @@ class ExitCircleConfirmationDialog extends StatelessWidget {
           },
         ),
         orElse: () => Container(),
-      ), // TODO: Implement UI for other states
+      ),
     );
   }
 }
