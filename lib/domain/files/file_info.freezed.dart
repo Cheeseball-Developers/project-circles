@@ -15,11 +15,13 @@ class _$FileInfoTearOff {
 
 // ignore: unused_element
   _FileInfo call(
-      {@required int hash,
+      {@required String name,
+      @required int hash,
       @required String path,
       @required int bytesSize,
       @required Uint8List thumbnail}) {
     return _FileInfo(
+      name: name,
       hash: hash,
       path: path,
       bytesSize: bytesSize,
@@ -34,6 +36,7 @@ const $FileInfo = _$FileInfoTearOff();
 
 /// @nodoc
 mixin _$FileInfo {
+  String get name;
   int get hash;
   String get path;
   int get bytesSize;
@@ -46,7 +49,8 @@ mixin _$FileInfo {
 abstract class $FileInfoCopyWith<$Res> {
   factory $FileInfoCopyWith(FileInfo value, $Res Function(FileInfo) then) =
       _$FileInfoCopyWithImpl<$Res>;
-  $Res call({int hash, String path, int bytesSize, Uint8List thumbnail});
+  $Res call(
+      {String name, int hash, String path, int bytesSize, Uint8List thumbnail});
 }
 
 /// @nodoc
@@ -59,12 +63,14 @@ class _$FileInfoCopyWithImpl<$Res> implements $FileInfoCopyWith<$Res> {
 
   @override
   $Res call({
+    Object name = freezed,
     Object hash = freezed,
     Object path = freezed,
     Object bytesSize = freezed,
     Object thumbnail = freezed,
   }) {
     return _then(_value.copyWith(
+      name: name == freezed ? _value.name : name as String,
       hash: hash == freezed ? _value.hash : hash as int,
       path: path == freezed ? _value.path : path as String,
       bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
@@ -79,7 +85,8 @@ abstract class _$FileInfoCopyWith<$Res> implements $FileInfoCopyWith<$Res> {
   factory _$FileInfoCopyWith(_FileInfo value, $Res Function(_FileInfo) then) =
       __$FileInfoCopyWithImpl<$Res>;
   @override
-  $Res call({int hash, String path, int bytesSize, Uint8List thumbnail});
+  $Res call(
+      {String name, int hash, String path, int bytesSize, Uint8List thumbnail});
 }
 
 /// @nodoc
@@ -93,12 +100,14 @@ class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
+    Object name = freezed,
     Object hash = freezed,
     Object path = freezed,
     Object bytesSize = freezed,
     Object thumbnail = freezed,
   }) {
     return _then(_FileInfo(
+      name: name == freezed ? _value.name : name as String,
       hash: hash == freezed ? _value.hash : hash as int,
       path: path == freezed ? _value.path : path as String,
       bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
@@ -111,16 +120,20 @@ class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_FileInfo extends _FileInfo {
   const _$_FileInfo(
-      {@required this.hash,
+      {@required this.name,
+      @required this.hash,
       @required this.path,
       @required this.bytesSize,
       @required this.thumbnail})
-      : assert(hash != null),
+      : assert(name != null),
+        assert(hash != null),
         assert(path != null),
         assert(bytesSize != null),
         assert(thumbnail != null),
         super._();
 
+  @override
+  final String name;
   @override
   final int hash;
   @override
@@ -132,13 +145,15 @@ class _$_FileInfo extends _FileInfo {
 
   @override
   String toString() {
-    return 'FileInfo(hash: $hash, path: $path, bytesSize: $bytesSize, thumbnail: $thumbnail)';
+    return 'FileInfo(name: $name, hash: $hash, path: $path, bytesSize: $bytesSize, thumbnail: $thumbnail)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FileInfo &&
+            (identical(other.name, name) ||
+                const DeepCollectionEquality().equals(other.name, name)) &&
             (identical(other.hash, hash) ||
                 const DeepCollectionEquality().equals(other.hash, hash)) &&
             (identical(other.path, path) ||
@@ -154,6 +169,7 @@ class _$_FileInfo extends _FileInfo {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(hash) ^
       const DeepCollectionEquality().hash(path) ^
       const DeepCollectionEquality().hash(bytesSize) ^
@@ -167,11 +183,14 @@ class _$_FileInfo extends _FileInfo {
 abstract class _FileInfo extends FileInfo {
   const _FileInfo._() : super._();
   const factory _FileInfo(
-      {@required int hash,
+      {@required String name,
+      @required int hash,
       @required String path,
       @required int bytesSize,
       @required Uint8List thumbnail}) = _$_FileInfo;
 
+  @override
+  String get name;
   @override
   int get hash;
   @override

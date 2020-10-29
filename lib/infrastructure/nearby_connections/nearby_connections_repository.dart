@@ -268,7 +268,7 @@ class NearbyConnections {
         debugPrint(
             "Check if the token is same ${connectionInfo.authenticationToken}");
         //accept by default in discoverer side
-        //TODO: Accept only after the host has accepeted the connection
+        //TODO: Accept only after the host has accepted the connection
         final Either<ConnectionFailure, Unit> _acceptConnection =
             await acceptConnection(endId: endId);
         _acceptConnection.fold((failure) {
@@ -278,7 +278,7 @@ class NearbyConnections {
         },
             (success) => {
                   debugPrint(
-                      "Connection is automatically accpeted from me waiting for host yo: $success to $endId")
+                      "Connection is automatically accepted from me waiting for host yo: $success to $endId")
                 });
       }, onConnectionResult: (id, Status status) {
         debugPrint(
@@ -330,7 +330,7 @@ class NearbyConnections {
     final a = await _nearby.acceptConnection(endId,
         onPayLoadRecieved: (String endId, Payload payload) {
       //TODO this is the called as soon as the file transfer is started
-      onPayloadRecieved(endId, payload);
+      onPayloadReceived(endId, payload);
     }, onPayloadTransferUpdate:
             (String endId, PayloadTransferUpdate payloadTransferUpdate) {
       //TODO: Again with the values that are returned
@@ -356,12 +356,12 @@ class NearbyConnections {
     }
   }
 
-  ///onPayload Recieved :
+  ///onPayload Received:
   ///we store the payload in a _tempFile which is reference
   ///to the current file being transferred
   ///also saves the fileName and extension
 
-  Future<Either<ConnectionFailure, Unit>> onPayloadRecieved(
+  Future<Either<ConnectionFailure, Unit>> onPayloadReceived(
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
       _isFile = true;
@@ -370,11 +370,11 @@ class NearbyConnections {
       _tempFile = File(payload.filePath);
       return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
-      debugPrint("bytes payload recieved");
-      //converting the bytes recieved to string
+      debugPrint("bytes payload received");
+      //converting the bytes received to string
       final String str = String.fromCharCodes(payload.bytes);
 
-      debugPrint("Bytes recieved from $endId:  $str");
+      debugPrint("Bytes received from $endId:  $str");
 
       //receiving the fileInfo
       if (str.contains('*')) {
@@ -384,6 +384,7 @@ class NearbyConnections {
 
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
+          name: 'Filename to be added here in nearby',
           hash: 1234,
           path: keyFileName,
           bytesSize: fileSize,
@@ -405,7 +406,7 @@ class NearbyConnections {
       if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':').last;
-        print('----fileName: ${fileName}');
+        print('----fileName: $fileName');
         if (map.containsKey(payloadId)) {
           if (await _tempFile.exists()) {
             _tempFile.rename("${_tempFile.parent.path}/$fileName");
@@ -424,14 +425,14 @@ class NearbyConnections {
     }
   }
 
-  ///Gives the status of the payLoadRecieved
+  ///Gives the status of the payLoadReceived
   //TODO : implement the states according to the status and show it in the UI
   Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       if (_isFile) {
         debugPrint(
-            'perecntage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
+            'percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: (payloadTransferUpdate.bytesTransferred /
@@ -456,10 +457,10 @@ class NearbyConnections {
         final String name = map[payloadTransferUpdate.id];
 
         ///storage/emulated/0/Download/Nearby
-        List<String> prp = _tempFile.parent.path.split('/');
+        final List<String> prp = _tempFile.parent.path.split('/');
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
-        String pp = prp.join('/') + '/Circles';
+        final String pp = '${prp.join('/')}/Circles';
         if (!await Directory(pp).exists()) {
           Directory(pp).create();
         }
@@ -491,7 +492,7 @@ class NearbyConnections {
       /// so that receiver can rename the file accordingly
       /// Send the payloadID and filename to receiver as bytes payload
       payLoadId = await _nearby.sendFilePayload(receiver, file.path);
-      debugPrint("Sending File to ${receiver}");
+      debugPrint("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
       debugPrint("Currently sending file is: ${file.path.split('/').last}");
