@@ -8,7 +8,6 @@ import 'package:dartz/dartz.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
-import 'package:projectcircles/injection.dart';
 
 part 'search_event.dart';
 
@@ -18,27 +17,28 @@ part 'search_bloc.freezed.dart';
 
 @injectable
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  SearchBloc() : super(SearchState.initial());
-  final nearbyConnections = getIt<NearbyConnections>();
+  final NearbyConnections _nearbyConnections;
+
+  SearchBloc(this._nearbyConnections) : super(SearchState.initial());
+
   StreamSubscription<User> streamSubscriptionDiscoveredDevice;
   StreamSubscription<String> streamSubscriptionLostDevice;
-
   StreamSubscription<Either<ConnectionFailure, Unit>>
       streamSubscriptionOnConnectionResult;
 
   @override
   Stream<SearchState> mapEventToState(SearchEvent event) async* {
-    Either<ConnectionFailure, Unit> errorOrDiscovering;
-
     yield* event.map(
       startSearching: (e) async* {
         yield state.copyWith(isLoading: true, discoveredDevices: []);
 
-        await nearbyConnections.permitLocation();
-        await nearbyConnections.enableLocation();
-        await nearbyConnections.askStroragePermission();
+        await _nearbyConnections.permitLocation();
+        await _nearbyConnections.enableLocation();
+        await _nearbyConnections.askStroragePermission();
 
-        errorOrDiscovering = await nearbyConnections.startDiscovering();
+        final Either<ConnectionFailure, Unit> errorOrDiscovering =
+            await _nearbyConnections.startDiscovering();
+
         yield state.copyWith(
           isLoading: false,
           isSearching: true,
@@ -46,13 +46,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
 
         streamSubscriptionDiscoveredDevice =
-            nearbyConnections.discoveredDeviceStream.listen((event) {
+            _nearbyConnections.discoveredDeviceStream.listen((event) {
           add(SearchEvent.deviceDiscovered(event));
         }, onError: (e) {
           debugPrint('Error $e');
         }, cancelOnError: false);
         streamSubscriptionLostDevice =
-            nearbyConnections.lostDeviceStream.listen((event) {
+            _nearbyConnections.lostDeviceStream.listen((event) {
           add(SearchEvent.deviceLost(uidString: event));
         }, onError: (e) {
           debugPrint("Error on removing $e");
@@ -88,8 +88,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         yield state.copyWith(isLoading: false);
         streamSubscriptionDiscoveredDevice?.cancel();
         streamSubscriptionLostDevice?.cancel();
-        nearbyConnections.stopAllEndpoints();
-        nearbyConnections.stopDiscovering();
+        _nearbyConnections.stopAllEndpoints();
+        _nearbyConnections.stopDiscovering();
         yield state.copyWith(
           isLoading: false,
           isSearching: false,
@@ -99,7 +99,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       },
       requestConnection: (e) async* {
         streamSubscriptionDiscoveredDevice?.cancel();
-        await nearbyConnections.stopDiscovering();
+        await _nearbyConnections.stopDiscovering();
 
         yield* state.connectionFailureOrSuccessOption.fold(
           () async* {
@@ -108,7 +108,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             );
 
             final Either<ConnectionFailure, Unit> requestOrFail =
-                await nearbyConnections.requestConnection(
+                await _nearbyConnections.requestConnection(
               endpointId: e.discoveredUser.uid.getOrCrash(),
             );
             yield state.copyWith(
@@ -119,7 +119,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                 connectionFailureOrSuccessOption: none());
 
             streamSubscriptionOnConnectionResult =
-                nearbyConnections.onConnectionResultDiscStream.listen(
+                _nearbyConnections.onConnectionResultDiscStream.listen(
               (event) {
                 add(SearchEvent.connectionResult(event));
               },
@@ -129,12 +129,16 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
       },
       connectionResult: (e) async* {
+        streamSubscriptionOnConnectionResult?.cancel();
+
         yield state.copyWith(
             connectionFailureOrSuccessOption: some(e.connectionStatus));
       },
       endConnectionRequest: (e) async* {
+        streamSubscriptionOnConnectionResult?.cancel();
+
         final List<User> discoveredDevices = List.from(state.discoveredDevices);
-        nearbyConnections
+        _nearbyConnections
             .disconnectFromEndPoint(e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);
         yield state.copyWith(
