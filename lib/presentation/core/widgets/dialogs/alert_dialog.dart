@@ -26,7 +26,14 @@ class AlertDialog extends StatelessWidget {
       title: title,
       dialogType: DialogType.full,
       dialogButtonType: DialogButtonType.singleButton,
-      child: Text(subtitle),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Text(
+          subtitle,
+          style: Theme.of(context).textTheme.bodyText2,
+          textAlign: TextAlign.justify,
+        ),
+      ),
     );
   }
 }

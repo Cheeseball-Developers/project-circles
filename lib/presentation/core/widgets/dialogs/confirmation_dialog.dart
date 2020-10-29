@@ -31,7 +31,7 @@ class ConfirmationDialog extends StatelessWidget {
       dialogType: DialogType.full,
       dialogButtonType: DialogButtonType.doubleButton,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Text(
           subtitle,
           style: Theme.of(context).textTheme.bodyText2,
