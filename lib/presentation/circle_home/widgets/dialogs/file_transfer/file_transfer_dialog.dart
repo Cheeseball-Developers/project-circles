@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
-import 'package:projectcircles/presentation/circle_home/dialogs/file_transfer/widgets/files_list.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_list.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
@@ -98,10 +98,12 @@ class FileTransferDialog extends StatelessWidget {
           ),
           awaitingSendApproval: (state) => FilesList(state.files),
           incomingFilesConfirmation: (state) => ListView.builder(
+            shrinkWrap: true,
             itemCount: state.files.length,
             itemBuilder: (context, index) => MyListTile(
               title: state.files[index].name,
               leading: Container(),
+              trailing: Container(),
             ),
           ),
           transferringFiles: (state) => Container(),

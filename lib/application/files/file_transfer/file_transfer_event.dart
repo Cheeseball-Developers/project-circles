@@ -2,6 +2,8 @@ part of 'file_transfer_bloc.dart';
 
 @freezed
 abstract class FileTransferEvent with _$FileTransferEvent {
+  const factory FileTransferEvent.initialize() = _Initialize;
+
   const factory FileTransferEvent.confirmOutgoingFiles({
     @required List<User> users,
   }) = _ConfirmOutgoingFiles;

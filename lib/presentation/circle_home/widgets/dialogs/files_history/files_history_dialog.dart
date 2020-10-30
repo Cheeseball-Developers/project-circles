@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/file_transaction.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/widgets/files_list.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/widgets/files_transaction_list.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/widgets/empty_pop_up_placeholder.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/files_history/widgets/files_list.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/files_history/widgets/files_transaction_list.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 
-class FilesPage extends StatelessWidget {
+class FilesHistoryDialog extends StatelessWidget {
   Widget _body(
     BuildContext context,
     Map<FileInfo, double> incomingFiles,

@@ -14,6 +14,11 @@ class _$FileTransferEventTearOff {
   const _$FileTransferEventTearOff();
 
 // ignore: unused_element
+  _Initialize initialize() {
+    return const _Initialize();
+  }
+
+// ignore: unused_element
   _ConfirmOutgoingFiles confirmOutgoingFiles({@required List<User> users}) {
     return _ConfirmOutgoingFiles(
       users: users,
@@ -77,6 +82,7 @@ const $FileTransferEvent = _$FileTransferEventTearOff();
 mixin _$FileTransferEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -89,6 +95,7 @@ mixin _$FileTransferEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -102,6 +109,7 @@ mixin _$FileTransferEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -114,6 +122,7 @@ mixin _$FileTransferEvent {
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -142,6 +151,145 @@ class _$FileTransferEventCopyWithImpl<$Res>
   final FileTransferEvent _value;
   // ignore: unused_field
   final $Res Function(FileTransferEvent) _then;
+}
+
+/// @nodoc
+abstract class _$InitializeCopyWith<$Res> {
+  factory _$InitializeCopyWith(
+          _Initialize value, $Res Function(_Initialize) then) =
+      __$InitializeCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$InitializeCopyWithImpl<$Res>
+    extends _$FileTransferEventCopyWithImpl<$Res>
+    implements _$InitializeCopyWith<$Res> {
+  __$InitializeCopyWithImpl(
+      _Initialize _value, $Res Function(_Initialize) _then)
+      : super(_value, (v) => _then(v as _Initialize));
+
+  @override
+  _Initialize get _value => super._value as _Initialize;
+}
+
+/// @nodoc
+class _$_Initialize implements _Initialize {
+  const _$_Initialize();
+
+  @override
+  String toString() {
+    return 'FileTransferEvent.initialize()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Initialize);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialize(),
+    @required Result confirmOutgoingFiles(List<User> users),
+    @required Result cancelSend(),
+    @required Result sendFilesInfo(),
+    @required Result sendFiles(String endPointId),
+    @required Result filesSent(),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
+    @required Result updateProgress(PayloadInfo payloadInfo),
+    @required Result filesReceived(),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(filesReceived != null);
+    return initialize();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialize(),
+    Result confirmOutgoingFiles(List<User> users),
+    Result cancelSend(),
+    Result sendFilesInfo(),
+    Result sendFiles(String endPointId),
+    Result filesSent(),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result confirmIncomingFiles(bool acceptOrReject),
+    Result updateProgress(PayloadInfo payloadInfo),
+    Result filesReceived(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialize != null) {
+      return initialize();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    @required Result cancelSend(_CancelSend value),
+    @required Result sendFilesInfo(_SendFilesInfo value),
+    @required Result sendFiles(_SendFiles value),
+    @required Result filesSent(_FilesSent value),
+    @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
+    @required Result updateProgress(_UpdateProgress value),
+    @required Result filesReceived(_FilesReceived value),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(filesReceived != null);
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    Result cancelSend(_CancelSend value),
+    Result sendFilesInfo(_SendFilesInfo value),
+    Result sendFiles(_SendFiles value),
+    Result filesSent(_FilesSent value),
+    Result fileInfoReceived(_FileInfoReceived value),
+    Result confirmIncomingFiles(_ConfirmIncomingFiles value),
+    Result updateProgress(_UpdateProgress value),
+    Result filesReceived(_FilesReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialize implements FileTransferEvent {
+  const factory _Initialize() = _$_Initialize;
 }
 
 /// @nodoc
@@ -205,6 +353,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -215,6 +364,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -230,6 +380,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -251,6 +402,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -261,6 +413,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -276,6 +429,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -342,6 +496,7 @@ class _$_CancelSend implements _CancelSend {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -352,6 +507,7 @@ class _$_CancelSend implements _CancelSend {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -367,6 +523,7 @@ class _$_CancelSend implements _CancelSend {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -388,6 +545,7 @@ class _$_CancelSend implements _CancelSend {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -398,6 +556,7 @@ class _$_CancelSend implements _CancelSend {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -413,6 +572,7 @@ class _$_CancelSend implements _CancelSend {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -475,6 +635,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -485,6 +646,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -500,6 +662,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -521,6 +684,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -531,6 +695,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -546,6 +711,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -630,6 +796,7 @@ class _$_SendFiles implements _SendFiles {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -640,6 +807,7 @@ class _$_SendFiles implements _SendFiles {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -655,6 +823,7 @@ class _$_SendFiles implements _SendFiles {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -676,6 +845,7 @@ class _$_SendFiles implements _SendFiles {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -686,6 +856,7 @@ class _$_SendFiles implements _SendFiles {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -701,6 +872,7 @@ class _$_SendFiles implements _SendFiles {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -765,6 +937,7 @@ class _$_FilesSent implements _FilesSent {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -775,6 +948,7 @@ class _$_FilesSent implements _FilesSent {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -790,6 +964,7 @@ class _$_FilesSent implements _FilesSent {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -811,6 +986,7 @@ class _$_FilesSent implements _FilesSent {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -821,6 +997,7 @@ class _$_FilesSent implements _FilesSent {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -836,6 +1013,7 @@ class _$_FilesSent implements _FilesSent {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -932,6 +1110,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -942,6 +1121,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -957,6 +1137,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -978,6 +1159,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -988,6 +1170,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1003,6 +1186,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -1095,6 +1279,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -1105,6 +1290,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1120,6 +1306,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -1141,6 +1328,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -1151,6 +1339,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1166,6 +1355,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -1269,6 +1459,7 @@ class _$_UpdateProgress implements _UpdateProgress {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -1279,6 +1470,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1294,6 +1486,7 @@ class _$_UpdateProgress implements _UpdateProgress {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -1315,6 +1508,7 @@ class _$_UpdateProgress implements _UpdateProgress {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -1325,6 +1519,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1340,6 +1535,7 @@ class _$_UpdateProgress implements _UpdateProgress {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
@@ -1406,6 +1602,7 @@ class _$_FilesReceived implements _FilesReceived {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result initialize(),
     @required Result confirmOutgoingFiles(List<User> users),
     @required Result cancelSend(),
     @required Result sendFilesInfo(),
@@ -1416,6 +1613,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1431,6 +1629,7 @@ class _$_FilesReceived implements _FilesReceived {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result initialize(),
     Result confirmOutgoingFiles(List<User> users),
     Result cancelSend(),
     Result sendFilesInfo(),
@@ -1452,6 +1651,7 @@ class _$_FilesReceived implements _FilesReceived {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
     @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     @required Result cancelSend(_CancelSend value),
     @required Result sendFilesInfo(_SendFilesInfo value),
@@ -1462,6 +1662,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
   }) {
+    assert(initialize != null);
     assert(confirmOutgoingFiles != null);
     assert(cancelSend != null);
     assert(sendFilesInfo != null);
@@ -1477,6 +1678,7 @@ class _$_FilesReceived implements _FilesReceived {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
     Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
     Result cancelSend(_CancelSend value),
     Result sendFilesInfo(_SendFilesInfo value),
