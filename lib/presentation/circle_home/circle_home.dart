@@ -16,231 +16,241 @@ import 'package:projectcircles/presentation/circle_home/widgets/transfer_progres
 class CircleHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
-      listener: (context, currentCircleState) {
-        currentCircleState.maybeMap(
-          initial: (_) {
-            ExtendedNavigator.of(context).pop();
-          },
-          hasStarted: (state) {
-            state.showFilesDialog.fold(
-              () {},
-              (open) {
-                if (open) {
-                  showDialog(
-                    context: context,
-                    child: FilesHistoryDialog(),
-                  );
-                }
-              },
-            );
-            state.showMembersDialog.fold(
-              () {},
-              (open) {
-                if (open) {
-                  showDialog(
-                    context: context,
-                    child: MembersDialog(),
-                  );
-                }
-              },
-            );
-            state.showFileTransferDialog.fold(
-              () {},
-              (open) {
-                if (open) {
-                  showDialog(
-                    context: context,
-                    child: BlocProvider(
-                        create: (context) => getIt<FileTransferBloc>()
-                          ..add(
-                            FileTransferEvent.confirmOutgoingFiles(
-                              users: state.members.keys.where((element) => false).toList(),
-                            ),
+    return BlocProvider(
+      create: (context) => getIt<FileTransferBloc>(),
+      child: BlocConsumer<CurrentCircleBloc, CurrentCircleState>(
+        listener: (context, currentCircleState) {
+          currentCircleState.maybeMap(
+            initial: (_) {
+              ExtendedNavigator.of(context).pop();
+            },
+            hasStarted: (state) {
+              state.showFilesDialog.fold(
+                () {},
+                (open) {
+                  if (open) {
+                    showDialog(
+                      context: context,
+                      child: FilesHistoryDialog(),
+                    );
+                  }
+                },
+              );
+              state.showMembersDialog.fold(
+                () {},
+                (open) {
+                  if (open) {
+                    showDialog(
+                      context: context,
+                      child: MembersDialog(),
+                    );
+                  }
+                },
+              );
+              state.showFileTransferDialog.fold(
+                () {},
+                (open) {
+                  if (open) {
+                    context.bloc<FileTransferBloc>().add(
+                          FileTransferEvent.confirmOutgoingFiles(
+                            users: state.members.keys
+                                .where((element) => false)
+                                .toList(),
                           ),
-                        child: FileTransferDialog()),
-                  );
-                }
-              },
-            );
-          },
-          hasJoined: (state) {
-            state.showFilesDialog.fold(
-              () {},
-              (open) {
-                if (open) {
-                  showDialog(
-                    context: context,
-                    child: FilesHistoryDialog(),
-                  );
-                }
-              },
-            );
-            state.showMembersDialog.fold(
-              () {},
-              (open) {
-                if (open) {
-                  showDialog(
-                    context: context,
-                    child: MembersDialog(),
-                  );
-                }
-              },
-            );
-            state.showFileTransferDialog.fold(
-              () {},
-                  (open) {
-                if (open) {
-                  showDialog(
-                    context: context,
-                    child: BlocProvider(
-                        create: (context) => getIt<FileTransferBloc>()
-                          ..add(
-                            FileTransferEvent.confirmOutgoingFiles(
-                              users: [state.host],
-                            ),
+                        );
+                    showDialog(
+                      context: context,
+                      child: BlocProvider.value(
+                        value: context.bloc<FileTransferBloc>(),
+                        child: FileTransferDialog(),
+                      ),
+                    );
+                  }
+                },
+              );
+            },
+            hasJoined: (state) {
+              state.showFilesDialog.fold(
+                () {},
+                (open) {
+                  if (open) {
+                    showDialog(
+                      context: context,
+                      child: FilesHistoryDialog(),
+                    );
+                  }
+                },
+              );
+              state.showMembersDialog.fold(
+                () {},
+                (open) {
+                  if (open) {
+                    showDialog(
+                      context: context,
+                      child: MembersDialog(),
+                    );
+                  }
+                },
+              );
+              state.showFileTransferDialog.fold(
+                () {},
+                (open) {
+                  if (open) {
+                    context.bloc<FileTransferBloc>().add(
+                          FileTransferEvent.confirmOutgoingFiles(
+                            users: [state.host],
                           ),
-                        child: FileTransferDialog()),
-                  );
-                }
-              },
-            );
-          },
-          orElse: () {},
-        );
-      },
-      builder: (context, currentCircleState) => currentCircleState.map(
-        initial: (_) => Scaffold(
-          backgroundColor: Theme.of(context).primaryColor,
-          body: Center(
-              child: Text(
-            'Loading...',
-            style: Theme.of(context).accentTextTheme.bodyText2,
-          )),
-        ),
-        isLoading: (state) => Scaffold(
-          backgroundColor: Theme.of(context).primaryColor,
-          body: Center(
-            child: Text(
-              state.loadingText,
+                        );
+                    showDialog(
+                      context: context,
+                      child: BlocProvider.value(
+                        value: context.bloc<FileTransferBloc>(),
+                        child: FileTransferDialog(),
+                      ),
+                    );
+                  }
+                },
+              );
+            },
+            orElse: () {},
+          );
+        },
+        builder: (context, currentCircleState) => currentCircleState.map(
+          initial: (_) => Scaffold(
+            backgroundColor: Theme.of(context).primaryColor,
+            body: Center(
+                child: Text(
+              'Loading...',
               style: Theme.of(context).accentTextTheme.bodyText2,
+            )),
+          ),
+          isLoading: (state) => Scaffold(
+            backgroundColor: Theme.of(context).primaryColor,
+            body: Center(
+              child: Text(
+                state.loadingText,
+                style: Theme.of(context).accentTextTheme.bodyText2,
+              ),
             ),
           ),
-        ),
-        hasStarted: (currentCircleState) => WillPopScope(
-          onWillPop: () => showDialog(
-            context: context,
-            child: ExitCircleConfirmationDialog(),
-          ),
-          child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height / 6),
-              child: Material(
-                color: Theme.of(context).appBarTheme.color,
-                child: SafeArea(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                            backgroundColor: Theme.of(context).accentColor,
-                            child: const Icon(Icons.person)),
-                      ),
-                      Expanded(
-                        child: Text("Your Circle",
-                            style: Theme.of(context).accentTextTheme.headline6),
-                      ),
-                      IconButton(
-                        padding: const EdgeInsets.all(16.0),
-                        icon: const Icon(Icons.cancel, color: Colors.white),
-                        onPressed: () => showDialog(
-                          context: context,
-                          child: ExitCircleConfirmationDialog(),
+          hasStarted: (currentCircleState) => WillPopScope(
+            onWillPop: () => showDialog(
+              context: context,
+              child: ExitCircleConfirmationDialog(),
+            ),
+            child: Scaffold(
+              appBar: PreferredSize(
+                preferredSize: Size(MediaQuery.of(context).size.width,
+                    MediaQuery.of(context).size.height / 6),
+                child: Material(
+                  color: Theme.of(context).appBarTheme.color,
+                  child: SafeArea(
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                              backgroundColor: Theme.of(context).accentColor,
+                              child: const Icon(Icons.person)),
                         ),
-                      )
-                    ],
+                        Expanded(
+                          child: Text("Your Circle",
+                              style:
+                                  Theme.of(context).accentTextTheme.headline6),
+                        ),
+                        IconButton(
+                          padding: const EdgeInsets.all(16.0),
+                          icon: const Icon(Icons.cancel, color: Colors.white),
+                          onPressed: () => showDialog(
+                            context: context,
+                            child: ExitCircleConfirmationDialog(),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              extendBody: true,
+              bottomNavigationBar: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (currentCircleState.incomingFiles.isNotEmpty ||
+                      currentCircleState.outgoingFiles.isNotEmpty)
+                    TransferProgressBottomBar(),
+                  BottomBar(),
+                ],
+              ),
+              body: CircleHomeBody(),
             ),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            extendBody: true,
-            bottomNavigationBar: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (currentCircleState.incomingFiles.isNotEmpty ||
-                    currentCircleState.outgoingFiles.isNotEmpty)
-                  TransferProgressBottomBar(),
-                BottomBar(),
-              ],
+          ),
+          hasJoined: (currentCircleState) => WillPopScope(
+            onWillPop: () => showDialog(
+              context: context,
+              child: ExitCircleConfirmationDialog(),
             ),
-            body: CircleHomeBody(),
-          ),
-        ),
-        hasJoined: (currentCircleState) => WillPopScope(
-          onWillPop: () => showDialog(
-            context: context,
-            child: ExitCircleConfirmationDialog(),
-          ),
-          child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size(MediaQuery.of(context).size.width,
-                  MediaQuery.of(context).size.height / 6),
-              child: Material(
-                color: Theme.of(context).appBarTheme.color,
-                child: SafeArea(
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: CircleAvatar(
-                            backgroundColor: Theme.of(context).accentColor,
-                            child: const Icon(Icons.person)),
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text('Connected to...',
-                                style:
-                                    Theme.of(context).accentTextTheme.caption),
-                            Text(
-                                "${currentCircleState.host.name.getOrCrash()}'s Circle",
-                                style:
-                                    Theme.of(context).accentTextTheme.headline6)
-                          ],
+            child: Scaffold(
+              appBar: PreferredSize(
+                preferredSize: Size(MediaQuery.of(context).size.width,
+                    MediaQuery.of(context).size.height / 6),
+                child: Material(
+                  color: Theme.of(context).appBarTheme.color,
+                  child: SafeArea(
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: CircleAvatar(
+                              backgroundColor: Theme.of(context).accentColor,
+                              child: const Icon(Icons.person)),
                         ),
-                      ),
-                      IconButton(
-                        padding: const EdgeInsets.all(16.0),
-                        icon: const Icon(Icons.cancel, color: Colors.white),
-                        onPressed: () => showDialog(
-                          context: context,
-                          child: ExitCircleConfirmationDialog(),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('Connected to...',
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .caption),
+                              Text(
+                                  "${currentCircleState.host.name.getOrCrash()}'s Circle",
+                                  style: Theme.of(context)
+                                      .accentTextTheme
+                                      .headline6)
+                            ],
+                          ),
                         ),
-                      )
-                    ],
+                        IconButton(
+                          padding: const EdgeInsets.all(16.0),
+                          icon: const Icon(Icons.cancel, color: Colors.white),
+                          onPressed: () => showDialog(
+                            context: context,
+                            child: ExitCircleConfirmationDialog(),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              extendBody: true,
+              bottomNavigationBar: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (currentCircleState.incomingFiles.isNotEmpty ||
+                      currentCircleState.outgoingFiles.isNotEmpty)
+                    TransferProgressBottomBar(),
+                  BottomBar(),
+                ],
+              ),
+              body: CircleHomeBody(),
             ),
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            extendBody: true,
-            bottomNavigationBar: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                if (currentCircleState.incomingFiles.isNotEmpty ||
-                    currentCircleState.outgoingFiles.isNotEmpty)
-                  TransferProgressBottomBar(),
-                BottomBar(),
-              ],
-            ),
-            body: CircleHomeBody(),
           ),
+          hasFailed: (_) => Container(),
         ),
-        hasFailed: (_) => Container(),
       ),
     );
   }

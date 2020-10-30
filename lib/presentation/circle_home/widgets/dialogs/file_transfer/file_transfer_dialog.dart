@@ -98,10 +98,12 @@ class FileTransferDialog extends StatelessWidget {
           ),
           awaitingSendApproval: (state) => FilesList(state.files),
           incomingFilesConfirmation: (state) => ListView.builder(
+            shrinkWrap: true,
             itemCount: state.files.length,
             itemBuilder: (context, index) => MyListTile(
               title: state.files[index].name,
               leading: Container(),
+              trailing: Container(),
             ),
           ),
           transferringFiles: (state) => Container(),

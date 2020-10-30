@@ -388,7 +388,7 @@ class NearbyConnections {
           hash: 1234,
           path: keyFileName,
           bytesSize: fileSize,
-          thumbnail: null,
+          thumbnail: Uint8List(4),
         ));
       }
 

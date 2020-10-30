@@ -31,7 +31,9 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     this._mediaRepository,
     this._filesRepository,
     this._nearbyConnections,
-  ) : super(const FileTransferState.initial());
+  ) : super(const FileTransferState.initial()) {
+    add(const FileTransferEvent.initialize());
+  }
 
   @override
   Stream<FileTransferState> mapEventToState(
@@ -57,6 +59,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           },
         );
 
+        print('yep');
+
         yield* event.maybeMap(
           confirmOutgoingFiles: (e) async* {
             yield FileTransferState.outgoingFilesConfirmation(
@@ -76,7 +80,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             );
           },
           fileInfoReceived: (e) async* {
-            String endId;
+            String endId = 'Jsdj';
             final List<FileInfo> incomingFiles = [];
             incomingFiles.add(e.fileInfo);
             fileInfoSucessStreamSubscription = _nearbyConnections
