@@ -186,6 +186,14 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               showMembersDialog: some(false),
             );
           },
+          showFileTransferDialog: (_) async* {
+            yield state.copyWith(
+              showFileTransferDialog: some(true),
+            );
+            yield state.copyWith(
+              showFileTransferDialog: some(false),
+            );
+          },
           leaveCircle: (e) async* {
             _nearbyConnections
                 .disconnectFromEndPoint(state.host.uid.getOrCrash());
