@@ -52,7 +52,7 @@ GetIt $initGetIt(
       () => SettingsBloc(get<IDeviceInfo>(), get<MySharedPreferences>()));
   gh.factory<CurrentCircleBloc>(
       () => CurrentCircleBloc(get<NearbyConnections>()));
-  gh.factory<FileTransferBloc>(() => FileTransferBloc(
+  gh.lazySingleton<FileTransferBloc>(() => FileTransferBloc(
         get<AppsRepository>(),
         get<MediaRepository>(),
         get<FilesRepository>(),

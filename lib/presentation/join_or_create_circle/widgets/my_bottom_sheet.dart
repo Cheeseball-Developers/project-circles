@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
+import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/presentation/settings/settings.dart';
 
@@ -48,68 +49,74 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                   ),
                   context.bloc<SettingsBloc>().state.maybeMap(
                       hasLoaded: (state) => Padding(
-                        padding: const EdgeInsets.only(
-                          top: 16.0,
-                          bottom: 4.0,
-                          left: 16.0,
-                          right: 16.0,
-                        ),
-                        child: Material(
-                          borderRadius: BorderRadius.circular(16.0),
-                          color: Theme.of(context).buttonColor,
-                          child: InkWell(
-                            borderRadius: BorderRadius.circular(16.0),
-                            onTap: () {
-                              context.bloc<CurrentCircleBloc>().add(
-                                CurrentCircleEvent.startCircle(
-                                  host: context
-                                      .bloc<SettingsBloc>()
-                                      .state
-                                      .map(
-                                    initial: (_) => null,
-                                    isLoading: (_) => null,
-                                    hasLoaded: (state) =>
-                                    state.user,
-                                    hasFailed: (_) => null,
-                                  ),
-                                ),
-                              );
-                              ExtendedNavigator.named('nav')
-                                  .push('/circle-home');
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Start ',
-                                    style: Theme.of(context)
-                                        .accentTextTheme
-                                        .subtitle1,
-                                  ),
-                                  Flexible(
-                                    child: Text(
-                                      state.user.name.getOrCrash(),
-                                      style: Theme.of(context)
-                                          .accentTextTheme
-                                          .subtitle1,
-                                      overflow: TextOverflow.ellipsis,
+                            padding: const EdgeInsets.only(
+                              top: 16.0,
+                              bottom: 4.0,
+                              left: 16.0,
+                              right: 16.0,
+                            ),
+                            child: Material(
+                              borderRadius: BorderRadius.circular(16.0),
+                              color: Theme.of(context).buttonColor,
+                              child: BlocBuilder<SearchBloc, SearchState>(
+                                builder: (context, searchState) => InkWell(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                  onTap: () {
+                                    if (searchState.isSearching) {
+                                      context.bloc<SearchBloc>().add(
+                                          const SearchEvent.stopSearching());
+                                    }
+                                    context.bloc<CurrentCircleBloc>().add(
+                                          CurrentCircleEvent.startCircle(
+                                            host: context
+                                                .bloc<SettingsBloc>()
+                                                .state
+                                                .map(
+                                                  initial: (_) => null,
+                                                  isLoading: (_) => null,
+                                                  hasLoaded: (state) =>
+                                                      state.user,
+                                                  hasFailed: (_) => null,
+                                                ),
+                                          ),
+                                        );
+                                    ExtendedNavigator.named('nav')
+                                        .push('/circle-home');
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          'Start ',
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle1,
+                                        ),
+                                        Flexible(
+                                          child: Text(
+                                            state.user.name.getOrCrash(),
+                                            style: Theme.of(context)
+                                                .accentTextTheme
+                                                .subtitle1,
+                                            overflow: TextOverflow.ellipsis,
+                                          ),
+                                        ),
+                                        Text(
+                                          "'s Circle",
+                                          style: Theme.of(context)
+                                              .accentTextTheme
+                                              .subtitle1,
+                                        )
+                                      ],
                                     ),
                                   ),
-                                  Text(
-                                    "'s Circle",
-                                    style: Theme.of(context)
-                                        .accentTextTheme
-                                        .subtitle1,
-                                  )
-                                ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ),
                       orElse: () => const Text('Error')),
                   const Text('Settings ↓'),
                   Settings(),
