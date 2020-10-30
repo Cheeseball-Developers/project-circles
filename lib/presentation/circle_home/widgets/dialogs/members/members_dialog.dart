@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/widgets/empty_pop_up_placeholder.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 
-class MembersPage extends StatelessWidget {
+class MembersDialog extends StatelessWidget {
   Widget _body(
     BuildContext context, {
     @required String title,

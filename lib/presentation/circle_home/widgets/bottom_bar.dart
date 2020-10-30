@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
 import 'package:projectcircles/injection.dart';
-import 'package:projectcircles/presentation/circle_home/dialogs/file_transfer/file_transfer_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/file_transfer_dialog.dart';
 
 class BottomBar extends StatelessWidget {
   Widget _bar(BuildContext context, bool transactionInProgress) => Stack(

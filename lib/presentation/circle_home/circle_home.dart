@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
 import 'package:projectcircles/injection.dart';
-import 'package:projectcircles/presentation/circle_home/dialogs/file_transfer/file_transfer_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/file_transfer_dialog.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/exit_circle_confirmation_dialog.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/files_page/files_page.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/members_page/members_page.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/pages/send_file.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/files_history/files_history_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/members/members_dialog.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/circle_home_body/circle_home_body.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/transfer_progress_bottom_bar.dart';
 
 class CircleHome extends StatelessWidget {
@@ -29,7 +29,7 @@ class CircleHome extends StatelessWidget {
                 if (open) {
                   showDialog(
                     context: context,
-                    child: FilesPage(),
+                    child: FilesHistoryDialog(),
                   );
                 }
               },
@@ -40,7 +40,7 @@ class CircleHome extends StatelessWidget {
                 if (open) {
                   showDialog(
                     context: context,
-                    child: MembersPage(),
+                    child: MembersDialog(),
                   );
                 }
               },
@@ -71,7 +71,7 @@ class CircleHome extends StatelessWidget {
                 if (open) {
                   showDialog(
                     context: context,
-                    child: FilesPage(),
+                    child: FilesHistoryDialog(),
                   );
                 }
               },
@@ -82,7 +82,7 @@ class CircleHome extends StatelessWidget {
                 if (open) {
                   showDialog(
                     context: context,
-                    child: MembersPage(),
+                    child: MembersDialog(),
                   );
                 }
               },
@@ -175,7 +175,7 @@ class CircleHome extends StatelessWidget {
                 BottomBar(),
               ],
             ),
-            body: SendFile(),
+            body: CircleHomeBody(),
           ),
         ),
         hasJoined: (currentCircleState) => WillPopScope(
@@ -237,7 +237,7 @@ class CircleHome extends StatelessWidget {
                 BottomBar(),
               ],
             ),
-            body: SendFile(),
+            body: CircleHomeBody(),
           ),
         ),
         hasFailed: (_) => Container(),
