@@ -26,9 +26,7 @@ class BottomBar extends StatelessWidget {
                   ),
                   IconButton(
                     icon: const Icon(Icons.send),
-                    onPressed: () => context
-                        .bloc<CurrentCircleBloc>()
-                        .add(const CurrentCircleEvent.showFileTransferDialog()),
+                    onPressed: () {},
                   ),
                   IconButton(
                     icon: const Icon(Icons.people),
@@ -66,7 +64,10 @@ class BottomBar extends StatelessWidget {
           fileTransferState.maybeMap(
             incomingFilesConfirmation: (_) => showDialog(
               context: context,
-              child: BlocProvider.value(value: context.bloc<FileTransferBloc>(), child: FileTransferDialog()),
+              child: BlocProvider.value(
+                value: context.bloc<FileTransferBloc>(),
+                child: FileTransferDialog(),
+              ),
             ),
             orElse: () {},
           );
