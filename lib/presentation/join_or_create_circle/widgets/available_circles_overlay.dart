@@ -69,12 +69,12 @@ class AvailableCirclesOverlay extends StatelessWidget {
                         ),
                 );
               },
-            ), // TODO: Handle this plx
+            ),
           );
         } else {
           return Container();
         }
-      }, // TODO: Handle error state
+      },
     );
   }
 } // done, tanks a lot
