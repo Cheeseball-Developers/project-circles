@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
+import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/file_transfer_dialog.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/bottom_bar.dart';
@@ -51,11 +52,15 @@ class CircleHome extends StatelessWidget {
                 () {},
                 (open) {
                   if (open) {
+                    final List<User> users = [];
+                    state.members.entries.forEach((element) {
+                      if (!element.value) {
+                        users.add(element.key);
+                      }
+                    });
                     context.bloc<FileTransferBloc>().add(
                           FileTransferEvent.confirmOutgoingFiles(
-                            users: state.members.keys
-                                .where((element) => false)
-                                .toList(),
+                            users: users,
                           ),
                         );
                     showDialog(
