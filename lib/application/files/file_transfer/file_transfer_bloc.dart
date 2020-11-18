@@ -8,6 +8,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
+import 'package:projectcircles/domain/files/file_transfer_failure.dart';
 import 'package:projectcircles/domain/files/file_transfer_type.dart';
 import 'package:projectcircles/domain/files/payload_info.dart';
 import 'package:projectcircles/infrastructure/circle/apps_repository.dart';
@@ -16,7 +17,9 @@ import 'package:projectcircles/infrastructure/circle/media_repository.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 
 part 'file_transfer_event.dart';
+
 part 'file_transfer_state.dart';
+
 part 'file_transfer_bloc.freezed.dart';
 
 @injectable
@@ -52,32 +55,18 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         incomingFileInfoStreamSubscription =
             _nearbyConnections.sendingFileInfoStream.listen(
           (fileInfo) {
-            add(FileTransferEvent.fileInfoReceived(fileInfo: fileInfo));
+            add(
+              FileTransferEvent.fileInfoReceived(fileInfo: fileInfo),
+            );
           },
           onError: (e) {
             print(e);
           },
         );
 
-        print('yep');
-
         yield* event.maybeMap(
           confirmOutgoingFiles: (e) async* {
-            yield FileTransferState.outgoingFilesConfirmation(
-              users: e.users,
-              filesOption: none(),
-            );
-
-            final List<FileInfo> appFilesInfo =
-                await _appsRepository.getFilesInfo();
-            final List<FileInfo> mediaFilesInfo =
-                await _mediaRepository.getFilesInfo();
-            final List<FileInfo> filesInfo = _filesRepository.getFilesInfo();
-
-            yield FileTransferState.outgoingFilesConfirmation(
-              users: e.users,
-              filesOption: some(appFilesInfo + mediaFilesInfo + filesInfo),
-            );
+            yield* _confirmOutgoingFiles(e.users);
           },
           fileInfoReceived: (e) async* {
             String endId = 'Jsdj';
@@ -87,7 +76,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 .fileInfoSharingSuccessfulStream
                 .listen((event) {
               print(
-                  "Yay the files to be recieved from $event are ${e.fileInfo}");
+                  "Yay the files to be received from $event are ${e.fileInfo}");
               endId = event;
             });
 
@@ -99,6 +88,9 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       },
       outgoingFilesConfirmation: (state) async* {
         yield* event.maybeMap(
+          confirmOutgoingFiles: (e) async* {
+            yield* _confirmOutgoingFiles(e.users);
+          },
           cancelSend: (e) async* {
             // TODO: Implement cancellation
           },
@@ -262,6 +254,40 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         progressOfFileStreamSubscription?.cancel();
         fileSharedSuccessStreamSubscription?.cancel();
       },
+      hasFailed: (state) async* {
+        yield* event.maybeMap(
+          confirmOutgoingFiles: (e) async* {
+            yield* _confirmOutgoingFiles(e.users);
+          },
+          orElse: () async* {},
+        );
+      },
     );
+  }
+
+  Stream<FileTransferState> _confirmOutgoingFiles(List<User> users) async* {
+    yield FileTransferState.outgoingFilesConfirmation(
+      users: users,
+      filesOption: none(),
+    );
+
+    final List<FileInfo> appFilesInfo = await _appsRepository.getFilesInfo();
+    final List<FileInfo> mediaFilesInfo = await _mediaRepository.getFilesInfo();
+    final List<FileInfo> filesInfo = _filesRepository.getFilesInfo();
+
+    print('Yes this is called');
+
+    if (appFilesInfo.isEmpty && mediaFilesInfo.isEmpty && filesInfo.isEmpty) {
+      yield const FileTransferState.hasFailed(
+          failure: FileTransferFailure.emptySelection());
+    } else if (users.isEmpty) {
+      yield const FileTransferState.hasFailed(
+          failure: FileTransferFailure.noMembers());
+    } else {
+      yield FileTransferState.outgoingFilesConfirmation(
+        users: users,
+        filesOption: some(appFilesInfo + mediaFilesInfo + filesInfo),
+      );
+    }
   }
 }

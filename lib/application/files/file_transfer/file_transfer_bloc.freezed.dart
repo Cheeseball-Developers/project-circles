@@ -1751,6 +1751,13 @@ class _$FileTransferStateTearOff {
   _TransferComplete transferComplete() {
     return const _TransferComplete();
   }
+
+// ignore: unused_element
+  _HasFailed hasFailed({@required FileTransferFailure failure}) {
+    return _HasFailed(
+      failure: failure,
+    );
+  }
 }
 
 /// @nodoc
@@ -1772,6 +1779,7 @@ mixin _$FileTransferState {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
@@ -1783,6 +1791,7 @@ mixin _$FileTransferState {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -1795,6 +1804,7 @@ mixin _$FileTransferState {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
@@ -1804,6 +1814,7 @@ mixin _$FileTransferState {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   });
 }
@@ -1872,6 +1883,7 @@ class _$_Initial implements _Initial {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -1879,6 +1891,7 @@ class _$_Initial implements _Initial {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return initial();
   }
 
@@ -1893,6 +1906,7 @@ class _$_Initial implements _Initial {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -1913,6 +1927,7 @@ class _$_Initial implements _Initial {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -1920,6 +1935,7 @@ class _$_Initial implements _Initial {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return initial(this);
   }
 
@@ -1932,6 +1948,7 @@ class _$_Initial implements _Initial {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2034,6 +2051,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2041,6 +2059,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return outgoingFilesConfirmation(filesOption, users);
   }
 
@@ -2055,6 +2074,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2075,6 +2095,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2082,6 +2103,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return outgoingFilesConfirmation(this);
   }
 
@@ -2094,6 +2116,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2186,6 +2209,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2193,6 +2217,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return awaitingSendApproval(files);
   }
 
@@ -2207,6 +2232,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2227,6 +2253,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2234,6 +2261,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return awaitingSendApproval(this);
   }
 
@@ -2246,6 +2274,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2349,6 +2378,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2356,6 +2386,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return incomingFilesConfirmation(files, endId);
   }
 
@@ -2370,6 +2401,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2390,6 +2422,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2397,6 +2430,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return incomingFilesConfirmation(this);
   }
 
@@ -2409,6 +2443,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2525,6 +2560,7 @@ class _$_TransferringFiles implements _TransferringFiles {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2532,6 +2568,7 @@ class _$_TransferringFiles implements _TransferringFiles {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return transferringFiles(type, filesMap);
   }
 
@@ -2546,6 +2583,7 @@ class _$_TransferringFiles implements _TransferringFiles {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2566,6 +2604,7 @@ class _$_TransferringFiles implements _TransferringFiles {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2573,6 +2612,7 @@ class _$_TransferringFiles implements _TransferringFiles {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return transferringFiles(this);
   }
 
@@ -2585,6 +2625,7 @@ class _$_TransferringFiles implements _TransferringFiles {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2655,6 +2696,7 @@ class _$_TransferComplete implements _TransferComplete {
         Result transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
     @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2662,6 +2704,7 @@ class _$_TransferComplete implements _TransferComplete {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return transferComplete();
   }
 
@@ -2676,6 +2719,7 @@ class _$_TransferComplete implements _TransferComplete {
     Result transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
     Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2696,6 +2740,7 @@ class _$_TransferComplete implements _TransferComplete {
         Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     @required Result transferringFiles(_TransferringFiles value),
     @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
@@ -2703,6 +2748,7 @@ class _$_TransferComplete implements _TransferComplete {
     assert(incomingFilesConfirmation != null);
     assert(transferringFiles != null);
     assert(transferComplete != null);
+    assert(hasFailed != null);
     return transferComplete(this);
   }
 
@@ -2715,6 +2761,7 @@ class _$_TransferComplete implements _TransferComplete {
     Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
     Result transferringFiles(_TransferringFiles value),
     Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -2727,4 +2774,171 @@ class _$_TransferComplete implements _TransferComplete {
 
 abstract class _TransferComplete implements FileTransferState {
   const factory _TransferComplete() = _$_TransferComplete;
+}
+
+/// @nodoc
+abstract class _$HasFailedCopyWith<$Res> {
+  factory _$HasFailedCopyWith(
+          _HasFailed value, $Res Function(_HasFailed) then) =
+      __$HasFailedCopyWithImpl<$Res>;
+  $Res call({FileTransferFailure failure});
+
+  $FileTransferFailureCopyWith<$Res> get failure;
+}
+
+/// @nodoc
+class __$HasFailedCopyWithImpl<$Res>
+    extends _$FileTransferStateCopyWithImpl<$Res>
+    implements _$HasFailedCopyWith<$Res> {
+  __$HasFailedCopyWithImpl(_HasFailed _value, $Res Function(_HasFailed) _then)
+      : super(_value, (v) => _then(v as _HasFailed));
+
+  @override
+  _HasFailed get _value => super._value as _HasFailed;
+
+  @override
+  $Res call({
+    Object failure = freezed,
+  }) {
+    return _then(_HasFailed(
+      failure:
+          failure == freezed ? _value.failure : failure as FileTransferFailure,
+    ));
+  }
+
+  @override
+  $FileTransferFailureCopyWith<$Res> get failure {
+    if (_value.failure == null) {
+      return null;
+    }
+    return $FileTransferFailureCopyWith<$Res>(_value.failure, (value) {
+      return _then(_value.copyWith(failure: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_HasFailed implements _HasFailed {
+  const _$_HasFailed({@required this.failure}) : assert(failure != null);
+
+  @override
+  final FileTransferFailure failure;
+
+  @override
+  String toString() {
+    return 'FileTransferState.hasFailed(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _HasFailed &&
+            (identical(other.failure, failure) ||
+                const DeepCollectionEquality().equals(other.failure, failure)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
+
+  @override
+  _$HasFailedCopyWith<_HasFailed> get copyWith =>
+      __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initial(),
+    @required
+        Result outgoingFilesConfirmation(
+            Option<List<FileInfo>> filesOption, List<User> users),
+    @required Result awaitingSendApproval(List<FileInfo> files),
+    @required
+        Result incomingFilesConfirmation(List<FileInfo> files, String endId),
+    @required
+        Result transferringFiles(
+            FileTransferType type, Map<FileInfo, double> filesMap),
+    @required Result transferComplete(),
+    @required Result hasFailed(FileTransferFailure failure),
+  }) {
+    assert(initial != null);
+    assert(outgoingFilesConfirmation != null);
+    assert(awaitingSendApproval != null);
+    assert(incomingFilesConfirmation != null);
+    assert(transferringFiles != null);
+    assert(transferComplete != null);
+    assert(hasFailed != null);
+    return hasFailed(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initial(),
+    Result outgoingFilesConfirmation(
+        Option<List<FileInfo>> filesOption, List<User> users),
+    Result awaitingSendApproval(List<FileInfo> files),
+    Result incomingFilesConfirmation(List<FileInfo> files, String endId),
+    Result transferringFiles(
+        FileTransferType type, Map<FileInfo, double> filesMap),
+    Result transferComplete(),
+    Result hasFailed(FileTransferFailure failure),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasFailed != null) {
+      return hasFailed(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initial(_Initial value),
+    @required
+        Result outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
+    @required Result awaitingSendApproval(_AwaitingSendApproval value),
+    @required
+        Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
+    @required Result transferringFiles(_TransferringFiles value),
+    @required Result transferComplete(_TransferComplete value),
+    @required Result hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(outgoingFilesConfirmation != null);
+    assert(awaitingSendApproval != null);
+    assert(incomingFilesConfirmation != null);
+    assert(transferringFiles != null);
+    assert(transferComplete != null);
+    assert(hasFailed != null);
+    return hasFailed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initial(_Initial value),
+    Result outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
+    Result awaitingSendApproval(_AwaitingSendApproval value),
+    Result incomingFilesConfirmation(_IncomingFilesConfirmation value),
+    Result transferringFiles(_TransferringFiles value),
+    Result transferComplete(_TransferComplete value),
+    Result hasFailed(_HasFailed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (hasFailed != null) {
+      return hasFailed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _HasFailed implements FileTransferState {
+  const factory _HasFailed({@required FileTransferFailure failure}) =
+      _$_HasFailed;
+
+  FileTransferFailure get failure;
+  _$HasFailedCopyWith<_HasFailed> get copyWith;
 }
