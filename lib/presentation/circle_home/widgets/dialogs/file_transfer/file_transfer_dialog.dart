@@ -2,7 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_list.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/file_transfer_list.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_info_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
@@ -102,9 +103,9 @@ class FileTransferDialog extends StatelessWidget {
                     AlwaysStoppedAnimation(Theme.of(context).indicatorColor),
               ),
             ),
-            (files) => FilesList(files),
+            (files) => FilesInfoList(files),
           ),
-          awaitingSendApproval: (state) => FilesList(state.files),
+          awaitingSendApproval: (state) => FilesInfoList(state.files),
           incomingFilesConfirmation: (state) => ListView.builder(
             shrinkWrap: true,
             itemCount: state.files.length,
@@ -114,7 +115,7 @@ class FileTransferDialog extends StatelessWidget {
               trailing: Container(),
             ),
           ),
-          transferringFiles: (state) => Container(),
+          transferringFiles: (state) => FileTransferList(state.filesMap),
           transferComplete: (state) => Container(),
           hasFailed: (state) => state.failure.map(
             emptySelection: (_) => const EmptyPopUpPlaceholder(
