@@ -63,25 +63,26 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             print(e);
           },
         );
+        fileInfoSucessStreamSubscription = _nearbyConnections
+            .fileInfoSharingSuccessfulStream
+            .listen((endId) {
+          print(
+              "Yay the files to be received from $endId");
+          add(FileTransferEvent.endIdReceived(endId: endId));
+        });
+
+        final List<FileInfo> incomingFiles = [];
 
         yield* event.maybeMap(
           confirmOutgoingFiles: (e) async* {
             yield* _confirmOutgoingFiles(e.users);
           },
           fileInfoReceived: (e) async* {
-            String endId = 'Jsdj';
-            final List<FileInfo> incomingFiles = [];
             incomingFiles.add(e.fileInfo);
-            fileInfoSucessStreamSubscription = _nearbyConnections
-                .fileInfoSharingSuccessfulStream
-                .listen((event) {
-              print(
-                  "Yay the files to be received from $event are ${e.fileInfo}");
-              endId = event;
-            });
-
+          },
+          endIdReceived: (e) async* {
             yield FileTransferState.incomingFilesConfirmation(
-                files: incomingFiles, endId: endId);
+                files: incomingFiles, endId: e.endId);
           },
           orElse: () async* {},
         );

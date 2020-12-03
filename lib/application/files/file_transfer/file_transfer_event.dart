@@ -20,6 +20,8 @@ abstract class FileTransferEvent with _$FileTransferEvent {
   const factory FileTransferEvent.fileInfoReceived({FileInfo fileInfo}) =
       _FileInfoReceived;
 
+  const factory FileTransferEvent.endIdReceived({String endId}) = _EndIdReceived;
+
   const factory FileTransferEvent.confirmIncomingFiles({
     @required bool acceptOrReject,
   }) = _ConfirmIncomingFiles;

@@ -55,6 +55,13 @@ class _$FileTransferEventTearOff {
   }
 
 // ignore: unused_element
+  _EndIdReceived endIdReceived({String endId}) {
+    return _EndIdReceived(
+      endId: endId,
+    );
+  }
+
+// ignore: unused_element
   _ConfirmIncomingFiles confirmIncomingFiles({@required bool acceptOrReject}) {
     return _ConfirmIncomingFiles(
       acceptOrReject: acceptOrReject,
@@ -89,6 +96,7 @@ mixin _$FileTransferEvent {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -102,6 +110,7 @@ mixin _$FileTransferEvent {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -116,6 +125,7 @@ mixin _$FileTransferEvent {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -129,6 +139,7 @@ mixin _$FileTransferEvent {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -199,6 +210,7 @@ class _$_Initialize implements _Initialize {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -210,6 +222,7 @@ class _$_Initialize implements _Initialize {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -226,6 +239,7 @@ class _$_Initialize implements _Initialize {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -248,6 +262,7 @@ class _$_Initialize implements _Initialize {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -259,6 +274,7 @@ class _$_Initialize implements _Initialize {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -275,6 +291,7 @@ class _$_Initialize implements _Initialize {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -360,6 +377,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -371,6 +389,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -387,6 +406,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -409,6 +429,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -420,6 +441,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -436,6 +458,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -503,6 +526,7 @@ class _$_CancelSend implements _CancelSend {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -514,6 +538,7 @@ class _$_CancelSend implements _CancelSend {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -530,6 +555,7 @@ class _$_CancelSend implements _CancelSend {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -552,6 +578,7 @@ class _$_CancelSend implements _CancelSend {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -563,6 +590,7 @@ class _$_CancelSend implements _CancelSend {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -579,6 +607,7 @@ class _$_CancelSend implements _CancelSend {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -642,6 +671,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -653,6 +683,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -669,6 +700,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -691,6 +723,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -702,6 +735,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -718,6 +752,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -803,6 +838,7 @@ class _$_SendFiles implements _SendFiles {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -814,6 +850,7 @@ class _$_SendFiles implements _SendFiles {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -830,6 +867,7 @@ class _$_SendFiles implements _SendFiles {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -852,6 +890,7 @@ class _$_SendFiles implements _SendFiles {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -863,6 +902,7 @@ class _$_SendFiles implements _SendFiles {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -879,6 +919,7 @@ class _$_SendFiles implements _SendFiles {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -944,6 +985,7 @@ class _$_FilesSent implements _FilesSent {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -955,6 +997,7 @@ class _$_FilesSent implements _FilesSent {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -971,6 +1014,7 @@ class _$_FilesSent implements _FilesSent {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -993,6 +1037,7 @@ class _$_FilesSent implements _FilesSent {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -1004,6 +1049,7 @@ class _$_FilesSent implements _FilesSent {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1020,6 +1066,7 @@ class _$_FilesSent implements _FilesSent {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -1117,6 +1164,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -1128,6 +1176,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1144,6 +1193,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -1166,6 +1216,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -1177,6 +1228,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1193,6 +1245,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -1211,6 +1264,175 @@ abstract class _FileInfoReceived implements FileTransferEvent {
 
   FileInfo get fileInfo;
   _$FileInfoReceivedCopyWith<_FileInfoReceived> get copyWith;
+}
+
+/// @nodoc
+abstract class _$EndIdReceivedCopyWith<$Res> {
+  factory _$EndIdReceivedCopyWith(
+          _EndIdReceived value, $Res Function(_EndIdReceived) then) =
+      __$EndIdReceivedCopyWithImpl<$Res>;
+  $Res call({String endId});
+}
+
+/// @nodoc
+class __$EndIdReceivedCopyWithImpl<$Res>
+    extends _$FileTransferEventCopyWithImpl<$Res>
+    implements _$EndIdReceivedCopyWith<$Res> {
+  __$EndIdReceivedCopyWithImpl(
+      _EndIdReceived _value, $Res Function(_EndIdReceived) _then)
+      : super(_value, (v) => _then(v as _EndIdReceived));
+
+  @override
+  _EndIdReceived get _value => super._value as _EndIdReceived;
+
+  @override
+  $Res call({
+    Object endId = freezed,
+  }) {
+    return _then(_EndIdReceived(
+      endId: endId == freezed ? _value.endId : endId as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_EndIdReceived implements _EndIdReceived {
+  const _$_EndIdReceived({this.endId});
+
+  @override
+  final String endId;
+
+  @override
+  String toString() {
+    return 'FileTransferEvent.endIdReceived(endId: $endId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _EndIdReceived &&
+            (identical(other.endId, endId) ||
+                const DeepCollectionEquality().equals(other.endId, endId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(endId);
+
+  @override
+  _$EndIdReceivedCopyWith<_EndIdReceived> get copyWith =>
+      __$EndIdReceivedCopyWithImpl<_EndIdReceived>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialize(),
+    @required Result confirmOutgoingFiles(List<User> users),
+    @required Result cancelSend(),
+    @required Result sendFilesInfo(),
+    @required Result sendFiles(String endPointId),
+    @required Result filesSent(),
+    @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
+    @required Result confirmIncomingFiles(bool acceptOrReject),
+    @required Result updateProgress(PayloadInfo payloadInfo),
+    @required Result filesReceived(),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(filesReceived != null);
+    return endIdReceived(endId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialize(),
+    Result confirmOutgoingFiles(List<User> users),
+    Result cancelSend(),
+    Result sendFilesInfo(),
+    Result sendFiles(String endPointId),
+    Result filesSent(),
+    Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
+    Result confirmIncomingFiles(bool acceptOrReject),
+    Result updateProgress(PayloadInfo payloadInfo),
+    Result filesReceived(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (endIdReceived != null) {
+      return endIdReceived(endId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialize(_Initialize value),
+    @required Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    @required Result cancelSend(_CancelSend value),
+    @required Result sendFilesInfo(_SendFilesInfo value),
+    @required Result sendFiles(_SendFiles value),
+    @required Result filesSent(_FilesSent value),
+    @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
+    @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
+    @required Result updateProgress(_UpdateProgress value),
+    @required Result filesReceived(_FilesReceived value),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(filesReceived != null);
+    return endIdReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialize(_Initialize value),
+    Result confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    Result cancelSend(_CancelSend value),
+    Result sendFilesInfo(_SendFilesInfo value),
+    Result sendFiles(_SendFiles value),
+    Result filesSent(_FilesSent value),
+    Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
+    Result confirmIncomingFiles(_ConfirmIncomingFiles value),
+    Result updateProgress(_UpdateProgress value),
+    Result filesReceived(_FilesReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (endIdReceived != null) {
+      return endIdReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EndIdReceived implements FileTransferEvent {
+  const factory _EndIdReceived({String endId}) = _$_EndIdReceived;
+
+  String get endId;
+  _$EndIdReceivedCopyWith<_EndIdReceived> get copyWith;
 }
 
 /// @nodoc
@@ -1286,6 +1508,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -1297,6 +1520,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1313,6 +1537,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -1335,6 +1560,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -1346,6 +1572,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1362,6 +1589,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -1466,6 +1694,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -1477,6 +1706,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1493,6 +1723,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -1515,6 +1746,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -1526,6 +1758,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1542,6 +1775,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
@@ -1609,6 +1843,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required Result sendFiles(String endPointId),
     @required Result filesSent(),
     @required Result fileInfoReceived(FileInfo fileInfo),
+    @required Result endIdReceived(String endId),
     @required Result confirmIncomingFiles(bool acceptOrReject),
     @required Result updateProgress(PayloadInfo payloadInfo),
     @required Result filesReceived(),
@@ -1620,6 +1855,7 @@ class _$_FilesReceived implements _FilesReceived {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1636,6 +1872,7 @@ class _$_FilesReceived implements _FilesReceived {
     Result sendFiles(String endPointId),
     Result filesSent(),
     Result fileInfoReceived(FileInfo fileInfo),
+    Result endIdReceived(String endId),
     Result confirmIncomingFiles(bool acceptOrReject),
     Result updateProgress(PayloadInfo payloadInfo),
     Result filesReceived(),
@@ -1658,6 +1895,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required Result sendFiles(_SendFiles value),
     @required Result filesSent(_FilesSent value),
     @required Result fileInfoReceived(_FileInfoReceived value),
+    @required Result endIdReceived(_EndIdReceived value),
     @required Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required Result updateProgress(_UpdateProgress value),
     @required Result filesReceived(_FilesReceived value),
@@ -1669,6 +1907,7 @@ class _$_FilesReceived implements _FilesReceived {
     assert(sendFiles != null);
     assert(filesSent != null);
     assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
@@ -1685,6 +1924,7 @@ class _$_FilesReceived implements _FilesReceived {
     Result sendFiles(_SendFiles value),
     Result filesSent(_FilesSent value),
     Result fileInfoReceived(_FileInfoReceived value),
+    Result endIdReceived(_EndIdReceived value),
     Result confirmIncomingFiles(_ConfirmIncomingFiles value),
     Result updateProgress(_UpdateProgress value),
     Result filesReceived(_FilesReceived value),
