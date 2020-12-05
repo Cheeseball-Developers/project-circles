@@ -63,11 +63,9 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             print(e);
           },
         );
-        fileInfoSucessStreamSubscription = _nearbyConnections
-            .fileInfoSharingSuccessfulStream
-            .listen((endId) {
-          print(
-              "Yay the files to be received from $endId");
+        fileInfoSucessStreamSubscription =
+            _nearbyConnections.fileInfoSharingSuccessfulStream.listen((endId) {
+          print("Yay the files to be received from $endId");
           add(FileTransferEvent.endIdReceived(endId: endId));
         });
 
@@ -214,6 +212,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         yield* event.maybeMap(
           updateProgress: (e) async* {
             final Map<FileInfo, double> filesMap = Map.from(state.filesMap);
+
+            //yaha error aa rahi hai
 
             lastPayloadId.fold(
               () {
