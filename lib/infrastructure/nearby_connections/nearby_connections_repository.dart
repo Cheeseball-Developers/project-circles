@@ -384,7 +384,6 @@ class NearbyConnections {
 
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
-          name: 'Filename to be added here in nearby',
           hash: 1234,
           path: keyFileName,
           bytesSize: fileSize,
@@ -461,6 +460,7 @@ class NearbyConnections {
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
         final String pp = '${prp.join('/')}/Circles';
+        debugPrint('Directore: $pp');
         if (!await Directory(pp).exists()) {
           Directory(pp).create();
         }
