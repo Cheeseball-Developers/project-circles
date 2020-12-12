@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:core';
+import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:auto_route/auto_route.dart';
@@ -377,17 +378,23 @@ class NearbyConnections {
       debugPrint("Bytes received from $endId:  $str");
 
       //receiving the fileInfo
+      //name, path, size, thumbnail,hash
       if (str.contains('*')) {
         _isFileInfo = true;
-        final String keyFileName = str.split('*').first;
-        final int fileSize = int.parse(str.split('*').last);
-
+        final List<String> keyFileInfo = str.split("*");
+        final String keyFileName = keyFileInfo[0];
+        final String keyFilePath = keyFileInfo[1];
+        final int keyFileSize = int.parse(keyFileInfo[2]);
+        final Uint8List keyFileThumbnail =
+            Uint8List.fromList(keyFileInfo[3].codeUnits);
+        final int keyFileHash = int.parse(keyFileInfo[4]);
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
-          hash: 1234,
+          hash: keyFileHash,
           path: keyFileName,
-          bytesSize: fileSize,
-          thumbnail: Uint8List(4),
+          bytesSize: keyFileHash,
+          thumbnail: keyFileThumbnail,
+          name: keyFileName,
         ));
       }
 
@@ -523,8 +530,10 @@ class NearbyConnections {
       outgoingFiles.forEach((file) {
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
+            //name, path, size, thumbnail,hash
             Uint8List.fromList(
-                "${file.path.split('/').last}*${file.bytesSize}".codeUnits));
+                "${file.name}*${file.path}*${file.bytesSize}*${file.thumbnail}*${file.hash}"
+                    .codeUnits));
       });
     });
   }
