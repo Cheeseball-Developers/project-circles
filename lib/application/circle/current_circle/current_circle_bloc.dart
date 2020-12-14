@@ -26,9 +26,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       : super(const CurrentCircleState.initial());
 
   @override
-  Stream<CurrentCircleState> mapEventToState(
-    CurrentCircleEvent event,
-  ) async* {
+  Stream<CurrentCircleState> mapEventToState(CurrentCircleEvent event,) async* {
     StreamSubscription<User> _incomingRequestsStreamSubscription;
     StreamSubscription<String> _lostHostStreamSubscription;
     StreamSubscription<String> _lostDiscovererStreamSubscription;
@@ -40,25 +38,26 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 loadingText: 'Starting Circle...');
 
             final Either<ConnectionFailure, Unit> failureOrCircleStarted =
-                await _nearbyConnections.startAdvertising();
+            await _nearbyConnections.startAdvertising();
 
             _incomingRequestsStreamSubscription =
                 _nearbyConnections.incomingRequestStream.listen((event) {
-              debugPrint("A device found, wants to join: $event");
-              add(CurrentCircleEvent.deviceRequestedConnection(user: event));
-            });
+                  debugPrint("A device found, wants to join: $event");
+                  add(CurrentCircleEvent.deviceRequestedConnection(
+                      user: event));
+                });
 
             _lostDiscovererStreamSubscription =
                 _nearbyConnections.onDiscovererLostStream.listen((event) {
-              print("i am removed");
-              add(CurrentCircleEvent.memberLeft(id: event));
-            });
+                  print("i am removed");
+                  add(CurrentCircleEvent.memberLeft(id: event));
+                });
 
             yield* failureOrCircleStarted.fold(
-              (failure) async* {
+                  (failure) async* {
                 yield CurrentCircleState.hasFailed(failure: failure);
               },
-              (_) async* {
+                  (_) async* {
                 yield CurrentCircleState.hasStarted(
                   members: <User, bool>{},
                   outgoingFiles: <FileInfo, double>{},
@@ -79,9 +78,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 loadingText: 'Joining Circle...');
             _lostHostStreamSubscription =
                 _nearbyConnections.onHostLostStream.listen((event) {
-              debugPrint("Host $event lost");
-              add(const CurrentCircleEvent.disconnected());
-            }, onError: (e) {});
+                  debugPrint("Host $event lost");
+                  add(const CurrentCircleEvent.disconnected());
+                }, onError: (e) {});
 
             yield CurrentCircleState.hasJoined(
               host: e.host,
@@ -115,41 +114,62 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             if (request.acceptConnection) {
               yield state.copyWith(isAcceptingRequest: true);
               final Either<ConnectionFailure, Unit> acceptOrFailure =
-                  await _nearbyConnections.acceptConnection(
-                      endId: request.requestingUser.uid.getOrCrash());
+              await _nearbyConnections.acceptConnection(
+                  endId: request.requestingUser.uid.getOrCrash());
               state.members.update(request.requestingUser, (value) => false);
               yield state.copyWith(
                   members: state.members, isAcceptingRequest: false);
               _nearbyConnections.members.add(request.requestingUser);
             } else {
-              //reject a connaddection
+              //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
-                  await _nearbyConnections.rejectConnection(
-                      endId: request.requestingUser.uid.getOrCrash());
+              await _nearbyConnections.rejectConnection(
+                  endId: request.requestingUser.uid.getOrCrash());
               state.members.remove(request.requestingUser);
               yield state.copyWith(members: state.members);
             }
           },
           showFilesDialog: (_) async* {
-            yield state.copyWith(
-              showFilesDialog: some(true),
-            );
-            yield state.copyWith(showFilesDialog: some(false));
+            if (state.showFilesDialog.isNone()) {
+              yield state.copyWith(
+                showFilesDialog: some(true),
+              );
+              yield state.copyWith(showFilesDialog: some(false));
+            }
           },
           showMembersDialog: (_) async* {
-            yield state.copyWith(
-              showMembersDialog: some(true),
-            );
-            yield state.copyWith(
-              showMembersDialog: some(false),
-            );
+            if (state.showMembersDialog.isNone()) {
+              yield state.copyWith(
+                showMembersDialog: some(true),
+              );
+              yield state.copyWith(
+                showMembersDialog: some(false),
+              );
+            }
           },
           showFileTransferDialog: (_) async* {
+            if (state.showFileTransferDialog.isNone()) {
+              yield state.copyWith(
+                showFileTransferDialog: some(true),
+              );
+              yield state.copyWith(
+                showFileTransferDialog: some(false),
+              );
+            }
+          },
+          filesDialogClosed: (_) async* {
             yield state.copyWith(
-              showFileTransferDialog: some(true),
+              showFilesDialog: none(),
             );
+          },
+          membersDialogClosed: (_) async* {
             yield state.copyWith(
-              showFileTransferDialog: some(false),
+              showMembersDialog: none(),
+            );
+          },
+          fileTransferDialogClosed: (_) async* {
+            yield state.copyWith(
+              showFileTransferDialog: none(),
             );
           },
           memberLeft: (e) async* {
@@ -171,27 +191,46 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
         _nearbyConnections.members.add(state.host);
         yield* event.maybeMap(
           showFilesDialog: (_) async* {
-            yield state.copyWith(
-              showFilesDialog: some(true),
-            );
-            yield state.copyWith(
-              showFilesDialog: some(false),
-            );
+            if (state.showFilesDialog.isNone()) {
+              yield state.copyWith(
+                showFilesDialog: some(true),
+              );
+              yield state.copyWith(showFilesDialog: some(false));
+            }
           },
           showMembersDialog: (_) async* {
-            yield state.copyWith(
-              showMembersDialog: some(true),
-            );
-            yield state.copyWith(
-              showMembersDialog: some(false),
-            );
+            if (state.showMembersDialog.isNone()) {
+              yield state.copyWith(
+                showMembersDialog: some(true),
+              );
+              yield state.copyWith(
+                showMembersDialog: some(false),
+              );
+            }
           },
           showFileTransferDialog: (_) async* {
+            if (state.showFileTransferDialog.isNone()) {
+              yield state.copyWith(
+                showFileTransferDialog: some(true),
+              );
+              yield state.copyWith(
+                showFileTransferDialog: some(false),
+              );
+            }
+          },
+          filesDialogClosed: (_) async* {
             yield state.copyWith(
-              showFileTransferDialog: some(true),
+              showFilesDialog: none(),
             );
+          },
+          membersDialogClosed: (_) async* {
             yield state.copyWith(
-              showFileTransferDialog: some(false),
+              showMembersDialog: none(),
+            );
+          },
+          fileTransferDialogClosed: (_) async* {
+            yield state.copyWith(
+              showFileTransferDialog: none(),
             );
           },
           leaveCircle: (e) async* {
