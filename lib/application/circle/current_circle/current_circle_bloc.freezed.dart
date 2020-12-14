@@ -59,6 +59,21 @@ class _$CurrentCircleEventTearOff {
   }
 
 // ignore: unused_element
+  FilesDialogClosed filesDialogClosed() {
+    return const FilesDialogClosed();
+  }
+
+// ignore: unused_element
+  MembersDialogClosed membersDialogClosed() {
+    return const MembersDialogClosed();
+  }
+
+// ignore: unused_element
+  FileTransferDialogClosed fileTransferDialogClosed() {
+    return const FileTransferDialogClosed();
+  }
+
+// ignore: unused_element
   MemberLeft memberLeft({@required String id}) {
     return MemberLeft(
       id: id,
@@ -96,6 +111,9 @@ mixin _$CurrentCircleEvent {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -110,6 +128,9 @@ mixin _$CurrentCircleEvent {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -125,6 +146,9 @@ mixin _$CurrentCircleEvent {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -139,6 +163,9 @@ mixin _$CurrentCircleEvent {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -243,6 +270,9 @@ class _$StartCircle implements StartCircle {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -255,6 +285,9 @@ class _$StartCircle implements StartCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -272,6 +305,9 @@ class _$StartCircle implements StartCircle {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -295,6 +331,9 @@ class _$StartCircle implements StartCircle {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -307,6 +346,9 @@ class _$StartCircle implements StartCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -324,6 +366,9 @@ class _$StartCircle implements StartCircle {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -427,6 +472,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -439,6 +487,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -456,6 +507,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -479,6 +533,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -491,6 +548,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -508,6 +568,9 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -626,6 +689,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -638,6 +704,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -655,6 +724,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -678,6 +750,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -690,6 +765,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -707,6 +785,9 @@ class _$AcceptOrReject implements AcceptOrReject {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -809,6 +890,9 @@ class _$JoinCircle implements JoinCircle {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -821,6 +905,9 @@ class _$JoinCircle implements JoinCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -838,6 +925,9 @@ class _$JoinCircle implements JoinCircle {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -861,6 +951,9 @@ class _$JoinCircle implements JoinCircle {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -873,6 +966,9 @@ class _$JoinCircle implements JoinCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -890,6 +986,9 @@ class _$JoinCircle implements JoinCircle {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -957,6 +1056,9 @@ class _$ShowFilesDialog implements ShowFilesDialog {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -969,6 +1071,9 @@ class _$ShowFilesDialog implements ShowFilesDialog {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -986,6 +1091,9 @@ class _$ShowFilesDialog implements ShowFilesDialog {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1009,6 +1117,9 @@ class _$ShowFilesDialog implements ShowFilesDialog {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1021,6 +1132,9 @@ class _$ShowFilesDialog implements ShowFilesDialog {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1038,6 +1152,9 @@ class _$ShowFilesDialog implements ShowFilesDialog {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1102,6 +1219,9 @@ class _$ShowMembersDialog implements ShowMembersDialog {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1114,6 +1234,9 @@ class _$ShowMembersDialog implements ShowMembersDialog {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1131,6 +1254,9 @@ class _$ShowMembersDialog implements ShowMembersDialog {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1154,6 +1280,9 @@ class _$ShowMembersDialog implements ShowMembersDialog {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1166,6 +1295,9 @@ class _$ShowMembersDialog implements ShowMembersDialog {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1183,6 +1315,9 @@ class _$ShowMembersDialog implements ShowMembersDialog {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1247,6 +1382,9 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1259,6 +1397,9 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1276,6 +1417,9 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1299,6 +1443,9 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1311,6 +1458,9 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1328,6 +1478,9 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1344,6 +1497,496 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
 
 abstract class ShowFileTransferDialog implements CurrentCircleEvent {
   const factory ShowFileTransferDialog() = _$ShowFileTransferDialog;
+}
+
+/// @nodoc
+abstract class $FilesDialogClosedCopyWith<$Res> {
+  factory $FilesDialogClosedCopyWith(
+          FilesDialogClosed value, $Res Function(FilesDialogClosed) then) =
+      _$FilesDialogClosedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$FilesDialogClosedCopyWithImpl<$Res>
+    extends _$CurrentCircleEventCopyWithImpl<$Res>
+    implements $FilesDialogClosedCopyWith<$Res> {
+  _$FilesDialogClosedCopyWithImpl(
+      FilesDialogClosed _value, $Res Function(FilesDialogClosed) _then)
+      : super(_value, (v) => _then(v as FilesDialogClosed));
+
+  @override
+  FilesDialogClosed get _value => super._value as FilesDialogClosed;
+}
+
+/// @nodoc
+class _$FilesDialogClosed implements FilesDialogClosed {
+  const _$FilesDialogClosed();
+
+  @override
+  String toString() {
+    return 'CurrentCircleEvent.filesDialogClosed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is FilesDialogClosed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startCircle(User host),
+    @required Result deviceRequestedConnection(User user),
+    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
+    @required Result joinCircle(User host),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
+    @required Result memberLeft(String id),
+    @required Result leaveCircle(),
+    @required Result closeCircle(),
+    @required Result disconnected(),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return filesDialogClosed();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startCircle(User host),
+    Result deviceRequestedConnection(User user),
+    Result acceptOrReject(User requestingUser, bool acceptConnection),
+    Result joinCircle(User host),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
+    Result memberLeft(String id),
+    Result leaveCircle(),
+    Result closeCircle(),
+    Result disconnected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (filesDialogClosed != null) {
+      return filesDialogClosed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startCircle(StartCircle value),
+    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
+    @required Result acceptOrReject(AcceptOrReject value),
+    @required Result joinCircle(JoinCircle value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
+    @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
+    @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return filesDialogClosed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startCircle(StartCircle value),
+    Result deviceRequestedConnection(DeviceRequestedConnection value),
+    Result acceptOrReject(AcceptOrReject value),
+    Result joinCircle(JoinCircle value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
+    Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
+    Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (filesDialogClosed != null) {
+      return filesDialogClosed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FilesDialogClosed implements CurrentCircleEvent {
+  const factory FilesDialogClosed() = _$FilesDialogClosed;
+}
+
+/// @nodoc
+abstract class $MembersDialogClosedCopyWith<$Res> {
+  factory $MembersDialogClosedCopyWith(
+          MembersDialogClosed value, $Res Function(MembersDialogClosed) then) =
+      _$MembersDialogClosedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$MembersDialogClosedCopyWithImpl<$Res>
+    extends _$CurrentCircleEventCopyWithImpl<$Res>
+    implements $MembersDialogClosedCopyWith<$Res> {
+  _$MembersDialogClosedCopyWithImpl(
+      MembersDialogClosed _value, $Res Function(MembersDialogClosed) _then)
+      : super(_value, (v) => _then(v as MembersDialogClosed));
+
+  @override
+  MembersDialogClosed get _value => super._value as MembersDialogClosed;
+}
+
+/// @nodoc
+class _$MembersDialogClosed implements MembersDialogClosed {
+  const _$MembersDialogClosed();
+
+  @override
+  String toString() {
+    return 'CurrentCircleEvent.membersDialogClosed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is MembersDialogClosed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startCircle(User host),
+    @required Result deviceRequestedConnection(User user),
+    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
+    @required Result joinCircle(User host),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
+    @required Result memberLeft(String id),
+    @required Result leaveCircle(),
+    @required Result closeCircle(),
+    @required Result disconnected(),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return membersDialogClosed();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startCircle(User host),
+    Result deviceRequestedConnection(User user),
+    Result acceptOrReject(User requestingUser, bool acceptConnection),
+    Result joinCircle(User host),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
+    Result memberLeft(String id),
+    Result leaveCircle(),
+    Result closeCircle(),
+    Result disconnected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (membersDialogClosed != null) {
+      return membersDialogClosed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startCircle(StartCircle value),
+    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
+    @required Result acceptOrReject(AcceptOrReject value),
+    @required Result joinCircle(JoinCircle value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
+    @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
+    @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return membersDialogClosed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startCircle(StartCircle value),
+    Result deviceRequestedConnection(DeviceRequestedConnection value),
+    Result acceptOrReject(AcceptOrReject value),
+    Result joinCircle(JoinCircle value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
+    Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
+    Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (membersDialogClosed != null) {
+      return membersDialogClosed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MembersDialogClosed implements CurrentCircleEvent {
+  const factory MembersDialogClosed() = _$MembersDialogClosed;
+}
+
+/// @nodoc
+abstract class $FileTransferDialogClosedCopyWith<$Res> {
+  factory $FileTransferDialogClosedCopyWith(FileTransferDialogClosed value,
+          $Res Function(FileTransferDialogClosed) then) =
+      _$FileTransferDialogClosedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$FileTransferDialogClosedCopyWithImpl<$Res>
+    extends _$CurrentCircleEventCopyWithImpl<$Res>
+    implements $FileTransferDialogClosedCopyWith<$Res> {
+  _$FileTransferDialogClosedCopyWithImpl(FileTransferDialogClosed _value,
+      $Res Function(FileTransferDialogClosed) _then)
+      : super(_value, (v) => _then(v as FileTransferDialogClosed));
+
+  @override
+  FileTransferDialogClosed get _value =>
+      super._value as FileTransferDialogClosed;
+}
+
+/// @nodoc
+class _$FileTransferDialogClosed implements FileTransferDialogClosed {
+  const _$FileTransferDialogClosed();
+
+  @override
+  String toString() {
+    return 'CurrentCircleEvent.fileTransferDialogClosed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is FileTransferDialogClosed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result startCircle(User host),
+    @required Result deviceRequestedConnection(User user),
+    @required Result acceptOrReject(User requestingUser, bool acceptConnection),
+    @required Result joinCircle(User host),
+    @required Result showFilesDialog(),
+    @required Result showMembersDialog(),
+    @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
+    @required Result memberLeft(String id),
+    @required Result leaveCircle(),
+    @required Result closeCircle(),
+    @required Result disconnected(),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return fileTransferDialogClosed();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result startCircle(User host),
+    Result deviceRequestedConnection(User user),
+    Result acceptOrReject(User requestingUser, bool acceptConnection),
+    Result joinCircle(User host),
+    Result showFilesDialog(),
+    Result showMembersDialog(),
+    Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
+    Result memberLeft(String id),
+    Result leaveCircle(),
+    Result closeCircle(),
+    Result disconnected(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fileTransferDialogClosed != null) {
+      return fileTransferDialogClosed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result startCircle(StartCircle value),
+    @required Result deviceRequestedConnection(DeviceRequestedConnection value),
+    @required Result acceptOrReject(AcceptOrReject value),
+    @required Result joinCircle(JoinCircle value),
+    @required Result showFilesDialog(ShowFilesDialog value),
+    @required Result showMembersDialog(ShowMembersDialog value),
+    @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
+    @required Result memberLeft(MemberLeft value),
+    @required Result leaveCircle(LeaveCircle value),
+    @required Result closeCircle(CloseCircle value),
+    @required Result disconnected(Disconnected value),
+  }) {
+    assert(startCircle != null);
+    assert(deviceRequestedConnection != null);
+    assert(acceptOrReject != null);
+    assert(joinCircle != null);
+    assert(showFilesDialog != null);
+    assert(showMembersDialog != null);
+    assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
+    assert(memberLeft != null);
+    assert(leaveCircle != null);
+    assert(closeCircle != null);
+    assert(disconnected != null);
+    return fileTransferDialogClosed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result startCircle(StartCircle value),
+    Result deviceRequestedConnection(DeviceRequestedConnection value),
+    Result acceptOrReject(AcceptOrReject value),
+    Result joinCircle(JoinCircle value),
+    Result showFilesDialog(ShowFilesDialog value),
+    Result showMembersDialog(ShowMembersDialog value),
+    Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
+    Result memberLeft(MemberLeft value),
+    Result leaveCircle(LeaveCircle value),
+    Result closeCircle(CloseCircle value),
+    Result disconnected(Disconnected value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (fileTransferDialogClosed != null) {
+      return fileTransferDialogClosed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FileTransferDialogClosed implements CurrentCircleEvent {
+  const factory FileTransferDialogClosed() = _$FileTransferDialogClosed;
 }
 
 /// @nodoc
@@ -1412,6 +2055,9 @@ class _$MemberLeft implements MemberLeft {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1424,6 +2070,9 @@ class _$MemberLeft implements MemberLeft {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1441,6 +2090,9 @@ class _$MemberLeft implements MemberLeft {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1464,6 +2116,9 @@ class _$MemberLeft implements MemberLeft {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1476,6 +2131,9 @@ class _$MemberLeft implements MemberLeft {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1493,6 +2151,9 @@ class _$MemberLeft implements MemberLeft {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1560,6 +2221,9 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1572,6 +2236,9 @@ class _$LeaveCircle implements LeaveCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1589,6 +2256,9 @@ class _$LeaveCircle implements LeaveCircle {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1612,6 +2282,9 @@ class _$LeaveCircle implements LeaveCircle {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1624,6 +2297,9 @@ class _$LeaveCircle implements LeaveCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1641,6 +2317,9 @@ class _$LeaveCircle implements LeaveCircle {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1705,6 +2384,9 @@ class _$CloseCircle implements CloseCircle {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1717,6 +2399,9 @@ class _$CloseCircle implements CloseCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1734,6 +2419,9 @@ class _$CloseCircle implements CloseCircle {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1757,6 +2445,9 @@ class _$CloseCircle implements CloseCircle {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1769,6 +2460,9 @@ class _$CloseCircle implements CloseCircle {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1786,6 +2480,9 @@ class _$CloseCircle implements CloseCircle {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
@@ -1850,6 +2547,9 @@ class _$Disconnected implements Disconnected {
     @required Result showFilesDialog(),
     @required Result showMembersDialog(),
     @required Result showFileTransferDialog(),
+    @required Result filesDialogClosed(),
+    @required Result membersDialogClosed(),
+    @required Result fileTransferDialogClosed(),
     @required Result memberLeft(String id),
     @required Result leaveCircle(),
     @required Result closeCircle(),
@@ -1862,6 +2562,9 @@ class _$Disconnected implements Disconnected {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1879,6 +2582,9 @@ class _$Disconnected implements Disconnected {
     Result showFilesDialog(),
     Result showMembersDialog(),
     Result showFileTransferDialog(),
+    Result filesDialogClosed(),
+    Result membersDialogClosed(),
+    Result fileTransferDialogClosed(),
     Result memberLeft(String id),
     Result leaveCircle(),
     Result closeCircle(),
@@ -1902,6 +2608,9 @@ class _$Disconnected implements Disconnected {
     @required Result showFilesDialog(ShowFilesDialog value),
     @required Result showMembersDialog(ShowMembersDialog value),
     @required Result showFileTransferDialog(ShowFileTransferDialog value),
+    @required Result filesDialogClosed(FilesDialogClosed value),
+    @required Result membersDialogClosed(MembersDialogClosed value),
+    @required Result fileTransferDialogClosed(FileTransferDialogClosed value),
     @required Result memberLeft(MemberLeft value),
     @required Result leaveCircle(LeaveCircle value),
     @required Result closeCircle(CloseCircle value),
@@ -1914,6 +2623,9 @@ class _$Disconnected implements Disconnected {
     assert(showFilesDialog != null);
     assert(showMembersDialog != null);
     assert(showFileTransferDialog != null);
+    assert(filesDialogClosed != null);
+    assert(membersDialogClosed != null);
+    assert(fileTransferDialogClosed != null);
     assert(memberLeft != null);
     assert(leaveCircle != null);
     assert(closeCircle != null);
@@ -1931,6 +2643,9 @@ class _$Disconnected implements Disconnected {
     Result showFilesDialog(ShowFilesDialog value),
     Result showMembersDialog(ShowMembersDialog value),
     Result showFileTransferDialog(ShowFileTransferDialog value),
+    Result filesDialogClosed(FilesDialogClosed value),
+    Result membersDialogClosed(MembersDialogClosed value),
+    Result fileTransferDialogClosed(FileTransferDialogClosed value),
     Result memberLeft(MemberLeft value),
     Result leaveCircle(LeaveCircle value),
     Result closeCircle(CloseCircle value),
