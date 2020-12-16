@@ -239,7 +239,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.initial();
           },
           disconnected: (e) async* {
-            print('Disconnected');
             _lostHostStreamSubscription?.cancel();
             yield const CurrentCircleState.initial();
           },
