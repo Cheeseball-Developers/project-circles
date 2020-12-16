@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:core';
-import 'dart:ffi';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 import 'package:nearby_connections/nearby_connections.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
@@ -24,6 +24,8 @@ class NearbyConnections {
   User discoveredDevice;
   User incomingRequest;
   String host; // host username
+
+  final logger = Logger();
 
   final StreamController<User> onEndFound = StreamController<User>.broadcast();
   Stream<User> discoveredDeviceStream;
@@ -105,7 +107,7 @@ class NearbyConnections {
   /// asks for permission only if its not given
   Future<void> permitLocation() async {
     if (!await isLocationPermitted()) {
-      debugPrint("yay asking permsission");
+      logger.i("Asking for location permission");
       await _nearby.askLocationPermission();
     }
     return;
@@ -122,7 +124,7 @@ class NearbyConnections {
   // opens dialogue to enable location service
   Future<void> enableLocation() async {
     if (!await isLocationEnabled()) {
-      debugPrint("enabling location");
+      logger.i("Enabling location");
       await _nearby.enableLocationServices();
     }
     return;
@@ -130,7 +132,7 @@ class NearbyConnections {
 
   Future<void> askStroragePermission() async {
     if (!await _nearby.checkExternalStoragePermission()) {
-      debugPrint('Asking for storage permission');
+      logger.i('Asking for storage permission');
       _nearby.askExternalStoragePermission();
     }
   }
@@ -146,11 +148,11 @@ class NearbyConnections {
     fileSharingSuccessfulStream = fileSharingSuccessful.stream;
     fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
 
-    debugPrint("Advertising...");
+    logger.i("Advertising...");
     final bool a = await _nearby.startAdvertising(_username, strategy,
         serviceId: _serviceId, onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
-      debugPrint(
+      logger.i(
           "A connection is being initiated to ${connectionInfo.endpointName}");
       host = _username;
       _endName = connectionInfo.endpointName;
@@ -159,22 +161,22 @@ class NearbyConnections {
           name: Name(connectionInfo.endpointName));
       onRequestSent.sink.add(incomingRequest);
     }, onConnectionResult: (id, Status status) {
-      debugPrint(
-          "Status of the connection to yyo $_endName ,id: $id,  : $status");
+      logger.i(
+          "Status of the connection to $_endName, id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
-          debugPrint(
-              "Connection successfully established to the dicoverer $_endName");
+          logger.i(
+              "Connection successfully established to the discoverer $_endName");
         } else if (status == Status.REJECTED) {
-          debugPrint("Connection rejected by discoverer $_endName : $id");
+          logger.i("Connection rejected by discoverer $_endName : $id");
         } else if (status == Status.ERROR) {
-          debugPrint("Error in connecting to $id..Please try again");
+          logger.w("Error in connecting to $id..Please try again");
         }
       }
     }, onDisconnected: (String id) {
       onDiscovererLost.sink.add(id);
-      debugPrint("Disconnected to : $id");
+      logger.w("Disconnected from: $id");
     });
     if (a) {
       return right(unit);
@@ -195,8 +197,8 @@ class NearbyConnections {
 
   ///Start Discovering
   Future<Either<ConnectionFailure, Unit>> startDiscovering() async {
-    debugPrint("Discovering....");
-    debugPrint("this is my username: $_username");
+    logger.i("Discovering....");
+    logger.i("This is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
     lostDeviceStream = onEndLost.stream;
     onConnectionResultDiscStream = onConnectionResultDisc.stream;
@@ -213,7 +215,7 @@ class NearbyConnections {
       onEndpointFound: (String id, String name, String serviceId) {
         discoveredDevice =
             User(uid: UniqueId.fromUniqueString(id), name: Name(name));
-        debugPrint("Connection found at id: $id and name: $name");
+        logger.i("Connection found at id: $id and name: $name");
 
         // add to the sink hehe
         onEndFound.sink.add(discoveredDevice);
@@ -221,7 +223,7 @@ class NearbyConnections {
       },
       onEndpointLost: (String id) {
         onEndLost.sink.add(id);
-        debugPrint("Endpoint lost to host $id");
+        logger.i("Endpoint lost to host $id");
       },
     );
     if (a && discoveredDevice != null) {
@@ -239,72 +241,70 @@ class NearbyConnections {
   /// as discovery uses heavy radio operations
   /// which may affect connection speed and integrity
   Future<void> stopDiscovering() async {
-    debugPrint("Stop Discovering..");
+    logger.i("Stop Discovering...");
     await _nearby.stopDiscovery();
   }
 
   /// Stop all EndPoints
   Future<void> stopAllEndpoints() async {
     _nearby.stopAllEndpoints();
-    debugPrint("Stopping all the endpoints");
+    logger.i("Stopping all the endpoints");
   }
 
   Future<void> disconnectFromEndPoint(String endpointId) async {
     _nearby.disconnectFromEndpoint(endpointId);
-    debugPrint("Stopped an endPoint $endpointId");
+    logger.i("Stopped an endPoint $endpointId");
   }
 
   ///request Connection called by the discoverer after successfully finding an endpoint
   Future<Either<ConnectionFailure, Unit>> requestConnection(
       {@required String endpointId}) async {
-    debugPrint("Requested a Connection to $endpointId");
+    logger.i("Requested a Connection to $endpointId");
     onHostLostStream = onHostLost.stream;
     bool a;
     try {
       a = await _nearby.requestConnection(_username, endpointId,
           onConnectionInitiated:
               (String endId, ConnectionInfo connectionInfo) async {
-        debugPrint("Initiating a connection to ${connectionInfo.endpointName}");
+        logger.i("Initiating a connection to ${connectionInfo.endpointName}");
         //TODO: Check the authentication token
-        debugPrint(
+        logger.i(
             "Check if the token is same ${connectionInfo.authenticationToken}");
-        //accept by default in discoverer side
-        //TODO: Accept only after the host has accepted the connection
         final Either<ConnectionFailure, Unit> _acceptConnection =
             await acceptConnection(endId: endId);
         _acceptConnection.fold((failure) {
-          debugPrint(
+          logger.w(
               "Failure occurred on Initiating a connection more precisely $failure");
           return left(const ConnectionFailure.unexpected());
         },
             (success) => {
-                  debugPrint(
-                      "Connection is automatically accepted from me waiting for host yo: $success to $endId")
+                  logger.i(
+                      "Connection is accepted from me waiting for host: $success to $endId")
                 });
       }, onConnectionResult: (id, Status status) {
-        debugPrint(
+        logger.i(
           "Status of the connection to host $id : $status,\n status values: ${status.index}",
         );
         if (status == Status.CONNECTED) {
           onConnectionResultDisc.sink.add(right(unit));
           onConnectionResultDisc.close();
-          debugPrint(
+          logger.i(
               "Connection accepted by the host and the connection is successful");
         } else if (status == Status.REJECTED) {
           onConnectionResultDisc.sink
               .add(left(const ConnectionFailure.cancelledByUser()));
-          debugPrint("Connection rejected by host : $id");
+          logger.i("Connection rejected by host : $id");
         } else if (status == Status.ERROR) {
           onConnectionResultDisc.sink
               .add(left(const ConnectionFailure.unexpected()));
-          debugPrint("Error in connecting to $host..Please try again");
+          logger.w("Error in connecting to $host..Please try again");
         }
       }, onDisconnected: (String id) {
-        debugPrint("Disconnected! Connect again to: $id");
+        logger.i("Disconnected! Connect again to: $id");
         onHostLost.sink.add(id);
       });
     } catch (e) {
-      debugPrint('some error occurred in requesting a '
+      logger.e('some error occurred in requesting a '
           'connection, maybe due to host has closed the circle,\n more precisely the error is $e');
       return left(const ConnectionFailure.endPointUnknown());
     }
@@ -322,7 +322,7 @@ class NearbyConnections {
 
   void onConnectionInit(String endId, ConnectionInfo info) {
     //TODO : connectionInfo code should match
-    debugPrint(info.authenticationToken);
+    logger.i(info.authenticationToken);
   }
 
   //Accept Connection to connect successfully
@@ -367,15 +367,15 @@ class NearbyConnections {
     if (payload.type == PayloadType.FILE) {
       _isFile = true;
       //TODO add the message of file transfer started
-      debugPrint("File transfer started from $endId");
+      logger.i("File transfer started from $endId");
       _tempFile = File(payload.filePath);
       return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
-      debugPrint("bytes payload received");
+      logger.i("Bytes payload received");
       //converting the bytes received to string
       final String str = String.fromCharCodes(payload.bytes);
 
-      debugPrint("Bytes received from $endId:  $str");
+      logger.i("Bytes received from $endId:  $str");
 
       //receiving the fileInfo
       //name, path, size, thumbnail,hash
@@ -403,7 +403,7 @@ class NearbyConnections {
         if (responseGot == 'true') {
           response.sink.add(endId);
         } else {
-          debugPrint('$endId denied');
+          logger.i('$endId denied');
         }
       }
 
@@ -412,13 +412,13 @@ class NearbyConnections {
       if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':').last;
-        print('----fileName: $fileName');
+        logger.d('----fileName: $fileName');
         if (map.containsKey(payloadId)) {
           if (await _tempFile.exists()) {
             _tempFile.rename("${_tempFile.parent.path}/$fileName");
-            debugPrint('parent dir:${_tempFile.parent}');
+            logger.d('parent dir:${_tempFile.parent}');
           } else {
-            debugPrint("File doesn't exist");
+            logger.d("File doesn't exist");
           }
         } else {
           //add to map if not already
@@ -437,20 +437,20 @@ class NearbyConnections {
       String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
       if (_isFile) {
-        debugPrint(
-            'percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
+        logger.v(
+            'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: (payloadTransferUpdate.bytesTransferred /
                     payloadTransferUpdate.totalBytes) *
                 100));
       }
-      debugPrint('total bytes: ${payloadTransferUpdate.totalBytes}');
-      debugPrint(
+      logger.d('Total Bytes: ${payloadTransferUpdate.totalBytes}');
+      logger.d(
           "Receiving/Sending files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
-      debugPrint(
+      logger.i(
           "Received/sent files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (_isFile) {
         fileSharingSuccessful.sink.add(endId);
@@ -467,7 +467,7 @@ class NearbyConnections {
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
         final String pp = '${prp.join('/')}/Circles';
-        debugPrint('Directore: $pp');
+        logger.d('Directoru: $pp');
         if (!await Directory(pp).exists()) {
           Directory(pp).create();
         }
@@ -478,7 +478,7 @@ class NearbyConnections {
       }
       return right(unit);
     } else {
-      debugPrint("Not received file, some error occurred");
+      logger.w("Not received file, some error occurred");
       return left(const ConnectionFailure.unexpected());
     }
   }
@@ -489,7 +489,7 @@ class NearbyConnections {
     int payLoadId;
     //Sending the number of files that are being sent
     files.forEach((file) async {
-      debugPrint('filePath: ${file.path}');
+      logger.d('filePath: ${file.path}');
 
       /// Returns the payloadID as soon as file transfer has begun
       ///
@@ -499,10 +499,10 @@ class NearbyConnections {
       /// so that receiver can rename the file accordingly
       /// Send the payloadID and filename to receiver as bytes payload
       payLoadId = await _nearby.sendFilePayload(receiver, file.path);
-      debugPrint("Sending File to $receiver");
+      logger.i("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
-      debugPrint("Currently sending file is: ${file.path.split('/').last}");
+      logger.i("Currently sending file is: ${file.path.split('/').last}");
       _nearby.sendBytesPayload(
           receiver,
           Uint8List.fromList(
@@ -517,7 +517,7 @@ class NearbyConnections {
 
   Future<void> acceptOrRejectFiles(
       {@required bool response, @required String endId}) async {
-    debugPrint('Sending response $response to the host');
+    logger.i('Sending response $response to the host');
     _nearby.sendBytesPayload(
         endId, Uint8List.fromList("response@$response".codeUnits));
   }
@@ -525,7 +525,7 @@ class NearbyConnections {
   Future<void> sendFilenameSizeBytesPayload(
       {@required List<User> users,
       @required List<FileInfo> outgoingFiles}) async {
-    debugPrint("sending the file name and size");
+    logger.i("Sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
         _nearby.sendBytesPayload(
