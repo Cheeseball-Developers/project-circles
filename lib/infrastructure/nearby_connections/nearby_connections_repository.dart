@@ -249,7 +249,8 @@ class NearbyConnections {
     debugPrint("Stopping all the endpoints");
   }
 
-  Future<void> disconnectFromEndPoint(String endpointId) async {
+  Future<void> disconnectFromEndPoint(
+      {@required String endpointId, String endPointId}) async {
     _nearby.disconnectFromEndpoint(endpointId);
     debugPrint("Stopped an endPoint $endpointId");
   }
