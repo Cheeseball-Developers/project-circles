@@ -45,34 +45,34 @@ const $MediaTabViewEvent = _$MediaTabViewEventTearOff();
 /// @nodoc
 mixin _$MediaTabViewEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadAlbums(),
-    @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(MediaInfo mediaInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadAlbums(),
+    @required TResult loadMedia(AssetPathEntity album),
+    @required TResult toggleSelection(MediaInfo mediaInfo),
+    @required TResult deselectAll(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadAlbums(),
-    Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(MediaInfo mediaInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadAlbums(),
+    TResult loadMedia(AssetPathEntity album),
+    TResult toggleSelection(MediaInfo mediaInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadAlbums(LoadAlbums value),
-    @required Result loadMedia(LoadMedia value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadAlbums(LoadAlbums value),
+    @required TResult loadMedia(LoadMedia value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadAlbums(LoadAlbums value),
-    Result loadMedia(LoadMedia value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadAlbums(LoadAlbums value),
+    TResult loadMedia(LoadMedia value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   });
 }
 
@@ -130,11 +130,11 @@ class _$LoadAlbums implements LoadAlbums {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadAlbums(),
-    @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(MediaInfo mediaInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadAlbums(),
+    @required TResult loadMedia(AssetPathEntity album),
+    @required TResult toggleSelection(MediaInfo mediaInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -145,12 +145,12 @@ class _$LoadAlbums implements LoadAlbums {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadAlbums(),
-    Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(MediaInfo mediaInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadAlbums(),
+    TResult loadMedia(AssetPathEntity album),
+    TResult toggleSelection(MediaInfo mediaInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadAlbums != null) {
@@ -161,11 +161,11 @@ class _$LoadAlbums implements LoadAlbums {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadAlbums(LoadAlbums value),
-    @required Result loadMedia(LoadMedia value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadAlbums(LoadAlbums value),
+    @required TResult loadMedia(LoadMedia value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -176,12 +176,12 @@ class _$LoadAlbums implements LoadAlbums {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadAlbums(LoadAlbums value),
-    Result loadMedia(LoadMedia value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadAlbums(LoadAlbums value),
+    TResult loadMedia(LoadMedia value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadAlbums != null) {
@@ -252,11 +252,11 @@ class _$LoadMedia implements LoadMedia {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadAlbums(),
-    @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(MediaInfo mediaInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadAlbums(),
+    @required TResult loadMedia(AssetPathEntity album),
+    @required TResult toggleSelection(MediaInfo mediaInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -267,12 +267,12 @@ class _$LoadMedia implements LoadMedia {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadAlbums(),
-    Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(MediaInfo mediaInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadAlbums(),
+    TResult loadMedia(AssetPathEntity album),
+    TResult toggleSelection(MediaInfo mediaInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadMedia != null) {
@@ -283,11 +283,11 @@ class _$LoadMedia implements LoadMedia {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadAlbums(LoadAlbums value),
-    @required Result loadMedia(LoadMedia value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadAlbums(LoadAlbums value),
+    @required TResult loadMedia(LoadMedia value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -298,12 +298,12 @@ class _$LoadMedia implements LoadMedia {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadAlbums(LoadAlbums value),
-    Result loadMedia(LoadMedia value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadAlbums(LoadAlbums value),
+    TResult loadMedia(LoadMedia value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadMedia != null) {
@@ -394,11 +394,11 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadAlbums(),
-    @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(MediaInfo mediaInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadAlbums(),
+    @required TResult loadMedia(AssetPathEntity album),
+    @required TResult toggleSelection(MediaInfo mediaInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -409,12 +409,12 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadAlbums(),
-    Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(MediaInfo mediaInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadAlbums(),
+    TResult loadMedia(AssetPathEntity album),
+    TResult toggleSelection(MediaInfo mediaInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelection != null) {
@@ -425,11 +425,11 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadAlbums(LoadAlbums value),
-    @required Result loadMedia(LoadMedia value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadAlbums(LoadAlbums value),
+    @required TResult loadMedia(LoadMedia value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -440,12 +440,12 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadAlbums(LoadAlbums value),
-    Result loadMedia(LoadMedia value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadAlbums(LoadAlbums value),
+    TResult loadMedia(LoadMedia value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelection != null) {
@@ -501,11 +501,11 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadAlbums(),
-    @required Result loadMedia(AssetPathEntity album),
-    @required Result toggleSelection(MediaInfo mediaInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadAlbums(),
+    @required TResult loadMedia(AssetPathEntity album),
+    @required TResult toggleSelection(MediaInfo mediaInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -516,12 +516,12 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadAlbums(),
-    Result loadMedia(AssetPathEntity album),
-    Result toggleSelection(MediaInfo mediaInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadAlbums(),
+    TResult loadMedia(AssetPathEntity album),
+    TResult toggleSelection(MediaInfo mediaInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAll != null) {
@@ -532,11 +532,11 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadAlbums(LoadAlbums value),
-    @required Result loadMedia(LoadMedia value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadAlbums(LoadAlbums value),
+    @required TResult loadMedia(LoadMedia value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadAlbums != null);
     assert(loadMedia != null);
@@ -547,12 +547,12 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadAlbums(LoadAlbums value),
-    Result loadMedia(LoadMedia value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadAlbums(LoadAlbums value),
+    TResult loadMedia(LoadMedia value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAll != null) {
@@ -616,41 +616,41 @@ const $MediaTabViewState = _$MediaTabViewStateTearOff();
 /// @nodoc
 mixin _$MediaTabViewState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
+    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage),
-    @required Result hasFailed(AppsLoadFailure failure),
+        TResult hasLoadedMedia(AssetPathEntity album,
+            Map<MediaInfo, bool> media, int previousPage, int currentPage),
+    @required TResult hasFailed(AppsLoadFailure failure),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
+    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
         int previousPage, int currentPage),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(AppsLoadFailure failure),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
-    @required Result hasLoadedMedia(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    @required TResult hasLoadedMedia(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoadedAlbums(_HasLoadedAlbums value),
-    Result hasLoadedMedia(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    TResult hasLoadedMedia(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   });
 }
 
@@ -706,14 +706,14 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
+    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage),
-    @required Result hasFailed(AppsLoadFailure failure),
+        TResult hasLoadedMedia(AssetPathEntity album,
+            Map<MediaInfo, bool> media, int previousPage, int currentPage),
+    @required TResult hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -725,14 +725,14 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
+    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
         int previousPage, int currentPage),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(AppsLoadFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -743,12 +743,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
-    @required Result hasLoadedMedia(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    @required TResult hasLoadedMedia(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -760,13 +760,13 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoadedAlbums(_HasLoadedAlbums value),
-    Result hasLoadedMedia(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    TResult hasLoadedMedia(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -817,14 +817,14 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
+    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage),
-    @required Result hasFailed(AppsLoadFailure failure),
+        TResult hasLoadedMedia(AssetPathEntity album,
+            Map<MediaInfo, bool> media, int previousPage, int currentPage),
+    @required TResult hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -836,14 +836,14 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
+    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
         int previousPage, int currentPage),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(AppsLoadFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
@@ -854,12 +854,12 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
-    @required Result hasLoadedMedia(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    @required TResult hasLoadedMedia(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -871,13 +871,13 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoadedAlbums(_HasLoadedAlbums value),
-    Result hasLoadedMedia(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    TResult hasLoadedMedia(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
@@ -951,14 +951,14 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
+    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage),
-    @required Result hasFailed(AppsLoadFailure failure),
+        TResult hasLoadedMedia(AssetPathEntity album,
+            Map<MediaInfo, bool> media, int previousPage, int currentPage),
+    @required TResult hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -970,14 +970,14 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
+    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
         int previousPage, int currentPage),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(AppsLoadFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoadedAlbums != null) {
@@ -988,12 +988,12 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
-    @required Result hasLoadedMedia(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    @required TResult hasLoadedMedia(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1005,13 +1005,13 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoadedAlbums(_HasLoadedAlbums value),
-    Result hasLoadedMedia(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    TResult hasLoadedMedia(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoadedAlbums != null) {
@@ -1125,14 +1125,14 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
+    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage),
-    @required Result hasFailed(AppsLoadFailure failure),
+        TResult hasLoadedMedia(AssetPathEntity album,
+            Map<MediaInfo, bool> media, int previousPage, int currentPage),
+    @required TResult hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1144,14 +1144,14 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
+    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
         int previousPage, int currentPage),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(AppsLoadFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoadedMedia != null) {
@@ -1162,12 +1162,12 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
-    @required Result hasLoadedMedia(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    @required TResult hasLoadedMedia(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1179,13 +1179,13 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoadedAlbums(_HasLoadedAlbums value),
-    Result hasLoadedMedia(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    TResult hasLoadedMedia(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoadedMedia != null) {
@@ -1279,14 +1279,14 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
-    @required Result hasLoadedAlbums(List<AssetPathEntity> albums),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
+    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
     @required
-        Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage),
-    @required Result hasFailed(AppsLoadFailure failure),
+        TResult hasLoadedMedia(AssetPathEntity album,
+            Map<MediaInfo, bool> media, int previousPage, int currentPage),
+    @required TResult hasFailed(AppsLoadFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1298,14 +1298,14 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoadedAlbums(List<AssetPathEntity> albums),
-    Result hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
+    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
         int previousPage, int currentPage),
-    Result hasFailed(AppsLoadFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(AppsLoadFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasFailed != null) {
@@ -1316,12 +1316,12 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoadedAlbums(_HasLoadedAlbums value),
-    @required Result hasLoadedMedia(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    @required TResult hasLoadedMedia(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1333,13 +1333,13 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoadedAlbums(_HasLoadedAlbums value),
-    Result hasLoadedMedia(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoadedAlbums(_HasLoadedAlbums value),
+    TResult hasLoadedMedia(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasFailed != null) {

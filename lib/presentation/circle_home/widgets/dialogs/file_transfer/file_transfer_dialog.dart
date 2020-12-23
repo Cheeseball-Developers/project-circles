@@ -110,7 +110,7 @@ class FileTransferDialog extends StatelessWidget {
             shrinkWrap: true,
             itemCount: state.files.length,
             itemBuilder: (context, index) => MyListTile(
-              title: state.files[index].name,
+              title: state.files.toList()[index].name,
               leading: Container(),
               trailing: Container(),
             ),

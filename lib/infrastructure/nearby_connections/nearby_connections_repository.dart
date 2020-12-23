@@ -339,7 +339,7 @@ class NearbyConnections {
       onPayloadTransferUpdate(endId, payloadTransferUpdate);
     });
     if (a) {
-      //TODO: return according to the returned values of thr above functions
+      //TODO: return according to the returned values of the above functions
       return right(unit);
     } else {
       return left(const ConnectionFailure.unexpected());
@@ -529,6 +529,7 @@ class NearbyConnections {
     logger.i("Sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
+        logger.d(file.name);
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
             //name, path, size, thumbnail,hash

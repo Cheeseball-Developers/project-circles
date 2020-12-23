@@ -78,57 +78,57 @@ const $SearchEvent = _$SearchEventTearOff();
 /// @nodoc
 mixin _$SearchEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   });
 }
 
@@ -185,18 +185,18 @@ class _$StartSearching implements StartSearching {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -212,17 +212,17 @@ class _$StartSearching implements StartSearching {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (startSearching != null) {
@@ -233,17 +233,17 @@ class _$StartSearching implements StartSearching {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -259,17 +259,17 @@ class _$StartSearching implements StartSearching {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (startSearching != null) {
@@ -354,18 +354,18 @@ class _$DeviceDiscovered implements DeviceDiscovered {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -381,17 +381,17 @@ class _$DeviceDiscovered implements DeviceDiscovered {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deviceDiscovered != null) {
@@ -402,17 +402,17 @@ class _$DeviceDiscovered implements DeviceDiscovered {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -428,17 +428,17 @@ class _$DeviceDiscovered implements DeviceDiscovered {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deviceDiscovered != null) {
@@ -494,18 +494,18 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -521,17 +521,17 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (showAllDiscoveredDevices != null) {
@@ -542,17 +542,17 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -568,17 +568,17 @@ class _$ShowAllDiscoveredDevices implements ShowAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (showAllDiscoveredDevices != null) {
@@ -632,18 +632,18 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -659,17 +659,17 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (dismissAllDiscoveredDevices != null) {
@@ -680,17 +680,17 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -706,17 +706,17 @@ class _$DismissAllDiscoveredDevices implements DismissAllDiscoveredDevices {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (dismissAllDiscoveredDevices != null) {
@@ -788,18 +788,18 @@ class _$DeviceLost implements DeviceLost {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -815,17 +815,17 @@ class _$DeviceLost implements DeviceLost {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deviceLost != null) {
@@ -836,17 +836,17 @@ class _$DeviceLost implements DeviceLost {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -862,17 +862,17 @@ class _$DeviceLost implements DeviceLost {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deviceLost != null) {
@@ -926,18 +926,18 @@ class _$StopSearching implements StopSearching {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -953,17 +953,17 @@ class _$StopSearching implements StopSearching {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (stopSearching != null) {
@@ -974,17 +974,17 @@ class _$StopSearching implements StopSearching {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1000,17 +1000,17 @@ class _$StopSearching implements StopSearching {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (stopSearching != null) {
@@ -1100,18 +1100,18 @@ class _$RequestConnection implements RequestConnection {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1127,17 +1127,17 @@ class _$RequestConnection implements RequestConnection {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (requestConnection != null) {
@@ -1148,17 +1148,17 @@ class _$RequestConnection implements RequestConnection {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1174,17 +1174,17 @@ class _$RequestConnection implements RequestConnection {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (requestConnection != null) {
@@ -1266,18 +1266,18 @@ class _$ConnectionResult implements ConnectionResult {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1293,17 +1293,17 @@ class _$ConnectionResult implements ConnectionResult {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (connectionResult != null) {
@@ -1314,17 +1314,17 @@ class _$ConnectionResult implements ConnectionResult {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1340,17 +1340,17 @@ class _$ConnectionResult implements ConnectionResult {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (connectionResult != null) {
@@ -1445,18 +1445,18 @@ class _$EndConnectionRequest implements EndConnectionRequest {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result startSearching(),
-    @required Result deviceDiscovered(User user),
-    @required Result showAllDiscoveredDevices(),
-    @required Result dismissAllDiscoveredDevices(),
-    @required Result deviceLost(String uidString),
-    @required Result stopSearching(),
-    @required Result requestConnection(User discoveredUser),
+  TResult when<TResult extends Object>({
+    @required TResult startSearching(),
+    @required TResult deviceDiscovered(User user),
+    @required TResult showAllDiscoveredDevices(),
+    @required TResult dismissAllDiscoveredDevices(),
+    @required TResult deviceLost(String uidString),
+    @required TResult stopSearching(),
+    @required TResult requestConnection(User discoveredUser),
     @required
-        Result connectionResult(
+        TResult connectionResult(
             Either<ConnectionFailure, Unit> connectionStatus),
-    @required Result endConnectionRequest(User cancelRequestUser),
+    @required TResult endConnectionRequest(User cancelRequestUser),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1472,17 +1472,17 @@ class _$EndConnectionRequest implements EndConnectionRequest {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result startSearching(),
-    Result deviceDiscovered(User user),
-    Result showAllDiscoveredDevices(),
-    Result dismissAllDiscoveredDevices(),
-    Result deviceLost(String uidString),
-    Result stopSearching(),
-    Result requestConnection(User discoveredUser),
-    Result connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
-    Result endConnectionRequest(User cancelRequestUser),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult startSearching(),
+    TResult deviceDiscovered(User user),
+    TResult showAllDiscoveredDevices(),
+    TResult dismissAllDiscoveredDevices(),
+    TResult deviceLost(String uidString),
+    TResult stopSearching(),
+    TResult requestConnection(User discoveredUser),
+    TResult connectionResult(Either<ConnectionFailure, Unit> connectionStatus),
+    TResult endConnectionRequest(User cancelRequestUser),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (endConnectionRequest != null) {
@@ -1493,17 +1493,17 @@ class _$EndConnectionRequest implements EndConnectionRequest {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result startSearching(StartSearching value),
-    @required Result deviceDiscovered(DeviceDiscovered value),
-    @required Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+  TResult map<TResult extends Object>({
+    @required TResult startSearching(StartSearching value),
+    @required TResult deviceDiscovered(DeviceDiscovered value),
+    @required TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
     @required
-        Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    @required Result deviceLost(DeviceLost value),
-    @required Result stopSearching(StopSearching value),
-    @required Result requestConnection(RequestConnection value),
-    @required Result connectionResult(ConnectionResult value),
-    @required Result endConnectionRequest(EndConnectionRequest value),
+        TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    @required TResult deviceLost(DeviceLost value),
+    @required TResult stopSearching(StopSearching value),
+    @required TResult requestConnection(RequestConnection value),
+    @required TResult connectionResult(ConnectionResult value),
+    @required TResult endConnectionRequest(EndConnectionRequest value),
   }) {
     assert(startSearching != null);
     assert(deviceDiscovered != null);
@@ -1519,17 +1519,17 @@ class _$EndConnectionRequest implements EndConnectionRequest {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result startSearching(StartSearching value),
-    Result deviceDiscovered(DeviceDiscovered value),
-    Result showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
-    Result dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
-    Result deviceLost(DeviceLost value),
-    Result stopSearching(StopSearching value),
-    Result requestConnection(RequestConnection value),
-    Result connectionResult(ConnectionResult value),
-    Result endConnectionRequest(EndConnectionRequest value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult startSearching(StartSearching value),
+    TResult deviceDiscovered(DeviceDiscovered value),
+    TResult showAllDiscoveredDevices(ShowAllDiscoveredDevices value),
+    TResult dismissAllDiscoveredDevices(DismissAllDiscoveredDevices value),
+    TResult deviceLost(DeviceLost value),
+    TResult stopSearching(StopSearching value),
+    TResult requestConnection(RequestConnection value),
+    TResult connectionResult(ConnectionResult value),
+    TResult endConnectionRequest(EndConnectionRequest value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (endConnectionRequest != null) {
