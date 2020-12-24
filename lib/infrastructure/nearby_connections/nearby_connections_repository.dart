@@ -161,8 +161,7 @@ class NearbyConnections {
           name: Name(connectionInfo.endpointName));
       onRequestSent.sink.add(incomingRequest);
     }, onConnectionResult: (id, Status status) {
-      logger.i(
-          "Status of the connection to $_endName, id: $id,  : $status");
+      logger.i("Status of the connection to $_endName, id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
@@ -386,8 +385,14 @@ class NearbyConnections {
         final String keyFileName = keyFileInfo[0];
         final String keyFilePath = keyFileInfo[1];
         final int keyFileSize = int.parse(keyFileInfo[2]);
+        final List<String> thumbnailPixels =
+            keyFileInfo[3].substring(1, keyFileInfo[3].length - 1).split(",");
+        final List<int> thumbnailList = [];
+        thumbnailPixels.forEach((pixel) {
+          thumbnailList.add(int.parse(pixel));
+        });
         final Uint8List keyFileThumbnail =
-            Uint8List.fromList(keyFileInfo[3].codeUnits);
+        Uint8List.fromList(thumbnailList);
         final int keyFileHash = int.parse(keyFileInfo[4]);
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
