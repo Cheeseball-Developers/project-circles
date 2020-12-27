@@ -6,12 +6,12 @@ abstract class FileTransferState with _$FileTransferState {
       {@required Set<FileInfo> incomingFileInfo}) = _Initial;
 
   const factory FileTransferState.outgoingFilesConfirmation({
-    @required Option<List<FileInfo>> filesOption,
+    @required Option<Set<FileInfo>> filesOption,
     @required List<User> users,
   }) = _OutgoingFilesConfirmation;
 
   const factory FileTransferState.awaitingSendApproval({
-    @required List<FileInfo> files,
+    @required Set<FileInfo> files,
   }) = _AwaitingSendApproval;
 
   const factory FileTransferState.incomingFilesConfirmation({

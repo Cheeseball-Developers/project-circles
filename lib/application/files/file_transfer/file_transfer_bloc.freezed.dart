@@ -1955,7 +1955,7 @@ class _$FileTransferStateTearOff {
 
 // ignore: unused_element
   _OutgoingFilesConfirmation outgoingFilesConfirmation(
-      {@required Option<List<FileInfo>> filesOption,
+      {@required Option<Set<FileInfo>> filesOption,
       @required List<User> users}) {
     return _OutgoingFilesConfirmation(
       filesOption: filesOption,
@@ -1964,7 +1964,7 @@ class _$FileTransferStateTearOff {
   }
 
 // ignore: unused_element
-  _AwaitingSendApproval awaitingSendApproval({@required List<FileInfo> files}) {
+  _AwaitingSendApproval awaitingSendApproval({@required Set<FileInfo> files}) {
     return _AwaitingSendApproval(
       files: files,
     );
@@ -2013,8 +2013,8 @@ mixin _$FileTransferState {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2027,8 +2027,8 @@ mixin _$FileTransferState {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2143,8 +2143,8 @@ class _$_Initial implements _Initial {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2168,8 +2168,8 @@ class _$_Initial implements _Initial {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2240,7 +2240,7 @@ abstract class _$OutgoingFilesConfirmationCopyWith<$Res> {
   factory _$OutgoingFilesConfirmationCopyWith(_OutgoingFilesConfirmation value,
           $Res Function(_OutgoingFilesConfirmation) then) =
       __$OutgoingFilesConfirmationCopyWithImpl<$Res>;
-  $Res call({Option<List<FileInfo>> filesOption, List<User> users});
+  $Res call({Option<Set<FileInfo>> filesOption, List<User> users});
 }
 
 /// @nodoc
@@ -2263,7 +2263,7 @@ class __$OutgoingFilesConfirmationCopyWithImpl<$Res>
     return _then(_OutgoingFilesConfirmation(
       filesOption: filesOption == freezed
           ? _value.filesOption
-          : filesOption as Option<List<FileInfo>>,
+          : filesOption as Option<Set<FileInfo>>,
       users: users == freezed ? _value.users : users as List<User>,
     ));
   }
@@ -2277,7 +2277,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
         assert(users != null);
 
   @override
-  final Option<List<FileInfo>> filesOption;
+  final Option<Set<FileInfo>> filesOption;
   @override
   final List<User> users;
 
@@ -2315,8 +2315,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2340,8 +2340,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2401,10 +2401,10 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
 
 abstract class _OutgoingFilesConfirmation implements FileTransferState {
   const factory _OutgoingFilesConfirmation(
-      {@required Option<List<FileInfo>> filesOption,
+      {@required Option<Set<FileInfo>> filesOption,
       @required List<User> users}) = _$_OutgoingFilesConfirmation;
 
-  Option<List<FileInfo>> get filesOption;
+  Option<Set<FileInfo>> get filesOption;
   List<User> get users;
   _$OutgoingFilesConfirmationCopyWith<_OutgoingFilesConfirmation> get copyWith;
 }
@@ -2414,7 +2414,7 @@ abstract class _$AwaitingSendApprovalCopyWith<$Res> {
   factory _$AwaitingSendApprovalCopyWith(_AwaitingSendApproval value,
           $Res Function(_AwaitingSendApproval) then) =
       __$AwaitingSendApprovalCopyWithImpl<$Res>;
-  $Res call({List<FileInfo> files});
+  $Res call({Set<FileInfo> files});
 }
 
 /// @nodoc
@@ -2433,7 +2433,7 @@ class __$AwaitingSendApprovalCopyWithImpl<$Res>
     Object files = freezed,
   }) {
     return _then(_AwaitingSendApproval(
-      files: files == freezed ? _value.files : files as List<FileInfo>,
+      files: files == freezed ? _value.files : files as Set<FileInfo>,
     ));
   }
 }
@@ -2443,7 +2443,7 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
   const _$_AwaitingSendApproval({@required this.files}) : assert(files != null);
 
   @override
-  final List<FileInfo> files;
+  final Set<FileInfo> files;
 
   @override
   String toString() {
@@ -2473,8 +2473,8 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2498,8 +2498,8 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2558,10 +2558,10 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
 }
 
 abstract class _AwaitingSendApproval implements FileTransferState {
-  const factory _AwaitingSendApproval({@required List<FileInfo> files}) =
+  const factory _AwaitingSendApproval({@required Set<FileInfo> files}) =
       _$_AwaitingSendApproval;
 
-  List<FileInfo> get files;
+  Set<FileInfo> get files;
   _$AwaitingSendApprovalCopyWith<_AwaitingSendApproval> get copyWith;
 }
 
@@ -2642,8 +2642,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2667,8 +2667,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2824,8 +2824,8 @@ class _$_TransferringFiles implements _TransferringFiles {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2849,8 +2849,8 @@ class _$_TransferringFiles implements _TransferringFiles {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -2960,8 +2960,8 @@ class _$_TransferComplete implements _TransferComplete {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -2985,8 +2985,8 @@ class _$_TransferComplete implements _TransferComplete {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
@@ -3123,8 +3123,8 @@ class _$_HasFailed implements _HasFailed {
     @required TResult initial(Set<FileInfo> incomingFileInfo),
     @required
         TResult outgoingFilesConfirmation(
-            Option<List<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(List<FileInfo> files),
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult awaitingSendApproval(Set<FileInfo> files),
     @required
         TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     @required
@@ -3148,8 +3148,8 @@ class _$_HasFailed implements _HasFailed {
   TResult maybeWhen<TResult extends Object>({
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
-        Option<List<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(List<FileInfo> files),
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult awaitingSendApproval(Set<FileInfo> files),
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),

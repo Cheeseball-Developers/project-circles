@@ -105,12 +105,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             // TODO: Add a stream subscription to listen to approval of receiver
             // If successful, add sendFiles event
 
-            final List<FileInfo> files = state.filesOption
+            final Set<FileInfo> files = state.filesOption
                 .getOrElse(() => null); // TODO: Implement error state
 
             _nearbyConnections.sendFilenameSizeBytesPayload(
               users: state.users,
-              outgoingFiles: files,
+              outgoingFiles: files.toList(),
             );
             respondingUserStreamSubscription =
                 _nearbyConnections.responseStream.listen((event) {
@@ -156,7 +156,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           fileInfoReceived: (e) async* {
             final Set<FileInfo> incomingFiles = Set.from(state.files);
             incomingFiles.add(e.fileInfo);
-            logger.d("Yay the files to be received are ${e.fileInfo}");
+            logger.d("Files to be received are ${e.fileInfo}");
             yield FileTransferState.incomingFilesConfirmation(
               files: incomingFiles,
               endId: state.endId,
@@ -291,7 +291,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     } else {
       yield FileTransferState.outgoingFilesConfirmation(
         users: users,
-        filesOption: some(appFilesInfo + mediaFilesInfo + filesInfo),
+        filesOption: some(Set.from(appFilesInfo + mediaFilesInfo + filesInfo)),
       );
     }
   }
