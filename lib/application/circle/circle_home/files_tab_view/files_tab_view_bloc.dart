@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 import 'package:projectcircles/infrastructure/circle/files_repository.dart';
 
 part 'files_tab_view_event.dart';
@@ -14,6 +15,8 @@ part 'files_tab_view_bloc.freezed.dart';
 @injectable
 class FilesTabViewBloc extends Bloc<FilesTabViewEvent, FilesTabViewState> {
   final FilesRepository _filesRepository;
+
+  final logger = Logger();
 
   FilesTabViewBloc(this._filesRepository)
       : super(const FilesTabViewState.initial());
@@ -42,8 +45,7 @@ class FilesTabViewBloc extends Bloc<FilesTabViewEvent, FilesTabViewState> {
                 files: files,
               );
             } catch (error) {
-              print(error);
-              print("Directory does not exist！");
+              logger.e("Directory does not exist: $error");
               yield FilesTabViewState.isLoading(
                 relativePath: e.relativePath,
               );
@@ -72,8 +74,7 @@ class FilesTabViewBloc extends Bloc<FilesTabViewEvent, FilesTabViewState> {
                 files: files,
               );
             } catch (error) {
-              print(error);
-              print("Directory does not exist！");
+              logger.e("Directory does not exist: $error");
               yield FilesTabViewState.isLoading(
                 relativePath: e.relativePath,
               );
