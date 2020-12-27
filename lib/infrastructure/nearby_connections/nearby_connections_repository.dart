@@ -161,8 +161,7 @@ class NearbyConnections {
           name: Name(connectionInfo.endpointName));
       onRequestSent.sink.add(incomingRequest);
     }, onConnectionResult: (id, Status status) {
-      logger.i(
-          "Status of the connection to $_endName, id: $id,  : $status");
+      logger.i("Status of the connection to $_endName, id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
@@ -251,7 +250,8 @@ class NearbyConnections {
     logger.i("Stopping all the endpoints");
   }
 
-  Future<void> disconnectFromEndPoint(String endpointId) async {
+  Future<void> disconnectFromEndPoint(
+      {@required String endpointId, String endPointId}) async {
     _nearby.disconnectFromEndpoint(endpointId);
     logger.i("Stopped an endPoint $endpointId");
   }
@@ -338,7 +338,7 @@ class NearbyConnections {
       onPayloadTransferUpdate(endId, payloadTransferUpdate);
     });
     if (a) {
-      //TODO: return according to the returned values of thr above functions
+      //TODO: return according to the returned values of the above functions
       return right(unit);
     } else {
       return left(const ConnectionFailure.unexpected());
@@ -385,8 +385,14 @@ class NearbyConnections {
         final String keyFileName = keyFileInfo[0];
         final String keyFilePath = keyFileInfo[1];
         final int keyFileSize = int.parse(keyFileInfo[2]);
+        final List<String> thumbnailPixels =
+            keyFileInfo[3].substring(1, keyFileInfo[3].length - 1).split(",");
+        final List<int> thumbnailList = [];
+        thumbnailPixels.forEach((pixel) {
+          thumbnailList.add(int.parse(pixel));
+        });
         final Uint8List keyFileThumbnail =
-            Uint8List.fromList(keyFileInfo[3].codeUnits);
+        Uint8List.fromList(thumbnailList);
         final int keyFileHash = int.parse(keyFileInfo[4]);
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
@@ -528,6 +534,7 @@ class NearbyConnections {
     logger.i("Sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
+        logger.d(file.name);
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
             //name, path, size, thumbnail,hash

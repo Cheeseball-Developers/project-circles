@@ -31,26 +31,26 @@ const $DeviceInfoFailure = _$DeviceInfoFailureTearOff();
 /// @nodoc
 mixin _$DeviceInfoFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unrecognisedPlatform(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult unrecognisedPlatform(),
+    @required TResult unexpected(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unrecognisedPlatform(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unrecognisedPlatform(),
+    TResult unexpected(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unrecognisedPlatform(UnrecognisedPlatform value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult unrecognisedPlatform(UnrecognisedPlatform value),
+    @required TResult unexpected(Unexpected value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unrecognisedPlatform(UnrecognisedPlatform value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unrecognisedPlatform(UnrecognisedPlatform value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   });
 }
 
@@ -109,9 +109,9 @@ class _$UnrecognisedPlatform implements UnrecognisedPlatform {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unrecognisedPlatform(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult unrecognisedPlatform(),
+    @required TResult unexpected(),
   }) {
     assert(unrecognisedPlatform != null);
     assert(unexpected != null);
@@ -120,10 +120,10 @@ class _$UnrecognisedPlatform implements UnrecognisedPlatform {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unrecognisedPlatform(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unrecognisedPlatform(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unrecognisedPlatform != null) {
@@ -134,9 +134,9 @@ class _$UnrecognisedPlatform implements UnrecognisedPlatform {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unrecognisedPlatform(UnrecognisedPlatform value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult unrecognisedPlatform(UnrecognisedPlatform value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(unrecognisedPlatform != null);
     assert(unexpected != null);
@@ -145,10 +145,10 @@ class _$UnrecognisedPlatform implements UnrecognisedPlatform {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unrecognisedPlatform(UnrecognisedPlatform value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unrecognisedPlatform(UnrecognisedPlatform value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unrecognisedPlatform != null) {
@@ -199,9 +199,9 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unrecognisedPlatform(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult unrecognisedPlatform(),
+    @required TResult unexpected(),
   }) {
     assert(unrecognisedPlatform != null);
     assert(unexpected != null);
@@ -210,10 +210,10 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unrecognisedPlatform(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unrecognisedPlatform(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -224,9 +224,9 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unrecognisedPlatform(UnrecognisedPlatform value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult unrecognisedPlatform(UnrecognisedPlatform value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(unrecognisedPlatform != null);
     assert(unexpected != null);
@@ -235,10 +235,10 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unrecognisedPlatform(UnrecognisedPlatform value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unrecognisedPlatform(UnrecognisedPlatform value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {

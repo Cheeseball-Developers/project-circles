@@ -29,7 +29,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
       : super(const CurrentCircleState.initial());
 
   @override
-  Stream<CurrentCircleState> mapEventToState(CurrentCircleEvent event,) async* {
+  Stream<CurrentCircleState> mapEventToState(
+    CurrentCircleEvent event,
+  ) async* {
     StreamSubscription<User> _incomingRequestsStreamSubscription;
     StreamSubscription<String> _lostHostStreamSubscription;
     StreamSubscription<String> _lostDiscovererStreamSubscription;
@@ -41,7 +43,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 loadingText: 'Starting Circle...');
 
             final Either<ConnectionFailure, Unit> failureOrCircleStarted =
-            await _nearbyConnections.startAdvertising();
+                await _nearbyConnections.startAdvertising();
 
             _incomingRequestsStreamSubscription =
                 _nearbyConnections.incomingRequestStream.listen((event) {
@@ -57,10 +59,10 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 });
 
             yield* failureOrCircleStarted.fold(
-                  (failure) async* {
+              (failure) async* {
                 yield CurrentCircleState.hasFailed(failure: failure);
               },
-                  (_) async* {
+              (_) async* {
                 yield CurrentCircleState.hasStarted(
                   members: <User, bool>{},
                   outgoingFiles: <FileInfo, double>{},
@@ -84,7 +86,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                   logger.i("Host $event lost");
                   add(const CurrentCircleEvent.disconnected());
                 }, onError: (e) {});
-
             yield CurrentCircleState.hasJoined(
               host: e.host,
               outgoingFiles: <FileInfo, double>{},
@@ -117,8 +118,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             if (request.acceptConnection) {
               yield state.copyWith(isAcceptingRequest: true);
               final Either<ConnectionFailure, Unit> acceptOrFailure =
-              await _nearbyConnections.acceptConnection(
-                  endId: request.requestingUser.uid.getOrCrash());
+                  await _nearbyConnections.acceptConnection(
+                      endId: request.requestingUser.uid.getOrCrash());
               state.members.update(request.requestingUser, (value) => false);
               yield state.copyWith(
                   members: state.members, isAcceptingRequest: false);
@@ -126,8 +127,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             } else {
               //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
-              await _nearbyConnections.rejectConnection(
-                  endId: request.requestingUser.uid.getOrCrash());
+                  await _nearbyConnections.rejectConnection(
+                      endId: request.requestingUser.uid.getOrCrash());
               state.members.remove(request.requestingUser);
               yield state.copyWith(members: state.members);
             }
@@ -178,6 +179,14 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           memberLeft: (e) async* {
             final Map<User, bool> members = Map.from(state.members);
             members.removeWhere((key, value) => key.uid.getOrCrash() == e.id);
+            yield state.copyWith(members: members);
+          },
+          removeMember: (e) async* {
+            await _nearbyConnections.disconnectFromEndPoint(
+                endpointId: e.member.uid.getOrCrash());
+            final Map<User, bool> members = Map.from(state.members);
+            members.removeWhere((key, value) =>
+                key.uid.getOrCrash() == e.member.uid.getOrCrash());
             yield state.copyWith(members: members);
           },
           closeCircle: (e) async* {
@@ -237,8 +246,8 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             );
           },
           leaveCircle: (e) async* {
-            _nearbyConnections
-                .disconnectFromEndPoint(state.host.uid.getOrCrash());
+            _nearbyConnections.disconnectFromEndPoint(
+                endpointId: state.host.uid.getOrCrash());
             yield const CurrentCircleState.initial();
           },
           disconnected: (e) async* {

@@ -46,38 +46,38 @@ const $SettingsFailure = _$SettingsFailureTearOff();
 /// @nodoc
 mixin _$SettingsFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result idAndNameNotSet(),
-    @required Result instanceLoadFailure(),
-    @required Result valueLoadFailure(),
-    @required Result valueSaveFailure(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult idAndNameNotSet(),
+    @required TResult instanceLoadFailure(),
+    @required TResult valueLoadFailure(),
+    @required TResult valueSaveFailure(),
+    @required TResult unexpected(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result idAndNameNotSet(),
-    Result instanceLoadFailure(),
-    Result valueLoadFailure(),
-    Result valueSaveFailure(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult idAndNameNotSet(),
+    TResult instanceLoadFailure(),
+    TResult valueLoadFailure(),
+    TResult valueSaveFailure(),
+    TResult unexpected(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result idAndNameNotSet(IdAndNameNotSet value),
-    @required Result instanceLoadFailure(InstanceLoadFailure value),
-    @required Result valueLoadFailure(ValueLoadFailure value),
-    @required Result valueSaveFailure(ValueSaveFailure value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult idAndNameNotSet(IdAndNameNotSet value),
+    @required TResult instanceLoadFailure(InstanceLoadFailure value),
+    @required TResult valueLoadFailure(ValueLoadFailure value),
+    @required TResult valueSaveFailure(ValueSaveFailure value),
+    @required TResult unexpected(Unexpected value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result idAndNameNotSet(IdAndNameNotSet value),
-    Result instanceLoadFailure(InstanceLoadFailure value),
-    Result valueLoadFailure(ValueLoadFailure value),
-    Result valueSaveFailure(ValueSaveFailure value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult idAndNameNotSet(IdAndNameNotSet value),
+    TResult instanceLoadFailure(InstanceLoadFailure value),
+    TResult valueLoadFailure(ValueLoadFailure value),
+    TResult valueSaveFailure(ValueSaveFailure value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   });
 }
 
@@ -136,12 +136,12 @@ class _$IdAndNameNotSet implements IdAndNameNotSet {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result idAndNameNotSet(),
-    @required Result instanceLoadFailure(),
-    @required Result valueLoadFailure(),
-    @required Result valueSaveFailure(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult idAndNameNotSet(),
+    @required TResult instanceLoadFailure(),
+    @required TResult valueLoadFailure(),
+    @required TResult valueSaveFailure(),
+    @required TResult unexpected(),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -153,13 +153,13 @@ class _$IdAndNameNotSet implements IdAndNameNotSet {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result idAndNameNotSet(),
-    Result instanceLoadFailure(),
-    Result valueLoadFailure(),
-    Result valueSaveFailure(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult idAndNameNotSet(),
+    TResult instanceLoadFailure(),
+    TResult valueLoadFailure(),
+    TResult valueSaveFailure(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (idAndNameNotSet != null) {
@@ -170,12 +170,12 @@ class _$IdAndNameNotSet implements IdAndNameNotSet {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result idAndNameNotSet(IdAndNameNotSet value),
-    @required Result instanceLoadFailure(InstanceLoadFailure value),
-    @required Result valueLoadFailure(ValueLoadFailure value),
-    @required Result valueSaveFailure(ValueSaveFailure value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult idAndNameNotSet(IdAndNameNotSet value),
+    @required TResult instanceLoadFailure(InstanceLoadFailure value),
+    @required TResult valueLoadFailure(ValueLoadFailure value),
+    @required TResult valueSaveFailure(ValueSaveFailure value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -187,13 +187,13 @@ class _$IdAndNameNotSet implements IdAndNameNotSet {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result idAndNameNotSet(IdAndNameNotSet value),
-    Result instanceLoadFailure(InstanceLoadFailure value),
-    Result valueLoadFailure(ValueLoadFailure value),
-    Result valueSaveFailure(ValueSaveFailure value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult idAndNameNotSet(IdAndNameNotSet value),
+    TResult instanceLoadFailure(InstanceLoadFailure value),
+    TResult valueLoadFailure(ValueLoadFailure value),
+    TResult valueSaveFailure(ValueSaveFailure value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (idAndNameNotSet != null) {
@@ -245,12 +245,12 @@ class _$InstanceLoadFailure implements InstanceLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result idAndNameNotSet(),
-    @required Result instanceLoadFailure(),
-    @required Result valueLoadFailure(),
-    @required Result valueSaveFailure(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult idAndNameNotSet(),
+    @required TResult instanceLoadFailure(),
+    @required TResult valueLoadFailure(),
+    @required TResult valueSaveFailure(),
+    @required TResult unexpected(),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -262,13 +262,13 @@ class _$InstanceLoadFailure implements InstanceLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result idAndNameNotSet(),
-    Result instanceLoadFailure(),
-    Result valueLoadFailure(),
-    Result valueSaveFailure(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult idAndNameNotSet(),
+    TResult instanceLoadFailure(),
+    TResult valueLoadFailure(),
+    TResult valueSaveFailure(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (instanceLoadFailure != null) {
@@ -279,12 +279,12 @@ class _$InstanceLoadFailure implements InstanceLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result idAndNameNotSet(IdAndNameNotSet value),
-    @required Result instanceLoadFailure(InstanceLoadFailure value),
-    @required Result valueLoadFailure(ValueLoadFailure value),
-    @required Result valueSaveFailure(ValueSaveFailure value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult idAndNameNotSet(IdAndNameNotSet value),
+    @required TResult instanceLoadFailure(InstanceLoadFailure value),
+    @required TResult valueLoadFailure(ValueLoadFailure value),
+    @required TResult valueSaveFailure(ValueSaveFailure value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -296,13 +296,13 @@ class _$InstanceLoadFailure implements InstanceLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result idAndNameNotSet(IdAndNameNotSet value),
-    Result instanceLoadFailure(InstanceLoadFailure value),
-    Result valueLoadFailure(ValueLoadFailure value),
-    Result valueSaveFailure(ValueSaveFailure value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult idAndNameNotSet(IdAndNameNotSet value),
+    TResult instanceLoadFailure(InstanceLoadFailure value),
+    TResult valueLoadFailure(ValueLoadFailure value),
+    TResult valueSaveFailure(ValueSaveFailure value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (instanceLoadFailure != null) {
@@ -354,12 +354,12 @@ class _$ValueLoadFailure implements ValueLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result idAndNameNotSet(),
-    @required Result instanceLoadFailure(),
-    @required Result valueLoadFailure(),
-    @required Result valueSaveFailure(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult idAndNameNotSet(),
+    @required TResult instanceLoadFailure(),
+    @required TResult valueLoadFailure(),
+    @required TResult valueSaveFailure(),
+    @required TResult unexpected(),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -371,13 +371,13 @@ class _$ValueLoadFailure implements ValueLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result idAndNameNotSet(),
-    Result instanceLoadFailure(),
-    Result valueLoadFailure(),
-    Result valueSaveFailure(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult idAndNameNotSet(),
+    TResult instanceLoadFailure(),
+    TResult valueLoadFailure(),
+    TResult valueSaveFailure(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (valueLoadFailure != null) {
@@ -388,12 +388,12 @@ class _$ValueLoadFailure implements ValueLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result idAndNameNotSet(IdAndNameNotSet value),
-    @required Result instanceLoadFailure(InstanceLoadFailure value),
-    @required Result valueLoadFailure(ValueLoadFailure value),
-    @required Result valueSaveFailure(ValueSaveFailure value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult idAndNameNotSet(IdAndNameNotSet value),
+    @required TResult instanceLoadFailure(InstanceLoadFailure value),
+    @required TResult valueLoadFailure(ValueLoadFailure value),
+    @required TResult valueSaveFailure(ValueSaveFailure value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -405,13 +405,13 @@ class _$ValueLoadFailure implements ValueLoadFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result idAndNameNotSet(IdAndNameNotSet value),
-    Result instanceLoadFailure(InstanceLoadFailure value),
-    Result valueLoadFailure(ValueLoadFailure value),
-    Result valueSaveFailure(ValueSaveFailure value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult idAndNameNotSet(IdAndNameNotSet value),
+    TResult instanceLoadFailure(InstanceLoadFailure value),
+    TResult valueLoadFailure(ValueLoadFailure value),
+    TResult valueSaveFailure(ValueSaveFailure value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (valueLoadFailure != null) {
@@ -463,12 +463,12 @@ class _$ValueSaveFailure implements ValueSaveFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result idAndNameNotSet(),
-    @required Result instanceLoadFailure(),
-    @required Result valueLoadFailure(),
-    @required Result valueSaveFailure(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult idAndNameNotSet(),
+    @required TResult instanceLoadFailure(),
+    @required TResult valueLoadFailure(),
+    @required TResult valueSaveFailure(),
+    @required TResult unexpected(),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -480,13 +480,13 @@ class _$ValueSaveFailure implements ValueSaveFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result idAndNameNotSet(),
-    Result instanceLoadFailure(),
-    Result valueLoadFailure(),
-    Result valueSaveFailure(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult idAndNameNotSet(),
+    TResult instanceLoadFailure(),
+    TResult valueLoadFailure(),
+    TResult valueSaveFailure(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (valueSaveFailure != null) {
@@ -497,12 +497,12 @@ class _$ValueSaveFailure implements ValueSaveFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result idAndNameNotSet(IdAndNameNotSet value),
-    @required Result instanceLoadFailure(InstanceLoadFailure value),
-    @required Result valueLoadFailure(ValueLoadFailure value),
-    @required Result valueSaveFailure(ValueSaveFailure value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult idAndNameNotSet(IdAndNameNotSet value),
+    @required TResult instanceLoadFailure(InstanceLoadFailure value),
+    @required TResult valueLoadFailure(ValueLoadFailure value),
+    @required TResult valueSaveFailure(ValueSaveFailure value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -514,13 +514,13 @@ class _$ValueSaveFailure implements ValueSaveFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result idAndNameNotSet(IdAndNameNotSet value),
-    Result instanceLoadFailure(InstanceLoadFailure value),
-    Result valueLoadFailure(ValueLoadFailure value),
-    Result valueSaveFailure(ValueSaveFailure value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult idAndNameNotSet(IdAndNameNotSet value),
+    TResult instanceLoadFailure(InstanceLoadFailure value),
+    TResult valueLoadFailure(ValueLoadFailure value),
+    TResult valueSaveFailure(ValueSaveFailure value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (valueSaveFailure != null) {
@@ -570,12 +570,12 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result idAndNameNotSet(),
-    @required Result instanceLoadFailure(),
-    @required Result valueLoadFailure(),
-    @required Result valueSaveFailure(),
-    @required Result unexpected(),
+  TResult when<TResult extends Object>({
+    @required TResult idAndNameNotSet(),
+    @required TResult instanceLoadFailure(),
+    @required TResult valueLoadFailure(),
+    @required TResult valueSaveFailure(),
+    @required TResult unexpected(),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -587,13 +587,13 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result idAndNameNotSet(),
-    Result instanceLoadFailure(),
-    Result valueLoadFailure(),
-    Result valueSaveFailure(),
-    Result unexpected(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult idAndNameNotSet(),
+    TResult instanceLoadFailure(),
+    TResult valueLoadFailure(),
+    TResult valueSaveFailure(),
+    TResult unexpected(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -604,12 +604,12 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result idAndNameNotSet(IdAndNameNotSet value),
-    @required Result instanceLoadFailure(InstanceLoadFailure value),
-    @required Result valueLoadFailure(ValueLoadFailure value),
-    @required Result valueSaveFailure(ValueSaveFailure value),
-    @required Result unexpected(Unexpected value),
+  TResult map<TResult extends Object>({
+    @required TResult idAndNameNotSet(IdAndNameNotSet value),
+    @required TResult instanceLoadFailure(InstanceLoadFailure value),
+    @required TResult valueLoadFailure(ValueLoadFailure value),
+    @required TResult valueSaveFailure(ValueSaveFailure value),
+    @required TResult unexpected(Unexpected value),
   }) {
     assert(idAndNameNotSet != null);
     assert(instanceLoadFailure != null);
@@ -621,13 +621,13 @@ class _$Unexpected implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result idAndNameNotSet(IdAndNameNotSet value),
-    Result instanceLoadFailure(InstanceLoadFailure value),
-    Result valueLoadFailure(ValueLoadFailure value),
-    Result valueSaveFailure(ValueSaveFailure value),
-    Result unexpected(Unexpected value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult idAndNameNotSet(IdAndNameNotSet value),
+    TResult instanceLoadFailure(InstanceLoadFailure value),
+    TResult valueLoadFailure(ValueLoadFailure value),
+    TResult valueSaveFailure(ValueSaveFailure value),
+    TResult unexpected(Unexpected value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
