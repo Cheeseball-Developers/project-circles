@@ -31,26 +31,26 @@ const $FileTransferType = _$FileTransferTypeTearOff();
 /// @nodoc
 mixin _$FileTransferType {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result incoming(),
-    @required Result outgoing(),
+  TResult when<TResult extends Object>({
+    @required TResult incoming(),
+    @required TResult outgoing(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result incoming(),
-    Result outgoing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult incoming(),
+    TResult outgoing(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result incoming(Incoming value),
-    @required Result outgoing(Outgoing value),
+  TResult map<TResult extends Object>({
+    @required TResult incoming(Incoming value),
+    @required TResult outgoing(Outgoing value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result incoming(Incoming value),
-    Result outgoing(Outgoing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult incoming(Incoming value),
+    TResult outgoing(Outgoing value),
+    @required TResult orElse(),
   });
 }
 
@@ -106,9 +106,9 @@ class _$Incoming implements Incoming {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result incoming(),
-    @required Result outgoing(),
+  TResult when<TResult extends Object>({
+    @required TResult incoming(),
+    @required TResult outgoing(),
   }) {
     assert(incoming != null);
     assert(outgoing != null);
@@ -117,10 +117,10 @@ class _$Incoming implements Incoming {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result incoming(),
-    Result outgoing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult incoming(),
+    TResult outgoing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (incoming != null) {
@@ -131,9 +131,9 @@ class _$Incoming implements Incoming {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result incoming(Incoming value),
-    @required Result outgoing(Outgoing value),
+  TResult map<TResult extends Object>({
+    @required TResult incoming(Incoming value),
+    @required TResult outgoing(Outgoing value),
   }) {
     assert(incoming != null);
     assert(outgoing != null);
@@ -142,10 +142,10 @@ class _$Incoming implements Incoming {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result incoming(Incoming value),
-    Result outgoing(Outgoing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult incoming(Incoming value),
+    TResult outgoing(Outgoing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (incoming != null) {
@@ -194,9 +194,9 @@ class _$Outgoing implements Outgoing {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result incoming(),
-    @required Result outgoing(),
+  TResult when<TResult extends Object>({
+    @required TResult incoming(),
+    @required TResult outgoing(),
   }) {
     assert(incoming != null);
     assert(outgoing != null);
@@ -205,10 +205,10 @@ class _$Outgoing implements Outgoing {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result incoming(),
-    Result outgoing(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult incoming(),
+    TResult outgoing(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (outgoing != null) {
@@ -219,9 +219,9 @@ class _$Outgoing implements Outgoing {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result incoming(Incoming value),
-    @required Result outgoing(Outgoing value),
+  TResult map<TResult extends Object>({
+    @required TResult incoming(Incoming value),
+    @required TResult outgoing(Outgoing value),
   }) {
     assert(incoming != null);
     assert(outgoing != null);
@@ -230,10 +230,10 @@ class _$Outgoing implements Outgoing {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result incoming(Incoming value),
-    Result outgoing(Outgoing value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult incoming(Incoming value),
+    TResult outgoing(Outgoing value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (outgoing != null) {
