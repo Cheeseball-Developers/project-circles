@@ -37,26 +37,26 @@ mixin _$ValueFailure<T> {
   T get failedValue;
 
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result empty(T failedValue),
-    @required Result exceedingLength(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult empty(T failedValue),
+    @required TResult exceedingLength(T failedValue),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result empty(T failedValue),
-    Result exceedingLength(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult empty(T failedValue),
+    TResult exceedingLength(T failedValue),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result empty(Empty<T> value),
-    @required Result exceedingLength(ExceedingLength<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult empty(Empty<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result empty(Empty<T> value),
-    Result exceedingLength(ExceedingLength<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult empty(Empty<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult orElse(),
   });
 
   $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
@@ -158,9 +158,9 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result empty(T failedValue),
-    @required Result exceedingLength(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult empty(T failedValue),
+    @required TResult exceedingLength(T failedValue),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
@@ -169,10 +169,10 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result empty(T failedValue),
-    Result exceedingLength(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult empty(T failedValue),
+    TResult exceedingLength(T failedValue),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (empty != null) {
@@ -183,9 +183,9 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result empty(Empty<T> value),
-    @required Result exceedingLength(ExceedingLength<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult empty(Empty<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
@@ -194,10 +194,10 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result empty(Empty<T> value),
-    Result exceedingLength(ExceedingLength<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult empty(Empty<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (empty != null) {
@@ -290,9 +290,9 @@ class _$ExceedingLength<T>
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result empty(T failedValue),
-    @required Result exceedingLength(T failedValue),
+  TResult when<TResult extends Object>({
+    @required TResult empty(T failedValue),
+    @required TResult exceedingLength(T failedValue),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
@@ -301,10 +301,10 @@ class _$ExceedingLength<T>
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result empty(T failedValue),
-    Result exceedingLength(T failedValue),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult empty(T failedValue),
+    TResult exceedingLength(T failedValue),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (exceedingLength != null) {
@@ -315,9 +315,9 @@ class _$ExceedingLength<T>
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result empty(Empty<T> value),
-    @required Result exceedingLength(ExceedingLength<T> value),
+  TResult map<TResult extends Object>({
+    @required TResult empty(Empty<T> value),
+    @required TResult exceedingLength(ExceedingLength<T> value),
   }) {
     assert(empty != null);
     assert(exceedingLength != null);
@@ -326,10 +326,10 @@ class _$ExceedingLength<T>
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result empty(Empty<T> value),
-    Result exceedingLength(ExceedingLength<T> value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult empty(Empty<T> value),
+    TResult exceedingLength(ExceedingLength<T> value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (exceedingLength != null) {

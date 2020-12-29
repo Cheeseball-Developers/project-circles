@@ -32,7 +32,11 @@ class CircleHome extends StatelessWidget {
                   if (open) {
                     showDialog(
                       context: context,
-                      child: FilesHistoryDialog(),
+                      builder: (context) => FilesHistoryDialog(),
+                    ).whenComplete(
+                      () => context.read<CurrentCircleBloc>().add(
+                            const CurrentCircleEvent.filesDialogClosed(),
+                          ),
                     );
                   }
                 },
@@ -43,7 +47,11 @@ class CircleHome extends StatelessWidget {
                   if (open) {
                     showDialog(
                       context: context,
-                      child: MembersDialog(),
+                      builder: (context) => MembersDialog(),
+                    ).whenComplete(
+                          () => context.read<CurrentCircleBloc>().add(
+                        const CurrentCircleEvent.membersDialogClosed(),
+                      ),
                     );
                   }
                 },
@@ -58,16 +66,20 @@ class CircleHome extends StatelessWidget {
                         users.add(element.key);
                       }
                     });
-                    context.bloc<FileTransferBloc>().add(
+                    context.read<FileTransferBloc>().add(
                           FileTransferEvent.confirmOutgoingFiles(
                             users: users,
                           ),
                         );
                     showDialog(
                       context: context,
-                      child: BlocProvider.value(
-                        value: context.bloc<FileTransferBloc>(),
+                      builder: (_) => BlocProvider.value(
+                        value: context.read<FileTransferBloc>(),
                         child: FileTransferDialog(),
+                      ),
+                    ).whenComplete(
+                          () => context.read<CurrentCircleBloc>().add(
+                        const CurrentCircleEvent.fileTransferDialogClosed(),
                       ),
                     );
                   }
@@ -81,7 +93,11 @@ class CircleHome extends StatelessWidget {
                   if (open) {
                     showDialog(
                       context: context,
-                      child: FilesHistoryDialog(),
+                      builder: (context) => FilesHistoryDialog(),
+                    ).whenComplete(
+                          () => context.read<CurrentCircleBloc>().add(
+                        const CurrentCircleEvent.filesDialogClosed(),
+                      ),
                     );
                   }
                 },
@@ -92,7 +108,11 @@ class CircleHome extends StatelessWidget {
                   if (open) {
                     showDialog(
                       context: context,
-                      child: MembersDialog(),
+                      builder: (context) => MembersDialog(),
+                    ).whenComplete(
+                          () => context.read<CurrentCircleBloc>().add(
+                        const CurrentCircleEvent.membersDialogClosed(),
+                      ),
                     );
                   }
                 },
@@ -101,16 +121,20 @@ class CircleHome extends StatelessWidget {
                 () {},
                 (open) {
                   if (open) {
-                    context.bloc<FileTransferBloc>().add(
+                    context.read<FileTransferBloc>().add(
                           FileTransferEvent.confirmOutgoingFiles(
                             users: [state.host],
                           ),
                         );
                     showDialog(
                       context: context,
-                      child: BlocProvider.value(
-                        value: context.bloc<FileTransferBloc>(),
+                      builder: (_) => BlocProvider.value(
+                        value: context.read<FileTransferBloc>(),
                         child: FileTransferDialog(),
+                      ),
+                    ).whenComplete(
+                          () => context.read<CurrentCircleBloc>().add(
+                        const CurrentCircleEvent.fileTransferDialogClosed(),
                       ),
                     );
                   }
@@ -141,7 +165,7 @@ class CircleHome extends StatelessWidget {
           hasStarted: (currentCircleState) => WillPopScope(
             onWillPop: () => showDialog(
               context: context,
-              child: ExitCircleConfirmationDialog(),
+              builder: (context) => ExitCircleConfirmationDialog(),
             ),
             child: Scaffold(
               appBar: PreferredSize(
@@ -168,7 +192,7 @@ class CircleHome extends StatelessWidget {
                           icon: const Icon(Icons.cancel, color: Colors.white),
                           onPressed: () => showDialog(
                             context: context,
-                            child: ExitCircleConfirmationDialog(),
+                            builder: (context) => ExitCircleConfirmationDialog(),
                           ),
                         )
                       ],
@@ -193,7 +217,7 @@ class CircleHome extends StatelessWidget {
           hasJoined: (currentCircleState) => WillPopScope(
             onWillPop: () => showDialog(
               context: context,
-              child: ExitCircleConfirmationDialog(),
+              builder: (context) => ExitCircleConfirmationDialog(),
             ),
             child: Scaffold(
               appBar: PreferredSize(
@@ -232,7 +256,7 @@ class CircleHome extends StatelessWidget {
                           icon: const Icon(Icons.cancel, color: Colors.white),
                           onPressed: () => showDialog(
                             context: context,
-                            child: ExitCircleConfirmationDialog(),
+                            builder: (context) => ExitCircleConfirmationDialog(),
                           ),
                         )
                       ],

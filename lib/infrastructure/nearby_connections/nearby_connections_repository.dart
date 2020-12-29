@@ -13,10 +13,16 @@ import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/payload_info.dart';
+import 'package:projectcircles/infrastructure/database/app_database.dart';
+import 'package:projectcircles/infrastructure/files/file_info_dtos.dart';
 
 @LazySingleton()
 class NearbyConnections {
   final Nearby _nearby = Nearby();
+  final AppDatabase _appDatabase;
+
+  NearbyConnections(this._appDatabase);
+
   String _username;
   String _endName = ""; //currently connected device name
   File _tempFile; //store file mapped to corresponding payloadId
@@ -161,8 +167,7 @@ class NearbyConnections {
           name: Name(connectionInfo.endpointName));
       onRequestSent.sink.add(incomingRequest);
     }, onConnectionResult: (id, Status status) {
-      logger.i(
-          "Status of the connection to $_endName, id: $id,  : $status");
+      logger.i("Status of the connection to $_endName, id: $id,  : $status");
       {
         if (status == Status.CONNECTED) {
           //_endId = id;
@@ -339,7 +344,7 @@ class NearbyConnections {
       onPayloadTransferUpdate(endId, payloadTransferUpdate);
     });
     if (a) {
-      //TODO: return according to the returned values of thr above functions
+      //TODO: return according to the returned values of the above functions
       return right(unit);
     } else {
       return left(const ConnectionFailure.unexpected());
@@ -386,8 +391,14 @@ class NearbyConnections {
         final String keyFileName = keyFileInfo[0];
         final String keyFilePath = keyFileInfo[1];
         final int keyFileSize = int.parse(keyFileInfo[2]);
+        final List<String> thumbnailPixels =
+            keyFileInfo[3].substring(1, keyFileInfo[3].length - 1).split(",");
+        final List<int> thumbnailList = [];
+        thumbnailPixels.forEach((pixel) {
+          thumbnailList.add(int.parse(pixel));
+        });
         final Uint8List keyFileThumbnail =
-            Uint8List.fromList(keyFileInfo[3].codeUnits);
+        Uint8List.fromList(thumbnailList);
         final int keyFileHash = int.parse(keyFileInfo[4]);
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
@@ -397,6 +408,17 @@ class NearbyConnections {
           thumbnail: keyFileThumbnail,
           name: keyFileName,
         ));
+
+        final FileTransferItem item = FileInfoDto(
+          hash: keyFileHash,
+          name: keyFileName,
+          path: null,
+          bytesSize: keyFileSize,
+          thumbnail: keyFileThumbnail,
+          dateTime: DateTime.now(),
+        ).toFileTransferItem();
+
+        _appDatabase.fileTransferItemDao.addFileTransferItem(item);
       }
 
       if (str.contains('@')) {
@@ -529,6 +551,7 @@ class NearbyConnections {
     logger.i("Sending the file name and size");
     users.forEach((user) {
       outgoingFiles.forEach((file) {
+        logger.d(file.name);
         _nearby.sendBytesPayload(
             user.uid.getOrCrash(),
             //name, path, size, thumbnail,hash

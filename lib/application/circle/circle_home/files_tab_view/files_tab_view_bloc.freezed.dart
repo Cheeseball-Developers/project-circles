@@ -41,30 +41,30 @@ const $FilesTabViewEvent = _$FilesTabViewEventTearOff();
 /// @nodoc
 mixin _$FilesTabViewEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(String relativePath),
-    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(String relativePath),
+    @required TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    @required TResult deselectAll(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(String relativePath),
-    Result toggleSelection(FileSystemEntity fileSystemEntity),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(String relativePath),
+    TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    TResult deselectAll(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(LoadDirectory value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(LoadDirectory value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(LoadDirectory value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(LoadDirectory value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   });
 }
 
@@ -148,10 +148,10 @@ class _$LoadDirectory implements LoadDirectory {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(String relativePath),
-    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(String relativePath),
+    @required TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    @required TResult deselectAll(),
   }) {
     assert(openDirectory != null);
     assert(toggleSelection != null);
@@ -161,11 +161,11 @@ class _$LoadDirectory implements LoadDirectory {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(String relativePath),
-    Result toggleSelection(FileSystemEntity fileSystemEntity),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(String relativePath),
+    TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (openDirectory != null) {
@@ -176,10 +176,10 @@ class _$LoadDirectory implements LoadDirectory {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(LoadDirectory value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(LoadDirectory value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(openDirectory != null);
     assert(toggleSelection != null);
@@ -189,11 +189,11 @@ class _$LoadDirectory implements LoadDirectory {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(LoadDirectory value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(LoadDirectory value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (openDirectory != null) {
@@ -275,10 +275,10 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(String relativePath),
-    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(String relativePath),
+    @required TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    @required TResult deselectAll(),
   }) {
     assert(openDirectory != null);
     assert(toggleSelection != null);
@@ -288,11 +288,11 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(String relativePath),
-    Result toggleSelection(FileSystemEntity fileSystemEntity),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(String relativePath),
+    TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelection != null) {
@@ -303,10 +303,10 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(LoadDirectory value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(LoadDirectory value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(openDirectory != null);
     assert(toggleSelection != null);
@@ -316,11 +316,11 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(LoadDirectory value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(LoadDirectory value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleSelection != null) {
@@ -376,10 +376,10 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(String relativePath),
-    @required Result toggleSelection(FileSystemEntity fileSystemEntity),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(String relativePath),
+    @required TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    @required TResult deselectAll(),
   }) {
     assert(openDirectory != null);
     assert(toggleSelection != null);
@@ -389,11 +389,11 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(String relativePath),
-    Result toggleSelection(FileSystemEntity fileSystemEntity),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(String relativePath),
+    TResult toggleSelection(FileSystemEntity fileSystemEntity),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAll != null) {
@@ -404,10 +404,10 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(LoadDirectory value),
-    @required Result toggleSelection(ToggleSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(LoadDirectory value),
+    @required TResult toggleSelection(ToggleSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(openDirectory != null);
     assert(toggleSelection != null);
@@ -417,11 +417,11 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(LoadDirectory value),
-    Result toggleSelection(ToggleSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(LoadDirectory value),
+    TResult toggleSelection(ToggleSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAll != null) {
@@ -471,33 +471,33 @@ const $FilesTabViewState = _$FilesTabViewStateTearOff();
 /// @nodoc
 mixin _$FilesTabViewState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(String relativePath),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(String relativePath),
     @required
-        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
             Map<FileSystemEntity, bool> files),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(String relativePath),
-    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(String relativePath),
+    TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
         Map<FileSystemEntity, bool> files),
-    @required Result orElse(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    @required TResult orElse(),
   });
 }
 
@@ -553,11 +553,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(String relativePath),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(String relativePath),
     @required
-        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
             Map<FileSystemEntity, bool> files),
   }) {
     assert(initial != null);
@@ -568,12 +568,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(String relativePath),
-    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(String relativePath),
+    TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
         Map<FileSystemEntity, bool> files),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -584,10 +584,10 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -597,11 +597,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -677,11 +677,11 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(String relativePath),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(String relativePath),
     @required
-        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
             Map<FileSystemEntity, bool> files),
   }) {
     assert(initial != null);
@@ -692,12 +692,12 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(String relativePath),
-    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(String relativePath),
+    TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
         Map<FileSystemEntity, bool> files),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
@@ -708,10 +708,10 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -721,11 +721,11 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
@@ -832,11 +832,11 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(String relativePath),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(String relativePath),
     @required
-        Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+        TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
             Map<FileSystemEntity, bool> files),
   }) {
     assert(initial != null);
@@ -847,12 +847,12 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(String relativePath),
-    Result hasLoaded(String relativePath, List<FileSystemEntity> folders,
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(String relativePath),
+    TResult hasLoaded(String relativePath, List<FileSystemEntity> folders,
         Map<FileSystemEntity, bool> files),
-    @required Result orElse(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
@@ -863,10 +863,10 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -876,11 +876,11 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {

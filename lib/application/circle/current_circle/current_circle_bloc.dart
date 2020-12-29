@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
@@ -21,6 +22,8 @@ part 'current_circle_bloc.freezed.dart';
 @injectable
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   final NearbyConnections _nearbyConnections;
+
+  final logger = Logger();
 
   CurrentCircleBloc(this._nearbyConnections)
       : super(const CurrentCircleState.initial());
@@ -44,15 +47,16 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
 
             _incomingRequestsStreamSubscription =
                 _nearbyConnections.incomingRequestStream.listen((event) {
-              debugPrint("A device found, wants to join: $event");
-              add(CurrentCircleEvent.deviceRequestedConnection(user: event));
-            });
+                  logger.i("A device found, wants to join: $event");
+                  add(CurrentCircleEvent.deviceRequestedConnection(
+                      user: event));
+                });
 
             _lostDiscovererStreamSubscription =
                 _nearbyConnections.onDiscovererLostStream.listen((event) {
-              print("i am removed");
-              add(CurrentCircleEvent.memberLeft(id: event));
-            });
+                  logger.i("Removed from Circle");
+                  add(CurrentCircleEvent.memberLeft(id: event));
+                });
 
             yield* failureOrCircleStarted.fold(
               (failure) async* {
@@ -79,10 +83,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 loadingText: 'Joining Circle...');
             _lostHostStreamSubscription =
                 _nearbyConnections.onHostLostStream.listen((event) {
-              debugPrint("Host $event lost");
-              add(const CurrentCircleEvent.disconnected());
-            }, onError: (e) {});
-
+                  logger.i("Host $event lost");
+                  add(const CurrentCircleEvent.disconnected());
+                }, onError: (e) {});
             yield CurrentCircleState.hasJoined(
               host: e.host,
               outgoingFiles: <FileInfo, double>{},

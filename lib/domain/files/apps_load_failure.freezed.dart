@@ -26,22 +26,22 @@ const $AppsLoadFailure = _$AppsLoadFailureTearOff();
 /// @nodoc
 mixin _$AppsLoadFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpectedFailure(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpectedFailure(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpectedFailure(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpectedFailure(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpectedFailure(UnexpectedFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpectedFailure(UnexpectedFailure value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpectedFailure(UnexpectedFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpectedFailure(UnexpectedFailure value),
+    @required TResult orElse(),
   });
 }
 
@@ -100,8 +100,8 @@ class _$UnexpectedFailure implements UnexpectedFailure {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result unexpectedFailure(),
+  TResult when<TResult extends Object>({
+    @required TResult unexpectedFailure(),
   }) {
     assert(unexpectedFailure != null);
     return unexpectedFailure();
@@ -109,9 +109,9 @@ class _$UnexpectedFailure implements UnexpectedFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result unexpectedFailure(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult unexpectedFailure(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpectedFailure != null) {
@@ -122,8 +122,8 @@ class _$UnexpectedFailure implements UnexpectedFailure {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result unexpectedFailure(UnexpectedFailure value),
+  TResult map<TResult extends Object>({
+    @required TResult unexpectedFailure(UnexpectedFailure value),
   }) {
     assert(unexpectedFailure != null);
     return unexpectedFailure(this);
@@ -131,9 +131,9 @@ class _$UnexpectedFailure implements UnexpectedFailure {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result unexpectedFailure(UnexpectedFailure value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult unexpectedFailure(UnexpectedFailure value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpectedFailure != null) {

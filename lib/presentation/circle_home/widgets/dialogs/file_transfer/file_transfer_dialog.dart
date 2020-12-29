@@ -103,18 +103,10 @@ class FileTransferDialog extends StatelessWidget {
                     AlwaysStoppedAnimation(Theme.of(context).indicatorColor),
               ),
             ),
-            (files) => FilesInfoList(files),
+            (files) => FilesInfoList(files.toList()),
           ),
-          awaitingSendApproval: (state) => FilesInfoList(state.files),
-          incomingFilesConfirmation: (state) => ListView.builder(
-            shrinkWrap: true,
-            itemCount: state.files.length,
-            itemBuilder: (context, index) => MyListTile(
-              title: state.files[index].name,
-              leading: Container(),
-              trailing: Container(),
-            ),
-          ),
+          awaitingSendApproval: (state) => FilesInfoList(state.files.toList()),
+          incomingFilesConfirmation: (state) => FilesInfoList(state.files.toList()),
           transferringFiles: (state) => FileTransferList(state.filesMap),
           transferComplete: (state) => Container(),
           hasFailed: (state) => state.failure.map(
