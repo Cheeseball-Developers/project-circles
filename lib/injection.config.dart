@@ -8,6 +8,7 @@ import 'package:device_info/device_info.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
+import 'infrastructure/database/app_database.dart';
 import 'infrastructure/circle/apps_repository.dart';
 import 'application/circle/circle_home/apps_tab_view/apps_tab_view_bloc.dart';
 import 'application/circle/current_circle/current_circle_bloc.dart';
@@ -46,7 +47,8 @@ GetIt $initGetIt(
   gh.lazySingleton<MediaRepository>(() => MediaRepository());
   gh.factory<MediaTabViewBloc>(() => MediaTabViewBloc(get<MediaRepository>()));
   gh.factory<MySharedPreferences>(() => MySharedPreferences());
-  gh.lazySingleton<NearbyConnections>(() => NearbyConnections());
+  gh.lazySingleton<NearbyConnections>(
+      () => NearbyConnections(get<AppDatabase>()));
   gh.factory<SearchBloc>(() => SearchBloc(get<NearbyConnections>()));
   gh.factory<SettingsBloc>(
       () => SettingsBloc(get<IDeviceInfo>(), get<MySharedPreferences>()));
@@ -58,6 +60,9 @@ GetIt $initGetIt(
         get<FilesRepository>(),
         get<NearbyConnections>(),
       ));
+
+  // Eager singletons must be registered in the right order
+  gh.singleton<AppDatabase>(AppDatabase());
   return get;
 }
 

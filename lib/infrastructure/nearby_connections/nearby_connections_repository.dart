@@ -13,10 +13,16 @@ import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/payload_info.dart';
+import 'package:projectcircles/infrastructure/database/app_database.dart';
+import 'package:projectcircles/infrastructure/files/file_info_dtos.dart';
 
 @LazySingleton()
 class NearbyConnections {
   final Nearby _nearby = Nearby();
+  final AppDatabase _appDatabase;
+
+  NearbyConnections(this._appDatabase);
+
   String _username;
   String _endName = ""; //currently connected device name
   File _tempFile; //store file mapped to corresponding payloadId
@@ -402,6 +408,17 @@ class NearbyConnections {
           thumbnail: keyFileThumbnail,
           name: keyFileName,
         ));
+
+        final FileTransferItem item = FileInfoDto(
+          hash: keyFileHash,
+          name: keyFileName,
+          path: null,
+          bytesSize: keyFileSize,
+          thumbnail: keyFileThumbnail,
+          dateTime: DateTime.now(),
+        ).toFileTransferItem();
+
+        _appDatabase.fileTransferItemDao.addFileTransferItem(item);
       }
 
       if (str.contains('@')) {
