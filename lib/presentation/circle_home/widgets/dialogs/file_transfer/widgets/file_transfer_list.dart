@@ -19,7 +19,7 @@ class FileTransferList extends StatelessWidget {
           height: 32.0,
           width: 32.0,
         ),
-        trailing: Container(),
+        trailing: Text((files.values.elementAt(index) * 100).toString()),
       ),
     );
   }
