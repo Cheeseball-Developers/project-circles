@@ -38,30 +38,30 @@ const $FolderPickerEvent = _$FolderPickerEventTearOff();
 /// @nodoc
 mixin _$FolderPickerEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(Directory directory),
-    @required Result up(),
-    @required Result select(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(Directory directory),
+    @required TResult up(),
+    @required TResult select(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(Directory directory),
-    Result up(),
-    Result select(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(Directory directory),
+    TResult up(),
+    TResult select(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(_OpenDirectory value),
-    @required Result up(_Up value),
-    @required Result select(_Select value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(_OpenDirectory value),
+    @required TResult up(_Up value),
+    @required TResult select(_Select value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(_OpenDirectory value),
-    Result up(_Up value),
-    Result select(_Select value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(_OpenDirectory value),
+    TResult up(_Up value),
+    TResult select(_Select value),
+    @required TResult orElse(),
   });
 }
 
@@ -144,10 +144,10 @@ class _$_OpenDirectory implements _OpenDirectory {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(Directory directory),
-    @required Result up(),
-    @required Result select(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(Directory directory),
+    @required TResult up(),
+    @required TResult select(),
   }) {
     assert(openDirectory != null);
     assert(up != null);
@@ -157,11 +157,11 @@ class _$_OpenDirectory implements _OpenDirectory {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(Directory directory),
-    Result up(),
-    Result select(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(Directory directory),
+    TResult up(),
+    TResult select(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (openDirectory != null) {
@@ -172,10 +172,10 @@ class _$_OpenDirectory implements _OpenDirectory {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(_OpenDirectory value),
-    @required Result up(_Up value),
-    @required Result select(_Select value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(_OpenDirectory value),
+    @required TResult up(_Up value),
+    @required TResult select(_Select value),
   }) {
     assert(openDirectory != null);
     assert(up != null);
@@ -185,11 +185,11 @@ class _$_OpenDirectory implements _OpenDirectory {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(_OpenDirectory value),
-    Result up(_Up value),
-    Result select(_Select value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(_OpenDirectory value),
+    TResult up(_Up value),
+    TResult select(_Select value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (openDirectory != null) {
@@ -242,10 +242,10 @@ class _$_Up implements _Up {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(Directory directory),
-    @required Result up(),
-    @required Result select(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(Directory directory),
+    @required TResult up(),
+    @required TResult select(),
   }) {
     assert(openDirectory != null);
     assert(up != null);
@@ -255,11 +255,11 @@ class _$_Up implements _Up {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(Directory directory),
-    Result up(),
-    Result select(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(Directory directory),
+    TResult up(),
+    TResult select(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (up != null) {
@@ -270,10 +270,10 @@ class _$_Up implements _Up {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(_OpenDirectory value),
-    @required Result up(_Up value),
-    @required Result select(_Select value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(_OpenDirectory value),
+    @required TResult up(_Up value),
+    @required TResult select(_Select value),
   }) {
     assert(openDirectory != null);
     assert(up != null);
@@ -283,11 +283,11 @@ class _$_Up implements _Up {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(_OpenDirectory value),
-    Result up(_Up value),
-    Result select(_Select value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(_OpenDirectory value),
+    TResult up(_Up value),
+    TResult select(_Select value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (up != null) {
@@ -336,10 +336,10 @@ class _$_Select implements _Select {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result openDirectory(Directory directory),
-    @required Result up(),
-    @required Result select(),
+  TResult when<TResult extends Object>({
+    @required TResult openDirectory(Directory directory),
+    @required TResult up(),
+    @required TResult select(),
   }) {
     assert(openDirectory != null);
     assert(up != null);
@@ -349,11 +349,11 @@ class _$_Select implements _Select {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result openDirectory(Directory directory),
-    Result up(),
-    Result select(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult openDirectory(Directory directory),
+    TResult up(),
+    TResult select(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (select != null) {
@@ -364,10 +364,10 @@ class _$_Select implements _Select {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result openDirectory(_OpenDirectory value),
-    @required Result up(_Up value),
-    @required Result select(_Select value),
+  TResult map<TResult extends Object>({
+    @required TResult openDirectory(_OpenDirectory value),
+    @required TResult up(_Up value),
+    @required TResult select(_Select value),
   }) {
     assert(openDirectory != null);
     assert(up != null);
@@ -377,11 +377,11 @@ class _$_Select implements _Select {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result openDirectory(_OpenDirectory value),
-    Result up(_Up value),
-    Result select(_Select value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult openDirectory(_OpenDirectory value),
+    TResult up(_Up value),
+    TResult select(_Select value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (select != null) {

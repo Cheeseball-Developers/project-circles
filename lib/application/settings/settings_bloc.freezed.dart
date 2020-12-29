@@ -50,38 +50,38 @@ const $SettingsEvent = _$SettingsEventTearOff();
 /// @nodoc
 mixin _$SettingsEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadPrefs(),
-    @required Result nameChanged(Name name),
-    @required Result selectDefaultDirectory(Directory directory),
-    @required Result toggleAskBeforeReceiving(),
-    @required Result toggleDarkMode(),
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadPrefs(),
-    Result nameChanged(Name name),
-    Result selectDefaultDirectory(Directory directory),
-    Result toggleAskBeforeReceiving(),
-    Result toggleDarkMode(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadPrefs(LoadPrefs value),
-    @required Result nameChanged(NameChanged value),
-    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
-    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    @required Result toggleDarkMode(ToggleDarkMode value),
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadPrefs(LoadPrefs value),
-    Result nameChanged(NameChanged value),
-    Result selectDefaultDirectory(SelectDefaultDirectory value),
-    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    Result toggleDarkMode(ToggleDarkMode value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
   });
 }
 
@@ -137,12 +137,12 @@ class _$LoadPrefs implements LoadPrefs {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadPrefs(),
-    @required Result nameChanged(Name name),
-    @required Result selectDefaultDirectory(Directory directory),
-    @required Result toggleAskBeforeReceiving(),
-    @required Result toggleDarkMode(),
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -154,13 +154,13 @@ class _$LoadPrefs implements LoadPrefs {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadPrefs(),
-    Result nameChanged(Name name),
-    Result selectDefaultDirectory(Directory directory),
-    Result toggleAskBeforeReceiving(),
-    Result toggleDarkMode(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadPrefs != null) {
@@ -171,12 +171,12 @@ class _$LoadPrefs implements LoadPrefs {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadPrefs(LoadPrefs value),
-    @required Result nameChanged(NameChanged value),
-    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
-    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    @required Result toggleDarkMode(ToggleDarkMode value),
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -188,13 +188,13 @@ class _$LoadPrefs implements LoadPrefs {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadPrefs(LoadPrefs value),
-    Result nameChanged(NameChanged value),
-    Result selectDefaultDirectory(SelectDefaultDirectory value),
-    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    Result toggleDarkMode(ToggleDarkMode value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadPrefs != null) {
@@ -266,12 +266,12 @@ class _$NameChanged implements NameChanged {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadPrefs(),
-    @required Result nameChanged(Name name),
-    @required Result selectDefaultDirectory(Directory directory),
-    @required Result toggleAskBeforeReceiving(),
-    @required Result toggleDarkMode(),
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -283,13 +283,13 @@ class _$NameChanged implements NameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadPrefs(),
-    Result nameChanged(Name name),
-    Result selectDefaultDirectory(Directory directory),
-    Result toggleAskBeforeReceiving(),
-    Result toggleDarkMode(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (nameChanged != null) {
@@ -300,12 +300,12 @@ class _$NameChanged implements NameChanged {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadPrefs(LoadPrefs value),
-    @required Result nameChanged(NameChanged value),
-    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
-    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    @required Result toggleDarkMode(ToggleDarkMode value),
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -317,13 +317,13 @@ class _$NameChanged implements NameChanged {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadPrefs(LoadPrefs value),
-    Result nameChanged(NameChanged value),
-    Result selectDefaultDirectory(SelectDefaultDirectory value),
-    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    Result toggleDarkMode(ToggleDarkMode value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (nameChanged != null) {
@@ -401,12 +401,12 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadPrefs(),
-    @required Result nameChanged(Name name),
-    @required Result selectDefaultDirectory(Directory directory),
-    @required Result toggleAskBeforeReceiving(),
-    @required Result toggleDarkMode(),
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -418,13 +418,13 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadPrefs(),
-    Result nameChanged(Name name),
-    Result selectDefaultDirectory(Directory directory),
-    Result toggleAskBeforeReceiving(),
-    Result toggleDarkMode(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (selectDefaultDirectory != null) {
@@ -435,12 +435,12 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadPrefs(LoadPrefs value),
-    @required Result nameChanged(NameChanged value),
-    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
-    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    @required Result toggleDarkMode(ToggleDarkMode value),
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -452,13 +452,13 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadPrefs(LoadPrefs value),
-    Result nameChanged(NameChanged value),
-    Result selectDefaultDirectory(SelectDefaultDirectory value),
-    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    Result toggleDarkMode(ToggleDarkMode value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (selectDefaultDirectory != null) {
@@ -515,12 +515,12 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadPrefs(),
-    @required Result nameChanged(Name name),
-    @required Result selectDefaultDirectory(Directory directory),
-    @required Result toggleAskBeforeReceiving(),
-    @required Result toggleDarkMode(),
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -532,13 +532,13 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadPrefs(),
-    Result nameChanged(Name name),
-    Result selectDefaultDirectory(Directory directory),
-    Result toggleAskBeforeReceiving(),
-    Result toggleDarkMode(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleAskBeforeReceiving != null) {
@@ -549,12 +549,12 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadPrefs(LoadPrefs value),
-    @required Result nameChanged(NameChanged value),
-    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
-    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    @required Result toggleDarkMode(ToggleDarkMode value),
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -566,13 +566,13 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadPrefs(LoadPrefs value),
-    Result nameChanged(NameChanged value),
-    Result selectDefaultDirectory(SelectDefaultDirectory value),
-    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    Result toggleDarkMode(ToggleDarkMode value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleAskBeforeReceiving != null) {
@@ -624,12 +624,12 @@ class _$ToggleDarkMode implements ToggleDarkMode {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadPrefs(),
-    @required Result nameChanged(Name name),
-    @required Result selectDefaultDirectory(Directory directory),
-    @required Result toggleAskBeforeReceiving(),
-    @required Result toggleDarkMode(),
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -641,13 +641,13 @@ class _$ToggleDarkMode implements ToggleDarkMode {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadPrefs(),
-    Result nameChanged(Name name),
-    Result selectDefaultDirectory(Directory directory),
-    Result toggleAskBeforeReceiving(),
-    Result toggleDarkMode(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleDarkMode != null) {
@@ -658,12 +658,12 @@ class _$ToggleDarkMode implements ToggleDarkMode {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadPrefs(LoadPrefs value),
-    @required Result nameChanged(NameChanged value),
-    @required Result selectDefaultDirectory(SelectDefaultDirectory value),
-    @required Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    @required Result toggleDarkMode(ToggleDarkMode value),
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
     assert(nameChanged != null);
@@ -675,13 +675,13 @@ class _$ToggleDarkMode implements ToggleDarkMode {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadPrefs(LoadPrefs value),
-    Result nameChanged(NameChanged value),
-    Result selectDefaultDirectory(SelectDefaultDirectory value),
-    Result toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
-    Result toggleDarkMode(ToggleDarkMode value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleDarkMode != null) {
@@ -742,47 +742,47 @@ const $SettingsState = _$SettingsStateTearOff();
 /// @nodoc
 mixin _$SettingsState {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
     @required
-        Result hasLoaded(
+        TResult hasLoaded(
             User user,
             Directory directory,
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
             Option<SettingsFailure> settingsFailureOption),
-    @required Result hasFailed(SettingsFailure failure),
+    @required TResult hasFailed(SettingsFailure failure),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoaded(
         User user,
         Directory directory,
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
         Option<SettingsFailure> settingsFailureOption),
-    Result hasFailed(SettingsFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(SettingsFailure failure),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   });
 }
 
@@ -838,18 +838,18 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
     @required
-        Result hasLoaded(
+        TResult hasLoaded(
             User user,
             Directory directory,
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
             Option<SettingsFailure> settingsFailureOption),
-    @required Result hasFailed(SettingsFailure failure),
+    @required TResult hasFailed(SettingsFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -860,18 +860,18 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoaded(
         User user,
         Directory directory,
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
         Option<SettingsFailure> settingsFailureOption),
-    Result hasFailed(SettingsFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(SettingsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -882,11 +882,11 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -897,12 +897,12 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (initial != null) {
@@ -952,18 +952,18 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
     @required
-        Result hasLoaded(
+        TResult hasLoaded(
             User user,
             Directory directory,
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
             Option<SettingsFailure> settingsFailureOption),
-    @required Result hasFailed(SettingsFailure failure),
+    @required TResult hasFailed(SettingsFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -974,18 +974,18 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoaded(
         User user,
         Directory directory,
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
         Option<SettingsFailure> settingsFailureOption),
-    Result hasFailed(SettingsFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(SettingsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
@@ -996,11 +996,11 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1011,12 +1011,12 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (isLoading != null) {
@@ -1163,18 +1163,18 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
     @required
-        Result hasLoaded(
+        TResult hasLoaded(
             User user,
             Directory directory,
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
             Option<SettingsFailure> settingsFailureOption),
-    @required Result hasFailed(SettingsFailure failure),
+    @required TResult hasFailed(SettingsFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1186,18 +1186,18 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoaded(
         User user,
         Directory directory,
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
         Option<SettingsFailure> settingsFailureOption),
-    Result hasFailed(SettingsFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(SettingsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
@@ -1209,11 +1209,11 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1224,12 +1224,12 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasLoaded != null) {
@@ -1326,18 +1326,18 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result initial(),
-    @required Result isLoading(),
+  TResult when<TResult extends Object>({
+    @required TResult initial(),
+    @required TResult isLoading(),
     @required
-        Result hasLoaded(
+        TResult hasLoaded(
             User user,
             Directory directory,
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
             Option<SettingsFailure> settingsFailureOption),
-    @required Result hasFailed(SettingsFailure failure),
+    @required TResult hasFailed(SettingsFailure failure),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1348,18 +1348,18 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result initial(),
-    Result isLoading(),
-    Result hasLoaded(
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(),
+    TResult isLoading(),
+    TResult hasLoaded(
         User user,
         Directory directory,
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
         Option<SettingsFailure> settingsFailureOption),
-    Result hasFailed(SettingsFailure failure),
-    @required Result orElse(),
+    TResult hasFailed(SettingsFailure failure),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasFailed != null) {
@@ -1370,11 +1370,11 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result initial(_Initial value),
-    @required Result isLoading(_IsLoading value),
-    @required Result hasLoaded(_HasLoaded value),
-    @required Result hasFailed(_HasFailed value),
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required TResult isLoading(_IsLoading value),
+    @required TResult hasLoaded(_HasLoaded value),
+    @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(isLoading != null);
@@ -1385,12 +1385,12 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result initial(_Initial value),
-    Result isLoading(_IsLoading value),
-    Result hasLoaded(_HasLoaded value),
-    Result hasFailed(_HasFailed value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult isLoading(_IsLoading value),
+    TResult hasLoaded(_HasLoaded value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (hasFailed != null) {

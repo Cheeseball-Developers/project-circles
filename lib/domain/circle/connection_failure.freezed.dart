@@ -41,34 +41,34 @@ const $ConnectionFailure = _$ConnectionFailureTearOff();
 /// @nodoc
 mixin _$ConnectionFailure {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cancelledByUser(),
-    @required Result timedOut(),
-    @required Result unexpected(),
-    @required Result endPointUnknown(),
+  TResult when<TResult extends Object>({
+    @required TResult cancelledByUser(),
+    @required TResult timedOut(),
+    @required TResult unexpected(),
+    @required TResult endPointUnknown(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cancelledByUser(),
-    Result timedOut(),
-    Result unexpected(),
-    Result endPointUnknown(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cancelledByUser(),
+    TResult timedOut(),
+    TResult unexpected(),
+    TResult endPointUnknown(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result timedOut(TimedOut value),
-    @required Result unexpected(Unexpected value),
-    @required Result endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object>({
+    @required TResult cancelledByUser(CancelledByUser value),
+    @required TResult timedOut(TimedOut value),
+    @required TResult unexpected(Unexpected value),
+    @required TResult endPointUnknown(EndPointUnknown value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result timedOut(TimedOut value),
-    Result unexpected(Unexpected value),
-    Result endPointUnknown(EndPointUnknown value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cancelledByUser(CancelledByUser value),
+    TResult timedOut(TimedOut value),
+    TResult unexpected(Unexpected value),
+    TResult endPointUnknown(EndPointUnknown value),
+    @required TResult orElse(),
   });
 }
 
@@ -136,11 +136,11 @@ class _$CancelledByUser
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cancelledByUser(),
-    @required Result timedOut(),
-    @required Result unexpected(),
-    @required Result endPointUnknown(),
+  TResult when<TResult extends Object>({
+    @required TResult cancelledByUser(),
+    @required TResult timedOut(),
+    @required TResult unexpected(),
+    @required TResult endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -151,12 +151,12 @@ class _$CancelledByUser
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cancelledByUser(),
-    Result timedOut(),
-    Result unexpected(),
-    Result endPointUnknown(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cancelledByUser(),
+    TResult timedOut(),
+    TResult unexpected(),
+    TResult endPointUnknown(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cancelledByUser != null) {
@@ -167,11 +167,11 @@ class _$CancelledByUser
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result timedOut(TimedOut value),
-    @required Result unexpected(Unexpected value),
-    @required Result endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object>({
+    @required TResult cancelledByUser(CancelledByUser value),
+    @required TResult timedOut(TimedOut value),
+    @required TResult unexpected(Unexpected value),
+    @required TResult endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -182,12 +182,12 @@ class _$CancelledByUser
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result timedOut(TimedOut value),
-    Result unexpected(Unexpected value),
-    Result endPointUnknown(EndPointUnknown value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cancelledByUser(CancelledByUser value),
+    TResult timedOut(TimedOut value),
+    TResult unexpected(Unexpected value),
+    TResult endPointUnknown(EndPointUnknown value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (cancelledByUser != null) {
@@ -242,11 +242,11 @@ class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cancelledByUser(),
-    @required Result timedOut(),
-    @required Result unexpected(),
-    @required Result endPointUnknown(),
+  TResult when<TResult extends Object>({
+    @required TResult cancelledByUser(),
+    @required TResult timedOut(),
+    @required TResult unexpected(),
+    @required TResult endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -257,12 +257,12 @@ class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cancelledByUser(),
-    Result timedOut(),
-    Result unexpected(),
-    Result endPointUnknown(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cancelledByUser(),
+    TResult timedOut(),
+    TResult unexpected(),
+    TResult endPointUnknown(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (timedOut != null) {
@@ -273,11 +273,11 @@ class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result timedOut(TimedOut value),
-    @required Result unexpected(Unexpected value),
-    @required Result endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object>({
+    @required TResult cancelledByUser(CancelledByUser value),
+    @required TResult timedOut(TimedOut value),
+    @required TResult unexpected(Unexpected value),
+    @required TResult endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -288,12 +288,12 @@ class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result timedOut(TimedOut value),
-    Result unexpected(Unexpected value),
-    Result endPointUnknown(EndPointUnknown value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cancelledByUser(CancelledByUser value),
+    TResult timedOut(TimedOut value),
+    TResult unexpected(Unexpected value),
+    TResult endPointUnknown(EndPointUnknown value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (timedOut != null) {
@@ -351,11 +351,11 @@ class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cancelledByUser(),
-    @required Result timedOut(),
-    @required Result unexpected(),
-    @required Result endPointUnknown(),
+  TResult when<TResult extends Object>({
+    @required TResult cancelledByUser(),
+    @required TResult timedOut(),
+    @required TResult unexpected(),
+    @required TResult endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -366,12 +366,12 @@ class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cancelledByUser(),
-    Result timedOut(),
-    Result unexpected(),
-    Result endPointUnknown(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cancelledByUser(),
+    TResult timedOut(),
+    TResult unexpected(),
+    TResult endPointUnknown(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -382,11 +382,11 @@ class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result timedOut(TimedOut value),
-    @required Result unexpected(Unexpected value),
-    @required Result endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object>({
+    @required TResult cancelledByUser(CancelledByUser value),
+    @required TResult timedOut(TimedOut value),
+    @required TResult unexpected(Unexpected value),
+    @required TResult endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -397,12 +397,12 @@ class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result timedOut(TimedOut value),
-    Result unexpected(Unexpected value),
-    Result endPointUnknown(EndPointUnknown value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cancelledByUser(CancelledByUser value),
+    TResult timedOut(TimedOut value),
+    TResult unexpected(Unexpected value),
+    TResult endPointUnknown(EndPointUnknown value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (unexpected != null) {
@@ -463,11 +463,11 @@ class _$EndPointUnknown
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result cancelledByUser(),
-    @required Result timedOut(),
-    @required Result unexpected(),
-    @required Result endPointUnknown(),
+  TResult when<TResult extends Object>({
+    @required TResult cancelledByUser(),
+    @required TResult timedOut(),
+    @required TResult unexpected(),
+    @required TResult endPointUnknown(),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -478,12 +478,12 @@ class _$EndPointUnknown
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result cancelledByUser(),
-    Result timedOut(),
-    Result unexpected(),
-    Result endPointUnknown(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult cancelledByUser(),
+    TResult timedOut(),
+    TResult unexpected(),
+    TResult endPointUnknown(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (endPointUnknown != null) {
@@ -494,11 +494,11 @@ class _$EndPointUnknown
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result cancelledByUser(CancelledByUser value),
-    @required Result timedOut(TimedOut value),
-    @required Result unexpected(Unexpected value),
-    @required Result endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object>({
+    @required TResult cancelledByUser(CancelledByUser value),
+    @required TResult timedOut(TimedOut value),
+    @required TResult unexpected(Unexpected value),
+    @required TResult endPointUnknown(EndPointUnknown value),
   }) {
     assert(cancelledByUser != null);
     assert(timedOut != null);
@@ -509,12 +509,12 @@ class _$EndPointUnknown
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result cancelledByUser(CancelledByUser value),
-    Result timedOut(TimedOut value),
-    Result unexpected(Unexpected value),
-    Result endPointUnknown(EndPointUnknown value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult cancelledByUser(CancelledByUser value),
+    TResult timedOut(TimedOut value),
+    TResult unexpected(Unexpected value),
+    TResult endPointUnknown(EndPointUnknown value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (endPointUnknown != null) {

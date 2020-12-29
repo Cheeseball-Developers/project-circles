@@ -1,3 +1,4 @@
+import 'package:injectable/injectable.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/infrastructure/files/file_info_dtos.dart';
@@ -18,7 +19,8 @@ class FileTransferItems extends Table {
   DateTimeColumn get transferDateTime => dateTime()();
 }
 
-@UseMoor(tables: [FileTransferItems])
+@Singleton()
+@UseMoor(tables: [FileTransferItems], daos: [FileTransferItemDao])
 class AppDatabase extends _$AppDatabase {
   AppDatabase()
       : super(FlutterQueryExecutor.inDatabaseFolder(
@@ -36,9 +38,7 @@ class FileTransferItemDao extends DatabaseAccessor<AppDatabase>
   Stream<List<FileTransferItem>> get watchAllFileTransferItems =>
       select(fileTransferItems).watch();
 
-  void addFileTransferItem({FileInfo fileInfo}) {
-    final FileTransferItem item =
-        FileInfoDto.fromDomain(fileInfo).toFileTransferItem();
+  void addFileTransferItem(FileTransferItem item) {
     into(fileTransferItems).insert(item);
   }
 }

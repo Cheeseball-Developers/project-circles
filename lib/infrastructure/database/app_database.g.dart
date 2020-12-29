@@ -403,6 +403,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   $FileTransferItemsTable _fileTransferItems;
   $FileTransferItemsTable get fileTransferItems =>
       _fileTransferItems ??= $FileTransferItemsTable(this);
+  FileTransferItemDao _fileTransferItemDao;
+  FileTransferItemDao get fileTransferItemDao =>
+      _fileTransferItemDao ??= FileTransferItemDao(this as AppDatabase);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override

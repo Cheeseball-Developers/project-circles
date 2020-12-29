@@ -38,30 +38,30 @@ const $AppsTabViewEvent = _$AppsTabViewEventTearOff();
 /// @nodoc
 mixin _$AppsTabViewEvent {
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadApps(),
-    @required Result toggleAppSelection(AppInfo appInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadApps(),
+    @required TResult toggleAppSelection(AppInfo appInfo),
+    @required TResult deselectAll(),
   });
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadApps(),
-    Result toggleAppSelection(AppInfo appInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadApps(),
+    TResult toggleAppSelection(AppInfo appInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   });
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadApps(LoadApps value),
-    @required Result toggleAppSelection(ToggleAppSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadApps(LoadApps value),
+    @required TResult toggleAppSelection(ToggleAppSelection value),
+    @required TResult deselectAll(DeselectAll value),
   });
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadApps(LoadApps value),
-    Result toggleAppSelection(ToggleAppSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadApps(LoadApps value),
+    TResult toggleAppSelection(ToggleAppSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   });
 }
 
@@ -117,10 +117,10 @@ class _$LoadApps implements LoadApps {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadApps(),
-    @required Result toggleAppSelection(AppInfo appInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadApps(),
+    @required TResult toggleAppSelection(AppInfo appInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
@@ -130,11 +130,11 @@ class _$LoadApps implements LoadApps {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadApps(),
-    Result toggleAppSelection(AppInfo appInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadApps(),
+    TResult toggleAppSelection(AppInfo appInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadApps != null) {
@@ -145,10 +145,10 @@ class _$LoadApps implements LoadApps {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadApps(LoadApps value),
-    @required Result toggleAppSelection(ToggleAppSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadApps(LoadApps value),
+    @required TResult toggleAppSelection(ToggleAppSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
@@ -158,11 +158,11 @@ class _$LoadApps implements LoadApps {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadApps(LoadApps value),
-    Result toggleAppSelection(ToggleAppSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadApps(LoadApps value),
+    TResult toggleAppSelection(ToggleAppSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (loadApps != null) {
@@ -248,10 +248,10 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadApps(),
-    @required Result toggleAppSelection(AppInfo appInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadApps(),
+    @required TResult toggleAppSelection(AppInfo appInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
@@ -261,11 +261,11 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadApps(),
-    Result toggleAppSelection(AppInfo appInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadApps(),
+    TResult toggleAppSelection(AppInfo appInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleAppSelection != null) {
@@ -276,10 +276,10 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadApps(LoadApps value),
-    @required Result toggleAppSelection(ToggleAppSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadApps(LoadApps value),
+    @required TResult toggleAppSelection(ToggleAppSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
@@ -289,11 +289,11 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadApps(LoadApps value),
-    Result toggleAppSelection(ToggleAppSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadApps(LoadApps value),
+    TResult toggleAppSelection(ToggleAppSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (toggleAppSelection != null) {
@@ -349,10 +349,10 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result when<Result extends Object>({
-    @required Result loadApps(),
-    @required Result toggleAppSelection(AppInfo appInfo),
-    @required Result deselectAll(),
+  TResult when<TResult extends Object>({
+    @required TResult loadApps(),
+    @required TResult toggleAppSelection(AppInfo appInfo),
+    @required TResult deselectAll(),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
@@ -362,11 +362,11 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result maybeWhen<Result extends Object>({
-    Result loadApps(),
-    Result toggleAppSelection(AppInfo appInfo),
-    Result deselectAll(),
-    @required Result orElse(),
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadApps(),
+    TResult toggleAppSelection(AppInfo appInfo),
+    TResult deselectAll(),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAll != null) {
@@ -377,10 +377,10 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result map<Result extends Object>({
-    @required Result loadApps(LoadApps value),
-    @required Result toggleAppSelection(ToggleAppSelection value),
-    @required Result deselectAll(DeselectAll value),
+  TResult map<TResult extends Object>({
+    @required TResult loadApps(LoadApps value),
+    @required TResult toggleAppSelection(ToggleAppSelection value),
+    @required TResult deselectAll(DeselectAll value),
   }) {
     assert(loadApps != null);
     assert(toggleAppSelection != null);
@@ -390,11 +390,11 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  Result maybeMap<Result extends Object>({
-    Result loadApps(LoadApps value),
-    Result toggleAppSelection(ToggleAppSelection value),
-    Result deselectAll(DeselectAll value),
-    @required Result orElse(),
+  TResult maybeMap<TResult extends Object>({
+    TResult loadApps(LoadApps value),
+    TResult toggleAppSelection(ToggleAppSelection value),
+    TResult deselectAll(DeselectAll value),
+    @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (deselectAll != null) {
