@@ -6,6 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/file_transfer_failure.dart';
@@ -29,12 +30,20 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   final FilesRepository _filesRepository;
   final NearbyConnections _nearbyConnections;
 
+  StreamSubscription<FileInfo> incomingFileInfoStreamSubscription;
+  StreamSubscription<PayloadInfo> progressOfFileStreamSubscription;
+  StreamSubscription<String> respondingUserStreamSubscription;
+  StreamSubscription<String> fileSharedSuccessStreamSubscription;
+  StreamSubscription<String> fileInfoSuccessStreamSubscription;
+
+  final logger = Logger();
+
   FileTransferBloc(
     this._appsRepository,
     this._mediaRepository,
     this._filesRepository,
     this._nearbyConnections,
-  ) : super(const FileTransferState.initial()) {
+  ) : super(const FileTransferState.initial(incomingFileInfo: <FileInfo>{})) {
     add(const FileTransferEvent.initialize());
   }
 
@@ -42,45 +51,44 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   Stream<FileTransferState> mapEventToState(
     FileTransferEvent event,
   ) async* {
-    StreamSubscription<FileInfo> incomingFileInfoStreamSubscription;
-    StreamSubscription<PayloadInfo> progressOfFileStreamSubscription;
-    StreamSubscription<String> respondingUserStreamSubscription;
-    StreamSubscription<String> fileSharedSuccessStreamSubscription;
-    StreamSubscription<String> fileInfoSucessStreamSubscription;
     int count = 0;
     int fileCount = 0;
     yield* state.map(
-      initial: (_) async* {
+      initial: (state) async* {
+
+        logger.d("FileTransferBloc initiated");
+
         // Starting necessary stream subscriptions
         incomingFileInfoStreamSubscription =
             _nearbyConnections.sendingFileInfoStream.listen(
           (fileInfo) {
+            logger.d("FileInfo received");
             add(
               FileTransferEvent.fileInfoReceived(fileInfo: fileInfo),
             );
           },
           onError: (e) {
-            print(e);
+            logger.e(e);
           },
         );
-        fileInfoSucessStreamSubscription =
-            _nearbyConnections.fileInfoSharingSuccessfulStream.listen((endId) {
-          print("Yay the files to be received from $endId");
-          add(FileTransferEvent.endIdReceived(endId: endId));
+        fileInfoSuccessStreamSubscription =
+            _nearbyConnections.fileInfoSharingSuccessfulStream.listen((id) {
+              logger.d("EndId received: $id");
+          add(FileTransferEvent.endIdReceived(endId: id));
         });
-
-        final List<FileInfo> incomingFiles = [];
 
         yield* event.maybeMap(
           confirmOutgoingFiles: (e) async* {
             yield* _confirmOutgoingFiles(e.users);
           },
           fileInfoReceived: (e) async* {
+            final incomingFiles = Set<FileInfo>.from(state.incomingFileInfo);
             incomingFiles.add(e.fileInfo);
+            yield state.copyWith(incomingFileInfo: incomingFiles);
           },
           endIdReceived: (e) async* {
             yield FileTransferState.incomingFilesConfirmation(
-                files: incomingFiles, endId: e.endId);
+                files: state.incomingFileInfo, endId: e.endId);
           },
           orElse: () async* {},
         );
@@ -97,12 +105,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             // TODO: Add a stream subscription to listen to approval of receiver
             // If successful, add sendFiles event
 
-            final List<FileInfo> files = state.filesOption
+            final Set<FileInfo> files = state.filesOption
                 .getOrElse(() => null); // TODO: Implement error state
 
             _nearbyConnections.sendFilenameSizeBytesPayload(
               users: state.users,
-              outgoingFiles: files,
+              outgoingFiles: files.toList(),
             );
             respondingUserStreamSubscription =
                 _nearbyConnections.responseStream.listen((event) {
@@ -146,9 +154,9 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       incomingFilesConfirmation: (state) async* {
         yield* event.maybeMap(
           fileInfoReceived: (e) async* {
-            final List<FileInfo> incomingFiles = List.from(state.files);
+            final Set<FileInfo> incomingFiles = Set.from(state.files);
             incomingFiles.add(e.fileInfo);
-            print("Yay the files to be recieved are ${e.fileInfo}");
+            logger.d("Files to be received are ${e.fileInfo}");
             yield FileTransferState.incomingFilesConfirmation(
               files: incomingFiles,
               endId: state.endId,
@@ -185,7 +193,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             payloadInfo: payloadInfo,
           ));
         }, onError: (e) {
-          print(e);
+          logger.e(e);
         });
         //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSuccessStreamSubscription =
@@ -212,8 +220,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         yield* event.maybeMap(
           updateProgress: (e) async* {
             final Map<FileInfo, double> filesMap = Map.from(state.filesMap);
-
-            //yaha error aa rahi hai
 
             lastPayloadId.fold(
               () {
@@ -276,8 +282,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     final List<FileInfo> mediaFilesInfo = await _mediaRepository.getFilesInfo();
     final List<FileInfo> filesInfo = _filesRepository.getFilesInfo();
 
-    print('Yes this is called');
-
     if (appFilesInfo.isEmpty && mediaFilesInfo.isEmpty && filesInfo.isEmpty) {
       yield const FileTransferState.hasFailed(
           failure: FileTransferFailure.emptySelection());
@@ -287,7 +291,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     } else {
       yield FileTransferState.outgoingFilesConfirmation(
         users: users,
-        filesOption: some(appFilesInfo + mediaFilesInfo + filesInfo),
+        filesOption: some(Set.from(appFilesInfo + mediaFilesInfo + filesInfo)),
       );
     }
   }

@@ -138,8 +138,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         streamSubscriptionOnConnectionResult?.cancel();
 
         final List<User> discoveredDevices = List.from(state.discoveredDevices);
-        _nearbyConnections
-            .disconnectFromEndPoint(e.cancelRequestUser.uid.getOrCrash());
+        _nearbyConnections.disconnectFromEndPoint(
+            endpointId: e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);
         yield state.copyWith(
             connectionFailureOrSuccessOption: none(),
