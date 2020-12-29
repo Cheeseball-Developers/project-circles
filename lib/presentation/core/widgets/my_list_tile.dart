@@ -28,16 +28,24 @@ class MyListTile extends StatelessWidget {
         onTap: onTap,
         child: Stack(
           children: [
-            Row(
-              children: [
-                Expanded(
-                  child: ShaderMask(
-                    shaderCallback: (rect) => LinearGradient(
-                        colors: [Theme.of(context).accentColor],
-                        stops: [0.0, progress]).createShader(rect),
+            Positioned.fill(
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: ShaderMask(
+                  shaderCallback: (rect) => LinearGradient(
+                      colors: [Theme.of(context).indicatorColor, Theme.of(context).indicatorColor, Colors.transparent, Colors.transparent],
+                      stops: [0.0, progress, progress, 1.0]).createShader(rect),
+                  child: Opacity(
+                    opacity: 0.4,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
                   ),
-                )
-              ],
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
