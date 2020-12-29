@@ -397,8 +397,7 @@ class NearbyConnections {
         thumbnailPixels.forEach((pixel) {
           thumbnailList.add(int.parse(pixel));
         });
-        final Uint8List keyFileThumbnail =
-        Uint8List.fromList(thumbnailList);
+        final Uint8List keyFileThumbnail = Uint8List.fromList(thumbnailList);
         final int keyFileHash = int.parse(keyFileInfo[4]);
         //streaming the fileInfo
         sendingFileInfo.sink.add(FileInfo(
@@ -464,9 +463,8 @@ class NearbyConnections {
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
-            progress: (payloadTransferUpdate.bytesTransferred /
-                    payloadTransferUpdate.totalBytes) *
-                100));
+            progress: payloadTransferUpdate.bytesTransferred /
+                payloadTransferUpdate.totalBytes));
       }
       logger.d('Total Bytes: ${payloadTransferUpdate.totalBytes}');
       logger.d(
@@ -553,11 +551,12 @@ class NearbyConnections {
       outgoingFiles.forEach((file) {
         logger.d(file.name);
         _nearby.sendBytesPayload(
-            user.uid.getOrCrash(),
-            //name, path, size, thumbnail,hash
-            Uint8List.fromList(
-                "${file.name}*${file.path}*${file.bytesSize}*${file.thumbnail}*${file.hash}"
-                    .codeUnits));
+          user.uid.getOrCrash(),
+          //name, path, size, thumbnail,hash
+          Uint8List.fromList(
+              "${file.name}*${file.path}*${file.bytesSize}*${file.thumbnail}*${file.hash}"
+                  .codeUnits),
+        );
       });
     });
   }

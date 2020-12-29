@@ -13,13 +13,14 @@ class FileTransferList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: files.length,
       itemBuilder: (context, index) => MyListTile(
+        progress: files.values.elementAt(index),
         title: files.keys.elementAt(index).name,
         leading: Image.memory(
           files.keys.elementAt(index).thumbnail,
           height: 32.0,
           width: 32.0,
         ),
-        trailing: Text((files.values.elementAt(index) * 100).toString()),
+        trailing: Text("${(files.values.elementAt(index) * 100).toString()}%"),
       ),
     );
   }
