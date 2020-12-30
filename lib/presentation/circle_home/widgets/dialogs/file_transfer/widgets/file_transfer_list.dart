@@ -20,7 +20,8 @@ class FileTransferList extends StatelessWidget {
           height: 32.0,
           width: 32.0,
         ),
-        trailing: Text("${(files.values.elementAt(index) * 100).toString()}%"),
+        trailing: Text(
+            "${(files.values.elementAt(index) * 100).toStringAsFixed(1)}%"),
       ),
     );
   }
