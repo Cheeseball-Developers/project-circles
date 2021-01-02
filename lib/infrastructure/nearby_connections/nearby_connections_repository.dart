@@ -460,6 +460,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
+      logger.d("$_isFile");
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
@@ -510,6 +511,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> sendFilePayload(
       {@required String receiver, @required List<File> files}) async {
     int payLoadId;
+    _isFile = true;
     //Sending the number of files that are being sent
     files.forEach((file) async {
       logger.d('filePath: ${file.path}');

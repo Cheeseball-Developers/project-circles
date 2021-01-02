@@ -128,6 +128,17 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
       },
       awaitingSendApproval: (state) async* {
+        // TODO: This merely serves as a temporary fix to a larger problem, replace this
+        progressOfFileStreamSubscription ??=
+            _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
+              add(FileTransferEvent.updateProgress(
+                payloadInfo: payloadInfo,
+              ));
+            }, onError: (e) {
+              logger.e(e);
+            });
+        // TODO: till here
+
         yield* event.maybeMap(
           sendFiles: (e) async* {
             final List<File> appFiles = await _appsRepository.getFiles();
@@ -188,6 +199,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         respondingUserStreamSubscription?.cancel();
 
         // Starting necessary stream subscriptions
+        logger.d("Transferring Files State");
         progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
           add(FileTransferEvent.updateProgress(
@@ -248,7 +260,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             );
 
             yield state.copyWith(filesMap: filesMap);
-            // TODO: Call filesSent ot filesReceived on completion
           },
           filesSent: (e) async* {
             final Map<FileInfo, bool> filesMap = {};
