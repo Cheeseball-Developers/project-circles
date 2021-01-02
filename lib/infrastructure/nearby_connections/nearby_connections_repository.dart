@@ -490,7 +490,7 @@ class NearbyConnections {
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
         final String pp = '${prp.join('/')}/Circles';
-        logger.d('Directoru: $pp');
+        logger.d('Directory: $pp');
         if (!await Directory(pp).exists()) {
           Directory(pp).create();
         }

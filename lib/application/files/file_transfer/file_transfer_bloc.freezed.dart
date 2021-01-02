@@ -1990,8 +1990,13 @@ class _$FileTransferStateTearOff {
   }
 
 // ignore: unused_element
-  _TransferComplete transferComplete() {
-    return const _TransferComplete();
+  _TransferComplete transferComplete(
+      {@required FileTransferType type,
+      @required Map<FileInfo, bool> filesMap}) {
+    return _TransferComplete(
+      type: type,
+      filesMap: filesMap,
+    );
   }
 
 // ignore: unused_element
@@ -2020,7 +2025,9 @@ mixin _$FileTransferState {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   });
   @optionalTypeArgs
@@ -2032,7 +2039,8 @@ mixin _$FileTransferState {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   });
@@ -2150,7 +2158,9 @@ class _$_Initial implements _Initial {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2173,7 +2183,8 @@ class _$_Initial implements _Initial {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2322,7 +2333,9 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2345,7 +2358,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2480,7 +2494,9 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2503,7 +2519,8 @@ class _$_AwaitingSendApproval implements _AwaitingSendApproval {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2649,7 +2666,9 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2672,7 +2691,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2831,7 +2851,9 @@ class _$_TransferringFiles implements _TransferringFiles {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2854,7 +2876,8 @@ class _$_TransferringFiles implements _TransferringFiles {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2923,6 +2946,9 @@ abstract class _$TransferCompleteCopyWith<$Res> {
   factory _$TransferCompleteCopyWith(
           _TransferComplete value, $Res Function(_TransferComplete) then) =
       __$TransferCompleteCopyWithImpl<$Res>;
+  $Res call({FileTransferType type, Map<FileInfo, bool> filesMap});
+
+  $FileTransferTypeCopyWith<$Res> get type;
 }
 
 /// @nodoc
@@ -2935,24 +2961,67 @@ class __$TransferCompleteCopyWithImpl<$Res>
 
   @override
   _TransferComplete get _value => super._value as _TransferComplete;
+
+  @override
+  $Res call({
+    Object type = freezed,
+    Object filesMap = freezed,
+  }) {
+    return _then(_TransferComplete(
+      type: type == freezed ? _value.type : type as FileTransferType,
+      filesMap: filesMap == freezed
+          ? _value.filesMap
+          : filesMap as Map<FileInfo, bool>,
+    ));
+  }
+
+  @override
+  $FileTransferTypeCopyWith<$Res> get type {
+    if (_value.type == null) {
+      return null;
+    }
+    return $FileTransferTypeCopyWith<$Res>(_value.type, (value) {
+      return _then(_value.copyWith(type: value));
+    });
+  }
 }
 
 /// @nodoc
 class _$_TransferComplete implements _TransferComplete {
-  const _$_TransferComplete();
+  const _$_TransferComplete({@required this.type, @required this.filesMap})
+      : assert(type != null),
+        assert(filesMap != null);
+
+  @override
+  final FileTransferType type;
+  @override
+  final Map<FileInfo, bool> filesMap;
 
   @override
   String toString() {
-    return 'FileTransferState.transferComplete()';
+    return 'FileTransferState.transferComplete(type: $type, filesMap: $filesMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _TransferComplete);
+    return identical(this, other) ||
+        (other is _TransferComplete &&
+            (identical(other.type, type) ||
+                const DeepCollectionEquality().equals(other.type, type)) &&
+            (identical(other.filesMap, filesMap) ||
+                const DeepCollectionEquality()
+                    .equals(other.filesMap, filesMap)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(type) ^
+      const DeepCollectionEquality().hash(filesMap);
+
+  @override
+  _$TransferCompleteCopyWith<_TransferComplete> get copyWith =>
+      __$TransferCompleteCopyWithImpl<_TransferComplete>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2967,7 +3036,9 @@ class _$_TransferComplete implements _TransferComplete {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2977,7 +3048,7 @@ class _$_TransferComplete implements _TransferComplete {
     assert(transferringFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return transferComplete();
+    return transferComplete(type, filesMap);
   }
 
   @override
@@ -2990,13 +3061,14 @@ class _$_TransferComplete implements _TransferComplete {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (transferComplete != null) {
-      return transferComplete();
+      return transferComplete(type, filesMap);
     }
     return orElse();
   }
@@ -3045,7 +3117,13 @@ class _$_TransferComplete implements _TransferComplete {
 }
 
 abstract class _TransferComplete implements FileTransferState {
-  const factory _TransferComplete() = _$_TransferComplete;
+  const factory _TransferComplete(
+      {@required FileTransferType type,
+      @required Map<FileInfo, bool> filesMap}) = _$_TransferComplete;
+
+  FileTransferType get type;
+  Map<FileInfo, bool> get filesMap;
+  _$TransferCompleteCopyWith<_TransferComplete> get copyWith;
 }
 
 /// @nodoc
@@ -3130,7 +3208,9 @@ class _$_HasFailed implements _HasFailed {
     @required
         TResult transferringFiles(
             FileTransferType type, Map<FileInfo, double> filesMap),
-    @required TResult transferComplete(),
+    @required
+        TResult transferComplete(
+            FileTransferType type, Map<FileInfo, bool> filesMap),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -3153,7 +3233,8 @@ class _$_HasFailed implements _HasFailed {
     TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
     TResult transferringFiles(
         FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(),
+    TResult transferComplete(
+        FileTransferType type, Map<FileInfo, bool> filesMap),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {

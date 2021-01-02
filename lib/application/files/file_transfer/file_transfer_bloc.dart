@@ -36,6 +36,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   StreamSubscription<String> fileSharedSuccessStreamSubscription;
   StreamSubscription<String> fileInfoSuccessStreamSubscription;
 
+  // File transfer variables
+  Option<int> lastPayloadId = none();
+  int fileTransferIndex = 0;
+
+  int count = 0;
+
   final logger = Logger();
 
   FileTransferBloc(
@@ -51,11 +57,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   Stream<FileTransferState> mapEventToState(
     FileTransferEvent event,
   ) async* {
-    int count = 0;
-    int fileCount = 0;
     yield* state.map(
       initial: (state) async* {
-
         logger.d("FileTransferBloc initiated");
 
         // Starting necessary stream subscriptions
@@ -73,7 +76,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
         fileInfoSuccessStreamSubscription =
             _nearbyConnections.fileInfoSharingSuccessfulStream.listen((id) {
-              logger.d("EndId received: $id");
+          logger.d("EndId received: $id");
           add(FileTransferEvent.endIdReceived(endId: id));
         });
 
@@ -136,7 +139,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             for (final fileInfo in state.files) {
               filesMap.putIfAbsent(fileInfo, () => 0.0);
             }
-            fileCount = filesMap.length;
 
             _nearbyConnections.sendFilePayload(
               receiver: e.endPointId,
@@ -171,7 +173,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             for (final fileInfo in state.files) {
               filesMap.putIfAbsent(fileInfo, () => 0.0);
             }
-            fileCount = filesMap.length;
 
             yield FileTransferState.transferringFiles(
               type: const FileTransferType.incoming(),
@@ -187,7 +188,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         respondingUserStreamSubscription?.cancel();
 
         // Starting necessary stream subscriptions
-        progressOfFileStreamSubscription =
+        progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
           add(FileTransferEvent.updateProgress(
             payloadInfo: payloadInfo,
@@ -195,17 +196,19 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         }, onError: (e) {
           logger.e(e);
         });
+
         //TODO : Display in the ui from which device the file sharing is successful
-        fileSharedSuccessStreamSubscription =
+        fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
+              logger.d("Count: $count");
           count += 1;
           if (state.type == const FileTransferType.outgoing()) {
-            if (count == fileCount) {
+            if (count == state.filesMap.length) {
               debugPrint("FileSharing (outgoing) Successful to $event");
               add(const FileTransferEvent.filesSent());
             }
           } else if (state.type == const FileTransferType.incoming()) {
-            if (count == fileCount) {
+            if (count == state.filesMap.length) {
               debugPrint("FileSharing (incoming) Successful from $event");
               add(const FileTransferEvent.filesReceived());
             }
@@ -214,31 +217,30 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
         // Setting up variables to match incoming payloads to files
         // TODO: Find a better way to do this
-        Option<int> lastPayloadId = none();
-        int index = 0;
-
         yield* event.maybeMap(
           updateProgress: (e) async* {
             final Map<FileInfo, double> filesMap = Map.from(state.filesMap);
 
             lastPayloadId.fold(
               () {
+                logger.d("Last Payload ID is none");
                 filesMap.update(
-                  filesMap.keys.elementAt(index),
+                  filesMap.keys.elementAt(fileTransferIndex),
                   (_) => e.payloadInfo.progress,
                 );
                 lastPayloadId = some(e.payloadInfo.payloadId);
               },
               (payloadId) {
+                logger.d("Last Payload ID is not none");
                 if (e.payloadInfo.payloadId == payloadId) {
                   filesMap.update(
-                    filesMap.keys.elementAt(index),
+                    filesMap.keys.elementAt(fileTransferIndex),
                     (_) => e.payloadInfo.progress,
                   );
                 } else {
-                  index++;
+                  fileTransferIndex++;
                   filesMap.update(
-                    filesMap.keys.elementAt(index),
+                    filesMap.keys.elementAt(fileTransferIndex),
                     (_) => e.payloadInfo.progress,
                   );
                 }
@@ -249,10 +251,24 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             // TODO: Call filesSent ot filesReceived on completion
           },
           filesSent: (e) async* {
-            yield const FileTransferState.transferComplete();
+            final Map<FileInfo, bool> filesMap = {};
+            for (final fileInfo in state.filesMap.keys) {
+              filesMap.addAll({fileInfo: true});
+            }
+            yield FileTransferState.transferComplete(
+              type: const FileTransferType.outgoing(),
+              filesMap: filesMap,
+            );
           },
           filesReceived: (e) async* {
-            yield const FileTransferState.transferComplete();
+            final Map<FileInfo, bool> filesMap = {};
+            for (final fileInfo in state.filesMap.keys) {
+              filesMap.addAll({fileInfo: true});
+            }
+            yield FileTransferState.transferComplete(
+              type: const FileTransferType.incoming(),
+              filesMap: filesMap,
+            );
           },
           orElse: () async* {},
         );
