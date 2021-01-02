@@ -393,7 +393,7 @@ class NearbyConnections {
           final String keyFileName = keyFileInfo[0];
           final int keyFileSize = int.parse(keyFileInfo[1]);
           final List<String> thumbnailPixels =
-          keyFileInfo[2].substring(1, keyFileInfo[2].length - 1).split(",");
+              keyFileInfo[2].substring(1, keyFileInfo[2].length - 1).split(",");
           final List<int> thumbnailList = [];
           thumbnailPixels.forEach((pixel) {
             thumbnailList.add(int.parse(pixel));
@@ -470,11 +470,11 @@ class NearbyConnections {
       }
       logger.d('Total Bytes: ${payloadTransferUpdate.totalBytes}');
       logger.d(
-          "Receiving/Sending files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
+          "Sending Receiving files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       logger.i(
-          "Received/sent files/data to $endId, ${payloadTransferUpdate.totalBytes}");
+          "sent recieved files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (_isFile) {
         fileSharingSuccessful.sink.add(endId);
       }
@@ -500,8 +500,11 @@ class NearbyConnections {
         map[payloadTransferUpdate.id] = "";
       }
       return right(unit);
-    } else {
-      logger.w("Not received file, some error occurred");
+    }
+
+    ///
+    else {
+      logger.w("Not received/sent file, some error occurred");
       return left(const ConnectionFailure.unexpected());
     }
   }
@@ -510,6 +513,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> sendFilePayload(
       {@required String receiver, @required List<File> files}) async {
     int payLoadId;
+    _isFile = true;
     //Sending the number of files that are being sent
     files.forEach((file) async {
       logger.d('filePath: ${file.path}');
@@ -550,6 +554,7 @@ class NearbyConnections {
       @required List<FileInfo> outgoingFiles}) async {
     logger.i("Sending the file name and size");
     String info = '';
+    _isFile = false;
     for (final file in outgoingFiles) {
       info +=
           "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";

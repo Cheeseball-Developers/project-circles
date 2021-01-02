@@ -74,7 +74,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             logger.e(e);
           },
         );
-        fileInfoSuccessStreamSubscription =
+        fileInfoSuccessStreamSubscription ??=
             _nearbyConnections.fileInfoSharingSuccessfulStream.listen((id) {
           logger.d("EndId received: $id");
           add(FileTransferEvent.endIdReceived(endId: id));
@@ -200,7 +200,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
-              logger.d("Count: $count");
+          logger.d("Count: $count");
           count += 1;
           if (state.type == const FileTransferType.outgoing()) {
             if (count == state.filesMap.length) {
