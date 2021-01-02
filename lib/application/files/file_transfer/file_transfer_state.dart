@@ -24,7 +24,10 @@ abstract class FileTransferState with _$FileTransferState {
     @required Map<FileInfo, double> filesMap,
   }) = _TransferringFiles;
 
-  const factory FileTransferState.transferComplete() = _TransferComplete;
+  const factory FileTransferState.transferComplete({
+    @required FileTransferType type,
+    @required Map<FileInfo, bool> filesMap,
+  }) = _TransferComplete;
 
   const factory FileTransferState.hasFailed(
       {@required FileTransferFailure failure}) = _HasFailed;

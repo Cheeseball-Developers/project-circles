@@ -54,7 +54,7 @@ class MediaRepository {
     final List<FileInfo> filesInfo = [];
     for (final key in _mediaMap.keys) {
       if (_mediaMap[key]) {
-        final Uint8List thumbnail = await key.entity.thumbDataWithSize(64, 64, quality: 80);
+        final Uint8List thumbnail = await key.entity.thumbDataWithSize(32, 32, quality: 80);
         final File file = await key.entity.originFile;
         filesInfo.add(FileInfo(
           name: file.path.substring(file.path.lastIndexOf('/')+1),

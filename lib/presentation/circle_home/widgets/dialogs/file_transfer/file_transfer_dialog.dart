@@ -5,6 +5,7 @@ import 'package:projectcircles/application/files/file_transfer/file_transfer_blo
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/file_transfer_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_info_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/file_history_list.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
@@ -20,7 +21,7 @@ class FileTransferDialog extends StatelessWidget {
           awaitingSendApproval: (_) => DialogType.withTitle,
           incomingFilesConfirmation: (_) => DialogType.full,
           transferringFiles: (_) => DialogType.withTitle,
-          transferComplete: (_) => DialogType.withButtons,
+          transferComplete: (_) => DialogType.full,
           hasFailed: (_) => DialogType.empty,
         ),
         dialogButtonType: state.map(
@@ -38,7 +39,7 @@ class FileTransferDialog extends StatelessWidget {
           awaitingSendApproval: (_) => 'Waiting to send',
           incomingFilesConfirmation: (_) => 'Receive these files?',
           transferringFiles: (_) => 'Transferring files',
-          transferComplete: (_) => null,
+          transferComplete: (_) => 'Transfer Complete',
           hasFailed: (_) => null,
         ),
         primaryButtonText: state.map(
@@ -108,7 +109,7 @@ class FileTransferDialog extends StatelessWidget {
           awaitingSendApproval: (state) => FilesInfoList(state.files.toList()),
           incomingFilesConfirmation: (state) => FilesInfoList(state.files.toList()),
           transferringFiles: (state) => FileTransferList(state.filesMap),
-          transferComplete: (state) => Container(),
+          transferComplete: (state) => FileHistoryList(state.filesMap),
           hasFailed: (state) => state.failure.map(
             emptySelection: (_) => const EmptyPopUpPlaceholder(
               icon: Icons.file_copy_rounded,
