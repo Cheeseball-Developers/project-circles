@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:open_file/open_file.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
 
 class FileHistoryList extends StatelessWidget {
   final Map<FileInfo, bool> files;
+  final bool showOpen;
 
-  const FileHistoryList(this.files);
+  const FileHistoryList({@required this.files, @required this.showOpen});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class FileHistoryList extends StatelessWidget {
         trailing: MyTextButton(
           type: ButtonType.secondary,
           text: "Open",
-          onTap: () {},
+          onTap: () => OpenFile.open(files.keys.elementAt(index).path),
         ),
       ),
     );

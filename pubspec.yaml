@@ -40,6 +40,7 @@ dependencies:
   chewie:
   flushbar:
   moor_flutter:
+  open_file:
   logger:
   logger_flutter:
 

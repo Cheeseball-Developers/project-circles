@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
+import 'package:projectcircles/domain/files/file_transfer_type.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/file_transfer_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_info_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
@@ -107,9 +108,13 @@ class FileTransferDialog extends StatelessWidget {
             (files) => FilesInfoList(files.toList()),
           ),
           awaitingSendApproval: (state) => FilesInfoList(state.files.toList()),
-          incomingFilesConfirmation: (state) => FilesInfoList(state.files.toList()),
+          incomingFilesConfirmation: (state) =>
+              FilesInfoList(state.files.toList()),
           transferringFiles: (state) => FileTransferList(state.filesMap),
-          transferComplete: (state) => FileHistoryList(state.filesMap),
+          transferComplete: (state) => FileHistoryList(
+            files: state.filesMap,
+            showOpen: state.type == const FileTransferType.incoming(),
+          ),
           hasFailed: (state) => state.failure.map(
             emptySelection: (_) => const EmptyPopUpPlaceholder(
               icon: Icons.file_copy_rounded,

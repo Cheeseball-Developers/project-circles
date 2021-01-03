@@ -403,7 +403,7 @@ class NearbyConnections {
           //streaming the fileInfo
           sendingFileInfo.sink.add(FileInfo(
             hash: keyFileHash,
-            path: keyFileName,
+            path: "storage/emulated/0/Download/$keyFileName",
             bytesSize: keyFileHash,
             thumbnail: keyFileThumbnail,
             name: keyFileName,
@@ -412,7 +412,7 @@ class NearbyConnections {
           final FileTransferItem item = FileInfoDto(
             hash: keyFileHash,
             name: keyFileName,
-            path: "...",
+            path: "storage/emulated/0/Download/$keyFileName",
             bytesSize: keyFileSize,
             thumbnail: keyFileThumbnail,
             dateTime: DateTime.now(),
