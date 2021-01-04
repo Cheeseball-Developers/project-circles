@@ -46,9 +46,8 @@ GetIt $initGetIt(
   gh.lazySingleton<IDeviceInfo>(() => DeviceInfo(get<DeviceInfoPlugin>()));
   gh.lazySingleton<MediaRepository>(() => MediaRepository());
   gh.factory<MediaTabViewBloc>(() => MediaTabViewBloc(get<MediaRepository>()));
-  gh.factory<MySharedPreferences>(() => MySharedPreferences());
   gh.lazySingleton<NearbyConnections>(
-      () => NearbyConnections(get<AppDatabase>()));
+      () => NearbyConnections(get<AppDatabase>(), get<MySharedPreferences>()));
   gh.factory<SearchBloc>(() => SearchBloc(get<NearbyConnections>()));
   gh.factory<SettingsBloc>(
       () => SettingsBloc(get<IDeviceInfo>(), get<MySharedPreferences>()));
@@ -63,6 +62,7 @@ GetIt $initGetIt(
 
   // Eager singletons must be registered in the right order
   gh.singleton<AppDatabase>(AppDatabase());
+  gh.singleton<MySharedPreferences>(MySharedPreferences());
   return get;
 }
 

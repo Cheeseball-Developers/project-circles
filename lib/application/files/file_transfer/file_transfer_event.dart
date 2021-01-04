@@ -31,4 +31,6 @@ abstract class FileTransferEvent with _$FileTransferEvent {
   }) = _UpdateProgress;
 
   const factory FileTransferEvent.filesReceived() = _FilesReceived;
+
+  const factory FileTransferEvent.reset() = _Reset;
 }

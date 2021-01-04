@@ -131,12 +131,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         // TODO: This merely serves as a temporary fix to a larger problem, replace this
         progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
-              add(FileTransferEvent.updateProgress(
-                payloadInfo: payloadInfo,
-              ));
-            }, onError: (e) {
-              logger.e(e);
-            });
+          add(FileTransferEvent.updateProgress(
+            payloadInfo: payloadInfo,
+          ));
+        }, onError: (e) {
+          logger.e(e);
+        });
         // TODO: till here
 
         yield* event.maybeMap(
@@ -287,6 +287,13 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       transferComplete: (state) async* {
         progressOfFileStreamSubscription?.cancel();
         fileSharedSuccessStreamSubscription?.cancel();
+
+        yield* event.maybeMap(
+          reset: (_) async* {
+            yield const FileTransferState.initial(incomingFileInfo: {});
+          },
+          orElse: () async* {},
+        );
       },
       hasFailed: (state) async* {
         yield* event.maybeMap(

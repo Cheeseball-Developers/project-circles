@@ -13,15 +13,18 @@ import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/payload_info.dart';
+import 'package:projectcircles/domain/settings/settings_failure.dart';
 import 'package:projectcircles/infrastructure/database/app_database.dart';
 import 'package:projectcircles/infrastructure/files/file_info_dtos.dart';
+import 'package:projectcircles/infrastructure/settings/my_shared_preferences.dart';
 
 @LazySingleton()
 class NearbyConnections {
   final Nearby _nearby = Nearby();
   final AppDatabase _appDatabase;
+  final MySharedPreferences _preferences;
 
-  NearbyConnections(this._appDatabase);
+  NearbyConnections(this._appDatabase, this._preferences);
 
   String _username;
   String _endName = ""; //currently connected device name
@@ -222,7 +225,7 @@ class NearbyConnections {
             User(uid: UniqueId.fromUniqueString(id), name: Name(name));
         logger.i("Connection found at id: $id and name: $name");
 
-        // add to the sink hehe
+        // add to the sink
         onEndFound.sink.add(discoveredDevice);
         _endName = name;
       },
@@ -400,25 +403,31 @@ class NearbyConnections {
           });
           final Uint8List keyFileThumbnail = Uint8List.fromList(thumbnailList);
           final int keyFileHash = int.parse(keyFileInfo[3]);
-          //streaming the fileInfo
-          sendingFileInfo.sink.add(FileInfo(
-            hash: keyFileHash,
-            path: keyFileName,
-            bytesSize: keyFileHash,
-            thumbnail: keyFileThumbnail,
-            name: keyFileName,
-          ));
 
-          final FileTransferItem item = FileInfoDto(
-            hash: keyFileHash,
-            name: keyFileName,
-            path: "...",
-            bytesSize: keyFileSize,
-            thumbnail: keyFileThumbnail,
-            dateTime: DateTime.now(),
-          ).toFileTransferItem();
+          final Either<SettingsFailure, Directory> failureOrDirectory =
+              await _preferences.getDirectory();
 
-          _appDatabase.fileTransferItemDao.addFileTransferItem(item);
+          failureOrDirectory.fold((f) => null, (directory) {
+            //streaming the fileInfo
+            sendingFileInfo.sink.add(FileInfo(
+              hash: keyFileHash,
+              path: "${directory.path}/$keyFileName",
+              bytesSize: keyFileHash,
+              thumbnail: keyFileThumbnail,
+              name: keyFileName,
+            ));
+
+            final FileTransferItem item = FileInfoDto(
+              hash: keyFileHash,
+              name: keyFileName,
+              path: "${directory.path}/$keyFileName",
+              bytesSize: keyFileSize,
+              thumbnail: keyFileThumbnail,
+              dateTime: DateTime.now(),
+            ).toFileTransferItem();
+
+            _appDatabase.fileTransferItemDao.addFileTransferItem(item);
+          });
         }
       }
 
@@ -490,12 +499,16 @@ class NearbyConnections {
         final List<String> prp = _tempFile.parent.path.split('/');
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
-        final String pp = '${prp.join('/')}/Circles';
-        logger.d('Directory: $pp');
-        if (!await Directory(pp).exists()) {
+        //final String pp = '${prp.join('/')}/Circles';
+        final Either<SettingsFailure, Directory> failureOrDirectory = await _preferences.getDirectory();
+        failureOrDirectory.fold((f) => null, (directory) async {
+          final String pp = directory.path;
+          logger.d('Directory: $pp');
+          if (!await Directory(pp).exists()) {
           Directory(pp).create();
-        }
-        _tempFile.rename("$pp/$name");
+          }
+          _tempFile.rename("$pp/$name");
+        });
       } else {
         //bytes not received till yet
         map[payloadTransferUpdate.id] = "";

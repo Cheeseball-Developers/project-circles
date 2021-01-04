@@ -79,6 +79,11 @@ class _$FileTransferEventTearOff {
   _FilesReceived filesReceived() {
     return const _FilesReceived();
   }
+
+// ignore: unused_element
+  _Reset reset() {
+    return const _Reset();
+  }
 }
 
 /// @nodoc
@@ -100,6 +105,7 @@ mixin _$FileTransferEvent {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   });
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
@@ -114,6 +120,7 @@ mixin _$FileTransferEvent {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   });
   @optionalTypeArgs
@@ -129,6 +136,7 @@ mixin _$FileTransferEvent {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   });
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
@@ -143,6 +151,7 @@ mixin _$FileTransferEvent {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   });
 }
@@ -214,6 +223,7 @@ class _$_Initialize implements _Initialize {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -226,6 +236,7 @@ class _$_Initialize implements _Initialize {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return initialize();
   }
 
@@ -243,6 +254,7 @@ class _$_Initialize implements _Initialize {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -266,6 +278,7 @@ class _$_Initialize implements _Initialize {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -278,6 +291,7 @@ class _$_Initialize implements _Initialize {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return initialize(this);
   }
 
@@ -295,6 +309,7 @@ class _$_Initialize implements _Initialize {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -381,6 +396,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -393,6 +409,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return confirmOutgoingFiles(users);
   }
 
@@ -410,6 +427,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -433,6 +451,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -445,6 +464,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return confirmOutgoingFiles(this);
   }
 
@@ -462,6 +482,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -530,6 +551,7 @@ class _$_CancelSend implements _CancelSend {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -542,6 +564,7 @@ class _$_CancelSend implements _CancelSend {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return cancelSend();
   }
 
@@ -559,6 +582,7 @@ class _$_CancelSend implements _CancelSend {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -582,6 +606,7 @@ class _$_CancelSend implements _CancelSend {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -594,6 +619,7 @@ class _$_CancelSend implements _CancelSend {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return cancelSend(this);
   }
 
@@ -611,6 +637,7 @@ class _$_CancelSend implements _CancelSend {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -675,6 +702,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -687,6 +715,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return sendFilesInfo();
   }
 
@@ -704,6 +733,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -727,6 +757,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -739,6 +770,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return sendFilesInfo(this);
   }
 
@@ -756,6 +788,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -842,6 +875,7 @@ class _$_SendFiles implements _SendFiles {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -854,6 +888,7 @@ class _$_SendFiles implements _SendFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return sendFiles(endPointId);
   }
 
@@ -871,6 +906,7 @@ class _$_SendFiles implements _SendFiles {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -894,6 +930,7 @@ class _$_SendFiles implements _SendFiles {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -906,6 +943,7 @@ class _$_SendFiles implements _SendFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return sendFiles(this);
   }
 
@@ -923,6 +961,7 @@ class _$_SendFiles implements _SendFiles {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -989,6 +1028,7 @@ class _$_FilesSent implements _FilesSent {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1001,6 +1041,7 @@ class _$_FilesSent implements _FilesSent {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return filesSent();
   }
 
@@ -1018,6 +1059,7 @@ class _$_FilesSent implements _FilesSent {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1041,6 +1083,7 @@ class _$_FilesSent implements _FilesSent {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1053,6 +1096,7 @@ class _$_FilesSent implements _FilesSent {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return filesSent(this);
   }
 
@@ -1070,6 +1114,7 @@ class _$_FilesSent implements _FilesSent {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1168,6 +1213,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1180,6 +1226,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return fileInfoReceived(fileInfo);
   }
 
@@ -1197,6 +1244,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1220,6 +1268,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1232,6 +1281,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return fileInfoReceived(this);
   }
 
@@ -1249,6 +1299,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1337,6 +1388,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1349,6 +1401,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return endIdReceived(endId);
   }
 
@@ -1366,6 +1419,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1389,6 +1443,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1401,6 +1456,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return endIdReceived(this);
   }
 
@@ -1418,6 +1474,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1512,6 +1569,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1524,6 +1582,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return confirmIncomingFiles(acceptOrReject);
   }
 
@@ -1541,6 +1600,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1564,6 +1624,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1576,6 +1637,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return confirmIncomingFiles(this);
   }
 
@@ -1593,6 +1655,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1698,6 +1761,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1710,6 +1774,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return updateProgress(payloadInfo);
   }
 
@@ -1727,6 +1792,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1750,6 +1816,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1762,6 +1829,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return updateProgress(this);
   }
 
@@ -1779,6 +1847,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1847,6 +1916,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
     @required TResult filesReceived(),
+    @required TResult reset(),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1859,6 +1929,7 @@ class _$_FilesReceived implements _FilesReceived {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return filesReceived();
   }
 
@@ -1876,6 +1947,7 @@ class _$_FilesReceived implements _FilesReceived {
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
     TResult filesReceived(),
+    TResult reset(),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1899,6 +1971,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
     assert(confirmOutgoingFiles != null);
@@ -1911,6 +1984,7 @@ class _$_FilesReceived implements _FilesReceived {
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
     assert(filesReceived != null);
+    assert(reset != null);
     return filesReceived(this);
   }
 
@@ -1928,6 +2002,7 @@ class _$_FilesReceived implements _FilesReceived {
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
     TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
@@ -1940,6 +2015,154 @@ class _$_FilesReceived implements _FilesReceived {
 
 abstract class _FilesReceived implements FileTransferEvent {
   const factory _FilesReceived() = _$_FilesReceived;
+}
+
+/// @nodoc
+abstract class _$ResetCopyWith<$Res> {
+  factory _$ResetCopyWith(_Reset value, $Res Function(_Reset) then) =
+      __$ResetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$ResetCopyWithImpl<$Res> extends _$FileTransferEventCopyWithImpl<$Res>
+    implements _$ResetCopyWith<$Res> {
+  __$ResetCopyWithImpl(_Reset _value, $Res Function(_Reset) _then)
+      : super(_value, (v) => _then(v as _Reset));
+
+  @override
+  _Reset get _value => super._value as _Reset;
+}
+
+/// @nodoc
+class _$_Reset implements _Reset {
+  const _$_Reset();
+
+  @override
+  String toString() {
+    return 'FileTransferEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _Reset);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialize(),
+    @required TResult confirmOutgoingFiles(List<User> users),
+    @required TResult cancelSend(),
+    @required TResult sendFilesInfo(),
+    @required TResult sendFiles(String endPointId),
+    @required TResult filesSent(),
+    @required TResult fileInfoReceived(FileInfo fileInfo),
+    @required TResult endIdReceived(String endId),
+    @required TResult confirmIncomingFiles(bool acceptOrReject),
+    @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult filesReceived(),
+    @required TResult reset(),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(filesReceived != null);
+    assert(reset != null);
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(),
+    TResult confirmOutgoingFiles(List<User> users),
+    TResult cancelSend(),
+    TResult sendFilesInfo(),
+    TResult sendFiles(String endPointId),
+    TResult filesSent(),
+    TResult fileInfoReceived(FileInfo fileInfo),
+    TResult endIdReceived(String endId),
+    TResult confirmIncomingFiles(bool acceptOrReject),
+    TResult updateProgress(PayloadInfo payloadInfo),
+    TResult filesReceived(),
+    TResult reset(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    @required TResult cancelSend(_CancelSend value),
+    @required TResult sendFilesInfo(_SendFilesInfo value),
+    @required TResult sendFiles(_SendFiles value),
+    @required TResult filesSent(_FilesSent value),
+    @required TResult fileInfoReceived(_FileInfoReceived value),
+    @required TResult endIdReceived(_EndIdReceived value),
+    @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
+    @required TResult updateProgress(_UpdateProgress value),
+    @required TResult filesReceived(_FilesReceived value),
+    @required TResult reset(_Reset value),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(filesReceived != null);
+    assert(reset != null);
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    TResult cancelSend(_CancelSend value),
+    TResult sendFilesInfo(_SendFilesInfo value),
+    TResult sendFiles(_SendFiles value),
+    TResult filesSent(_FilesSent value),
+    TResult fileInfoReceived(_FileInfoReceived value),
+    TResult endIdReceived(_EndIdReceived value),
+    TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
+    TResult updateProgress(_UpdateProgress value),
+    TResult filesReceived(_FilesReceived value),
+    TResult reset(_Reset value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Reset implements FileTransferEvent {
+  const factory _Reset() = _$_Reset;
 }
 
 /// @nodoc
