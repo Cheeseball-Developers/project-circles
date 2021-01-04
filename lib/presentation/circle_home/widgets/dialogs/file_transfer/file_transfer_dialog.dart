@@ -73,7 +73,12 @@ class FileTransferDialog extends StatelessWidget {
                 acceptOrReject: true,
               )),
           transferringFiles: (_) => null,
-          transferComplete: (_) => () => ExtendedNavigator.of(context).pop(),
+          transferComplete: (_) => () {
+            context
+                .read<FileTransferBloc>()
+                .add(const FileTransferEvent.reset());
+            ExtendedNavigator.of(context).pop();
+          },
           hasFailed: (_) => null,
         ),
         secondaryOnTap: state.map(

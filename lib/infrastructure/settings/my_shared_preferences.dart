@@ -8,7 +8,7 @@ import 'package:projectcircles/domain/settings/settings_object.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:projectcircles/domain/settings/settings_failure.dart';
 
-@injectable
+@Singleton()
 class MySharedPreferences {
   SharedPreferences _prefs;
 
@@ -50,6 +50,10 @@ class MySharedPreferences {
 
   Future<Option<SettingsFailure>> setDirectory({@required Directory directory}) async {
     return _setString('fileSavePath', directory.path);
+  }
+
+  Future<Either<SettingsFailure, Directory>> getDirectory() async {
+    return right(Directory(_prefs.getString('fileSavePath') ?? '/storage/emulated/0/Download/Circles'));
   }
 
   Future<Option<SettingsFailure>> _setString(String key, String value) async {

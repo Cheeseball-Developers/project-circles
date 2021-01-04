@@ -25,7 +25,7 @@ class FileHistoryList extends StatelessWidget {
         trailing: MyTextButton(
           type: ButtonType.secondary,
           text: "Open",
-          onTap: () => OpenFile.open(files.keys.elementAt(index).path),
+          onTap: () {OpenFile.open(files.keys.elementAt(index).path); print(files.keys.elementAt(index).path);},
         ),
       ),
     );
