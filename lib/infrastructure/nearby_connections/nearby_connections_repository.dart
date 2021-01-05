@@ -499,14 +499,15 @@ class NearbyConnections {
         final List<String> prp = _tempFile.parent.path.split('/');
         prp.removeLast();
         prp.removeWhere((element) => element == 'Nearby');
-        //final String pp = '${prp.join('/')}/Circles';
-        final Either<SettingsFailure, Directory> failureOrDirectory = await _preferences.getDirectory();
+        final String pp = '${prp.join('/')}/Circles';
+        final Either<SettingsFailure, Directory> failureOrDirectory =
+            await _preferences.getDirectory();
         failureOrDirectory.fold((f) => null, (directory) async {
           final String pp = directory.path;
-          logger.d('Directory: $pp');
-          if (!await Directory(pp).exists()) {
           Directory(pp).create();
-          }
+          Directory(_tempFile.parent.path).delete();
+          logger.d('Directory: $pp');
+
           _tempFile.rename("$pp/$name");
         });
       } else {

@@ -214,6 +214,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
           logger.d("Count: $count");
           count += 1;
+          fileTransferIndex++;
           if (state.type == const FileTransferType.outgoing()) {
             if (count == state.filesMap.length) {
               debugPrint("FileSharing (outgoing) Successful to $event");
@@ -231,32 +232,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         // TODO: Find a better way to do this
         yield* event.maybeMap(
           updateProgress: (e) async* {
+            logger.d(
+                'Update progress event called, index value at $fileTransferIndex');
             final Map<FileInfo, double> filesMap = Map.from(state.filesMap);
-
-            lastPayloadId.fold(
-              () {
-                logger.d("Last Payload ID is none");
-                filesMap.update(
-                  filesMap.keys.elementAt(fileTransferIndex),
-                  (_) => e.payloadInfo.progress,
-                );
-                lastPayloadId = some(e.payloadInfo.payloadId);
-              },
-              (payloadId) {
-                logger.d("Last Payload ID is not none");
-                if (e.payloadInfo.payloadId == payloadId) {
-                  filesMap.update(
-                    filesMap.keys.elementAt(fileTransferIndex),
-                    (_) => e.payloadInfo.progress,
-                  );
-                } else {
-                  fileTransferIndex++;
-                  filesMap.update(
-                    filesMap.keys.elementAt(fileTransferIndex),
-                    (_) => e.payloadInfo.progress,
-                  );
-                }
-              },
+            filesMap.update(
+              filesMap.keys.elementAt(fileTransferIndex),
+              (_) => e.payloadInfo.progress,
             );
 
             yield state.copyWith(filesMap: filesMap);
