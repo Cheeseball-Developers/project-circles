@@ -496,18 +496,21 @@ class NearbyConnections {
         final String name = map[payloadTransferUpdate.id];
 
         ///storage/emulated/0/Download/Nearby
-        final List<String> prp = _tempFile.parent.path.split('/');
-        prp.removeLast();
-        prp.removeWhere((element) => element == 'Nearby');
+        //final List<String> prp = _tempFile.parent.path.split('/');
+        //prp.removeLast();
+        //prp.removeWhere((element) => element == 'Nearby');
         //final String pp = '${prp.join('/')}/Circles';
-        final Either<SettingsFailure, Directory> failureOrDirectory = await _preferences.getDirectory();
+        //logger.d('Directory p : $pp');
+        final Either<SettingsFailure, Directory> failureOrDirectory =
+            await _preferences.getDirectory();
         failureOrDirectory.fold((f) => null, (directory) async {
-          final String pp = directory.path;
-          logger.d('Directory: $pp');
-          if (!await Directory(pp).exists()) {
-          Directory(pp).create();
-          }
-          _tempFile.rename("$pp/$name");
+          final String psp = directory.path;
+          //creates a directory if not present
+          Directory(psp).create();
+          Directory(_tempFile.parent.path).delete();
+          logger.d('Directory o : $psp');
+
+          _tempFile.rename("$psp/$name");
         });
       } else {
         //bytes not received till yet
