@@ -5,7 +5,7 @@ import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.
 import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
 
 class FileHistoryList extends StatelessWidget {
-  final Map<FileInfo, bool> files;
+  final List<FileInfo> files;
   final bool showOpen;
 
   const FileHistoryList({@required this.files, @required this.showOpen});
@@ -16,16 +16,18 @@ class FileHistoryList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: files.length,
       itemBuilder: (context, index) => MyListTile(
-        title: files.keys.elementAt(index).name,
+        title: files.elementAt(index).name,
         leading: Image.memory(
-          files.keys.elementAt(index).thumbnail,
+          files.elementAt(index).thumbnail,
           height: 32.0,
           width: 32.0,
         ),
         trailing: MyTextButton(
           type: ButtonType.secondary,
           text: "Open",
-          onTap: () {OpenFile.open(files.keys.elementAt(index).path); print(files.keys.elementAt(index).path);},
+          onTap: () {
+            OpenFile.open(files.elementAt(index).path);
+          },
         ),
       ),
     );

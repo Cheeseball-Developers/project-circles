@@ -9,7 +9,6 @@ import 'package:meta/meta.dart';
 import 'package:projectcircles/domain/circle/connection_failure.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
-import 'package:projectcircles/domain/files/file_transaction.dart';
 import 'package:projectcircles/domain/files/file_transfer_type.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
 
@@ -67,7 +66,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                   members: <User, bool>{},
                   outgoingFiles: <FileInfo, double>{},
                   incomingFiles: <FileInfo, double>{},
-                  transactions: <FileTransaction>[],
                   showMembersDialog: none(),
                   showFilesDialog: none(),
                   showFileTransferDialog: none(),
@@ -90,7 +88,6 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               host: e.host,
               outgoingFiles: <FileInfo, double>{},
               incomingFiles: <FileInfo, double>{},
-              transactions: <FileTransaction>[],
               showMembersDialog: none(),
               showFilesDialog: none(),
               showFileTransferDialog: none(),
