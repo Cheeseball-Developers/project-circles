@@ -117,7 +117,7 @@ class FileTransferDialog extends StatelessWidget {
               FilesInfoList(state.files.toList()),
           transferringFiles: (state) => FileTransferList(state.filesMap),
           transferComplete: (state) => FileHistoryList(
-            files: state.filesMap,
+            files: state.filesMap.keys.toList(),
             showOpen: state.type == const FileTransferType.incoming(),
           ),
           hasFailed: (state) => state.failure.map(

@@ -3017,7 +3017,6 @@ class _$CurrentCircleStateTearOff {
       {@required Map<User, bool> members,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
-      @required List<FileTransaction> transactions,
       @required Option<bool> showMembersDialog,
       @required Option<bool> showFilesDialog,
       @required Option<bool> showFileTransferDialog,
@@ -3028,7 +3027,6 @@ class _$CurrentCircleStateTearOff {
       members: members,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
-      transactions: transactions,
       showMembersDialog: showMembersDialog,
       showFilesDialog: showFilesDialog,
       showFileTransferDialog: showFileTransferDialog,
@@ -3043,7 +3041,6 @@ class _$CurrentCircleStateTearOff {
       {@required User host,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
-      @required List<FileTransaction> transactions,
       @required Option<bool> showMembersDialog,
       @required Option<bool> showFilesDialog,
       @required Option<bool> showFileTransferDialog,
@@ -3053,7 +3050,6 @@ class _$CurrentCircleStateTearOff {
       host: host,
       outgoingFiles: outgoingFiles,
       incomingFiles: incomingFiles,
-      transactions: transactions,
       showMembersDialog: showMembersDialog,
       showFilesDialog: showFilesDialog,
       showFileTransferDialog: showFileTransferDialog,
@@ -3085,7 +3081,6 @@ mixin _$CurrentCircleState {
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3097,7 +3092,6 @@ mixin _$CurrentCircleState {
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3113,7 +3107,6 @@ mixin _$CurrentCircleState {
         Map<User, bool> members,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3124,7 +3117,6 @@ mixin _$CurrentCircleState {
         User host,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3213,7 +3205,6 @@ class _$_Initial implements _Initial {
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3225,7 +3216,6 @@ class _$_Initial implements _Initial {
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3250,7 +3240,6 @@ class _$_Initial implements _Initial {
         Map<User, bool> members,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3261,7 +3250,6 @@ class _$_Initial implements _Initial {
         User host,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3385,7 +3373,6 @@ class _$_IsLoading implements _IsLoading {
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3397,7 +3384,6 @@ class _$_IsLoading implements _IsLoading {
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3422,7 +3408,6 @@ class _$_IsLoading implements _IsLoading {
         Map<User, bool> members,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3433,7 +3418,6 @@ class _$_IsLoading implements _IsLoading {
         User host,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3500,7 +3484,6 @@ abstract class _$HasStartedCopyWith<$Res> {
       {Map<User, bool> members,
       Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
-      List<FileTransaction> transactions,
       Option<bool> showMembersDialog,
       Option<bool> showFilesDialog,
       Option<bool> showFileTransferDialog,
@@ -3525,7 +3508,6 @@ class __$HasStartedCopyWithImpl<$Res>
     Object members = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
-    Object transactions = freezed,
     Object showMembersDialog = freezed,
     Object showFilesDialog = freezed,
     Object showFileTransferDialog = freezed,
@@ -3541,9 +3523,6 @@ class __$HasStartedCopyWithImpl<$Res>
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
           : incomingFiles as Map<FileInfo, double>,
-      transactions: transactions == freezed
-          ? _value.transactions
-          : transactions as List<FileTransaction>,
       showMembersDialog: showMembersDialog == freezed
           ? _value.showMembersDialog
           : showMembersDialog as Option<bool>,
@@ -3570,7 +3549,6 @@ class _$_HasStarted implements _HasStarted {
       {@required this.members,
       @required this.outgoingFiles,
       @required this.incomingFiles,
-      @required this.transactions,
       @required this.showMembersDialog,
       @required this.showFilesDialog,
       @required this.showFileTransferDialog,
@@ -3580,7 +3558,6 @@ class _$_HasStarted implements _HasStarted {
       : assert(members != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
-        assert(transactions != null),
         assert(showMembersDialog != null),
         assert(showFilesDialog != null),
         assert(showFileTransferDialog != null),
@@ -3594,8 +3571,6 @@ class _$_HasStarted implements _HasStarted {
   final Map<FileInfo, double> outgoingFiles;
   @override
   final Map<FileInfo, double> incomingFiles;
-  @override
-  final List<FileTransaction> transactions;
   @override
   final Option<bool> showMembersDialog;
   @override
@@ -3611,7 +3586,7 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasStarted(members: $members, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersDialog: $showMembersDialog, showFilesDialog: $showFilesDialog, showFileTransferDialog: $showFileTransferDialog, transferType: $transferType, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
+    return 'CurrentCircleState.hasStarted(members: $members, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, showMembersDialog: $showMembersDialog, showFilesDialog: $showFilesDialog, showFileTransferDialog: $showFileTransferDialog, transferType: $transferType, isAcceptingRequest: $isAcceptingRequest, isClosing: $isClosing)';
   }
 
   @override
@@ -3627,9 +3602,6 @@ class _$_HasStarted implements _HasStarted {
             (identical(other.incomingFiles, incomingFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.incomingFiles, incomingFiles)) &&
-            (identical(other.transactions, transactions) ||
-                const DeepCollectionEquality()
-                    .equals(other.transactions, transactions)) &&
             (identical(other.showMembersDialog, showMembersDialog) ||
                 const DeepCollectionEquality()
                     .equals(other.showMembersDialog, showMembersDialog)) &&
@@ -3656,7 +3628,6 @@ class _$_HasStarted implements _HasStarted {
       const DeepCollectionEquality().hash(members) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
-      const DeepCollectionEquality().hash(transactions) ^
       const DeepCollectionEquality().hash(showMembersDialog) ^
       const DeepCollectionEquality().hash(showFilesDialog) ^
       const DeepCollectionEquality().hash(showFileTransferDialog) ^
@@ -3678,7 +3649,6 @@ class _$_HasStarted implements _HasStarted {
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3690,7 +3660,6 @@ class _$_HasStarted implements _HasStarted {
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -3707,7 +3676,6 @@ class _$_HasStarted implements _HasStarted {
         members,
         outgoingFiles,
         incomingFiles,
-        transactions,
         showMembersDialog,
         showFilesDialog,
         showFileTransferDialog,
@@ -3725,7 +3693,6 @@ class _$_HasStarted implements _HasStarted {
         Map<User, bool> members,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3736,7 +3703,6 @@ class _$_HasStarted implements _HasStarted {
         User host,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -3751,7 +3717,6 @@ class _$_HasStarted implements _HasStarted {
           members,
           outgoingFiles,
           incomingFiles,
-          transactions,
           showMembersDialog,
           showFilesDialog,
           showFileTransferDialog,
@@ -3802,7 +3767,6 @@ abstract class _HasStarted implements CurrentCircleState {
       {@required Map<User, bool> members,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
-      @required List<FileTransaction> transactions,
       @required Option<bool> showMembersDialog,
       @required Option<bool> showFilesDialog,
       @required Option<bool> showFileTransferDialog,
@@ -3813,7 +3777,6 @@ abstract class _HasStarted implements CurrentCircleState {
   Map<User, bool> get members;
   Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
-  List<FileTransaction> get transactions;
   Option<bool> get showMembersDialog;
   Option<bool> get showFilesDialog;
   Option<bool> get showFileTransferDialog;
@@ -3832,7 +3795,6 @@ abstract class _$HasJoinedCopyWith<$Res> {
       {User host,
       Map<FileInfo, double> outgoingFiles,
       Map<FileInfo, double> incomingFiles,
-      List<FileTransaction> transactions,
       Option<bool> showMembersDialog,
       Option<bool> showFilesDialog,
       Option<bool> showFileTransferDialog,
@@ -3857,7 +3819,6 @@ class __$HasJoinedCopyWithImpl<$Res>
     Object host = freezed,
     Object outgoingFiles = freezed,
     Object incomingFiles = freezed,
-    Object transactions = freezed,
     Object showMembersDialog = freezed,
     Object showFilesDialog = freezed,
     Object showFileTransferDialog = freezed,
@@ -3872,9 +3833,6 @@ class __$HasJoinedCopyWithImpl<$Res>
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
           : incomingFiles as Map<FileInfo, double>,
-      transactions: transactions == freezed
-          ? _value.transactions
-          : transactions as List<FileTransaction>,
       showMembersDialog: showMembersDialog == freezed
           ? _value.showMembersDialog
           : showMembersDialog as Option<bool>,
@@ -3908,7 +3866,6 @@ class _$_HasJoined implements _HasJoined {
       {@required this.host,
       @required this.outgoingFiles,
       @required this.incomingFiles,
-      @required this.transactions,
       @required this.showMembersDialog,
       @required this.showFilesDialog,
       @required this.showFileTransferDialog,
@@ -3917,7 +3874,6 @@ class _$_HasJoined implements _HasJoined {
       : assert(host != null),
         assert(outgoingFiles != null),
         assert(incomingFiles != null),
-        assert(transactions != null),
         assert(showMembersDialog != null),
         assert(showFilesDialog != null),
         assert(showFileTransferDialog != null),
@@ -3931,8 +3887,6 @@ class _$_HasJoined implements _HasJoined {
   @override
   final Map<FileInfo, double> incomingFiles;
   @override
-  final List<FileTransaction> transactions;
-  @override
   final Option<bool> showMembersDialog;
   @override
   final Option<bool> showFilesDialog;
@@ -3945,7 +3899,7 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   String toString() {
-    return 'CurrentCircleState.hasJoined(host: $host, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, transactions: $transactions, showMembersDialog: $showMembersDialog, showFilesDialog: $showFilesDialog, showFileTransferDialog: $showFileTransferDialog, transferType: $transferType, isLeaving: $isLeaving)';
+    return 'CurrentCircleState.hasJoined(host: $host, outgoingFiles: $outgoingFiles, incomingFiles: $incomingFiles, showMembersDialog: $showMembersDialog, showFilesDialog: $showFilesDialog, showFileTransferDialog: $showFileTransferDialog, transferType: $transferType, isLeaving: $isLeaving)';
   }
 
   @override
@@ -3960,9 +3914,6 @@ class _$_HasJoined implements _HasJoined {
             (identical(other.incomingFiles, incomingFiles) ||
                 const DeepCollectionEquality()
                     .equals(other.incomingFiles, incomingFiles)) &&
-            (identical(other.transactions, transactions) ||
-                const DeepCollectionEquality()
-                    .equals(other.transactions, transactions)) &&
             (identical(other.showMembersDialog, showMembersDialog) ||
                 const DeepCollectionEquality()
                     .equals(other.showMembersDialog, showMembersDialog)) &&
@@ -3986,7 +3937,6 @@ class _$_HasJoined implements _HasJoined {
       const DeepCollectionEquality().hash(host) ^
       const DeepCollectionEquality().hash(outgoingFiles) ^
       const DeepCollectionEquality().hash(incomingFiles) ^
-      const DeepCollectionEquality().hash(transactions) ^
       const DeepCollectionEquality().hash(showMembersDialog) ^
       const DeepCollectionEquality().hash(showFilesDialog) ^
       const DeepCollectionEquality().hash(showFileTransferDialog) ^
@@ -4007,7 +3957,6 @@ class _$_HasJoined implements _HasJoined {
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -4019,7 +3968,6 @@ class _$_HasJoined implements _HasJoined {
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -4032,16 +3980,8 @@ class _$_HasJoined implements _HasJoined {
     assert(hasStarted != null);
     assert(hasJoined != null);
     assert(hasFailed != null);
-    return hasJoined(
-        host,
-        outgoingFiles,
-        incomingFiles,
-        transactions,
-        showMembersDialog,
-        showFilesDialog,
-        showFileTransferDialog,
-        transferType,
-        isLeaving);
+    return hasJoined(host, outgoingFiles, incomingFiles, showMembersDialog,
+        showFilesDialog, showFileTransferDialog, transferType, isLeaving);
   }
 
   @override
@@ -4053,7 +3993,6 @@ class _$_HasJoined implements _HasJoined {
         Map<User, bool> members,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -4064,7 +4003,6 @@ class _$_HasJoined implements _HasJoined {
         User host,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -4075,16 +4013,8 @@ class _$_HasJoined implements _HasJoined {
   }) {
     assert(orElse != null);
     if (hasJoined != null) {
-      return hasJoined(
-          host,
-          outgoingFiles,
-          incomingFiles,
-          transactions,
-          showMembersDialog,
-          showFilesDialog,
-          showFileTransferDialog,
-          transferType,
-          isLeaving);
+      return hasJoined(host, outgoingFiles, incomingFiles, showMembersDialog,
+          showFilesDialog, showFileTransferDialog, transferType, isLeaving);
     }
     return orElse();
   }
@@ -4129,7 +4059,6 @@ abstract class _HasJoined implements CurrentCircleState {
       {@required User host,
       @required Map<FileInfo, double> outgoingFiles,
       @required Map<FileInfo, double> incomingFiles,
-      @required List<FileTransaction> transactions,
       @required Option<bool> showMembersDialog,
       @required Option<bool> showFilesDialog,
       @required Option<bool> showFileTransferDialog,
@@ -4139,7 +4068,6 @@ abstract class _HasJoined implements CurrentCircleState {
   User get host;
   Map<FileInfo, double> get outgoingFiles;
   Map<FileInfo, double> get incomingFiles;
-  List<FileTransaction> get transactions;
   Option<bool> get showMembersDialog;
   Option<bool> get showFilesDialog;
   Option<bool> get showFileTransferDialog;
@@ -4227,7 +4155,6 @@ class _$_HasFailed implements _HasFailed {
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -4239,7 +4166,6 @@ class _$_HasFailed implements _HasFailed {
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
-            List<FileTransaction> transactions,
             Option<bool> showMembersDialog,
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
@@ -4264,7 +4190,6 @@ class _$_HasFailed implements _HasFailed {
         Map<User, bool> members,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
@@ -4275,7 +4200,6 @@ class _$_HasFailed implements _HasFailed {
         User host,
         Map<FileInfo, double> outgoingFiles,
         Map<FileInfo, double> incomingFiles,
-        List<FileTransaction> transactions,
         Option<bool> showMembersDialog,
         Option<bool> showFilesDialog,
         Option<bool> showFileTransferDialog,
