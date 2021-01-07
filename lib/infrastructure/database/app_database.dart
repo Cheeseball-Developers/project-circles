@@ -1,4 +1,5 @@
 import 'package:injectable/injectable.dart';
+import 'package:logger/logger.dart';
 import 'package:moor_flutter/moor_flutter.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/infrastructure/files/file_info_dtos.dart';
@@ -35,10 +36,16 @@ class FileTransferItemDao extends DatabaseAccessor<AppDatabase>
     with _$FileTransferItemDaoMixin {
   FileTransferItemDao(AppDatabase db) : super(db);
 
+  final Logger logger = Logger();
+
   Stream<List<FileTransferItem>> get watchAllFileTransferItems =>
       select(fileTransferItems).watch();
 
+  Future<List<FileTransferItem>> get getAllFileTransferItems =>
+      select(fileTransferItems).get();
+
   void addFileTransferItem(FileTransferItem item) {
+    logger.d("Inserting Item");
     into(fileTransferItems).insert(item);
   }
 }
