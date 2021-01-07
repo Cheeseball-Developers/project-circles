@@ -22,11 +22,21 @@ class FilesHistoryBloc extends Bloc<FilesHistoryEvent, FilesHistoryState> {
 
   FilesHistoryBloc(this._database)
       : super(FilesHistoryState(failureOrFilesInfoOption: none())) {
-    fileTransferItemsStreamSubscription ??= _database
+    // TODO: Check viability of using a stream instead
+    /*fileTransferItemsStreamSubscription ??= _database
         .fileTransferItemDao.watchAllFileTransferItems
         .listen((List<FileTransferItem> data) {
+          logger.d("Got Files History Database Stream Data");
       final List<FileInfo> filesInfo = [];
       for (final item in data) {
+        final FileInfo info = FileInfoDto.fromFileTransferItem(item).toDomain();
+        filesInfo.add(info);
+      }
+      add(FilesHistoryEvent.addItems(items: filesInfo));
+    });*/
+    _database.fileTransferItemDao.getAllFileTransferItems.then((items) {
+      final List<FileInfo> filesInfo = [];
+      for (final item in items) {
         final FileInfo info = FileInfoDto.fromFileTransferItem(item).toDomain();
         filesInfo.add(info);
       }
@@ -40,7 +50,7 @@ class FilesHistoryBloc extends Bloc<FilesHistoryEvent, FilesHistoryState> {
   Stream<FilesHistoryState> mapEventToState(
     FilesHistoryEvent event,
   ) async* {
-    event.map(addItems: (e) async* {
+    yield* event.map(addItems: (e) async* {
       yield state.copyWith(failureOrFilesInfoOption: some(right(e.items)));
     }, exit: (_) async* {
       fileTransferItemsStreamSubscription?.cancel();

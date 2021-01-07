@@ -23,10 +23,8 @@ class FilesHistoryDialog extends StatelessWidget {
             (failureOrFilesInfo) => failureOrFilesInfo.fold(
               // TODO: Add proper failure text here
               (f) => const Text("Failure"),
-              (filesInfo) => ListView.builder(
-                itemBuilder: (context, index) =>
+              (filesInfo) =>
                     FileHistoryList(files: filesInfo, showOpen: true),
-              ),
             ),
           ),
         ),
