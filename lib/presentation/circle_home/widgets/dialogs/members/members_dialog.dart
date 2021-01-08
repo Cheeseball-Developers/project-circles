@@ -47,7 +47,7 @@ class MembersDialog extends StatelessWidget {
                             children: [
                               IconButton(
                                 onPressed: () =>
-                                    context.bloc<CurrentCircleBloc>().add(
+                                    context.read<CurrentCircleBloc>().add(
                                           CurrentCircleEvent.acceptOrReject(
                                               requestingUser:
                                                   users.keys.elementAt(index),
@@ -60,7 +60,7 @@ class MembersDialog extends StatelessWidget {
                               ),
                               IconButton(
                                 onPressed: () =>
-                                    context.bloc<CurrentCircleBloc>().add(
+                                    context.read<CurrentCircleBloc>().add(
                                           CurrentCircleEvent.acceptOrReject(
                                               requestingUser:
                                                   users.keys.elementAt(index),
@@ -74,13 +74,18 @@ class MembersDialog extends StatelessWidget {
                             ],
                           )
                         : IconButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                context.read<CurrentCircleBloc>().add(
+                                      CurrentCircleEvent.removeMember(
+                                        member: users.keys.elementAt(index),
+                                      ),
+                                    ),
                             icon: const Icon(
                               Icons.remove,
                               color: Colors.red,
                             ),
                           )
-                    : Container(), //TODO: Add function to remove user
+                    : Container(),
               ),
             ),
     );
