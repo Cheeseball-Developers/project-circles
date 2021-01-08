@@ -119,10 +119,10 @@ class _SearchButtonState extends State<SearchButton>
               onTap: !state.isLoading
                   ? state.isSearching
                       ? () => context
-                          .bloc<SearchBloc>()
+                          .read<SearchBloc>()
                           .add(const SearchEvent.stopSearching())
                       : () => context
-                          .bloc<SearchBloc>()
+                          .read<SearchBloc>()
                           .add(const SearchEvent.startSearching())
                   : () {},
               child: CircleAvatar(

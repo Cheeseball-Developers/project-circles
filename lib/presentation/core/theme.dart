@@ -72,11 +72,14 @@ ThemeData defaultTheme() {
       cardColor: Colors.white,
       appBarTheme: const AppBarTheme(color: Colors.blue),
       tabBarTheme: const TabBarTheme(
-          labelColor: Colors.white,
-          indicatorSize: TabBarIndicatorSize.label,
-          indicator: BoxDecoration(
-              border:
-                  Border(bottom: BorderSide(color: Colors.white, width: 2.0)))),
+        labelColor: Colors.white,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicator: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Colors.white, width: 2.0),
+          ),
+        ),
+      ),
       dialogBackgroundColor: Colors.white,
       bottomAppBarColor: Colors.blue,
       scaffoldBackgroundColor: Colors.white,
@@ -121,13 +124,51 @@ ThemeData darkTheme() {
             fontFamily: 'Quicksand'));
   }
 
+  TextTheme _accentTextTheme(TextTheme base) {
+    return base.copyWith(
+      bodyText2: const TextStyle(
+          color: Colors.white, fontSize: 14.0, fontFamily: 'Quicksand'),
+      headline6: const TextStyle(
+          color: Colors.white,
+          fontSize: 20.0,
+          fontFamily: 'Quicksand',
+          fontWeight: FontWeight.w500),
+      subtitle1: const TextStyle(
+          color: Colors.white,
+          fontSize: 16.0,
+          fontFamily: 'Quicksand',
+          fontWeight: FontWeight.w600),
+      subtitle2: const TextStyle(
+          color: Colors.white,
+          fontSize: 14.0,
+          fontFamily: 'Quicksand',
+          fontWeight: FontWeight.w600),
+      caption: const TextStyle(
+          color: Colors.white54,
+          fontSize: 12.0,
+          fontWeight: FontWeight.w300,
+          fontFamily: 'Quicksand'),
+    );
+  }
+
   final ThemeData base = ThemeData.dark();
   return base.copyWith(
       indicatorColor: Colors.teal,
       textTheme: _defaultTextTheme(base.textTheme),
+      accentTextTheme: _accentTextTheme(base.textTheme),
       primaryColor: Colors.black,
       accentColor: Colors.teal,
       cardColor: const Color(0xFF1F2A2A),
+      appBarTheme: const AppBarTheme(color: Color(0xFF1F2A2A)),
+      tabBarTheme: const TabBarTheme(
+        labelColor: Colors.white,
+        indicatorSize: TabBarIndicatorSize.label,
+        indicator: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(color: Colors.white, width: 2.0),
+          ),
+        ),
+      ),
       scaffoldBackgroundColor: Colors.black,
       iconTheme: const IconThemeData(color: Colors.teal),
       accentIconTheme: const IconThemeData(color: Colors.white),
