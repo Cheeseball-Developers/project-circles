@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/circle/circle_home/files_tab_view/files_tab_view_bloc.dart';
+import 'package:projectcircles/presentation/core/widgets/file_thumbnail.dart';
 
 class FileIcon extends StatelessWidget {
   final int index;
@@ -27,10 +28,7 @@ class FileIcon extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.image,
-                    size: 48.0,
-                  ),
+                  FileThumbnail(file: state.files.keys.elementAt(index)),
                   Text(
                     state.files.keys.elementAt(index).path.substring(
                         state.files.keys.elementAt(index).parent.path.length + 1),
