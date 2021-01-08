@@ -12,13 +12,18 @@ class MyTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: type == ButtonType.primary
-              ? Theme.of(context).buttonColor
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(8.0),
-          border: Border.all(color: Theme.of(context).buttonColor)),
+        color: type == ButtonType.primary
+            ? Theme.of(context).buttonColor
+            : Colors.transparent,
+        borderRadius: BorderRadius.circular(8.0),
+        border: Border.all(
+            color: type == ButtonType.tertiary
+                ? Colors.transparent
+                : Theme.of(context).buttonColor),
+      ),
       child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(8.0),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
@@ -34,4 +39,4 @@ class MyTextButton extends StatelessWidget {
   }
 }
 
-enum ButtonType { primary, secondary }
+enum ButtonType { primary, secondary, tertiary }
