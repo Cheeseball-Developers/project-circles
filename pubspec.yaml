@@ -36,6 +36,9 @@ dependencies:
   photo_manager:
   nearby_connections:
   device_info:
+  font_awesome_flutter:
+  mime_type:
+  video_thumbnail:
   video_player:
   chewie:
   flushbar:
