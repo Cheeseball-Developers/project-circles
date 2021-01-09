@@ -12,6 +12,7 @@ abstract class SettingsState with _$SettingsState {
       @required bool askBeforeReceiving,
       @required bool darkMode,
       @required bool isLoading,
+      @required bool isChangingName,
       @required Option<SettingsFailure> settingsFailureOption}) = _HasLoaded;
 
   const factory SettingsState.hasFailed(SettingsFailure failure) = _HasFailed;
