@@ -66,9 +66,18 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
               askBeforeReceiving: settingsObject.askBeforeReceiving,
               darkMode: settingsObject.darkMode,
               isLoading: false,
+              isChangingName: false,
               settingsFailureOption: none(),
             );
           },
+        );
+      },
+      changeName: (_) async* {
+        yield* state.maybeMap(
+          hasLoaded: (state) async* {
+            yield state.copyWith(isChangingName: true);
+          },
+          orElse: () async* {},
         );
       },
       nameChanged: (e) async* {

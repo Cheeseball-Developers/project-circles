@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/settings/settings_bloc.dart';
 import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
+import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
+import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 
 class NameFormPopUp extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey();
@@ -14,9 +16,12 @@ class NameFormPopUp extends StatelessWidget {
         builder: (context, state) => Center(
               child: Padding(
                 padding: const EdgeInsets.all(64.0),
-                child: Material(
-                    borderRadius: BorderRadius.circular(16.0),
-                    color: Theme.of(context).cardColor,
+                child: DialogLayout(
+
+                    dialogType: DialogType.withButtons,
+                    dialogButtonType: DialogButtonType.singleButton,
+                    primaryButtonText: 'Save',
+                    primaryOnTap: () => _formKey.currentState.save(),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
@@ -25,22 +30,23 @@ class NameFormPopUp extends StatelessWidget {
                           Form(
                             key: _formKey,
                             child: TextFormField(
+                              autofocus: true,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Name',
                                 hintStyle: Theme.of(context)
                                     .textTheme
-                                    .subtitle2
+                                    .subtitle1
                                     .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .subtitle2
+                                          .subtitle1
                                           .color
                                           .withOpacity(0.25),
                                     ),
                               ),
                               onSaved: (String name) {
-                                context.bloc<SettingsBloc>().add(
+                                context.read<SettingsBloc>().add(
                                       SettingsEvent.nameChanged(
                                         Name(name),
                                       ),
@@ -49,20 +55,6 @@ class NameFormPopUp extends StatelessWidget {
                               },
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(
-                              bottom: 8.0,
-                            ),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              MyTextButton(
-                                  type: ButtonType.primary,
-                                  text: 'Save',
-                                  onTap: () => _formKey.currentState.save())
-                            ],
-                          )
                         ],
                       ),
                     )),
