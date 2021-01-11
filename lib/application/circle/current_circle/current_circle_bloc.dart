@@ -117,17 +117,19 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
               final Either<ConnectionFailure, Unit> acceptOrFailure =
                   await _nearbyConnections.acceptConnection(
                       endId: request.requestingUser.uid.getOrCrash());
-              state.members.update(request.requestingUser, (value) => false);
+              final Map<User, bool> members = Map.from(state.members);
+              members.update(request.requestingUser, (value) => false);
               yield state.copyWith(
-                  members: state.members, isAcceptingRequest: false);
+                  members: members, isAcceptingRequest: false);
               _nearbyConnections.members.add(request.requestingUser);
             } else {
               //reject a connection
               final Either<ConnectionFailure, Unit> rejectOrFailure =
                   await _nearbyConnections.rejectConnection(
                       endId: request.requestingUser.uid.getOrCrash());
-              state.members.remove(request.requestingUser);
-              yield state.copyWith(members: state.members);
+              final Map<User, bool> members = Map.from(state.members);
+              members.remove(request.requestingUser);
+              yield state.copyWith(members: members);
             }
           },
           showFilesDialog: (_) async* {
