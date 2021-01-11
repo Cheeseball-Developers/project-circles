@@ -19,18 +19,18 @@ class FileTransferDialog extends StatelessWidget {
         dialogType: state.map(
           initial: (_) => DialogType.empty,
           outgoingFilesConfirmation: (_) => DialogType.full,
-          awaitingSendApproval: (_) => DialogType.withTitle,
+          awaitingSendApproval: (_) => DialogType.full,
           incomingFilesConfirmation: (_) => DialogType.full,
-          transferringFiles: (_) => DialogType.withTitle,
+          transferringFiles: (_) => DialogType.full,
           transferComplete: (_) => DialogType.full,
           hasFailed: (_) => DialogType.empty,
         ),
         dialogButtonType: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => DialogButtonType.doubleButton,
-          awaitingSendApproval: (_) => null,
+          awaitingSendApproval: (_) => DialogButtonType.center,
           incomingFilesConfirmation: (_) => DialogButtonType.doubleButton,
-          transferringFiles: (_) => null,
+          transferringFiles: (_) => DialogButtonType.center,
           transferComplete: (_) => DialogButtonType.singleButton,
           hasFailed: (_) => null,
         ),
@@ -46,9 +46,9 @@ class FileTransferDialog extends StatelessWidget {
         primaryButtonText: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => 'Send',
-          awaitingSendApproval: (_) => null,
+          awaitingSendApproval: (_) => 'Cancel',
           incomingFilesConfirmation: (_) => 'Receive',
-          transferringFiles: (_) => null,
+          transferringFiles: (_) => 'Cancel',
           transferComplete: (_) => 'Done',
           hasFailed: (_) => null,
         ),
@@ -66,13 +66,13 @@ class FileTransferDialog extends StatelessWidget {
           outgoingFilesConfirmation: (_) => () => context
               .bloc<FileTransferBloc>()
               .add(const FileTransferEvent.sendFilesInfo()),
-          awaitingSendApproval: (_) => null,
+          awaitingSendApproval: (_) => () {}, // TODO: Add cancellation callback
           incomingFilesConfirmation: (_) => () => context
               .bloc<FileTransferBloc>()
               .add(const FileTransferEvent.confirmIncomingFiles(
                 acceptOrReject: true,
               )),
-          transferringFiles: (_) => null,
+          transferringFiles: (_) => () {}, // TODO: Add cancellation callback
           transferComplete: (_) => () {
             context
                 .read<FileTransferBloc>()
