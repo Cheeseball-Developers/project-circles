@@ -8,6 +8,8 @@ abstract class SearchState with _$SearchState {
       @required
           bool isLoading,
       @required
+          bool isCancelling,
+      @required
           bool showAllDiscoveredDevicesPopUp,
       @required
           bool showRequestConnectionPopUp,
@@ -23,6 +25,7 @@ abstract class SearchState with _$SearchState {
   factory SearchState.initial() => SearchState(
       isSearching: true,
       isLoading: false,
+      isCancelling: false,
       showAllDiscoveredDevicesPopUp: false,
       showRequestConnectionPopUp: false,
       connectionFailureOrSuccessOption: none(),

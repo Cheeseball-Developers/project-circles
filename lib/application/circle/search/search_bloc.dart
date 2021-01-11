@@ -135,6 +135,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             connectionFailureOrSuccessOption: some(e.connectionStatus));
       },
       endConnectionRequest: (e) async* {
+        yield state.copyWith(
+          isCancelling: true,
+        );
+
         streamSubscriptionOnConnectionResult?.cancel();
 
         final List<User> discoveredDevices = List.from(state.discoveredDevices);
@@ -142,15 +146,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             endpointId: e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);
         yield state.copyWith(
-            connectionFailureOrSuccessOption: none(),
-            discoveredDevices: discoveredDevices);
+          isCancelling: false,
+          connectionFailureOrSuccessOption: none(),
+          discoveredDevices: discoveredDevices,
+        );
       },
     );
   }
 }
-
-//TODO: Add somewhere in the ui to stop discovery as soon as the preferred devices are found
-/// It is recommended to call this method
-/// once you have connected to an endPoint
-/// as discovery uses heavy radio operations
-/// which may affect connection speed and integrity

@@ -24,7 +24,7 @@ import 'infrastructure/circle/media_repository.dart';
 import 'application/circle/circle_home/media_tab_view/media_tab_view_bloc.dart';
 import 'infrastructure/settings/my_shared_preferences.dart';
 import 'infrastructure/nearby_connections/nearby_connections_repository.dart';
-import 'application/circle/join_or_create_circle/search_bloc.dart';
+import 'application/circle/search/search_bloc.dart';
 import 'application/settings/settings_bloc.dart';
 
 /// adds generated dependencies
