@@ -22,11 +22,12 @@ abstract class FileTransferState with _$FileTransferState {
   const factory FileTransferState.transferringFiles({
     @required FileTransferType type,
     @required Map<FileInfo, double> filesMap,
+    @required List<TransferProgressInfo> transferProgressInfo,
   }) = _TransferringFiles;
 
   const factory FileTransferState.transferComplete({
     @required FileTransferType type,
-    @required Map<FileInfo, bool> filesMap,
+    @required List<TransferProgressInfo> transferProgressInfo,
   }) = _TransferComplete;
 
   const factory FileTransferState.hasFailed(

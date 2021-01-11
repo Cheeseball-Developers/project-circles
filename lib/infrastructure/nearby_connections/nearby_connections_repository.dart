@@ -432,10 +432,11 @@ class NearbyConnections {
       }
 
       if (str.contains('@')) {
-        final responseGot = str.split('@').last;
-        if (responseGot == 'true') {
-          response.sink.add(endId);
-        } else {
+        final String responseGot = str.split('@').last;
+        final String r = '$endId@$responseGot';
+
+        response.sink.add(r);
+        if (responseGot == 'false') {
           logger.i('$endId denied');
         }
       }
@@ -476,7 +477,8 @@ class NearbyConnections {
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: payloadTransferUpdate.bytesTransferred /
-                payloadTransferUpdate.totalBytes));
+                payloadTransferUpdate.totalBytes,
+            endId: endId));
       }
       logger.d('Total Bytes: ${payloadTransferUpdate.totalBytes}');
       logger.d(
