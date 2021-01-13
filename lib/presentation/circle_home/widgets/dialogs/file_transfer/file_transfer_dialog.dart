@@ -115,11 +115,11 @@ class FileTransferDialog extends StatelessWidget {
           awaitingSendApproval: (state) => FilesInfoList(state.files.toList()),
           incomingFilesConfirmation: (state) =>
               FilesInfoList(state.files.toList()),
-          transferringFiles: (state) => FileTransferList(state.filesMap),
-          transferComplete: (state) => FileHistoryList(
-            files: state.filesMap.keys.toList(),
+          transferringFiles: (state) => FileTransferList(state.transferProgressInfo),
+          transferComplete: (state) => Container(), /*FileHistoryList(
+            files: state.transferProgressInfo,
             showOpen: state.type == const FileTransferType.incoming(),
-          ),
+          ),*/
           hasFailed: (state) => state.failure.map(
             emptySelection: (_) => const EmptyPopUpPlaceholder(
               icon: Icons.file_copy_rounded,
