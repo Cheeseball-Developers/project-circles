@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -40,12 +39,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   // File transfer variables
   Option<int> lastPayloadId = none();
   List<String> acceptedFileTransferUsers;
-
-  List<TransferProgressInfo> fileProgressInfo = [];
-
-  int fileTransferIndex = 0;
-
-  int count = 0;
 
   final logger = Logger();
 
@@ -111,50 +104,59 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             //yeild state accordingly
           },
           sendFilesInfo: (e) async* {
-            final Set<FileInfo> files = state.filesOption
-                .getOrElse(() => null); // TODO: Implement error state
+            final Map<FileInfo, double> filesMap = {};
+            final List<TransferProgressInfo> transferProgressInfos = [];
+
+            for (final fileInfo in state.filesOption.getOrElse(() => null)) {
+              filesMap.addAll({fileInfo: 0.0});
+            } // TODO: Implement error state
 
             _nearbyConnections.sendFilenameSizeBytesPayload(
               users: state.users,
-              outgoingFiles: files.toList(),
+              outgoingFiles: filesMap.keys.toList(),
             );
-            state.users.forEach((user) {
-              fileProgressInfo.add(TransferProgressInfo(
-                  endId: user.uid.getOrCrash(),
-                  acceptOrRejectOption: none(),
-                  fileTransferIndex: 0,
-                  filesMap: null));
-            });
 
-            respondingUserStreamSubscription =
+            for (final user in state.users) {
+              transferProgressInfos.add(TransferProgressInfo(
+                filesMap: filesMap,
+                user: user,
+                fileTransferIndex: -1,
+                acceptOrRejectOption: none(),
+              ));
+            }
+
+            respondingUserStreamSubscription ??=
                 _nearbyConnections.responseStream.listen((event) {
               final List<String> response = event.split('@');
               logger.d(
                   'Response received from ${response.first} : ${response.last}');
-              fileProgressInfo.forEach((TransferProgressInfo element) {
-                if (element.endId == response.first) {
+
+              for (final int index
+                  in Iterable.generate(transferProgressInfos.length)) {
+                if (transferProgressInfos[index].user.uid.getOrCrash() ==
+                    response.first) {
                   if (response.last == 'true') {
-                    element =
-                        element.copyWith(acceptOrRejectOption: some(true));
+                    transferProgressInfos[index] = transferProgressInfos[index]
+                        .copyWith(acceptOrRejectOption: some(true));
                     add(FileTransferEvent.sendFiles(
                         endPointId: response.first));
                   } else {
                     //TODO: Yield state accordingly
-                    element =
-                        element.copyWith(acceptOrRejectOption: some(false));
+                    transferProgressInfos[index] = transferProgressInfos[index]
+                        .copyWith(acceptOrRejectOption: some(false));
                   }
                 }
-              });
+              }
             });
 
-            yield FileTransferState.awaitingSendApproval(
-              files: files,
+            yield FileTransferState.sendingFiles(
+              transferProgressInfos: transferProgressInfos,
             );
           },
           orElse: () async* {},
         );
       },
-      awaitingSendApproval: (state) async* {
+      sendingFiles: (state) async* {
         // TODO: This merely serves as a temporary fix to a larger problem, replace this
         progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
@@ -167,26 +169,29 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         // TODO: till here
 
         yield* event.maybeMap(
-          sendFiles: (e) async* {
-            final List<File> appFiles = await _appsRepository.getFiles();
-            final List<File> mediaFiles = await _mediaRepository.getFiles();
-            final List<File> files = _filesRepository.getFiles();
-
-            final Map<FileInfo, double> filesMap = {};
-
-            for (final fileInfo in state.files) {
-              filesMap.putIfAbsent(fileInfo, () => 0.0);
+          updateProgress: (e) async* {
+            final transferProgressInfos = state.transferProgressInfos;
+            logger.d(
+                'Update progress event called, index value at ${transferProgressInfos[0].fileTransferIndex}');
+            for (final transferProgressInfo in transferProgressInfos) {
+              if (transferProgressInfo.user.uid.getOrCrash() ==
+                  e.payloadInfo.endId) {
+                transferProgressInfo.filesMap.update(
+                    transferProgressInfo.filesMap.keys
+                        .elementAt(transferProgressInfo.fileTransferIndex),
+                    (value) => e.payloadInfo.progress);
+              }
             }
-
-            _nearbyConnections.sendFilePayload(
-              receiver: e.endPointId,
-              files: appFiles + mediaFiles + files,
+            yield state.copyWith(transferProgressInfos: transferProgressInfos);
+          },
+          abortFileTransfer: (e) async* {
+            // TODO: Implement this
+          },
+          filesSent: (e) async* {
+            yield FileTransferState.transferComplete(
+              type: const FileTransferType.outgoing(),
+              transferProgressInfo: state.transferProgressInfos,
             );
-
-            yield FileTransferState.transferringFiles(
-                type: const FileTransferType.outgoing(),
-                filesMap: filesMap,
-                transferProgressInfo: fileProgressInfo);
           },
           orElse: () async* {},
         );
@@ -207,19 +212,25 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 response: e.acceptOrReject, endId: state.endId);
 
             final Map<FileInfo, double> filesMap = {};
+
             for (final fileInfo in state.files) {
               filesMap.putIfAbsent(fileInfo, () => 0.0);
             }
 
-            yield FileTransferState.transferringFiles(
-                type: const FileTransferType.incoming(),
+            final transferProgressInfo = TransferProgressInfo(
+                user: null,
                 filesMap: filesMap,
-                transferProgressInfo: fileProgressInfo);
+                fileTransferIndex: -1,
+                acceptOrRejectOption: none());
+
+            yield FileTransferState.receivingFiles(
+              transferProgressInfo: transferProgressInfo,
+            );
           },
           orElse: () async* {},
         );
       },
-      transferringFiles: (state) async* {
+      receivingFiles: (state) async* {
         // Cancelling stream subscriptions that are no longer needed
         incomingFileInfoStreamSubscription?.cancel();
         respondingUserStreamSubscription?.cancel();
@@ -238,27 +249,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
-          logger.d("Count: $count");
-          count += 1;
-          fileProgressInfo.forEach((element) {
-            if (element.endId == event) {
-              final int cou = element.fileTransferIndex;
-              element = element.copyWith(fileTransferIndex: cou + 1);
-            }
-          });
-          //fileTransferIndex++;
-
-          if (state.type == const FileTransferType.outgoing()) {
-            if (count == state.filesMap.length) {
-              debugPrint("FileSharing (outgoing) Successful to $event");
-              add(const FileTransferEvent.filesSent());
-            }
-          } else if (state.type == const FileTransferType.incoming()) {
-            if (count == state.filesMap.length) {
-              debugPrint("FileSharing (incoming) Successful from $event");
-              add(const FileTransferEvent.filesReceived());
-            }
-          }
+          add(const FileTransferEvent.incrementFileTransferIndex());
         });
 
         // Setting up variables to match incoming payloads to files
@@ -266,38 +257,39 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         yield* event.maybeMap(
           updateProgress: (e) async* {
             logger.d(
-                'Update progress event called, index value at $fileTransferIndex');
-            fileProgressInfo.forEach((element) {
-              element = element.copyWith(filesMap: state.filesMap);
-              if (element.endId == e.payloadInfo.endId) {
-                element.filesMap.update(
-                    element.filesMap.keys.elementAt(element.fileTransferIndex),
-                    (value) => e.payloadInfo.progress);
-              }
-            });
+                'Update progress event called, index value at ${state.transferProgressInfo.fileTransferIndex}');
+            final Map<FileInfo, double> filesMap =
+                Map.from(state.transferProgressInfo.filesMap);
+            filesMap.update(
+                filesMap.keys
+                    .elementAt(state.transferProgressInfo.fileTransferIndex),
+                (value) => e.payloadInfo.progress);
             //final Map<FileInfo, double> filesMap = Map.from(state.filesMap);
             //TODO was thinking ki
-            yield state.copyWith(transferProgressInfo: fileProgressInfo);
+            yield state.copyWith(
+                transferProgressInfo: TransferProgressInfo(
+              user: state.transferProgressInfo.user,
+              filesMap: filesMap,
+              acceptOrRejectOption:
+                  state.transferProgressInfo.acceptOrRejectOption,
+              fileTransferIndex: state.transferProgressInfo.fileTransferIndex,
+            ));
           },
-          filesSent: (e) async* {
-            final Map<FileInfo, bool> filesMap = {};
-            for (final fileInfo in state.filesMap.keys) {
-              filesMap.addAll({fileInfo: true});
+          incrementFileTransferIndex: (_) async* {
+            if (state.transferProgressInfo.fileTransferIndex-1 == state.transferProgressInfo.filesMap.length) {
+              debugPrint("FileSharing (incoming) Successful from $event");
+              add(const FileTransferEvent.filesReceived());
+            } else {
+              yield state.copyWith(
+                  transferProgressInfo: state.transferProgressInfo.copyWith(
+                      fileTransferIndex:
+                      state.transferProgressInfo.fileTransferIndex + 1));
             }
-
-            yield FileTransferState.transferComplete(
-              type: const FileTransferType.outgoing(),
-              transferProgressInfo: fileProgressInfo,
-            );
           },
           filesReceived: (e) async* {
-            final Map<FileInfo, bool> filesMap = {};
-            for (final fileInfo in state.filesMap.keys) {
-              filesMap.addAll({fileInfo: true});
-            }
             yield FileTransferState.transferComplete(
                 type: const FileTransferType.incoming(),
-                transferProgressInfo: fileProgressInfo);
+                transferProgressInfo: [state.transferProgressInfo]);
           },
           orElse: () async* {},
         );

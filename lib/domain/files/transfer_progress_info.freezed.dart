@@ -15,12 +15,12 @@ class _$TransferProgressInfoTearOff {
 
 // ignore: unused_element
   _TransferProgressInfo call(
-      {@required String endId,
+      {@required User user,
       @required Option<bool> acceptOrRejectOption,
       @required int fileTransferIndex,
       @required Map<FileInfo, double> filesMap}) {
     return _TransferProgressInfo(
-      endId: endId,
+      user: user,
       acceptOrRejectOption: acceptOrRejectOption,
       fileTransferIndex: fileTransferIndex,
       filesMap: filesMap,
@@ -34,7 +34,7 @@ const $TransferProgressInfo = _$TransferProgressInfoTearOff();
 
 /// @nodoc
 mixin _$TransferProgressInfo {
-  String get endId;
+  User get user;
   Option<bool> get acceptOrRejectOption;
   int get fileTransferIndex;
   Map<FileInfo, double> get filesMap;
@@ -48,10 +48,12 @@ abstract class $TransferProgressInfoCopyWith<$Res> {
           $Res Function(TransferProgressInfo) then) =
       _$TransferProgressInfoCopyWithImpl<$Res>;
   $Res call(
-      {String endId,
+      {User user,
       Option<bool> acceptOrRejectOption,
       int fileTransferIndex,
       Map<FileInfo, double> filesMap});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -65,13 +67,13 @@ class _$TransferProgressInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object endId = freezed,
+    Object user = freezed,
     Object acceptOrRejectOption = freezed,
     Object fileTransferIndex = freezed,
     Object filesMap = freezed,
   }) {
     return _then(_value.copyWith(
-      endId: endId == freezed ? _value.endId : endId as String,
+      user: user == freezed ? _value.user : user as User,
       acceptOrRejectOption: acceptOrRejectOption == freezed
           ? _value.acceptOrRejectOption
           : acceptOrRejectOption as Option<bool>,
@@ -83,6 +85,16 @@ class _$TransferProgressInfoCopyWithImpl<$Res>
           : filesMap as Map<FileInfo, double>,
     ));
   }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -93,10 +105,13 @@ abstract class _$TransferProgressInfoCopyWith<$Res>
       __$TransferProgressInfoCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String endId,
+      {User user,
       Option<bool> acceptOrRejectOption,
       int fileTransferIndex,
       Map<FileInfo, double> filesMap});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -112,13 +127,13 @@ class __$TransferProgressInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object endId = freezed,
+    Object user = freezed,
     Object acceptOrRejectOption = freezed,
     Object fileTransferIndex = freezed,
     Object filesMap = freezed,
   }) {
     return _then(_TransferProgressInfo(
-      endId: endId == freezed ? _value.endId : endId as String,
+      user: user == freezed ? _value.user : user as User,
       acceptOrRejectOption: acceptOrRejectOption == freezed
           ? _value.acceptOrRejectOption
           : acceptOrRejectOption as Option<bool>,
@@ -135,18 +150,18 @@ class __$TransferProgressInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_TransferProgressInfo extends _TransferProgressInfo {
   const _$_TransferProgressInfo(
-      {@required this.endId,
+      {@required this.user,
       @required this.acceptOrRejectOption,
       @required this.fileTransferIndex,
       @required this.filesMap})
-      : assert(endId != null),
+      : assert(user != null),
         assert(acceptOrRejectOption != null),
         assert(fileTransferIndex != null),
         assert(filesMap != null),
         super._();
 
   @override
-  final String endId;
+  final User user;
   @override
   final Option<bool> acceptOrRejectOption;
   @override
@@ -156,15 +171,15 @@ class _$_TransferProgressInfo extends _TransferProgressInfo {
 
   @override
   String toString() {
-    return 'TransferProgressInfo(endId: $endId, acceptOrRejectOption: $acceptOrRejectOption, fileTransferIndex: $fileTransferIndex, filesMap: $filesMap)';
+    return 'TransferProgressInfo(user: $user, acceptOrRejectOption: $acceptOrRejectOption, fileTransferIndex: $fileTransferIndex, filesMap: $filesMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _TransferProgressInfo &&
-            (identical(other.endId, endId) ||
-                const DeepCollectionEquality().equals(other.endId, endId)) &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)) &&
             (identical(other.acceptOrRejectOption, acceptOrRejectOption) ||
                 const DeepCollectionEquality().equals(
                     other.acceptOrRejectOption, acceptOrRejectOption)) &&
@@ -179,7 +194,7 @@ class _$_TransferProgressInfo extends _TransferProgressInfo {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(endId) ^
+      const DeepCollectionEquality().hash(user) ^
       const DeepCollectionEquality().hash(acceptOrRejectOption) ^
       const DeepCollectionEquality().hash(fileTransferIndex) ^
       const DeepCollectionEquality().hash(filesMap);
@@ -193,13 +208,13 @@ class _$_TransferProgressInfo extends _TransferProgressInfo {
 abstract class _TransferProgressInfo extends TransferProgressInfo {
   const _TransferProgressInfo._() : super._();
   const factory _TransferProgressInfo(
-      {@required String endId,
+      {@required User user,
       @required Option<bool> acceptOrRejectOption,
       @required int fileTransferIndex,
       @required Map<FileInfo, double> filesMap}) = _$_TransferProgressInfo;
 
   @override
-  String get endId;
+  User get user;
   @override
   Option<bool> get acceptOrRejectOption;
   @override

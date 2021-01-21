@@ -10,20 +10,18 @@ abstract class FileTransferState with _$FileTransferState {
     @required List<User> users,
   }) = _OutgoingFilesConfirmation;
 
-  const factory FileTransferState.awaitingSendApproval({
-    @required Set<FileInfo> files,
-  }) = _AwaitingSendApproval;
-
   const factory FileTransferState.incomingFilesConfirmation({
     @required Set<FileInfo> files,
     @required String endId,
   }) = _IncomingFilesConfirmation;
 
-  const factory FileTransferState.transferringFiles({
-    @required FileTransferType type,
-    @required Map<FileInfo, double> filesMap,
-    @required List<TransferProgressInfo> transferProgressInfo,
-  }) = _TransferringFiles;
+  const factory FileTransferState.sendingFiles({
+    @required List<TransferProgressInfo> transferProgressInfos,
+  }) = _SendingFiles;
+
+  const factory FileTransferState.receivingFiles({
+    @required TransferProgressInfo transferProgressInfo,
+  }) = _ReceivingFiles;
 
   const factory FileTransferState.transferComplete({
     @required FileTransferType type,

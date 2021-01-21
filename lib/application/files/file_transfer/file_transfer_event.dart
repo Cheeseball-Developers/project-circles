@@ -20,7 +20,8 @@ abstract class FileTransferEvent with _$FileTransferEvent {
   const factory FileTransferEvent.fileInfoReceived({FileInfo fileInfo}) =
       _FileInfoReceived;
 
-  const factory FileTransferEvent.endIdReceived({String endId}) = _EndIdReceived;
+  const factory FileTransferEvent.endIdReceived({String endId}) =
+      _EndIdReceived;
 
   const factory FileTransferEvent.confirmIncomingFiles({
     @required bool acceptOrReject,
@@ -30,7 +31,12 @@ abstract class FileTransferEvent with _$FileTransferEvent {
     @required PayloadInfo payloadInfo,
   }) = _UpdateProgress;
 
+  const factory FileTransferEvent.incrementFileTransferIndex() = _IncrementFileTransferIndex;
+
   const factory FileTransferEvent.filesReceived() = _FilesReceived;
+
+  const factory FileTransferEvent.abortFileTransfer({@required User user}) =
+      _AbortFileTransfer;
 
   const factory FileTransferEvent.reset() = _Reset;
 }
