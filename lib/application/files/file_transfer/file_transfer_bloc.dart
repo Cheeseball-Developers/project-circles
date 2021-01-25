@@ -249,6 +249,10 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
+              logger.d(
+                  'File recieved  event called, index value at ${state.transferProgressInfo.fileTransferIndex}');
+              final Map<FileInfo, double> filesMap = Map.from(state.transferProgressInfo.filesMap);
+
           add(const FileTransferEvent.incrementFileTransferIndex());
         });
 
