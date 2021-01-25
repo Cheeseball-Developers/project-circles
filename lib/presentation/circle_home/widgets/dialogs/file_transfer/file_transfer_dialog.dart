@@ -2,14 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
-import 'package:projectcircles/domain/files/file_transfer_type.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/file_transfer_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_info_list.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/transfer_progress_info_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
-import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/file_history_list.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
-import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
 
 class FileTransferDialog extends StatelessWidget {
   @override
@@ -19,60 +16,63 @@ class FileTransferDialog extends StatelessWidget {
         dialogType: state.map(
           initial: (_) => DialogType.empty,
           outgoingFilesConfirmation: (_) => DialogType.full,
-          awaitingSendApproval: (_) => DialogType.full,
           incomingFilesConfirmation: (_) => DialogType.full,
-          transferringFiles: (_) => DialogType.full,
+          sendingFiles: (_) => DialogType.full,
+          receivingFiles: (_) => DialogType.full,
           transferComplete: (_) => DialogType.full,
           hasFailed: (_) => DialogType.empty,
         ),
         dialogButtonType: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => DialogButtonType.doubleButton,
-          awaitingSendApproval: (_) => DialogButtonType.center,
           incomingFilesConfirmation: (_) => DialogButtonType.doubleButton,
-          transferringFiles: (_) => DialogButtonType.center,
+          sendingFiles: (_) => DialogButtonType.center,
+          receivingFiles: (_) => DialogButtonType.center,
           transferComplete: (_) => DialogButtonType.singleButton,
           hasFailed: (_) => null,
         ),
         title: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => 'Send these files?',
-          awaitingSendApproval: (_) => 'Waiting to send',
           incomingFilesConfirmation: (_) => 'Receive these files?',
-          transferringFiles: (_) => 'Transferring files',
+          sendingFiles: (_) => 'Sending Files',
+          receivingFiles: (_) => 'Receiving Files',
           transferComplete: (_) => 'Transfer Complete',
           hasFailed: (_) => null,
         ),
         primaryButtonText: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => 'Send',
-          awaitingSendApproval: (_) => 'Cancel',
           incomingFilesConfirmation: (_) => 'Receive',
-          transferringFiles: (_) => 'Cancel',
+          sendingFiles: (_) => 'Cancel',
+          receivingFiles: (_) => 'Cancel',
           transferComplete: (_) => 'Done',
           hasFailed: (_) => null,
         ),
         secondaryButtonText: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => 'Cancel',
-          awaitingSendApproval: (_) => null,
           incomingFilesConfirmation: (_) => 'Cancel',
-          transferringFiles: (_) => null,
+          sendingFiles: (_) => null,
+          receivingFiles: (_) => null,
           transferComplete: (_) => null,
           hasFailed: (_) => null,
         ),
         primaryOnTap: state.map(
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => () => context
-              .bloc<FileTransferBloc>()
+              .read<FileTransferBloc>()
               .add(const FileTransferEvent.sendFilesInfo()),
-          awaitingSendApproval: (_) => () {}, // TODO: Add cancellation callback
+          // TODO: Add cancellation callback
           incomingFilesConfirmation: (_) => () => context
-              .bloc<FileTransferBloc>()
+              .read<FileTransferBloc>()
               .add(const FileTransferEvent.confirmIncomingFiles(
                 acceptOrReject: true,
               )),
-          transferringFiles: (_) => () {}, // TODO: Add cancellation callback
+          sendingFiles: (_) => () {},
+          // TODO: Add cancellation callback
+          receivingFiles: (_) => () {},
+          // TODO: Add cancellation callback
           transferComplete: (_) => () {
             context
                 .read<FileTransferBloc>()
@@ -85,12 +85,12 @@ class FileTransferDialog extends StatelessWidget {
           initial: (_) => null,
           outgoingFilesConfirmation: (_) =>
               () => ExtendedNavigator.of(context).pop(),
-          awaitingSendApproval: (_) => null,
           incomingFilesConfirmation: (_) => () => context
               .bloc<FileTransferBloc>()
               .add(const FileTransferEvent.confirmIncomingFiles(
                   acceptOrReject: false)),
-          transferringFiles: (_) => null,
+          sendingFiles: (_) => null,
+          receivingFiles: (_) => null,
           transferComplete: (_) => null,
           hasFailed: (_) => null,
         ),
@@ -112,11 +112,19 @@ class FileTransferDialog extends StatelessWidget {
             ),
             (files) => FilesInfoList(files.toList()),
           ),
-          awaitingSendApproval: (state) => FilesInfoList(state.files.toList()),
           incomingFilesConfirmation: (state) =>
               FilesInfoList(state.files.toList()),
-          transferringFiles: (state) => FileTransferList(state.transferProgressInfo),
-          transferComplete: (state) => Container(), /*FileHistoryList(
+          sendingFiles: (state) => ListView.builder(
+            itemCount: state.transferProgressInfos.length,
+            itemBuilder: (context, index) => TransferProgressInfoList(
+              transferProgressInfo: state.transferProgressInfos[index],
+            ),
+          ),
+          receivingFiles: (state) => TransferProgressInfoList(
+            transferProgressInfo: state.transferProgressInfo,
+          ),
+          transferComplete: (state) => Container(),
+          /*FileHistoryList(
             files: state.transferProgressInfo,
             showOpen: state.type == const FileTransferType.incoming(),
           ),*/
