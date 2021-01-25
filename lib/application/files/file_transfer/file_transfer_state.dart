@@ -12,7 +12,7 @@ abstract class FileTransferState with _$FileTransferState {
 
   const factory FileTransferState.incomingFilesConfirmation({
     @required Set<FileInfo> files,
-    @required String endId,
+    @required User user,
   }) = _IncomingFilesConfirmation;
 
   const factory FileTransferState.sendingFiles({

@@ -115,6 +115,7 @@ class FileTransferDialog extends StatelessWidget {
           incomingFilesConfirmation: (state) =>
               FilesInfoList(state.files.toList()),
           sendingFiles: (state) => ListView.builder(
+            shrinkWrap: true,
             itemCount: state.transferProgressInfos.length,
             itemBuilder: (context, index) => TransferProgressInfoList(
               transferProgressInfo: state.transferProgressInfos[index],

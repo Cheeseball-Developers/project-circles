@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
+import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
+import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/domain/files/transfer_progress_info.dart';
 import 'package:projectcircles/domain/files/file_transfer_failure.dart';
@@ -16,6 +18,7 @@ import 'package:projectcircles/infrastructure/circle/apps_repository.dart';
 import 'package:projectcircles/infrastructure/circle/files_repository.dart';
 import 'package:projectcircles/infrastructure/circle/media_repository.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
+import 'package:projectcircles/injection.dart';
 
 part 'file_transfer_event.dart';
 
@@ -89,7 +92,26 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           },
           endIdReceived: (e) async* {
             yield FileTransferState.incomingFilesConfirmation(
-                files: state.incomingFileInfo, endId: e.endId);
+              files: state.incomingFileInfo,
+              user: getIt<CurrentCircleBloc>().state.maybeMap(
+                hasStarted: (state) {
+                  for (final user in state.members.keys) {
+                    if (user.uid.getOrCrash() == e.endId) {
+                      return user;
+                    }
+                  }
+                  return User(
+                    name: Name('Error'),
+                    uid: UniqueId.fromUniqueString('ewopifewoi'),
+                  );
+                },
+                    hasJoined: (state) => state.host,
+                    orElse: () => User(
+                      name: Name('Error'),
+                      uid: UniqueId.fromUniqueString('ewopifewoi'),
+                    ),
+                  ),
+            );
           },
           orElse: () async* {},
         );
@@ -204,12 +226,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             logger.d("Files to be received are ${e.fileInfo}");
             yield FileTransferState.incomingFilesConfirmation(
               files: incomingFiles,
-              endId: state.endId,
+              user: state.user,
             );
           },
           confirmIncomingFiles: (e) async* {
             _nearbyConnections.acceptOrRejectFiles(
-                response: e.acceptOrReject, endId: state.endId);
+                response: e.acceptOrReject, endId: state.user.uid.getOrCrash());
 
             final Map<FileInfo, double> filesMap = {};
 
@@ -218,10 +240,11 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             }
 
             final transferProgressInfo = TransferProgressInfo(
-                user: null,
-                filesMap: filesMap,
-                fileTransferIndex: -1,
-                acceptOrRejectOption: none());
+              user: state.user,
+              filesMap: filesMap,
+              fileTransferIndex: 0,
+              acceptOrRejectOption: none(),
+            );
 
             yield FileTransferState.receivingFiles(
               transferProgressInfo: transferProgressInfo,
@@ -249,9 +272,10 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
-              logger.d(
-                  'File recieved  event called, index value at ${state.transferProgressInfo.fileTransferIndex}');
-              final Map<FileInfo, double> filesMap = Map.from(state.transferProgressInfo.filesMap);
+          logger.d(
+              'File recieved  event called, index value at ${state.transferProgressInfo.fileTransferIndex}');
+          final Map<FileInfo, double> filesMap =
+              Map.from(state.transferProgressInfo.filesMap);
 
           add(const FileTransferEvent.incrementFileTransferIndex());
         });
@@ -280,14 +304,15 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             ));
           },
           incrementFileTransferIndex: (_) async* {
-            if (state.transferProgressInfo.fileTransferIndex-1 == state.transferProgressInfo.filesMap.length) {
+            if (state.transferProgressInfo.fileTransferIndex - 1 ==
+                state.transferProgressInfo.filesMap.length) {
               debugPrint("FileSharing (incoming) Successful from $event");
               add(const FileTransferEvent.filesReceived());
             } else {
               yield state.copyWith(
                   transferProgressInfo: state.transferProgressInfo.copyWith(
                       fileTransferIndex:
-                      state.transferProgressInfo.fileTransferIndex + 1));
+                          state.transferProgressInfo.fileTransferIndex + 1));
             }
           },
           filesReceived: (e) async* {
