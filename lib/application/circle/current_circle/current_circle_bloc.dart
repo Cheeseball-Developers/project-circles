@@ -18,7 +18,7 @@ part 'current_circle_state.dart';
 
 part 'current_circle_bloc.freezed.dart';
 
-@injectable
+@Singleton()
 class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   final NearbyConnections _nearbyConnections;
 

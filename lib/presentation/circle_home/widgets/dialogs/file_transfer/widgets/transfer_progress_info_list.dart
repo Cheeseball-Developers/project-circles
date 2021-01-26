@@ -14,6 +14,7 @@ class TransferProgressInfoList extends StatelessWidget {
       children: [
         ListView.builder(
           shrinkWrap: true,
+          itemCount: transferProgressInfo.filesMap.length,
           itemBuilder: (context, index) => MyListTile(
             progress: transferProgressInfo.filesMap.values.elementAt(index),
             title: transferProgressInfo.filesMap.keys.elementAt(index).name,

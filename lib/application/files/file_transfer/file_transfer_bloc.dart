@@ -107,7 +107,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 },
                     hasJoined: (state) => state.host,
                     orElse: () => User(
-                      name: Name('Error'),
+                      name: Name('Bad State'),
                       uid: UniqueId.fromUniqueString('ewopifewoi'),
                     ),
                   ),

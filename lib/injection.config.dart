@@ -53,8 +53,6 @@ GetIt $initGetIt(
   gh.factory<SearchBloc>(() => SearchBloc(get<NearbyConnections>()));
   gh.factory<SettingsBloc>(
       () => SettingsBloc(get<IDeviceInfo>(), get<MySharedPreferences>()));
-  gh.factory<CurrentCircleBloc>(
-      () => CurrentCircleBloc(get<NearbyConnections>()));
   gh.factory<FileTransferBloc>(() => FileTransferBloc(
         get<AppsRepository>(),
         get<MediaRepository>(),
@@ -65,6 +63,7 @@ GetIt $initGetIt(
   // Eager singletons must be registered in the right order
   gh.singleton<AppDatabase>(AppDatabase());
   gh.singleton<MySharedPreferences>(MySharedPreferences());
+  gh.singleton<CurrentCircleBloc>(CurrentCircleBloc(get<NearbyConnections>()));
   return get;
 }
 
