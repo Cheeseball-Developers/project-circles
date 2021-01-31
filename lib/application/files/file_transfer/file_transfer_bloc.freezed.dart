@@ -2741,9 +2741,11 @@ class _$FileTransferStateTearOff {
 
 // ignore: unused_element
   _SendingFiles sendingFiles(
-      {@required List<TransferProgressInfo> transferProgressInfos}) {
+      {@required List<TransferProgressInfo> transferProgressInfos,
+      @required List<File> files}) {
     return _SendingFiles(
       transferProgressInfos: transferProgressInfos,
+      files: files,
     );
   }
 
@@ -2787,7 +2789,8 @@ mixin _$FileTransferState {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -2800,7 +2803,8 @@ mixin _$FileTransferState {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -2917,7 +2921,8 @@ class _$_Initial implements _Initial {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -2941,7 +2946,8 @@ class _$_Initial implements _Initial {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -3089,7 +3095,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -3113,7 +3120,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -3272,7 +3280,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -3296,7 +3305,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -3368,7 +3378,8 @@ abstract class _$SendingFilesCopyWith<$Res> {
   factory _$SendingFilesCopyWith(
           _SendingFiles value, $Res Function(_SendingFiles) then) =
       __$SendingFilesCopyWithImpl<$Res>;
-  $Res call({List<TransferProgressInfo> transferProgressInfos});
+  $Res call(
+      {List<TransferProgressInfo> transferProgressInfos, List<File> files});
 }
 
 /// @nodoc
@@ -3385,26 +3396,32 @@ class __$SendingFilesCopyWithImpl<$Res>
   @override
   $Res call({
     Object transferProgressInfos = freezed,
+    Object files = freezed,
   }) {
     return _then(_SendingFiles(
       transferProgressInfos: transferProgressInfos == freezed
           ? _value.transferProgressInfos
           : transferProgressInfos as List<TransferProgressInfo>,
+      files: files == freezed ? _value.files : files as List<File>,
     ));
   }
 }
 
 /// @nodoc
 class _$_SendingFiles implements _SendingFiles {
-  const _$_SendingFiles({@required this.transferProgressInfos})
-      : assert(transferProgressInfos != null);
+  const _$_SendingFiles(
+      {@required this.transferProgressInfos, @required this.files})
+      : assert(transferProgressInfos != null),
+        assert(files != null);
 
   @override
   final List<TransferProgressInfo> transferProgressInfos;
+  @override
+  final List<File> files;
 
   @override
   String toString() {
-    return 'FileTransferState.sendingFiles(transferProgressInfos: $transferProgressInfos)';
+    return 'FileTransferState.sendingFiles(transferProgressInfos: $transferProgressInfos, files: $files)';
   }
 
   @override
@@ -3413,13 +3430,16 @@ class _$_SendingFiles implements _SendingFiles {
         (other is _SendingFiles &&
             (identical(other.transferProgressInfos, transferProgressInfos) ||
                 const DeepCollectionEquality().equals(
-                    other.transferProgressInfos, transferProgressInfos)));
+                    other.transferProgressInfos, transferProgressInfos)) &&
+            (identical(other.files, files) ||
+                const DeepCollectionEquality().equals(other.files, files)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(transferProgressInfos);
+      const DeepCollectionEquality().hash(transferProgressInfos) ^
+      const DeepCollectionEquality().hash(files);
 
   @override
   _$SendingFilesCopyWith<_SendingFiles> get copyWith =>
@@ -3434,7 +3454,8 @@ class _$_SendingFiles implements _SendingFiles {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -3448,7 +3469,7 @@ class _$_SendingFiles implements _SendingFiles {
     assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return sendingFiles(transferProgressInfos);
+    return sendingFiles(transferProgressInfos, files);
   }
 
   @override
@@ -3458,7 +3479,8 @@ class _$_SendingFiles implements _SendingFiles {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -3467,7 +3489,7 @@ class _$_SendingFiles implements _SendingFiles {
   }) {
     assert(orElse != null);
     if (sendingFiles != null) {
-      return sendingFiles(transferProgressInfos);
+      return sendingFiles(transferProgressInfos, files);
     }
     return orElse();
   }
@@ -3517,10 +3539,11 @@ class _$_SendingFiles implements _SendingFiles {
 
 abstract class _SendingFiles implements FileTransferState {
   const factory _SendingFiles(
-          {@required List<TransferProgressInfo> transferProgressInfos}) =
-      _$_SendingFiles;
+      {@required List<TransferProgressInfo> transferProgressInfos,
+      @required List<File> files}) = _$_SendingFiles;
 
   List<TransferProgressInfo> get transferProgressInfos;
+  List<File> get files;
   _$SendingFilesCopyWith<_SendingFiles> get copyWith;
 }
 
@@ -3608,7 +3631,8 @@ class _$_ReceivingFiles implements _ReceivingFiles {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -3632,7 +3656,8 @@ class _$_ReceivingFiles implements _ReceivingFiles {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -3791,7 +3816,8 @@ class _$_TransferComplete implements _TransferComplete {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -3815,7 +3841,8 @@ class _$_TransferComplete implements _TransferComplete {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
@@ -3961,7 +3988,8 @@ class _$_HasFailed implements _HasFailed {
             Option<Set<FileInfo>> filesOption, List<User> users),
     @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
@@ -3985,7 +4013,8 @@ class _$_HasFailed implements _HasFailed {
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
     TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
-    TResult sendingFiles(List<TransferProgressInfo> transferProgressInfos),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     TResult transferComplete(
         FileTransferType type, List<TransferProgressInfo> transferProgressInfo),

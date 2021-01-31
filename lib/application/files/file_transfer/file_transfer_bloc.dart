@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
@@ -142,7 +143,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
               transferProgressInfos.add(TransferProgressInfo(
                 filesMap: filesMap,
                 user: user,
-                fileTransferIndex: -1,
+                fileTransferIndex: 0,
                 acceptOrRejectOption: none(),
               ));
             }
@@ -155,6 +156,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
               for (final int index
                   in Iterable.generate(transferProgressInfos.length)) {
+                logger.d(transferProgressInfos[index].user.uid.getOrCrash());
                 if (transferProgressInfos[index].user.uid.getOrCrash() ==
                     response.first) {
                   if (response.last == 'true') {
@@ -171,8 +173,13 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
               }
             });
 
+            final List<File> appFiles = await _appsRepository.getFiles();
+            final List<File> mediaFiles = await _mediaRepository.getFiles();
+            final List<File> files = _filesRepository.getFiles();
+
             yield FileTransferState.sendingFiles(
               transferProgressInfos: transferProgressInfos,
+              files: appFiles + mediaFiles + files,
             );
           },
           orElse: () async* {},
@@ -191,6 +198,16 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         // TODO: till here
 
         yield* event.maybeMap(
+          sendFiles: (e) async* {
+            for (final transferProgressInfo in state.transferProgressInfos) {
+              if (transferProgressInfo.user.uid.getOrCrash() == e.endPointId) {
+                _nearbyConnections.sendFilePayload(
+                  receiver: e.endPointId,
+                  files: state.files,
+                );
+              }
+            }
+          },
           updateProgress: (e) async* {
             final transferProgressInfos = state.transferProgressInfos;
             logger.d(

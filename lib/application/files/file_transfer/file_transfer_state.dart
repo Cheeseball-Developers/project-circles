@@ -17,6 +17,7 @@ abstract class FileTransferState with _$FileTransferState {
 
   const factory FileTransferState.sendingFiles({
     @required List<TransferProgressInfo> transferProgressInfos,
+    @required List<File> files,
   }) = _SendingFiles;
 
   const factory FileTransferState.receivingFiles({
