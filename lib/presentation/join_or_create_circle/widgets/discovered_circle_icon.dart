@@ -18,8 +18,8 @@ class DiscoveredCircleIcon extends StatelessWidget {
           showDialog(
             context: context,
             barrierDismissible: false,
-            child: BlocProvider.value(
-              value: context.bloc<SearchBloc>(),
+            builder: (context) => BlocProvider.value(
+              value: context.read<SearchBloc>(),
               child: ConnectionRequestPopUp(user),
             ),
           );
@@ -28,7 +28,7 @@ class DiscoveredCircleIcon extends StatelessWidget {
       builder: (context, state) => GestureDetector(
         onTap: () {
           context
-              .bloc<SearchBloc>()
+              .read<SearchBloc>()
               .add(SearchEvent.requestConnection(discoveredUser: user));
         },
         child: Column(

@@ -64,7 +64,7 @@ class BottomBar extends StatelessWidget {
           fileTransferState.maybeMap(
             incomingFilesConfirmation: (_) => showDialog(
               context: context,
-              child: BlocProvider.value(
+              builder: (context) => BlocProvider.value(
                 value: context.bloc<FileTransferBloc>(),
                 child: FileTransferDialog(),
               ),
