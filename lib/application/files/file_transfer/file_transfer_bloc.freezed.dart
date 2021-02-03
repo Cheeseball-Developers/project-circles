@@ -76,8 +76,11 @@ class _$FileTransferEventTearOff {
   }
 
 // ignore: unused_element
-  _IncrementFileTransferIndex incrementFileTransferIndex() {
-    return const _IncrementFileTransferIndex();
+  _IncrementFileTransferIndex incrementFileTransferIndex(
+      {@required UniqueId uid}) {
+    return _IncrementFileTransferIndex(
+      uid: uid,
+    );
   }
 
 // ignore: unused_element
@@ -116,7 +119,7 @@ mixin _$FileTransferEvent {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -133,7 +136,7 @@ mixin _$FileTransferEvent {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -243,7 +246,7 @@ class _$_Initialize implements _Initialize {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -278,7 +281,7 @@ class _$_Initialize implements _Initialize {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -411,6 +414,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(users);
 
+  @JsonKey(ignore: true)
   @override
   _$ConfirmOutgoingFilesCopyWith<_ConfirmOutgoingFiles> get copyWith =>
       __$ConfirmOutgoingFilesCopyWithImpl<_ConfirmOutgoingFiles>(
@@ -429,7 +433,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -464,7 +468,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -545,6 +549,7 @@ abstract class _ConfirmOutgoingFiles implements FileTransferEvent {
       _$_ConfirmOutgoingFiles;
 
   List<User> get users;
+  @JsonKey(ignore: true)
   _$ConfirmOutgoingFilesCopyWith<_ConfirmOutgoingFiles> get copyWith;
 }
 
@@ -597,7 +602,7 @@ class _$_CancelSend implements _CancelSend {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -632,7 +637,7 @@ class _$_CancelSend implements _CancelSend {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -761,7 +766,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -796,7 +801,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -930,6 +935,7 @@ class _$_SendFiles implements _SendFiles {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(endPointId);
 
+  @JsonKey(ignore: true)
   @override
   _$SendFilesCopyWith<_SendFiles> get copyWith =>
       __$SendFilesCopyWithImpl<_SendFiles>(this, _$identity);
@@ -947,7 +953,7 @@ class _$_SendFiles implements _SendFiles {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -982,7 +988,7 @@ class _$_SendFiles implements _SendFiles {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -1062,6 +1068,7 @@ abstract class _SendFiles implements FileTransferEvent {
   const factory _SendFiles({@required String endPointId}) = _$_SendFiles;
 
   String get endPointId;
+  @JsonKey(ignore: true)
   _$SendFilesCopyWith<_SendFiles> get copyWith;
 }
 
@@ -1113,7 +1120,7 @@ class _$_FilesSent implements _FilesSent {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -1148,7 +1155,7 @@ class _$_FilesSent implements _FilesSent {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -1294,6 +1301,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$FileInfoReceivedCopyWith<_FileInfoReceived> get copyWith =>
       __$FileInfoReceivedCopyWithImpl<_FileInfoReceived>(this, _$identity);
@@ -1311,7 +1319,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -1346,7 +1354,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -1426,6 +1434,7 @@ abstract class _FileInfoReceived implements FileTransferEvent {
   const factory _FileInfoReceived({FileInfo fileInfo}) = _$_FileInfoReceived;
 
   FileInfo get fileInfo;
+  @JsonKey(ignore: true)
   _$FileInfoReceivedCopyWith<_FileInfoReceived> get copyWith;
 }
 
@@ -1482,6 +1491,7 @@ class _$_EndIdReceived implements _EndIdReceived {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(endId);
 
+  @JsonKey(ignore: true)
   @override
   _$EndIdReceivedCopyWith<_EndIdReceived> get copyWith =>
       __$EndIdReceivedCopyWithImpl<_EndIdReceived>(this, _$identity);
@@ -1499,7 +1509,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -1534,7 +1544,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -1614,6 +1624,7 @@ abstract class _EndIdReceived implements FileTransferEvent {
   const factory _EndIdReceived({String endId}) = _$_EndIdReceived;
 
   String get endId;
+  @JsonKey(ignore: true)
   _$EndIdReceivedCopyWith<_EndIdReceived> get copyWith;
 }
 
@@ -1675,6 +1686,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(acceptOrReject);
 
+  @JsonKey(ignore: true)
   @override
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith =>
       __$ConfirmIncomingFilesCopyWithImpl<_ConfirmIncomingFiles>(
@@ -1693,7 +1705,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -1728,7 +1740,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -1809,6 +1821,7 @@ abstract class _ConfirmIncomingFiles implements FileTransferEvent {
       _$_ConfirmIncomingFiles;
 
   bool get acceptOrReject;
+  @JsonKey(ignore: true)
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith;
 }
 
@@ -1881,6 +1894,7 @@ class _$_UpdateProgress implements _UpdateProgress {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(payloadInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$UpdateProgressCopyWith<_UpdateProgress> get copyWith =>
       __$UpdateProgressCopyWithImpl<_UpdateProgress>(this, _$identity);
@@ -1898,7 +1912,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -1933,7 +1947,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -2014,6 +2028,7 @@ abstract class _UpdateProgress implements FileTransferEvent {
       _$_UpdateProgress;
 
   PayloadInfo get payloadInfo;
+  @JsonKey(ignore: true)
   _$UpdateProgressCopyWith<_UpdateProgress> get copyWith;
 }
 
@@ -2023,6 +2038,7 @@ abstract class _$IncrementFileTransferIndexCopyWith<$Res> {
           _IncrementFileTransferIndex value,
           $Res Function(_IncrementFileTransferIndex) then) =
       __$IncrementFileTransferIndexCopyWithImpl<$Res>;
+  $Res call({UniqueId uid});
 }
 
 /// @nodoc
@@ -2036,24 +2052,47 @@ class __$IncrementFileTransferIndexCopyWithImpl<$Res>
   @override
   _IncrementFileTransferIndex get _value =>
       super._value as _IncrementFileTransferIndex;
+
+  @override
+  $Res call({
+    Object uid = freezed,
+  }) {
+    return _then(_IncrementFileTransferIndex(
+      uid: uid == freezed ? _value.uid : uid as UniqueId,
+    ));
+  }
 }
 
 /// @nodoc
 class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
-  const _$_IncrementFileTransferIndex();
+  const _$_IncrementFileTransferIndex({@required this.uid})
+      : assert(uid != null);
+
+  @override
+  final UniqueId uid;
 
   @override
   String toString() {
-    return 'FileTransferEvent.incrementFileTransferIndex()';
+    return 'FileTransferEvent.incrementFileTransferIndex(uid: $uid)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is _IncrementFileTransferIndex);
+    return identical(this, other) ||
+        (other is _IncrementFileTransferIndex &&
+            (identical(other.uid, uid) ||
+                const DeepCollectionEquality().equals(other.uid, uid)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(uid);
+
+  @JsonKey(ignore: true)
+  @override
+  _$IncrementFileTransferIndexCopyWith<_IncrementFileTransferIndex>
+      get copyWith => __$IncrementFileTransferIndexCopyWithImpl<
+          _IncrementFileTransferIndex>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2068,7 +2107,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -2087,7 +2126,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     assert(filesReceived != null);
     assert(abortFileTransfer != null);
     assert(reset != null);
-    return incrementFileTransferIndex();
+    return incrementFileTransferIndex(uid);
   }
 
   @override
@@ -2103,7 +2142,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -2111,7 +2150,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
   }) {
     assert(orElse != null);
     if (incrementFileTransferIndex != null) {
-      return incrementFileTransferIndex();
+      return incrementFileTransferIndex(uid);
     }
     return orElse();
   }
@@ -2180,7 +2219,13 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
 }
 
 abstract class _IncrementFileTransferIndex implements FileTransferEvent {
-  const factory _IncrementFileTransferIndex() = _$_IncrementFileTransferIndex;
+  const factory _IncrementFileTransferIndex({@required UniqueId uid}) =
+      _$_IncrementFileTransferIndex;
+
+  UniqueId get uid;
+  @JsonKey(ignore: true)
+  _$IncrementFileTransferIndexCopyWith<_IncrementFileTransferIndex>
+      get copyWith;
 }
 
 /// @nodoc
@@ -2232,7 +2277,7 @@ class _$_FilesReceived implements _FilesReceived {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -2267,7 +2312,7 @@ class _$_FilesReceived implements _FilesReceived {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -2412,6 +2457,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   _$AbortFileTransferCopyWith<_AbortFileTransfer> get copyWith =>
       __$AbortFileTransferCopyWithImpl<_AbortFileTransfer>(this, _$identity);
@@ -2429,7 +2475,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -2464,7 +2510,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -2545,6 +2591,7 @@ abstract class _AbortFileTransfer implements FileTransferEvent {
       _$_AbortFileTransfer;
 
   User get user;
+  @JsonKey(ignore: true)
   _$AbortFileTransferCopyWith<_AbortFileTransfer> get copyWith;
 }
 
@@ -2594,7 +2641,7 @@ class _$_Reset implements _Reset {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
-    @required TResult incrementFileTransferIndex(),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
     @required TResult abortFileTransfer(User user),
     @required TResult reset(),
@@ -2629,7 +2676,7 @@ class _$_Reset implements _Reset {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
-    TResult incrementFileTransferIndex(),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
     TResult abortFileTransfer(User user),
     TResult reset(),
@@ -2760,10 +2807,10 @@ class _$FileTransferStateTearOff {
 // ignore: unused_element
   _TransferComplete transferComplete(
       {@required FileTransferType type,
-      @required List<TransferProgressInfo> transferProgressInfo}) {
+      @required List<TransferProgressInfo> transferProgressInfos}) {
     return _TransferComplete(
       type: type,
-      transferProgressInfo: transferProgressInfo,
+      transferProgressInfos: transferProgressInfos,
     );
   }
 
@@ -2794,7 +2841,7 @@ mixin _$FileTransferState {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   });
   @optionalTypeArgs
@@ -2806,8 +2853,8 @@ mixin _$FileTransferState {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   });
@@ -2908,6 +2955,7 @@ class _$_Initial implements _Initial {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(incomingFileInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$InitialCopyWith<_Initial> get copyWith =>
       __$InitialCopyWithImpl<_Initial>(this, _$identity);
@@ -2926,7 +2974,7 @@ class _$_Initial implements _Initial {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -2949,8 +2997,8 @@ class _$_Initial implements _Initial {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -3009,6 +3057,7 @@ abstract class _Initial implements FileTransferState {
       _$_Initial;
 
   Set<FileInfo> get incomingFileInfo;
+  @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith;
 }
 
@@ -3080,6 +3129,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
       const DeepCollectionEquality().hash(filesOption) ^
       const DeepCollectionEquality().hash(users);
 
+  @JsonKey(ignore: true)
   @override
   _$OutgoingFilesConfirmationCopyWith<_OutgoingFilesConfirmation>
       get copyWith =>
@@ -3100,7 +3150,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -3123,8 +3173,8 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -3185,6 +3235,7 @@ abstract class _OutgoingFilesConfirmation implements FileTransferState {
 
   Option<Set<FileInfo>> get filesOption;
   List<User> get users;
+  @JsonKey(ignore: true)
   _$OutgoingFilesConfirmationCopyWith<_OutgoingFilesConfirmation> get copyWith;
 }
 
@@ -3265,6 +3316,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
       const DeepCollectionEquality().hash(files) ^
       const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation>
       get copyWith =>
@@ -3285,7 +3337,7 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -3308,8 +3360,8 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -3370,6 +3422,7 @@ abstract class _IncomingFilesConfirmation implements FileTransferState {
 
   Set<FileInfo> get files;
   User get user;
+  @JsonKey(ignore: true)
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation> get copyWith;
 }
 
@@ -3441,6 +3494,7 @@ class _$_SendingFiles implements _SendingFiles {
       const DeepCollectionEquality().hash(transferProgressInfos) ^
       const DeepCollectionEquality().hash(files);
 
+  @JsonKey(ignore: true)
   @override
   _$SendingFilesCopyWith<_SendingFiles> get copyWith =>
       __$SendingFilesCopyWithImpl<_SendingFiles>(this, _$identity);
@@ -3459,7 +3513,7 @@ class _$_SendingFiles implements _SendingFiles {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -3482,8 +3536,8 @@ class _$_SendingFiles implements _SendingFiles {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -3544,6 +3598,7 @@ abstract class _SendingFiles implements FileTransferState {
 
   List<TransferProgressInfo> get transferProgressInfos;
   List<File> get files;
+  @JsonKey(ignore: true)
   _$SendingFilesCopyWith<_SendingFiles> get copyWith;
 }
 
@@ -3618,6 +3673,7 @@ class _$_ReceivingFiles implements _ReceivingFiles {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(transferProgressInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$ReceivingFilesCopyWith<_ReceivingFiles> get copyWith =>
       __$ReceivingFilesCopyWithImpl<_ReceivingFiles>(this, _$identity);
@@ -3636,7 +3692,7 @@ class _$_ReceivingFiles implements _ReceivingFiles {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -3659,8 +3715,8 @@ class _$_ReceivingFiles implements _ReceivingFiles {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -3720,6 +3776,7 @@ abstract class _ReceivingFiles implements FileTransferState {
       _$_ReceivingFiles;
 
   TransferProgressInfo get transferProgressInfo;
+  @JsonKey(ignore: true)
   _$ReceivingFilesCopyWith<_ReceivingFiles> get copyWith;
 }
 
@@ -3729,7 +3786,8 @@ abstract class _$TransferCompleteCopyWith<$Res> {
           _TransferComplete value, $Res Function(_TransferComplete) then) =
       __$TransferCompleteCopyWithImpl<$Res>;
   $Res call(
-      {FileTransferType type, List<TransferProgressInfo> transferProgressInfo});
+      {FileTransferType type,
+      List<TransferProgressInfo> transferProgressInfos});
 
   $FileTransferTypeCopyWith<$Res> get type;
 }
@@ -3748,13 +3806,13 @@ class __$TransferCompleteCopyWithImpl<$Res>
   @override
   $Res call({
     Object type = freezed,
-    Object transferProgressInfo = freezed,
+    Object transferProgressInfos = freezed,
   }) {
     return _then(_TransferComplete(
       type: type == freezed ? _value.type : type as FileTransferType,
-      transferProgressInfo: transferProgressInfo == freezed
-          ? _value.transferProgressInfo
-          : transferProgressInfo as List<TransferProgressInfo>,
+      transferProgressInfos: transferProgressInfos == freezed
+          ? _value.transferProgressInfos
+          : transferProgressInfos as List<TransferProgressInfo>,
     ));
   }
 
@@ -3772,18 +3830,18 @@ class __$TransferCompleteCopyWithImpl<$Res>
 /// @nodoc
 class _$_TransferComplete implements _TransferComplete {
   const _$_TransferComplete(
-      {@required this.type, @required this.transferProgressInfo})
+      {@required this.type, @required this.transferProgressInfos})
       : assert(type != null),
-        assert(transferProgressInfo != null);
+        assert(transferProgressInfos != null);
 
   @override
   final FileTransferType type;
   @override
-  final List<TransferProgressInfo> transferProgressInfo;
+  final List<TransferProgressInfo> transferProgressInfos;
 
   @override
   String toString() {
-    return 'FileTransferState.transferComplete(type: $type, transferProgressInfo: $transferProgressInfo)';
+    return 'FileTransferState.transferComplete(type: $type, transferProgressInfos: $transferProgressInfos)';
   }
 
   @override
@@ -3792,17 +3850,18 @@ class _$_TransferComplete implements _TransferComplete {
         (other is _TransferComplete &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.transferProgressInfo, transferProgressInfo) ||
-                const DeepCollectionEquality()
-                    .equals(other.transferProgressInfo, transferProgressInfo)));
+            (identical(other.transferProgressInfos, transferProgressInfos) ||
+                const DeepCollectionEquality().equals(
+                    other.transferProgressInfos, transferProgressInfos)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(transferProgressInfo);
+      const DeepCollectionEquality().hash(transferProgressInfos);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferCompleteCopyWith<_TransferComplete> get copyWith =>
       __$TransferCompleteCopyWithImpl<_TransferComplete>(this, _$identity);
@@ -3821,7 +3880,7 @@ class _$_TransferComplete implements _TransferComplete {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -3831,7 +3890,7 @@ class _$_TransferComplete implements _TransferComplete {
     assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return transferComplete(type, transferProgressInfo);
+    return transferComplete(type, transferProgressInfos);
   }
 
   @override
@@ -3844,14 +3903,14 @@ class _$_TransferComplete implements _TransferComplete {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (transferComplete != null) {
-      return transferComplete(type, transferProgressInfo);
+      return transferComplete(type, transferProgressInfos);
     }
     return orElse();
   }
@@ -3902,11 +3961,12 @@ class _$_TransferComplete implements _TransferComplete {
 abstract class _TransferComplete implements FileTransferState {
   const factory _TransferComplete(
           {@required FileTransferType type,
-          @required List<TransferProgressInfo> transferProgressInfo}) =
+          @required List<TransferProgressInfo> transferProgressInfos}) =
       _$_TransferComplete;
 
   FileTransferType get type;
-  List<TransferProgressInfo> get transferProgressInfo;
+  List<TransferProgressInfo> get transferProgressInfos;
+  @JsonKey(ignore: true)
   _$TransferCompleteCopyWith<_TransferComplete> get copyWith;
 }
 
@@ -3975,6 +4035,7 @@ class _$_HasFailed implements _HasFailed {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$HasFailedCopyWith<_HasFailed> get copyWith =>
       __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
@@ -3993,7 +4054,7 @@ class _$_HasFailed implements _HasFailed {
     @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
         TResult transferComplete(FileTransferType type,
-            List<TransferProgressInfo> transferProgressInfo),
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
@@ -4016,8 +4077,8 @@ class _$_HasFailed implements _HasFailed {
     TResult sendingFiles(
         List<TransferProgressInfo> transferProgressInfos, List<File> files),
     TResult receivingFiles(TransferProgressInfo transferProgressInfo),
-    TResult transferComplete(
-        FileTransferType type, List<TransferProgressInfo> transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -4076,5 +4137,6 @@ abstract class _HasFailed implements FileTransferState {
       _$_HasFailed;
 
   FileTransferFailure get failure;
+  @JsonKey(ignore: true)
   _$HasFailedCopyWith<_HasFailed> get copyWith;
 }

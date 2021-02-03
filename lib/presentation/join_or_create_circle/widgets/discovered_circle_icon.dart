@@ -18,7 +18,7 @@ class DiscoveredCircleIcon extends StatelessWidget {
           showDialog(
             context: context,
             barrierDismissible: false,
-            builder: (context) => BlocProvider.value(
+            builder: (_) => BlocProvider.value(
               value: context.read<SearchBloc>(),
               child: ConnectionRequestPopUp(user),
             ),

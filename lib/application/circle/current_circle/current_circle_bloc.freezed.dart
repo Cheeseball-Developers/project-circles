@@ -269,6 +269,7 @@ class _$StartCircle implements StartCircle {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(host);
 
+  @JsonKey(ignore: true)
   @override
   $StartCircleCopyWith<StartCircle> get copyWith =>
       _$StartCircleCopyWithImpl<StartCircle>(this, _$identity);
@@ -408,6 +409,7 @@ abstract class StartCircle implements CurrentCircleEvent {
   const factory StartCircle({@required User host}) = _$StartCircle;
 
   User get host;
+  @JsonKey(ignore: true)
   $StartCircleCopyWith<StartCircle> get copyWith;
 }
 
@@ -478,6 +480,7 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   $DeviceRequestedConnectionCopyWith<DeviceRequestedConnection> get copyWith =>
       _$DeviceRequestedConnectionCopyWithImpl<DeviceRequestedConnection>(
@@ -619,6 +622,7 @@ abstract class DeviceRequestedConnection implements CurrentCircleEvent {
       _$DeviceRequestedConnection;
 
   User get user;
+  @JsonKey(ignore: true)
   $DeviceRequestedConnectionCopyWith<DeviceRequestedConnection> get copyWith;
 }
 
@@ -704,6 +708,7 @@ class _$AcceptOrReject implements AcceptOrReject {
       const DeepCollectionEquality().hash(requestingUser) ^
       const DeepCollectionEquality().hash(acceptConnection);
 
+  @JsonKey(ignore: true)
   @override
   $AcceptOrRejectCopyWith<AcceptOrReject> get copyWith =>
       _$AcceptOrRejectCopyWithImpl<AcceptOrReject>(this, _$identity);
@@ -846,6 +851,7 @@ abstract class AcceptOrReject implements CurrentCircleEvent {
 
   User get requestingUser;
   bool get acceptConnection;
+  @JsonKey(ignore: true)
   $AcceptOrRejectCopyWith<AcceptOrReject> get copyWith;
 }
 
@@ -913,6 +919,7 @@ class _$JoinCircle implements JoinCircle {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(host);
 
+  @JsonKey(ignore: true)
   @override
   $JoinCircleCopyWith<JoinCircle> get copyWith =>
       _$JoinCircleCopyWithImpl<JoinCircle>(this, _$identity);
@@ -1052,6 +1059,7 @@ abstract class JoinCircle implements CurrentCircleEvent {
   const factory JoinCircle({@required User host}) = _$JoinCircle;
 
   User get host;
+  @JsonKey(ignore: true)
   $JoinCircleCopyWith<JoinCircle> get copyWith;
 }
 
@@ -2134,6 +2142,7 @@ class _$MemberLeft implements MemberLeft {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(id);
 
+  @JsonKey(ignore: true)
   @override
   $MemberLeftCopyWith<MemberLeft> get copyWith =>
       _$MemberLeftCopyWithImpl<MemberLeft>(this, _$identity);
@@ -2273,6 +2282,7 @@ abstract class MemberLeft implements CurrentCircleEvent {
   const factory MemberLeft({@required String id}) = _$MemberLeft;
 
   String get id;
+  @JsonKey(ignore: true)
   $MemberLeftCopyWith<MemberLeft> get copyWith;
 }
 
@@ -2341,6 +2351,7 @@ class _$RemoveMember implements RemoveMember {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(member);
 
+  @JsonKey(ignore: true)
   @override
   $RemoveMemberCopyWith<RemoveMember> get copyWith =>
       _$RemoveMemberCopyWithImpl<RemoveMember>(this, _$identity);
@@ -2480,6 +2491,7 @@ abstract class RemoveMember implements CurrentCircleEvent {
   const factory RemoveMember({@required User member}) = _$RemoveMember;
 
   User get member;
+  @JsonKey(ignore: true)
   $RemoveMemberCopyWith<RemoveMember> get copyWith;
 }
 
@@ -3359,6 +3371,7 @@ class _$_IsLoading implements _IsLoading {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(loadingText);
 
+  @JsonKey(ignore: true)
   @override
   _$IsLoadingCopyWith<_IsLoading> get copyWith =>
       __$IsLoadingCopyWithImpl<_IsLoading>(this, _$identity);
@@ -3472,6 +3485,7 @@ abstract class _IsLoading implements CurrentCircleState {
   const factory _IsLoading({@required String loadingText}) = _$_IsLoading;
 
   String get loadingText;
+  @JsonKey(ignore: true)
   _$IsLoadingCopyWith<_IsLoading> get copyWith;
 }
 
@@ -3635,6 +3649,7 @@ class _$_HasStarted implements _HasStarted {
       const DeepCollectionEquality().hash(isAcceptingRequest) ^
       const DeepCollectionEquality().hash(isClosing);
 
+  @JsonKey(ignore: true)
   @override
   _$HasStartedCopyWith<_HasStarted> get copyWith =>
       __$HasStartedCopyWithImpl<_HasStarted>(this, _$identity);
@@ -3783,6 +3798,7 @@ abstract class _HasStarted implements CurrentCircleState {
   Option<FileTransferType> get transferType;
   bool get isAcceptingRequest;
   bool get isClosing;
+  @JsonKey(ignore: true)
   _$HasStartedCopyWith<_HasStarted> get copyWith;
 }
 
@@ -3943,6 +3959,7 @@ class _$_HasJoined implements _HasJoined {
       const DeepCollectionEquality().hash(transferType) ^
       const DeepCollectionEquality().hash(isLeaving);
 
+  @JsonKey(ignore: true)
   @override
   _$HasJoinedCopyWith<_HasJoined> get copyWith =>
       __$HasJoinedCopyWithImpl<_HasJoined>(this, _$identity);
@@ -4073,6 +4090,7 @@ abstract class _HasJoined implements CurrentCircleState {
   Option<bool> get showFileTransferDialog;
   Option<FileTransferType> get transferType;
   bool get isLeaving;
+  @JsonKey(ignore: true)
   _$HasJoinedCopyWith<_HasJoined> get copyWith;
 }
 
@@ -4141,6 +4159,7 @@ class _$_HasFailed implements _HasFailed {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$HasFailedCopyWith<_HasFailed> get copyWith =>
       __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
@@ -4255,5 +4274,6 @@ abstract class _HasFailed implements CurrentCircleState {
       _$_HasFailed;
 
   ConnectionFailure get failure;
+  @JsonKey(ignore: true)
   _$HasFailedCopyWith<_HasFailed> get copyWith;
 }

@@ -485,6 +485,7 @@ class NearbyConnections {
           "Sending Receiving files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
+      logger.d("Payload ID: ${payloadTransferUpdate.id}");
       logger.i(
           "sent recieved files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (_isFile) {

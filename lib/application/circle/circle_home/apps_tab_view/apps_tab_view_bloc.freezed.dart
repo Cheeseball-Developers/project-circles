@@ -242,6 +242,7 @@ class _$ToggleAppSelection implements ToggleAppSelection {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(appInfo);
 
+  @JsonKey(ignore: true)
   @override
   $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith =>
       _$ToggleAppSelectionCopyWithImpl<ToggleAppSelection>(this, _$identity);
@@ -308,6 +309,7 @@ abstract class ToggleAppSelection implements AppsTabViewEvent {
       _$ToggleAppSelection;
 
   AppInfo get appInfo;
+  @JsonKey(ignore: true)
   $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith;
 }
 
@@ -435,6 +437,7 @@ mixin _$AppsTabViewState {
   bool get isLoading;
   Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
 
+  @JsonKey(ignore: true)
   $AppsTabViewStateCopyWith<AppsTabViewState> get copyWith;
 }
 
@@ -545,6 +548,7 @@ class _$_AppsTabViewState implements _AppsTabViewState {
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(failureOrAppsOption);
 
+  @JsonKey(ignore: true)
   @override
   _$AppsTabViewStateCopyWith<_AppsTabViewState> get copyWith =>
       __$AppsTabViewStateCopyWithImpl<_AppsTabViewState>(this, _$identity);
@@ -563,5 +567,6 @@ abstract class _AppsTabViewState implements AppsTabViewState {
   @override
   Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
   @override
+  @JsonKey(ignore: true)
   _$AppsTabViewStateCopyWith<_AppsTabViewState> get copyWith;
 }

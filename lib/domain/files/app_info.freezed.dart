@@ -36,6 +36,7 @@ mixin _$AppInfo {
   String get packageName;
   Uint8List get icon;
 
+  @JsonKey(ignore: true)
   $AppInfoCopyWith<AppInfo> get copyWith;
 }
 
@@ -143,6 +144,7 @@ class _$_AppInfo extends _AppInfo {
       const DeepCollectionEquality().hash(packageName) ^
       const DeepCollectionEquality().hash(icon);
 
+  @JsonKey(ignore: true)
   @override
   _$AppInfoCopyWith<_AppInfo> get copyWith =>
       __$AppInfoCopyWithImpl<_AppInfo>(this, _$identity);
@@ -162,5 +164,6 @@ abstract class _AppInfo extends AppInfo {
   @override
   Uint8List get icon;
   @override
+  @JsonKey(ignore: true)
   _$AppInfoCopyWith<_AppInfo> get copyWith;
 }

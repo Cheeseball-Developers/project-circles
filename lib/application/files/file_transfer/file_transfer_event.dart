@@ -31,7 +31,8 @@ abstract class FileTransferEvent with _$FileTransferEvent {
     @required PayloadInfo payloadInfo,
   }) = _UpdateProgress;
 
-  const factory FileTransferEvent.incrementFileTransferIndex() = _IncrementFileTransferIndex;
+  const factory FileTransferEvent.incrementFileTransferIndex(
+      {@required UniqueId uid}) = _IncrementFileTransferIndex;
 
   const factory FileTransferEvent.filesReceived() = _FilesReceived;
 

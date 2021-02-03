@@ -26,7 +26,7 @@ abstract class FileTransferState with _$FileTransferState {
 
   const factory FileTransferState.transferComplete({
     @required FileTransferType type,
-    @required List<TransferProgressInfo> transferProgressInfo,
+    @required List<TransferProgressInfo> transferProgressInfos,
   }) = _TransferComplete;
 
   const factory FileTransferState.hasFailed(

@@ -348,6 +348,7 @@ class _$DeviceDiscovered implements DeviceDiscovered {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   $DeviceDiscoveredCopyWith<DeviceDiscovered> get copyWith =>
       _$DeviceDiscoveredCopyWithImpl<DeviceDiscovered>(this, _$identity);
@@ -452,6 +453,7 @@ abstract class DeviceDiscovered implements SearchEvent {
   const factory DeviceDiscovered(User user) = _$DeviceDiscovered;
 
   User get user;
+  @JsonKey(ignore: true)
   $DeviceDiscoveredCopyWith<DeviceDiscovered> get copyWith;
 }
 
@@ -782,6 +784,7 @@ class _$DeviceLost implements DeviceLost {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(uidString);
 
+  @JsonKey(ignore: true)
   @override
   $DeviceLostCopyWith<DeviceLost> get copyWith =>
       _$DeviceLostCopyWithImpl<DeviceLost>(this, _$identity);
@@ -886,6 +889,7 @@ abstract class DeviceLost implements SearchEvent {
   const factory DeviceLost({@required String uidString}) = _$DeviceLost;
 
   String get uidString;
+  @JsonKey(ignore: true)
   $DeviceLostCopyWith<DeviceLost> get copyWith;
 }
 
@@ -1094,6 +1098,7 @@ class _$RequestConnection implements RequestConnection {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(discoveredUser);
 
+  @JsonKey(ignore: true)
   @override
   $RequestConnectionCopyWith<RequestConnection> get copyWith =>
       _$RequestConnectionCopyWithImpl<RequestConnection>(this, _$identity);
@@ -1199,6 +1204,7 @@ abstract class RequestConnection implements SearchEvent {
       _$RequestConnection;
 
   User get discoveredUser;
+  @JsonKey(ignore: true)
   $RequestConnectionCopyWith<RequestConnection> get copyWith;
 }
 
@@ -1260,6 +1266,7 @@ class _$ConnectionResult implements ConnectionResult {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(connectionStatus);
 
+  @JsonKey(ignore: true)
   @override
   $ConnectionResultCopyWith<ConnectionResult> get copyWith =>
       _$ConnectionResultCopyWithImpl<ConnectionResult>(this, _$identity);
@@ -1365,6 +1372,7 @@ abstract class ConnectionResult implements SearchEvent {
       Either<ConnectionFailure, Unit> connectionStatus) = _$ConnectionResult;
 
   Either<ConnectionFailure, Unit> get connectionStatus;
+  @JsonKey(ignore: true)
   $ConnectionResultCopyWith<ConnectionResult> get copyWith;
 }
 
@@ -1438,6 +1446,7 @@ class _$EndConnectionRequest implements EndConnectionRequest {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(cancelRequestUser);
 
+  @JsonKey(ignore: true)
   @override
   $EndConnectionRequestCopyWith<EndConnectionRequest> get copyWith =>
       _$EndConnectionRequestCopyWithImpl<EndConnectionRequest>(
@@ -1544,6 +1553,7 @@ abstract class EndConnectionRequest implements SearchEvent {
       _$EndConnectionRequest;
 
   User get cancelRequestUser;
+  @JsonKey(ignore: true)
   $EndConnectionRequestCopyWith<EndConnectionRequest> get copyWith;
 }
 
@@ -1595,6 +1605,7 @@ mixin _$SearchState {
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrRequestSent;
   List<User> get discoveredDevices;
 
+  @JsonKey(ignore: true)
   $SearchStateCopyWith<SearchState> get copyWith;
 }
 
@@ -1804,6 +1815,7 @@ class _$_SearchState implements _SearchState {
       const DeepCollectionEquality().hash(connectionFailureOrRequestSent) ^
       const DeepCollectionEquality().hash(discoveredDevices);
 
+  @JsonKey(ignore: true)
   @override
   _$SearchStateCopyWith<_SearchState> get copyWith =>
       __$SearchStateCopyWithImpl<_SearchState>(this, _$identity);
@@ -1843,5 +1855,6 @@ abstract class _SearchState implements SearchState {
   @override
   List<User> get discoveredDevices;
   @override
+  @JsonKey(ignore: true)
   _$SearchStateCopyWith<_SearchState> get copyWith;
 }

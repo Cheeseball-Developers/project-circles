@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:moor_flutter/moor_flutter.dart';
+import 'package:moor_flutter/moor_flutter.dart' hide JsonKey;
 import 'package:projectcircles/domain/files/file_info.dart';
 import 'package:projectcircles/infrastructure/database/app_database.dart';
 

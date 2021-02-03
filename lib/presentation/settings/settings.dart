@@ -144,7 +144,7 @@ class Settings extends StatelessWidget {
                                 final Option<Directory> directoryOption =
                                     await showDialog(
                                   context: context,
-                                  builder: (context) => BlocProvider(
+                                  builder: (_) => BlocProvider(
                                     create: (context) =>
                                         getIt<FolderPickerBloc>()
                                           ..add(

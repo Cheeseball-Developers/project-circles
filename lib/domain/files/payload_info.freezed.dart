@@ -36,6 +36,7 @@ mixin _$PayloadInfo {
   double get progress;
   String get endId;
 
+  @JsonKey(ignore: true)
   $PayloadInfoCopyWith<PayloadInfo> get copyWith;
 }
 
@@ -145,6 +146,7 @@ class _$_PayloadInfo extends _PayloadInfo {
       const DeepCollectionEquality().hash(progress) ^
       const DeepCollectionEquality().hash(endId);
 
+  @JsonKey(ignore: true)
   @override
   _$PayloadInfoCopyWith<_PayloadInfo> get copyWith =>
       __$PayloadInfoCopyWithImpl<_PayloadInfo>(this, _$identity);
@@ -164,5 +166,6 @@ abstract class _PayloadInfo extends PayloadInfo {
   @override
   String get endId;
   @override
+  @JsonKey(ignore: true)
   _$PayloadInfoCopyWith<_PayloadInfo> get copyWith;
 }

@@ -39,6 +39,7 @@ mixin _$TransferProgressInfo {
   int get fileTransferIndex;
   Map<FileInfo, double> get filesMap;
 
+  @JsonKey(ignore: true)
   $TransferProgressInfoCopyWith<TransferProgressInfo> get copyWith;
 }
 
@@ -199,6 +200,7 @@ class _$_TransferProgressInfo extends _TransferProgressInfo {
       const DeepCollectionEquality().hash(fileTransferIndex) ^
       const DeepCollectionEquality().hash(filesMap);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferProgressInfoCopyWith<_TransferProgressInfo> get copyWith =>
       __$TransferProgressInfoCopyWithImpl<_TransferProgressInfo>(
@@ -222,5 +224,6 @@ abstract class _TransferProgressInfo extends TransferProgressInfo {
   @override
   Map<FileInfo, double> get filesMap;
   @override
+  @JsonKey(ignore: true)
   _$TransferProgressInfoCopyWith<_TransferProgressInfo> get copyWith;
 }

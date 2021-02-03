@@ -42,6 +42,7 @@ mixin _$FileInfo {
   int get bytesSize;
   Uint8List get thumbnail;
 
+  @JsonKey(ignore: true)
   $FileInfoCopyWith<FileInfo> get copyWith;
 }
 
@@ -175,6 +176,7 @@ class _$_FileInfo extends _FileInfo {
       const DeepCollectionEquality().hash(bytesSize) ^
       const DeepCollectionEquality().hash(thumbnail);
 
+  @JsonKey(ignore: true)
   @override
   _$FileInfoCopyWith<_FileInfo> get copyWith =>
       __$FileInfoCopyWithImpl<_FileInfo>(this, _$identity);
@@ -200,5 +202,6 @@ abstract class _FileInfo extends FileInfo {
   @override
   Uint8List get thumbnail;
   @override
+  @JsonKey(ignore: true)
   _$FileInfoCopyWith<_FileInfo> get copyWith;
 }

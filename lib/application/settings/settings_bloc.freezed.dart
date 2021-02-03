@@ -260,6 +260,7 @@ class _$NameChanged implements NameChanged {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(name);
 
+  @JsonKey(ignore: true)
   @override
   $NameChangedCopyWith<NameChanged> get copyWith =>
       _$NameChangedCopyWithImpl<NameChanged>(this, _$identity);
@@ -337,6 +338,7 @@ abstract class NameChanged implements SettingsEvent {
   const factory NameChanged(Name name) = _$NameChanged;
 
   Name get name;
+  @JsonKey(ignore: true)
   $NameChangedCopyWith<NameChanged> get copyWith;
 }
 
@@ -394,6 +396,7 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(directory);
 
+  @JsonKey(ignore: true)
   @override
   $SelectDefaultDirectoryCopyWith<SelectDefaultDirectory> get copyWith =>
       _$SelectDefaultDirectoryCopyWithImpl<SelectDefaultDirectory>(
@@ -473,6 +476,7 @@ abstract class SelectDefaultDirectory implements SettingsEvent {
       _$SelectDefaultDirectory;
 
   Directory get directory;
+  @JsonKey(ignore: true)
   $SelectDefaultDirectoryCopyWith<SelectDefaultDirectory> get copyWith;
 }
 
@@ -1157,6 +1161,7 @@ class _$_HasLoaded implements _HasLoaded {
       const DeepCollectionEquality().hash(isLoading) ^
       const DeepCollectionEquality().hash(settingsFailureOption);
 
+  @JsonKey(ignore: true)
   @override
   _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
       __$HasLoadedCopyWithImpl<_HasLoaded>(this, _$identity);
@@ -1254,6 +1259,7 @@ abstract class _HasLoaded implements SettingsState {
   bool get darkMode;
   bool get isLoading;
   Option<SettingsFailure> get settingsFailureOption;
+  @JsonKey(ignore: true)
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
 
@@ -1320,6 +1326,7 @@ class _$_HasFailed implements _HasFailed {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$HasFailedCopyWith<_HasFailed> get copyWith =>
       __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
@@ -1404,5 +1411,6 @@ abstract class _HasFailed implements SettingsState {
   const factory _HasFailed(SettingsFailure failure) = _$_HasFailed;
 
   SettingsFailure get failure;
+  @JsonKey(ignore: true)
   _$HasFailedCopyWith<_HasFailed> get copyWith;
 }
