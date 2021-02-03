@@ -201,8 +201,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
         fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
-              logCount += 1;
-              logger.d("Called $logCount times");
+          logCount += 1;
+          logger.d("Called $logCount times");
           add(FileTransferEvent.incrementFileTransferIndex(
               uid: UniqueId.fromUniqueString(event)));
         });
@@ -226,11 +226,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             for (final transferProgressInfo in transferProgressInfos) {
               if (transferProgressInfo.user.uid.getOrCrash() ==
                   e.payloadInfo.endId) {
-                if (transferProgressInfo.fileTransferIndex < transferProgressInfo.filesMap.length) {
+                if (transferProgressInfo.fileTransferIndex <
+                    transferProgressInfo.filesMap.length) {
                   transferProgressInfo.filesMap.update(
                       transferProgressInfo.filesMap.keys
                           .elementAt(transferProgressInfo.fileTransferIndex),
-                          (value) => e.payloadInfo.progress);
+                      (value) => e.payloadInfo.progress);
                 }
               }
             }
