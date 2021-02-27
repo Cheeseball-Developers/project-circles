@@ -2,9 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/application/files/file_transfer/file_transfer_bloc.dart';
+import 'package:projectcircles/domain/files/file_transfer_type.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/files_info_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/file_transfer/widgets/transfer_progress_info_list.dart';
 import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/empty_pop_up_placeholder.dart';
+import 'package:projectcircles/presentation/circle_home/widgets/dialogs/widgets/file_history_list.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 
@@ -124,11 +126,10 @@ class FileTransferDialog extends StatelessWidget {
           receivingFiles: (state) => TransferProgressInfoList(
             transferProgressInfo: state.transferProgressInfo,
           ),
-          transferComplete: (state) => Container(),
-          /*FileHistoryList(
-            files: state.transferProgressInfo,
+          transferComplete: (state) => FileHistoryList(
+            files: state.transferProgressInfos[0].filesMap.keys.toList(),
             showOpen: state.type == const FileTransferType.incoming(),
-          ),*/
+          ),
           hasFailed: (state) => state.failure.map(
             emptySelection: (_) => const EmptyPopUpPlaceholder(
               icon: Icons.file_copy_rounded,

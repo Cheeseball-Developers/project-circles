@@ -29,7 +29,9 @@ class NearbyConnections {
   String _username;
   String _endName = ""; //currently connected device name
   File _tempFile; //store file mapped to corresponding payloadId
-  Map<int, String> map = {};
+  //Map<int, String> map = {};
+  List<FileInfo> fileInfos = [];
+  int fileIndex = 0;
   User discoveredDevice;
   User incomingRequest;
   String host; // host username
@@ -376,10 +378,34 @@ class NearbyConnections {
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
       _isFile = true;
-      _isFileInfo = false;
       //TODO add the message of file transfer started
       logger.i("File transfer started from $endId");
       _tempFile = File(payload.filePath);
+
+      /*if (fileIndex < fileInfos.length) {
+        if (await _tempFile.exists()) {
+          _tempFile
+              .rename("${_tempFile.parent.path}/${fileInfos[fileIndex].name}");
+          logger.d('parent dir:${_tempFile.parent}');
+        } else {
+          logger.d("File doesn't exist");
+        }
+      }*/
+
+      final Either<SettingsFailure, Directory> failureOrDirectory =
+          await _preferences.getDirectory();
+      failureOrDirectory.fold((f) => null, (directory) async {
+        final String psp = directory.path;
+        //creates a directory if not present
+        Directory(psp).create();
+        Directory(_tempFile.parent.path).delete();
+        logger.d('Directory o : $psp');
+
+        _tempFile.rename("$psp/${fileInfos[fileIndex].name}");
+      });
+
+      fileIndex += 1;
+
       return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
       logger.i("Bytes payload received");
@@ -392,7 +418,6 @@ class NearbyConnections {
       //name, path, size, thumbnail,hash
       if (str.contains('*')) {
         _isFileInfo = true;
-        _isFile = false;
         final List<String> info = str.split("***");
         for (final fileInfo in info) {
           final List<String> keyFileInfo = fileInfo.split("*");
@@ -411,14 +436,17 @@ class NearbyConnections {
               await _preferences.getDirectory();
 
           failureOrDirectory.fold((f) => null, (directory) {
-            //streaming the fileInfo
-            sendingFileInfo.sink.add(FileInfo(
+            final FileInfo fileInfo = FileInfo(
               hash: keyFileHash,
               path: "${directory.path}/$keyFileName",
               bytesSize: keyFileHash,
               thumbnail: keyFileThumbnail,
               name: keyFileName,
-            ));
+            );
+            //streaming the fileInfo
+            sendingFileInfo.sink.add(fileInfo);
+
+            fileInfos.add(fileInfo);
 
             final FileTransferItem item = FileInfoDto(
               hash: keyFileHash,
@@ -444,9 +472,11 @@ class NearbyConnections {
         }
       }
 
+      return right(unit);
+
       // used for file payload as file payload is mapped as
       // payloadId:filename
-      if (str.contains(':')) {
+      /*if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':').last;
         logger.d('----fileName: $fileName');
@@ -462,7 +492,7 @@ class NearbyConnections {
           map[payloadId] = fileName;
         }
       }
-      return right(unit);
+      return right(unit);*/
     } else {
       return left(const ConnectionFailure.unexpected());
     }
@@ -473,10 +503,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
-      //logger.d("$_isFile");
-      logger.d("PAID: ${lastFilePayloadId.toString()}");
-      logger.d("PAID: ${payloadTransferUpdate.id.toString()}");
-      if (lastFilePayloadId == payloadTransferUpdate.id) {
+      if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
         progressOfFile.sink.add(PayloadInfo(
@@ -490,15 +517,15 @@ class NearbyConnections {
           "Sending Receiving files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
-      if (lastFilePayloadId == payloadTransferUpdate.id) {
-        fileInfoSharingSuccessful.sink.add(endId);
-        _isFile = false;
+      if (_isFile) {
+        fileSharingSuccessful.sink.add(endId);
       }
       if (_isFileInfo) {
+        fileInfoSharingSuccessful.sink.add(endId);
         logger.i(
             "sent/recieved data to $endId, ${payloadTransferUpdate.totalBytes}");
       }
-      if (map.containsKey(payloadTransferUpdate.id)) {
+      /*if (map.containsKey(payloadTransferUpdate.id)) {
         logger.i(
             "sent /recieved files to $endId, ${payloadTransferUpdate.totalBytes}");
 
@@ -525,7 +552,7 @@ class NearbyConnections {
       } else {
         //bytes not received till yet
         map[payloadTransferUpdate.id] = "";
-      }
+      }*/
       return right(unit);
     }
 
@@ -550,15 +577,15 @@ class NearbyConnections {
       /// You must also send a bytes payload to send the filename and extension
       /// so that receiver can rename the file accordingly
       /// Send the payloadID and filename to receiver as bytes payload
-      lastFilePayloadId = await _nearby.sendFilePayload(receiver, file.path);
+
+      _isFile = true;
+      await _nearby.sendFilePayload(receiver, file.path).then((id) async {
+        lastFilePayloadId = id;
+      });
       logger.i("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
       logger.i("Currently sending file is: ${file.path.split('/').last}");
-      await _nearby.sendBytesPayload(
-          receiver,
-          Uint8List.fromList(
-              "$lastFilePayloadId:${file.path.split('/').last}".codeUnits));
     }
 
     if (lastFilePayloadId != null) {
