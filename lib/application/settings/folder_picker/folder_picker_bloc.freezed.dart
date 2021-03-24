@@ -138,6 +138,7 @@ class _$_OpenDirectory implements _OpenDirectory {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(directory);
 
+  @JsonKey(ignore: true)
   @override
   _$OpenDirectoryCopyWith<_OpenDirectory> get copyWith =>
       __$OpenDirectoryCopyWithImpl<_OpenDirectory>(this, _$identity);
@@ -204,6 +205,7 @@ abstract class _OpenDirectory implements FolderPickerEvent {
       _$_OpenDirectory;
 
   Directory get directory;
+  @JsonKey(ignore: true)
   _$OpenDirectoryCopyWith<_OpenDirectory> get copyWith;
 }
 
@@ -422,6 +424,7 @@ mixin _$FolderPickerState {
   Option<List<FileSystemEntity>> get folders;
   bool get isSelected;
 
+  @JsonKey(ignore: true)
   $FolderPickerStateCopyWith<FolderPickerState> get copyWith;
 }
 
@@ -549,6 +552,7 @@ class _$_FolderPickerState implements _FolderPickerState {
       const DeepCollectionEquality().hash(folders) ^
       const DeepCollectionEquality().hash(isSelected);
 
+  @JsonKey(ignore: true)
   @override
   _$FolderPickerStateCopyWith<_FolderPickerState> get copyWith =>
       __$FolderPickerStateCopyWithImpl<_FolderPickerState>(this, _$identity);
@@ -567,5 +571,6 @@ abstract class _FolderPickerState implements FolderPickerState {
   @override
   bool get isSelected;
   @override
+  @JsonKey(ignore: true)
   _$FolderPickerStateCopyWith<_FolderPickerState> get copyWith;
 }

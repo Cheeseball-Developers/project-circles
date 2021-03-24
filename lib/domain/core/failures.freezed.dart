@@ -59,6 +59,7 @@ mixin _$ValueFailure<T> {
     @required TResult orElse(),
   });
 
+  @JsonKey(ignore: true)
   $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
 }
 
@@ -152,6 +153,7 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
+  @JsonKey(ignore: true)
   @override
   $EmptyCopyWith<T, Empty<T>> get copyWith =>
       _$EmptyCopyWithImpl<T, Empty<T>>(this, _$identity);
@@ -213,6 +215,7 @@ abstract class Empty<T> implements ValueFailure<T> {
   @override
   T get failedValue;
   @override
+  @JsonKey(ignore: true)
   $EmptyCopyWith<T, Empty<T>> get copyWith;
 }
 
@@ -284,6 +287,7 @@ class _$ExceedingLength<T>
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failedValue);
 
+  @JsonKey(ignore: true)
   @override
   $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
       _$ExceedingLengthCopyWithImpl<T, ExceedingLength<T>>(this, _$identity);
@@ -346,5 +350,6 @@ abstract class ExceedingLength<T> implements ValueFailure<T> {
   @override
   T get failedValue;
   @override
+  @JsonKey(ignore: true)
   $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith;
 }

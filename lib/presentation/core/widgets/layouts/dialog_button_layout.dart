@@ -23,8 +23,16 @@ class DialogButtonLayout extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: type == DialogButtonType.center
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.end,
         children: [
+          if (type == DialogButtonType.center)
+            MyTextButton(
+              type: ButtonType.tertiary,
+              text: primaryText,
+              onTap: primaryOnTap,
+            ),
           if (type == DialogButtonType.doubleButton)
             MyTextButton(
               type: ButtonType.secondary,
@@ -34,15 +42,16 @@ class DialogButtonLayout extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.only(right: 8.0),
           ),
-          MyTextButton(
-            type: ButtonType.primary,
-            text: primaryText,
-            onTap: primaryOnTap,
-          )
+          if (type != DialogButtonType.center)
+            MyTextButton(
+              type: ButtonType.primary,
+              text: primaryText,
+              onTap: primaryOnTap,
+            )
         ],
       ),
     );
   }
 }
 
-enum DialogButtonType { singleButton, doubleButton }
+enum DialogButtonType { singleButton, doubleButton, center }

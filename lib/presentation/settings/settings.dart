@@ -185,7 +185,7 @@ class Settings extends StatelessWidget {
                                 final Option<Directory> directoryOption =
                                     await showDialog(
                                   context: context,
-                                  child: BlocProvider(
+                                  builder: (_) => BlocProvider(
                                     create: (context) =>
                                         getIt<FolderPickerBloc>()
                                           ..add(
@@ -200,7 +200,7 @@ class Settings extends StatelessWidget {
                                 directoryOption.fold(
                                   () {},
                                   (directory) => context
-                                      .bloc<SettingsBloc>()
+                                      .read<SettingsBloc>()
                                       .add(
                                         SettingsEvent.selectDefaultDirectory(
                                             directory),
@@ -215,7 +215,7 @@ class Settings extends StatelessWidget {
                                   'Ask for permission before downloading file sent by other users',
                               type: ButtonTileType.toggle,
                               toggleValue: state.askBeforeReceiving,
-                              onTap: () => context.bloc<SettingsBloc>().add(
+                              onTap: () => context.read<SettingsBloc>().add(
                                     const SettingsEvent
                                         .toggleAskBeforeReceiving(),
                                   ),
@@ -239,7 +239,7 @@ class Settings extends StatelessWidget {
                                 type: ButtonTileType.toggle,
                                 toggleValue: state.darkMode,
                                 onTap: () => context
-                                    .bloc<SettingsBloc>()
+                                    .read<SettingsBloc>()
                                     .add(const SettingsEvent.toggleDarkMode())),
                           ],
                         ),

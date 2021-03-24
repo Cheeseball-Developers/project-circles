@@ -45,6 +45,7 @@ mixin _$FileInfoDto {
   Uint8List get thumbnail;
   DateTime get dateTime;
 
+  @JsonKey(ignore: true)
   $FileInfoDtoCopyWith<FileInfoDto> get copyWith;
 }
 
@@ -204,6 +205,7 @@ class _$_FileInfoDto extends _FileInfoDto {
       const DeepCollectionEquality().hash(thumbnail) ^
       const DeepCollectionEquality().hash(dateTime);
 
+  @JsonKey(ignore: true)
   @override
   _$FileInfoDtoCopyWith<_FileInfoDto> get copyWith =>
       __$FileInfoDtoCopyWithImpl<_FileInfoDto>(this, _$identity);
@@ -232,5 +234,6 @@ abstract class _FileInfoDto extends FileInfoDto {
   @override
   DateTime get dateTime;
   @override
+  @JsonKey(ignore: true)
   _$FileInfoDtoCopyWith<_FileInfoDto> get copyWith;
 }

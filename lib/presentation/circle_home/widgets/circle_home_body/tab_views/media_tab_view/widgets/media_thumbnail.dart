@@ -23,7 +23,7 @@ class MediaThumbnail extends StatelessWidget {
                 },
                 onLongPress: () => showDialog(
                       context: context,
-                      child: MediaPreview(
+                      builder: (_) => MediaPreview(
                         mediaInfo: state.media.keys.elementAt(index),
                       ),
                     ),

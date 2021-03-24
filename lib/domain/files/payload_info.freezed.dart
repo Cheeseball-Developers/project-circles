@@ -14,10 +14,14 @@ class _$PayloadInfoTearOff {
   const _$PayloadInfoTearOff();
 
 // ignore: unused_element
-  _PayloadInfo call({@required int payloadId, @required double progress}) {
+  _PayloadInfo call(
+      {@required int payloadId,
+      @required double progress,
+      @required String endId}) {
     return _PayloadInfo(
       payloadId: payloadId,
       progress: progress,
+      endId: endId,
     );
   }
 }
@@ -30,7 +34,9 @@ const $PayloadInfo = _$PayloadInfoTearOff();
 mixin _$PayloadInfo {
   int get payloadId;
   double get progress;
+  String get endId;
 
+  @JsonKey(ignore: true)
   $PayloadInfoCopyWith<PayloadInfo> get copyWith;
 }
 
@@ -39,7 +45,7 @@ abstract class $PayloadInfoCopyWith<$Res> {
   factory $PayloadInfoCopyWith(
           PayloadInfo value, $Res Function(PayloadInfo) then) =
       _$PayloadInfoCopyWithImpl<$Res>;
-  $Res call({int payloadId, double progress});
+  $Res call({int payloadId, double progress, String endId});
 }
 
 /// @nodoc
@@ -54,10 +60,12 @@ class _$PayloadInfoCopyWithImpl<$Res> implements $PayloadInfoCopyWith<$Res> {
   $Res call({
     Object payloadId = freezed,
     Object progress = freezed,
+    Object endId = freezed,
   }) {
     return _then(_value.copyWith(
       payloadId: payloadId == freezed ? _value.payloadId : payloadId as int,
       progress: progress == freezed ? _value.progress : progress as double,
+      endId: endId == freezed ? _value.endId : endId as String,
     ));
   }
 }
@@ -69,7 +77,7 @@ abstract class _$PayloadInfoCopyWith<$Res>
           _PayloadInfo value, $Res Function(_PayloadInfo) then) =
       __$PayloadInfoCopyWithImpl<$Res>;
   @override
-  $Res call({int payloadId, double progress});
+  $Res call({int payloadId, double progress, String endId});
 }
 
 /// @nodoc
@@ -86,29 +94,35 @@ class __$PayloadInfoCopyWithImpl<$Res> extends _$PayloadInfoCopyWithImpl<$Res>
   $Res call({
     Object payloadId = freezed,
     Object progress = freezed,
+    Object endId = freezed,
   }) {
     return _then(_PayloadInfo(
       payloadId: payloadId == freezed ? _value.payloadId : payloadId as int,
       progress: progress == freezed ? _value.progress : progress as double,
+      endId: endId == freezed ? _value.endId : endId as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_PayloadInfo extends _PayloadInfo {
-  const _$_PayloadInfo({@required this.payloadId, @required this.progress})
+  const _$_PayloadInfo(
+      {@required this.payloadId, @required this.progress, @required this.endId})
       : assert(payloadId != null),
         assert(progress != null),
+        assert(endId != null),
         super._();
 
   @override
   final int payloadId;
   @override
   final double progress;
+  @override
+  final String endId;
 
   @override
   String toString() {
-    return 'PayloadInfo(payloadId: $payloadId, progress: $progress)';
+    return 'PayloadInfo(payloadId: $payloadId, progress: $progress, endId: $endId)';
   }
 
   @override
@@ -120,15 +134,19 @@ class _$_PayloadInfo extends _PayloadInfo {
                     .equals(other.payloadId, payloadId)) &&
             (identical(other.progress, progress) ||
                 const DeepCollectionEquality()
-                    .equals(other.progress, progress)));
+                    .equals(other.progress, progress)) &&
+            (identical(other.endId, endId) ||
+                const DeepCollectionEquality().equals(other.endId, endId)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(payloadId) ^
-      const DeepCollectionEquality().hash(progress);
+      const DeepCollectionEquality().hash(progress) ^
+      const DeepCollectionEquality().hash(endId);
 
+  @JsonKey(ignore: true)
   @override
   _$PayloadInfoCopyWith<_PayloadInfo> get copyWith =>
       __$PayloadInfoCopyWithImpl<_PayloadInfo>(this, _$identity);
@@ -137,12 +155,17 @@ class _$_PayloadInfo extends _PayloadInfo {
 abstract class _PayloadInfo extends PayloadInfo {
   const _PayloadInfo._() : super._();
   const factory _PayloadInfo(
-      {@required int payloadId, @required double progress}) = _$_PayloadInfo;
+      {@required int payloadId,
+      @required double progress,
+      @required String endId}) = _$_PayloadInfo;
 
   @override
   int get payloadId;
   @override
   double get progress;
   @override
+  String get endId;
+  @override
+  @JsonKey(ignore: true)
   _$PayloadInfoCopyWith<_PayloadInfo> get copyWith;
 }

@@ -24,8 +24,8 @@ class AvailableCirclesOverlay extends StatelessWidget {
         if (state.showAllDiscoveredDevicesPopUp) {
           showDialog(
             context: context,
-            child: BlocProvider.value(
-              value: context.bloc<SearchBloc>(),
+            builder: (_) => BlocProvider.value(
+              value: context.read<SearchBloc>(),
               child: AllDiscoveredDevicesPopUp(),
             ),
           ).whenComplete(
