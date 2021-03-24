@@ -1568,6 +1568,8 @@ class _$SearchStateTearOff {
       @required
           bool isLoading,
       @required
+          bool isCancelling,
+      @required
           bool showAllDiscoveredDevicesPopUp,
       @required
           bool showRequestConnectionPopUp,
@@ -1582,6 +1584,7 @@ class _$SearchStateTearOff {
     return _SearchState(
       isSearching: isSearching,
       isLoading: isLoading,
+      isCancelling: isCancelling,
       showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp,
       showRequestConnectionPopUp: showRequestConnectionPopUp,
       connectionFailureOrSuccessOption: connectionFailureOrSuccessOption,
@@ -1599,6 +1602,7 @@ const $SearchState = _$SearchStateTearOff();
 mixin _$SearchState {
   bool get isSearching;
   bool get isLoading;
+  bool get isCancelling;
   bool get showAllDiscoveredDevicesPopUp;
   bool get showRequestConnectionPopUp;
   Option<Either<ConnectionFailure, Unit>> get connectionFailureOrSuccessOption;
@@ -1617,6 +1621,7 @@ abstract class $SearchStateCopyWith<$Res> {
   $Res call(
       {bool isSearching,
       bool isLoading,
+      bool isCancelling,
       bool showAllDiscoveredDevicesPopUp,
       bool showRequestConnectionPopUp,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
@@ -1636,6 +1641,7 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
   $Res call({
     Object isSearching = freezed,
     Object isLoading = freezed,
+    Object isCancelling = freezed,
     Object showAllDiscoveredDevicesPopUp = freezed,
     Object showRequestConnectionPopUp = freezed,
     Object connectionFailureOrSuccessOption = freezed,
@@ -1646,6 +1652,8 @@ class _$SearchStateCopyWithImpl<$Res> implements $SearchStateCopyWith<$Res> {
       isSearching:
           isSearching == freezed ? _value.isSearching : isSearching as bool,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isCancelling:
+          isCancelling == freezed ? _value.isCancelling : isCancelling as bool,
       showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp == freezed
           ? _value.showAllDiscoveredDevicesPopUp
           : showAllDiscoveredDevicesPopUp as bool,
@@ -1678,6 +1686,7 @@ abstract class _$SearchStateCopyWith<$Res>
   $Res call(
       {bool isSearching,
       bool isLoading,
+      bool isCancelling,
       bool showAllDiscoveredDevicesPopUp,
       bool showRequestConnectionPopUp,
       Option<Either<ConnectionFailure, Unit>> connectionFailureOrSuccessOption,
@@ -1699,6 +1708,7 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
   $Res call({
     Object isSearching = freezed,
     Object isLoading = freezed,
+    Object isCancelling = freezed,
     Object showAllDiscoveredDevicesPopUp = freezed,
     Object showRequestConnectionPopUp = freezed,
     Object connectionFailureOrSuccessOption = freezed,
@@ -1709,6 +1719,8 @@ class __$SearchStateCopyWithImpl<$Res> extends _$SearchStateCopyWithImpl<$Res>
       isSearching:
           isSearching == freezed ? _value.isSearching : isSearching as bool,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isCancelling:
+          isCancelling == freezed ? _value.isCancelling : isCancelling as bool,
       showAllDiscoveredDevicesPopUp: showAllDiscoveredDevicesPopUp == freezed
           ? _value.showAllDiscoveredDevicesPopUp
           : showAllDiscoveredDevicesPopUp as bool,
@@ -1736,6 +1748,7 @@ class _$_SearchState implements _SearchState {
   const _$_SearchState(
       {@required this.isSearching,
       @required this.isLoading,
+      @required this.isCancelling,
       @required this.showAllDiscoveredDevicesPopUp,
       @required this.showRequestConnectionPopUp,
       @required this.connectionFailureOrSuccessOption,
@@ -1743,6 +1756,7 @@ class _$_SearchState implements _SearchState {
       @required this.discoveredDevices})
       : assert(isSearching != null),
         assert(isLoading != null),
+        assert(isCancelling != null),
         assert(showAllDiscoveredDevicesPopUp != null),
         assert(showRequestConnectionPopUp != null),
         assert(connectionFailureOrSuccessOption != null),
@@ -1753,6 +1767,8 @@ class _$_SearchState implements _SearchState {
   final bool isSearching;
   @override
   final bool isLoading;
+  @override
+  final bool isCancelling;
   @override
   final bool showAllDiscoveredDevicesPopUp;
   @override
@@ -1767,7 +1783,7 @@ class _$_SearchState implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(isSearching: $isSearching, isLoading: $isLoading, showAllDiscoveredDevicesPopUp: $showAllDiscoveredDevicesPopUp, showRequestConnectionPopUp: $showRequestConnectionPopUp, connectionFailureOrSuccessOption: $connectionFailureOrSuccessOption, connectionFailureOrRequestSent: $connectionFailureOrRequestSent, discoveredDevices: $discoveredDevices)';
+    return 'SearchState(isSearching: $isSearching, isLoading: $isLoading, isCancelling: $isCancelling, showAllDiscoveredDevicesPopUp: $showAllDiscoveredDevicesPopUp, showRequestConnectionPopUp: $showRequestConnectionPopUp, connectionFailureOrSuccessOption: $connectionFailureOrSuccessOption, connectionFailureOrRequestSent: $connectionFailureOrRequestSent, discoveredDevices: $discoveredDevices)';
   }
 
   @override
@@ -1780,8 +1796,10 @@ class _$_SearchState implements _SearchState {
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
-            (identical(other.showAllDiscoveredDevicesPopUp,
-                    showAllDiscoveredDevicesPopUp) ||
+            (identical(other.isCancelling, isCancelling) ||
+                const DeepCollectionEquality()
+                    .equals(other.isCancelling, isCancelling)) &&
+            (identical(other.showAllDiscoveredDevicesPopUp, showAllDiscoveredDevicesPopUp) ||
                 const DeepCollectionEquality().equals(
                     other.showAllDiscoveredDevicesPopUp,
                     showAllDiscoveredDevicesPopUp)) &&
@@ -1809,6 +1827,7 @@ class _$_SearchState implements _SearchState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(isSearching) ^
       const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(isCancelling) ^
       const DeepCollectionEquality().hash(showAllDiscoveredDevicesPopUp) ^
       const DeepCollectionEquality().hash(showRequestConnectionPopUp) ^
       const DeepCollectionEquality().hash(connectionFailureOrSuccessOption) ^
@@ -1828,6 +1847,8 @@ abstract class _SearchState implements SearchState {
       @required
           bool isLoading,
       @required
+          bool isCancelling,
+      @required
           bool showAllDiscoveredDevicesPopUp,
       @required
           bool showRequestConnectionPopUp,
@@ -1844,6 +1865,8 @@ abstract class _SearchState implements SearchState {
   bool get isSearching;
   @override
   bool get isLoading;
+  @override
+  bool get isCancelling;
   @override
   bool get showAllDiscoveredDevicesPopUp;
   @override

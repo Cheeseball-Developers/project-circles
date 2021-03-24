@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:projectcircles/application/circle/current_circle/current_circle_bloc.dart';
-import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
+import 'package:projectcircles/application/circle/search/search_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
@@ -59,29 +59,26 @@ class ConnectionRequestPopUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DialogLayout(
-      dialogType: DialogType.empty,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: BlocBuilder<CurrentCircleBloc, CurrentCircleState>(
-          builder: (circleContext, state) =>
-              BlocConsumer<SearchBloc, SearchState>(
-            listener: (context, state) {
-              state.connectionFailureOrSuccessOption.fold(
-                () => null,
-                (failureOrSuccess) => failureOrSuccess.fold(
-                  (l) => null,
-                  (_) {
-                    circleContext.bloc<CurrentCircleBloc>().add(
-                          CurrentCircleEvent.joinCircle(host: user),
-                        );
-                    ExtendedNavigator.of(context).popAndPush(Routes.circleHome);
-                  },
-                ),
+    return BlocConsumer<SearchBloc, SearchState>(
+      listener: (context, state) {
+        state.connectionFailureOrSuccessOption.fold(
+              () => null,
+              (failureOrSuccess) => failureOrSuccess.fold(
+                (l) => null,
+                (_) {
+              context.bloc<CurrentCircleBloc>().add(
+                CurrentCircleEvent.joinCircle(host: user),
               );
+              ExtendedNavigator.of(context).popAndPush(Routes.circleHome);
             },
-            builder: (context, state) =>
-                state.connectionFailureOrRequestSent.fold(
+          ),
+        );
+      },
+      builder: (context, state) => DialogLayout(
+        dialogType: DialogType.withButtons,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: state.connectionFailureOrRequestSent.fold(
               () => _body(
                 context,
                 topText: 'Sending Request...',
@@ -90,8 +87,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
                 buttonText: 'Cancel',
                 onTap: () {
                   context.bloc<SearchBloc>().add(
-                        SearchEvent.endConnectionRequest(
-                            cancelRequestUser: user),
+                        SearchEvent.endConnectionRequest(cancelRequestUser: user),
                       );
                   ExtendedNavigator.of(context).pop();
                 },
@@ -126,8 +122,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
                       ExtendedNavigator.of(context).pop();
                     },
                   ),
-                  (connectionFailureOrSuccess) =>
-                      connectionFailureOrSuccess.fold(
+                  (connectionFailureOrSuccess) => connectionFailureOrSuccess.fold(
                     (failure) => _body(
                       context,
                       topText: 'Failed to Connect!',
@@ -153,7 +148,6 @@ class ConnectionRequestPopUp extends StatelessWidget {
                 ),
               ),
             ),
-          ),
         ),
       ),
     );

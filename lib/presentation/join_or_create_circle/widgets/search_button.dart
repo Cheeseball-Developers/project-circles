@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:projectcircles/application/circle/join_or_create_circle/search_bloc.dart';
+import 'package:projectcircles/application/circle/search/search_bloc.dart';
 
 class SearchButton extends StatefulWidget {
   @override
@@ -119,10 +119,10 @@ class _SearchButtonState extends State<SearchButton>
               onTap: !state.isLoading
                   ? state.isSearching
                       ? () => context
-                          .bloc<SearchBloc>()
+                          .read<SearchBloc>()
                           .add(const SearchEvent.stopSearching())
                       : () => context
-                          .bloc<SearchBloc>()
+                          .read<SearchBloc>()
                           .add(const SearchEvent.startSearching())
                   : () {},
               child: CircleAvatar(

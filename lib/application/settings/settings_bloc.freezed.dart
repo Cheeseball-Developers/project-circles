@@ -19,6 +19,11 @@ class _$SettingsEventTearOff {
   }
 
 // ignore: unused_element
+  ChangeName changeName() {
+    return const ChangeName();
+  }
+
+// ignore: unused_element
   NameChanged nameChanged(Name name) {
     return NameChanged(
       name,
@@ -52,6 +57,7 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loadPrefs(),
+    @required TResult changeName(),
     @required TResult nameChanged(Name name),
     @required TResult selectDefaultDirectory(Directory directory),
     @required TResult toggleAskBeforeReceiving(),
@@ -60,6 +66,7 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loadPrefs(),
+    TResult changeName(),
     TResult nameChanged(Name name),
     TResult selectDefaultDirectory(Directory directory),
     TResult toggleAskBeforeReceiving(),
@@ -69,6 +76,7 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
     @required TResult nameChanged(NameChanged value),
     @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
     @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -77,6 +85,7 @@ mixin _$SettingsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
     TResult nameChanged(NameChanged value),
     TResult selectDefaultDirectory(SelectDefaultDirectory value),
     TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -139,12 +148,14 @@ class _$LoadPrefs implements LoadPrefs {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loadPrefs(),
+    @required TResult changeName(),
     @required TResult nameChanged(Name name),
     @required TResult selectDefaultDirectory(Directory directory),
     @required TResult toggleAskBeforeReceiving(),
     @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -156,6 +167,7 @@ class _$LoadPrefs implements LoadPrefs {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loadPrefs(),
+    TResult changeName(),
     TResult nameChanged(Name name),
     TResult selectDefaultDirectory(Directory directory),
     TResult toggleAskBeforeReceiving(),
@@ -173,12 +185,14 @@ class _$LoadPrefs implements LoadPrefs {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
     @required TResult nameChanged(NameChanged value),
     @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
     @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -190,6 +204,7 @@ class _$LoadPrefs implements LoadPrefs {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
     TResult nameChanged(NameChanged value),
     TResult selectDefaultDirectory(SelectDefaultDirectory value),
     TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -206,6 +221,119 @@ class _$LoadPrefs implements LoadPrefs {
 
 abstract class LoadPrefs implements SettingsEvent {
   const factory LoadPrefs() = _$LoadPrefs;
+}
+
+/// @nodoc
+abstract class $ChangeNameCopyWith<$Res> {
+  factory $ChangeNameCopyWith(
+          ChangeName value, $Res Function(ChangeName) then) =
+      _$ChangeNameCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$ChangeNameCopyWithImpl<$Res> extends _$SettingsEventCopyWithImpl<$Res>
+    implements $ChangeNameCopyWith<$Res> {
+  _$ChangeNameCopyWithImpl(ChangeName _value, $Res Function(ChangeName) _then)
+      : super(_value, (v) => _then(v as ChangeName));
+
+  @override
+  ChangeName get _value => super._value as ChangeName;
+}
+
+/// @nodoc
+class _$ChangeName implements ChangeName {
+  const _$ChangeName();
+
+  @override
+  String toString() {
+    return 'SettingsEvent.changeName()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is ChangeName);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult loadPrefs(),
+    @required TResult changeName(),
+    @required TResult nameChanged(Name name),
+    @required TResult selectDefaultDirectory(Directory directory),
+    @required TResult toggleAskBeforeReceiving(),
+    @required TResult toggleDarkMode(),
+  }) {
+    assert(loadPrefs != null);
+    assert(changeName != null);
+    assert(nameChanged != null);
+    assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
+    assert(toggleDarkMode != null);
+    return changeName();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult loadPrefs(),
+    TResult changeName(),
+    TResult nameChanged(Name name),
+    TResult selectDefaultDirectory(Directory directory),
+    TResult toggleAskBeforeReceiving(),
+    TResult toggleDarkMode(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeName != null) {
+      return changeName();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
+    @required TResult nameChanged(NameChanged value),
+    @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    @required TResult toggleDarkMode(ToggleDarkMode value),
+  }) {
+    assert(loadPrefs != null);
+    assert(changeName != null);
+    assert(nameChanged != null);
+    assert(selectDefaultDirectory != null);
+    assert(toggleAskBeforeReceiving != null);
+    assert(toggleDarkMode != null);
+    return changeName(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
+    TResult nameChanged(NameChanged value),
+    TResult selectDefaultDirectory(SelectDefaultDirectory value),
+    TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
+    TResult toggleDarkMode(ToggleDarkMode value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (changeName != null) {
+      return changeName(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ChangeName implements SettingsEvent {
+  const factory ChangeName() = _$ChangeName;
 }
 
 /// @nodoc
@@ -269,12 +397,14 @@ class _$NameChanged implements NameChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loadPrefs(),
+    @required TResult changeName(),
     @required TResult nameChanged(Name name),
     @required TResult selectDefaultDirectory(Directory directory),
     @required TResult toggleAskBeforeReceiving(),
     @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -286,6 +416,7 @@ class _$NameChanged implements NameChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loadPrefs(),
+    TResult changeName(),
     TResult nameChanged(Name name),
     TResult selectDefaultDirectory(Directory directory),
     TResult toggleAskBeforeReceiving(),
@@ -303,12 +434,14 @@ class _$NameChanged implements NameChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
     @required TResult nameChanged(NameChanged value),
     @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
     @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -320,6 +453,7 @@ class _$NameChanged implements NameChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
     TResult nameChanged(NameChanged value),
     TResult selectDefaultDirectory(SelectDefaultDirectory value),
     TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -406,12 +540,14 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loadPrefs(),
+    @required TResult changeName(),
     @required TResult nameChanged(Name name),
     @required TResult selectDefaultDirectory(Directory directory),
     @required TResult toggleAskBeforeReceiving(),
     @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -423,6 +559,7 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loadPrefs(),
+    TResult changeName(),
     TResult nameChanged(Name name),
     TResult selectDefaultDirectory(Directory directory),
     TResult toggleAskBeforeReceiving(),
@@ -440,12 +577,14 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
     @required TResult nameChanged(NameChanged value),
     @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
     @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -457,6 +596,7 @@ class _$SelectDefaultDirectory implements SelectDefaultDirectory {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
     TResult nameChanged(NameChanged value),
     TResult selectDefaultDirectory(SelectDefaultDirectory value),
     TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -521,12 +661,14 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loadPrefs(),
+    @required TResult changeName(),
     @required TResult nameChanged(Name name),
     @required TResult selectDefaultDirectory(Directory directory),
     @required TResult toggleAskBeforeReceiving(),
     @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -538,6 +680,7 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loadPrefs(),
+    TResult changeName(),
     TResult nameChanged(Name name),
     TResult selectDefaultDirectory(Directory directory),
     TResult toggleAskBeforeReceiving(),
@@ -555,12 +698,14 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
     @required TResult nameChanged(NameChanged value),
     @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
     @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -572,6 +717,7 @@ class _$ToggleAskBeforeReceiving implements ToggleAskBeforeReceiving {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
     TResult nameChanged(NameChanged value),
     TResult selectDefaultDirectory(SelectDefaultDirectory value),
     TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -630,12 +776,14 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @optionalTypeArgs
   TResult when<TResult extends Object>({
     @required TResult loadPrefs(),
+    @required TResult changeName(),
     @required TResult nameChanged(Name name),
     @required TResult selectDefaultDirectory(Directory directory),
     @required TResult toggleAskBeforeReceiving(),
     @required TResult toggleDarkMode(),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -647,6 +795,7 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object>({
     TResult loadPrefs(),
+    TResult changeName(),
     TResult nameChanged(Name name),
     TResult selectDefaultDirectory(Directory directory),
     TResult toggleAskBeforeReceiving(),
@@ -664,12 +813,14 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @optionalTypeArgs
   TResult map<TResult extends Object>({
     @required TResult loadPrefs(LoadPrefs value),
+    @required TResult changeName(ChangeName value),
     @required TResult nameChanged(NameChanged value),
     @required TResult selectDefaultDirectory(SelectDefaultDirectory value),
     @required TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
     @required TResult toggleDarkMode(ToggleDarkMode value),
   }) {
     assert(loadPrefs != null);
+    assert(changeName != null);
     assert(nameChanged != null);
     assert(selectDefaultDirectory != null);
     assert(toggleAskBeforeReceiving != null);
@@ -681,6 +832,7 @@ class _$ToggleDarkMode implements ToggleDarkMode {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object>({
     TResult loadPrefs(LoadPrefs value),
+    TResult changeName(ChangeName value),
     TResult nameChanged(NameChanged value),
     TResult selectDefaultDirectory(SelectDefaultDirectory value),
     TResult toggleAskBeforeReceiving(ToggleAskBeforeReceiving value),
@@ -720,6 +872,7 @@ class _$SettingsStateTearOff {
       @required bool askBeforeReceiving,
       @required bool darkMode,
       @required bool isLoading,
+      @required bool isChangingName,
       @required Option<SettingsFailure> settingsFailureOption}) {
     return _HasLoaded(
       user: user,
@@ -727,6 +880,7 @@ class _$SettingsStateTearOff {
       askBeforeReceiving: askBeforeReceiving,
       darkMode: darkMode,
       isLoading: isLoading,
+      isChangingName: isChangingName,
       settingsFailureOption: settingsFailureOption,
     );
   }
@@ -756,6 +910,7 @@ mixin _$SettingsState {
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
+            bool isChangingName,
             Option<SettingsFailure> settingsFailureOption),
     @required TResult hasFailed(SettingsFailure failure),
   });
@@ -769,6 +924,7 @@ mixin _$SettingsState {
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
+        bool isChangingName,
         Option<SettingsFailure> settingsFailureOption),
     TResult hasFailed(SettingsFailure failure),
     @required TResult orElse(),
@@ -852,6 +1008,7 @@ class _$_Initial implements _Initial {
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
+            bool isChangingName,
             Option<SettingsFailure> settingsFailureOption),
     @required TResult hasFailed(SettingsFailure failure),
   }) {
@@ -873,6 +1030,7 @@ class _$_Initial implements _Initial {
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
+        bool isChangingName,
         Option<SettingsFailure> settingsFailureOption),
     TResult hasFailed(SettingsFailure failure),
     @required TResult orElse(),
@@ -966,6 +1124,7 @@ class _$_IsLoading implements _IsLoading {
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
+            bool isChangingName,
             Option<SettingsFailure> settingsFailureOption),
     @required TResult hasFailed(SettingsFailure failure),
   }) {
@@ -987,6 +1146,7 @@ class _$_IsLoading implements _IsLoading {
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
+        bool isChangingName,
         Option<SettingsFailure> settingsFailureOption),
     TResult hasFailed(SettingsFailure failure),
     @required TResult orElse(),
@@ -1045,6 +1205,7 @@ abstract class _$HasLoadedCopyWith<$Res> {
       bool askBeforeReceiving,
       bool darkMode,
       bool isLoading,
+      bool isChangingName,
       Option<SettingsFailure> settingsFailureOption});
 
   $UserCopyWith<$Res> get user;
@@ -1066,6 +1227,7 @@ class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
     Object askBeforeReceiving = freezed,
     Object darkMode = freezed,
     Object isLoading = freezed,
+    Object isChangingName = freezed,
     Object settingsFailureOption = freezed,
   }) {
     return _then(_HasLoaded(
@@ -1077,6 +1239,9 @@ class __$HasLoadedCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res>
           : askBeforeReceiving as bool,
       darkMode: darkMode == freezed ? _value.darkMode : darkMode as bool,
       isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isChangingName: isChangingName == freezed
+          ? _value.isChangingName
+          : isChangingName as bool,
       settingsFailureOption: settingsFailureOption == freezed
           ? _value.settingsFailureOption
           : settingsFailureOption as Option<SettingsFailure>,
@@ -1102,12 +1267,14 @@ class _$_HasLoaded implements _HasLoaded {
       @required this.askBeforeReceiving,
       @required this.darkMode,
       @required this.isLoading,
+      @required this.isChangingName,
       @required this.settingsFailureOption})
       : assert(user != null),
         assert(directory != null),
         assert(askBeforeReceiving != null),
         assert(darkMode != null),
         assert(isLoading != null),
+        assert(isChangingName != null),
         assert(settingsFailureOption != null);
 
   @override
@@ -1121,11 +1288,13 @@ class _$_HasLoaded implements _HasLoaded {
   @override
   final bool isLoading;
   @override
+  final bool isChangingName;
+  @override
   final Option<SettingsFailure> settingsFailureOption;
 
   @override
   String toString() {
-    return 'SettingsState.hasLoaded(user: $user, directory: $directory, askBeforeReceiving: $askBeforeReceiving, darkMode: $darkMode, isLoading: $isLoading, settingsFailureOption: $settingsFailureOption)';
+    return 'SettingsState.hasLoaded(user: $user, directory: $directory, askBeforeReceiving: $askBeforeReceiving, darkMode: $darkMode, isLoading: $isLoading, isChangingName: $isChangingName, settingsFailureOption: $settingsFailureOption)';
   }
 
   @override
@@ -1146,6 +1315,9 @@ class _$_HasLoaded implements _HasLoaded {
             (identical(other.isLoading, isLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isLoading, isLoading)) &&
+            (identical(other.isChangingName, isChangingName) ||
+                const DeepCollectionEquality()
+                    .equals(other.isChangingName, isChangingName)) &&
             (identical(other.settingsFailureOption, settingsFailureOption) ||
                 const DeepCollectionEquality().equals(
                     other.settingsFailureOption, settingsFailureOption)));
@@ -1159,6 +1331,7 @@ class _$_HasLoaded implements _HasLoaded {
       const DeepCollectionEquality().hash(askBeforeReceiving) ^
       const DeepCollectionEquality().hash(darkMode) ^
       const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(isChangingName) ^
       const DeepCollectionEquality().hash(settingsFailureOption);
 
   @JsonKey(ignore: true)
@@ -1178,6 +1351,7 @@ class _$_HasLoaded implements _HasLoaded {
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
+            bool isChangingName,
             Option<SettingsFailure> settingsFailureOption),
     @required TResult hasFailed(SettingsFailure failure),
   }) {
@@ -1186,7 +1360,7 @@ class _$_HasLoaded implements _HasLoaded {
     assert(hasLoaded != null);
     assert(hasFailed != null);
     return hasLoaded(user, directory, askBeforeReceiving, darkMode,
-        this.isLoading, settingsFailureOption);
+        this.isLoading, isChangingName, settingsFailureOption);
   }
 
   @override
@@ -1200,6 +1374,7 @@ class _$_HasLoaded implements _HasLoaded {
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
+        bool isChangingName,
         Option<SettingsFailure> settingsFailureOption),
     TResult hasFailed(SettingsFailure failure),
     @required TResult orElse(),
@@ -1207,7 +1382,7 @@ class _$_HasLoaded implements _HasLoaded {
     assert(orElse != null);
     if (hasLoaded != null) {
       return hasLoaded(user, directory, askBeforeReceiving, darkMode,
-          this.isLoading, settingsFailureOption);
+          this.isLoading, isChangingName, settingsFailureOption);
     }
     return orElse();
   }
@@ -1251,6 +1426,7 @@ abstract class _HasLoaded implements SettingsState {
       @required bool askBeforeReceiving,
       @required bool darkMode,
       @required bool isLoading,
+      @required bool isChangingName,
       @required Option<SettingsFailure> settingsFailureOption}) = _$_HasLoaded;
 
   User get user;
@@ -1258,6 +1434,7 @@ abstract class _HasLoaded implements SettingsState {
   bool get askBeforeReceiving;
   bool get darkMode;
   bool get isLoading;
+  bool get isChangingName;
   Option<SettingsFailure> get settingsFailureOption;
   @JsonKey(ignore: true)
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
@@ -1343,6 +1520,7 @@ class _$_HasFailed implements _HasFailed {
             bool askBeforeReceiving,
             bool darkMode,
             bool isLoading,
+            bool isChangingName,
             Option<SettingsFailure> settingsFailureOption),
     @required TResult hasFailed(SettingsFailure failure),
   }) {
@@ -1364,6 +1542,7 @@ class _$_HasFailed implements _HasFailed {
         bool askBeforeReceiving,
         bool darkMode,
         bool isLoading,
+        bool isChangingName,
         Option<SettingsFailure> settingsFailureOption),
     TResult hasFailed(SettingsFailure failure),
     @required TResult orElse(),

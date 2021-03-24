@@ -31,7 +31,7 @@ class ButtonTile extends StatelessWidget {
               ? Theme.of(context).buttonColor
               : toggleValue
                   ? Theme.of(context).buttonColor
-                  : Colors.white,
+                  : Theme.of(context).cardColor,
           elevation: type == ButtonTileType.tapToOpen
               ? 2.0
               : toggleValue
