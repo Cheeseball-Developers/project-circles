@@ -76,8 +76,23 @@ class _$FileTransferEventTearOff {
   }
 
 // ignore: unused_element
+  _IncrementFileTransferIndex incrementFileTransferIndex(
+      {@required UniqueId uid}) {
+    return _IncrementFileTransferIndex(
+      uid: uid,
+    );
+  }
+
+// ignore: unused_element
   _FilesReceived filesReceived() {
     return const _FilesReceived();
+  }
+
+// ignore: unused_element
+  _AbortFileTransfer abortFileTransfer({@required User user}) {
+    return _AbortFileTransfer(
+      user: user,
+    );
   }
 
 // ignore: unused_element
@@ -104,7 +119,9 @@ mixin _$FileTransferEvent {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   });
   @optionalTypeArgs
@@ -119,7 +136,9 @@ mixin _$FileTransferEvent {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   });
@@ -135,7 +154,10 @@ mixin _$FileTransferEvent {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   });
   @optionalTypeArgs
@@ -150,7 +172,9 @@ mixin _$FileTransferEvent {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   });
@@ -222,7 +246,9 @@ class _$_Initialize implements _Initialize {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -235,7 +261,9 @@ class _$_Initialize implements _Initialize {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return initialize();
   }
@@ -253,7 +281,9 @@ class _$_Initialize implements _Initialize {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -277,7 +307,10 @@ class _$_Initialize implements _Initialize {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -290,7 +323,9 @@ class _$_Initialize implements _Initialize {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return initialize(this);
   }
@@ -308,7 +343,9 @@ class _$_Initialize implements _Initialize {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -377,6 +414,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(users);
 
+  @JsonKey(ignore: true)
   @override
   _$ConfirmOutgoingFilesCopyWith<_ConfirmOutgoingFiles> get copyWith =>
       __$ConfirmOutgoingFilesCopyWithImpl<_ConfirmOutgoingFiles>(
@@ -395,7 +433,9 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -408,7 +448,9 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return confirmOutgoingFiles(users);
   }
@@ -426,7 +468,9 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -450,7 +494,10 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -463,7 +510,9 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return confirmOutgoingFiles(this);
   }
@@ -481,7 +530,9 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -498,6 +549,7 @@ abstract class _ConfirmOutgoingFiles implements FileTransferEvent {
       _$_ConfirmOutgoingFiles;
 
   List<User> get users;
+  @JsonKey(ignore: true)
   _$ConfirmOutgoingFilesCopyWith<_ConfirmOutgoingFiles> get copyWith;
 }
 
@@ -550,7 +602,9 @@ class _$_CancelSend implements _CancelSend {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -563,7 +617,9 @@ class _$_CancelSend implements _CancelSend {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return cancelSend();
   }
@@ -581,7 +637,9 @@ class _$_CancelSend implements _CancelSend {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -605,7 +663,10 @@ class _$_CancelSend implements _CancelSend {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -618,7 +679,9 @@ class _$_CancelSend implements _CancelSend {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return cancelSend(this);
   }
@@ -636,7 +699,9 @@ class _$_CancelSend implements _CancelSend {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -701,7 +766,9 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -714,7 +781,9 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return sendFilesInfo();
   }
@@ -732,7 +801,9 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -756,7 +827,10 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -769,7 +843,9 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return sendFilesInfo(this);
   }
@@ -787,7 +863,9 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -857,6 +935,7 @@ class _$_SendFiles implements _SendFiles {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(endPointId);
 
+  @JsonKey(ignore: true)
   @override
   _$SendFilesCopyWith<_SendFiles> get copyWith =>
       __$SendFilesCopyWithImpl<_SendFiles>(this, _$identity);
@@ -874,7 +953,9 @@ class _$_SendFiles implements _SendFiles {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -887,7 +968,9 @@ class _$_SendFiles implements _SendFiles {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return sendFiles(endPointId);
   }
@@ -905,7 +988,9 @@ class _$_SendFiles implements _SendFiles {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -929,7 +1014,10 @@ class _$_SendFiles implements _SendFiles {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -942,7 +1030,9 @@ class _$_SendFiles implements _SendFiles {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return sendFiles(this);
   }
@@ -960,7 +1050,9 @@ class _$_SendFiles implements _SendFiles {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -976,6 +1068,7 @@ abstract class _SendFiles implements FileTransferEvent {
   const factory _SendFiles({@required String endPointId}) = _$_SendFiles;
 
   String get endPointId;
+  @JsonKey(ignore: true)
   _$SendFilesCopyWith<_SendFiles> get copyWith;
 }
 
@@ -1027,7 +1120,9 @@ class _$_FilesSent implements _FilesSent {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -1040,7 +1135,9 @@ class _$_FilesSent implements _FilesSent {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return filesSent();
   }
@@ -1058,7 +1155,9 @@ class _$_FilesSent implements _FilesSent {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -1082,7 +1181,10 @@ class _$_FilesSent implements _FilesSent {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -1095,7 +1197,9 @@ class _$_FilesSent implements _FilesSent {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return filesSent(this);
   }
@@ -1113,7 +1217,9 @@ class _$_FilesSent implements _FilesSent {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -1195,6 +1301,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(fileInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$FileInfoReceivedCopyWith<_FileInfoReceived> get copyWith =>
       __$FileInfoReceivedCopyWithImpl<_FileInfoReceived>(this, _$identity);
@@ -1212,7 +1319,9 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -1225,7 +1334,9 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return fileInfoReceived(fileInfo);
   }
@@ -1243,7 +1354,9 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -1267,7 +1380,10 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -1280,7 +1396,9 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return fileInfoReceived(this);
   }
@@ -1298,7 +1416,9 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -1314,6 +1434,7 @@ abstract class _FileInfoReceived implements FileTransferEvent {
   const factory _FileInfoReceived({FileInfo fileInfo}) = _$_FileInfoReceived;
 
   FileInfo get fileInfo;
+  @JsonKey(ignore: true)
   _$FileInfoReceivedCopyWith<_FileInfoReceived> get copyWith;
 }
 
@@ -1370,6 +1491,7 @@ class _$_EndIdReceived implements _EndIdReceived {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(endId);
 
+  @JsonKey(ignore: true)
   @override
   _$EndIdReceivedCopyWith<_EndIdReceived> get copyWith =>
       __$EndIdReceivedCopyWithImpl<_EndIdReceived>(this, _$identity);
@@ -1387,7 +1509,9 @@ class _$_EndIdReceived implements _EndIdReceived {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -1400,7 +1524,9 @@ class _$_EndIdReceived implements _EndIdReceived {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return endIdReceived(endId);
   }
@@ -1418,7 +1544,9 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -1442,7 +1570,10 @@ class _$_EndIdReceived implements _EndIdReceived {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -1455,7 +1586,9 @@ class _$_EndIdReceived implements _EndIdReceived {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return endIdReceived(this);
   }
@@ -1473,7 +1606,9 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -1489,6 +1624,7 @@ abstract class _EndIdReceived implements FileTransferEvent {
   const factory _EndIdReceived({String endId}) = _$_EndIdReceived;
 
   String get endId;
+  @JsonKey(ignore: true)
   _$EndIdReceivedCopyWith<_EndIdReceived> get copyWith;
 }
 
@@ -1550,6 +1686,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(acceptOrReject);
 
+  @JsonKey(ignore: true)
   @override
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith =>
       __$ConfirmIncomingFilesCopyWithImpl<_ConfirmIncomingFiles>(
@@ -1568,7 +1705,9 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -1581,7 +1720,9 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return confirmIncomingFiles(acceptOrReject);
   }
@@ -1599,7 +1740,9 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -1623,7 +1766,10 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -1636,7 +1782,9 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return confirmIncomingFiles(this);
   }
@@ -1654,7 +1802,9 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -1671,6 +1821,7 @@ abstract class _ConfirmIncomingFiles implements FileTransferEvent {
       _$_ConfirmIncomingFiles;
 
   bool get acceptOrReject;
+  @JsonKey(ignore: true)
   _$ConfirmIncomingFilesCopyWith<_ConfirmIncomingFiles> get copyWith;
 }
 
@@ -1743,6 +1894,7 @@ class _$_UpdateProgress implements _UpdateProgress {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(payloadInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$UpdateProgressCopyWith<_UpdateProgress> get copyWith =>
       __$UpdateProgressCopyWithImpl<_UpdateProgress>(this, _$identity);
@@ -1760,7 +1912,9 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -1773,7 +1927,9 @@ class _$_UpdateProgress implements _UpdateProgress {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return updateProgress(payloadInfo);
   }
@@ -1791,7 +1947,9 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -1815,7 +1973,10 @@ class _$_UpdateProgress implements _UpdateProgress {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -1828,7 +1989,9 @@ class _$_UpdateProgress implements _UpdateProgress {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return updateProgress(this);
   }
@@ -1846,7 +2009,9 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -1863,7 +2028,204 @@ abstract class _UpdateProgress implements FileTransferEvent {
       _$_UpdateProgress;
 
   PayloadInfo get payloadInfo;
+  @JsonKey(ignore: true)
   _$UpdateProgressCopyWith<_UpdateProgress> get copyWith;
+}
+
+/// @nodoc
+abstract class _$IncrementFileTransferIndexCopyWith<$Res> {
+  factory _$IncrementFileTransferIndexCopyWith(
+          _IncrementFileTransferIndex value,
+          $Res Function(_IncrementFileTransferIndex) then) =
+      __$IncrementFileTransferIndexCopyWithImpl<$Res>;
+  $Res call({UniqueId uid});
+}
+
+/// @nodoc
+class __$IncrementFileTransferIndexCopyWithImpl<$Res>
+    extends _$FileTransferEventCopyWithImpl<$Res>
+    implements _$IncrementFileTransferIndexCopyWith<$Res> {
+  __$IncrementFileTransferIndexCopyWithImpl(_IncrementFileTransferIndex _value,
+      $Res Function(_IncrementFileTransferIndex) _then)
+      : super(_value, (v) => _then(v as _IncrementFileTransferIndex));
+
+  @override
+  _IncrementFileTransferIndex get _value =>
+      super._value as _IncrementFileTransferIndex;
+
+  @override
+  $Res call({
+    Object uid = freezed,
+  }) {
+    return _then(_IncrementFileTransferIndex(
+      uid: uid == freezed ? _value.uid : uid as UniqueId,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
+  const _$_IncrementFileTransferIndex({@required this.uid})
+      : assert(uid != null);
+
+  @override
+  final UniqueId uid;
+
+  @override
+  String toString() {
+    return 'FileTransferEvent.incrementFileTransferIndex(uid: $uid)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _IncrementFileTransferIndex &&
+            (identical(other.uid, uid) ||
+                const DeepCollectionEquality().equals(other.uid, uid)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(uid);
+
+  @JsonKey(ignore: true)
+  @override
+  _$IncrementFileTransferIndexCopyWith<_IncrementFileTransferIndex>
+      get copyWith => __$IncrementFileTransferIndexCopyWithImpl<
+          _IncrementFileTransferIndex>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialize(),
+    @required TResult confirmOutgoingFiles(List<User> users),
+    @required TResult cancelSend(),
+    @required TResult sendFilesInfo(),
+    @required TResult sendFiles(String endPointId),
+    @required TResult filesSent(),
+    @required TResult fileInfoReceived(FileInfo fileInfo),
+    @required TResult endIdReceived(String endId),
+    @required TResult confirmIncomingFiles(bool acceptOrReject),
+    @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
+    @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
+    @required TResult reset(),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
+    assert(filesReceived != null);
+    assert(abortFileTransfer != null);
+    assert(reset != null);
+    return incrementFileTransferIndex(uid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(),
+    TResult confirmOutgoingFiles(List<User> users),
+    TResult cancelSend(),
+    TResult sendFilesInfo(),
+    TResult sendFiles(String endPointId),
+    TResult filesSent(),
+    TResult fileInfoReceived(FileInfo fileInfo),
+    TResult endIdReceived(String endId),
+    TResult confirmIncomingFiles(bool acceptOrReject),
+    TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
+    TResult filesReceived(),
+    TResult abortFileTransfer(User user),
+    TResult reset(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (incrementFileTransferIndex != null) {
+      return incrementFileTransferIndex(uid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    @required TResult cancelSend(_CancelSend value),
+    @required TResult sendFilesInfo(_SendFilesInfo value),
+    @required TResult sendFiles(_SendFiles value),
+    @required TResult filesSent(_FilesSent value),
+    @required TResult fileInfoReceived(_FileInfoReceived value),
+    @required TResult endIdReceived(_EndIdReceived value),
+    @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
+    @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
+    @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
+    @required TResult reset(_Reset value),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
+    assert(filesReceived != null);
+    assert(abortFileTransfer != null);
+    assert(reset != null);
+    return incrementFileTransferIndex(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    TResult cancelSend(_CancelSend value),
+    TResult sendFilesInfo(_SendFilesInfo value),
+    TResult sendFiles(_SendFiles value),
+    TResult filesSent(_FilesSent value),
+    TResult fileInfoReceived(_FileInfoReceived value),
+    TResult endIdReceived(_EndIdReceived value),
+    TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
+    TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
+    TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
+    TResult reset(_Reset value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (incrementFileTransferIndex != null) {
+      return incrementFileTransferIndex(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IncrementFileTransferIndex implements FileTransferEvent {
+  const factory _IncrementFileTransferIndex({@required UniqueId uid}) =
+      _$_IncrementFileTransferIndex;
+
+  UniqueId get uid;
+  @JsonKey(ignore: true)
+  _$IncrementFileTransferIndexCopyWith<_IncrementFileTransferIndex>
+      get copyWith;
 }
 
 /// @nodoc
@@ -1915,7 +2277,9 @@ class _$_FilesReceived implements _FilesReceived {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -1928,7 +2292,9 @@ class _$_FilesReceived implements _FilesReceived {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return filesReceived();
   }
@@ -1946,7 +2312,9 @@ class _$_FilesReceived implements _FilesReceived {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -1970,7 +2338,10 @@ class _$_FilesReceived implements _FilesReceived {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -1983,7 +2354,9 @@ class _$_FilesReceived implements _FilesReceived {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return filesReceived(this);
   }
@@ -2001,7 +2374,9 @@ class _$_FilesReceived implements _FilesReceived {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -2015,6 +2390,209 @@ class _$_FilesReceived implements _FilesReceived {
 
 abstract class _FilesReceived implements FileTransferEvent {
   const factory _FilesReceived() = _$_FilesReceived;
+}
+
+/// @nodoc
+abstract class _$AbortFileTransferCopyWith<$Res> {
+  factory _$AbortFileTransferCopyWith(
+          _AbortFileTransfer value, $Res Function(_AbortFileTransfer) then) =
+      __$AbortFileTransferCopyWithImpl<$Res>;
+  $Res call({User user});
+
+  $UserCopyWith<$Res> get user;
+}
+
+/// @nodoc
+class __$AbortFileTransferCopyWithImpl<$Res>
+    extends _$FileTransferEventCopyWithImpl<$Res>
+    implements _$AbortFileTransferCopyWith<$Res> {
+  __$AbortFileTransferCopyWithImpl(
+      _AbortFileTransfer _value, $Res Function(_AbortFileTransfer) _then)
+      : super(_value, (v) => _then(v as _AbortFileTransfer));
+
+  @override
+  _AbortFileTransfer get _value => super._value as _AbortFileTransfer;
+
+  @override
+  $Res call({
+    Object user = freezed,
+  }) {
+    return _then(_AbortFileTransfer(
+      user: user == freezed ? _value.user : user as User,
+    ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_AbortFileTransfer implements _AbortFileTransfer {
+  const _$_AbortFileTransfer({@required this.user}) : assert(user != null);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'FileTransferEvent.abortFileTransfer(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _AbortFileTransfer &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
+
+  @JsonKey(ignore: true)
+  @override
+  _$AbortFileTransferCopyWith<_AbortFileTransfer> get copyWith =>
+      __$AbortFileTransferCopyWithImpl<_AbortFileTransfer>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initialize(),
+    @required TResult confirmOutgoingFiles(List<User> users),
+    @required TResult cancelSend(),
+    @required TResult sendFilesInfo(),
+    @required TResult sendFiles(String endPointId),
+    @required TResult filesSent(),
+    @required TResult fileInfoReceived(FileInfo fileInfo),
+    @required TResult endIdReceived(String endId),
+    @required TResult confirmIncomingFiles(bool acceptOrReject),
+    @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
+    @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
+    @required TResult reset(),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
+    assert(filesReceived != null);
+    assert(abortFileTransfer != null);
+    assert(reset != null);
+    return abortFileTransfer(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initialize(),
+    TResult confirmOutgoingFiles(List<User> users),
+    TResult cancelSend(),
+    TResult sendFilesInfo(),
+    TResult sendFiles(String endPointId),
+    TResult filesSent(),
+    TResult fileInfoReceived(FileInfo fileInfo),
+    TResult endIdReceived(String endId),
+    TResult confirmIncomingFiles(bool acceptOrReject),
+    TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
+    TResult filesReceived(),
+    TResult abortFileTransfer(User user),
+    TResult reset(),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (abortFileTransfer != null) {
+      return abortFileTransfer(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initialize(_Initialize value),
+    @required TResult confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    @required TResult cancelSend(_CancelSend value),
+    @required TResult sendFilesInfo(_SendFilesInfo value),
+    @required TResult sendFiles(_SendFiles value),
+    @required TResult filesSent(_FilesSent value),
+    @required TResult fileInfoReceived(_FileInfoReceived value),
+    @required TResult endIdReceived(_EndIdReceived value),
+    @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
+    @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
+    @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
+    @required TResult reset(_Reset value),
+  }) {
+    assert(initialize != null);
+    assert(confirmOutgoingFiles != null);
+    assert(cancelSend != null);
+    assert(sendFilesInfo != null);
+    assert(sendFiles != null);
+    assert(filesSent != null);
+    assert(fileInfoReceived != null);
+    assert(endIdReceived != null);
+    assert(confirmIncomingFiles != null);
+    assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
+    assert(filesReceived != null);
+    assert(abortFileTransfer != null);
+    assert(reset != null);
+    return abortFileTransfer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initialize(_Initialize value),
+    TResult confirmOutgoingFiles(_ConfirmOutgoingFiles value),
+    TResult cancelSend(_CancelSend value),
+    TResult sendFilesInfo(_SendFilesInfo value),
+    TResult sendFiles(_SendFiles value),
+    TResult filesSent(_FilesSent value),
+    TResult fileInfoReceived(_FileInfoReceived value),
+    TResult endIdReceived(_EndIdReceived value),
+    TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
+    TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
+    TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
+    TResult reset(_Reset value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (abortFileTransfer != null) {
+      return abortFileTransfer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AbortFileTransfer implements FileTransferEvent {
+  const factory _AbortFileTransfer({@required User user}) =
+      _$_AbortFileTransfer;
+
+  User get user;
+  @JsonKey(ignore: true)
+  _$AbortFileTransferCopyWith<_AbortFileTransfer> get copyWith;
 }
 
 /// @nodoc
@@ -2063,7 +2641,9 @@ class _$_Reset implements _Reset {
     @required TResult endIdReceived(String endId),
     @required TResult confirmIncomingFiles(bool acceptOrReject),
     @required TResult updateProgress(PayloadInfo payloadInfo),
+    @required TResult incrementFileTransferIndex(UniqueId uid),
     @required TResult filesReceived(),
+    @required TResult abortFileTransfer(User user),
     @required TResult reset(),
   }) {
     assert(initialize != null);
@@ -2076,7 +2656,9 @@ class _$_Reset implements _Reset {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return reset();
   }
@@ -2094,7 +2676,9 @@ class _$_Reset implements _Reset {
     TResult endIdReceived(String endId),
     TResult confirmIncomingFiles(bool acceptOrReject),
     TResult updateProgress(PayloadInfo payloadInfo),
+    TResult incrementFileTransferIndex(UniqueId uid),
     TResult filesReceived(),
+    TResult abortFileTransfer(User user),
     TResult reset(),
     @required TResult orElse(),
   }) {
@@ -2118,7 +2702,10 @@ class _$_Reset implements _Reset {
     @required TResult endIdReceived(_EndIdReceived value),
     @required TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     @required TResult updateProgress(_UpdateProgress value),
+    @required
+        TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     @required TResult filesReceived(_FilesReceived value),
+    @required TResult abortFileTransfer(_AbortFileTransfer value),
     @required TResult reset(_Reset value),
   }) {
     assert(initialize != null);
@@ -2131,7 +2718,9 @@ class _$_Reset implements _Reset {
     assert(endIdReceived != null);
     assert(confirmIncomingFiles != null);
     assert(updateProgress != null);
+    assert(incrementFileTransferIndex != null);
     assert(filesReceived != null);
+    assert(abortFileTransfer != null);
     assert(reset != null);
     return reset(this);
   }
@@ -2149,7 +2738,9 @@ class _$_Reset implements _Reset {
     TResult endIdReceived(_EndIdReceived value),
     TResult confirmIncomingFiles(_ConfirmIncomingFiles value),
     TResult updateProgress(_UpdateProgress value),
+    TResult incrementFileTransferIndex(_IncrementFileTransferIndex value),
     TResult filesReceived(_FilesReceived value),
+    TResult abortFileTransfer(_AbortFileTransfer value),
     TResult reset(_Reset value),
     @required TResult orElse(),
   }) {
@@ -2187,38 +2778,39 @@ class _$FileTransferStateTearOff {
   }
 
 // ignore: unused_element
-  _AwaitingSendApproval awaitingSendApproval({@required Set<FileInfo> files}) {
-    return _AwaitingSendApproval(
-      files: files,
-    );
-  }
-
-// ignore: unused_element
   _IncomingFilesConfirmation incomingFilesConfirmation(
-      {@required Set<FileInfo> files, @required String endId}) {
+      {@required Set<FileInfo> files, @required User user}) {
     return _IncomingFilesConfirmation(
       files: files,
-      endId: endId,
+      user: user,
     );
   }
 
 // ignore: unused_element
-  _TransferringFiles transferringFiles(
-      {@required FileTransferType type,
-      @required Map<FileInfo, double> filesMap}) {
-    return _TransferringFiles(
-      type: type,
-      filesMap: filesMap,
+  _SendingFiles sendingFiles(
+      {@required List<TransferProgressInfo> transferProgressInfos,
+      @required List<File> files}) {
+    return _SendingFiles(
+      transferProgressInfos: transferProgressInfos,
+      files: files,
+    );
+  }
+
+// ignore: unused_element
+  _ReceivingFiles receivingFiles(
+      {@required TransferProgressInfo transferProgressInfo}) {
+    return _ReceivingFiles(
+      transferProgressInfo: transferProgressInfo,
     );
   }
 
 // ignore: unused_element
   _TransferComplete transferComplete(
       {@required FileTransferType type,
-      @required Map<FileInfo, bool> filesMap}) {
+      @required List<TransferProgressInfo> transferProgressInfos}) {
     return _TransferComplete(
       type: type,
-      filesMap: filesMap,
+      transferProgressInfos: transferProgressInfos,
     );
   }
 
@@ -2242,15 +2834,14 @@ mixin _$FileTransferState {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   });
   @optionalTypeArgs
@@ -2258,12 +2849,12 @@ mixin _$FileTransferState {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   });
@@ -2272,10 +2863,10 @@ mixin _$FileTransferState {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   });
@@ -2283,9 +2874,9 @@ mixin _$FileTransferState {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
@@ -2364,6 +2955,7 @@ class _$_Initial implements _Initial {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(incomingFileInfo);
 
+  @JsonKey(ignore: true)
   @override
   _$InitialCopyWith<_Initial> get copyWith =>
       __$InitialCopyWithImpl<_Initial>(this, _$identity);
@@ -2375,22 +2967,21 @@ class _$_Initial implements _Initial {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return initial(incomingFileInfo);
@@ -2402,12 +2993,12 @@ class _$_Initial implements _Initial {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2424,18 +3015,18 @@ class _$_Initial implements _Initial {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return initial(this);
@@ -2446,9 +3037,9 @@ class _$_Initial implements _Initial {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
@@ -2466,6 +3057,7 @@ abstract class _Initial implements FileTransferState {
       _$_Initial;
 
   Set<FileInfo> get incomingFileInfo;
+  @JsonKey(ignore: true)
   _$InitialCopyWith<_Initial> get copyWith;
 }
 
@@ -2537,6 +3129,7 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
       const DeepCollectionEquality().hash(filesOption) ^
       const DeepCollectionEquality().hash(users);
 
+  @JsonKey(ignore: true)
   @override
   _$OutgoingFilesConfirmationCopyWith<_OutgoingFilesConfirmation>
       get copyWith =>
@@ -2550,22 +3143,21 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return outgoingFilesConfirmation(filesOption, users);
@@ -2577,12 +3169,12 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -2599,18 +3191,18 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return outgoingFilesConfirmation(this);
@@ -2621,9 +3213,9 @@ class _$_OutgoingFilesConfirmation implements _OutgoingFilesConfirmation {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
@@ -2643,166 +3235,8 @@ abstract class _OutgoingFilesConfirmation implements FileTransferState {
 
   Option<Set<FileInfo>> get filesOption;
   List<User> get users;
+  @JsonKey(ignore: true)
   _$OutgoingFilesConfirmationCopyWith<_OutgoingFilesConfirmation> get copyWith;
-}
-
-/// @nodoc
-abstract class _$AwaitingSendApprovalCopyWith<$Res> {
-  factory _$AwaitingSendApprovalCopyWith(_AwaitingSendApproval value,
-          $Res Function(_AwaitingSendApproval) then) =
-      __$AwaitingSendApprovalCopyWithImpl<$Res>;
-  $Res call({Set<FileInfo> files});
-}
-
-/// @nodoc
-class __$AwaitingSendApprovalCopyWithImpl<$Res>
-    extends _$FileTransferStateCopyWithImpl<$Res>
-    implements _$AwaitingSendApprovalCopyWith<$Res> {
-  __$AwaitingSendApprovalCopyWithImpl(
-      _AwaitingSendApproval _value, $Res Function(_AwaitingSendApproval) _then)
-      : super(_value, (v) => _then(v as _AwaitingSendApproval));
-
-  @override
-  _AwaitingSendApproval get _value => super._value as _AwaitingSendApproval;
-
-  @override
-  $Res call({
-    Object files = freezed,
-  }) {
-    return _then(_AwaitingSendApproval(
-      files: files == freezed ? _value.files : files as Set<FileInfo>,
-    ));
-  }
-}
-
-/// @nodoc
-class _$_AwaitingSendApproval implements _AwaitingSendApproval {
-  const _$_AwaitingSendApproval({@required this.files}) : assert(files != null);
-
-  @override
-  final Set<FileInfo> files;
-
-  @override
-  String toString() {
-    return 'FileTransferState.awaitingSendApproval(files: $files)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _AwaitingSendApproval &&
-            (identical(other.files, files) ||
-                const DeepCollectionEquality().equals(other.files, files)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(files);
-
-  @override
-  _$AwaitingSendApprovalCopyWith<_AwaitingSendApproval> get copyWith =>
-      __$AwaitingSendApprovalCopyWithImpl<_AwaitingSendApproval>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(Set<FileInfo> incomingFileInfo),
-    @required
-        TResult outgoingFilesConfirmation(
-            Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
-    @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
-    @required TResult hasFailed(FileTransferFailure failure),
-  }) {
-    assert(initial != null);
-    assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
-    assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
-    assert(transferComplete != null);
-    assert(hasFailed != null);
-    return awaitingSendApproval(files);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(Set<FileInfo> incomingFileInfo),
-    TResult outgoingFilesConfirmation(
-        Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
-    TResult hasFailed(FileTransferFailure failure),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (awaitingSendApproval != null) {
-      return awaitingSendApproval(files);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required
-        TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
-    @required
-        TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
-    @required TResult transferComplete(_TransferComplete value),
-    @required TResult hasFailed(_HasFailed value),
-  }) {
-    assert(initial != null);
-    assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
-    assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
-    assert(transferComplete != null);
-    assert(hasFailed != null);
-    return awaitingSendApproval(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
-    TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
-    TResult transferComplete(_TransferComplete value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
-  }) {
-    assert(orElse != null);
-    if (awaitingSendApproval != null) {
-      return awaitingSendApproval(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AwaitingSendApproval implements FileTransferState {
-  const factory _AwaitingSendApproval({@required Set<FileInfo> files}) =
-      _$_AwaitingSendApproval;
-
-  Set<FileInfo> get files;
-  _$AwaitingSendApprovalCopyWith<_AwaitingSendApproval> get copyWith;
 }
 
 /// @nodoc
@@ -2810,7 +3244,9 @@ abstract class _$IncomingFilesConfirmationCopyWith<$Res> {
   factory _$IncomingFilesConfirmationCopyWith(_IncomingFilesConfirmation value,
           $Res Function(_IncomingFilesConfirmation) then) =
       __$IncomingFilesConfirmationCopyWithImpl<$Res>;
-  $Res call({Set<FileInfo> files, String endId});
+  $Res call({Set<FileInfo> files, User user});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -2828,30 +3264,40 @@ class __$IncomingFilesConfirmationCopyWithImpl<$Res>
   @override
   $Res call({
     Object files = freezed,
-    Object endId = freezed,
+    Object user = freezed,
   }) {
     return _then(_IncomingFilesConfirmation(
       files: files == freezed ? _value.files : files as Set<FileInfo>,
-      endId: endId == freezed ? _value.endId : endId as String,
+      user: user == freezed ? _value.user : user as User,
     ));
+  }
+
+  @override
+  $UserCopyWith<$Res> get user {
+    if (_value.user == null) {
+      return null;
+    }
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
 class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
   const _$_IncomingFilesConfirmation(
-      {@required this.files, @required this.endId})
+      {@required this.files, @required this.user})
       : assert(files != null),
-        assert(endId != null);
+        assert(user != null);
 
   @override
   final Set<FileInfo> files;
   @override
-  final String endId;
+  final User user;
 
   @override
   String toString() {
-    return 'FileTransferState.incomingFilesConfirmation(files: $files, endId: $endId)';
+    return 'FileTransferState.incomingFilesConfirmation(files: $files, user: $user)';
   }
 
   @override
@@ -2860,16 +3306,17 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
         (other is _IncomingFilesConfirmation &&
             (identical(other.files, files) ||
                 const DeepCollectionEquality().equals(other.files, files)) &&
-            (identical(other.endId, endId) ||
-                const DeepCollectionEquality().equals(other.endId, endId)));
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(files) ^
-      const DeepCollectionEquality().hash(endId);
+      const DeepCollectionEquality().hash(user);
 
+  @JsonKey(ignore: true)
   @override
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation>
       get copyWith =>
@@ -2883,25 +3330,24 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return incomingFilesConfirmation(files, endId);
+    return incomingFilesConfirmation(files, user);
   }
 
   @override
@@ -2910,18 +3356,18 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (incomingFilesConfirmation != null) {
-      return incomingFilesConfirmation(files, endId);
+      return incomingFilesConfirmation(files, user);
     }
     return orElse();
   }
@@ -2932,18 +3378,18 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return incomingFilesConfirmation(this);
@@ -2954,9 +3400,9 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
@@ -2972,94 +3418,86 @@ class _$_IncomingFilesConfirmation implements _IncomingFilesConfirmation {
 abstract class _IncomingFilesConfirmation implements FileTransferState {
   const factory _IncomingFilesConfirmation(
       {@required Set<FileInfo> files,
-      @required String endId}) = _$_IncomingFilesConfirmation;
+      @required User user}) = _$_IncomingFilesConfirmation;
 
   Set<FileInfo> get files;
-  String get endId;
+  User get user;
+  @JsonKey(ignore: true)
   _$IncomingFilesConfirmationCopyWith<_IncomingFilesConfirmation> get copyWith;
 }
 
 /// @nodoc
-abstract class _$TransferringFilesCopyWith<$Res> {
-  factory _$TransferringFilesCopyWith(
-          _TransferringFiles value, $Res Function(_TransferringFiles) then) =
-      __$TransferringFilesCopyWithImpl<$Res>;
-  $Res call({FileTransferType type, Map<FileInfo, double> filesMap});
-
-  $FileTransferTypeCopyWith<$Res> get type;
+abstract class _$SendingFilesCopyWith<$Res> {
+  factory _$SendingFilesCopyWith(
+          _SendingFiles value, $Res Function(_SendingFiles) then) =
+      __$SendingFilesCopyWithImpl<$Res>;
+  $Res call(
+      {List<TransferProgressInfo> transferProgressInfos, List<File> files});
 }
 
 /// @nodoc
-class __$TransferringFilesCopyWithImpl<$Res>
+class __$SendingFilesCopyWithImpl<$Res>
     extends _$FileTransferStateCopyWithImpl<$Res>
-    implements _$TransferringFilesCopyWith<$Res> {
-  __$TransferringFilesCopyWithImpl(
-      _TransferringFiles _value, $Res Function(_TransferringFiles) _then)
-      : super(_value, (v) => _then(v as _TransferringFiles));
+    implements _$SendingFilesCopyWith<$Res> {
+  __$SendingFilesCopyWithImpl(
+      _SendingFiles _value, $Res Function(_SendingFiles) _then)
+      : super(_value, (v) => _then(v as _SendingFiles));
 
   @override
-  _TransferringFiles get _value => super._value as _TransferringFiles;
+  _SendingFiles get _value => super._value as _SendingFiles;
 
   @override
   $Res call({
-    Object type = freezed,
-    Object filesMap = freezed,
+    Object transferProgressInfos = freezed,
+    Object files = freezed,
   }) {
-    return _then(_TransferringFiles(
-      type: type == freezed ? _value.type : type as FileTransferType,
-      filesMap: filesMap == freezed
-          ? _value.filesMap
-          : filesMap as Map<FileInfo, double>,
+    return _then(_SendingFiles(
+      transferProgressInfos: transferProgressInfos == freezed
+          ? _value.transferProgressInfos
+          : transferProgressInfos as List<TransferProgressInfo>,
+      files: files == freezed ? _value.files : files as List<File>,
     ));
-  }
-
-  @override
-  $FileTransferTypeCopyWith<$Res> get type {
-    if (_value.type == null) {
-      return null;
-    }
-    return $FileTransferTypeCopyWith<$Res>(_value.type, (value) {
-      return _then(_value.copyWith(type: value));
-    });
   }
 }
 
 /// @nodoc
-class _$_TransferringFiles implements _TransferringFiles {
-  const _$_TransferringFiles({@required this.type, @required this.filesMap})
-      : assert(type != null),
-        assert(filesMap != null);
+class _$_SendingFiles implements _SendingFiles {
+  const _$_SendingFiles(
+      {@required this.transferProgressInfos, @required this.files})
+      : assert(transferProgressInfos != null),
+        assert(files != null);
 
   @override
-  final FileTransferType type;
+  final List<TransferProgressInfo> transferProgressInfos;
   @override
-  final Map<FileInfo, double> filesMap;
+  final List<File> files;
 
   @override
   String toString() {
-    return 'FileTransferState.transferringFiles(type: $type, filesMap: $filesMap)';
+    return 'FileTransferState.sendingFiles(transferProgressInfos: $transferProgressInfos, files: $files)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _TransferringFiles &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.filesMap, filesMap) ||
-                const DeepCollectionEquality()
-                    .equals(other.filesMap, filesMap)));
+        (other is _SendingFiles &&
+            (identical(other.transferProgressInfos, transferProgressInfos) ||
+                const DeepCollectionEquality().equals(
+                    other.transferProgressInfos, transferProgressInfos)) &&
+            (identical(other.files, files) ||
+                const DeepCollectionEquality().equals(other.files, files)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(filesMap);
+      const DeepCollectionEquality().hash(transferProgressInfos) ^
+      const DeepCollectionEquality().hash(files);
 
+  @JsonKey(ignore: true)
   @override
-  _$TransferringFilesCopyWith<_TransferringFiles> get copyWith =>
-      __$TransferringFilesCopyWithImpl<_TransferringFiles>(this, _$identity);
+  _$SendingFilesCopyWith<_SendingFiles> get copyWith =>
+      __$SendingFilesCopyWithImpl<_SendingFiles>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -3068,25 +3506,24 @@ class _$_TransferringFiles implements _TransferringFiles {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return transferringFiles(type, filesMap);
+    return sendingFiles(transferProgressInfos, files);
   }
 
   @override
@@ -3095,18 +3532,18 @@ class _$_TransferringFiles implements _TransferringFiles {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (transferringFiles != null) {
-      return transferringFiles(type, filesMap);
+    if (sendingFiles != null) {
+      return sendingFiles(transferProgressInfos, files);
     }
     return orElse();
   }
@@ -3117,21 +3554,21 @@ class _$_TransferringFiles implements _TransferringFiles {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return transferringFiles(this);
+    return sendingFiles(this);
   }
 
   @override
@@ -3139,29 +3576,208 @@ class _$_TransferringFiles implements _TransferringFiles {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
-    if (transferringFiles != null) {
-      return transferringFiles(this);
+    if (sendingFiles != null) {
+      return sendingFiles(this);
     }
     return orElse();
   }
 }
 
-abstract class _TransferringFiles implements FileTransferState {
-  const factory _TransferringFiles(
-      {@required FileTransferType type,
-      @required Map<FileInfo, double> filesMap}) = _$_TransferringFiles;
+abstract class _SendingFiles implements FileTransferState {
+  const factory _SendingFiles(
+      {@required List<TransferProgressInfo> transferProgressInfos,
+      @required List<File> files}) = _$_SendingFiles;
 
-  FileTransferType get type;
-  Map<FileInfo, double> get filesMap;
-  _$TransferringFilesCopyWith<_TransferringFiles> get copyWith;
+  List<TransferProgressInfo> get transferProgressInfos;
+  List<File> get files;
+  @JsonKey(ignore: true)
+  _$SendingFilesCopyWith<_SendingFiles> get copyWith;
+}
+
+/// @nodoc
+abstract class _$ReceivingFilesCopyWith<$Res> {
+  factory _$ReceivingFilesCopyWith(
+          _ReceivingFiles value, $Res Function(_ReceivingFiles) then) =
+      __$ReceivingFilesCopyWithImpl<$Res>;
+  $Res call({TransferProgressInfo transferProgressInfo});
+
+  $TransferProgressInfoCopyWith<$Res> get transferProgressInfo;
+}
+
+/// @nodoc
+class __$ReceivingFilesCopyWithImpl<$Res>
+    extends _$FileTransferStateCopyWithImpl<$Res>
+    implements _$ReceivingFilesCopyWith<$Res> {
+  __$ReceivingFilesCopyWithImpl(
+      _ReceivingFiles _value, $Res Function(_ReceivingFiles) _then)
+      : super(_value, (v) => _then(v as _ReceivingFiles));
+
+  @override
+  _ReceivingFiles get _value => super._value as _ReceivingFiles;
+
+  @override
+  $Res call({
+    Object transferProgressInfo = freezed,
+  }) {
+    return _then(_ReceivingFiles(
+      transferProgressInfo: transferProgressInfo == freezed
+          ? _value.transferProgressInfo
+          : transferProgressInfo as TransferProgressInfo,
+    ));
+  }
+
+  @override
+  $TransferProgressInfoCopyWith<$Res> get transferProgressInfo {
+    if (_value.transferProgressInfo == null) {
+      return null;
+    }
+    return $TransferProgressInfoCopyWith<$Res>(_value.transferProgressInfo,
+        (value) {
+      return _then(_value.copyWith(transferProgressInfo: value));
+    });
+  }
+}
+
+/// @nodoc
+class _$_ReceivingFiles implements _ReceivingFiles {
+  const _$_ReceivingFiles({@required this.transferProgressInfo})
+      : assert(transferProgressInfo != null);
+
+  @override
+  final TransferProgressInfo transferProgressInfo;
+
+  @override
+  String toString() {
+    return 'FileTransferState.receivingFiles(transferProgressInfo: $transferProgressInfo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ReceivingFiles &&
+            (identical(other.transferProgressInfo, transferProgressInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.transferProgressInfo, transferProgressInfo)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(transferProgressInfo);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ReceivingFilesCopyWith<_ReceivingFiles> get copyWith =>
+      __$ReceivingFilesCopyWithImpl<_ReceivingFiles>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object>({
+    @required TResult initial(Set<FileInfo> incomingFileInfo),
+    @required
+        TResult outgoingFilesConfirmation(
+            Option<Set<FileInfo>> filesOption, List<User> users),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    @required
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    @required
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
+    @required TResult hasFailed(FileTransferFailure failure),
+  }) {
+    assert(initial != null);
+    assert(outgoingFilesConfirmation != null);
+    assert(incomingFilesConfirmation != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
+    assert(transferComplete != null);
+    assert(hasFailed != null);
+    return receivingFiles(transferProgressInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object>({
+    TResult initial(Set<FileInfo> incomingFileInfo),
+    TResult outgoingFilesConfirmation(
+        Option<Set<FileInfo>> filesOption, List<User> users),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
+    TResult hasFailed(FileTransferFailure failure),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (receivingFiles != null) {
+      return receivingFiles(transferProgressInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object>({
+    @required TResult initial(_Initial value),
+    @required
+        TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
+    @required
+        TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
+    @required TResult transferComplete(_TransferComplete value),
+    @required TResult hasFailed(_HasFailed value),
+  }) {
+    assert(initial != null);
+    assert(outgoingFilesConfirmation != null);
+    assert(incomingFilesConfirmation != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
+    assert(transferComplete != null);
+    assert(hasFailed != null);
+    return receivingFiles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object>({
+    TResult initial(_Initial value),
+    TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
+    TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
+    TResult transferComplete(_TransferComplete value),
+    TResult hasFailed(_HasFailed value),
+    @required TResult orElse(),
+  }) {
+    assert(orElse != null);
+    if (receivingFiles != null) {
+      return receivingFiles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReceivingFiles implements FileTransferState {
+  const factory _ReceivingFiles(
+          {@required TransferProgressInfo transferProgressInfo}) =
+      _$_ReceivingFiles;
+
+  TransferProgressInfo get transferProgressInfo;
+  @JsonKey(ignore: true)
+  _$ReceivingFilesCopyWith<_ReceivingFiles> get copyWith;
 }
 
 /// @nodoc
@@ -3169,7 +3785,9 @@ abstract class _$TransferCompleteCopyWith<$Res> {
   factory _$TransferCompleteCopyWith(
           _TransferComplete value, $Res Function(_TransferComplete) then) =
       __$TransferCompleteCopyWithImpl<$Res>;
-  $Res call({FileTransferType type, Map<FileInfo, bool> filesMap});
+  $Res call(
+      {FileTransferType type,
+      List<TransferProgressInfo> transferProgressInfos});
 
   $FileTransferTypeCopyWith<$Res> get type;
 }
@@ -3188,13 +3806,13 @@ class __$TransferCompleteCopyWithImpl<$Res>
   @override
   $Res call({
     Object type = freezed,
-    Object filesMap = freezed,
+    Object transferProgressInfos = freezed,
   }) {
     return _then(_TransferComplete(
       type: type == freezed ? _value.type : type as FileTransferType,
-      filesMap: filesMap == freezed
-          ? _value.filesMap
-          : filesMap as Map<FileInfo, bool>,
+      transferProgressInfos: transferProgressInfos == freezed
+          ? _value.transferProgressInfos
+          : transferProgressInfos as List<TransferProgressInfo>,
     ));
   }
 
@@ -3211,18 +3829,19 @@ class __$TransferCompleteCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_TransferComplete implements _TransferComplete {
-  const _$_TransferComplete({@required this.type, @required this.filesMap})
+  const _$_TransferComplete(
+      {@required this.type, @required this.transferProgressInfos})
       : assert(type != null),
-        assert(filesMap != null);
+        assert(transferProgressInfos != null);
 
   @override
   final FileTransferType type;
   @override
-  final Map<FileInfo, bool> filesMap;
+  final List<TransferProgressInfo> transferProgressInfos;
 
   @override
   String toString() {
-    return 'FileTransferState.transferComplete(type: $type, filesMap: $filesMap)';
+    return 'FileTransferState.transferComplete(type: $type, transferProgressInfos: $transferProgressInfos)';
   }
 
   @override
@@ -3231,17 +3850,18 @@ class _$_TransferComplete implements _TransferComplete {
         (other is _TransferComplete &&
             (identical(other.type, type) ||
                 const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.filesMap, filesMap) ||
-                const DeepCollectionEquality()
-                    .equals(other.filesMap, filesMap)));
+            (identical(other.transferProgressInfos, transferProgressInfos) ||
+                const DeepCollectionEquality().equals(
+                    other.transferProgressInfos, transferProgressInfos)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(filesMap);
+      const DeepCollectionEquality().hash(transferProgressInfos);
 
+  @JsonKey(ignore: true)
   @override
   _$TransferCompleteCopyWith<_TransferComplete> get copyWith =>
       __$TransferCompleteCopyWithImpl<_TransferComplete>(this, _$identity);
@@ -3253,25 +3873,24 @@ class _$_TransferComplete implements _TransferComplete {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
-    return transferComplete(type, filesMap);
+    return transferComplete(type, transferProgressInfos);
   }
 
   @override
@@ -3280,18 +3899,18 @@ class _$_TransferComplete implements _TransferComplete {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
     assert(orElse != null);
     if (transferComplete != null) {
-      return transferComplete(type, filesMap);
+      return transferComplete(type, transferProgressInfos);
     }
     return orElse();
   }
@@ -3302,18 +3921,18 @@ class _$_TransferComplete implements _TransferComplete {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return transferComplete(this);
@@ -3324,9 +3943,9 @@ class _$_TransferComplete implements _TransferComplete {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
@@ -3341,11 +3960,13 @@ class _$_TransferComplete implements _TransferComplete {
 
 abstract class _TransferComplete implements FileTransferState {
   const factory _TransferComplete(
-      {@required FileTransferType type,
-      @required Map<FileInfo, bool> filesMap}) = _$_TransferComplete;
+          {@required FileTransferType type,
+          @required List<TransferProgressInfo> transferProgressInfos}) =
+      _$_TransferComplete;
 
   FileTransferType get type;
-  Map<FileInfo, bool> get filesMap;
+  List<TransferProgressInfo> get transferProgressInfos;
+  @JsonKey(ignore: true)
   _$TransferCompleteCopyWith<_TransferComplete> get copyWith;
 }
 
@@ -3414,6 +4035,7 @@ class _$_HasFailed implements _HasFailed {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$HasFailedCopyWith<_HasFailed> get copyWith =>
       __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
@@ -3425,22 +4047,21 @@ class _$_HasFailed implements _HasFailed {
     @required
         TResult outgoingFilesConfirmation(
             Option<Set<FileInfo>> filesOption, List<User> users),
-    @required TResult awaitingSendApproval(Set<FileInfo> files),
+    @required TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
     @required
-        TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
+        TResult sendingFiles(
+            List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    @required TResult receivingFiles(TransferProgressInfo transferProgressInfo),
     @required
-        TResult transferringFiles(
-            FileTransferType type, Map<FileInfo, double> filesMap),
-    @required
-        TResult transferComplete(
-            FileTransferType type, Map<FileInfo, bool> filesMap),
+        TResult transferComplete(FileTransferType type,
+            List<TransferProgressInfo> transferProgressInfos),
     @required TResult hasFailed(FileTransferFailure failure),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return hasFailed(failure);
@@ -3452,12 +4073,12 @@ class _$_HasFailed implements _HasFailed {
     TResult initial(Set<FileInfo> incomingFileInfo),
     TResult outgoingFilesConfirmation(
         Option<Set<FileInfo>> filesOption, List<User> users),
-    TResult awaitingSendApproval(Set<FileInfo> files),
-    TResult incomingFilesConfirmation(Set<FileInfo> files, String endId),
-    TResult transferringFiles(
-        FileTransferType type, Map<FileInfo, double> filesMap),
-    TResult transferComplete(
-        FileTransferType type, Map<FileInfo, bool> filesMap),
+    TResult incomingFilesConfirmation(Set<FileInfo> files, User user),
+    TResult sendingFiles(
+        List<TransferProgressInfo> transferProgressInfos, List<File> files),
+    TResult receivingFiles(TransferProgressInfo transferProgressInfo),
+    TResult transferComplete(FileTransferType type,
+        List<TransferProgressInfo> transferProgressInfos),
     TResult hasFailed(FileTransferFailure failure),
     @required TResult orElse(),
   }) {
@@ -3474,18 +4095,18 @@ class _$_HasFailed implements _HasFailed {
     @required TResult initial(_Initial value),
     @required
         TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    @required TResult awaitingSendApproval(_AwaitingSendApproval value),
     @required
         TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    @required TResult transferringFiles(_TransferringFiles value),
+    @required TResult sendingFiles(_SendingFiles value),
+    @required TResult receivingFiles(_ReceivingFiles value),
     @required TResult transferComplete(_TransferComplete value),
     @required TResult hasFailed(_HasFailed value),
   }) {
     assert(initial != null);
     assert(outgoingFilesConfirmation != null);
-    assert(awaitingSendApproval != null);
     assert(incomingFilesConfirmation != null);
-    assert(transferringFiles != null);
+    assert(sendingFiles != null);
+    assert(receivingFiles != null);
     assert(transferComplete != null);
     assert(hasFailed != null);
     return hasFailed(this);
@@ -3496,9 +4117,9 @@ class _$_HasFailed implements _HasFailed {
   TResult maybeMap<TResult extends Object>({
     TResult initial(_Initial value),
     TResult outgoingFilesConfirmation(_OutgoingFilesConfirmation value),
-    TResult awaitingSendApproval(_AwaitingSendApproval value),
     TResult incomingFilesConfirmation(_IncomingFilesConfirmation value),
-    TResult transferringFiles(_TransferringFiles value),
+    TResult sendingFiles(_SendingFiles value),
+    TResult receivingFiles(_ReceivingFiles value),
     TResult transferComplete(_TransferComplete value),
     TResult hasFailed(_HasFailed value),
     @required TResult orElse(),
@@ -3516,5 +4137,6 @@ abstract class _HasFailed implements FileTransferState {
       _$_HasFailed;
 
   FileTransferFailure get failure;
+  @JsonKey(ignore: true)
   _$HasFailedCopyWith<_HasFailed> get copyWith;
 }

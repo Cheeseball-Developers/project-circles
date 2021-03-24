@@ -246,6 +246,7 @@ class _$LoadMedia implements LoadMedia {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(album);
 
+  @JsonKey(ignore: true)
   @override
   $LoadMediaCopyWith<LoadMedia> get copyWith =>
       _$LoadMediaCopyWithImpl<LoadMedia>(this, _$identity);
@@ -317,6 +318,7 @@ abstract class LoadMedia implements MediaTabViewEvent {
   const factory LoadMedia({@required AssetPathEntity album}) = _$LoadMedia;
 
   AssetPathEntity get album;
+  @JsonKey(ignore: true)
   $LoadMediaCopyWith<LoadMedia> get copyWith;
 }
 
@@ -388,6 +390,7 @@ class _$ToggleSelection implements ToggleSelection {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(mediaInfo);
 
+  @JsonKey(ignore: true)
   @override
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith =>
       _$ToggleSelectionCopyWithImpl<ToggleSelection>(this, _$identity);
@@ -460,6 +463,7 @@ abstract class ToggleSelection implements MediaTabViewEvent {
       _$ToggleSelection;
 
   MediaInfo get mediaInfo;
+  @JsonKey(ignore: true)
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
 }
 
@@ -945,6 +949,7 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(albums);
 
+  @JsonKey(ignore: true)
   @override
   _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith =>
       __$HasLoadedAlbumsCopyWithImpl<_HasLoadedAlbums>(this, _$identity);
@@ -1026,6 +1031,7 @@ abstract class _HasLoadedAlbums implements MediaTabViewState {
       _$_HasLoadedAlbums;
 
   List<AssetPathEntity> get albums;
+  @JsonKey(ignore: true)
   _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith;
 }
 
@@ -1119,6 +1125,7 @@ class _$_HasLoaded implements _HasLoaded {
       const DeepCollectionEquality().hash(previousPage) ^
       const DeepCollectionEquality().hash(currentPage);
 
+  @JsonKey(ignore: true)
   @override
   _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
       __$HasLoadedCopyWithImpl<_HasLoaded>(this, _$identity);
@@ -1206,6 +1213,7 @@ abstract class _HasLoaded implements MediaTabViewState {
   Map<MediaInfo, bool> get media;
   int get previousPage;
   int get currentPage;
+  @JsonKey(ignore: true)
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }
 
@@ -1273,6 +1281,7 @@ class _$_HasFailed implements _HasFailed {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
 
+  @JsonKey(ignore: true)
   @override
   _$HasFailedCopyWith<_HasFailed> get copyWith =>
       __$HasFailedCopyWithImpl<_HasFailed>(this, _$identity);
@@ -1353,5 +1362,6 @@ abstract class _HasFailed implements MediaTabViewState {
   const factory _HasFailed(AppsLoadFailure failure) = _$_HasFailed;
 
   AppsLoadFailure get failure;
+  @JsonKey(ignore: true)
   _$HasFailedCopyWith<_HasFailed> get copyWith;
 }

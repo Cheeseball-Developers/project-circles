@@ -142,6 +142,7 @@ class _$LoadDirectory implements LoadDirectory {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(relativePath);
 
+  @JsonKey(ignore: true)
   @override
   $LoadDirectoryCopyWith<LoadDirectory> get copyWith =>
       _$LoadDirectoryCopyWithImpl<LoadDirectory>(this, _$identity);
@@ -208,6 +209,7 @@ abstract class LoadDirectory implements FilesTabViewEvent {
       _$LoadDirectory;
 
   String get relativePath;
+  @JsonKey(ignore: true)
   $LoadDirectoryCopyWith<LoadDirectory> get copyWith;
 }
 
@@ -269,6 +271,7 @@ class _$ToggleSelection implements ToggleSelection {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(fileSystemEntity);
 
+  @JsonKey(ignore: true)
   @override
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith =>
       _$ToggleSelectionCopyWithImpl<ToggleSelection>(this, _$identity);
@@ -335,6 +338,7 @@ abstract class ToggleSelection implements FilesTabViewEvent {
       _$ToggleSelection;
 
   FileSystemEntity get fileSystemEntity;
+  @JsonKey(ignore: true)
   $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
 }
 
@@ -671,6 +675,7 @@ class _$_IsLoading implements _IsLoading {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(relativePath);
 
+  @JsonKey(ignore: true)
   @override
   _$IsLoadingCopyWith<_IsLoading> get copyWith =>
       __$IsLoadingCopyWithImpl<_IsLoading>(this, _$identity);
@@ -739,6 +744,7 @@ abstract class _IsLoading implements FilesTabViewState {
   const factory _IsLoading({@required String relativePath}) = _$_IsLoading;
 
   String get relativePath;
+  @JsonKey(ignore: true)
   _$IsLoadingCopyWith<_IsLoading> get copyWith;
 }
 
@@ -826,6 +832,7 @@ class _$_HasLoaded implements _HasLoaded {
       const DeepCollectionEquality().hash(folders) ^
       const DeepCollectionEquality().hash(files);
 
+  @JsonKey(ignore: true)
   @override
   _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
       __$HasLoadedCopyWithImpl<_HasLoaded>(this, _$identity);
@@ -899,5 +906,6 @@ abstract class _HasLoaded implements FilesTabViewState {
   String get relativePath;
   List<FileSystemEntity> get folders;
   Map<FileSystemEntity, bool> get files;
+  @JsonKey(ignore: true)
   _$HasLoadedCopyWith<_HasLoaded> get copyWith;
 }

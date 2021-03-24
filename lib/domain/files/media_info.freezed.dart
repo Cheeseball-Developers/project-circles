@@ -32,6 +32,7 @@ mixin _$MediaInfo {
   AssetEntity get entity;
   Uint8List get thumbnail;
 
+  @JsonKey(ignore: true)
   $MediaInfoCopyWith<MediaInfo> get copyWith;
 }
 
@@ -127,6 +128,7 @@ class _$_MediaInfo implements _MediaInfo {
       const DeepCollectionEquality().hash(entity) ^
       const DeepCollectionEquality().hash(thumbnail);
 
+  @JsonKey(ignore: true)
   @override
   _$MediaInfoCopyWith<_MediaInfo> get copyWith =>
       __$MediaInfoCopyWithImpl<_MediaInfo>(this, _$identity);
@@ -142,5 +144,6 @@ abstract class _MediaInfo implements MediaInfo {
   @override
   Uint8List get thumbnail;
   @override
+  @JsonKey(ignore: true)
   _$MediaInfoCopyWith<_MediaInfo> get copyWith;
 }

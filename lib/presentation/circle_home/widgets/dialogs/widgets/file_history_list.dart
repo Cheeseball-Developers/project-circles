@@ -22,13 +22,13 @@ class FileHistoryList extends StatelessWidget {
           height: 32.0,
           width: 32.0,
         ),
-        trailing: MyTextButton(
+        trailing: showOpen ? MyTextButton(
           type: ButtonType.secondary,
           text: "Open",
           onTap: () {
             OpenFile.open(files.elementAt(index).path);
           },
-        ),
+        ) : Container(),
       ),
     );
   }

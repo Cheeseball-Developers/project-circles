@@ -124,6 +124,7 @@ class _$_AddItems implements _AddItems {
   int get hashCode =>
       runtimeType.hashCode ^ const DeepCollectionEquality().hash(items);
 
+  @JsonKey(ignore: true)
   @override
   _$AddItemsCopyWith<_AddItems> get copyWith =>
       __$AddItemsCopyWithImpl<_AddItems>(this, _$identity);
@@ -183,6 +184,7 @@ abstract class _AddItems implements FilesHistoryEvent {
   const factory _AddItems({@required List<FileInfo> items}) = _$_AddItems;
 
   List<FileInfo> get items;
+  @JsonKey(ignore: true)
   _$AddItemsCopyWith<_AddItems> get copyWith;
 }
 
@@ -297,6 +299,7 @@ const $FilesHistoryState = _$FilesHistoryStateTearOff();
 mixin _$FilesHistoryState {
   Option<Either<DatabaseFailure, List<FileInfo>>> get failureOrFilesInfoOption;
 
+  @JsonKey(ignore: true)
   $FilesHistoryStateCopyWith<FilesHistoryState> get copyWith;
 }
 
@@ -397,6 +400,7 @@ class _$_FilesHistoryState implements _FilesHistoryState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(failureOrFilesInfoOption);
 
+  @JsonKey(ignore: true)
   @override
   _$FilesHistoryStateCopyWith<_FilesHistoryState> get copyWith =>
       __$FilesHistoryStateCopyWithImpl<_FilesHistoryState>(this, _$identity);
@@ -411,5 +415,6 @@ abstract class _FilesHistoryState implements FilesHistoryState {
   @override
   Option<Either<DatabaseFailure, List<FileInfo>>> get failureOrFilesInfoOption;
   @override
+  @JsonKey(ignore: true)
   _$FilesHistoryStateCopyWith<_FilesHistoryState> get copyWith;
 }

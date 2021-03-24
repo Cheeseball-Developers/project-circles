@@ -29,10 +29,13 @@ class NearbyConnections {
   String _username;
   String _endName = ""; //currently connected device name
   File _tempFile; //store file mapped to corresponding payloadId
-  Map<int, String> map = {};
+  //Map<int, String> map = {};
+  List<FileInfo> fileInfos = [];
+  int fileIndex = 0;
   User discoveredDevice;
   User incomingRequest;
   String host; // host username
+  int lastFilePayloadId;
 
   final logger = Logger();
 
@@ -375,9 +378,36 @@ class NearbyConnections {
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
       _isFile = true;
+      logger.d(
+          '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5 hehe i am initatited on sending a file payload');
       //TODO add the message of file transfer started
       logger.i("File transfer started from $endId");
       _tempFile = File(payload.filePath);
+
+      /*if (fileIndex < fileInfos.length) {
+        if (await _tempFile.exists()) {
+          _tempFile
+              .rename("${_tempFile.parent.path}/${fileInfos[fileIndex].name}");
+          logger.d('parent dir:${_tempFile.parent}');
+        } else {
+          logger.d("File doesn't exist");
+        }
+      }*/
+
+      final Either<SettingsFailure, Directory> failureOrDirectory =
+          await _preferences.getDirectory();
+      failureOrDirectory.fold((f) => null, (directory) async {
+        final String psp = directory.path;
+        //creates a directory if not present
+        Directory(psp).create();
+        Directory(_tempFile.parent.path).delete();
+        logger.d('Directory o : $psp');
+
+        _tempFile.rename("$psp/${fileInfos[fileIndex].name}");
+      });
+
+      fileIndex += 1;
+
       return right(unit);
     } else if (payload.type == PayloadType.BYTES) {
       logger.i("Bytes payload received");
@@ -408,14 +438,17 @@ class NearbyConnections {
               await _preferences.getDirectory();
 
           failureOrDirectory.fold((f) => null, (directory) {
-            //streaming the fileInfo
-            sendingFileInfo.sink.add(FileInfo(
+            final FileInfo fileInfo = FileInfo(
               hash: keyFileHash,
               path: "${directory.path}/$keyFileName",
               bytesSize: keyFileHash,
               thumbnail: keyFileThumbnail,
               name: keyFileName,
-            ));
+            );
+            //streaming the fileInfo
+            sendingFileInfo.sink.add(fileInfo);
+
+            fileInfos.add(fileInfo);
 
             final FileTransferItem item = FileInfoDto(
               hash: keyFileHash,
@@ -432,17 +465,22 @@ class NearbyConnections {
       }
 
       if (str.contains('@')) {
-        final responseGot = str.split('@').last;
-        if (responseGot == 'true') {
-          response.sink.add(endId);
-        } else {
+        _isFile = false;
+        logger.d('$_isFile isFile is set false when response is got');
+        final String responseGot = str.split('@').last;
+        final String r = '$endId@$responseGot';
+
+        response.sink.add(r);
+        if (responseGot == 'false') {
           logger.i('$endId denied');
         }
       }
 
+      return right(unit);
+
       // used for file payload as file payload is mapped as
       // payloadId:filename
-      if (str.contains(':')) {
+      /*if (str.contains(':')) {
         final int payloadId = int.parse(str.split(':')[0]);
         final String fileName = str.split(':').last;
         logger.d('----fileName: $fileName');
@@ -458,7 +496,7 @@ class NearbyConnections {
           map[payloadId] = fileName;
         }
       }
-      return right(unit);
+      return right(unit);*/
     } else {
       return left(const ConnectionFailure.unexpected());
     }
@@ -469,29 +507,33 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) async {
     if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
-      logger.d("$_isFile");
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: payloadTransferUpdate.bytesTransferred /
-                payloadTransferUpdate.totalBytes));
+                payloadTransferUpdate.totalBytes,
+            endId: endId));
       }
       logger.d('Total Bytes: ${payloadTransferUpdate.totalBytes}');
       logger.d(
           "Sending Receiving files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
-      logger.i(
-          "sent recieved files/data to $endId, ${payloadTransferUpdate.totalBytes}");
       if (_isFile) {
+        logger.d(
+            '$_isFile %%%%%%% hehe i am called  for file transfer complete lets see');
         fileSharingSuccessful.sink.add(endId);
-      }
-      if (_isFileInfo) {
+      } else if (_isFileInfo) {
         fileInfoSharingSuccessful.sink.add(endId);
+        logger.i(
+            "sent/recieved data to $endId, ${payloadTransferUpdate.totalBytes}");
       }
-      if (map.containsKey(payloadTransferUpdate.id)) {
+      /*if (map.containsKey(payloadTransferUpdate.id)) {
+        logger.i(
+            "sent /recieved files to $endId, ${payloadTransferUpdate.totalBytes}");
+
         //rename the file now
         final String name = map[payloadTransferUpdate.id];
 
@@ -515,7 +557,7 @@ class NearbyConnections {
       } else {
         //bytes not received till yet
         map[payloadTransferUpdate.id] = "";
-      }
+      }*/
       return right(unit);
     }
 
@@ -529,10 +571,8 @@ class NearbyConnections {
   ///Sending Files
   Future<Either<ConnectionFailure, Unit>> sendFilePayload(
       {@required String receiver, @required List<File> files}) async {
-    int payLoadId;
-    _isFile = true;
     //Sending the number of files that are being sent
-    files.forEach((file) async {
+    for (final file in files) {
       logger.d('filePath: ${file.path}');
 
       /// Returns the payloadID as soon as file transfer has begun
@@ -542,18 +582,19 @@ class NearbyConnections {
       /// You must also send a bytes payload to send the filename and extension
       /// so that receiver can rename the file accordingly
       /// Send the payloadID and filename to receiver as bytes payload
-      payLoadId = await _nearby.sendFilePayload(receiver, file.path);
+
+      logger.d('$_isFile  isfile is set true in sending');
+      await _nearby.sendFilePayload(receiver, file.path).then((id) async {
+        lastFilePayloadId = id;
+      });
+      _isFile = true;
       logger.i("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
       logger.i("Currently sending file is: ${file.path.split('/').last}");
-      _nearby.sendBytesPayload(
-          receiver,
-          Uint8List.fromList(
-              "$payLoadId:${file.path.split('/').last}".codeUnits));
-    });
+    }
 
-    if (payLoadId != null) {
+    if (lastFilePayloadId != null) {
       return right(unit);
     }
     return left(const ConnectionFailure.unexpected());
@@ -563,15 +604,17 @@ class NearbyConnections {
       {@required bool response, @required String endId}) async {
     logger.i('Sending response $response to the host');
     _nearby.sendBytesPayload(
-        endId, Uint8List.fromList("response@$response".codeUnits));
+        endId, Uint8List.fromList("Response@$response".codeUnits));
   }
 
   Future<void> sendFilenameSizeBytesPayload(
       {@required List<User> users,
       @required List<FileInfo> outgoingFiles}) async {
     logger.i("Sending the file name and size");
-    String info = '';
     _isFile = false;
+    logger.d('$_isFile isfile is set false in sending fileinfo');
+    String info = '';
+
     for (final file in outgoingFiles) {
       info +=
           "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";

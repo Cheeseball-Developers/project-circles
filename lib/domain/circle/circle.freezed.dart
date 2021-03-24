@@ -31,6 +31,7 @@ mixin _$Circle {
   User get host;
   List<User> get members;
 
+  @JsonKey(ignore: true)
   $CircleCopyWith<Circle> get copyWith;
 }
 
@@ -137,6 +138,7 @@ class _$_Circle implements _Circle {
       const DeepCollectionEquality().hash(host) ^
       const DeepCollectionEquality().hash(members);
 
+  @JsonKey(ignore: true)
   @override
   _$CircleCopyWith<_Circle> get copyWith =>
       __$CircleCopyWithImpl<_Circle>(this, _$identity);
@@ -151,5 +153,6 @@ abstract class _Circle implements Circle {
   @override
   List<User> get members;
   @override
+  @JsonKey(ignore: true)
   _$CircleCopyWith<_Circle> get copyWith;
 }
