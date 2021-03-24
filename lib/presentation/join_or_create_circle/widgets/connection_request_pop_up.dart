@@ -4,6 +4,7 @@ import 'package:projectcircles/application/circle/current_circle/current_circle_
 import 'package:projectcircles/application/circle/search/search_bloc.dart';
 import 'package:projectcircles/domain/circle/user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 import 'package:projectcircles/presentation/routes/router.gr.dart';
 
@@ -17,8 +18,6 @@ class ConnectionRequestPopUp extends StatelessWidget {
     String topText = '',
     String bigBottomText = '',
     String smallBottomText = '',
-    String buttonText = '',
-    VoidCallback onTap,
   }) {
     final theme = Theme.of(context);
     return Column(
@@ -43,16 +42,6 @@ class ConnectionRequestPopUp extends StatelessWidget {
           smallBottomText,
           style: theme.textTheme.caption,
         ),
-        const Padding(
-          padding: EdgeInsets.only(bottom: 8.0),
-        ),
-        GestureDetector(
-          onTap: onTap,
-          child: Text(
-            buttonText,
-            style: theme.textTheme.button,
-          ),
-        ),
       ],
     );
   }
@@ -62,13 +51,13 @@ class ConnectionRequestPopUp extends StatelessWidget {
     return BlocConsumer<SearchBloc, SearchState>(
       listener: (context, state) {
         state.connectionFailureOrSuccessOption.fold(
-              () => null,
-              (failureOrSuccess) => failureOrSuccess.fold(
-                (l) => null,
-                (_) {
-              context.bloc<CurrentCircleBloc>().add(
-                CurrentCircleEvent.joinCircle(host: user),
-              );
+          () => null,
+          (failureOrSuccess) => failureOrSuccess.fold(
+            (l) => null,
+            (_) {
+              context.read<CurrentCircleBloc>().add(
+                    CurrentCircleEvent.joinCircle(host: user),
+                  );
               ExtendedNavigator.of(context).popAndPush(Routes.circleHome);
             },
           ),
@@ -76,78 +65,57 @@ class ConnectionRequestPopUp extends StatelessWidget {
       },
       builder: (context, state) => DialogLayout(
         dialogType: DialogType.withButtons,
+        dialogButtonType: DialogButtonType.center,
+        primaryButtonText: state.isCancelling ? 'Cancelling...' : 'Cancel',
+        primaryOnTap: state.isCancelling
+            ? () {}
+            : () {
+                context.read<SearchBloc>().add(
+                      SearchEvent.endConnectionRequest(cancelRequestUser: user),
+                    );
+                ExtendedNavigator.of(context).pop();
+              },
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: state.connectionFailureOrRequestSent.fold(
-              () => _body(
+            () => _body(
+              context,
+              topText: 'Sending Request...',
+              bigBottomText: user.name.getOrCrash(),
+              smallBottomText: user.uid.getOrCrash(),
+            ),
+            (failureOrRequestSent) => failureOrRequestSent.fold(
+              (f) => _body(
                 context,
-                topText: 'Sending Request...',
+                topText: 'Device Lost',
                 bigBottomText: user.name.getOrCrash(),
                 smallBottomText: user.uid.getOrCrash(),
-                buttonText: 'Cancel',
-                onTap: () {
-                  context.bloc<SearchBloc>().add(
-                        SearchEvent.endConnectionRequest(cancelRequestUser: user),
-                      );
-                  ExtendedNavigator.of(context).pop();
-                },
               ),
-              (failureOrRequestSent) => failureOrRequestSent.fold(
-                (f) => _body(
+              (_) => state.connectionFailureOrSuccessOption.fold(
+                () => _body(
                   context,
-                  topText: 'Device Lost',
+                  topText: 'Waiting Approval...',
                   bigBottomText: user.name.getOrCrash(),
                   smallBottomText: user.uid.getOrCrash(),
-                  buttonText: 'Close',
-                  onTap: () {
-                    context.bloc<SearchBloc>().add(
-                          SearchEvent.endConnectionRequest(
-                              cancelRequestUser: user),
-                        );
-                    ExtendedNavigator.of(context).pop();
-                  },
                 ),
-                (_) => state.connectionFailureOrSuccessOption.fold(
-                  () => _body(
+                (connectionFailureOrSuccess) => connectionFailureOrSuccess.fold(
+                  (failure) => _body(
                     context,
-                    topText: 'Waiting Approval...',
-                    bigBottomText: user.name.getOrCrash(),
-                    smallBottomText: user.uid.getOrCrash(),
-                    buttonText: 'Cancel',
-                    onTap: () {
-                      context.bloc<SearchBloc>().add(
-                            SearchEvent.endConnectionRequest(
-                                cancelRequestUser: user),
-                          );
-                      ExtendedNavigator.of(context).pop();
-                    },
+                    topText: 'Failed to Connect!',
+                    bigBottomText: failure.map(
+                      cancelledByUser: (_) => 'Request Denied',
+                      timedOut: (_) => 'Request Timed Out',
+                      unexpected: (_) => 'Unexpected Failure',
+                      endPointUnknown: (_) => 'Device Lost',
+                    ),
                   ),
-                  (connectionFailureOrSuccess) => connectionFailureOrSuccess.fold(
-                    (failure) => _body(
-                      context,
-                      topText: 'Failed to Connect!',
-                      bigBottomText: failure.map(
-                        cancelledByUser: (_) => 'Request Denied',
-                        timedOut: (_) => 'Request Timed Out',
-                        unexpected: (_) => 'Unexpected Failure',
-                        endPointUnknown: (_) => 'Device Lost',
-                      ),
-                      buttonText: 'Close',
-                      onTap: () {
-                        context.bloc<SearchBloc>().add(
-                              SearchEvent.endConnectionRequest(
-                                  cancelRequestUser: user),
-                            );
-                        ExtendedNavigator.of(context).pop();
-                      },
-                    ),
-                    (_) => const Center(
-                      child: Text('Initializing...'),
-                    ),
+                  (_) => const Center(
+                    child: Text('Initializing...'),
                   ),
                 ),
               ),
             ),
+          ),
         ),
       ),
     );

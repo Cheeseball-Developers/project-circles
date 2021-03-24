@@ -145,6 +145,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         _nearbyConnections.disconnectFromEndPoint(
             endpointId: e.cancelRequestUser.uid.getOrCrash());
         discoveredDevices.remove(e.cancelRequestUser);
+
         yield state.copyWith(
           isCancelling: false,
           connectionFailureOrSuccessOption: none(),

@@ -23,6 +23,7 @@ class DialogButtonLayout extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Row(
+        mainAxisSize: type == DialogButtonType.center ? MainAxisSize.min : MainAxisSize.max,
         mainAxisAlignment: type == DialogButtonType.center
             ? MainAxisAlignment.center
             : MainAxisAlignment.end,
