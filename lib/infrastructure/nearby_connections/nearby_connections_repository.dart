@@ -378,6 +378,8 @@ class NearbyConnections {
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
       _isFile = true;
+      logger.d(
+          '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5 hehe i am initatited on sending a file payload');
       //TODO add the message of file transfer started
       logger.i("File transfer started from $endId");
       _tempFile = File(payload.filePath);
@@ -463,6 +465,8 @@ class NearbyConnections {
       }
 
       if (str.contains('@')) {
+        _isFile = false;
+        logger.d('$_isFile isFile is set false when response is got');
         final String responseGot = str.split('@').last;
         final String r = '$endId@$responseGot';
 
@@ -518,9 +522,10 @@ class NearbyConnections {
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
       if (_isFile) {
+        logger.d(
+            '$_isFile %%%%%%% hehe i am called  for file transfer complete lets see');
         fileSharingSuccessful.sink.add(endId);
-      }
-      if (_isFileInfo) {
+      } else if (_isFileInfo) {
         fileInfoSharingSuccessful.sink.add(endId);
         logger.i(
             "sent/recieved data to $endId, ${payloadTransferUpdate.totalBytes}");
@@ -578,10 +583,11 @@ class NearbyConnections {
       /// so that receiver can rename the file accordingly
       /// Send the payloadID and filename to receiver as bytes payload
 
-      _isFile = true;
+      logger.d('$_isFile  isfile is set true in sending');
       await _nearby.sendFilePayload(receiver, file.path).then((id) async {
         lastFilePayloadId = id;
       });
+      _isFile = true;
       logger.i("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
@@ -605,8 +611,10 @@ class NearbyConnections {
       {@required List<User> users,
       @required List<FileInfo> outgoingFiles}) async {
     logger.i("Sending the file name and size");
-    String info = '';
     _isFile = false;
+    logger.d('$_isFile isfile is set false in sending fileinfo');
+    String info = '';
+
     for (final file in outgoingFiles) {
       info +=
           "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
