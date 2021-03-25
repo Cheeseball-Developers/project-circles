@@ -2,9 +2,7 @@ import 'dart:async';
 import 'dart:core';
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:nearby_connections/nearby_connections.dart';
@@ -264,8 +262,7 @@ class NearbyConnections {
     logger.i("Stopping all the endpoints");
   }
 
-  Future<void> disconnectFromEndPoint(
-      {required String endpointId}) async {
+  Future<void> disconnectFromEndPoint({required String endpointId}) async {
     _nearby.disconnectFromEndpoint(endpointId);
     logger.i("Stopped an endPoint $endpointId");
   }
@@ -425,6 +422,8 @@ class NearbyConnections {
         final List<String> info = str.split("***");
         for (final fileInfo in info) {
           final List<String> keyFileInfo = fileInfo.split("*");
+          logger.d(info.length);
+          logger.d(keyFileInfo);
           final String keyFileName = keyFileInfo[0];
           final int keyFileSize = int.parse(keyFileInfo[1]);
           final List<String> thumbnailPixels =
@@ -461,7 +460,7 @@ class NearbyConnections {
               dateTime: DateTime.now(),
             ).toFileTransferItem();
 
-            _appDatabase.fileTransferItemDao.addFileTransferItem(item);
+            //_appDatabase.fileTransferItemDao.addFileTransferItem(item);
           });
         }
       }
@@ -617,17 +616,23 @@ class NearbyConnections {
     logger.d('$_isFile isfile is set false in sending fileinfo');
     String info = '';
 
-    for (final file in outgoingFiles) {
+    for (final int outgoingFileInfoIndex
+        in Iterable.generate(outgoingFiles.length)) {
+      if (outgoingFileInfoIndex % 3 == 2 ||
+          outgoingFileInfoIndex == outgoingFiles.length - 1) {
+        for (final user in users) {
+          _nearby.sendBytesPayload(
+            user.uid.getOrCrash(),
+            //name, path, size, thumbnail,hash
+            Uint8List.fromList(info.substring(0, info.length - 3).codeUnits),
+          );
+        }
+        info = '';
+      }
+      final file = outgoingFiles[outgoingFileInfoIndex];
       info +=
           "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
     }
-    users.forEach((user) {
-      _nearby.sendBytesPayload(
-        user.uid.getOrCrash(),
-        //name, path, size, thumbnail,hash
-        Uint8List.fromList(info.substring(0, info.length - 3).codeUnits),
-      );
-    });
   }
 
   Future<void> cancelPayload(int payloadId) async {
