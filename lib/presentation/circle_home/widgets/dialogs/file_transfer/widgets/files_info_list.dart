@@ -19,7 +19,6 @@ class FilesInfoList extends StatelessWidget {
           height: 32.0,
           width: 32.0,
         ),
-        trailing: Container(),
       ),
     );
   }
