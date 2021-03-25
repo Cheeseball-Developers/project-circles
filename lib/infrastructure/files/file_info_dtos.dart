@@ -8,12 +8,12 @@ part 'file_info_dtos.freezed.dart';
 @freezed
 abstract class FileInfoDto implements _$FileInfoDto {
   const factory FileInfoDto({
-    @required int hash,
-    @required String name,
-    @required String path,
-    @required int bytesSize,
-    @required Uint8List thumbnail,
-    @required DateTime dateTime,
+    required int hash,
+    required String name,
+    required String path,
+    required int bytesSize,
+    required Uint8List thumbnail,
+    required DateTime dateTime,
   }) = _FileInfoDto;
 
   factory FileInfoDto.fromDomain(FileInfo fileInfo) {

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'files_history_bloc.dart';
 
@@ -9,51 +9,55 @@ part of 'files_history_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FilesHistoryEventTearOff {
   const _$FilesHistoryEventTearOff();
 
-// ignore: unused_element
-  _AddItems addItems({@required List<FileInfo> items}) {
+  _AddItems addItems({required List<FileInfo> items}) {
     return _AddItems(
       items: items,
     );
   }
 
-// ignore: unused_element
   _Exit exit() {
     return const _Exit();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FilesHistoryEvent = _$FilesHistoryEventTearOff();
 
 /// @nodoc
 mixin _$FilesHistoryEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult addItems(List<FileInfo> items),
-    @required TResult exit(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<FileInfo> items) addItems,
+    required TResult Function() exit,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult addItems(List<FileInfo> items),
-    TResult exit(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<FileInfo> items)? addItems,
+    TResult Function()? exit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult addItems(_AddItems value),
-    @required TResult exit(_Exit value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddItems value) addItems,
+    required TResult Function(_Exit value) exit,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult addItems(_AddItems value),
-    TResult exit(_Exit value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddItems value)? addItems,
+    TResult Function(_Exit value)? exit,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -92,17 +96,20 @@ class __$AddItemsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object items = freezed,
+    Object? items = freezed,
   }) {
     return _then(_AddItems(
-      items: items == freezed ? _value.items : items as List<FileInfo>,
+      items: items == freezed
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<FileInfo>,
     ));
   }
 }
 
 /// @nodoc
 class _$_AddItems implements _AddItems {
-  const _$_AddItems({@required this.items}) : assert(items != null);
+  const _$_AddItems({required this.items});
 
   @override
   final List<FileInfo> items;
@@ -131,23 +138,20 @@ class _$_AddItems implements _AddItems {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult addItems(List<FileInfo> items),
-    @required TResult exit(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<FileInfo> items) addItems,
+    required TResult Function() exit,
   }) {
-    assert(addItems != null);
-    assert(exit != null);
     return addItems(items);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult addItems(List<FileInfo> items),
-    TResult exit(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<FileInfo> items)? addItems,
+    TResult Function()? exit,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addItems != null) {
       return addItems(items);
     }
@@ -156,23 +160,20 @@ class _$_AddItems implements _AddItems {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult addItems(_AddItems value),
-    @required TResult exit(_Exit value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddItems value) addItems,
+    required TResult Function(_Exit value) exit,
   }) {
-    assert(addItems != null);
-    assert(exit != null);
     return addItems(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult addItems(_AddItems value),
-    TResult exit(_Exit value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddItems value)? addItems,
+    TResult Function(_Exit value)? exit,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (addItems != null) {
       return addItems(this);
     }
@@ -181,11 +182,12 @@ class _$_AddItems implements _AddItems {
 }
 
 abstract class _AddItems implements FilesHistoryEvent {
-  const factory _AddItems({@required List<FileInfo> items}) = _$_AddItems;
+  const factory _AddItems({required List<FileInfo> items}) = _$_AddItems;
 
-  List<FileInfo> get items;
+  List<FileInfo> get items => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AddItemsCopyWith<_AddItems> get copyWith;
+  _$AddItemsCopyWith<_AddItems> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -223,23 +225,20 @@ class _$_Exit implements _Exit {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult addItems(List<FileInfo> items),
-    @required TResult exit(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(List<FileInfo> items) addItems,
+    required TResult Function() exit,
   }) {
-    assert(addItems != null);
-    assert(exit != null);
     return exit();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult addItems(List<FileInfo> items),
-    TResult exit(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<FileInfo> items)? addItems,
+    TResult Function()? exit,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (exit != null) {
       return exit();
     }
@@ -248,23 +247,20 @@ class _$_Exit implements _Exit {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult addItems(_AddItems value),
-    @required TResult exit(_Exit value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AddItems value) addItems,
+    required TResult Function(_Exit value) exit,
   }) {
-    assert(addItems != null);
-    assert(exit != null);
     return exit(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult addItems(_AddItems value),
-    TResult exit(_Exit value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AddItems value)? addItems,
+    TResult Function(_Exit value)? exit,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (exit != null) {
       return exit(this);
     }
@@ -280,11 +276,9 @@ abstract class _Exit implements FilesHistoryEvent {
 class _$FilesHistoryStateTearOff {
   const _$FilesHistoryStateTearOff();
 
-// ignore: unused_element
   _FilesHistoryState call(
-      {@required
-          Option<Either<DatabaseFailure, List<FileInfo>>>
-              failureOrFilesInfoOption}) {
+      {required Option<Either<DatabaseFailure, List<FileInfo>>>
+          failureOrFilesInfoOption}) {
     return _FilesHistoryState(
       failureOrFilesInfoOption: failureOrFilesInfoOption,
     );
@@ -292,15 +286,16 @@ class _$FilesHistoryStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FilesHistoryState = _$FilesHistoryStateTearOff();
 
 /// @nodoc
 mixin _$FilesHistoryState {
-  Option<Either<DatabaseFailure, List<FileInfo>>> get failureOrFilesInfoOption;
+  Option<Either<DatabaseFailure, List<FileInfo>>>
+      get failureOrFilesInfoOption => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FilesHistoryStateCopyWith<FilesHistoryState> get copyWith;
+  $FilesHistoryStateCopyWith<FilesHistoryState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -324,12 +319,12 @@ class _$FilesHistoryStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object failureOrFilesInfoOption = freezed,
+    Object? failureOrFilesInfoOption = freezed,
   }) {
     return _then(_value.copyWith(
       failureOrFilesInfoOption: failureOrFilesInfoOption == freezed
           ? _value.failureOrFilesInfoOption
-          : failureOrFilesInfoOption
+          : failureOrFilesInfoOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<DatabaseFailure, List<FileInfo>>>,
     ));
   }
@@ -360,12 +355,12 @@ class __$FilesHistoryStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object failureOrFilesInfoOption = freezed,
+    Object? failureOrFilesInfoOption = freezed,
   }) {
     return _then(_FilesHistoryState(
       failureOrFilesInfoOption: failureOrFilesInfoOption == freezed
           ? _value.failureOrFilesInfoOption
-          : failureOrFilesInfoOption
+          : failureOrFilesInfoOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<DatabaseFailure, List<FileInfo>>>,
     ));
   }
@@ -373,8 +368,7 @@ class __$FilesHistoryStateCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_FilesHistoryState implements _FilesHistoryState {
-  const _$_FilesHistoryState({@required this.failureOrFilesInfoOption})
-      : assert(failureOrFilesInfoOption != null);
+  const _$_FilesHistoryState({required this.failureOrFilesInfoOption});
 
   @override
   final Option<Either<DatabaseFailure, List<FileInfo>>>
@@ -408,13 +402,14 @@ class _$_FilesHistoryState implements _FilesHistoryState {
 
 abstract class _FilesHistoryState implements FilesHistoryState {
   const factory _FilesHistoryState(
-      {@required
-          Option<Either<DatabaseFailure, List<FileInfo>>>
-              failureOrFilesInfoOption}) = _$_FilesHistoryState;
+      {required Option<Either<DatabaseFailure, List<FileInfo>>>
+          failureOrFilesInfoOption}) = _$_FilesHistoryState;
 
   @override
-  Option<Either<DatabaseFailure, List<FileInfo>>> get failureOrFilesInfoOption;
+  Option<Either<DatabaseFailure, List<FileInfo>>>
+      get failureOrFilesInfoOption => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FilesHistoryStateCopyWith<_FilesHistoryState> get copyWith;
+  _$FilesHistoryStateCopyWith<_FilesHistoryState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

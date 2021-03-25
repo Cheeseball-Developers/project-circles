@@ -31,9 +31,9 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
   Stream<CurrentCircleState> mapEventToState(
     CurrentCircleEvent event,
   ) async* {
-    StreamSubscription<User> _incomingRequestsStreamSubscription;
-    StreamSubscription<String> _lostHostStreamSubscription;
-    StreamSubscription<String> _lostDiscovererStreamSubscription;
+    StreamSubscription<User>? _incomingRequestsStreamSubscription;
+    StreamSubscription<String>? _lostHostStreamSubscription;
+    StreamSubscription<String>? _lostDiscovererStreamSubscription;
     yield* state.map(
       initial: (state) async* {
         yield* event.maybeMap(
@@ -45,14 +45,14 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
                 await _nearbyConnections.startAdvertising();
 
             _incomingRequestsStreamSubscription =
-                _nearbyConnections.incomingRequestStream.listen((event) {
+                _nearbyConnections.incomingRequestStream!.listen((event) {
                   logger.i("A device found, wants to join: $event");
                   add(CurrentCircleEvent.deviceRequestedConnection(
                       user: event));
                 });
 
             _lostDiscovererStreamSubscription =
-                _nearbyConnections.onDiscovererLostStream.listen((event) {
+                _nearbyConnections.onDiscovererLostStream!.listen((event) {
                   logger.i("Removed from Circle");
                   add(CurrentCircleEvent.memberLeft(id: event));
                 });
@@ -80,7 +80,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
             yield const CurrentCircleState.isLoading(
                 loadingText: 'Joining Circle...');
             _lostHostStreamSubscription =
-                _nearbyConnections.onHostLostStream.listen((event) {
+                _nearbyConnections.onHostLostStream!.listen((event) {
                   logger.i("Host $event lost");
                   add(const CurrentCircleEvent.disconnected());
                 }, onError: (e) {});
@@ -98,9 +98,7 @@ class CurrentCircleBloc extends Bloc<CurrentCircleEvent, CurrentCircleState> {
           orElse: () async* {},
         );
       },
-      isLoading: (state) async* {
-        yield null;
-      },
+      isLoading: (state) async* {},
       hasStarted: (state) async* {
         yield* event.maybeMap(
           deviceRequestedConnection: (e) async* {

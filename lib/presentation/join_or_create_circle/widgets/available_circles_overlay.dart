@@ -29,7 +29,7 @@ class AvailableCirclesOverlay extends StatelessWidget {
               child: AllDiscoveredDevicesPopUp(),
             ),
           ).whenComplete(
-            () => context.bloc<SearchBloc>().add(
+            () => context.read<SearchBloc>().add(
                   const SearchEvent.dismissAllDiscoveredDevices(),
                 ),
           );
@@ -53,7 +53,7 @@ class AvailableCirclesOverlay extends StatelessWidget {
                               name: state.discoveredDevices[index].name),
                         )
                       : GestureDetector(
-                          onTap: () => context.bloc<SearchBloc>().add(
+                          onTap: () => context.read<SearchBloc>().add(
                               const SearchEvent.showAllDiscoveredDevices()),
                           child: Column(
                             children: [

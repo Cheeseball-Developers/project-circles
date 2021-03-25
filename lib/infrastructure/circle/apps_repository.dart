@@ -42,7 +42,7 @@ class AppsRepository {
   }
 
   Either<AppsLoadFailure, Map<AppInfo, bool>> toggleAppSelection(
-      {@required AppInfo appInfo}) {
+      {required AppInfo appInfo}) {
     try {
       apps.update(appInfo, (value) => !value);
       return right(apps);
@@ -63,9 +63,9 @@ class AppsRepository {
   Future<List<FileInfo>> getFilesInfo() async {
     final List<FileInfo> filesInfo = [];
     for (final AppInfo appInfo in apps.keys) {
-      if (apps[appInfo]) {
+      if (apps[appInfo]!) {
         final app = await DeviceApps.getApp(appInfo.packageName);
-        final File file = File(app.apkFilePath);
+        final File file = File(app!.apkFilePath);
         filesInfo.add(
           FileInfo(
             name: app.appName,
@@ -83,9 +83,9 @@ class AppsRepository {
   Future<List<File>> getFiles() async {
     final List<File> files = [];
     for (final AppInfo appInfo in apps.keys) {
-      if (apps[appInfo]) {
+      if (apps[appInfo]!) {
         final app = await DeviceApps.getApp(appInfo.packageName);
-        files.add(File(app.apkFilePath));
+        files.add(File(app!.apkFilePath));
       }
     }
     return files;

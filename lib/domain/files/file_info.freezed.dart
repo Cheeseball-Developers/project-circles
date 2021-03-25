@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'file_info.dart';
 
@@ -9,17 +9,19 @@ part of 'file_info.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FileInfoTearOff {
   const _$FileInfoTearOff();
 
-// ignore: unused_element
   _FileInfo call(
-      {@required String name,
-      @required int hash,
-      @required String path,
-      @required int bytesSize,
-      @required Uint8List thumbnail}) {
+      {required String name,
+      required int hash,
+      required String path,
+      required int bytesSize,
+      required Uint8List thumbnail}) {
     return _FileInfo(
       name: name,
       hash: hash,
@@ -31,19 +33,19 @@ class _$FileInfoTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FileInfo = _$FileInfoTearOff();
 
 /// @nodoc
 mixin _$FileInfo {
-  String get name;
-  int get hash;
-  String get path;
-  int get bytesSize;
-  Uint8List get thumbnail;
+  String get name => throw _privateConstructorUsedError;
+  int get hash => throw _privateConstructorUsedError;
+  String get path => throw _privateConstructorUsedError;
+  int get bytesSize => throw _privateConstructorUsedError;
+  Uint8List get thumbnail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FileInfoCopyWith<FileInfo> get copyWith;
+  $FileInfoCopyWith<FileInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -64,19 +66,33 @@ class _$FileInfoCopyWithImpl<$Res> implements $FileInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object name = freezed,
-    Object hash = freezed,
-    Object path = freezed,
-    Object bytesSize = freezed,
-    Object thumbnail = freezed,
+    Object? name = freezed,
+    Object? hash = freezed,
+    Object? path = freezed,
+    Object? bytesSize = freezed,
+    Object? thumbnail = freezed,
   }) {
     return _then(_value.copyWith(
-      name: name == freezed ? _value.name : name as String,
-      hash: hash == freezed ? _value.hash : hash as int,
-      path: path == freezed ? _value.path : path as String,
-      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
-      thumbnail:
-          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as int,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      bytesSize: bytesSize == freezed
+          ? _value.bytesSize
+          : bytesSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -101,19 +117,33 @@ class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object name = freezed,
-    Object hash = freezed,
-    Object path = freezed,
-    Object bytesSize = freezed,
-    Object thumbnail = freezed,
+    Object? name = freezed,
+    Object? hash = freezed,
+    Object? path = freezed,
+    Object? bytesSize = freezed,
+    Object? thumbnail = freezed,
   }) {
     return _then(_FileInfo(
-      name: name == freezed ? _value.name : name as String,
-      hash: hash == freezed ? _value.hash : hash as int,
-      path: path == freezed ? _value.path : path as String,
-      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
-      thumbnail:
-          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as int,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      bytesSize: bytesSize == freezed
+          ? _value.bytesSize
+          : bytesSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -121,17 +151,12 @@ class __$FileInfoCopyWithImpl<$Res> extends _$FileInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_FileInfo extends _FileInfo {
   const _$_FileInfo(
-      {@required this.name,
-      @required this.hash,
-      @required this.path,
-      @required this.bytesSize,
-      @required this.thumbnail})
-      : assert(name != null),
-        assert(hash != null),
-        assert(path != null),
-        assert(bytesSize != null),
-        assert(thumbnail != null),
-        super._();
+      {required this.name,
+      required this.hash,
+      required this.path,
+      required this.bytesSize,
+      required this.thumbnail})
+      : super._();
 
   @override
   final String name;
@@ -183,25 +208,26 @@ class _$_FileInfo extends _FileInfo {
 }
 
 abstract class _FileInfo extends FileInfo {
-  const _FileInfo._() : super._();
   const factory _FileInfo(
-      {@required String name,
-      @required int hash,
-      @required String path,
-      @required int bytesSize,
-      @required Uint8List thumbnail}) = _$_FileInfo;
+      {required String name,
+      required int hash,
+      required String path,
+      required int bytesSize,
+      required Uint8List thumbnail}) = _$_FileInfo;
+  const _FileInfo._() : super._();
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  int get hash;
+  int get hash => throw _privateConstructorUsedError;
   @override
-  String get path;
+  String get path => throw _privateConstructorUsedError;
   @override
-  int get bytesSize;
+  int get bytesSize => throw _privateConstructorUsedError;
   @override
-  Uint8List get thumbnail;
+  Uint8List get thumbnail => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FileInfoCopyWith<_FileInfo> get copyWith;
+  _$FileInfoCopyWith<_FileInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

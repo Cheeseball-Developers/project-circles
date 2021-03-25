@@ -12,17 +12,17 @@ abstract class SearchEvent with _$SearchEvent {
   const factory SearchEvent.dismissAllDiscoveredDevices() =
       DismissAllDiscoveredDevices;
 
-  const factory SearchEvent.deviceLost({@required String uidString}) =
+  const factory SearchEvent.deviceLost({required String uidString}) =
       DeviceLost;
 
   const factory SearchEvent.stopSearching() = StopSearching;
 
-  const factory SearchEvent.requestConnection({@required User discoveredUser}) =
+  const factory SearchEvent.requestConnection({required User discoveredUser}) =
       RequestConnection;
 
   const factory SearchEvent.connectionResult(
       Either<ConnectionFailure, Unit> connectionStatus) = ConnectionResult;
 
   const factory SearchEvent.endConnectionRequest(
-      {@required User cancelRequestUser}) = EndConnectionRequest;
+      {required User cancelRequestUser}) = EndConnectionRequest;
 }

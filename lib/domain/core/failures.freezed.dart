@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'failures.dart';
 
@@ -9,19 +9,20 @@ part of 'failures.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ValueFailureTearOff {
   const _$ValueFailureTearOff();
 
-// ignore: unused_element
-  Empty<T> empty<T>({@required T failedValue}) {
+  Empty<T> empty<T>({required T failedValue}) {
     return Empty<T>(
       failedValue: failedValue,
     );
   }
 
-// ignore: unused_element
-  ExceedingLength<T> exceedingLength<T>({@required T failedValue}) {
+  ExceedingLength<T> exceedingLength<T>({required T failedValue}) {
     return ExceedingLength<T>(
       failedValue: failedValue,
     );
@@ -29,38 +30,42 @@ class _$ValueFailureTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ValueFailure = _$ValueFailureTearOff();
 
 /// @nodoc
 mixin _$ValueFailure<T> {
-  T get failedValue;
+  T get failedValue => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(T failedValue),
-    @required TResult exceedingLength(T failedValue),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) exceedingLength,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(T failedValue),
-    TResult exceedingLength(T failedValue),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? exceedingLength,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(Empty<T> value),
-    @required TResult exceedingLength(ExceedingLength<T> value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(Empty<T> value),
-    TResult exceedingLength(ExceedingLength<T> value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith;
+  $ValueFailureCopyWith<T, ValueFailure<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -82,11 +87,13 @@ class _$ValueFailureCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(_value.copyWith(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
     ));
   }
 }
@@ -111,18 +118,20 @@ class _$EmptyCopyWithImpl<T, $Res> extends _$ValueFailureCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(Empty<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
     ));
   }
 }
 
 /// @nodoc
 class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
-  const _$Empty({@required this.failedValue}) : assert(failedValue != null);
+  const _$Empty({required this.failedValue});
 
   @override
   final T failedValue;
@@ -160,23 +169,20 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(T failedValue),
-    @required TResult exceedingLength(T failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) exceedingLength,
   }) {
-    assert(empty != null);
-    assert(exceedingLength != null);
     return empty(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(T failedValue),
-    TResult exceedingLength(T failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? exceedingLength,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (empty != null) {
       return empty(failedValue);
     }
@@ -185,23 +191,20 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(Empty<T> value),
-    @required TResult exceedingLength(ExceedingLength<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
   }) {
-    assert(empty != null);
-    assert(exceedingLength != null);
     return empty(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(Empty<T> value),
-    TResult exceedingLength(ExceedingLength<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (empty != null) {
       return empty(this);
     }
@@ -210,13 +213,14 @@ class _$Empty<T> with DiagnosticableTreeMixin implements Empty<T> {
 }
 
 abstract class Empty<T> implements ValueFailure<T> {
-  const factory Empty({@required T failedValue}) = _$Empty<T>;
+  const factory Empty({required T failedValue}) = _$Empty<T>;
 
   @override
-  T get failedValue;
+  T get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $EmptyCopyWith<T, Empty<T>> get copyWith;
+  $EmptyCopyWith<T, Empty<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -242,11 +246,13 @@ class _$ExceedingLengthCopyWithImpl<T, $Res>
 
   @override
   $Res call({
-    Object failedValue = freezed,
+    Object? failedValue = freezed,
   }) {
     return _then(ExceedingLength<T>(
-      failedValue:
-          failedValue == freezed ? _value.failedValue : failedValue as T,
+      failedValue: failedValue == freezed
+          ? _value.failedValue
+          : failedValue // ignore: cast_nullable_to_non_nullable
+              as T,
     ));
   }
 }
@@ -255,8 +261,7 @@ class _$ExceedingLengthCopyWithImpl<T, $Res>
 class _$ExceedingLength<T>
     with DiagnosticableTreeMixin
     implements ExceedingLength<T> {
-  const _$ExceedingLength({@required this.failedValue})
-      : assert(failedValue != null);
+  const _$ExceedingLength({required this.failedValue});
 
   @override
   final T failedValue;
@@ -294,23 +299,20 @@ class _$ExceedingLength<T>
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult empty(T failedValue),
-    @required TResult exceedingLength(T failedValue),
+  TResult when<TResult extends Object?>({
+    required TResult Function(T failedValue) empty,
+    required TResult Function(T failedValue) exceedingLength,
   }) {
-    assert(empty != null);
-    assert(exceedingLength != null);
     return exceedingLength(failedValue);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult empty(T failedValue),
-    TResult exceedingLength(T failedValue),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(T failedValue)? empty,
+    TResult Function(T failedValue)? exceedingLength,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (exceedingLength != null) {
       return exceedingLength(failedValue);
     }
@@ -319,23 +321,20 @@ class _$ExceedingLength<T>
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult empty(Empty<T> value),
-    @required TResult exceedingLength(ExceedingLength<T> value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Empty<T> value) empty,
+    required TResult Function(ExceedingLength<T> value) exceedingLength,
   }) {
-    assert(empty != null);
-    assert(exceedingLength != null);
     return exceedingLength(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult empty(Empty<T> value),
-    TResult exceedingLength(ExceedingLength<T> value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Empty<T> value)? empty,
+    TResult Function(ExceedingLength<T> value)? exceedingLength,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (exceedingLength != null) {
       return exceedingLength(this);
     }
@@ -344,12 +343,13 @@ class _$ExceedingLength<T>
 }
 
 abstract class ExceedingLength<T> implements ValueFailure<T> {
-  const factory ExceedingLength({@required T failedValue}) =
+  const factory ExceedingLength({required T failedValue}) =
       _$ExceedingLength<T>;
 
   @override
-  T get failedValue;
+  T get failedValue => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith;
+  $ExceedingLengthCopyWith<T, ExceedingLength<T>> get copyWith =>
+      throw _privateConstructorUsedError;
 }

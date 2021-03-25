@@ -58,7 +58,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
               context.read<CurrentCircleBloc>().add(
                     CurrentCircleEvent.joinCircle(host: user),
                   );
-              ExtendedNavigator.of(context).popAndPush(Routes.circleHome);
+              ExtendedNavigator.of(context)!.popAndPush(Routes.circleHomeRoute);
             },
           ),
         );
@@ -73,7 +73,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
                 context.read<SearchBloc>().add(
                       SearchEvent.endConnectionRequest(cancelRequestUser: user),
                     );
-                ExtendedNavigator.of(context).pop();
+                ExtendedNavigator.of(context)!.pop();
               },
         child: Padding(
           padding: const EdgeInsets.all(16.0),

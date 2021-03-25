@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'app_info.dart';
 
@@ -9,15 +9,17 @@ part of 'app_info.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppInfoTearOff {
   const _$AppInfoTearOff();
 
-// ignore: unused_element
   _AppInfo call(
-      {@required String appName,
-      @required String packageName,
-      @required Uint8List icon}) {
+      {required String appName,
+      required String packageName,
+      required Uint8List icon}) {
     return _AppInfo(
       appName: appName,
       packageName: packageName,
@@ -27,17 +29,16 @@ class _$AppInfoTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppInfo = _$AppInfoTearOff();
 
 /// @nodoc
 mixin _$AppInfo {
-  String get appName;
-  String get packageName;
-  Uint8List get icon;
+  String get appName => throw _privateConstructorUsedError;
+  String get packageName => throw _privateConstructorUsedError;
+  Uint8List get icon => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppInfoCopyWith<AppInfo> get copyWith;
+  $AppInfoCopyWith<AppInfo> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -57,15 +58,23 @@ class _$AppInfoCopyWithImpl<$Res> implements $AppInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object appName = freezed,
-    Object packageName = freezed,
-    Object icon = freezed,
+    Object? appName = freezed,
+    Object? packageName = freezed,
+    Object? icon = freezed,
   }) {
     return _then(_value.copyWith(
-      appName: appName == freezed ? _value.appName : appName as String,
-      packageName:
-          packageName == freezed ? _value.packageName : packageName as String,
-      icon: icon == freezed ? _value.icon : icon as Uint8List,
+      appName: appName == freezed
+          ? _value.appName
+          : appName // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: packageName == freezed
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -89,15 +98,23 @@ class __$AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object appName = freezed,
-    Object packageName = freezed,
-    Object icon = freezed,
+    Object? appName = freezed,
+    Object? packageName = freezed,
+    Object? icon = freezed,
   }) {
     return _then(_AppInfo(
-      appName: appName == freezed ? _value.appName : appName as String,
-      packageName:
-          packageName == freezed ? _value.packageName : packageName as String,
-      icon: icon == freezed ? _value.icon : icon as Uint8List,
+      appName: appName == freezed
+          ? _value.appName
+          : appName // ignore: cast_nullable_to_non_nullable
+              as String,
+      packageName: packageName == freezed
+          ? _value.packageName
+          : packageName // ignore: cast_nullable_to_non_nullable
+              as String,
+      icon: icon == freezed
+          ? _value.icon
+          : icon // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -105,11 +122,8 @@ class __$AppInfoCopyWithImpl<$Res> extends _$AppInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_AppInfo extends _AppInfo {
   const _$_AppInfo(
-      {@required this.appName, @required this.packageName, @required this.icon})
-      : assert(appName != null),
-        assert(packageName != null),
-        assert(icon != null),
-        super._();
+      {required this.appName, required this.packageName, required this.icon})
+      : super._();
 
   @override
   final String appName;
@@ -151,19 +165,20 @@ class _$_AppInfo extends _AppInfo {
 }
 
 abstract class _AppInfo extends AppInfo {
-  const _AppInfo._() : super._();
   const factory _AppInfo(
-      {@required String appName,
-      @required String packageName,
-      @required Uint8List icon}) = _$_AppInfo;
+      {required String appName,
+      required String packageName,
+      required Uint8List icon}) = _$_AppInfo;
+  const _AppInfo._() : super._();
 
   @override
-  String get appName;
+  String get appName => throw _privateConstructorUsedError;
   @override
-  String get packageName;
+  String get packageName => throw _privateConstructorUsedError;
   @override
-  Uint8List get icon;
+  Uint8List get icon => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppInfoCopyWith<_AppInfo> get copyWith;
+  _$AppInfoCopyWith<_AppInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

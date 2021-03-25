@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'connection_failure.dart';
 
@@ -9,67 +9,69 @@ part of 'connection_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$ConnectionFailureTearOff {
   const _$ConnectionFailureTearOff();
 
-// ignore: unused_element
   CancelledByUser cancelledByUser() {
     return const CancelledByUser();
   }
 
-// ignore: unused_element
   TimedOut timedOut() {
     return const TimedOut();
   }
 
-// ignore: unused_element
   Unexpected unexpected() {
     return const Unexpected();
   }
 
-// ignore: unused_element
   EndPointUnknown endPointUnknown() {
     return const EndPointUnknown();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $ConnectionFailure = _$ConnectionFailureTearOff();
 
 /// @nodoc
 mixin _$ConnectionFailure {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult cancelledByUser(),
-    @required TResult timedOut(),
-    @required TResult unexpected(),
-    @required TResult endPointUnknown(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() timedOut,
+    required TResult Function() unexpected,
+    required TResult Function() endPointUnknown,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult cancelledByUser(),
-    TResult timedOut(),
-    TResult unexpected(),
-    TResult endPointUnknown(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? timedOut,
+    TResult Function()? unexpected,
+    TResult Function()? endPointUnknown,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult cancelledByUser(CancelledByUser value),
-    @required TResult timedOut(TimedOut value),
-    @required TResult unexpected(Unexpected value),
-    @required TResult endPointUnknown(EndPointUnknown value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(TimedOut value) timedOut,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(EndPointUnknown value) endPointUnknown,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult cancelledByUser(CancelledByUser value),
-    TResult timedOut(TimedOut value),
-    TResult unexpected(Unexpected value),
-    TResult endPointUnknown(EndPointUnknown value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(TimedOut value)? timedOut,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(EndPointUnknown value)? endPointUnknown,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -136,29 +138,24 @@ class _$CancelledByUser
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult cancelledByUser(),
-    @required TResult timedOut(),
-    @required TResult unexpected(),
-    @required TResult endPointUnknown(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() timedOut,
+    required TResult Function() unexpected,
+    required TResult Function() endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return cancelledByUser();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult cancelledByUser(),
-    TResult timedOut(),
-    TResult unexpected(),
-    TResult endPointUnknown(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? timedOut,
+    TResult Function()? unexpected,
+    TResult Function()? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (cancelledByUser != null) {
       return cancelledByUser();
     }
@@ -167,29 +164,24 @@ class _$CancelledByUser
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult cancelledByUser(CancelledByUser value),
-    @required TResult timedOut(TimedOut value),
-    @required TResult unexpected(Unexpected value),
-    @required TResult endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(TimedOut value) timedOut,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(EndPointUnknown value) endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return cancelledByUser(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult cancelledByUser(CancelledByUser value),
-    TResult timedOut(TimedOut value),
-    TResult unexpected(Unexpected value),
-    TResult endPointUnknown(EndPointUnknown value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(TimedOut value)? timedOut,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(EndPointUnknown value)? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (cancelledByUser != null) {
       return cancelledByUser(this);
     }
@@ -242,29 +234,24 @@ class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult cancelledByUser(),
-    @required TResult timedOut(),
-    @required TResult unexpected(),
-    @required TResult endPointUnknown(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() timedOut,
+    required TResult Function() unexpected,
+    required TResult Function() endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return timedOut();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult cancelledByUser(),
-    TResult timedOut(),
-    TResult unexpected(),
-    TResult endPointUnknown(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? timedOut,
+    TResult Function()? unexpected,
+    TResult Function()? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (timedOut != null) {
       return timedOut();
     }
@@ -273,29 +260,24 @@ class _$TimedOut with DiagnosticableTreeMixin implements TimedOut {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult cancelledByUser(CancelledByUser value),
-    @required TResult timedOut(TimedOut value),
-    @required TResult unexpected(Unexpected value),
-    @required TResult endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(TimedOut value) timedOut,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(EndPointUnknown value) endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return timedOut(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult cancelledByUser(CancelledByUser value),
-    TResult timedOut(TimedOut value),
-    TResult unexpected(Unexpected value),
-    TResult endPointUnknown(EndPointUnknown value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(TimedOut value)? timedOut,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(EndPointUnknown value)? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (timedOut != null) {
       return timedOut(this);
     }
@@ -351,29 +333,24 @@ class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult cancelledByUser(),
-    @required TResult timedOut(),
-    @required TResult unexpected(),
-    @required TResult endPointUnknown(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() timedOut,
+    required TResult Function() unexpected,
+    required TResult Function() endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return unexpected();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult cancelledByUser(),
-    TResult timedOut(),
-    TResult unexpected(),
-    TResult endPointUnknown(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? timedOut,
+    TResult Function()? unexpected,
+    TResult Function()? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unexpected != null) {
       return unexpected();
     }
@@ -382,29 +359,24 @@ class _$Unexpected with DiagnosticableTreeMixin implements Unexpected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult cancelledByUser(CancelledByUser value),
-    @required TResult timedOut(TimedOut value),
-    @required TResult unexpected(Unexpected value),
-    @required TResult endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(TimedOut value) timedOut,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(EndPointUnknown value) endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return unexpected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult cancelledByUser(CancelledByUser value),
-    TResult timedOut(TimedOut value),
-    TResult unexpected(Unexpected value),
-    TResult endPointUnknown(EndPointUnknown value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(TimedOut value)? timedOut,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(EndPointUnknown value)? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unexpected != null) {
       return unexpected(this);
     }
@@ -463,29 +435,24 @@ class _$EndPointUnknown
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult cancelledByUser(),
-    @required TResult timedOut(),
-    @required TResult unexpected(),
-    @required TResult endPointUnknown(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() cancelledByUser,
+    required TResult Function() timedOut,
+    required TResult Function() unexpected,
+    required TResult Function() endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return endPointUnknown();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult cancelledByUser(),
-    TResult timedOut(),
-    TResult unexpected(),
-    TResult endPointUnknown(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? cancelledByUser,
+    TResult Function()? timedOut,
+    TResult Function()? unexpected,
+    TResult Function()? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (endPointUnknown != null) {
       return endPointUnknown();
     }
@@ -494,29 +461,24 @@ class _$EndPointUnknown
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult cancelledByUser(CancelledByUser value),
-    @required TResult timedOut(TimedOut value),
-    @required TResult unexpected(Unexpected value),
-    @required TResult endPointUnknown(EndPointUnknown value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(CancelledByUser value) cancelledByUser,
+    required TResult Function(TimedOut value) timedOut,
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(EndPointUnknown value) endPointUnknown,
   }) {
-    assert(cancelledByUser != null);
-    assert(timedOut != null);
-    assert(unexpected != null);
-    assert(endPointUnknown != null);
     return endPointUnknown(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult cancelledByUser(CancelledByUser value),
-    TResult timedOut(TimedOut value),
-    TResult unexpected(Unexpected value),
-    TResult endPointUnknown(EndPointUnknown value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CancelledByUser value)? cancelledByUser,
+    TResult Function(TimedOut value)? timedOut,
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(EndPointUnknown value)? endPointUnknown,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (endPointUnknown != null) {
       return endPointUnknown(this);
     }

@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:moor_flutter/moor_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:projectcircles/domain/files/file_info.dart';
 
@@ -13,8 +13,7 @@ class FilesRepository {
   Map<FileSystemEntity, bool> _filesMap = {};
 
   Future<bool> getPermission() async {
-    if (await Permission.storage.isUndetermined ||
-        await Permission.storage.isDenied) {
+    if (await Permission.storage.isDenied) {
       return Permission.storage
           .request()
           .then((status) => status == PermissionStatus.granted);
@@ -47,7 +46,7 @@ class FilesRepository {
 
   Map<FileSystemEntity, bool> getFileEntities() => _filesMap;
 
-  bool toggleSelection({@required FileSystemEntity entity}) {
+  bool toggleSelection({required FileSystemEntity entity}) {
     _filesMap.update(entity, (value) => !value);
     return true;
   }
@@ -61,12 +60,15 @@ class FilesRepository {
     final List<FileInfo> filesInfo = [];
     _filesMap.forEach((key, value) {
       if (value) {
-        filesInfo.add(FileInfo(
+        filesInfo.add(
+          FileInfo(
             name: key.path.substring(key.path.lastIndexOf('/') + 1),
             hash: key.hashCode,
             path: key.path,
             bytesSize: key.statSync().size,
-            thumbnail: null));
+            thumbnail: Uint8List(0), // TODO: Do thumbnail as Option<Uint8List>
+          ),
+        );
       }
     });
     return filesInfo;

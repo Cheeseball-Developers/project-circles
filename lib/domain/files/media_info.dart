@@ -8,7 +8,7 @@ part 'media_info.freezed.dart';
 @freezed
 abstract class MediaInfo with _$MediaInfo {
   const factory MediaInfo({
-    @required AssetEntity entity,
-    @required Uint8List thumbnail,
+    required AssetEntity entity,
+    required Uint8List thumbnail,
   }) = _MediaInfo;
 }

@@ -22,7 +22,7 @@ class MediaTabView extends StatelessWidget {
                             crossAxisCount: 2),
                     itemCount: state.albums.length,
                     itemBuilder: (context, index) => GestureDetector(
-                      onTap: () => context.bloc<MediaTabViewBloc>().add(
+                      onTap: () => context.read<MediaTabViewBloc>().add(
                           MediaTabViewEvent.loadMedia(
                               album: state.albums[index])),
                       child: AlbumThumbnail(album: state.albums[index]),
@@ -38,7 +38,7 @@ class MediaTabView extends StatelessWidget {
                             backgroundColor: Theme.of(context).cardColor,
                             leading: GestureDetector(
                               onTap: () => context
-                                  .bloc<MediaTabViewBloc>()
+                                  .read<MediaTabViewBloc>()
                                   .add(const MediaTabViewEvent.loadAlbums()),
                               child: Icon(Icons.chevron_left_rounded,
                                   color: Theme.of(context).buttonColor),
@@ -57,7 +57,7 @@ class MediaTabView extends StatelessWidget {
                                   .where((selected) => selected)
                                   .length,
                               onCancel: () =>
-                                  context.bloc<MediaTabViewBloc>().add(
+                                  context.read<MediaTabViewBloc>().add(
                                         const MediaTabViewEvent.deselectAll(),
                                       ),
                             ),
@@ -72,7 +72,7 @@ class MediaTabView extends StatelessWidget {
                       if ((scrollInfo.metrics.pixels ==
                               scrollInfo.metrics.maxScrollExtent) &&
                           (state.previousPage != state.currentPage)) {
-                        context.bloc<MediaTabViewBloc>().add(
+                        context.read<MediaTabViewBloc>().add(
                             MediaTabViewEvent.loadMedia(album: state.album));
                       }
                       return true;

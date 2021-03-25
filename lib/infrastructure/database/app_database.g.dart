@@ -16,75 +16,57 @@ class FileTransferItem extends DataClass
   final Uint8List thumbnail;
   final DateTime transferDateTime;
   FileTransferItem(
-      {@required this.hash,
-      @required this.name,
-      @required this.path,
-      @required this.bytesSize,
-      @required this.thumbnail,
-      @required this.transferDateTime});
+      {required this.hash,
+      required this.name,
+      required this.path,
+      required this.bytesSize,
+      required this.thumbnail,
+      required this.transferDateTime});
   factory FileTransferItem.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
-      {String prefix}) {
+      {String? prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
     final stringType = db.typeSystem.forDartType<String>();
     final uint8ListType = db.typeSystem.forDartType<Uint8List>();
     final dateTimeType = db.typeSystem.forDartType<DateTime>();
     return FileTransferItem(
-      hash: intType.mapFromDatabaseResponse(data['${effectivePrefix}hash']),
-      name: stringType.mapFromDatabaseResponse(data['${effectivePrefix}name']),
-      path: stringType.mapFromDatabaseResponse(data['${effectivePrefix}path']),
-      bytesSize:
-          intType.mapFromDatabaseResponse(data['${effectivePrefix}bytes_size']),
+      hash: intType.mapFromDatabaseResponse(data['${effectivePrefix}hash'])!,
+      name: stringType.mapFromDatabaseResponse(data['${effectivePrefix}name'])!,
+      path: stringType.mapFromDatabaseResponse(data['${effectivePrefix}path'])!,
+      bytesSize: intType
+          .mapFromDatabaseResponse(data['${effectivePrefix}bytes_size'])!,
       thumbnail: uint8ListType
-          .mapFromDatabaseResponse(data['${effectivePrefix}thumbnail']),
+          .mapFromDatabaseResponse(data['${effectivePrefix}thumbnail'])!,
       transferDateTime: dateTimeType.mapFromDatabaseResponse(
-          data['${effectivePrefix}transfer_date_time']),
+          data['${effectivePrefix}transfer_date_time'])!,
     );
   }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (!nullToAbsent || hash != null) {
-      map['hash'] = Variable<int>(hash);
-    }
-    if (!nullToAbsent || name != null) {
-      map['name'] = Variable<String>(name);
-    }
-    if (!nullToAbsent || path != null) {
-      map['path'] = Variable<String>(path);
-    }
-    if (!nullToAbsent || bytesSize != null) {
-      map['bytes_size'] = Variable<int>(bytesSize);
-    }
-    if (!nullToAbsent || thumbnail != null) {
-      map['thumbnail'] = Variable<Uint8List>(thumbnail);
-    }
-    if (!nullToAbsent || transferDateTime != null) {
-      map['transfer_date_time'] = Variable<DateTime>(transferDateTime);
-    }
+    map['hash'] = Variable<int>(hash);
+    map['name'] = Variable<String>(name);
+    map['path'] = Variable<String>(path);
+    map['bytes_size'] = Variable<int>(bytesSize);
+    map['thumbnail'] = Variable<Uint8List>(thumbnail);
+    map['transfer_date_time'] = Variable<DateTime>(transferDateTime);
     return map;
   }
 
   FileTransferItemsCompanion toCompanion(bool nullToAbsent) {
     return FileTransferItemsCompanion(
-      hash: hash == null && nullToAbsent ? const Value.absent() : Value(hash),
-      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
-      path: path == null && nullToAbsent ? const Value.absent() : Value(path),
-      bytesSize: bytesSize == null && nullToAbsent
-          ? const Value.absent()
-          : Value(bytesSize),
-      thumbnail: thumbnail == null && nullToAbsent
-          ? const Value.absent()
-          : Value(thumbnail),
-      transferDateTime: transferDateTime == null && nullToAbsent
-          ? const Value.absent()
-          : Value(transferDateTime),
+      hash: Value(hash),
+      name: Value(name),
+      path: Value(path),
+      bytesSize: Value(bytesSize),
+      thumbnail: Value(thumbnail),
+      transferDateTime: Value(transferDateTime),
     );
   }
 
   factory FileTransferItem.fromJson(Map<String, dynamic> json,
-      {ValueSerializer serializer}) {
+      {ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return FileTransferItem(
       hash: serializer.fromJson<int>(json['hash']),
@@ -96,7 +78,7 @@ class FileTransferItem extends DataClass
     );
   }
   @override
-  Map<String, dynamic> toJson({ValueSerializer serializer}) {
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'hash': serializer.toJson<int>(hash),
@@ -109,12 +91,12 @@ class FileTransferItem extends DataClass
   }
 
   FileTransferItem copyWith(
-          {int hash,
-          String name,
-          String path,
-          int bytesSize,
-          Uint8List thumbnail,
-          DateTime transferDateTime}) =>
+          {int? hash,
+          String? name,
+          String? path,
+          int? bytesSize,
+          Uint8List? thumbnail,
+          DateTime? transferDateTime}) =>
       FileTransferItem(
         hash: hash ?? this.hash,
         name: name ?? this.name,
@@ -173,25 +155,25 @@ class FileTransferItemsCompanion extends UpdateCompanion<FileTransferItem> {
     this.transferDateTime = const Value.absent(),
   });
   FileTransferItemsCompanion.insert({
-    @required int hash,
-    @required String name,
-    @required String path,
-    @required int bytesSize,
-    @required Uint8List thumbnail,
-    @required DateTime transferDateTime,
-  })  : hash = Value(hash),
+    required int hash,
+    required String name,
+    required String path,
+    required int bytesSize,
+    required Uint8List thumbnail,
+    required DateTime transferDateTime,
+  })   : hash = Value(hash),
         name = Value(name),
         path = Value(path),
         bytesSize = Value(bytesSize),
         thumbnail = Value(thumbnail),
         transferDateTime = Value(transferDateTime);
   static Insertable<FileTransferItem> custom({
-    Expression<int> hash,
-    Expression<String> name,
-    Expression<String> path,
-    Expression<int> bytesSize,
-    Expression<Uint8List> thumbnail,
-    Expression<DateTime> transferDateTime,
+    Expression<int>? hash,
+    Expression<String>? name,
+    Expression<String>? path,
+    Expression<int>? bytesSize,
+    Expression<Uint8List>? thumbnail,
+    Expression<DateTime>? transferDateTime,
   }) {
     return RawValuesInsertable({
       if (hash != null) 'hash': hash,
@@ -204,12 +186,12 @@ class FileTransferItemsCompanion extends UpdateCompanion<FileTransferItem> {
   }
 
   FileTransferItemsCompanion copyWith(
-      {Value<int> hash,
-      Value<String> name,
-      Value<String> path,
-      Value<int> bytesSize,
-      Value<Uint8List> thumbnail,
-      Value<DateTime> transferDateTime}) {
+      {Value<int>? hash,
+      Value<String>? name,
+      Value<String>? path,
+      Value<int>? bytesSize,
+      Value<Uint8List>? thumbnail,
+      Value<DateTime>? transferDateTime}) {
     return FileTransferItemsCompanion(
       hash: hash ?? this.hash,
       name: name ?? this.name,
@@ -261,12 +243,11 @@ class FileTransferItemsCompanion extends UpdateCompanion<FileTransferItem> {
 class $FileTransferItemsTable extends FileTransferItems
     with TableInfo<$FileTransferItemsTable, FileTransferItem> {
   final GeneratedDatabase _db;
-  final String _alias;
+  final String? _alias;
   $FileTransferItemsTable(this._db, [this._alias]);
   final VerificationMeta _hashMeta = const VerificationMeta('hash');
-  GeneratedIntColumn _hash;
   @override
-  GeneratedIntColumn get hash => _hash ??= _constructHash();
+  late final GeneratedIntColumn hash = _constructHash();
   GeneratedIntColumn _constructHash() {
     return GeneratedIntColumn(
       'hash',
@@ -276,25 +257,22 @@ class $FileTransferItemsTable extends FileTransferItems
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
-  GeneratedTextColumn _name;
   @override
-  GeneratedTextColumn get name => _name ??= _constructName();
+  late final GeneratedTextColumn name = _constructName();
   GeneratedTextColumn _constructName() {
     return GeneratedTextColumn('name', $tableName, false, minTextLength: 1);
   }
 
   final VerificationMeta _pathMeta = const VerificationMeta('path');
-  GeneratedTextColumn _path;
   @override
-  GeneratedTextColumn get path => _path ??= _constructPath();
+  late final GeneratedTextColumn path = _constructPath();
   GeneratedTextColumn _constructPath() {
     return GeneratedTextColumn('path', $tableName, false, minTextLength: 1);
   }
 
   final VerificationMeta _bytesSizeMeta = const VerificationMeta('bytesSize');
-  GeneratedIntColumn _bytesSize;
   @override
-  GeneratedIntColumn get bytesSize => _bytesSize ??= _constructBytesSize();
+  late final GeneratedIntColumn bytesSize = _constructBytesSize();
   GeneratedIntColumn _constructBytesSize() {
     return GeneratedIntColumn(
       'bytes_size',
@@ -304,9 +282,8 @@ class $FileTransferItemsTable extends FileTransferItems
   }
 
   final VerificationMeta _thumbnailMeta = const VerificationMeta('thumbnail');
-  GeneratedBlobColumn _thumbnail;
   @override
-  GeneratedBlobColumn get thumbnail => _thumbnail ??= _constructThumbnail();
+  late final GeneratedBlobColumn thumbnail = _constructThumbnail();
   GeneratedBlobColumn _constructThumbnail() {
     return GeneratedBlobColumn(
       'thumbnail',
@@ -317,10 +294,9 @@ class $FileTransferItemsTable extends FileTransferItems
 
   final VerificationMeta _transferDateTimeMeta =
       const VerificationMeta('transferDateTime');
-  GeneratedDateTimeColumn _transferDateTime;
   @override
-  GeneratedDateTimeColumn get transferDateTime =>
-      _transferDateTime ??= _constructTransferDateTime();
+  late final GeneratedDateTimeColumn transferDateTime =
+      _constructTransferDateTime();
   GeneratedDateTimeColumn _constructTransferDateTime() {
     return GeneratedDateTimeColumn(
       'transfer_date_time',
@@ -345,31 +321,31 @@ class $FileTransferItemsTable extends FileTransferItems
     final data = instance.toColumns(true);
     if (data.containsKey('hash')) {
       context.handle(
-          _hashMeta, hash.isAcceptableOrUnknown(data['hash'], _hashMeta));
+          _hashMeta, hash.isAcceptableOrUnknown(data['hash']!, _hashMeta));
     } else if (isInserting) {
       context.missing(_hashMeta);
     }
     if (data.containsKey('name')) {
       context.handle(
-          _nameMeta, name.isAcceptableOrUnknown(data['name'], _nameMeta));
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
     } else if (isInserting) {
       context.missing(_nameMeta);
     }
     if (data.containsKey('path')) {
       context.handle(
-          _pathMeta, path.isAcceptableOrUnknown(data['path'], _pathMeta));
+          _pathMeta, path.isAcceptableOrUnknown(data['path']!, _pathMeta));
     } else if (isInserting) {
       context.missing(_pathMeta);
     }
     if (data.containsKey('bytes_size')) {
       context.handle(_bytesSizeMeta,
-          bytesSize.isAcceptableOrUnknown(data['bytes_size'], _bytesSizeMeta));
+          bytesSize.isAcceptableOrUnknown(data['bytes_size']!, _bytesSizeMeta));
     } else if (isInserting) {
       context.missing(_bytesSizeMeta);
     }
     if (data.containsKey('thumbnail')) {
       context.handle(_thumbnailMeta,
-          thumbnail.isAcceptableOrUnknown(data['thumbnail'], _thumbnailMeta));
+          thumbnail.isAcceptableOrUnknown(data['thumbnail']!, _thumbnailMeta));
     } else if (isInserting) {
       context.missing(_thumbnailMeta);
     }
@@ -377,7 +353,7 @@ class $FileTransferItemsTable extends FileTransferItems
       context.handle(
           _transferDateTimeMeta,
           transferDateTime.isAcceptableOrUnknown(
-              data['transfer_date_time'], _transferDateTimeMeta));
+              data['transfer_date_time']!, _transferDateTimeMeta));
     } else if (isInserting) {
       context.missing(_transferDateTimeMeta);
     }
@@ -387,7 +363,7 @@ class $FileTransferItemsTable extends FileTransferItems
   @override
   Set<GeneratedColumn> get $primaryKey => <GeneratedColumn>{};
   @override
-  FileTransferItem map(Map<String, dynamic> data, {String tablePrefix}) {
+  FileTransferItem map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
     return FileTransferItem.fromData(data, _db, prefix: effectivePrefix);
   }
@@ -400,12 +376,10 @@ class $FileTransferItemsTable extends FileTransferItems
 
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
-  $FileTransferItemsTable _fileTransferItems;
-  $FileTransferItemsTable get fileTransferItems =>
-      _fileTransferItems ??= $FileTransferItemsTable(this);
-  FileTransferItemDao _fileTransferItemDao;
-  FileTransferItemDao get fileTransferItemDao =>
-      _fileTransferItemDao ??= FileTransferItemDao(this as AppDatabase);
+  late final $FileTransferItemsTable fileTransferItems =
+      $FileTransferItemsTable(this);
+  late final FileTransferItemDao fileTransferItemDao =
+      FileTransferItemDao(this as AppDatabase);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override

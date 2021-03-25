@@ -5,8 +5,8 @@ class MyTextButton extends StatelessWidget {
   final VoidCallback onTap;
   final ButtonType type;
 
-  const MyTextButton({Key key, this.text, this.onTap, @required this.type})
-      : super(key: key);
+  const MyTextButton({required this.text, required this.onTap, required this.type})
+     ;
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,10 @@ class MyTextButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
             text,
-            style: Theme.of(context).textTheme.button.copyWith(
+            style: Theme.of(context).textTheme.button!.copyWith(
                 color: type == ButtonType.primary
                     ? Theme.of(context).cardColor
-                    : Theme.of(context).textTheme.button.color),
+                    : Theme.of(context).textTheme.button!.color),
           ),
         ),
       ),

@@ -5,8 +5,8 @@ class EmptyPopUpPlaceholder extends StatelessWidget {
   final String text;
 
   const EmptyPopUpPlaceholder({
-    @required this.icon,
-    @required this.text,
+    required this.icon,
+    required this.text,
   });
 
   @override
@@ -18,7 +18,7 @@ class EmptyPopUpPlaceholder extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Icon(icon,
-              color: Theme.of(context).iconTheme.color.withOpacity(0.25),
+              color: Theme.of(context).iconTheme.color!.withOpacity(0.25),
               size: 64.0),
           const Padding(
             padding: EdgeInsets.only(bottom: 8.0),

@@ -4,7 +4,7 @@ class SelectionBar extends StatelessWidget {
   final int count;
   final VoidCallback onCancel;
 
-  const SelectionBar({@required this.count, @required this.onCancel});
+  const SelectionBar({required this.count, required this.onCancel});
 
   @override
   Widget build(BuildContext context) {

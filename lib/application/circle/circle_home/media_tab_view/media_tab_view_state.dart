@@ -7,13 +7,13 @@ abstract class MediaTabViewState with _$MediaTabViewState {
   const factory MediaTabViewState.isLoading() = _IsLoading;
 
   const factory MediaTabViewState.hasLoadedAlbums(
-      {@required List<AssetPathEntity> albums}) = _HasLoadedAlbums;
+      {required List<AssetPathEntity> albums}) = _HasLoadedAlbums;
 
   const factory MediaTabViewState.hasLoadedMedia({
-    @required AssetPathEntity album,
-    @required Map<MediaInfo, bool> media,
-    @required int previousPage,
-    @required int currentPage,
+    required AssetPathEntity album,
+    required Map<MediaInfo, bool> media,
+    required int previousPage,
+    required int currentPage,
   }) = _HasLoaded;
 
   const factory MediaTabViewState.hasFailed(AppsLoadFailure failure) =

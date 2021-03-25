@@ -2,17 +2,17 @@ part of 'current_circle_bloc.dart';
 
 @freezed
 abstract class CurrentCircleEvent with _$CurrentCircleEvent {
-  const factory CurrentCircleEvent.startCircle({@required User host}) =
+  const factory CurrentCircleEvent.startCircle({required User host}) =
       StartCircle;
 
   const factory CurrentCircleEvent.deviceRequestedConnection(
-      {@required User user}) = DeviceRequestedConnection;
+      {required User user}) = DeviceRequestedConnection;
 
   const factory CurrentCircleEvent.acceptOrReject(
-      {@required User requestingUser,
-      @required bool acceptConnection}) = AcceptOrReject;
+      {required User requestingUser,
+      required bool acceptConnection}) = AcceptOrReject;
 
-  const factory CurrentCircleEvent.joinCircle({@required User host}) =
+  const factory CurrentCircleEvent.joinCircle({required User host}) =
       JoinCircle;
 
   const factory CurrentCircleEvent.showFilesDialog() = ShowFilesDialog;
@@ -29,10 +29,10 @@ abstract class CurrentCircleEvent with _$CurrentCircleEvent {
   const factory CurrentCircleEvent.fileTransferDialogClosed() =
       FileTransferDialogClosed;
 
-  const factory CurrentCircleEvent.memberLeft({@required String id}) =
+  const factory CurrentCircleEvent.memberLeft({required String id}) =
       MemberLeft;
 
-  const factory CurrentCircleEvent.removeMember({@required User member}) =
+  const factory CurrentCircleEvent.removeMember({required User member}) =
       RemoveMember;
 
   const factory CurrentCircleEvent.leaveCircle() = LeaveCircle;

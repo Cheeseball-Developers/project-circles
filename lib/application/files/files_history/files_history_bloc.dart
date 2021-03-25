@@ -44,7 +44,7 @@ class FilesHistoryBloc extends Bloc<FilesHistoryEvent, FilesHistoryState> {
     });
   }
 
-  StreamSubscription fileTransferItemsStreamSubscription;
+  StreamSubscription? fileTransferItemsStreamSubscription;
 
   @override
   Stream<FilesHistoryState> mapEventToState(

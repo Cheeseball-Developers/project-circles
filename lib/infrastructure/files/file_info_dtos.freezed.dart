@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'file_info_dtos.dart';
 
@@ -9,18 +9,20 @@ part of 'file_info_dtos.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FileInfoDtoTearOff {
   const _$FileInfoDtoTearOff();
 
-// ignore: unused_element
   _FileInfoDto call(
-      {@required int hash,
-      @required String name,
-      @required String path,
-      @required int bytesSize,
-      @required Uint8List thumbnail,
-      @required DateTime dateTime}) {
+      {required int hash,
+      required String name,
+      required String path,
+      required int bytesSize,
+      required Uint8List thumbnail,
+      required DateTime dateTime}) {
     return _FileInfoDto(
       hash: hash,
       name: name,
@@ -33,20 +35,20 @@ class _$FileInfoDtoTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FileInfoDto = _$FileInfoDtoTearOff();
 
 /// @nodoc
 mixin _$FileInfoDto {
-  int get hash;
-  String get name;
-  String get path;
-  int get bytesSize;
-  Uint8List get thumbnail;
-  DateTime get dateTime;
+  int get hash => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get path => throw _privateConstructorUsedError;
+  int get bytesSize => throw _privateConstructorUsedError;
+  Uint8List get thumbnail => throw _privateConstructorUsedError;
+  DateTime get dateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FileInfoDtoCopyWith<FileInfoDto> get copyWith;
+  $FileInfoDtoCopyWith<FileInfoDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -73,21 +75,38 @@ class _$FileInfoDtoCopyWithImpl<$Res> implements $FileInfoDtoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object hash = freezed,
-    Object name = freezed,
-    Object path = freezed,
-    Object bytesSize = freezed,
-    Object thumbnail = freezed,
-    Object dateTime = freezed,
+    Object? hash = freezed,
+    Object? name = freezed,
+    Object? path = freezed,
+    Object? bytesSize = freezed,
+    Object? thumbnail = freezed,
+    Object? dateTime = freezed,
   }) {
     return _then(_value.copyWith(
-      hash: hash == freezed ? _value.hash : hash as int,
-      name: name == freezed ? _value.name : name as String,
-      path: path == freezed ? _value.path : path as String,
-      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
-      thumbnail:
-          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
-      dateTime: dateTime == freezed ? _value.dateTime : dateTime as DateTime,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      bytesSize: bytesSize == freezed
+          ? _value.bytesSize
+          : bytesSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+      dateTime: dateTime == freezed
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -120,21 +139,38 @@ class __$FileInfoDtoCopyWithImpl<$Res> extends _$FileInfoDtoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object hash = freezed,
-    Object name = freezed,
-    Object path = freezed,
-    Object bytesSize = freezed,
-    Object thumbnail = freezed,
-    Object dateTime = freezed,
+    Object? hash = freezed,
+    Object? name = freezed,
+    Object? path = freezed,
+    Object? bytesSize = freezed,
+    Object? thumbnail = freezed,
+    Object? dateTime = freezed,
   }) {
     return _then(_FileInfoDto(
-      hash: hash == freezed ? _value.hash : hash as int,
-      name: name == freezed ? _value.name : name as String,
-      path: path == freezed ? _value.path : path as String,
-      bytesSize: bytesSize == freezed ? _value.bytesSize : bytesSize as int,
-      thumbnail:
-          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
-      dateTime: dateTime == freezed ? _value.dateTime : dateTime as DateTime,
+      hash: hash == freezed
+          ? _value.hash
+          : hash // ignore: cast_nullable_to_non_nullable
+              as int,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      path: path == freezed
+          ? _value.path
+          : path // ignore: cast_nullable_to_non_nullable
+              as String,
+      bytesSize: bytesSize == freezed
+          ? _value.bytesSize
+          : bytesSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
+      dateTime: dateTime == freezed
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime,
     ));
   }
 }
@@ -142,19 +178,13 @@ class __$FileInfoDtoCopyWithImpl<$Res> extends _$FileInfoDtoCopyWithImpl<$Res>
 /// @nodoc
 class _$_FileInfoDto extends _FileInfoDto {
   const _$_FileInfoDto(
-      {@required this.hash,
-      @required this.name,
-      @required this.path,
-      @required this.bytesSize,
-      @required this.thumbnail,
-      @required this.dateTime})
-      : assert(hash != null),
-        assert(name != null),
-        assert(path != null),
-        assert(bytesSize != null),
-        assert(thumbnail != null),
-        assert(dateTime != null),
-        super._();
+      {required this.hash,
+      required this.name,
+      required this.path,
+      required this.bytesSize,
+      required this.thumbnail,
+      required this.dateTime})
+      : super._();
 
   @override
   final int hash;
@@ -212,28 +242,29 @@ class _$_FileInfoDto extends _FileInfoDto {
 }
 
 abstract class _FileInfoDto extends FileInfoDto {
-  const _FileInfoDto._() : super._();
   const factory _FileInfoDto(
-      {@required int hash,
-      @required String name,
-      @required String path,
-      @required int bytesSize,
-      @required Uint8List thumbnail,
-      @required DateTime dateTime}) = _$_FileInfoDto;
+      {required int hash,
+      required String name,
+      required String path,
+      required int bytesSize,
+      required Uint8List thumbnail,
+      required DateTime dateTime}) = _$_FileInfoDto;
+  const _FileInfoDto._() : super._();
 
   @override
-  int get hash;
+  int get hash => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get path;
+  String get path => throw _privateConstructorUsedError;
   @override
-  int get bytesSize;
+  int get bytesSize => throw _privateConstructorUsedError;
   @override
-  Uint8List get thumbnail;
+  Uint8List get thumbnail => throw _privateConstructorUsedError;
   @override
-  DateTime get dateTime;
+  DateTime get dateTime => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FileInfoDtoCopyWith<_FileInfoDto> get copyWith;
+  _$FileInfoDtoCopyWith<_FileInfoDto> get copyWith =>
+      throw _privateConstructorUsedError;
 }

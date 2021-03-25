@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'file_transfer_failure.dart';
 
@@ -9,76 +9,77 @@ part of 'file_transfer_failure.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FileTransferFailureTearOff {
   const _$FileTransferFailureTearOff();
 
-// ignore: unused_element
   _EmptySelection emptySelection() {
     return const _EmptySelection();
   }
 
-// ignore: unused_element
   _NoMembers noMembers() {
     return const _NoMembers();
   }
 
-// ignore: unused_element
   _Denied denied() {
     return const _Denied();
   }
 
-// ignore: unused_element
   _Cancelled cancelled() {
     return const _Cancelled();
   }
 
-// ignore: unused_element
   _Unexpected unexpected() {
     return const _Unexpected();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FileTransferFailure = _$FileTransferFailureTearOff();
 
 /// @nodoc
 mixin _$FileTransferFailure {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult emptySelection(),
-    @required TResult noMembers(),
-    @required TResult denied(),
-    @required TResult cancelled(),
-    @required TResult unexpected(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() emptySelection,
+    required TResult Function() noMembers,
+    required TResult Function() denied,
+    required TResult Function() cancelled,
+    required TResult Function() unexpected,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult emptySelection(),
-    TResult noMembers(),
-    TResult denied(),
-    TResult cancelled(),
-    TResult unexpected(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emptySelection,
+    TResult Function()? noMembers,
+    TResult Function()? denied,
+    TResult Function()? cancelled,
+    TResult Function()? unexpected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult emptySelection(_EmptySelection value),
-    @required TResult noMembers(_NoMembers value),
-    @required TResult denied(_Denied value),
-    @required TResult cancelled(_Cancelled value),
-    @required TResult unexpected(_Unexpected value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmptySelection value) emptySelection,
+    required TResult Function(_NoMembers value) noMembers,
+    required TResult Function(_Denied value) denied,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Unexpected value) unexpected,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult emptySelection(_EmptySelection value),
-    TResult noMembers(_NoMembers value),
-    TResult denied(_Denied value),
-    TResult cancelled(_Cancelled value),
-    TResult unexpected(_Unexpected value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmptySelection value)? emptySelection,
+    TResult Function(_NoMembers value)? noMembers,
+    TResult Function(_Denied value)? denied,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Unexpected value)? unexpected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -136,32 +137,26 @@ class _$_EmptySelection implements _EmptySelection {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult emptySelection(),
-    @required TResult noMembers(),
-    @required TResult denied(),
-    @required TResult cancelled(),
-    @required TResult unexpected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() emptySelection,
+    required TResult Function() noMembers,
+    required TResult Function() denied,
+    required TResult Function() cancelled,
+    required TResult Function() unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return emptySelection();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult emptySelection(),
-    TResult noMembers(),
-    TResult denied(),
-    TResult cancelled(),
-    TResult unexpected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emptySelection,
+    TResult Function()? noMembers,
+    TResult Function()? denied,
+    TResult Function()? cancelled,
+    TResult Function()? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (emptySelection != null) {
       return emptySelection();
     }
@@ -170,32 +165,26 @@ class _$_EmptySelection implements _EmptySelection {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult emptySelection(_EmptySelection value),
-    @required TResult noMembers(_NoMembers value),
-    @required TResult denied(_Denied value),
-    @required TResult cancelled(_Cancelled value),
-    @required TResult unexpected(_Unexpected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmptySelection value) emptySelection,
+    required TResult Function(_NoMembers value) noMembers,
+    required TResult Function(_Denied value) denied,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Unexpected value) unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return emptySelection(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult emptySelection(_EmptySelection value),
-    TResult noMembers(_NoMembers value),
-    TResult denied(_Denied value),
-    TResult cancelled(_Cancelled value),
-    TResult unexpected(_Unexpected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmptySelection value)? emptySelection,
+    TResult Function(_NoMembers value)? noMembers,
+    TResult Function(_Denied value)? denied,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Unexpected value)? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (emptySelection != null) {
       return emptySelection(this);
     }
@@ -244,32 +233,26 @@ class _$_NoMembers implements _NoMembers {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult emptySelection(),
-    @required TResult noMembers(),
-    @required TResult denied(),
-    @required TResult cancelled(),
-    @required TResult unexpected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() emptySelection,
+    required TResult Function() noMembers,
+    required TResult Function() denied,
+    required TResult Function() cancelled,
+    required TResult Function() unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return noMembers();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult emptySelection(),
-    TResult noMembers(),
-    TResult denied(),
-    TResult cancelled(),
-    TResult unexpected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emptySelection,
+    TResult Function()? noMembers,
+    TResult Function()? denied,
+    TResult Function()? cancelled,
+    TResult Function()? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (noMembers != null) {
       return noMembers();
     }
@@ -278,32 +261,26 @@ class _$_NoMembers implements _NoMembers {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult emptySelection(_EmptySelection value),
-    @required TResult noMembers(_NoMembers value),
-    @required TResult denied(_Denied value),
-    @required TResult cancelled(_Cancelled value),
-    @required TResult unexpected(_Unexpected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmptySelection value) emptySelection,
+    required TResult Function(_NoMembers value) noMembers,
+    required TResult Function(_Denied value) denied,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Unexpected value) unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return noMembers(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult emptySelection(_EmptySelection value),
-    TResult noMembers(_NoMembers value),
-    TResult denied(_Denied value),
-    TResult cancelled(_Cancelled value),
-    TResult unexpected(_Unexpected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmptySelection value)? emptySelection,
+    TResult Function(_NoMembers value)? noMembers,
+    TResult Function(_Denied value)? denied,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Unexpected value)? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (noMembers != null) {
       return noMembers(this);
     }
@@ -351,32 +328,26 @@ class _$_Denied implements _Denied {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult emptySelection(),
-    @required TResult noMembers(),
-    @required TResult denied(),
-    @required TResult cancelled(),
-    @required TResult unexpected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() emptySelection,
+    required TResult Function() noMembers,
+    required TResult Function() denied,
+    required TResult Function() cancelled,
+    required TResult Function() unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return denied();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult emptySelection(),
-    TResult noMembers(),
-    TResult denied(),
-    TResult cancelled(),
-    TResult unexpected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emptySelection,
+    TResult Function()? noMembers,
+    TResult Function()? denied,
+    TResult Function()? cancelled,
+    TResult Function()? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (denied != null) {
       return denied();
     }
@@ -385,32 +356,26 @@ class _$_Denied implements _Denied {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult emptySelection(_EmptySelection value),
-    @required TResult noMembers(_NoMembers value),
-    @required TResult denied(_Denied value),
-    @required TResult cancelled(_Cancelled value),
-    @required TResult unexpected(_Unexpected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmptySelection value) emptySelection,
+    required TResult Function(_NoMembers value) noMembers,
+    required TResult Function(_Denied value) denied,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Unexpected value) unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return denied(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult emptySelection(_EmptySelection value),
-    TResult noMembers(_NoMembers value),
-    TResult denied(_Denied value),
-    TResult cancelled(_Cancelled value),
-    TResult unexpected(_Unexpected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmptySelection value)? emptySelection,
+    TResult Function(_NoMembers value)? noMembers,
+    TResult Function(_Denied value)? denied,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Unexpected value)? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (denied != null) {
       return denied(this);
     }
@@ -459,32 +424,26 @@ class _$_Cancelled implements _Cancelled {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult emptySelection(),
-    @required TResult noMembers(),
-    @required TResult denied(),
-    @required TResult cancelled(),
-    @required TResult unexpected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() emptySelection,
+    required TResult Function() noMembers,
+    required TResult Function() denied,
+    required TResult Function() cancelled,
+    required TResult Function() unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return cancelled();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult emptySelection(),
-    TResult noMembers(),
-    TResult denied(),
-    TResult cancelled(),
-    TResult unexpected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emptySelection,
+    TResult Function()? noMembers,
+    TResult Function()? denied,
+    TResult Function()? cancelled,
+    TResult Function()? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (cancelled != null) {
       return cancelled();
     }
@@ -493,32 +452,26 @@ class _$_Cancelled implements _Cancelled {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult emptySelection(_EmptySelection value),
-    @required TResult noMembers(_NoMembers value),
-    @required TResult denied(_Denied value),
-    @required TResult cancelled(_Cancelled value),
-    @required TResult unexpected(_Unexpected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmptySelection value) emptySelection,
+    required TResult Function(_NoMembers value) noMembers,
+    required TResult Function(_Denied value) denied,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Unexpected value) unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return cancelled(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult emptySelection(_EmptySelection value),
-    TResult noMembers(_NoMembers value),
-    TResult denied(_Denied value),
-    TResult cancelled(_Cancelled value),
-    TResult unexpected(_Unexpected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmptySelection value)? emptySelection,
+    TResult Function(_NoMembers value)? noMembers,
+    TResult Function(_Denied value)? denied,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Unexpected value)? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (cancelled != null) {
       return cancelled(this);
     }
@@ -568,32 +521,26 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult emptySelection(),
-    @required TResult noMembers(),
-    @required TResult denied(),
-    @required TResult cancelled(),
-    @required TResult unexpected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() emptySelection,
+    required TResult Function() noMembers,
+    required TResult Function() denied,
+    required TResult Function() cancelled,
+    required TResult Function() unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return unexpected();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult emptySelection(),
-    TResult noMembers(),
-    TResult denied(),
-    TResult cancelled(),
-    TResult unexpected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? emptySelection,
+    TResult Function()? noMembers,
+    TResult Function()? denied,
+    TResult Function()? cancelled,
+    TResult Function()? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unexpected != null) {
       return unexpected();
     }
@@ -602,32 +549,26 @@ class _$_Unexpected implements _Unexpected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult emptySelection(_EmptySelection value),
-    @required TResult noMembers(_NoMembers value),
-    @required TResult denied(_Denied value),
-    @required TResult cancelled(_Cancelled value),
-    @required TResult unexpected(_Unexpected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_EmptySelection value) emptySelection,
+    required TResult Function(_NoMembers value) noMembers,
+    required TResult Function(_Denied value) denied,
+    required TResult Function(_Cancelled value) cancelled,
+    required TResult Function(_Unexpected value) unexpected,
   }) {
-    assert(emptySelection != null);
-    assert(noMembers != null);
-    assert(denied != null);
-    assert(cancelled != null);
-    assert(unexpected != null);
     return unexpected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult emptySelection(_EmptySelection value),
-    TResult noMembers(_NoMembers value),
-    TResult denied(_Denied value),
-    TResult cancelled(_Cancelled value),
-    TResult unexpected(_Unexpected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_EmptySelection value)? emptySelection,
+    TResult Function(_NoMembers value)? noMembers,
+    TResult Function(_Denied value)? denied,
+    TResult Function(_Cancelled value)? cancelled,
+    TResult Function(_Unexpected value)? unexpected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (unexpected != null) {
       return unexpected(this);
     }

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'transfer_progress_info.dart';
 
@@ -9,16 +9,18 @@ part of 'transfer_progress_info.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$TransferProgressInfoTearOff {
   const _$TransferProgressInfoTearOff();
 
-// ignore: unused_element
   _TransferProgressInfo call(
-      {@required User user,
-      @required Option<bool> acceptOrRejectOption,
-      @required int fileTransferIndex,
-      @required Map<FileInfo, double> filesMap}) {
+      {required User user,
+      required Option<bool> acceptOrRejectOption,
+      required int fileTransferIndex,
+      required Map<FileInfo, double> filesMap}) {
     return _TransferProgressInfo(
       user: user,
       acceptOrRejectOption: acceptOrRejectOption,
@@ -29,18 +31,18 @@ class _$TransferProgressInfoTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $TransferProgressInfo = _$TransferProgressInfoTearOff();
 
 /// @nodoc
 mixin _$TransferProgressInfo {
-  User get user;
-  Option<bool> get acceptOrRejectOption;
-  int get fileTransferIndex;
-  Map<FileInfo, double> get filesMap;
+  User get user => throw _privateConstructorUsedError;
+  Option<bool> get acceptOrRejectOption => throw _privateConstructorUsedError;
+  int get fileTransferIndex => throw _privateConstructorUsedError;
+  Map<FileInfo, double> get filesMap => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TransferProgressInfoCopyWith<TransferProgressInfo> get copyWith;
+  $TransferProgressInfoCopyWith<TransferProgressInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -68,30 +70,33 @@ class _$TransferProgressInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
-    Object acceptOrRejectOption = freezed,
-    Object fileTransferIndex = freezed,
-    Object filesMap = freezed,
+    Object? user = freezed,
+    Object? acceptOrRejectOption = freezed,
+    Object? fileTransferIndex = freezed,
+    Object? filesMap = freezed,
   }) {
     return _then(_value.copyWith(
-      user: user == freezed ? _value.user : user as User,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       acceptOrRejectOption: acceptOrRejectOption == freezed
           ? _value.acceptOrRejectOption
-          : acceptOrRejectOption as Option<bool>,
+          : acceptOrRejectOption // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       fileTransferIndex: fileTransferIndex == freezed
           ? _value.fileTransferIndex
-          : fileTransferIndex as int,
+          : fileTransferIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       filesMap: filesMap == freezed
           ? _value.filesMap
-          : filesMap as Map<FileInfo, double>,
+          : filesMap // ignore: cast_nullable_to_non_nullable
+              as Map<FileInfo, double>,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
@@ -128,22 +133,28 @@ class __$TransferProgressInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
-    Object acceptOrRejectOption = freezed,
-    Object fileTransferIndex = freezed,
-    Object filesMap = freezed,
+    Object? user = freezed,
+    Object? acceptOrRejectOption = freezed,
+    Object? fileTransferIndex = freezed,
+    Object? filesMap = freezed,
   }) {
     return _then(_TransferProgressInfo(
-      user: user == freezed ? _value.user : user as User,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
       acceptOrRejectOption: acceptOrRejectOption == freezed
           ? _value.acceptOrRejectOption
-          : acceptOrRejectOption as Option<bool>,
+          : acceptOrRejectOption // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       fileTransferIndex: fileTransferIndex == freezed
           ? _value.fileTransferIndex
-          : fileTransferIndex as int,
+          : fileTransferIndex // ignore: cast_nullable_to_non_nullable
+              as int,
       filesMap: filesMap == freezed
           ? _value.filesMap
-          : filesMap as Map<FileInfo, double>,
+          : filesMap // ignore: cast_nullable_to_non_nullable
+              as Map<FileInfo, double>,
     ));
   }
 }
@@ -151,15 +162,11 @@ class __$TransferProgressInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_TransferProgressInfo extends _TransferProgressInfo {
   const _$_TransferProgressInfo(
-      {@required this.user,
-      @required this.acceptOrRejectOption,
-      @required this.fileTransferIndex,
-      @required this.filesMap})
-      : assert(user != null),
-        assert(acceptOrRejectOption != null),
-        assert(fileTransferIndex != null),
-        assert(filesMap != null),
-        super._();
+      {required this.user,
+      required this.acceptOrRejectOption,
+      required this.fileTransferIndex,
+      required this.filesMap})
+      : super._();
 
   @override
   final User user;
@@ -208,22 +215,23 @@ class _$_TransferProgressInfo extends _TransferProgressInfo {
 }
 
 abstract class _TransferProgressInfo extends TransferProgressInfo {
-  const _TransferProgressInfo._() : super._();
   const factory _TransferProgressInfo(
-      {@required User user,
-      @required Option<bool> acceptOrRejectOption,
-      @required int fileTransferIndex,
-      @required Map<FileInfo, double> filesMap}) = _$_TransferProgressInfo;
+      {required User user,
+      required Option<bool> acceptOrRejectOption,
+      required int fileTransferIndex,
+      required Map<FileInfo, double> filesMap}) = _$_TransferProgressInfo;
+  const _TransferProgressInfo._() : super._();
 
   @override
-  User get user;
+  User get user => throw _privateConstructorUsedError;
   @override
-  Option<bool> get acceptOrRejectOption;
+  Option<bool> get acceptOrRejectOption => throw _privateConstructorUsedError;
   @override
-  int get fileTransferIndex;
+  int get fileTransferIndex => throw _privateConstructorUsedError;
   @override
-  Map<FileInfo, double> get filesMap;
+  Map<FileInfo, double> get filesMap => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TransferProgressInfoCopyWith<_TransferProgressInfo> get copyWith;
+  _$TransferProgressInfoCopyWith<_TransferProgressInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

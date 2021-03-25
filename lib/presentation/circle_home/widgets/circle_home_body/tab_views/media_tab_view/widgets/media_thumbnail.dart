@@ -7,7 +7,7 @@ import 'package:projectcircles/presentation/circle_home/widgets/circle_home_body
 class MediaThumbnail extends StatelessWidget {
   final int index;
 
-  const MediaThumbnail({Key key, @required this.index}) : super(key: key);
+  const MediaThumbnail({required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class MediaThumbnail extends StatelessWidget {
         builder: (context, state) => state.maybeMap(
             hasLoadedMedia: (state) => GestureDetector(
                 onTap: () async {
-                  context.bloc<MediaTabViewBloc>().add(
+                  context.read<MediaTabViewBloc>().add(
                         MediaTabViewEvent.toggleSelection(
                           mediaInfo: state.media.keys.elementAt(index),
                         ),

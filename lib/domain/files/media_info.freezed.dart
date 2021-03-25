@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'media_info.dart';
 
@@ -9,13 +9,14 @@ part of 'media_info.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$MediaInfoTearOff {
   const _$MediaInfoTearOff();
 
-// ignore: unused_element
-  _MediaInfo call(
-      {@required AssetEntity entity, @required Uint8List thumbnail}) {
+  _MediaInfo call({required AssetEntity entity, required Uint8List thumbnail}) {
     return _MediaInfo(
       entity: entity,
       thumbnail: thumbnail,
@@ -24,16 +25,16 @@ class _$MediaInfoTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MediaInfo = _$MediaInfoTearOff();
 
 /// @nodoc
 mixin _$MediaInfo {
-  AssetEntity get entity;
-  Uint8List get thumbnail;
+  AssetEntity get entity => throw _privateConstructorUsedError;
+  Uint8List get thumbnail => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MediaInfoCopyWith<MediaInfo> get copyWith;
+  $MediaInfoCopyWith<MediaInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -53,13 +54,18 @@ class _$MediaInfoCopyWithImpl<$Res> implements $MediaInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object entity = freezed,
-    Object thumbnail = freezed,
+    Object? entity = freezed,
+    Object? thumbnail = freezed,
   }) {
     return _then(_value.copyWith(
-      entity: entity == freezed ? _value.entity : entity as AssetEntity,
-      thumbnail:
-          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
+      entity: entity == freezed
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
+              as AssetEntity,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
@@ -84,22 +90,25 @@ class __$MediaInfoCopyWithImpl<$Res> extends _$MediaInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object entity = freezed,
-    Object thumbnail = freezed,
+    Object? entity = freezed,
+    Object? thumbnail = freezed,
   }) {
     return _then(_MediaInfo(
-      entity: entity == freezed ? _value.entity : entity as AssetEntity,
-      thumbnail:
-          thumbnail == freezed ? _value.thumbnail : thumbnail as Uint8List,
+      entity: entity == freezed
+          ? _value.entity
+          : entity // ignore: cast_nullable_to_non_nullable
+              as AssetEntity,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List,
     ));
   }
 }
 
 /// @nodoc
 class _$_MediaInfo implements _MediaInfo {
-  const _$_MediaInfo({@required this.entity, @required this.thumbnail})
-      : assert(entity != null),
-        assert(thumbnail != null);
+  const _$_MediaInfo({required this.entity, required this.thumbnail});
 
   @override
   final AssetEntity entity;
@@ -136,14 +145,15 @@ class _$_MediaInfo implements _MediaInfo {
 
 abstract class _MediaInfo implements MediaInfo {
   const factory _MediaInfo(
-      {@required AssetEntity entity,
-      @required Uint8List thumbnail}) = _$_MediaInfo;
+      {required AssetEntity entity,
+      required Uint8List thumbnail}) = _$_MediaInfo;
 
   @override
-  AssetEntity get entity;
+  AssetEntity get entity => throw _privateConstructorUsedError;
   @override
-  Uint8List get thumbnail;
+  Uint8List get thumbnail => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MediaInfoCopyWith<_MediaInfo> get copyWith;
+  _$MediaInfoCopyWith<_MediaInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

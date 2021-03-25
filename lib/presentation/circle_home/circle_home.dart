@@ -23,7 +23,7 @@ class CircleHome extends StatelessWidget {
         listener: (context, currentCircleState) {
           currentCircleState.maybeMap(
             initial: (_) {
-              ExtendedNavigator.of(context).pop();
+              ExtendedNavigator.of(context)!.pop();
             },
             hasStarted: (state) {
               state.showFilesDialog.fold(
@@ -166,7 +166,7 @@ class CircleHome extends StatelessWidget {
             onWillPop: () => showDialog(
               context: context,
               builder: (context) => ExitCircleConfirmationDialog(),
-            ),
+            ) as Future<bool>,
             child: Scaffold(
               appBar: PreferredSize(
                 preferredSize: Size(MediaQuery.of(context).size.width,
@@ -218,7 +218,7 @@ class CircleHome extends StatelessWidget {
             onWillPop: () => showDialog(
               context: context,
               builder: (context) => ExitCircleConfirmationDialog(),
-            ),
+            ) as Future<bool>,
             child: Scaffold(
               appBar: PreferredSize(
                 preferredSize: Size(MediaQuery.of(context).size.width,

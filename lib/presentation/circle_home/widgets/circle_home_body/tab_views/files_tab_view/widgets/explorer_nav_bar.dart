@@ -26,7 +26,7 @@ class ExplorerNavBar extends StatelessWidget {
   List<Widget> _children(BuildContext context, String path) {
     final List<Widget> children = [
       GestureDetector(
-        onTap: () => context.bloc<FilesTabViewBloc>().add(
+        onTap: () => context.read<FilesTabViewBloc>().add(
               const FilesTabViewEvent.openDirectory(relativePath: ''),
             ),
         child: Icon(Icons.home, color: Theme.of(context).buttonColor),
@@ -40,7 +40,7 @@ class ExplorerNavBar extends StatelessWidget {
       final String rel = relative;
       children.add(
         GestureDetector(
-          onTap: () => context.bloc<FilesTabViewBloc>().add(
+          onTap: () => context.read<FilesTabViewBloc>().add(
                 FilesTabViewEvent.openDirectory(relativePath: rel),
               ),
           child: Row(

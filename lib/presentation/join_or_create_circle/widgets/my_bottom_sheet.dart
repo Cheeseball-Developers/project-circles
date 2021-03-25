@@ -42,12 +42,12 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                       height: 4.0,
                       width: 80.0,
                       decoration: BoxDecoration(
-                        color: Theme.of(context).textTheme.caption.color,
+                        color: Theme.of(context).textTheme.caption!.color,
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                     ),
                   ),
-                  context.bloc<SettingsBloc>().state.maybeMap(
+                  context.read<SettingsBloc>().state.maybeMap(
                       hasLoaded: (state) => Padding(
                             padding: const EdgeInsets.only(
                               top: 16.0,
@@ -63,24 +63,15 @@ class _MyBottomSheetState extends State<MyBottomSheet> {
                                   borderRadius: BorderRadius.circular(16.0),
                                   onTap: () {
                                     if (searchState.isSearching) {
-                                      context.bloc<SearchBloc>().add(
+                                      context.read<SearchBloc>().add(
                                           const SearchEvent.stopSearching());
                                     }
-                                    context.bloc<CurrentCircleBloc>().add(
+                                    context.read<CurrentCircleBloc>().add(
                                           CurrentCircleEvent.startCircle(
-                                            host: context
-                                                .bloc<SettingsBloc>()
-                                                .state
-                                                .map(
-                                                  initial: (_) => null,
-                                                  isLoading: (_) => null,
-                                                  hasLoaded: (state) =>
-                                                      state.user,
-                                                  hasFailed: (_) => null,
-                                                ),
+                                            host: state.user,
                                           ),
                                         );
-                                    ExtendedNavigator.named('nav')
+                                    ExtendedNavigator.named('nav')!
                                         .push('/circle-home');
                                   },
                                   child: Padding(

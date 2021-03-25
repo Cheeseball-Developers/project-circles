@@ -13,7 +13,7 @@ class AllDiscoveredDevicesPopUp extends StatelessWidget {
       builder: (context, state) => DialogLayout(
         title: 'Circles',
         primaryButtonText: 'Back',
-        primaryOnTap: () => ExtendedNavigator.of(context).pop(),
+        primaryOnTap: () => ExtendedNavigator.of(context)!.pop(),
         dialogType: DialogType.full,
         dialogButtonType: DialogButtonType.singleButton,
         child: Padding(
