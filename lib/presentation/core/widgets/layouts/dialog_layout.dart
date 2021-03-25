@@ -51,20 +51,22 @@ class DialogLayout extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: (dialogType == DialogType.empty ||
-                          dialogType == DialogType.withButtons)
-                      ? 16.0
-                      : 0.0,
-                  bottom: (dialogType == DialogType.empty ||
-                          dialogType == DialogType.withTitle)
-                      ? 16.0
-                      : 0.0,
-                  left: dialogType == DialogType.empty ? 16.0 : 0.0,
-                  right: dialogType == DialogType.empty ? 16.0 : 0.0,
+              Flexible(
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    top: (dialogType == DialogType.empty ||
+                            dialogType == DialogType.withButtons)
+                        ? 16.0
+                        : 0.0,
+                    bottom: (dialogType == DialogType.empty ||
+                            dialogType == DialogType.withTitle)
+                        ? 16.0
+                        : 0.0,
+                    left: dialogType == DialogType.empty ? 16.0 : 0.0,
+                    right: dialogType == DialogType.empty ? 16.0 : 0.0,
+                  ),
+                  child: child,
                 ),
-                child: child,
               ),
               if (dialogType == DialogType.full ||
                   dialogType == DialogType.withButtons)

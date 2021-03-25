@@ -69,7 +69,8 @@ class MyListTile extends StatelessWidget {
                       ],
                     ),
                   ),
-                  trailing!,
+                  if (trailing != null)
+                    trailing!,
                 ],
               ),
             ),
