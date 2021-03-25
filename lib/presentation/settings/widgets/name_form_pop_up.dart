@@ -21,7 +21,7 @@ class NameFormPopUp extends StatelessWidget {
                     dialogType: DialogType.withButtons,
                     dialogButtonType: DialogButtonType.singleButton,
                     primaryButtonText: 'Save',
-                    primaryOnTap: () => _formKey.currentState.save(),
+                    primaryOnTap: () => _formKey.currentState!.save(),
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
@@ -36,22 +36,22 @@ class NameFormPopUp extends StatelessWidget {
                                 hintText: 'Name',
                                 hintStyle: Theme.of(context)
                                     .textTheme
-                                    .subtitle1
+                                    .subtitle1!
                                     .copyWith(
                                       color: Theme.of(context)
                                           .textTheme
-                                          .subtitle1
-                                          .color
+                                          .subtitle1!
+                                          .color!
                                           .withOpacity(0.25),
                                     ),
                               ),
-                              onSaved: (String name) {
+                              onSaved: (String? name) {
                                 context.read<SettingsBloc>().add(
                                       SettingsEvent.nameChanged(
-                                        Name(name),
+                                        Name(name!),
                                       ),
                                     );
-                                ExtendedNavigator.of(context).pop();
+                                ExtendedNavigator.of(context)!.pop();
                               },
                             ),
                           ),

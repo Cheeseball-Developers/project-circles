@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'current_circle_bloc.dart';
 
@@ -9,182 +9,177 @@ part of 'current_circle_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$CurrentCircleEventTearOff {
   const _$CurrentCircleEventTearOff();
 
-// ignore: unused_element
-  StartCircle startCircle({@required User host}) {
+  StartCircle startCircle({required User host}) {
     return StartCircle(
       host: host,
     );
   }
 
-// ignore: unused_element
-  DeviceRequestedConnection deviceRequestedConnection({@required User user}) {
+  DeviceRequestedConnection deviceRequestedConnection({required User user}) {
     return DeviceRequestedConnection(
       user: user,
     );
   }
 
-// ignore: unused_element
   AcceptOrReject acceptOrReject(
-      {@required User requestingUser, @required bool acceptConnection}) {
+      {required User requestingUser, required bool acceptConnection}) {
     return AcceptOrReject(
       requestingUser: requestingUser,
       acceptConnection: acceptConnection,
     );
   }
 
-// ignore: unused_element
-  JoinCircle joinCircle({@required User host}) {
+  JoinCircle joinCircle({required User host}) {
     return JoinCircle(
       host: host,
     );
   }
 
-// ignore: unused_element
   ShowFilesDialog showFilesDialog() {
     return const ShowFilesDialog();
   }
 
-// ignore: unused_element
   ShowMembersDialog showMembersDialog() {
     return const ShowMembersDialog();
   }
 
-// ignore: unused_element
   ShowFileTransferDialog showFileTransferDialog() {
     return const ShowFileTransferDialog();
   }
 
-// ignore: unused_element
   FilesDialogClosed filesDialogClosed() {
     return const FilesDialogClosed();
   }
 
-// ignore: unused_element
   MembersDialogClosed membersDialogClosed() {
     return const MembersDialogClosed();
   }
 
-// ignore: unused_element
   FileTransferDialogClosed fileTransferDialogClosed() {
     return const FileTransferDialogClosed();
   }
 
-// ignore: unused_element
-  MemberLeft memberLeft({@required String id}) {
+  MemberLeft memberLeft({required String id}) {
     return MemberLeft(
       id: id,
     );
   }
 
-// ignore: unused_element
-  RemoveMember removeMember({@required User member}) {
+  RemoveMember removeMember({required User member}) {
     return RemoveMember(
       member: member,
     );
   }
 
-// ignore: unused_element
   LeaveCircle leaveCircle() {
     return const LeaveCircle();
   }
 
-// ignore: unused_element
   CloseCircle closeCircle() {
     return const CloseCircle();
   }
 
-// ignore: unused_element
   Disconnected disconnected() {
     return const Disconnected();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $CurrentCircleEvent = _$CurrentCircleEventTearOff();
 
 /// @nodoc
 mixin _$CurrentCircleEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -227,18 +222,18 @@ class _$StartCircleCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object host = freezed,
+    Object? host = freezed,
   }) {
     return _then(StartCircle(
-      host: host == freezed ? _value.host : host as User,
+      host: host == freezed
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get host {
-    if (_value.host == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.host, (value) {
       return _then(_value.copyWith(host: value));
     });
@@ -247,7 +242,7 @@ class _$StartCircleCopyWithImpl<$Res>
 
 /// @nodoc
 class _$StartCircle implements StartCircle {
-  const _$StartCircle({@required this.host}) : assert(host != null);
+  const _$StartCircle({required this.host});
 
   @override
   final User host;
@@ -276,63 +271,48 @@ class _$StartCircle implements StartCircle {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return startCircle(host);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (startCircle != null) {
       return startCircle(host);
     }
@@ -341,63 +321,50 @@ class _$StartCircle implements StartCircle {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return startCircle(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (startCircle != null) {
       return startCircle(this);
     }
@@ -406,11 +373,12 @@ class _$StartCircle implements StartCircle {
 }
 
 abstract class StartCircle implements CurrentCircleEvent {
-  const factory StartCircle({@required User host}) = _$StartCircle;
+  const factory StartCircle({required User host}) = _$StartCircle;
 
-  User get host;
+  User get host => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $StartCircleCopyWith<StartCircle> get copyWith;
+  $StartCircleCopyWith<StartCircle> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -437,18 +405,18 @@ class _$DeviceRequestedConnectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object user = freezed,
+    Object? user = freezed,
   }) {
     return _then(DeviceRequestedConnection(
-      user: user == freezed ? _value.user : user as User,
+      user: user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get user {
-    if (_value.user == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.user, (value) {
       return _then(_value.copyWith(user: value));
     });
@@ -457,8 +425,7 @@ class _$DeviceRequestedConnectionCopyWithImpl<$Res>
 
 /// @nodoc
 class _$DeviceRequestedConnection implements DeviceRequestedConnection {
-  const _$DeviceRequestedConnection({@required this.user})
-      : assert(user != null);
+  const _$DeviceRequestedConnection({required this.user});
 
   @override
   final User user;
@@ -488,63 +455,48 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return deviceRequestedConnection(user);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deviceRequestedConnection != null) {
       return deviceRequestedConnection(user);
     }
@@ -553,63 +505,50 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return deviceRequestedConnection(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deviceRequestedConnection != null) {
       return deviceRequestedConnection(this);
     }
@@ -618,12 +557,13 @@ class _$DeviceRequestedConnection implements DeviceRequestedConnection {
 }
 
 abstract class DeviceRequestedConnection implements CurrentCircleEvent {
-  const factory DeviceRequestedConnection({@required User user}) =
+  const factory DeviceRequestedConnection({required User user}) =
       _$DeviceRequestedConnection;
 
-  User get user;
+  User get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $DeviceRequestedConnectionCopyWith<DeviceRequestedConnection> get copyWith;
+  $DeviceRequestedConnectionCopyWith<DeviceRequestedConnection> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -649,24 +589,23 @@ class _$AcceptOrRejectCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object requestingUser = freezed,
-    Object acceptConnection = freezed,
+    Object? requestingUser = freezed,
+    Object? acceptConnection = freezed,
   }) {
     return _then(AcceptOrReject(
       requestingUser: requestingUser == freezed
           ? _value.requestingUser
-          : requestingUser as User,
+          : requestingUser // ignore: cast_nullable_to_non_nullable
+              as User,
       acceptConnection: acceptConnection == freezed
           ? _value.acceptConnection
-          : acceptConnection as bool,
+          : acceptConnection // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get requestingUser {
-    if (_value.requestingUser == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.requestingUser, (value) {
       return _then(_value.copyWith(requestingUser: value));
     });
@@ -676,9 +615,7 @@ class _$AcceptOrRejectCopyWithImpl<$Res>
 /// @nodoc
 class _$AcceptOrReject implements AcceptOrReject {
   const _$AcceptOrReject(
-      {@required this.requestingUser, @required this.acceptConnection})
-      : assert(requestingUser != null),
-        assert(acceptConnection != null);
+      {required this.requestingUser, required this.acceptConnection});
 
   @override
   final User requestingUser;
@@ -715,63 +652,48 @@ class _$AcceptOrReject implements AcceptOrReject {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return acceptOrReject(requestingUser, acceptConnection);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (acceptOrReject != null) {
       return acceptOrReject(requestingUser, acceptConnection);
     }
@@ -780,63 +702,50 @@ class _$AcceptOrReject implements AcceptOrReject {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return acceptOrReject(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (acceptOrReject != null) {
       return acceptOrReject(this);
     }
@@ -846,13 +755,14 @@ class _$AcceptOrReject implements AcceptOrReject {
 
 abstract class AcceptOrReject implements CurrentCircleEvent {
   const factory AcceptOrReject(
-      {@required User requestingUser,
-      @required bool acceptConnection}) = _$AcceptOrReject;
+      {required User requestingUser,
+      required bool acceptConnection}) = _$AcceptOrReject;
 
-  User get requestingUser;
-  bool get acceptConnection;
+  User get requestingUser => throw _privateConstructorUsedError;
+  bool get acceptConnection => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $AcceptOrRejectCopyWith<AcceptOrReject> get copyWith;
+  $AcceptOrRejectCopyWith<AcceptOrReject> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -877,18 +787,18 @@ class _$JoinCircleCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object host = freezed,
+    Object? host = freezed,
   }) {
     return _then(JoinCircle(
-      host: host == freezed ? _value.host : host as User,
+      host: host == freezed
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get host {
-    if (_value.host == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.host, (value) {
       return _then(_value.copyWith(host: value));
     });
@@ -897,7 +807,7 @@ class _$JoinCircleCopyWithImpl<$Res>
 
 /// @nodoc
 class _$JoinCircle implements JoinCircle {
-  const _$JoinCircle({@required this.host}) : assert(host != null);
+  const _$JoinCircle({required this.host});
 
   @override
   final User host;
@@ -926,63 +836,48 @@ class _$JoinCircle implements JoinCircle {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return joinCircle(host);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (joinCircle != null) {
       return joinCircle(host);
     }
@@ -991,63 +886,50 @@ class _$JoinCircle implements JoinCircle {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return joinCircle(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (joinCircle != null) {
       return joinCircle(this);
     }
@@ -1056,11 +938,12 @@ class _$JoinCircle implements JoinCircle {
 }
 
 abstract class JoinCircle implements CurrentCircleEvent {
-  const factory JoinCircle({@required User host}) = _$JoinCircle;
+  const factory JoinCircle({required User host}) = _$JoinCircle;
 
-  User get host;
+  User get host => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $JoinCircleCopyWith<JoinCircle> get copyWith;
+  $JoinCircleCopyWith<JoinCircle> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1101,63 +984,48 @@ class _$ShowFilesDialog implements ShowFilesDialog {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return showFilesDialog();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showFilesDialog != null) {
       return showFilesDialog();
     }
@@ -1166,63 +1034,50 @@ class _$ShowFilesDialog implements ShowFilesDialog {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return showFilesDialog(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showFilesDialog != null) {
       return showFilesDialog(this);
     }
@@ -1272,63 +1127,48 @@ class _$ShowMembersDialog implements ShowMembersDialog {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return showMembersDialog();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showMembersDialog != null) {
       return showMembersDialog();
     }
@@ -1337,63 +1177,50 @@ class _$ShowMembersDialog implements ShowMembersDialog {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return showMembersDialog(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showMembersDialog != null) {
       return showMembersDialog(this);
     }
@@ -1443,63 +1270,48 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return showFileTransferDialog();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showFileTransferDialog != null) {
       return showFileTransferDialog();
     }
@@ -1508,63 +1320,50 @@ class _$ShowFileTransferDialog implements ShowFileTransferDialog {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return showFileTransferDialog(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (showFileTransferDialog != null) {
       return showFileTransferDialog(this);
     }
@@ -1614,63 +1413,48 @@ class _$FilesDialogClosed implements FilesDialogClosed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return filesDialogClosed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (filesDialogClosed != null) {
       return filesDialogClosed();
     }
@@ -1679,63 +1463,50 @@ class _$FilesDialogClosed implements FilesDialogClosed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return filesDialogClosed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (filesDialogClosed != null) {
       return filesDialogClosed(this);
     }
@@ -1785,63 +1556,48 @@ class _$MembersDialogClosed implements MembersDialogClosed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return membersDialogClosed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (membersDialogClosed != null) {
       return membersDialogClosed();
     }
@@ -1850,63 +1606,50 @@ class _$MembersDialogClosed implements MembersDialogClosed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return membersDialogClosed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (membersDialogClosed != null) {
       return membersDialogClosed(this);
     }
@@ -1957,63 +1700,48 @@ class _$FileTransferDialogClosed implements FileTransferDialogClosed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return fileTransferDialogClosed();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (fileTransferDialogClosed != null) {
       return fileTransferDialogClosed();
     }
@@ -2022,63 +1750,50 @@ class _$FileTransferDialogClosed implements FileTransferDialogClosed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return fileTransferDialogClosed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (fileTransferDialogClosed != null) {
       return fileTransferDialogClosed(this);
     }
@@ -2110,17 +1825,20 @@ class _$MemberLeftCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object id = freezed,
+    Object? id = freezed,
   }) {
     return _then(MemberLeft(
-      id: id == freezed ? _value.id : id as String,
+      id: id == freezed
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$MemberLeft implements MemberLeft {
-  const _$MemberLeft({@required this.id}) : assert(id != null);
+  const _$MemberLeft({required this.id});
 
   @override
   final String id;
@@ -2149,63 +1867,48 @@ class _$MemberLeft implements MemberLeft {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return memberLeft(id);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (memberLeft != null) {
       return memberLeft(id);
     }
@@ -2214,63 +1917,50 @@ class _$MemberLeft implements MemberLeft {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return memberLeft(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (memberLeft != null) {
       return memberLeft(this);
     }
@@ -2279,11 +1969,12 @@ class _$MemberLeft implements MemberLeft {
 }
 
 abstract class MemberLeft implements CurrentCircleEvent {
-  const factory MemberLeft({@required String id}) = _$MemberLeft;
+  const factory MemberLeft({required String id}) = _$MemberLeft;
 
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $MemberLeftCopyWith<MemberLeft> get copyWith;
+  $MemberLeftCopyWith<MemberLeft> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2309,18 +2000,18 @@ class _$RemoveMemberCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object member = freezed,
+    Object? member = freezed,
   }) {
     return _then(RemoveMember(
-      member: member == freezed ? _value.member : member as User,
+      member: member == freezed
+          ? _value.member
+          : member // ignore: cast_nullable_to_non_nullable
+              as User,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get member {
-    if (_value.member == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.member, (value) {
       return _then(_value.copyWith(member: value));
     });
@@ -2329,7 +2020,7 @@ class _$RemoveMemberCopyWithImpl<$Res>
 
 /// @nodoc
 class _$RemoveMember implements RemoveMember {
-  const _$RemoveMember({@required this.member}) : assert(member != null);
+  const _$RemoveMember({required this.member});
 
   @override
   final User member;
@@ -2358,63 +2049,48 @@ class _$RemoveMember implements RemoveMember {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return removeMember(member);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (removeMember != null) {
       return removeMember(member);
     }
@@ -2423,63 +2099,50 @@ class _$RemoveMember implements RemoveMember {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return removeMember(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (removeMember != null) {
       return removeMember(this);
     }
@@ -2488,11 +2151,12 @@ class _$RemoveMember implements RemoveMember {
 }
 
 abstract class RemoveMember implements CurrentCircleEvent {
-  const factory RemoveMember({@required User member}) = _$RemoveMember;
+  const factory RemoveMember({required User member}) = _$RemoveMember;
 
-  User get member;
+  User get member => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $RemoveMemberCopyWith<RemoveMember> get copyWith;
+  $RemoveMemberCopyWith<RemoveMember> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -2533,63 +2197,48 @@ class _$LeaveCircle implements LeaveCircle {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return leaveCircle();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (leaveCircle != null) {
       return leaveCircle();
     }
@@ -2598,63 +2247,50 @@ class _$LeaveCircle implements LeaveCircle {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return leaveCircle(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (leaveCircle != null) {
       return leaveCircle(this);
     }
@@ -2704,63 +2340,48 @@ class _$CloseCircle implements CloseCircle {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return closeCircle();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (closeCircle != null) {
       return closeCircle();
     }
@@ -2769,63 +2390,50 @@ class _$CloseCircle implements CloseCircle {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return closeCircle(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (closeCircle != null) {
       return closeCircle(this);
     }
@@ -2875,63 +2483,48 @@ class _$Disconnected implements Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult startCircle(User host),
-    @required TResult deviceRequestedConnection(User user),
-    @required
-        TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    @required TResult joinCircle(User host),
-    @required TResult showFilesDialog(),
-    @required TResult showMembersDialog(),
-    @required TResult showFileTransferDialog(),
-    @required TResult filesDialogClosed(),
-    @required TResult membersDialogClosed(),
-    @required TResult fileTransferDialogClosed(),
-    @required TResult memberLeft(String id),
-    @required TResult removeMember(User member),
-    @required TResult leaveCircle(),
-    @required TResult closeCircle(),
-    @required TResult disconnected(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(User host) startCircle,
+    required TResult Function(User user) deviceRequestedConnection,
+    required TResult Function(User requestingUser, bool acceptConnection)
+        acceptOrReject,
+    required TResult Function(User host) joinCircle,
+    required TResult Function() showFilesDialog,
+    required TResult Function() showMembersDialog,
+    required TResult Function() showFileTransferDialog,
+    required TResult Function() filesDialogClosed,
+    required TResult Function() membersDialogClosed,
+    required TResult Function() fileTransferDialogClosed,
+    required TResult Function(String id) memberLeft,
+    required TResult Function(User member) removeMember,
+    required TResult Function() leaveCircle,
+    required TResult Function() closeCircle,
+    required TResult Function() disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return disconnected();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult startCircle(User host),
-    TResult deviceRequestedConnection(User user),
-    TResult acceptOrReject(User requestingUser, bool acceptConnection),
-    TResult joinCircle(User host),
-    TResult showFilesDialog(),
-    TResult showMembersDialog(),
-    TResult showFileTransferDialog(),
-    TResult filesDialogClosed(),
-    TResult membersDialogClosed(),
-    TResult fileTransferDialogClosed(),
-    TResult memberLeft(String id),
-    TResult removeMember(User member),
-    TResult leaveCircle(),
-    TResult closeCircle(),
-    TResult disconnected(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(User host)? startCircle,
+    TResult Function(User user)? deviceRequestedConnection,
+    TResult Function(User requestingUser, bool acceptConnection)?
+        acceptOrReject,
+    TResult Function(User host)? joinCircle,
+    TResult Function()? showFilesDialog,
+    TResult Function()? showMembersDialog,
+    TResult Function()? showFileTransferDialog,
+    TResult Function()? filesDialogClosed,
+    TResult Function()? membersDialogClosed,
+    TResult Function()? fileTransferDialogClosed,
+    TResult Function(String id)? memberLeft,
+    TResult Function(User member)? removeMember,
+    TResult Function()? leaveCircle,
+    TResult Function()? closeCircle,
+    TResult Function()? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (disconnected != null) {
       return disconnected();
     }
@@ -2940,63 +2533,50 @@ class _$Disconnected implements Disconnected {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult startCircle(StartCircle value),
-    @required
-        TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    @required TResult acceptOrReject(AcceptOrReject value),
-    @required TResult joinCircle(JoinCircle value),
-    @required TResult showFilesDialog(ShowFilesDialog value),
-    @required TResult showMembersDialog(ShowMembersDialog value),
-    @required TResult showFileTransferDialog(ShowFileTransferDialog value),
-    @required TResult filesDialogClosed(FilesDialogClosed value),
-    @required TResult membersDialogClosed(MembersDialogClosed value),
-    @required TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    @required TResult memberLeft(MemberLeft value),
-    @required TResult removeMember(RemoveMember value),
-    @required TResult leaveCircle(LeaveCircle value),
-    @required TResult closeCircle(CloseCircle value),
-    @required TResult disconnected(Disconnected value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(StartCircle value) startCircle,
+    required TResult Function(DeviceRequestedConnection value)
+        deviceRequestedConnection,
+    required TResult Function(AcceptOrReject value) acceptOrReject,
+    required TResult Function(JoinCircle value) joinCircle,
+    required TResult Function(ShowFilesDialog value) showFilesDialog,
+    required TResult Function(ShowMembersDialog value) showMembersDialog,
+    required TResult Function(ShowFileTransferDialog value)
+        showFileTransferDialog,
+    required TResult Function(FilesDialogClosed value) filesDialogClosed,
+    required TResult Function(MembersDialogClosed value) membersDialogClosed,
+    required TResult Function(FileTransferDialogClosed value)
+        fileTransferDialogClosed,
+    required TResult Function(MemberLeft value) memberLeft,
+    required TResult Function(RemoveMember value) removeMember,
+    required TResult Function(LeaveCircle value) leaveCircle,
+    required TResult Function(CloseCircle value) closeCircle,
+    required TResult Function(Disconnected value) disconnected,
   }) {
-    assert(startCircle != null);
-    assert(deviceRequestedConnection != null);
-    assert(acceptOrReject != null);
-    assert(joinCircle != null);
-    assert(showFilesDialog != null);
-    assert(showMembersDialog != null);
-    assert(showFileTransferDialog != null);
-    assert(filesDialogClosed != null);
-    assert(membersDialogClosed != null);
-    assert(fileTransferDialogClosed != null);
-    assert(memberLeft != null);
-    assert(removeMember != null);
-    assert(leaveCircle != null);
-    assert(closeCircle != null);
-    assert(disconnected != null);
     return disconnected(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult startCircle(StartCircle value),
-    TResult deviceRequestedConnection(DeviceRequestedConnection value),
-    TResult acceptOrReject(AcceptOrReject value),
-    TResult joinCircle(JoinCircle value),
-    TResult showFilesDialog(ShowFilesDialog value),
-    TResult showMembersDialog(ShowMembersDialog value),
-    TResult showFileTransferDialog(ShowFileTransferDialog value),
-    TResult filesDialogClosed(FilesDialogClosed value),
-    TResult membersDialogClosed(MembersDialogClosed value),
-    TResult fileTransferDialogClosed(FileTransferDialogClosed value),
-    TResult memberLeft(MemberLeft value),
-    TResult removeMember(RemoveMember value),
-    TResult leaveCircle(LeaveCircle value),
-    TResult closeCircle(CloseCircle value),
-    TResult disconnected(Disconnected value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(StartCircle value)? startCircle,
+    TResult Function(DeviceRequestedConnection value)?
+        deviceRequestedConnection,
+    TResult Function(AcceptOrReject value)? acceptOrReject,
+    TResult Function(JoinCircle value)? joinCircle,
+    TResult Function(ShowFilesDialog value)? showFilesDialog,
+    TResult Function(ShowMembersDialog value)? showMembersDialog,
+    TResult Function(ShowFileTransferDialog value)? showFileTransferDialog,
+    TResult Function(FilesDialogClosed value)? filesDialogClosed,
+    TResult Function(MembersDialogClosed value)? membersDialogClosed,
+    TResult Function(FileTransferDialogClosed value)? fileTransferDialogClosed,
+    TResult Function(MemberLeft value)? memberLeft,
+    TResult Function(RemoveMember value)? removeMember,
+    TResult Function(LeaveCircle value)? leaveCircle,
+    TResult Function(CloseCircle value)? closeCircle,
+    TResult Function(Disconnected value)? disconnected,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (disconnected != null) {
       return disconnected(this);
     }
@@ -3012,29 +2592,26 @@ abstract class Disconnected implements CurrentCircleEvent {
 class _$CurrentCircleStateTearOff {
   const _$CurrentCircleStateTearOff();
 
-// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
-// ignore: unused_element
-  _IsLoading isLoading({@required String loadingText}) {
+  _IsLoading isLoading({required String loadingText}) {
     return _IsLoading(
       loadingText: loadingText,
     );
   }
 
-// ignore: unused_element
   _HasStarted hasStarted(
-      {@required Map<User, bool> members,
-      @required Map<FileInfo, double> outgoingFiles,
-      @required Map<FileInfo, double> incomingFiles,
-      @required Option<bool> showMembersDialog,
-      @required Option<bool> showFilesDialog,
-      @required Option<bool> showFileTransferDialog,
-      @required Option<FileTransferType> transferType,
-      @required bool isAcceptingRequest,
-      @required bool isClosing}) {
+      {required Map<User, bool> members,
+      required Map<FileInfo, double> outgoingFiles,
+      required Map<FileInfo, double> incomingFiles,
+      required Option<bool> showMembersDialog,
+      required Option<bool> showFilesDialog,
+      required Option<bool> showFileTransferDialog,
+      required Option<FileTransferType> transferType,
+      required bool isAcceptingRequest,
+      required bool isClosing}) {
     return _HasStarted(
       members: members,
       outgoingFiles: outgoingFiles,
@@ -3048,16 +2625,15 @@ class _$CurrentCircleStateTearOff {
     );
   }
 
-// ignore: unused_element
   _HasJoined hasJoined(
-      {@required User host,
-      @required Map<FileInfo, double> outgoingFiles,
-      @required Map<FileInfo, double> incomingFiles,
-      @required Option<bool> showMembersDialog,
-      @required Option<bool> showFilesDialog,
-      @required Option<bool> showFileTransferDialog,
-      @required Option<FileTransferType> transferType,
-      @required bool isLeaving}) {
+      {required User host,
+      required Map<FileInfo, double> outgoingFiles,
+      required Map<FileInfo, double> incomingFiles,
+      required Option<bool> showMembersDialog,
+      required Option<bool> showFilesDialog,
+      required Option<bool> showFileTransferDialog,
+      required Option<FileTransferType> transferType,
+      required bool isLeaving}) {
     return _HasJoined(
       host: host,
       outgoingFiles: outgoingFiles,
@@ -3070,8 +2646,7 @@ class _$CurrentCircleStateTearOff {
     );
   }
 
-// ignore: unused_element
-  _HasFailed hasFailed({@required ConnectionFailure failure}) {
+  _HasFailed hasFailed({required ConnectionFailure failure}) {
     return _HasFailed(
       failure: failure,
     );
@@ -3079,17 +2654,15 @@ class _$CurrentCircleStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $CurrentCircleState = _$CurrentCircleStateTearOff();
 
 /// @nodoc
 mixin _$CurrentCircleState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(String loadingText),
-    @required
-        TResult hasStarted(
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String loadingText) isLoading,
+    required TResult Function(
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3098,9 +2671,9 @@ mixin _$CurrentCircleState {
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
-            bool isClosing),
-    @required
-        TResult hasJoined(
+            bool isClosing)
+        hasStarted,
+    required TResult Function(
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3108,52 +2681,59 @@ mixin _$CurrentCircleState {
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
-            bool isLeaving),
-    @required TResult hasFailed(ConnectionFailure failure),
-  });
+            bool isLeaving)
+        hasJoined,
+    required TResult Function(ConnectionFailure failure) hasFailed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(String loadingText),
-    TResult hasStarted(
-        Map<User, bool> members,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isAcceptingRequest,
-        bool isClosing),
-    TResult hasJoined(
-        User host,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isLeaving),
-    TResult hasFailed(ConnectionFailure failure),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String loadingText)? isLoading,
+    TResult Function(
+            Map<User, bool> members,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isAcceptingRequest,
+            bool isClosing)?
+        hasStarted,
+    TResult Function(
+            User host,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isLeaving)?
+        hasJoined,
+    TResult Function(ConnectionFailure failure)? hasFailed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasStarted(_HasStarted value),
-    @required TResult hasJoined(_HasJoined value),
-    @required TResult hasFailed(_HasFailed value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasStarted value) hasStarted,
+    required TResult Function(_HasJoined value) hasJoined,
+    required TResult Function(_HasFailed value) hasFailed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasStarted(_HasStarted value),
-    TResult hasJoined(_HasJoined value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasStarted value)? hasStarted,
+    TResult Function(_HasJoined value)? hasJoined,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3209,11 +2789,10 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(String loadingText),
-    @required
-        TResult hasStarted(
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String loadingText) isLoading,
+    required TResult Function(
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3222,9 +2801,9 @@ class _$_Initial implements _Initial {
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
-            bool isClosing),
-    @required
-        TResult hasJoined(
+            bool isClosing)
+        hasStarted,
+    required TResult Function(
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3232,45 +2811,42 @@ class _$_Initial implements _Initial {
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
-            bool isLeaving),
-    @required TResult hasFailed(ConnectionFailure failure),
+            bool isLeaving)
+        hasJoined,
+    required TResult Function(ConnectionFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(String loadingText),
-    TResult hasStarted(
-        Map<User, bool> members,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isAcceptingRequest,
-        bool isClosing),
-    TResult hasJoined(
-        User host,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isLeaving),
-    TResult hasFailed(ConnectionFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String loadingText)? isLoading,
+    TResult Function(
+            Map<User, bool> members,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isAcceptingRequest,
+            bool isClosing)?
+        hasStarted,
+    TResult Function(
+            User host,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isLeaving)?
+        hasJoined,
+    TResult Function(ConnectionFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -3279,32 +2855,26 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasStarted(_HasStarted value),
-    @required TResult hasJoined(_HasJoined value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasStarted value) hasStarted,
+    required TResult Function(_HasJoined value) hasJoined,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasStarted(_HasStarted value),
-    TResult hasJoined(_HasJoined value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasStarted value)? hasStarted,
+    TResult Function(_HasJoined value)? hasJoined,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -3336,19 +2906,20 @@ class __$IsLoadingCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object loadingText = freezed,
+    Object? loadingText = freezed,
   }) {
     return _then(_IsLoading(
-      loadingText:
-          loadingText == freezed ? _value.loadingText : loadingText as String,
+      loadingText: loadingText == freezed
+          ? _value.loadingText
+          : loadingText // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
 
 /// @nodoc
 class _$_IsLoading implements _IsLoading {
-  const _$_IsLoading({@required this.loadingText})
-      : assert(loadingText != null);
+  const _$_IsLoading({required this.loadingText});
 
   @override
   final String loadingText;
@@ -3378,11 +2949,10 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(String loadingText),
-    @required
-        TResult hasStarted(
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String loadingText) isLoading,
+    required TResult Function(
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3391,9 +2961,9 @@ class _$_IsLoading implements _IsLoading {
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
-            bool isClosing),
-    @required
-        TResult hasJoined(
+            bool isClosing)
+        hasStarted,
+    required TResult Function(
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3401,45 +2971,42 @@ class _$_IsLoading implements _IsLoading {
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
-            bool isLeaving),
-    @required TResult hasFailed(ConnectionFailure failure),
+            bool isLeaving)
+        hasJoined,
+    required TResult Function(ConnectionFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return isLoading(loadingText);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(String loadingText),
-    TResult hasStarted(
-        Map<User, bool> members,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isAcceptingRequest,
-        bool isClosing),
-    TResult hasJoined(
-        User host,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isLeaving),
-    TResult hasFailed(ConnectionFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String loadingText)? isLoading,
+    TResult Function(
+            Map<User, bool> members,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isAcceptingRequest,
+            bool isClosing)?
+        hasStarted,
+    TResult Function(
+            User host,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isLeaving)?
+        hasJoined,
+    TResult Function(ConnectionFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (isLoading != null) {
       return isLoading(loadingText);
     }
@@ -3448,32 +3015,26 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasStarted(_HasStarted value),
-    @required TResult hasJoined(_HasJoined value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasStarted value) hasStarted,
+    required TResult Function(_HasJoined value) hasJoined,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return isLoading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasStarted(_HasStarted value),
-    TResult hasJoined(_HasJoined value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasStarted value)? hasStarted,
+    TResult Function(_HasJoined value)? hasJoined,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (isLoading != null) {
       return isLoading(this);
     }
@@ -3482,11 +3043,12 @@ class _$_IsLoading implements _IsLoading {
 }
 
 abstract class _IsLoading implements CurrentCircleState {
-  const factory _IsLoading({@required String loadingText}) = _$_IsLoading;
+  const factory _IsLoading({required String loadingText}) = _$_IsLoading;
 
-  String get loadingText;
+  String get loadingText => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$IsLoadingCopyWith<_IsLoading> get copyWith;
+  _$IsLoadingCopyWith<_IsLoading> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3519,40 +3081,53 @@ class __$HasStartedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object members = freezed,
-    Object outgoingFiles = freezed,
-    Object incomingFiles = freezed,
-    Object showMembersDialog = freezed,
-    Object showFilesDialog = freezed,
-    Object showFileTransferDialog = freezed,
-    Object transferType = freezed,
-    Object isAcceptingRequest = freezed,
-    Object isClosing = freezed,
+    Object? members = freezed,
+    Object? outgoingFiles = freezed,
+    Object? incomingFiles = freezed,
+    Object? showMembersDialog = freezed,
+    Object? showFilesDialog = freezed,
+    Object? showFileTransferDialog = freezed,
+    Object? transferType = freezed,
+    Object? isAcceptingRequest = freezed,
+    Object? isClosing = freezed,
   }) {
     return _then(_HasStarted(
-      members: members == freezed ? _value.members : members as Map<User, bool>,
+      members: members == freezed
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
+              as Map<User, bool>,
       outgoingFiles: outgoingFiles == freezed
           ? _value.outgoingFiles
-          : outgoingFiles as Map<FileInfo, double>,
+          : outgoingFiles // ignore: cast_nullable_to_non_nullable
+              as Map<FileInfo, double>,
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
-          : incomingFiles as Map<FileInfo, double>,
+          : incomingFiles // ignore: cast_nullable_to_non_nullable
+              as Map<FileInfo, double>,
       showMembersDialog: showMembersDialog == freezed
           ? _value.showMembersDialog
-          : showMembersDialog as Option<bool>,
+          : showMembersDialog // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       showFilesDialog: showFilesDialog == freezed
           ? _value.showFilesDialog
-          : showFilesDialog as Option<bool>,
+          : showFilesDialog // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       showFileTransferDialog: showFileTransferDialog == freezed
           ? _value.showFileTransferDialog
-          : showFileTransferDialog as Option<bool>,
+          : showFileTransferDialog // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       transferType: transferType == freezed
           ? _value.transferType
-          : transferType as Option<FileTransferType>,
+          : transferType // ignore: cast_nullable_to_non_nullable
+              as Option<FileTransferType>,
       isAcceptingRequest: isAcceptingRequest == freezed
           ? _value.isAcceptingRequest
-          : isAcceptingRequest as bool,
-      isClosing: isClosing == freezed ? _value.isClosing : isClosing as bool,
+          : isAcceptingRequest // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isClosing: isClosing == freezed
+          ? _value.isClosing
+          : isClosing // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -3560,24 +3135,15 @@ class __$HasStartedCopyWithImpl<$Res>
 /// @nodoc
 class _$_HasStarted implements _HasStarted {
   const _$_HasStarted(
-      {@required this.members,
-      @required this.outgoingFiles,
-      @required this.incomingFiles,
-      @required this.showMembersDialog,
-      @required this.showFilesDialog,
-      @required this.showFileTransferDialog,
-      @required this.transferType,
-      @required this.isAcceptingRequest,
-      @required this.isClosing})
-      : assert(members != null),
-        assert(outgoingFiles != null),
-        assert(incomingFiles != null),
-        assert(showMembersDialog != null),
-        assert(showFilesDialog != null),
-        assert(showFileTransferDialog != null),
-        assert(transferType != null),
-        assert(isAcceptingRequest != null),
-        assert(isClosing != null);
+      {required this.members,
+      required this.outgoingFiles,
+      required this.incomingFiles,
+      required this.showMembersDialog,
+      required this.showFilesDialog,
+      required this.showFileTransferDialog,
+      required this.transferType,
+      required this.isAcceptingRequest,
+      required this.isClosing});
 
   @override
   final Map<User, bool> members;
@@ -3656,11 +3222,10 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(String loadingText),
-    @required
-        TResult hasStarted(
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String loadingText) isLoading,
+    required TResult Function(
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3669,9 +3234,9 @@ class _$_HasStarted implements _HasStarted {
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
-            bool isClosing),
-    @required
-        TResult hasJoined(
+            bool isClosing)
+        hasStarted,
+    required TResult Function(
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3679,14 +3244,10 @@ class _$_HasStarted implements _HasStarted {
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
-            bool isLeaving),
-    @required TResult hasFailed(ConnectionFailure failure),
+            bool isLeaving)
+        hasJoined,
+    required TResult Function(ConnectionFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return hasStarted(
         members,
         outgoingFiles,
@@ -3701,32 +3262,33 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(String loadingText),
-    TResult hasStarted(
-        Map<User, bool> members,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isAcceptingRequest,
-        bool isClosing),
-    TResult hasJoined(
-        User host,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isLeaving),
-    TResult hasFailed(ConnectionFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String loadingText)? isLoading,
+    TResult Function(
+            Map<User, bool> members,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isAcceptingRequest,
+            bool isClosing)?
+        hasStarted,
+    TResult Function(
+            User host,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isLeaving)?
+        hasJoined,
+    TResult Function(ConnectionFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasStarted != null) {
       return hasStarted(
           members,
@@ -3744,32 +3306,26 @@ class _$_HasStarted implements _HasStarted {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasStarted(_HasStarted value),
-    @required TResult hasJoined(_HasJoined value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasStarted value) hasStarted,
+    required TResult Function(_HasJoined value) hasJoined,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return hasStarted(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasStarted(_HasStarted value),
-    TResult hasJoined(_HasJoined value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasStarted value)? hasStarted,
+    TResult Function(_HasJoined value)? hasJoined,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasStarted != null) {
       return hasStarted(this);
     }
@@ -3779,27 +3335,29 @@ class _$_HasStarted implements _HasStarted {
 
 abstract class _HasStarted implements CurrentCircleState {
   const factory _HasStarted(
-      {@required Map<User, bool> members,
-      @required Map<FileInfo, double> outgoingFiles,
-      @required Map<FileInfo, double> incomingFiles,
-      @required Option<bool> showMembersDialog,
-      @required Option<bool> showFilesDialog,
-      @required Option<bool> showFileTransferDialog,
-      @required Option<FileTransferType> transferType,
-      @required bool isAcceptingRequest,
-      @required bool isClosing}) = _$_HasStarted;
+      {required Map<User, bool> members,
+      required Map<FileInfo, double> outgoingFiles,
+      required Map<FileInfo, double> incomingFiles,
+      required Option<bool> showMembersDialog,
+      required Option<bool> showFilesDialog,
+      required Option<bool> showFileTransferDialog,
+      required Option<FileTransferType> transferType,
+      required bool isAcceptingRequest,
+      required bool isClosing}) = _$_HasStarted;
 
-  Map<User, bool> get members;
-  Map<FileInfo, double> get outgoingFiles;
-  Map<FileInfo, double> get incomingFiles;
-  Option<bool> get showMembersDialog;
-  Option<bool> get showFilesDialog;
-  Option<bool> get showFileTransferDialog;
-  Option<FileTransferType> get transferType;
-  bool get isAcceptingRequest;
-  bool get isClosing;
+  Map<User, bool> get members => throw _privateConstructorUsedError;
+  Map<FileInfo, double> get outgoingFiles => throw _privateConstructorUsedError;
+  Map<FileInfo, double> get incomingFiles => throw _privateConstructorUsedError;
+  Option<bool> get showMembersDialog => throw _privateConstructorUsedError;
+  Option<bool> get showFilesDialog => throw _privateConstructorUsedError;
+  Option<bool> get showFileTransferDialog => throw _privateConstructorUsedError;
+  Option<FileTransferType> get transferType =>
+      throw _privateConstructorUsedError;
+  bool get isAcceptingRequest => throw _privateConstructorUsedError;
+  bool get isClosing => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$HasStartedCopyWith<_HasStarted> get copyWith;
+  _$HasStartedCopyWith<_HasStarted> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -3832,44 +3390,53 @@ class __$HasJoinedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object host = freezed,
-    Object outgoingFiles = freezed,
-    Object incomingFiles = freezed,
-    Object showMembersDialog = freezed,
-    Object showFilesDialog = freezed,
-    Object showFileTransferDialog = freezed,
-    Object transferType = freezed,
-    Object isLeaving = freezed,
+    Object? host = freezed,
+    Object? outgoingFiles = freezed,
+    Object? incomingFiles = freezed,
+    Object? showMembersDialog = freezed,
+    Object? showFilesDialog = freezed,
+    Object? showFileTransferDialog = freezed,
+    Object? transferType = freezed,
+    Object? isLeaving = freezed,
   }) {
     return _then(_HasJoined(
-      host: host == freezed ? _value.host : host as User,
+      host: host == freezed
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as User,
       outgoingFiles: outgoingFiles == freezed
           ? _value.outgoingFiles
-          : outgoingFiles as Map<FileInfo, double>,
+          : outgoingFiles // ignore: cast_nullable_to_non_nullable
+              as Map<FileInfo, double>,
       incomingFiles: incomingFiles == freezed
           ? _value.incomingFiles
-          : incomingFiles as Map<FileInfo, double>,
+          : incomingFiles // ignore: cast_nullable_to_non_nullable
+              as Map<FileInfo, double>,
       showMembersDialog: showMembersDialog == freezed
           ? _value.showMembersDialog
-          : showMembersDialog as Option<bool>,
+          : showMembersDialog // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       showFilesDialog: showFilesDialog == freezed
           ? _value.showFilesDialog
-          : showFilesDialog as Option<bool>,
+          : showFilesDialog // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       showFileTransferDialog: showFileTransferDialog == freezed
           ? _value.showFileTransferDialog
-          : showFileTransferDialog as Option<bool>,
+          : showFileTransferDialog // ignore: cast_nullable_to_non_nullable
+              as Option<bool>,
       transferType: transferType == freezed
           ? _value.transferType
-          : transferType as Option<FileTransferType>,
-      isLeaving: isLeaving == freezed ? _value.isLeaving : isLeaving as bool,
+          : transferType // ignore: cast_nullable_to_non_nullable
+              as Option<FileTransferType>,
+      isLeaving: isLeaving == freezed
+          ? _value.isLeaving
+          : isLeaving // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get host {
-    if (_value.host == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.host, (value) {
       return _then(_value.copyWith(host: value));
     });
@@ -3879,22 +3446,14 @@ class __$HasJoinedCopyWithImpl<$Res>
 /// @nodoc
 class _$_HasJoined implements _HasJoined {
   const _$_HasJoined(
-      {@required this.host,
-      @required this.outgoingFiles,
-      @required this.incomingFiles,
-      @required this.showMembersDialog,
-      @required this.showFilesDialog,
-      @required this.showFileTransferDialog,
-      @required this.transferType,
-      @required this.isLeaving})
-      : assert(host != null),
-        assert(outgoingFiles != null),
-        assert(incomingFiles != null),
-        assert(showMembersDialog != null),
-        assert(showFilesDialog != null),
-        assert(showFileTransferDialog != null),
-        assert(transferType != null),
-        assert(isLeaving != null);
+      {required this.host,
+      required this.outgoingFiles,
+      required this.incomingFiles,
+      required this.showMembersDialog,
+      required this.showFilesDialog,
+      required this.showFileTransferDialog,
+      required this.transferType,
+      required this.isLeaving});
 
   @override
   final User host;
@@ -3966,11 +3525,10 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(String loadingText),
-    @required
-        TResult hasStarted(
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String loadingText) isLoading,
+    required TResult Function(
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3979,9 +3537,9 @@ class _$_HasJoined implements _HasJoined {
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
-            bool isClosing),
-    @required
-        TResult hasJoined(
+            bool isClosing)
+        hasStarted,
+    required TResult Function(
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -3989,46 +3547,43 @@ class _$_HasJoined implements _HasJoined {
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
-            bool isLeaving),
-    @required TResult hasFailed(ConnectionFailure failure),
+            bool isLeaving)
+        hasJoined,
+    required TResult Function(ConnectionFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return hasJoined(host, outgoingFiles, incomingFiles, showMembersDialog,
         showFilesDialog, showFileTransferDialog, transferType, isLeaving);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(String loadingText),
-    TResult hasStarted(
-        Map<User, bool> members,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isAcceptingRequest,
-        bool isClosing),
-    TResult hasJoined(
-        User host,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isLeaving),
-    TResult hasFailed(ConnectionFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String loadingText)? isLoading,
+    TResult Function(
+            Map<User, bool> members,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isAcceptingRequest,
+            bool isClosing)?
+        hasStarted,
+    TResult Function(
+            User host,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isLeaving)?
+        hasJoined,
+    TResult Function(ConnectionFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasJoined != null) {
       return hasJoined(host, outgoingFiles, incomingFiles, showMembersDialog,
           showFilesDialog, showFileTransferDialog, transferType, isLeaving);
@@ -4038,32 +3593,26 @@ class _$_HasJoined implements _HasJoined {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasStarted(_HasStarted value),
-    @required TResult hasJoined(_HasJoined value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasStarted value) hasStarted,
+    required TResult Function(_HasJoined value) hasJoined,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return hasJoined(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasStarted(_HasStarted value),
-    TResult hasJoined(_HasJoined value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasStarted value)? hasStarted,
+    TResult Function(_HasJoined value)? hasJoined,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasJoined != null) {
       return hasJoined(this);
     }
@@ -4073,25 +3622,27 @@ class _$_HasJoined implements _HasJoined {
 
 abstract class _HasJoined implements CurrentCircleState {
   const factory _HasJoined(
-      {@required User host,
-      @required Map<FileInfo, double> outgoingFiles,
-      @required Map<FileInfo, double> incomingFiles,
-      @required Option<bool> showMembersDialog,
-      @required Option<bool> showFilesDialog,
-      @required Option<bool> showFileTransferDialog,
-      @required Option<FileTransferType> transferType,
-      @required bool isLeaving}) = _$_HasJoined;
+      {required User host,
+      required Map<FileInfo, double> outgoingFiles,
+      required Map<FileInfo, double> incomingFiles,
+      required Option<bool> showMembersDialog,
+      required Option<bool> showFilesDialog,
+      required Option<bool> showFileTransferDialog,
+      required Option<FileTransferType> transferType,
+      required bool isLeaving}) = _$_HasJoined;
 
-  User get host;
-  Map<FileInfo, double> get outgoingFiles;
-  Map<FileInfo, double> get incomingFiles;
-  Option<bool> get showMembersDialog;
-  Option<bool> get showFilesDialog;
-  Option<bool> get showFileTransferDialog;
-  Option<FileTransferType> get transferType;
-  bool get isLeaving;
+  User get host => throw _privateConstructorUsedError;
+  Map<FileInfo, double> get outgoingFiles => throw _privateConstructorUsedError;
+  Map<FileInfo, double> get incomingFiles => throw _privateConstructorUsedError;
+  Option<bool> get showMembersDialog => throw _privateConstructorUsedError;
+  Option<bool> get showFilesDialog => throw _privateConstructorUsedError;
+  Option<bool> get showFileTransferDialog => throw _privateConstructorUsedError;
+  Option<FileTransferType> get transferType =>
+      throw _privateConstructorUsedError;
+  bool get isLeaving => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$HasJoinedCopyWith<_HasJoined> get copyWith;
+  _$HasJoinedCopyWith<_HasJoined> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4116,19 +3667,18 @@ class __$HasFailedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object failure = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_HasFailed(
-      failure:
-          failure == freezed ? _value.failure : failure as ConnectionFailure,
+      failure: failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as ConnectionFailure,
     ));
   }
 
   @override
   $ConnectionFailureCopyWith<$Res> get failure {
-    if (_value.failure == null) {
-      return null;
-    }
     return $ConnectionFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
@@ -4137,7 +3687,7 @@ class __$HasFailedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_HasFailed implements _HasFailed {
-  const _$_HasFailed({@required this.failure}) : assert(failure != null);
+  const _$_HasFailed({required this.failure});
 
   @override
   final ConnectionFailure failure;
@@ -4166,11 +3716,10 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(String loadingText),
-    @required
-        TResult hasStarted(
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String loadingText) isLoading,
+    required TResult Function(
             Map<User, bool> members,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -4179,9 +3728,9 @@ class _$_HasFailed implements _HasFailed {
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
             bool isAcceptingRequest,
-            bool isClosing),
-    @required
-        TResult hasJoined(
+            bool isClosing)
+        hasStarted,
+    required TResult Function(
             User host,
             Map<FileInfo, double> outgoingFiles,
             Map<FileInfo, double> incomingFiles,
@@ -4189,45 +3738,42 @@ class _$_HasFailed implements _HasFailed {
             Option<bool> showFilesDialog,
             Option<bool> showFileTransferDialog,
             Option<FileTransferType> transferType,
-            bool isLeaving),
-    @required TResult hasFailed(ConnectionFailure failure),
+            bool isLeaving)
+        hasJoined,
+    required TResult Function(ConnectionFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return hasFailed(failure);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(String loadingText),
-    TResult hasStarted(
-        Map<User, bool> members,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isAcceptingRequest,
-        bool isClosing),
-    TResult hasJoined(
-        User host,
-        Map<FileInfo, double> outgoingFiles,
-        Map<FileInfo, double> incomingFiles,
-        Option<bool> showMembersDialog,
-        Option<bool> showFilesDialog,
-        Option<bool> showFileTransferDialog,
-        Option<FileTransferType> transferType,
-        bool isLeaving),
-    TResult hasFailed(ConnectionFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String loadingText)? isLoading,
+    TResult Function(
+            Map<User, bool> members,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isAcceptingRequest,
+            bool isClosing)?
+        hasStarted,
+    TResult Function(
+            User host,
+            Map<FileInfo, double> outgoingFiles,
+            Map<FileInfo, double> incomingFiles,
+            Option<bool> showMembersDialog,
+            Option<bool> showFilesDialog,
+            Option<bool> showFileTransferDialog,
+            Option<FileTransferType> transferType,
+            bool isLeaving)?
+        hasJoined,
+    TResult Function(ConnectionFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasFailed != null) {
       return hasFailed(failure);
     }
@@ -4236,32 +3782,26 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasStarted(_HasStarted value),
-    @required TResult hasJoined(_HasJoined value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasStarted value) hasStarted,
+    required TResult Function(_HasJoined value) hasJoined,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasStarted != null);
-    assert(hasJoined != null);
-    assert(hasFailed != null);
     return hasFailed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasStarted(_HasStarted value),
-    TResult hasJoined(_HasJoined value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasStarted value)? hasStarted,
+    TResult Function(_HasJoined value)? hasJoined,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasFailed != null) {
       return hasFailed(this);
     }
@@ -4270,10 +3810,10 @@ class _$_HasFailed implements _HasFailed {
 }
 
 abstract class _HasFailed implements CurrentCircleState {
-  const factory _HasFailed({@required ConnectionFailure failure}) =
-      _$_HasFailed;
+  const factory _HasFailed({required ConnectionFailure failure}) = _$_HasFailed;
 
-  ConnectionFailure get failure;
+  ConnectionFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$HasFailedCopyWith<_HasFailed> get copyWith;
+  _$HasFailedCopyWith<_HasFailed> get copyWith =>
+      throw _privateConstructorUsedError;
 }

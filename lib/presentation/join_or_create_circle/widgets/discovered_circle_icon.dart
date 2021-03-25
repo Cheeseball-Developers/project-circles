@@ -8,7 +8,7 @@ import 'package:projectcircles/presentation/join_or_create_circle/widgets/connec
 class DiscoveredCircleIcon extends StatelessWidget {
   final User user;
 
-  const DiscoveredCircleIcon({Key key, @required this.user}) : super(key: key);
+  const DiscoveredCircleIcon({required this.user});
 
   @override
   Widget build(BuildContext context) {

@@ -34,15 +34,15 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   final FilesRepository _filesRepository;
   final NearbyConnections _nearbyConnections;
 
-  StreamSubscription<FileInfo> incomingFileInfoStreamSubscription;
-  StreamSubscription<PayloadInfo> progressOfFileStreamSubscription;
-  StreamSubscription<String> respondingUserStreamSubscription;
-  StreamSubscription<String> fileSharedSuccessStreamSubscription;
-  StreamSubscription<String> fileInfoSuccessStreamSubscription;
+  StreamSubscription<FileInfo>? incomingFileInfoStreamSubscription;
+  StreamSubscription<PayloadInfo>? progressOfFileStreamSubscription;
+  StreamSubscription<String>? respondingUserStreamSubscription;
+  StreamSubscription<String>? fileSharedSuccessStreamSubscription;
+  StreamSubscription<String>? fileInfoSuccessStreamSubscription;
 
   // File transfer variables
   Option<int> lastPayloadId = none();
-  List<String> acceptedFileTransferUsers;
+  List<String>? acceptedFileTransferUsers;
 
   final logger = Logger();
 
@@ -67,7 +67,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
         // Starting necessary stream subscriptions
         incomingFileInfoStreamSubscription ??=
-            _nearbyConnections.sendingFileInfoStream.listen(
+            _nearbyConnections.sendingFileInfoStream!.listen(
           (fileInfo) {
             logger.d("FileInfo received");
             add(
@@ -80,7 +80,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
 
         fileInfoSuccessStreamSubscription ??=
-            _nearbyConnections.fileInfoSharingSuccessfulStream.listen((id) {
+            _nearbyConnections.fileInfoSharingSuccessfulStream!.listen((id) {
           logger.d("EndId received: $id");
           add(FileTransferEvent.endIdReceived(endId: id));
         });
@@ -152,7 +152,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             }
 
             respondingUserStreamSubscription ??=
-                _nearbyConnections.responseStream.listen((event) {
+                _nearbyConnections.responseStream!.listen((event) {
               final List<String> response = event.split('@');
               logger.d(
                   'Response received from ${response.first} : ${response.last}');
@@ -191,7 +191,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       sendingFiles: (state) async* {
         // TODO: This merely serves as a temporary fix to a larger problem, replace this
         progressOfFileStreamSubscription ??=
-            _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
+            _nearbyConnections.progressOfFileStream!.listen((payloadInfo) {
           add(FileTransferEvent.updateProgress(
             payloadInfo: payloadInfo,
           ));
@@ -201,7 +201,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         // TODO: till here
 
         fileSharedSuccessStreamSubscription ??=
-            _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
+            _nearbyConnections.fileSharingSuccessfulStream!.listen((event) {
           logCount += 1;
           logger.d("Called $logCount times");
           add(FileTransferEvent.incrementFileTransferIndex(
@@ -322,7 +322,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         // Starting necessary stream subscriptions
         logger.d("Transferring Files State");
         progressOfFileStreamSubscription ??=
-            _nearbyConnections.progressOfFileStream.listen((payloadInfo) {
+            _nearbyConnections.progressOfFileStream!.listen((payloadInfo) {
           add(FileTransferEvent.updateProgress(
             payloadInfo: payloadInfo,
           ));
@@ -332,7 +332,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
         //TODO : Display in the ui from which device the file sharing is successful
         fileSharedSuccessStreamSubscription ??=
-            _nearbyConnections.fileSharingSuccessfulStream.listen((event) {
+            _nearbyConnections.fileSharingSuccessfulStream!.listen((event) {
           logger.d(
               'File received event called, index value at ${state.transferProgressInfo.fileTransferIndex}');
           add(FileTransferEvent.incrementFileTransferIndex(

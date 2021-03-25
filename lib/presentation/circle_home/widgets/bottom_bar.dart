@@ -21,7 +21,7 @@ class BottomBar extends StatelessWidget {
                     icon: const Icon(Icons.save_alt),
                     color: Theme.of(context).accentIconTheme.color,
                     onPressed: () => context
-                        .bloc<CurrentCircleBloc>()
+                        .read<CurrentCircleBloc>()
                         .add(const CurrentCircleEvent.showFilesDialog()),
                   ),
                   IconButton(
@@ -32,7 +32,7 @@ class BottomBar extends StatelessWidget {
                     icon: const Icon(Icons.people),
                     color: Theme.of(context).accentIconTheme.color,
                     onPressed: () => context
-                        .bloc<CurrentCircleBloc>()
+                        .read<CurrentCircleBloc>()
                         .add(const CurrentCircleEvent.showMembersDialog()),
                   ),
                 ],
@@ -41,7 +41,7 @@ class BottomBar extends StatelessWidget {
           ),
           Positioned.fill(
             child: GestureDetector(
-              onTap: () => context.bloc<CurrentCircleBloc>().add(
+              onTap: () => context.read<CurrentCircleBloc>().add(
                     const CurrentCircleEvent.showFileTransferDialog(),
                   ),
               child: CircleAvatar(

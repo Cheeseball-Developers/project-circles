@@ -3,23 +3,23 @@ part of 'search_bloc.dart';
 @freezed
 abstract class SearchState with _$SearchState {
   const factory SearchState(
-      {@required
+      {required
           bool isSearching,
-      @required
+      required
           bool isLoading,
-      @required
+      required
           bool isCancelling,
-      @required
+      required
           bool showAllDiscoveredDevicesPopUp,
-      @required
+      required
           bool showRequestConnectionPopUp,
-      @required
+      required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrSuccessOption,
-      @required
+      required
           Option<Either<ConnectionFailure, Unit>>
               connectionFailureOrRequestSent,
-      @required
+      required
           List<User> discoveredDevices}) = _SearchState;
 
   factory SearchState.initial() => SearchState(

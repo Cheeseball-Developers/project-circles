@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'folder_picker_bloc.dart';
 
@@ -9,60 +9,63 @@ part of 'folder_picker_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FolderPickerEventTearOff {
   const _$FolderPickerEventTearOff();
 
-// ignore: unused_element
-  _OpenDirectory openDirectory({@required Directory directory}) {
+  _OpenDirectory openDirectory({required Directory directory}) {
     return _OpenDirectory(
       directory: directory,
     );
   }
 
-// ignore: unused_element
   _Up up() {
     return const _Up();
   }
 
-// ignore: unused_element
   _Select select() {
     return const _Select();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FolderPickerEvent = _$FolderPickerEventTearOff();
 
 /// @nodoc
 mixin _$FolderPickerEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult openDirectory(Directory directory),
-    @required TResult up(),
-    @required TResult select(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function(Directory directory) openDirectory,
+    required TResult Function() up,
+    required TResult Function() select,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult openDirectory(Directory directory),
-    TResult up(),
-    TResult select(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Directory directory)? openDirectory,
+    TResult Function()? up,
+    TResult Function()? select,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult openDirectory(_OpenDirectory value),
-    @required TResult up(_Up value),
-    @required TResult select(_Select value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OpenDirectory value) openDirectory,
+    required TResult Function(_Up value) up,
+    required TResult Function(_Select value) select,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult openDirectory(_OpenDirectory value),
-    TResult up(_Up value),
-    TResult select(_Select value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OpenDirectory value)? openDirectory,
+    TResult Function(_Up value)? up,
+    TResult Function(_Select value)? select,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -103,19 +106,20 @@ class __$OpenDirectoryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object directory = freezed,
+    Object? directory = freezed,
   }) {
     return _then(_OpenDirectory(
-      directory:
-          directory == freezed ? _value.directory : directory as Directory,
+      directory: directory == freezed
+          ? _value.directory
+          : directory // ignore: cast_nullable_to_non_nullable
+              as Directory,
     ));
   }
 }
 
 /// @nodoc
 class _$_OpenDirectory implements _OpenDirectory {
-  const _$_OpenDirectory({@required this.directory})
-      : assert(directory != null);
+  const _$_OpenDirectory({required this.directory});
 
   @override
   final Directory directory;
@@ -145,26 +149,22 @@ class _$_OpenDirectory implements _OpenDirectory {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult openDirectory(Directory directory),
-    @required TResult up(),
-    @required TResult select(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Directory directory) openDirectory,
+    required TResult Function() up,
+    required TResult Function() select,
   }) {
-    assert(openDirectory != null);
-    assert(up != null);
-    assert(select != null);
     return openDirectory(directory);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult openDirectory(Directory directory),
-    TResult up(),
-    TResult select(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Directory directory)? openDirectory,
+    TResult Function()? up,
+    TResult Function()? select,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (openDirectory != null) {
       return openDirectory(directory);
     }
@@ -173,26 +173,22 @@ class _$_OpenDirectory implements _OpenDirectory {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult openDirectory(_OpenDirectory value),
-    @required TResult up(_Up value),
-    @required TResult select(_Select value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OpenDirectory value) openDirectory,
+    required TResult Function(_Up value) up,
+    required TResult Function(_Select value) select,
   }) {
-    assert(openDirectory != null);
-    assert(up != null);
-    assert(select != null);
     return openDirectory(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult openDirectory(_OpenDirectory value),
-    TResult up(_Up value),
-    TResult select(_Select value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OpenDirectory value)? openDirectory,
+    TResult Function(_Up value)? up,
+    TResult Function(_Select value)? select,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (openDirectory != null) {
       return openDirectory(this);
     }
@@ -201,12 +197,13 @@ class _$_OpenDirectory implements _OpenDirectory {
 }
 
 abstract class _OpenDirectory implements FolderPickerEvent {
-  const factory _OpenDirectory({@required Directory directory}) =
+  const factory _OpenDirectory({required Directory directory}) =
       _$_OpenDirectory;
 
-  Directory get directory;
+  Directory get directory => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$OpenDirectoryCopyWith<_OpenDirectory> get copyWith;
+  _$OpenDirectoryCopyWith<_OpenDirectory> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -244,26 +241,22 @@ class _$_Up implements _Up {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult openDirectory(Directory directory),
-    @required TResult up(),
-    @required TResult select(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Directory directory) openDirectory,
+    required TResult Function() up,
+    required TResult Function() select,
   }) {
-    assert(openDirectory != null);
-    assert(up != null);
-    assert(select != null);
     return up();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult openDirectory(Directory directory),
-    TResult up(),
-    TResult select(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Directory directory)? openDirectory,
+    TResult Function()? up,
+    TResult Function()? select,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (up != null) {
       return up();
     }
@@ -272,26 +265,22 @@ class _$_Up implements _Up {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult openDirectory(_OpenDirectory value),
-    @required TResult up(_Up value),
-    @required TResult select(_Select value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OpenDirectory value) openDirectory,
+    required TResult Function(_Up value) up,
+    required TResult Function(_Select value) select,
   }) {
-    assert(openDirectory != null);
-    assert(up != null);
-    assert(select != null);
     return up(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult openDirectory(_OpenDirectory value),
-    TResult up(_Up value),
-    TResult select(_Select value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OpenDirectory value)? openDirectory,
+    TResult Function(_Up value)? up,
+    TResult Function(_Select value)? select,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (up != null) {
       return up(this);
     }
@@ -338,26 +327,22 @@ class _$_Select implements _Select {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult openDirectory(Directory directory),
-    @required TResult up(),
-    @required TResult select(),
+  TResult when<TResult extends Object?>({
+    required TResult Function(Directory directory) openDirectory,
+    required TResult Function() up,
+    required TResult Function() select,
   }) {
-    assert(openDirectory != null);
-    assert(up != null);
-    assert(select != null);
     return select();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult openDirectory(Directory directory),
-    TResult up(),
-    TResult select(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(Directory directory)? openDirectory,
+    TResult Function()? up,
+    TResult Function()? select,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (select != null) {
       return select();
     }
@@ -366,26 +351,22 @@ class _$_Select implements _Select {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult openDirectory(_OpenDirectory value),
-    @required TResult up(_Up value),
-    @required TResult select(_Select value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OpenDirectory value) openDirectory,
+    required TResult Function(_Up value) up,
+    required TResult Function(_Select value) select,
   }) {
-    assert(openDirectory != null);
-    assert(up != null);
-    assert(select != null);
     return select(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult openDirectory(_OpenDirectory value),
-    TResult up(_Up value),
-    TResult select(_Select value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_OpenDirectory value)? openDirectory,
+    TResult Function(_Up value)? up,
+    TResult Function(_Select value)? select,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (select != null) {
       return select(this);
     }
@@ -401,11 +382,10 @@ abstract class _Select implements FolderPickerEvent {
 class _$FolderPickerStateTearOff {
   const _$FolderPickerStateTearOff();
 
-// ignore: unused_element
   _FolderPickerState call(
-      {@required Directory directory,
-      @required Option<List<FileSystemEntity>> folders,
-      @required bool isSelected}) {
+      {required Directory directory,
+      required Option<List<FileSystemEntity>> folders,
+      required bool isSelected}) {
     return _FolderPickerState(
       directory: directory,
       folders: folders,
@@ -415,17 +395,18 @@ class _$FolderPickerStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FolderPickerState = _$FolderPickerStateTearOff();
 
 /// @nodoc
 mixin _$FolderPickerState {
-  Directory get directory;
-  Option<List<FileSystemEntity>> get folders;
-  bool get isSelected;
+  Directory get directory => throw _privateConstructorUsedError;
+  Option<List<FileSystemEntity>> get folders =>
+      throw _privateConstructorUsedError;
+  bool get isSelected => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FolderPickerStateCopyWith<FolderPickerState> get copyWith;
+  $FolderPickerStateCopyWith<FolderPickerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -450,18 +431,23 @@ class _$FolderPickerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object directory = freezed,
-    Object folders = freezed,
-    Object isSelected = freezed,
+    Object? directory = freezed,
+    Object? folders = freezed,
+    Object? isSelected = freezed,
   }) {
     return _then(_value.copyWith(
-      directory:
-          directory == freezed ? _value.directory : directory as Directory,
+      directory: directory == freezed
+          ? _value.directory
+          : directory // ignore: cast_nullable_to_non_nullable
+              as Directory,
       folders: folders == freezed
           ? _value.folders
-          : folders as Option<List<FileSystemEntity>>,
-      isSelected:
-          isSelected == freezed ? _value.isSelected : isSelected as bool,
+          : folders // ignore: cast_nullable_to_non_nullable
+              as Option<List<FileSystemEntity>>,
+      isSelected: isSelected == freezed
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -492,18 +478,23 @@ class __$FolderPickerStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object directory = freezed,
-    Object folders = freezed,
-    Object isSelected = freezed,
+    Object? directory = freezed,
+    Object? folders = freezed,
+    Object? isSelected = freezed,
   }) {
     return _then(_FolderPickerState(
-      directory:
-          directory == freezed ? _value.directory : directory as Directory,
+      directory: directory == freezed
+          ? _value.directory
+          : directory // ignore: cast_nullable_to_non_nullable
+              as Directory,
       folders: folders == freezed
           ? _value.folders
-          : folders as Option<List<FileSystemEntity>>,
-      isSelected:
-          isSelected == freezed ? _value.isSelected : isSelected as bool,
+          : folders // ignore: cast_nullable_to_non_nullable
+              as Option<List<FileSystemEntity>>,
+      isSelected: isSelected == freezed
+          ? _value.isSelected
+          : isSelected // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -511,12 +502,9 @@ class __$FolderPickerStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_FolderPickerState implements _FolderPickerState {
   const _$_FolderPickerState(
-      {@required this.directory,
-      @required this.folders,
-      @required this.isSelected})
-      : assert(directory != null),
-        assert(folders != null),
-        assert(isSelected != null);
+      {required this.directory,
+      required this.folders,
+      required this.isSelected});
 
   @override
   final Directory directory;
@@ -560,17 +548,19 @@ class _$_FolderPickerState implements _FolderPickerState {
 
 abstract class _FolderPickerState implements FolderPickerState {
   const factory _FolderPickerState(
-      {@required Directory directory,
-      @required Option<List<FileSystemEntity>> folders,
-      @required bool isSelected}) = _$_FolderPickerState;
+      {required Directory directory,
+      required Option<List<FileSystemEntity>> folders,
+      required bool isSelected}) = _$_FolderPickerState;
 
   @override
-  Directory get directory;
+  Directory get directory => throw _privateConstructorUsedError;
   @override
-  Option<List<FileSystemEntity>> get folders;
+  Option<List<FileSystemEntity>> get folders =>
+      throw _privateConstructorUsedError;
   @override
-  bool get isSelected;
+  bool get isSelected => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FolderPickerStateCopyWith<_FolderPickerState> get copyWith;
+  _$FolderPickerStateCopyWith<_FolderPickerState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

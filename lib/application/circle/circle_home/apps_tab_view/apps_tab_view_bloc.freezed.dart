@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'apps_tab_view_bloc.dart';
 
@@ -9,60 +9,63 @@ part of 'apps_tab_view_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$AppsTabViewEventTearOff {
   const _$AppsTabViewEventTearOff();
 
-// ignore: unused_element
   LoadApps loadApps() {
     return const LoadApps();
   }
 
-// ignore: unused_element
-  ToggleAppSelection toggleAppSelection({@required AppInfo appInfo}) {
+  ToggleAppSelection toggleAppSelection({required AppInfo appInfo}) {
     return ToggleAppSelection(
       appInfo: appInfo,
     );
   }
 
-// ignore: unused_element
   DeselectAll deselectAll() {
     return const DeselectAll();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppsTabViewEvent = _$AppsTabViewEventTearOff();
 
 /// @nodoc
 mixin _$AppsTabViewEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadApps(),
-    @required TResult toggleAppSelection(AppInfo appInfo),
-    @required TResult deselectAll(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadApps,
+    required TResult Function(AppInfo appInfo) toggleAppSelection,
+    required TResult Function() deselectAll,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadApps(),
-    TResult toggleAppSelection(AppInfo appInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadApps,
+    TResult Function(AppInfo appInfo)? toggleAppSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadApps(LoadApps value),
-    @required TResult toggleAppSelection(ToggleAppSelection value),
-    @required TResult deselectAll(DeselectAll value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadApps value) loadApps,
+    required TResult Function(ToggleAppSelection value) toggleAppSelection,
+    required TResult Function(DeselectAll value) deselectAll,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadApps(LoadApps value),
-    TResult toggleAppSelection(ToggleAppSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadApps value)? loadApps,
+    TResult Function(ToggleAppSelection value)? toggleAppSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -117,26 +120,22 @@ class _$LoadApps implements LoadApps {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadApps(),
-    @required TResult toggleAppSelection(AppInfo appInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadApps,
+    required TResult Function(AppInfo appInfo) toggleAppSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadApps != null);
-    assert(toggleAppSelection != null);
-    assert(deselectAll != null);
     return loadApps();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadApps(),
-    TResult toggleAppSelection(AppInfo appInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadApps,
+    TResult Function(AppInfo appInfo)? toggleAppSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadApps != null) {
       return loadApps();
     }
@@ -145,26 +144,22 @@ class _$LoadApps implements LoadApps {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadApps(LoadApps value),
-    @required TResult toggleAppSelection(ToggleAppSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadApps value) loadApps,
+    required TResult Function(ToggleAppSelection value) toggleAppSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadApps != null);
-    assert(toggleAppSelection != null);
-    assert(deselectAll != null);
     return loadApps(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadApps(LoadApps value),
-    TResult toggleAppSelection(ToggleAppSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadApps value)? loadApps,
+    TResult Function(ToggleAppSelection value)? toggleAppSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadApps != null) {
       return loadApps(this);
     }
@@ -199,18 +194,18 @@ class _$ToggleAppSelectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object appInfo = freezed,
+    Object? appInfo = freezed,
   }) {
     return _then(ToggleAppSelection(
-      appInfo: appInfo == freezed ? _value.appInfo : appInfo as AppInfo,
+      appInfo: appInfo == freezed
+          ? _value.appInfo
+          : appInfo // ignore: cast_nullable_to_non_nullable
+              as AppInfo,
     ));
   }
 
   @override
   $AppInfoCopyWith<$Res> get appInfo {
-    if (_value.appInfo == null) {
-      return null;
-    }
     return $AppInfoCopyWith<$Res>(_value.appInfo, (value) {
       return _then(_value.copyWith(appInfo: value));
     });
@@ -219,8 +214,7 @@ class _$ToggleAppSelectionCopyWithImpl<$Res>
 
 /// @nodoc
 class _$ToggleAppSelection implements ToggleAppSelection {
-  const _$ToggleAppSelection({@required this.appInfo})
-      : assert(appInfo != null);
+  const _$ToggleAppSelection({required this.appInfo});
 
   @override
   final AppInfo appInfo;
@@ -249,26 +243,22 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadApps(),
-    @required TResult toggleAppSelection(AppInfo appInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadApps,
+    required TResult Function(AppInfo appInfo) toggleAppSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadApps != null);
-    assert(toggleAppSelection != null);
-    assert(deselectAll != null);
     return toggleAppSelection(appInfo);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadApps(),
-    TResult toggleAppSelection(AppInfo appInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadApps,
+    TResult Function(AppInfo appInfo)? toggleAppSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (toggleAppSelection != null) {
       return toggleAppSelection(appInfo);
     }
@@ -277,26 +267,22 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadApps(LoadApps value),
-    @required TResult toggleAppSelection(ToggleAppSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadApps value) loadApps,
+    required TResult Function(ToggleAppSelection value) toggleAppSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadApps != null);
-    assert(toggleAppSelection != null);
-    assert(deselectAll != null);
     return toggleAppSelection(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadApps(LoadApps value),
-    TResult toggleAppSelection(ToggleAppSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadApps value)? loadApps,
+    TResult Function(ToggleAppSelection value)? toggleAppSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (toggleAppSelection != null) {
       return toggleAppSelection(this);
     }
@@ -305,12 +291,13 @@ class _$ToggleAppSelection implements ToggleAppSelection {
 }
 
 abstract class ToggleAppSelection implements AppsTabViewEvent {
-  const factory ToggleAppSelection({@required AppInfo appInfo}) =
+  const factory ToggleAppSelection({required AppInfo appInfo}) =
       _$ToggleAppSelection;
 
-  AppInfo get appInfo;
+  AppInfo get appInfo => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith;
+  $ToggleAppSelectionCopyWith<ToggleAppSelection> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -351,26 +338,22 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadApps(),
-    @required TResult toggleAppSelection(AppInfo appInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadApps,
+    required TResult Function(AppInfo appInfo) toggleAppSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadApps != null);
-    assert(toggleAppSelection != null);
-    assert(deselectAll != null);
     return deselectAll();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadApps(),
-    TResult toggleAppSelection(AppInfo appInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadApps,
+    TResult Function(AppInfo appInfo)? toggleAppSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deselectAll != null) {
       return deselectAll();
     }
@@ -379,26 +362,22 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadApps(LoadApps value),
-    @required TResult toggleAppSelection(ToggleAppSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadApps value) loadApps,
+    required TResult Function(ToggleAppSelection value) toggleAppSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadApps != null);
-    assert(toggleAppSelection != null);
-    assert(deselectAll != null);
     return deselectAll(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadApps(LoadApps value),
-    TResult toggleAppSelection(ToggleAppSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadApps value)? loadApps,
+    TResult Function(ToggleAppSelection value)? toggleAppSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deselectAll != null) {
       return deselectAll(this);
     }
@@ -414,13 +393,10 @@ abstract class DeselectAll implements AppsTabViewEvent {
 class _$AppsTabViewStateTearOff {
   const _$AppsTabViewStateTearOff();
 
-// ignore: unused_element
   _AppsTabViewState call(
-      {@required
-          bool isLoading,
-      @required
-          Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>
-              failureOrAppsOption}) {
+      {required bool isLoading,
+      required Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>
+          failureOrAppsOption}) {
     return _AppsTabViewState(
       isLoading: isLoading,
       failureOrAppsOption: failureOrAppsOption,
@@ -429,16 +405,17 @@ class _$AppsTabViewStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $AppsTabViewState = _$AppsTabViewStateTearOff();
 
 /// @nodoc
 mixin _$AppsTabViewState {
-  bool get isLoading;
-  Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $AppsTabViewStateCopyWith<AppsTabViewState> get copyWith;
+  $AppsTabViewStateCopyWith<AppsTabViewState> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -462,14 +439,17 @@ class _$AppsTabViewStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object failureOrAppsOption = freezed,
+    Object? isLoading = freezed,
+    Object? failureOrAppsOption = freezed,
   }) {
     return _then(_value.copyWith(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       failureOrAppsOption: failureOrAppsOption == freezed
           ? _value.failureOrAppsOption
-          : failureOrAppsOption
+          : failureOrAppsOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>,
     ));
   }
@@ -500,14 +480,17 @@ class __$AppsTabViewStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object isLoading = freezed,
-    Object failureOrAppsOption = freezed,
+    Object? isLoading = freezed,
+    Object? failureOrAppsOption = freezed,
   }) {
     return _then(_AppsTabViewState(
-      isLoading: isLoading == freezed ? _value.isLoading : isLoading as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
       failureOrAppsOption: failureOrAppsOption == freezed
           ? _value.failureOrAppsOption
-          : failureOrAppsOption
+          : failureOrAppsOption // ignore: cast_nullable_to_non_nullable
               as Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>,
     ));
   }
@@ -516,9 +499,7 @@ class __$AppsTabViewStateCopyWithImpl<$Res>
 /// @nodoc
 class _$_AppsTabViewState implements _AppsTabViewState {
   const _$_AppsTabViewState(
-      {@required this.isLoading, @required this.failureOrAppsOption})
-      : assert(isLoading != null),
-        assert(failureOrAppsOption != null);
+      {required this.isLoading, required this.failureOrAppsOption});
 
   @override
   final bool isLoading;
@@ -556,17 +537,17 @@ class _$_AppsTabViewState implements _AppsTabViewState {
 
 abstract class _AppsTabViewState implements AppsTabViewState {
   const factory _AppsTabViewState(
-      {@required
-          bool isLoading,
-      @required
-          Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>
-              failureOrAppsOption}) = _$_AppsTabViewState;
+      {required bool isLoading,
+      required Option<Either<AppsLoadFailure, Map<AppInfo, bool>>>
+          failureOrAppsOption}) = _$_AppsTabViewState;
 
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption;
+  Option<Either<AppsLoadFailure, Map<AppInfo, bool>>> get failureOrAppsOption =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppsTabViewStateCopyWith<_AppsTabViewState> get copyWith;
+  _$AppsTabViewStateCopyWith<_AppsTabViewState> get copyWith =>
+      throw _privateConstructorUsedError;
 }

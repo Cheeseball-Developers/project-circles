@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'media_tab_view_bloc.dart';
 
@@ -9,71 +9,73 @@ part of 'media_tab_view_bloc.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$MediaTabViewEventTearOff {
   const _$MediaTabViewEventTearOff();
 
-// ignore: unused_element
   LoadAlbums loadAlbums() {
     return const LoadAlbums();
   }
 
-// ignore: unused_element
-  LoadMedia loadMedia({@required AssetPathEntity album}) {
+  LoadMedia loadMedia({required AssetPathEntity album}) {
     return LoadMedia(
       album: album,
     );
   }
 
-// ignore: unused_element
-  ToggleSelection toggleSelection({@required MediaInfo mediaInfo}) {
+  ToggleSelection toggleSelection({required MediaInfo mediaInfo}) {
     return ToggleSelection(
       mediaInfo: mediaInfo,
     );
   }
 
-// ignore: unused_element
   DeselectAll deselectAll() {
     return const DeselectAll();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MediaTabViewEvent = _$MediaTabViewEventTearOff();
 
 /// @nodoc
 mixin _$MediaTabViewEvent {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadAlbums(),
-    @required TResult loadMedia(AssetPathEntity album),
-    @required TResult toggleSelection(MediaInfo mediaInfo),
-    @required TResult deselectAll(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAlbums,
+    required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function(MediaInfo mediaInfo) toggleSelection,
+    required TResult Function() deselectAll,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadAlbums(),
-    TResult loadMedia(AssetPathEntity album),
-    TResult toggleSelection(MediaInfo mediaInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAlbums,
+    TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function(MediaInfo mediaInfo)? toggleSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadAlbums(LoadAlbums value),
-    @required TResult loadMedia(LoadMedia value),
-    @required TResult toggleSelection(ToggleSelection value),
-    @required TResult deselectAll(DeselectAll value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlbums value) loadAlbums,
+    required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(ToggleSelection value) toggleSelection,
+    required TResult Function(DeselectAll value) deselectAll,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadAlbums(LoadAlbums value),
-    TResult loadMedia(LoadMedia value),
-    TResult toggleSelection(ToggleSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlbums value)? loadAlbums,
+    TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(ToggleSelection value)? toggleSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -130,29 +132,24 @@ class _$LoadAlbums implements LoadAlbums {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadAlbums(),
-    @required TResult loadMedia(AssetPathEntity album),
-    @required TResult toggleSelection(MediaInfo mediaInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAlbums,
+    required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function(MediaInfo mediaInfo) toggleSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return loadAlbums();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadAlbums(),
-    TResult loadMedia(AssetPathEntity album),
-    TResult toggleSelection(MediaInfo mediaInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAlbums,
+    TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function(MediaInfo mediaInfo)? toggleSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadAlbums != null) {
       return loadAlbums();
     }
@@ -161,29 +158,24 @@ class _$LoadAlbums implements LoadAlbums {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadAlbums(LoadAlbums value),
-    @required TResult loadMedia(LoadMedia value),
-    @required TResult toggleSelection(ToggleSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlbums value) loadAlbums,
+    required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(ToggleSelection value) toggleSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return loadAlbums(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadAlbums(LoadAlbums value),
-    TResult loadMedia(LoadMedia value),
-    TResult toggleSelection(ToggleSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlbums value)? loadAlbums,
+    TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(ToggleSelection value)? toggleSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadAlbums != null) {
       return loadAlbums(this);
     }
@@ -214,17 +206,20 @@ class _$LoadMediaCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object album = freezed,
+    Object? album = freezed,
   }) {
     return _then(LoadMedia(
-      album: album == freezed ? _value.album : album as AssetPathEntity,
+      album: album == freezed
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as AssetPathEntity,
     ));
   }
 }
 
 /// @nodoc
 class _$LoadMedia implements LoadMedia {
-  const _$LoadMedia({@required this.album}) : assert(album != null);
+  const _$LoadMedia({required this.album});
 
   @override
   final AssetPathEntity album;
@@ -253,29 +248,24 @@ class _$LoadMedia implements LoadMedia {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadAlbums(),
-    @required TResult loadMedia(AssetPathEntity album),
-    @required TResult toggleSelection(MediaInfo mediaInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAlbums,
+    required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function(MediaInfo mediaInfo) toggleSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return loadMedia(album);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadAlbums(),
-    TResult loadMedia(AssetPathEntity album),
-    TResult toggleSelection(MediaInfo mediaInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAlbums,
+    TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function(MediaInfo mediaInfo)? toggleSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadMedia != null) {
       return loadMedia(album);
     }
@@ -284,29 +274,24 @@ class _$LoadMedia implements LoadMedia {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadAlbums(LoadAlbums value),
-    @required TResult loadMedia(LoadMedia value),
-    @required TResult toggleSelection(ToggleSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlbums value) loadAlbums,
+    required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(ToggleSelection value) toggleSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return loadMedia(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadAlbums(LoadAlbums value),
-    TResult loadMedia(LoadMedia value),
-    TResult toggleSelection(ToggleSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlbums value)? loadAlbums,
+    TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(ToggleSelection value)? toggleSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (loadMedia != null) {
       return loadMedia(this);
     }
@@ -315,11 +300,12 @@ class _$LoadMedia implements LoadMedia {
 }
 
 abstract class LoadMedia implements MediaTabViewEvent {
-  const factory LoadMedia({@required AssetPathEntity album}) = _$LoadMedia;
+  const factory LoadMedia({required AssetPathEntity album}) = _$LoadMedia;
 
-  AssetPathEntity get album;
+  AssetPathEntity get album => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $LoadMediaCopyWith<LoadMedia> get copyWith;
+  $LoadMediaCopyWith<LoadMedia> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -345,19 +331,18 @@ class _$ToggleSelectionCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object mediaInfo = freezed,
+    Object? mediaInfo = freezed,
   }) {
     return _then(ToggleSelection(
-      mediaInfo:
-          mediaInfo == freezed ? _value.mediaInfo : mediaInfo as MediaInfo,
+      mediaInfo: mediaInfo == freezed
+          ? _value.mediaInfo
+          : mediaInfo // ignore: cast_nullable_to_non_nullable
+              as MediaInfo,
     ));
   }
 
   @override
   $MediaInfoCopyWith<$Res> get mediaInfo {
-    if (_value.mediaInfo == null) {
-      return null;
-    }
     return $MediaInfoCopyWith<$Res>(_value.mediaInfo, (value) {
       return _then(_value.copyWith(mediaInfo: value));
     });
@@ -366,8 +351,7 @@ class _$ToggleSelectionCopyWithImpl<$Res>
 
 /// @nodoc
 class _$ToggleSelection implements ToggleSelection {
-  const _$ToggleSelection({@required this.mediaInfo})
-      : assert(mediaInfo != null);
+  const _$ToggleSelection({required this.mediaInfo});
 
   @override
   final MediaInfo mediaInfo;
@@ -397,29 +381,24 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadAlbums(),
-    @required TResult loadMedia(AssetPathEntity album),
-    @required TResult toggleSelection(MediaInfo mediaInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAlbums,
+    required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function(MediaInfo mediaInfo) toggleSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return toggleSelection(mediaInfo);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadAlbums(),
-    TResult loadMedia(AssetPathEntity album),
-    TResult toggleSelection(MediaInfo mediaInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAlbums,
+    TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function(MediaInfo mediaInfo)? toggleSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (toggleSelection != null) {
       return toggleSelection(mediaInfo);
     }
@@ -428,29 +407,24 @@ class _$ToggleSelection implements ToggleSelection {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadAlbums(LoadAlbums value),
-    @required TResult loadMedia(LoadMedia value),
-    @required TResult toggleSelection(ToggleSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlbums value) loadAlbums,
+    required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(ToggleSelection value) toggleSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return toggleSelection(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadAlbums(LoadAlbums value),
-    TResult loadMedia(LoadMedia value),
-    TResult toggleSelection(ToggleSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlbums value)? loadAlbums,
+    TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(ToggleSelection value)? toggleSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (toggleSelection != null) {
       return toggleSelection(this);
     }
@@ -459,12 +433,13 @@ class _$ToggleSelection implements ToggleSelection {
 }
 
 abstract class ToggleSelection implements MediaTabViewEvent {
-  const factory ToggleSelection({@required MediaInfo mediaInfo}) =
+  const factory ToggleSelection({required MediaInfo mediaInfo}) =
       _$ToggleSelection;
 
-  MediaInfo get mediaInfo;
+  MediaInfo get mediaInfo => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ToggleSelectionCopyWith<ToggleSelection> get copyWith;
+  $ToggleSelectionCopyWith<ToggleSelection> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -505,29 +480,24 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult loadAlbums(),
-    @required TResult loadMedia(AssetPathEntity album),
-    @required TResult toggleSelection(MediaInfo mediaInfo),
-    @required TResult deselectAll(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAlbums,
+    required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function(MediaInfo mediaInfo) toggleSelection,
+    required TResult Function() deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return deselectAll();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult loadAlbums(),
-    TResult loadMedia(AssetPathEntity album),
-    TResult toggleSelection(MediaInfo mediaInfo),
-    TResult deselectAll(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAlbums,
+    TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function(MediaInfo mediaInfo)? toggleSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deselectAll != null) {
       return deselectAll();
     }
@@ -536,29 +506,24 @@ class _$DeselectAll implements DeselectAll {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult loadAlbums(LoadAlbums value),
-    @required TResult loadMedia(LoadMedia value),
-    @required TResult toggleSelection(ToggleSelection value),
-    @required TResult deselectAll(DeselectAll value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlbums value) loadAlbums,
+    required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(ToggleSelection value) toggleSelection,
+    required TResult Function(DeselectAll value) deselectAll,
   }) {
-    assert(loadAlbums != null);
-    assert(loadMedia != null);
-    assert(toggleSelection != null);
-    assert(deselectAll != null);
     return deselectAll(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult loadAlbums(LoadAlbums value),
-    TResult loadMedia(LoadMedia value),
-    TResult toggleSelection(ToggleSelection value),
-    TResult deselectAll(DeselectAll value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlbums value)? loadAlbums,
+    TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(ToggleSelection value)? toggleSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (deselectAll != null) {
       return deselectAll(this);
     }
@@ -574,29 +539,25 @@ abstract class DeselectAll implements MediaTabViewEvent {
 class _$MediaTabViewStateTearOff {
   const _$MediaTabViewStateTearOff();
 
-// ignore: unused_element
   _Initial initial() {
     return const _Initial();
   }
 
-// ignore: unused_element
   _IsLoading isLoading() {
     return const _IsLoading();
   }
 
-// ignore: unused_element
-  _HasLoadedAlbums hasLoadedAlbums({@required List<AssetPathEntity> albums}) {
+  _HasLoadedAlbums hasLoadedAlbums({required List<AssetPathEntity> albums}) {
     return _HasLoadedAlbums(
       albums: albums,
     );
   }
 
-// ignore: unused_element
   _HasLoaded hasLoadedMedia(
-      {@required AssetPathEntity album,
-      @required Map<MediaInfo, bool> media,
-      @required int previousPage,
-      @required int currentPage}) {
+      {required AssetPathEntity album,
+      required Map<MediaInfo, bool> media,
+      required int previousPage,
+      required int currentPage}) {
     return _HasLoaded(
       album: album,
       media: media,
@@ -605,7 +566,6 @@ class _$MediaTabViewStateTearOff {
     );
   }
 
-// ignore: unused_element
   _HasFailed hasFailed(AppsLoadFailure failure) {
     return _HasFailed(
       failure,
@@ -614,48 +574,52 @@ class _$MediaTabViewStateTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $MediaTabViewState = _$MediaTabViewStateTearOff();
 
 /// @nodoc
 mixin _$MediaTabViewState {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(),
-    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    @required
-        TResult hasLoadedMedia(AssetPathEntity album,
-            Map<MediaInfo, bool> media, int previousPage, int currentPage),
-    @required TResult hasFailed(AppsLoadFailure failure),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
+    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)
+        hasLoadedMedia,
+    required TResult Function(AppsLoadFailure failure) hasFailed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(),
-    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-        int previousPage, int currentPage),
-    TResult hasFailed(AppsLoadFailure failure),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
+    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)?
+        hasLoadedMedia,
+    TResult Function(AppsLoadFailure failure)? hasFailed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    @required TResult hasLoadedMedia(_HasLoaded value),
-    @required TResult hasFailed(_HasFailed value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasLoadedAlbums value) hasLoadedAlbums,
+    required TResult Function(_HasLoaded value) hasLoadedMedia,
+    required TResult Function(_HasFailed value) hasFailed,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    TResult hasLoadedMedia(_HasLoaded value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasLoadedAlbums value)? hasLoadedAlbums,
+    TResult Function(_HasLoaded value)? hasLoadedMedia,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -710,35 +674,30 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(),
-    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    @required
-        TResult hasLoadedMedia(AssetPathEntity album,
-            Map<MediaInfo, bool> media, int previousPage, int currentPage),
-    @required TResult hasFailed(AppsLoadFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
+    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)
+        hasLoadedMedia,
+    required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return initial();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(),
-    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-        int previousPage, int currentPage),
-    TResult hasFailed(AppsLoadFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
+    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)?
+        hasLoadedMedia,
+    TResult Function(AppsLoadFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial();
     }
@@ -747,32 +706,26 @@ class _$_Initial implements _Initial {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    @required TResult hasLoadedMedia(_HasLoaded value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasLoadedAlbums value) hasLoadedAlbums,
+    required TResult Function(_HasLoaded value) hasLoadedMedia,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return initial(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    TResult hasLoadedMedia(_HasLoaded value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasLoadedAlbums value)? hasLoadedAlbums,
+    TResult Function(_HasLoaded value)? hasLoadedMedia,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (initial != null) {
       return initial(this);
     }
@@ -821,35 +774,30 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(),
-    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    @required
-        TResult hasLoadedMedia(AssetPathEntity album,
-            Map<MediaInfo, bool> media, int previousPage, int currentPage),
-    @required TResult hasFailed(AppsLoadFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
+    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)
+        hasLoadedMedia,
+    required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return isLoading();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(),
-    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-        int previousPage, int currentPage),
-    TResult hasFailed(AppsLoadFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
+    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)?
+        hasLoadedMedia,
+    TResult Function(AppsLoadFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (isLoading != null) {
       return isLoading();
     }
@@ -858,32 +806,26 @@ class _$_IsLoading implements _IsLoading {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    @required TResult hasLoadedMedia(_HasLoaded value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasLoadedAlbums value) hasLoadedAlbums,
+    required TResult Function(_HasLoaded value) hasLoadedMedia,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return isLoading(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    TResult hasLoadedMedia(_HasLoaded value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasLoadedAlbums value)? hasLoadedAlbums,
+    TResult Function(_HasLoaded value)? hasLoadedMedia,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (isLoading != null) {
       return isLoading(this);
     }
@@ -916,18 +858,20 @@ class __$HasLoadedAlbumsCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object albums = freezed,
+    Object? albums = freezed,
   }) {
     return _then(_HasLoadedAlbums(
-      albums:
-          albums == freezed ? _value.albums : albums as List<AssetPathEntity>,
+      albums: albums == freezed
+          ? _value.albums
+          : albums // ignore: cast_nullable_to_non_nullable
+              as List<AssetPathEntity>,
     ));
   }
 }
 
 /// @nodoc
 class _$_HasLoadedAlbums implements _HasLoadedAlbums {
-  const _$_HasLoadedAlbums({@required this.albums}) : assert(albums != null);
+  const _$_HasLoadedAlbums({required this.albums});
 
   @override
   final List<AssetPathEntity> albums;
@@ -956,35 +900,30 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(),
-    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    @required
-        TResult hasLoadedMedia(AssetPathEntity album,
-            Map<MediaInfo, bool> media, int previousPage, int currentPage),
-    @required TResult hasFailed(AppsLoadFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
+    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)
+        hasLoadedMedia,
+    required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return hasLoadedAlbums(albums);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(),
-    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-        int previousPage, int currentPage),
-    TResult hasFailed(AppsLoadFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
+    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)?
+        hasLoadedMedia,
+    TResult Function(AppsLoadFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasLoadedAlbums != null) {
       return hasLoadedAlbums(albums);
     }
@@ -993,32 +932,26 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    @required TResult hasLoadedMedia(_HasLoaded value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasLoadedAlbums value) hasLoadedAlbums,
+    required TResult Function(_HasLoaded value) hasLoadedMedia,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return hasLoadedAlbums(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    TResult hasLoadedMedia(_HasLoaded value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasLoadedAlbums value)? hasLoadedAlbums,
+    TResult Function(_HasLoaded value)? hasLoadedMedia,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasLoadedAlbums != null) {
       return hasLoadedAlbums(this);
     }
@@ -1027,12 +960,13 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
 }
 
 abstract class _HasLoadedAlbums implements MediaTabViewState {
-  const factory _HasLoadedAlbums({@required List<AssetPathEntity> albums}) =
+  const factory _HasLoadedAlbums({required List<AssetPathEntity> albums}) =
       _$_HasLoadedAlbums;
 
-  List<AssetPathEntity> get albums;
+  List<AssetPathEntity> get albums => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith;
+  _$HasLoadedAlbumsCopyWith<_HasLoadedAlbums> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1059,18 +993,28 @@ class __$HasLoadedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object album = freezed,
-    Object media = freezed,
-    Object previousPage = freezed,
-    Object currentPage = freezed,
+    Object? album = freezed,
+    Object? media = freezed,
+    Object? previousPage = freezed,
+    Object? currentPage = freezed,
   }) {
     return _then(_HasLoaded(
-      album: album == freezed ? _value.album : album as AssetPathEntity,
-      media: media == freezed ? _value.media : media as Map<MediaInfo, bool>,
-      previousPage:
-          previousPage == freezed ? _value.previousPage : previousPage as int,
-      currentPage:
-          currentPage == freezed ? _value.currentPage : currentPage as int,
+      album: album == freezed
+          ? _value.album
+          : album // ignore: cast_nullable_to_non_nullable
+              as AssetPathEntity,
+      media: media == freezed
+          ? _value.media
+          : media // ignore: cast_nullable_to_non_nullable
+              as Map<MediaInfo, bool>,
+      previousPage: previousPage == freezed
+          ? _value.previousPage
+          : previousPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      currentPage: currentPage == freezed
+          ? _value.currentPage
+          : currentPage // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -1078,14 +1022,10 @@ class __$HasLoadedCopyWithImpl<$Res>
 /// @nodoc
 class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
-      {@required this.album,
-      @required this.media,
-      @required this.previousPage,
-      @required this.currentPage})
-      : assert(album != null),
-        assert(media != null),
-        assert(previousPage != null),
-        assert(currentPage != null);
+      {required this.album,
+      required this.media,
+      required this.previousPage,
+      required this.currentPage});
 
   @override
   final AssetPathEntity album;
@@ -1132,35 +1072,30 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(),
-    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    @required
-        TResult hasLoadedMedia(AssetPathEntity album,
-            Map<MediaInfo, bool> media, int previousPage, int currentPage),
-    @required TResult hasFailed(AppsLoadFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
+    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)
+        hasLoadedMedia,
+    required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return hasLoadedMedia(album, media, previousPage, currentPage);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(),
-    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-        int previousPage, int currentPage),
-    TResult hasFailed(AppsLoadFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
+    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)?
+        hasLoadedMedia,
+    TResult Function(AppsLoadFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasLoadedMedia != null) {
       return hasLoadedMedia(album, media, previousPage, currentPage);
     }
@@ -1169,32 +1104,26 @@ class _$_HasLoaded implements _HasLoaded {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    @required TResult hasLoadedMedia(_HasLoaded value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasLoadedAlbums value) hasLoadedAlbums,
+    required TResult Function(_HasLoaded value) hasLoadedMedia,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return hasLoadedMedia(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    TResult hasLoadedMedia(_HasLoaded value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasLoadedAlbums value)? hasLoadedAlbums,
+    TResult Function(_HasLoaded value)? hasLoadedMedia,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasLoadedMedia != null) {
       return hasLoadedMedia(this);
     }
@@ -1204,17 +1133,18 @@ class _$_HasLoaded implements _HasLoaded {
 
 abstract class _HasLoaded implements MediaTabViewState {
   const factory _HasLoaded(
-      {@required AssetPathEntity album,
-      @required Map<MediaInfo, bool> media,
-      @required int previousPage,
-      @required int currentPage}) = _$_HasLoaded;
+      {required AssetPathEntity album,
+      required Map<MediaInfo, bool> media,
+      required int previousPage,
+      required int currentPage}) = _$_HasLoaded;
 
-  AssetPathEntity get album;
-  Map<MediaInfo, bool> get media;
-  int get previousPage;
-  int get currentPage;
+  AssetPathEntity get album => throw _privateConstructorUsedError;
+  Map<MediaInfo, bool> get media => throw _privateConstructorUsedError;
+  int get previousPage => throw _privateConstructorUsedError;
+  int get currentPage => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$HasLoadedCopyWith<_HasLoaded> get copyWith;
+  _$HasLoadedCopyWith<_HasLoaded> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1239,18 +1169,18 @@ class __$HasFailedCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object failure = freezed,
+    Object? failure = freezed,
   }) {
     return _then(_HasFailed(
-      failure == freezed ? _value.failure : failure as AppsLoadFailure,
+      failure == freezed
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as AppsLoadFailure,
     ));
   }
 
   @override
   $AppsLoadFailureCopyWith<$Res> get failure {
-    if (_value.failure == null) {
-      return null;
-    }
     return $AppsLoadFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
@@ -1259,7 +1189,7 @@ class __$HasFailedCopyWithImpl<$Res>
 
 /// @nodoc
 class _$_HasFailed implements _HasFailed {
-  const _$_HasFailed(this.failure) : assert(failure != null);
+  const _$_HasFailed(this.failure);
 
   @override
   final AppsLoadFailure failure;
@@ -1288,35 +1218,30 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult initial(),
-    @required TResult isLoading(),
-    @required TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    @required
-        TResult hasLoadedMedia(AssetPathEntity album,
-            Map<MediaInfo, bool> media, int previousPage, int currentPage),
-    @required TResult hasFailed(AppsLoadFailure failure),
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() isLoading,
+    required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
+    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)
+        hasLoadedMedia,
+    required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return hasFailed(failure);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult initial(),
-    TResult isLoading(),
-    TResult hasLoadedAlbums(List<AssetPathEntity> albums),
-    TResult hasLoadedMedia(AssetPathEntity album, Map<MediaInfo, bool> media,
-        int previousPage, int currentPage),
-    TResult hasFailed(AppsLoadFailure failure),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? isLoading,
+    TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
+    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
+            int previousPage, int currentPage)?
+        hasLoadedMedia,
+    TResult Function(AppsLoadFailure failure)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasFailed != null) {
       return hasFailed(failure);
     }
@@ -1325,32 +1250,26 @@ class _$_HasFailed implements _HasFailed {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult initial(_Initial value),
-    @required TResult isLoading(_IsLoading value),
-    @required TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    @required TResult hasLoadedMedia(_HasLoaded value),
-    @required TResult hasFailed(_HasFailed value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_IsLoading value) isLoading,
+    required TResult Function(_HasLoadedAlbums value) hasLoadedAlbums,
+    required TResult Function(_HasLoaded value) hasLoadedMedia,
+    required TResult Function(_HasFailed value) hasFailed,
   }) {
-    assert(initial != null);
-    assert(isLoading != null);
-    assert(hasLoadedAlbums != null);
-    assert(hasLoadedMedia != null);
-    assert(hasFailed != null);
     return hasFailed(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult initial(_Initial value),
-    TResult isLoading(_IsLoading value),
-    TResult hasLoadedAlbums(_HasLoadedAlbums value),
-    TResult hasLoadedMedia(_HasLoaded value),
-    TResult hasFailed(_HasFailed value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_IsLoading value)? isLoading,
+    TResult Function(_HasLoadedAlbums value)? hasLoadedAlbums,
+    TResult Function(_HasLoaded value)? hasLoadedMedia,
+    TResult Function(_HasFailed value)? hasFailed,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (hasFailed != null) {
       return hasFailed(this);
     }
@@ -1361,7 +1280,8 @@ class _$_HasFailed implements _HasFailed {
 abstract class _HasFailed implements MediaTabViewState {
   const factory _HasFailed(AppsLoadFailure failure) = _$_HasFailed;
 
-  AppsLoadFailure get failure;
+  AppsLoadFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$HasFailedCopyWith<_HasFailed> get copyWith;
+  _$HasFailedCopyWith<_HasFailed> get copyWith =>
+      throw _privateConstructorUsedError;
 }

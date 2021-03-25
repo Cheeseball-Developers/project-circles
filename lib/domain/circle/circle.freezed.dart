@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'circle.dart';
 
@@ -9,12 +9,14 @@ part of 'circle.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$CircleTearOff {
   const _$CircleTearOff();
 
-// ignore: unused_element
-  _Circle call({@required User host, @required List<User> members}) {
+  _Circle call({required User host, required List<User> members}) {
     return _Circle(
       host: host,
       members: members,
@@ -23,16 +25,15 @@ class _$CircleTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $Circle = _$CircleTearOff();
 
 /// @nodoc
 mixin _$Circle {
-  User get host;
-  List<User> get members;
+  User get host => throw _privateConstructorUsedError;
+  List<User> get members => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CircleCopyWith<Circle> get copyWith;
+  $CircleCopyWith<Circle> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -54,20 +55,23 @@ class _$CircleCopyWithImpl<$Res> implements $CircleCopyWith<$Res> {
 
   @override
   $Res call({
-    Object host = freezed,
-    Object members = freezed,
+    Object? host = freezed,
+    Object? members = freezed,
   }) {
     return _then(_value.copyWith(
-      host: host == freezed ? _value.host : host as User,
-      members: members == freezed ? _value.members : members as List<User>,
+      host: host == freezed
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as User,
+      members: members == freezed
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 
   @override
   $UserCopyWith<$Res> get host {
-    if (_value.host == null) {
-      return null;
-    }
     return $UserCopyWith<$Res>(_value.host, (value) {
       return _then(_value.copyWith(host: value));
     });
@@ -96,21 +100,25 @@ class __$CircleCopyWithImpl<$Res> extends _$CircleCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object host = freezed,
-    Object members = freezed,
+    Object? host = freezed,
+    Object? members = freezed,
   }) {
     return _then(_Circle(
-      host: host == freezed ? _value.host : host as User,
-      members: members == freezed ? _value.members : members as List<User>,
+      host: host == freezed
+          ? _value.host
+          : host // ignore: cast_nullable_to_non_nullable
+              as User,
+      members: members == freezed
+          ? _value.members
+          : members // ignore: cast_nullable_to_non_nullable
+              as List<User>,
     ));
   }
 }
 
 /// @nodoc
 class _$_Circle implements _Circle {
-  const _$_Circle({@required this.host, @required this.members})
-      : assert(host != null),
-        assert(members != null);
+  const _$_Circle({required this.host, required this.members});
 
   @override
   final User host;
@@ -145,14 +153,14 @@ class _$_Circle implements _Circle {
 }
 
 abstract class _Circle implements Circle {
-  const factory _Circle({@required User host, @required List<User> members}) =
+  const factory _Circle({required User host, required List<User> members}) =
       _$_Circle;
 
   @override
-  User get host;
+  User get host => throw _privateConstructorUsedError;
   @override
-  List<User> get members;
+  List<User> get members => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CircleCopyWith<_Circle> get copyWith;
+  _$CircleCopyWith<_Circle> get copyWith => throw _privateConstructorUsedError;
 }

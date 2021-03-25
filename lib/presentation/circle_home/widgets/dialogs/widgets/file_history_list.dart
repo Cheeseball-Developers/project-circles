@@ -8,7 +8,7 @@ class FileHistoryList extends StatelessWidget {
   final List<FileInfo> files;
   final bool showOpen;
 
-  const FileHistoryList({@required this.files, @required this.showOpen});
+  const FileHistoryList({required this.files, required this.showOpen});
 
   @override
   Widget build(BuildContext context) {

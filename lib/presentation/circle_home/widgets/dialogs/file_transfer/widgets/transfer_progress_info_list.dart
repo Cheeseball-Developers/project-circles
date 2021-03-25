@@ -5,7 +5,7 @@ import 'package:projectcircles/presentation/core/widgets/my_list_tile.dart';
 class TransferProgressInfoList extends StatelessWidget {
   final TransferProgressInfo transferProgressInfo;
 
-  const TransferProgressInfoList({@required this.transferProgressInfo});
+  const TransferProgressInfoList({required this.transferProgressInfo});
 
   @override
   Widget build(BuildContext context) {

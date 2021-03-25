@@ -21,9 +21,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
   SearchBloc(this._nearbyConnections) : super(SearchState.initial());
 
-  StreamSubscription<User> streamSubscriptionDiscoveredDevice;
-  StreamSubscription<String> streamSubscriptionLostDevice;
-  StreamSubscription<Either<ConnectionFailure, Unit>>
+  StreamSubscription<User>? streamSubscriptionDiscoveredDevice;
+  StreamSubscription<String>? streamSubscriptionLostDevice;
+  StreamSubscription<Either<ConnectionFailure, Unit>>?
       streamSubscriptionOnConnectionResult;
 
   @override
@@ -46,13 +46,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         );
 
         streamSubscriptionDiscoveredDevice =
-            _nearbyConnections.discoveredDeviceStream.listen((event) {
+            _nearbyConnections.discoveredDeviceStream!.listen((event) {
           add(SearchEvent.deviceDiscovered(event));
         }, onError: (e) {
           debugPrint('Error $e');
         }, cancelOnError: false);
         streamSubscriptionLostDevice =
-            _nearbyConnections.lostDeviceStream.listen((event) {
+            _nearbyConnections.lostDeviceStream!.listen((event) {
           add(SearchEvent.deviceLost(uidString: event));
         }, onError: (e) {
           debugPrint("Error on removing $e");
@@ -119,7 +119,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                 connectionFailureOrSuccessOption: none());
 
             streamSubscriptionOnConnectionResult =
-                _nearbyConnections.onConnectionResultDiscStream.listen(
+                _nearbyConnections.onConnectionResultDiscStream!.listen(
               (event) {
                 add(SearchEvent.connectionResult(event));
               },

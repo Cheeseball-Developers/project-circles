@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'file_transfer_type.dart';
 
@@ -9,49 +9,53 @@ part of 'file_transfer_type.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$FileTransferTypeTearOff {
   const _$FileTransferTypeTearOff();
 
-// ignore: unused_element
   Incoming incoming() {
     return const Incoming();
   }
 
-// ignore: unused_element
   Outgoing outgoing() {
     return const Outgoing();
   }
 }
 
 /// @nodoc
-// ignore: unused_element
 const $FileTransferType = _$FileTransferTypeTearOff();
 
 /// @nodoc
 mixin _$FileTransferType {
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult incoming(),
-    @required TResult outgoing(),
-  });
+  TResult when<TResult extends Object?>({
+    required TResult Function() incoming,
+    required TResult Function() outgoing,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult incoming(),
-    TResult outgoing(),
-    @required TResult orElse(),
-  });
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? incoming,
+    TResult Function()? outgoing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult incoming(Incoming value),
-    @required TResult outgoing(Outgoing value),
-  });
+  TResult map<TResult extends Object?>({
+    required TResult Function(Incoming value) incoming,
+    required TResult Function(Outgoing value) outgoing,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult incoming(Incoming value),
-    TResult outgoing(Outgoing value),
-    @required TResult orElse(),
-  });
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Incoming value)? incoming,
+    TResult Function(Outgoing value)? outgoing,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -106,23 +110,20 @@ class _$Incoming implements Incoming {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult incoming(),
-    @required TResult outgoing(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() incoming,
+    required TResult Function() outgoing,
   }) {
-    assert(incoming != null);
-    assert(outgoing != null);
     return incoming();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult incoming(),
-    TResult outgoing(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? incoming,
+    TResult Function()? outgoing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (incoming != null) {
       return incoming();
     }
@@ -131,23 +132,20 @@ class _$Incoming implements Incoming {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult incoming(Incoming value),
-    @required TResult outgoing(Outgoing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Incoming value) incoming,
+    required TResult Function(Outgoing value) outgoing,
   }) {
-    assert(incoming != null);
-    assert(outgoing != null);
     return incoming(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult incoming(Incoming value),
-    TResult outgoing(Outgoing value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Incoming value)? incoming,
+    TResult Function(Outgoing value)? outgoing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (incoming != null) {
       return incoming(this);
     }
@@ -194,23 +192,20 @@ class _$Outgoing implements Outgoing {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object>({
-    @required TResult incoming(),
-    @required TResult outgoing(),
+  TResult when<TResult extends Object?>({
+    required TResult Function() incoming,
+    required TResult Function() outgoing,
   }) {
-    assert(incoming != null);
-    assert(outgoing != null);
     return outgoing();
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object>({
-    TResult incoming(),
-    TResult outgoing(),
-    @required TResult orElse(),
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? incoming,
+    TResult Function()? outgoing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (outgoing != null) {
       return outgoing();
     }
@@ -219,23 +214,20 @@ class _$Outgoing implements Outgoing {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object>({
-    @required TResult incoming(Incoming value),
-    @required TResult outgoing(Outgoing value),
+  TResult map<TResult extends Object?>({
+    required TResult Function(Incoming value) incoming,
+    required TResult Function(Outgoing value) outgoing,
   }) {
-    assert(incoming != null);
-    assert(outgoing != null);
     return outgoing(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object>({
-    TResult incoming(Incoming value),
-    TResult outgoing(Outgoing value),
-    @required TResult orElse(),
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Incoming value)? incoming,
+    TResult Function(Outgoing value)? outgoing,
+    required TResult orElse(),
   }) {
-    assert(orElse != null);
     if (outgoing != null) {
       return outgoing(this);
     }

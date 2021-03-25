@@ -26,68 +26,70 @@ class NearbyConnections {
 
   NearbyConnections(this._appDatabase, this._preferences);
 
-  String _username;
+  String? _username;
   String _endName = ""; //currently connected device name
-  File _tempFile; //store file mapped to corresponding payloadId
+  File? _tempFile; //store file mapped to corresponding payloadId
   //Map<int, String> map = {};
   List<FileInfo> fileInfos = [];
   int fileIndex = 0;
-  User discoveredDevice;
-  User incomingRequest;
-  String host; // host username
-  int lastFilePayloadId;
+  User? discoveredDevice;
+  User? incomingRequest;
+  String? host; // host username
+  int? lastFilePayloadId;
 
   final logger = Logger();
 
   final StreamController<User> onEndFound = StreamController<User>.broadcast();
-  Stream<User> discoveredDeviceStream;
+  Stream<User>? discoveredDeviceStream;
 
   final StreamController<String> onEndLost =
       StreamController<String>.broadcast();
 
-  Stream<String> lostDeviceStream;
+  Stream<String>? lostDeviceStream;
 
   final StreamController<String> onHostLost =
       StreamController<String>.broadcast();
 
-  Stream<String> onHostLostStream;
+  Stream<String>? onHostLostStream;
 
   final StreamController<String> onDiscovererLost =
       StreamController<String>.broadcast();
 
-  Stream<String> onDiscovererLostStream;
+  Stream<String>? onDiscovererLostStream;
 
   final StreamController<User> onRequestSent =
       StreamController<User>.broadcast();
 
-  Stream<User> incomingRequestStream;
+  Stream<User>? incomingRequestStream;
 
   final StreamController<Either<ConnectionFailure, Unit>>
       onConnectionResultDisc =
       StreamController<Either<ConnectionFailure, Unit>>.broadcast();
-  Stream<Either<ConnectionFailure, Unit>> onConnectionResultDiscStream;
+
+  Stream<Either<ConnectionFailure, Unit>>? onConnectionResultDiscStream;
 
   final StreamController<FileInfo> sendingFileInfo =
       StreamController<FileInfo>.broadcast();
-  Stream<FileInfo> sendingFileInfoStream;
 
-  Either<ConnectionFailure, Unit> connectionResult;
+  Stream<FileInfo>? sendingFileInfoStream;
+
+  Either<ConnectionFailure, Unit>? connectionResult;
 
   final StreamController<PayloadInfo> progressOfFile =
       StreamController<PayloadInfo>.broadcast();
-  Stream<PayloadInfo> progressOfFileStream;
+  Stream<PayloadInfo>? progressOfFileStream;
 
   final StreamController<String> response =
       StreamController<String>.broadcast();
-  Stream<String> responseStream;
+  Stream<String>? responseStream;
 
   final StreamController<String> fileSharingSuccessful =
       StreamController<String>.broadcast();
-  Stream<String> fileSharingSuccessfulStream;
+  Stream<String>? fileSharingSuccessfulStream;
 
   final StreamController<String> fileInfoSharingSuccessful =
       StreamController<String>.broadcast();
-  Stream<String> fileInfoSharingSuccessfulStream;
+  Stream<String>? fileInfoSharingSuccessfulStream;
 
   bool _isFile = false;
   bool _isFileInfo = false;
@@ -161,7 +163,7 @@ class NearbyConnections {
     fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
 
     logger.i("Advertising...");
-    final bool a = await _nearby.startAdvertising(_username, strategy,
+    final bool a = await _nearby.startAdvertising(_username!, strategy,
         serviceId: _serviceId, onConnectionInitiated:
             (String endId, ConnectionInfo connectionInfo) async {
       logger.i(
@@ -171,7 +173,7 @@ class NearbyConnections {
       incomingRequest = User(
           uid: UniqueId.fromUniqueString(endId),
           name: Name(connectionInfo.endpointName));
-      onRequestSent.sink.add(incomingRequest);
+      onRequestSent.sink.add(incomingRequest!);
     }, onConnectionResult: (id, Status status) {
       logger.i("Status of the connection to $_endName, id: $id,  : $status");
       {
@@ -220,7 +222,7 @@ class NearbyConnections {
     fileInfoSharingSuccessfulStream = fileInfoSharingSuccessful.stream;
 
     final bool a = await _nearby.startDiscovery(
-      _username,
+      _username!,
       strategy,
       serviceId: _serviceId,
       onEndpointFound: (String id, String name, String serviceId) {
@@ -229,11 +231,11 @@ class NearbyConnections {
         logger.i("Connection found at id: $id and name: $name");
 
         // add to the sink
-        onEndFound.sink.add(discoveredDevice);
+        onEndFound.sink.add(discoveredDevice!);
         _endName = name;
       },
-      onEndpointLost: (String id) {
-        onEndLost.sink.add(id);
+      onEndpointLost: (String? id) {
+        onEndLost.sink.add(id!);
         logger.i("Endpoint lost to host $id");
       },
     );
@@ -263,19 +265,19 @@ class NearbyConnections {
   }
 
   Future<void> disconnectFromEndPoint(
-      {@required String endpointId, String endPointId}) async {
+      {required String endpointId}) async {
     _nearby.disconnectFromEndpoint(endpointId);
     logger.i("Stopped an endPoint $endpointId");
   }
 
   ///request Connection called by the discoverer after successfully finding an endpoint
   Future<Either<ConnectionFailure, Unit>> requestConnection(
-      {@required String endpointId}) async {
+      {required String endpointId}) async {
     logger.i("Requested a Connection to $endpointId");
     onHostLostStream = onHostLost.stream;
     bool a;
     try {
-      a = await _nearby.requestConnection(_username, endpointId,
+      a = await _nearby.requestConnection(_username!, endpointId,
           onConnectionInitiated:
               (String endId, ConnectionInfo connectionInfo) async {
         logger.i("Initiating a connection to ${connectionInfo.endpointName}");
@@ -339,7 +341,7 @@ class NearbyConnections {
 
   //Accept Connection to connect successfully
   Future<Either<ConnectionFailure, Unit>> acceptConnection(
-      {@required String endId}) async {
+      {required String endId}) async {
     final a = await _nearby.acceptConnection(endId,
         onPayLoadRecieved: (String endId, Payload payload) {
       //TODO this is the called as soon as the file transfer is started
@@ -359,7 +361,7 @@ class NearbyConnections {
 
   //Reject Connection
   Future<Either<ConnectionFailure, Unit>> rejectConnection(
-      {@required String endId}) async {
+      {required String endId}) async {
     final a = await _nearby.rejectConnection(endId);
     if (a) {
       //TODO: return according to the returned values of thr above functions
@@ -382,7 +384,7 @@ class NearbyConnections {
           '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5 hehe i am initatited on sending a file payload');
       //TODO add the message of file transfer started
       logger.i("File transfer started from $endId");
-      _tempFile = File(payload.filePath);
+      _tempFile = File(payload.filePath!);
 
       /*if (fileIndex < fileInfos.length) {
         if (await _tempFile.exists()) {
@@ -400,10 +402,10 @@ class NearbyConnections {
         final String psp = directory.path;
         //creates a directory if not present
         Directory(psp).create();
-        Directory(_tempFile.parent.path).delete();
+        Directory(_tempFile!.parent.path).delete();
         logger.d('Directory o : $psp');
 
-        _tempFile.rename("$psp/${fileInfos[fileIndex].name}");
+        _tempFile!.rename("$psp/${fileInfos[fileIndex].name}");
       });
 
       fileIndex += 1;
@@ -412,7 +414,7 @@ class NearbyConnections {
     } else if (payload.type == PayloadType.BYTES) {
       logger.i("Bytes payload received");
       //converting the bytes received to string
-      final String str = String.fromCharCodes(payload.bytes);
+      final String str = String.fromCharCodes(payload.bytes!);
 
       logger.i("Bytes received from $endId:  $str");
 
@@ -506,7 +508,7 @@ class NearbyConnections {
   //TODO : implement the states according to the status and show it in the UI
   Future<Either<ConnectionFailure, Unit>> onPayloadTransferUpdate(
       String endId, PayloadTransferUpdate payloadTransferUpdate) async {
-    if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRRESS) {
+    if (payloadTransferUpdate.status == PayloadStatus.IN_PROGRESS) {
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
@@ -570,7 +572,7 @@ class NearbyConnections {
 
   ///Sending Files
   Future<Either<ConnectionFailure, Unit>> sendFilePayload(
-      {@required String receiver, @required List<File> files}) async {
+      {required String receiver, required List<File> files}) async {
     //Sending the number of files that are being sent
     for (final file in files) {
       logger.d('filePath: ${file.path}');
@@ -601,15 +603,15 @@ class NearbyConnections {
   }
 
   Future<void> acceptOrRejectFiles(
-      {@required bool response, @required String endId}) async {
+      {required bool response, required String endId}) async {
     logger.i('Sending response $response to the host');
     _nearby.sendBytesPayload(
         endId, Uint8List.fromList("Response@$response".codeUnits));
   }
 
   Future<void> sendFilenameSizeBytesPayload(
-      {@required List<User> users,
-      @required List<FileInfo> outgoingFiles}) async {
+      {required List<User> users,
+      required List<FileInfo> outgoingFiles}) async {
     logger.i("Sending the file name and size");
     _isFile = false;
     logger.d('$_isFile isfile is set false in sending fileinfo');

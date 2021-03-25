@@ -10,14 +10,14 @@ import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.d
 class MembersDialog extends StatelessWidget {
   Widget _body(
     BuildContext context, {
-    @required String title,
-    @required Map<User, bool> users,
-    @required bool isHost,
+    required String title,
+    required Map<User, bool> users,
+    required bool isHost,
   }) {
     return DialogLayout(
       title: title,
       primaryButtonText: 'Done',
-      primaryOnTap: () => ExtendedNavigator.of(context).pop(),
+      primaryOnTap: () => ExtendedNavigator.of(context)!.pop(),
       dialogType: users.isEmpty ? DialogType.empty : DialogType.full,
       dialogButtonType: DialogButtonType.singleButton,
       child: users.isEmpty
@@ -37,11 +37,11 @@ class MembersDialog extends StatelessWidget {
                   users.keys.elementAt(index).uid.getOrCrash(),
                   style: Theme.of(context)
                       .textTheme
-                      .caption
+                      .caption!
                       .copyWith(color: Colors.black87),
                 ),
                 trailing: isHost
-                    ? users[users.keys.elementAt(index)]
+                    ? users[users.keys.elementAt(index)]!
                         ? Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [

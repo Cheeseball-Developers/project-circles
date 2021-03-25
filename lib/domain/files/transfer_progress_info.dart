@@ -9,10 +9,10 @@ part 'transfer_progress_info.freezed.dart';
 @freezed
 abstract class TransferProgressInfo with _$TransferProgressInfo {
   const factory TransferProgressInfo(
-      {@required User user,
-      @required Option<bool> acceptOrRejectOption,
-      @required int fileTransferIndex,
-      @required Map<FileInfo, double> filesMap}) = _TransferProgressInfo;
+      {required User user,
+      required Option<bool> acceptOrRejectOption,
+      required int fileTransferIndex,
+      required Map<FileInfo, double> filesMap}) = _TransferProgressInfo;
 
   const TransferProgressInfo._();
 }

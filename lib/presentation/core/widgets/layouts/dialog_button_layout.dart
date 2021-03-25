@@ -3,17 +3,17 @@ import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.
 
 class DialogButtonLayout extends StatelessWidget {
   final String primaryText;
-  final String secondaryText;
+  final String? secondaryText;
   final VoidCallback primaryOnTap;
-  final VoidCallback secondaryOnTap;
+  final VoidCallback? secondaryOnTap;
   final DialogButtonType type;
 
   const DialogButtonLayout({
-    @required this.primaryText,
+    required this.primaryText,
     this.secondaryText,
-    @required this.primaryOnTap,
+    required this.primaryOnTap,
     this.secondaryOnTap,
-    @required this.type,
+    required this.type,
   }) : assert(type == DialogButtonType.doubleButton
             ? (secondaryText != null && secondaryOnTap != null)
             : true);
@@ -37,8 +37,8 @@ class DialogButtonLayout extends StatelessWidget {
           if (type == DialogButtonType.doubleButton)
             MyTextButton(
               type: ButtonType.secondary,
-              text: secondaryText,
-              onTap: secondaryOnTap,
+              text: secondaryText!,
+              onTap: secondaryOnTap!,
             ),
           const Padding(
             padding: EdgeInsets.only(right: 8.0),

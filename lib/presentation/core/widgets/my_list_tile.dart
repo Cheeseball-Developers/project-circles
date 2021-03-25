@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 class MyListTile extends StatelessWidget {
   final Widget leading;
-  final Widget trailing;
+  final Widget? trailing;
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final double progress;
   final bool toggleValue;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   const MyListTile(
-      {Key key,
-      @required this.leading,
-      @required this.title,
+      {
+      required this.leading,
+      required this.title,
       this.subtitle,
       this.progress = 0.0,
       this.toggleValue = true,
       this.onTap,
       this.trailing})
-      : super(key: key);
+     ;
 
   @override
   Widget build(BuildContext context) {
@@ -63,13 +63,13 @@ class MyListTile extends StatelessWidget {
                         if (subtitle != null)
                           Padding(
                             padding: const EdgeInsets.only(top: 2.0),
-                            child: Text(subtitle,
+                            child: Text(subtitle!,
                                 style: Theme.of(context).textTheme.bodyText2),
                           )
                       ],
                     ),
                   ),
-                  trailing,
+                  trailing!,
                 ],
               ),
             ),

@@ -15,7 +15,7 @@ class FolderPicker extends StatelessWidget {
     return BlocConsumer<FolderPickerBloc, FolderPickerState>(
       listener: (context, state) {
         if (state.isSelected) {
-          ExtendedNavigator.of(context).pop(some(state.directory));
+          ExtendedNavigator.of(context)!.pop(some(state.directory));
         }
       },
       builder: (context, state) => DialogLayout(
@@ -24,9 +24,9 @@ class FolderPicker extends StatelessWidget {
         primaryButtonText: 'Select',
         secondaryButtonText: 'Cancel',
         primaryOnTap: () => context
-            .bloc<FolderPickerBloc>()
+            .read<FolderPickerBloc>()
             .add(const FolderPickerEvent.select()),
-        secondaryOnTap: () => ExtendedNavigator.of(context).pop(none<Directory>()),
+        secondaryOnTap: () => ExtendedNavigator.of(context)!.pop(none<Directory>()),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -42,7 +42,7 @@ class FolderPicker extends StatelessWidget {
                       left: 0.0,
                       child: GestureDetector(
                         onTap: () => context
-                            .bloc<FolderPickerBloc>()
+                            .read<FolderPickerBloc>()
                             .add(const FolderPickerEvent.up()),
                         child: const Icon(Icons.chevron_left),
                       ),
@@ -68,7 +68,7 @@ class FolderPicker extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: folders.length,
                   itemBuilder: (context, index) => MyListTile(
-                    onTap: () => context.bloc<FolderPickerBloc>().add(
+                    onTap: () => context.read<FolderPickerBloc>().add(
                           FolderPickerEvent.openDirectory(
                             directory: Directory(folders[index].path),
                           ),

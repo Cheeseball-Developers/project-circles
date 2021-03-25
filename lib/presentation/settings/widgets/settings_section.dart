@@ -4,8 +4,8 @@ class SettingsSection extends StatelessWidget {
   final String title;
   final List<Widget> items;
 
-  const SettingsSection({Key key, @required this.title, @required this.items})
-      : super(key: key);
+  const SettingsSection({required this.title, required this.items})
+     ;
 
   @override
   Widget build(BuildContext context) {

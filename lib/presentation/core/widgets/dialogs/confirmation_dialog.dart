@@ -7,18 +7,16 @@ class ConfirmationDialog extends StatelessWidget {
   final String subtitle;
   final String noText;
   final String yesText;
-  final VoidCallback noTap;
-  final VoidCallback yesTap;
+  final VoidCallback? noTap;
+  final VoidCallback? yesTap;
 
   const ConfirmationDialog(
-      {@required this.title,
-      @required this.subtitle,
+      {required this.title,
+      required this.subtitle,
       this.noText = 'No',
       this.yesText = 'Yes',
       this.yesTap,
-      this.noTap})
-      : assert(title != null),
-        assert(subtitle != null);
+      this.noTap});
 
   @override
   Widget build(BuildContext context) {

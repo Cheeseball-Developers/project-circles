@@ -115,19 +115,19 @@ class Settings extends StatelessWidget {
                                             hintText: 'Name',
                                             hintStyle: Theme.of(context)
                                                 .textTheme
-                                                .subtitle1
+                                                .subtitle1!
                                                 .copyWith(
                                                   color: Theme.of(context)
                                                       .textTheme
-                                                      .subtitle1
-                                                      .color
+                                                      .subtitle1!
+                                                      .color!
                                                       .withOpacity(0.25),
                                                 ),
                                           ),
-                                          onSaved: (String name) {
+                                          onSaved: (String? name) {
                                             context.read<SettingsBloc>().add(
                                                   SettingsEvent.nameChanged(
-                                                    Name(name),
+                                                    Name(name!),
                                                   ),
                                                 );
                                           },
@@ -145,7 +145,8 @@ class Settings extends StatelessWidget {
                               if (state.isChangingName)
                                 IconButton(
                                   icon: const Icon(Icons.done),
-                                  onPressed: () => _formKey.currentState.save(),
+                                  onPressed: () =>
+                                      _formKey.currentState!.save(),
                                 )
                               else
                                 IconButton(
@@ -196,7 +197,7 @@ class Settings extends StatelessWidget {
                                           ),
                                     child: FolderPicker(),
                                   ),
-                                );
+                                ) as Option<Directory>;
                                 directoryOption.fold(
                                   () {},
                                   (directory) => context

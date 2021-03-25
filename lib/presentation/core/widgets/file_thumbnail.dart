@@ -11,15 +11,14 @@ class FileThumbnail extends StatelessWidget {
   final FileSystemEntity file;
 
   const FileThumbnail({
-    Key key,
-    @required this.file,
-  }) : super(key: key);
+    required this.file,
+  });
 
   @override
   Widget build(BuildContext context) {
     final File f = File(file.path);
     final String _extension = extension(f.path).toLowerCase();
-    final String mimeType = mime(basename(file.path).toLowerCase());
+    final String mimeType = mime(basename(file.path).toLowerCase())!;
     final String type = mimeType == null ? "" : mimeType.split("/")[0];
     if (_extension == ".apk") {
       return const Icon(

@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'user.dart';
 
@@ -9,12 +9,14 @@ part of 'user.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$UserTearOff {
   const _$UserTearOff();
 
-// ignore: unused_element
-  _User call({@required UniqueId uid, @required Name name}) {
+  _User call({required UniqueId uid, required Name name}) {
     return _User(
       uid: uid,
       name: name,
@@ -23,16 +25,15 @@ class _$UserTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $User = _$UserTearOff();
 
 /// @nodoc
 mixin _$User {
-  UniqueId get uid;
-  Name get name;
+  UniqueId get uid => throw _privateConstructorUsedError;
+  Name get name => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith;
+  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -52,12 +53,18 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 
   @override
   $Res call({
-    Object uid = freezed,
-    Object name = freezed,
+    Object? uid = freezed,
+    Object? name = freezed,
   }) {
     return _then(_value.copyWith(
-      uid: uid == freezed ? _value.uid : uid as UniqueId,
-      name: name == freezed ? _value.name : name as Name,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as Name,
     ));
   }
 }
@@ -81,21 +88,25 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object uid = freezed,
-    Object name = freezed,
+    Object? uid = freezed,
+    Object? name = freezed,
   }) {
     return _then(_User(
-      uid: uid == freezed ? _value.uid : uid as UniqueId,
-      name: name == freezed ? _value.name : name as Name,
+      uid: uid == freezed
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as UniqueId,
+      name: name == freezed
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as Name,
     ));
   }
 }
 
 /// @nodoc
 class _$_User implements _User {
-  const _$_User({@required this.uid, @required this.name})
-      : assert(uid != null),
-        assert(name != null);
+  const _$_User({required this.uid, required this.name});
 
   @override
   final UniqueId uid;
@@ -130,13 +141,13 @@ class _$_User implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User({@required UniqueId uid, @required Name name}) = _$_User;
+  const factory _User({required UniqueId uid, required Name name}) = _$_User;
 
   @override
-  UniqueId get uid;
+  UniqueId get uid => throw _privateConstructorUsedError;
   @override
-  Name get name;
+  Name get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserCopyWith<_User> get copyWith;
+  _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
 }

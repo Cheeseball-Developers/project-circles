@@ -1,5 +1,5 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
 part of 'payload_info.dart';
 
@@ -9,15 +9,17 @@ part of 'payload_info.dart';
 
 T _$identity<T>(T value) => value;
 
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+
 /// @nodoc
 class _$PayloadInfoTearOff {
   const _$PayloadInfoTearOff();
 
-// ignore: unused_element
   _PayloadInfo call(
-      {@required int payloadId,
-      @required double progress,
-      @required String endId}) {
+      {required int payloadId,
+      required double progress,
+      required String endId}) {
     return _PayloadInfo(
       payloadId: payloadId,
       progress: progress,
@@ -27,17 +29,17 @@ class _$PayloadInfoTearOff {
 }
 
 /// @nodoc
-// ignore: unused_element
 const $PayloadInfo = _$PayloadInfoTearOff();
 
 /// @nodoc
 mixin _$PayloadInfo {
-  int get payloadId;
-  double get progress;
-  String get endId;
+  int get payloadId => throw _privateConstructorUsedError;
+  double get progress => throw _privateConstructorUsedError;
+  String get endId => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PayloadInfoCopyWith<PayloadInfo> get copyWith;
+  $PayloadInfoCopyWith<PayloadInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -58,14 +60,23 @@ class _$PayloadInfoCopyWithImpl<$Res> implements $PayloadInfoCopyWith<$Res> {
 
   @override
   $Res call({
-    Object payloadId = freezed,
-    Object progress = freezed,
-    Object endId = freezed,
+    Object? payloadId = freezed,
+    Object? progress = freezed,
+    Object? endId = freezed,
   }) {
     return _then(_value.copyWith(
-      payloadId: payloadId == freezed ? _value.payloadId : payloadId as int,
-      progress: progress == freezed ? _value.progress : progress as double,
-      endId: endId == freezed ? _value.endId : endId as String,
+      payloadId: payloadId == freezed
+          ? _value.payloadId
+          : payloadId // ignore: cast_nullable_to_non_nullable
+              as int,
+      progress: progress == freezed
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as double,
+      endId: endId == freezed
+          ? _value.endId
+          : endId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -92,14 +103,23 @@ class __$PayloadInfoCopyWithImpl<$Res> extends _$PayloadInfoCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object payloadId = freezed,
-    Object progress = freezed,
-    Object endId = freezed,
+    Object? payloadId = freezed,
+    Object? progress = freezed,
+    Object? endId = freezed,
   }) {
     return _then(_PayloadInfo(
-      payloadId: payloadId == freezed ? _value.payloadId : payloadId as int,
-      progress: progress == freezed ? _value.progress : progress as double,
-      endId: endId == freezed ? _value.endId : endId as String,
+      payloadId: payloadId == freezed
+          ? _value.payloadId
+          : payloadId // ignore: cast_nullable_to_non_nullable
+              as int,
+      progress: progress == freezed
+          ? _value.progress
+          : progress // ignore: cast_nullable_to_non_nullable
+              as double,
+      endId: endId == freezed
+          ? _value.endId
+          : endId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -107,11 +127,8 @@ class __$PayloadInfoCopyWithImpl<$Res> extends _$PayloadInfoCopyWithImpl<$Res>
 /// @nodoc
 class _$_PayloadInfo extends _PayloadInfo {
   const _$_PayloadInfo(
-      {@required this.payloadId, @required this.progress, @required this.endId})
-      : assert(payloadId != null),
-        assert(progress != null),
-        assert(endId != null),
-        super._();
+      {required this.payloadId, required this.progress, required this.endId})
+      : super._();
 
   @override
   final int payloadId;
@@ -153,19 +170,20 @@ class _$_PayloadInfo extends _PayloadInfo {
 }
 
 abstract class _PayloadInfo extends PayloadInfo {
-  const _PayloadInfo._() : super._();
   const factory _PayloadInfo(
-      {@required int payloadId,
-      @required double progress,
-      @required String endId}) = _$_PayloadInfo;
+      {required int payloadId,
+      required double progress,
+      required String endId}) = _$_PayloadInfo;
+  const _PayloadInfo._() : super._();
 
   @override
-  int get payloadId;
+  int get payloadId => throw _privateConstructorUsedError;
   @override
-  double get progress;
+  double get progress => throw _privateConstructorUsedError;
   @override
-  String get endId;
+  String get endId => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PayloadInfoCopyWith<_PayloadInfo> get copyWith;
+  _$PayloadInfoCopyWith<_PayloadInfo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

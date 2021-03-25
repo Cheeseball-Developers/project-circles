@@ -28,7 +28,7 @@ class AppsTabView extends StatelessWidget {
                         Size(MediaQuery.of(context).size.width, 40.0),
                     child: SelectionBar(
                       count: apps.values.where((selected) => selected).length,
-                      onCancel: () => context.bloc<AppsTabViewBloc>().add(
+                      onCancel: () => context.read<AppsTabViewBloc>().add(
                             const AppsTabViewEvent.deselectAll(),
                           ),
                     ),

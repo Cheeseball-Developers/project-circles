@@ -11,11 +11,11 @@ class SettingsObject {
   bool darkMode;
 
   SettingsObject(
-      {@required this.name,
-      @required this.uid,
-      @required this.directory,
-      @required this.askBeforeReceiving,
-      @required this.darkMode})
+      {required this.name,
+      required this.uid,
+      required this.directory,
+      required this.askBeforeReceiving,
+      required this.darkMode})
       : assert(name != null),
         assert(uid != null),
         assert(directory != null),

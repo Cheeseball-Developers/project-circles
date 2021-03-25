@@ -9,10 +9,10 @@ class AlertDialog extends StatelessWidget {
   final VoidCallback onTap;
 
   const AlertDialog({
-    @required this.title,
-    @required this.subtitle,
-    @required this.buttonText,
-    @required this.onTap,
+    required this.title,
+    required this.subtitle,
+    required this.buttonText,
+    required this.onTap,
   })  : assert(title != null),
         assert(subtitle != null),
         assert(buttonText != null),

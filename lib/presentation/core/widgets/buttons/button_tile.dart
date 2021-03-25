@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 class ButtonTile extends StatelessWidget {
   final IconData icon;
   final String title;
-  final String subtitle;
+  final String? subtitle;
   final bool toggleValue;
   final ButtonTileType type;
   final VoidCallback onTap;
 
   const ButtonTile(
-      {Key key,
-      @required this.icon,
-      @required this.title,
+      {
+      required this.icon,
+      required this.title,
       this.subtitle,
       this.toggleValue = true,
-      @required this.type,
-      @required this.onTap})
-      : super(key: key);
+      required this.type,
+      required this.onTap})
+     ;
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +58,13 @@ class ButtonTile extends StatelessWidget {
                   title,
                   textAlign: TextAlign.start,
                   style: type == ButtonTileType.tapToOpen
-                      ? theme.accentTextTheme.subtitle1.copyWith(fontWeight: FontWeight.w200)
+                      ? theme.accentTextTheme.subtitle1!.copyWith(fontWeight: FontWeight.w200)
                       : toggleValue
-                          ? theme.accentTextTheme.subtitle1.copyWith(fontWeight: FontWeight.w200)
-                          : theme.textTheme.subtitle1.copyWith(fontWeight: FontWeight.w200),
+                          ? theme.accentTextTheme.subtitle1!.copyWith(fontWeight: FontWeight.w200)
+                          : theme.textTheme.subtitle1!.copyWith(fontWeight: FontWeight.w200),
                 ),
                 if (subtitle != null) Text(
-                  subtitle,
+                  subtitle!,
                   textAlign: TextAlign.start,
                   style: type == ButtonTileType.tapToOpen
                       ? theme.accentTextTheme.caption

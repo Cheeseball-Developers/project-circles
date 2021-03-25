@@ -6,7 +6,7 @@ import 'package:projectcircles/domain/files/app_info.dart';
 class AppIconWithName extends StatelessWidget {
   final AppInfo appInfo;
 
-  const AppIconWithName({Key key, @required this.appInfo}) : super(key: key);
+  const AppIconWithName({required this.appInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -19,13 +19,13 @@ class AppIconWithName extends StatelessWidget {
             padding: const EdgeInsets.all(2.0),
             child: Material(
               borderRadius: BorderRadius.circular(8.0),
-              color: apps[appInfo]
+              color: apps[appInfo]!
                   ? Theme.of(context).buttonColor
                   : Colors.transparent,
               child: InkWell(
                 borderRadius: BorderRadius.circular(8.0),
                 onTap: () {
-                  context.bloc<AppsTabViewBloc>().add(
+                  context.read<AppsTabViewBloc>().add(
                         AppsTabViewEvent.toggleAppSelection(appInfo: appInfo),
                       );
                 },
@@ -47,7 +47,7 @@ class AppIconWithName extends StatelessWidget {
                         appInfo.appName,
                         textAlign: TextAlign.center,
                         overflow: TextOverflow.ellipsis,
-                        style: apps[appInfo]
+                        style: apps[appInfo]!
                             ? Theme.of(context)
                                 .accentTextTheme
                                 .bodyText2

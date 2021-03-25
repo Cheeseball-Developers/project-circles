@@ -16,7 +16,7 @@ class FolderIcon extends StatelessWidget {
           child: Material(
             color: Colors.transparent,
             child: InkWell(
-              onTap: () => context.bloc<FilesTabViewBloc>().add(
+              onTap: () => context.read<FilesTabViewBloc>().add(
                     FilesTabViewEvent.openDirectory(
                       relativePath: state.relativePath +
                           state.folders[index].path.substring(

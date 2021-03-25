@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 
 class DialogLayout extends StatelessWidget {
-  final String title;
+  final String? title;
   final Widget child;
-  final String primaryButtonText;
-  final String secondaryButtonText;
-  final VoidCallback primaryOnTap;
-  final VoidCallback secondaryOnTap;
+  final String? primaryButtonText;
+  final String? secondaryButtonText;
+  final VoidCallback? primaryOnTap;
+  final VoidCallback? secondaryOnTap;
   final DialogType dialogType;
-  final DialogButtonType dialogButtonType;
+  final DialogButtonType? dialogButtonType;
 
   const DialogLayout({
     this.title,
-    @required this.child,
+    required this.child,
     this.primaryButtonText,
     this.secondaryButtonText,
     this.primaryOnTap,
     this.secondaryOnTap,
-    @required this.dialogType,
+    required this.dialogType,
     this.dialogButtonType,
   })  : assert((dialogType == DialogType.full ||
                 dialogType == DialogType.withTitle)
@@ -47,7 +47,7 @@ class DialogLayout extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    title,
+                    title!,
                     style: Theme.of(context).textTheme.headline6,
                   ),
                 ),
@@ -69,11 +69,11 @@ class DialogLayout extends StatelessWidget {
               if (dialogType == DialogType.full ||
                   dialogType == DialogType.withButtons)
                 DialogButtonLayout(
-                  primaryText: primaryButtonText,
-                  primaryOnTap: primaryOnTap,
+                  primaryText: primaryButtonText!,
+                  primaryOnTap: primaryOnTap!,
                   secondaryText: secondaryButtonText,
                   secondaryOnTap: secondaryOnTap,
-                  type: dialogButtonType,
+                  type: dialogButtonType!,
                 ),
             ],
           ),

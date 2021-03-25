@@ -12,13 +12,13 @@ import 'package:video_player/video_player.dart';
 class MediaPreview extends StatelessWidget {
   final MediaInfo mediaInfo;
 
-  const MediaPreview({Key key, @required this.mediaInfo}) : super(key: key);
+  const MediaPreview({required this.mediaInfo});
 
   @override
   Widget build(BuildContext context) {
     return DialogLayout(
       primaryButtonText: 'Back',
-      primaryOnTap: () => ExtendedNavigator.of(context).pop(),
+      primaryOnTap: () => ExtendedNavigator.of(context)!.pop(),
       title: mediaInfo.entity.title,
       dialogType: DialogType.full,
       dialogButtonType: DialogButtonType.singleButton,
@@ -28,7 +28,7 @@ class MediaPreview extends StatelessWidget {
               future: mediaInfo.entity.file,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.done) {
-                  final File videoFile = snapshot.data as File;
+                  final File videoFile = snapshot.data! as File;
                   final videoPlayerController =
                       VideoPlayerController.file(videoFile)..initialize();
                   final controller = ChewieController(

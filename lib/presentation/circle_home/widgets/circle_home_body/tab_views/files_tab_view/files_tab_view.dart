@@ -31,7 +31,7 @@ class FilesTabView extends StatelessWidget {
                   SelectionBar(
                     count:
                         state.files.values.where((selected) => selected).length,
-                    onCancel: () => context.bloc<FilesTabViewBloc>().add(
+                    onCancel: () => context.read<FilesTabViewBloc>().add(
                           const FilesTabViewEvent.deselectAll(),
                         ),
                   ),
