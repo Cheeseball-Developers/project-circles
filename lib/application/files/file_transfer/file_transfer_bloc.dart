@@ -223,7 +223,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 List.from(state.transferProgressInfos);
             logger.d(
                 'Update progress event called, index value at ${transferProgressInfos[0].fileTransferIndex}');
-            bool flag = true;
+
             for (final int index
                 in Iterable.generate(transferProgressInfos.length)) {
               final transferProgressInfo = transferProgressInfos[index];
@@ -233,11 +233,9 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                     transferProgressInfo.filesMap.length) {
                   if (transferProgressInfo.fileTransferIndex !=
                           transferProgressInfo.filesMap.length - 1 ||
-                      transferProgressInfo.filesMap.values.last != 1.0) {
-                    flag = false;
-                  }
-                  logger
-                      .d("This is the new progress: ${e.payloadInfo.progress}");
+                      transferProgressInfo.filesMap.values.last != 1.0) {}
+                  //logger
+                  //.d("This is the new progress: ${e.payloadInfo.progress}");
                   transferProgressInfo.filesMap.update(
                       transferProgressInfo.filesMap.keys
                           .elementAt(transferProgressInfo.fileTransferIndex),
@@ -246,19 +244,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 }
               }
             }
-            if (flag) {
-              yield FileTransferState.transferComplete(
-                type: FileTransferType.outgoing(),
-                transferProgressInfos: transferProgressInfos,
-              );
-            } else {
-              yield state.copyWith(
-                  transferProgressInfos: transferProgressInfos);
-            }
+            yield state.copyWith(transferProgressInfos: transferProgressInfos);
           },
           incrementFileTransferIndex: (e) async* {
             final List<TransferProgressInfo> transferProgressInfos =
                 List.from(state.transferProgressInfos);
+            bool flag = true;
             for (final int index
                 in Iterable.generate(transferProgressInfos.length)) {
               final transferProgressInfo = transferProgressInfos[index];
@@ -267,9 +258,22 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 transferProgressInfos[index] = transferProgressInfo.copyWith(
                     fileTransferIndex:
                         transferProgressInfo.fileTransferIndex + 1);
+                if (transferProgressInfo.fileTransferIndex !=
+                        transferProgressInfo.filesMap.length - 1 ||
+                    transferProgressInfo.filesMap.values.last != 1.0) {
+                  flag = false;
+                }
               }
-              yield state.copyWith(
-                  transferProgressInfos: transferProgressInfos);
+              if (flag) {
+                logger.d('Transfer complete state is yeilded');
+                yield FileTransferState.transferComplete(
+                  type: const FileTransferType.outgoing(),
+                  transferProgressInfos: transferProgressInfos,
+                );
+              } else {
+                yield state.copyWith(
+                    transferProgressInfos: transferProgressInfos);
+              }
             }
           },
           abortFileTransfer: (e) async* {

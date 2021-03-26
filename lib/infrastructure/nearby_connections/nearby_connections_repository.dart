@@ -510,7 +510,6 @@ class NearbyConnections {
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
-            logger.d('----------------I am added to progressStream for progress');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: payloadTransferUpdate.bytesTransferred /
@@ -620,7 +619,7 @@ class NearbyConnections {
         in Iterable.generate(outgoingFiles.length)) {
       final file = outgoingFiles[outgoingFileInfoIndex];
       info +=
-      "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
+          "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
       if (outgoingFileInfoIndex % 3 == 2 ||
           outgoingFileInfoIndex == outgoingFiles.length - 1) {
         for (final user in users) {
