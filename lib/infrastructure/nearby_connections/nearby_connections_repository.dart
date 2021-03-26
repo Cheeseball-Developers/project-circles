@@ -3,6 +3,7 @@ import 'dart:core';
 import 'dart:io';
 import 'dart:typed_data';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 import 'package:nearby_connections/nearby_connections.dart';
@@ -422,8 +423,6 @@ class NearbyConnections {
         final List<String> info = str.split("***");
         for (final fileInfo in info) {
           final List<String> keyFileInfo = fileInfo.split("*");
-          logger.d(info.length);
-          logger.d(keyFileInfo);
           final String keyFileName = keyFileInfo[0];
           final int keyFileSize = int.parse(keyFileInfo[1]);
           final List<String> thumbnailPixels =
@@ -511,6 +510,7 @@ class NearbyConnections {
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
+            logger.d('----------------I am added to progressStream for progress');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: payloadTransferUpdate.bytesTransferred /
@@ -618,6 +618,9 @@ class NearbyConnections {
 
     for (final int outgoingFileInfoIndex
         in Iterable.generate(outgoingFiles.length)) {
+      final file = outgoingFiles[outgoingFileInfoIndex];
+      info +=
+      "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
       if (outgoingFileInfoIndex % 3 == 2 ||
           outgoingFileInfoIndex == outgoingFiles.length - 1) {
         for (final user in users) {
@@ -629,9 +632,6 @@ class NearbyConnections {
         }
         info = '';
       }
-      final file = outgoingFiles[outgoingFileInfoIndex];
-      info +=
-          "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
     }
   }
 

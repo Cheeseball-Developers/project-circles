@@ -189,7 +189,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         );
       },
       sendingFiles: (state) async* {
-        // TODO: This merely serves as a temporary fix to a larger problem, replace this
         progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream!.listen((payloadInfo) {
           add(FileTransferEvent.updateProgress(
@@ -198,7 +197,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         }, onError: (e) {
           logger.e(e);
         });
-        // TODO: till here
 
         fileSharedSuccessStreamSubscription ??=
             _nearbyConnections.fileSharingSuccessfulStream!.listen((event) {
@@ -220,10 +218,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             }
           },
           updateProgress: (e) async* {
+            yield state.copyWith(transferProgressInfos: []);
             final List<TransferProgressInfo> transferProgressInfos =
                 List.from(state.transferProgressInfos);
             logger.d(
                 'Update progress event called, index value at ${transferProgressInfos[0].fileTransferIndex}');
+            bool flag = true;
             for (final int index
                 in Iterable.generate(transferProgressInfos.length)) {
               final transferProgressInfo = transferProgressInfos[index];
@@ -231,6 +231,13 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                   e.payloadInfo.endId) {
                 if (transferProgressInfo.fileTransferIndex <
                     transferProgressInfo.filesMap.length) {
+                  if (transferProgressInfo.fileTransferIndex !=
+                          transferProgressInfo.filesMap.length - 1 ||
+                      transferProgressInfo.filesMap.values.last != 1.0) {
+                    flag = false;
+                  }
+                  logger
+                      .d("This is the new progress: ${e.payloadInfo.progress}");
                   transferProgressInfo.filesMap.update(
                       transferProgressInfo.filesMap.keys
                           .elementAt(transferProgressInfo.fileTransferIndex),
@@ -239,12 +246,19 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 }
               }
             }
-            yield state.copyWith(transferProgressInfos: transferProgressInfos);
+            if (flag) {
+              yield FileTransferState.transferComplete(
+                type: FileTransferType.outgoing(),
+                transferProgressInfos: transferProgressInfos,
+              );
+            } else {
+              yield state.copyWith(
+                  transferProgressInfos: transferProgressInfos);
+            }
           },
           incrementFileTransferIndex: (e) async* {
             final List<TransferProgressInfo> transferProgressInfos =
                 List.from(state.transferProgressInfos);
-            bool flag = true;
             for (final int index
                 in Iterable.generate(transferProgressInfos.length)) {
               final transferProgressInfo = transferProgressInfos[index];
@@ -253,15 +267,6 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 transferProgressInfos[index] = transferProgressInfo.copyWith(
                     fileTransferIndex:
                         transferProgressInfo.fileTransferIndex + 1);
-              }
-              if (transferProgressInfos[index].fileTransferIndex !=
-                  transferProgressInfos[index].filesMap.length) {
-                flag = false;
-              }
-              if (flag) {
-                yield FileTransferState.transferComplete(
-                    type: const FileTransferType.outgoing(),
-                    transferProgressInfos: transferProgressInfos);
               }
               yield state.copyWith(
                   transferProgressInfos: transferProgressInfos);
@@ -350,25 +355,23 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
               add(const FileTransferEvent.filesReceived());
             } else {
               logger.d(
-                  'Update progress event called, index value at ${state
-                      .transferProgressInfo.fileTransferIndex}');
+                  'Update progress event called, index value at ${state.transferProgressInfo.fileTransferIndex}');
               final Map<FileInfo, double> filesMap =
-              Map.from(state.transferProgressInfo.filesMap);
+                  Map.from(state.transferProgressInfo.filesMap);
               filesMap.update(
                   filesMap.keys
                       .elementAt(state.transferProgressInfo.fileTransferIndex),
-                      (value) => e.payloadInfo.progress);
+                  (value) => e.payloadInfo.progress);
               //final Map<FileInfo, double> filesMap = Map.from(state.filesMap);
               //TODO was thinking ki
               yield state.copyWith(
                   transferProgressInfo: TransferProgressInfo(
-                    user: state.transferProgressInfo.user,
-                    filesMap: filesMap,
-                    acceptOrRejectOption:
+                user: state.transferProgressInfo.user,
+                filesMap: filesMap,
+                acceptOrRejectOption:
                     state.transferProgressInfo.acceptOrRejectOption,
-                    fileTransferIndex: state.transferProgressInfo
-                        .fileTransferIndex,
-                  ));
+                fileTransferIndex: state.transferProgressInfo.fileTransferIndex,
+              ));
             }
           },
           incrementFileTransferIndex: (_) async* {
