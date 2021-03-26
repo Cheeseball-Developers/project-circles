@@ -53,7 +53,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
         state.connectionFailureOrSuccessOption.fold(
           () => null,
           (failureOrSuccess) => failureOrSuccess.fold(
-            (l) => null,
+            (f) {},
             (_) {
               context.read<CurrentCircleBloc>().add(
                     CurrentCircleEvent.joinCircle(host: user),

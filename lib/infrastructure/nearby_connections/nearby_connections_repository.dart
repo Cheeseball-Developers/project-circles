@@ -61,8 +61,7 @@ class NearbyConnections {
 
   Stream<User>? incomingRequestStream;
 
-  final StreamController<Either<ConnectionFailure, Unit>>
-      onConnectionResultDisc =
+  StreamController<Either<ConnectionFailure, Unit>> onConnectionResultDisc =
       StreamController<Either<ConnectionFailure, Unit>>.broadcast();
 
   Stream<Either<ConnectionFailure, Unit>>? onConnectionResultDiscStream;
@@ -213,6 +212,8 @@ class NearbyConnections {
     logger.i("This is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
     lostDeviceStream = onEndLost.stream;
+    onConnectionResultDisc =
+        StreamController<Either<ConnectionFailure, Unit>>.broadcast();
     onConnectionResultDiscStream = onConnectionResultDisc.stream;
     sendingFileInfoStream = sendingFileInfo.stream;
     progressOfFileStream = progressOfFile.stream;
@@ -510,7 +511,7 @@ class NearbyConnections {
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
-            logger.d('----------------I am added to progressStream for progress');
+        logger.d('----------------I am added to progressStream for progress');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: payloadTransferUpdate.bytesTransferred /
@@ -620,7 +621,7 @@ class NearbyConnections {
         in Iterable.generate(outgoingFiles.length)) {
       final file = outgoingFiles[outgoingFileInfoIndex];
       info +=
-      "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
+          "${file.name}*${file.bytesSize}*${file.thumbnail}*${file.hash}***";
       if (outgoingFileInfoIndex % 3 == 2 ||
           outgoingFileInfoIndex == outgoingFiles.length - 1) {
         for (final user in users) {
