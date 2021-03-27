@@ -41,6 +41,7 @@ dependencies:
   video_thumbnail:
   video_player:
   chewie:
+  visibility_detector:
   flushbar:
   moor_flutter:
   open_file: ^3.0.3
