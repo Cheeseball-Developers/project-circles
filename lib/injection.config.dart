@@ -60,7 +60,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i17.SearchBloc(get<_i15.NearbyConnections>()));
   gh.factory<_i18.SettingsBloc>(() => _i18.SettingsBloc(
       get<_i11.IDeviceInfo>(), get<_i16.MySharedPreferences>()));
-  gh.lazySingleton<_i19.FileTransferBloc>(() => _i19.FileTransferBloc(
+  gh.factory<_i19.FileTransferBloc>(() => _i19.FileTransferBloc(
       get<_i3.AppsRepository>(),
       get<_i13.MediaRepository>(),
       get<_i8.FilesRepository>(),

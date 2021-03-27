@@ -10,6 +10,8 @@ class TransferProgressInfoList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      initiallyExpanded: true,
+      backgroundColor: Theme.of(context).primaryColor,
       title: Text(transferProgressInfo.user.name.getOrCrash()),
       children: [
         ListView.builder(
