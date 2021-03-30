@@ -277,6 +277,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             }
           },
           abortFileTransfer: (e) async* {
+            await _nearbyConnections
+                .cancelPayload(lastPayloadId.getOrElse(() => null));
+            yield FileTransferState.transferComplete(
+                type: const FileTransferType.outgoing(),
+                transferProgressInfos: state.transferProgressInfos);
+
             // TODO: Implement this
           },
           filesSent: (e) async* {
@@ -396,6 +402,14 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             yield FileTransferState.transferComplete(
                 type: const FileTransferType.incoming(),
                 transferProgressInfos: [state.transferProgressInfo]);
+          },
+          abortFileTransfer: (e) async* {
+            await _nearbyConnections
+                .cancelPayload(lastPayloadId.getOrElse(() => null));
+            yield FileTransferState.transferComplete(
+                type: const FileTransferType.incoming(),
+                transferProgressInfos: [state.transferProgressInfo]);
+            // TODO: Implement this
           },
           orElse: () async* {},
         );

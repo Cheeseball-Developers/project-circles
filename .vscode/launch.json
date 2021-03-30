@@ -4,10 +4,19 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
         {
             "name": "project-circles",
             "request": "launch",
             "type": "dart"
+        },
+        {
+            "name": "project-circles-no-sound-null-safety",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--no-sound-null-safety"
+              ]
         }
     ]
 }
