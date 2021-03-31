@@ -35,6 +35,7 @@ class NearbyConnections {
   User? incomingRequest;
   String? host; // host username
   int? lastFilePayloadId;
+  bool _abortTransfer = false;
 
   final logger = Logger();
 
@@ -511,7 +512,6 @@ class NearbyConnections {
       if (_isFile) {
         logger.v(
             'Percentage : ${payloadTransferUpdate.bytesTransferred * 100 / payloadTransferUpdate.totalBytes}');
-        logger.d('----------------I am added to progressStream for progress');
         progressOfFile.sink.add(PayloadInfo(
             payloadId: payloadTransferUpdate.id,
             progress: payloadTransferUpdate.bytesTransferred /
@@ -576,6 +576,9 @@ class NearbyConnections {
     //Sending the number of files that are being sent
     for (final file in files) {
       logger.d('filePath: ${file.path}');
+      if (_abortTransfer) {
+        break;
+      }
 
       /// Returns the payloadID as soon as file transfer has begun
       ///
@@ -585,18 +588,18 @@ class NearbyConnections {
       /// so that receiver can rename the file accordingly
       /// Send the payloadID and filename to receiver as bytes payload
 
-      logger.d('$_isFile  isfile is set true in sending');
       await _nearby.sendFilePayload(receiver, file.path).then((id) async {
         lastFilePayloadId = id;
       });
       _isFile = true;
+      logger.d('$_isFile  isfile is set true in sending');
       logger.i("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
       logger.i("Currently sending file is: ${file.path.split('/').last}");
     }
 
-    if (lastFilePayloadId != null) {
+    if (lastFilePayloadId != null || _abortTransfer) {
       return right(unit);
     }
     return left(const ConnectionFailure.unexpected());
@@ -637,6 +640,7 @@ class NearbyConnections {
   }
 
   Future<void> cancelPayload(int payloadId) async {
+    _abortTransfer = true;
     await _nearby.cancelPayload(payloadId);
   }
 }
