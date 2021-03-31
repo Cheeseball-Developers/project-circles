@@ -8,6 +8,7 @@ import 'package:projectcircles/domain/files/media_info.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_button_layout.dart';
 import 'package:projectcircles/presentation/core/widgets/layouts/dialog_layout.dart';
 import 'package:video_player/video_player.dart';
+import 'package:visibility_detector/visibility_detector.dart';
 
 class MediaPreview extends StatelessWidget {
   final MediaInfo mediaInfo;
@@ -36,8 +37,18 @@ class MediaPreview extends StatelessWidget {
                         mediaInfo.entity.width / mediaInfo.entity.height,
                     videoPlayerController: videoPlayerController,
                   );
-                  return Chewie(
-                    controller: controller,
+                  return VisibilityDetector(
+                    key: const Key('video'),
+                    onVisibilityChanged: (VisibilityInfo info) {
+                      if (info.visibleFraction == 0.0) {
+                        controller.pause();
+                        videoPlayerController.dispose();
+                        controller.dispose();
+                      }
+                    },
+                    child: Chewie(
+                      controller: controller,
+                    ),
                   );
                 }
                 return Container();

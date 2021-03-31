@@ -23,7 +23,7 @@ abstract class SearchState with _$SearchState {
           List<User> discoveredDevices}) = _SearchState;
 
   factory SearchState.initial() => SearchState(
-      isSearching: true,
+      isSearching: false,
       isLoading: false,
       isCancelling: false,
       showAllDiscoveredDevicesPopUp: false,

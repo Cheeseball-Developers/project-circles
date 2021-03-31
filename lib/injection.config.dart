@@ -56,7 +56,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       () => _i14.MediaTabViewBloc(get<_i13.MediaRepository>()));
   gh.lazySingleton<_i15.NearbyConnections>(() => _i15.NearbyConnections(
       get<_i7.AppDatabase>(), get<_i16.MySharedPreferences>()));
-  gh.factory<_i17.SearchBloc>(
+  gh.lazySingleton<_i17.SearchBloc>(
       () => _i17.SearchBloc(get<_i15.NearbyConnections>()));
   gh.factory<_i18.SettingsBloc>(() => _i18.SettingsBloc(
       get<_i11.IDeviceInfo>(), get<_i16.MySharedPreferences>()));

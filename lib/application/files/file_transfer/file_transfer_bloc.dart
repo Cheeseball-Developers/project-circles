@@ -27,7 +27,7 @@ part 'file_transfer_state.dart';
 
 part 'file_transfer_bloc.freezed.dart';
 
-@LazySingleton()
+@injectable
 class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   final AppsRepository _appsRepository;
   final MediaRepository _mediaRepository;

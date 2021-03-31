@@ -62,8 +62,7 @@ class NearbyConnections {
 
   Stream<User>? incomingRequestStream;
 
-  final StreamController<Either<ConnectionFailure, Unit>>
-      onConnectionResultDisc =
+  StreamController<Either<ConnectionFailure, Unit>> onConnectionResultDisc =
       StreamController<Either<ConnectionFailure, Unit>>.broadcast();
 
   Stream<Either<ConnectionFailure, Unit>>? onConnectionResultDiscStream;
@@ -214,6 +213,8 @@ class NearbyConnections {
     logger.i("This is my username: $_username");
     discoveredDeviceStream = onEndFound.stream;
     lostDeviceStream = onEndLost.stream;
+    onConnectionResultDisc =
+        StreamController<Either<ConnectionFailure, Unit>>.broadcast();
     onConnectionResultDiscStream = onConnectionResultDisc.stream;
     sendingFileInfoStream = sendingFileInfo.stream;
     progressOfFileStream = progressOfFile.stream;
