@@ -279,9 +279,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           abortFileTransfer: (e) async* {
             await _nearbyConnections
                 .cancelPayload(lastPayloadId.getOrElse(() => null));
-            yield FileTransferState.transferComplete(
-                type: const FileTransferType.outgoing(),
-                transferProgressInfos: state.transferProgressInfos);
+            yield const FileTransferState.hasFailed(
+                failure: FileTransferFailure.cancelled());
 
             // TODO: Implement this
           },
@@ -406,9 +405,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
           abortFileTransfer: (e) async* {
             await _nearbyConnections
                 .cancelPayload(lastPayloadId.getOrElse(() => null));
-            yield FileTransferState.transferComplete(
-                type: const FileTransferType.incoming(),
-                transferProgressInfos: [state.transferProgressInfo]);
+            yield const FileTransferState.hasFailed(
+                failure: FileTransferFailure.cancelled());
             // TODO: Implement this
           },
           orElse: () async* {},

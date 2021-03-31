@@ -19,8 +19,10 @@ class FileTransferDialog extends StatelessWidget {
           initial: (_) => DialogType.empty,
           outgoingFilesConfirmation: (_) => DialogType.full,
           incomingFilesConfirmation: (_) => DialogType.full,
-          sendingFiles: (_) => DialogType.full,
-          receivingFiles: (_) => DialogType.full,
+          sendingFiles: (_) => DialogType.withTitle,
+          // TODO: Change this to DialogType.full to implement cancellation
+          receivingFiles: (_) => DialogType.withTitle,
+          // TODO: Change this to DialogType.full to implement cancellation
           transferComplete: (_) => DialogType.full,
           hasFailed: (_) => DialogType.empty,
         ),
@@ -28,8 +30,10 @@ class FileTransferDialog extends StatelessWidget {
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => DialogButtonType.doubleButton,
           incomingFilesConfirmation: (_) => DialogButtonType.doubleButton,
-          sendingFiles: (_) => DialogButtonType.center,
-          receivingFiles: (_) => DialogButtonType.center,
+          sendingFiles: (_) => null,
+          // TODO: Change this to DialogButtonType.center to implement cancellation
+          receivingFiles: (_) => null,
+          // TODO: Change this to DialogButtonType.center to implement cancellation
           transferComplete: (_) => DialogButtonType.singleButton,
           hasFailed: (_) => null,
         ),
@@ -65,16 +69,17 @@ class FileTransferDialog extends StatelessWidget {
           outgoingFilesConfirmation: (_) => () => context
               .read<FileTransferBloc>()
               .add(const FileTransferEvent.sendFilesInfo()),
-          // TODO: Add cancellation callback
           incomingFilesConfirmation: (_) => () => context
               .read<FileTransferBloc>()
               .add(const FileTransferEvent.confirmIncomingFiles(
                 acceptOrReject: true,
               )),
-          sendingFiles: (_) => () {},
-          // TODO: Add cancellation callback
-          receivingFiles: (_) => () {},
-          // TODO: Add cancellation callback
+          sendingFiles: (_) => () => context
+              .read<FileTransferBloc>()
+              .add(const FileTransferEvent.abortFileTransfer()),
+          receivingFiles: (_) => () => context
+              .read<FileTransferBloc>()
+              .add(const FileTransferEvent.abortFileTransfer()),
           transferComplete: (_) => () {
             context
                 .read<FileTransferBloc>()

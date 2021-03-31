@@ -36,7 +36,7 @@ class FileTransferEvent with _$FileTransferEvent {
 
   const factory FileTransferEvent.filesReceived() = _FilesReceived;
 
-  const factory FileTransferEvent.abortFileTransfer({required User user}) =
+  const factory FileTransferEvent.abortFileTransfer() =
       _AbortFileTransfer;
 
   const factory FileTransferEvent.reset() = _Reset;

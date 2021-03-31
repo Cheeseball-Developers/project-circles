@@ -79,10 +79,8 @@ class _$FileTransferEventTearOff {
     return const _FilesReceived();
   }
 
-  _AbortFileTransfer abortFileTransfer({required User user}) {
-    return _AbortFileTransfer(
-      user: user,
-    );
+  _AbortFileTransfer abortFileTransfer() {
+    return const _AbortFileTransfer();
   }
 
   _Reset reset() {
@@ -109,7 +107,7 @@ mixin _$FileTransferEvent {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +125,7 @@ mixin _$FileTransferEvent {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) =>
@@ -241,7 +239,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return initialize();
@@ -262,7 +260,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -402,7 +400,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return confirmOutgoingFiles(users);
@@ -423,7 +421,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -543,7 +541,7 @@ class _$_CancelSend implements _CancelSend {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return cancelSend();
@@ -564,7 +562,7 @@ class _$_CancelSend implements _CancelSend {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -678,7 +676,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return sendFilesInfo();
@@ -699,7 +697,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -838,7 +836,7 @@ class _$_SendFiles implements _SendFiles {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return sendFiles(endPointId);
@@ -859,7 +857,7 @@ class _$_SendFiles implements _SendFiles {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -977,7 +975,7 @@ class _$_FilesSent implements _FilesSent {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return filesSent();
@@ -998,7 +996,7 @@ class _$_FilesSent implements _FilesSent {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -1147,7 +1145,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return fileInfoReceived(fileInfo);
@@ -1168,7 +1166,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -1313,7 +1311,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return endIdReceived(endId);
@@ -1334,7 +1332,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -1481,7 +1479,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return confirmIncomingFiles(acceptOrReject);
@@ -1502,7 +1500,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -1657,7 +1655,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return updateProgress(payloadInfo);
@@ -1678,7 +1676,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -1826,7 +1824,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return incrementFileTransferIndex(uid);
@@ -1847,7 +1845,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -1967,7 +1965,7 @@ class _$_FilesReceived implements _FilesReceived {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return filesReceived();
@@ -1988,7 +1986,7 @@ class _$_FilesReceived implements _FilesReceived {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
@@ -2056,9 +2054,6 @@ abstract class _$AbortFileTransferCopyWith<$Res> {
   factory _$AbortFileTransferCopyWith(
           _AbortFileTransfer value, $Res Function(_AbortFileTransfer) then) =
       __$AbortFileTransferCopyWithImpl<$Res>;
-  $Res call({User user});
-
-  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -2071,55 +2066,24 @@ class __$AbortFileTransferCopyWithImpl<$Res>
 
   @override
   _AbortFileTransfer get _value => super._value as _AbortFileTransfer;
-
-  @override
-  $Res call({
-    Object? user = freezed,
-  }) {
-    return _then(_AbortFileTransfer(
-      user: user == freezed
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-    ));
-  }
-
-  @override
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value));
-    });
-  }
 }
 
 /// @nodoc
 class _$_AbortFileTransfer implements _AbortFileTransfer {
-  const _$_AbortFileTransfer({required this.user});
-
-  @override
-  final User user;
+  const _$_AbortFileTransfer();
 
   @override
   String toString() {
-    return 'FileTransferEvent.abortFileTransfer(user: $user)';
+    return 'FileTransferEvent.abortFileTransfer()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _AbortFileTransfer &&
-            (identical(other.user, user) ||
-                const DeepCollectionEquality().equals(other.user, user)));
+    return identical(this, other) || (other is _AbortFileTransfer);
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
-
-  @JsonKey(ignore: true)
-  @override
-  _$AbortFileTransferCopyWith<_AbortFileTransfer> get copyWith =>
-      __$AbortFileTransferCopyWithImpl<_AbortFileTransfer>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
@@ -2136,10 +2100,10 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
-    return abortFileTransfer(user);
+    return abortFileTransfer();
   }
 
   @override
@@ -2157,12 +2121,12 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (abortFileTransfer != null) {
-      return abortFileTransfer(user);
+      return abortFileTransfer();
     }
     return orElse();
   }
@@ -2217,12 +2181,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
 }
 
 abstract class _AbortFileTransfer implements FileTransferEvent {
-  const factory _AbortFileTransfer({required User user}) = _$_AbortFileTransfer;
-
-  User get user => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$AbortFileTransferCopyWith<_AbortFileTransfer> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _AbortFileTransfer() = _$_AbortFileTransfer;
 }
 
 /// @nodoc
@@ -2273,7 +2232,7 @@ class _$_Reset implements _Reset {
     required TResult Function(PayloadInfo payloadInfo) updateProgress,
     required TResult Function(UniqueId uid) incrementFileTransferIndex,
     required TResult Function() filesReceived,
-    required TResult Function(User user) abortFileTransfer,
+    required TResult Function() abortFileTransfer,
     required TResult Function() reset,
   }) {
     return reset();
@@ -2294,7 +2253,7 @@ class _$_Reset implements _Reset {
     TResult Function(PayloadInfo payloadInfo)? updateProgress,
     TResult Function(UniqueId uid)? incrementFileTransferIndex,
     TResult Function()? filesReceived,
-    TResult Function(User user)? abortFileTransfer,
+    TResult Function()? abortFileTransfer,
     TResult Function()? reset,
     required TResult orElse(),
   }) {
