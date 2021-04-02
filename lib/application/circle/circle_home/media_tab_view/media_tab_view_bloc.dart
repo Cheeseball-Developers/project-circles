@@ -24,19 +24,15 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
       : super(const MediaTabViewState.initial());
 
   void scrollListener() {
-    print('scrollListener');
     state.maybeMap(
       hasLoadedMedia: (state) {
         if (state.scrollController.position.atEdge &&
             state.scrollController.position.pixels != 0) {
           state.scrollController.removeListener(scrollListener);
           add(MediaTabViewEvent.loadMedia(album: state.album));
-          print('Event added');
         }
       },
-      orElse: () {
-        print('Else');
-      },
+      orElse: () {},
     );
   }
 
@@ -83,7 +79,6 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
         );
       },
       hasLoadedMedia: (state) async* {
-        print('hasLoadedMedia');
         if (!state.scrollController.hasListeners) {
           state.scrollController.addListener(scrollListener);
         }
@@ -96,19 +91,18 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
             }
           },
           loadMedia: (e) async* {
-              yield state.copyWith(loadingMore: true);
-              final Map<MediaInfo, bool> albumMedia = Map.from(state.media);
-              final int currentPage = state.currentPage;
-              yield state.copyWith(
-                  media: state.media, previousPage: currentPage);
-              albumMedia.addAll(await _mediaRepository.getAlbumMedia(
-                  e.album, currentPage + 1));
-              yield state.copyWith(
-                  media: albumMedia,
-                  previousPage: currentPage,
-                  currentPage: state.media.length == albumMedia.length
-                      ? currentPage
-                      : currentPage + 1);
+            yield state.copyWith(loadingMore: true);
+            final Map<MediaInfo, bool> albumMedia = Map.from(state.media);
+            final int currentPage = state.currentPage;
+            yield state.copyWith(media: state.media, previousPage: currentPage);
+            albumMedia.addAll(
+                await _mediaRepository.getAlbumMedia(e.album, currentPage + 1));
+            yield state.copyWith(
+                media: albumMedia,
+                previousPage: currentPage,
+                currentPage: state.media.length == albumMedia.length
+                    ? currentPage
+                    : currentPage + 1);
           },
           toggleSelection: (e) async* {
             if (_mediaRepository.toggleSelection(mediaInfo: e.mediaInfo)) {

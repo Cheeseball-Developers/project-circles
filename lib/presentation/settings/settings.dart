@@ -16,7 +16,7 @@ import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.da
 import 'package:projectcircles/presentation/settings/widgets/settings_section.dart';
 
 class Settings extends StatelessWidget {
-  final GlobalKey<FormState> _formKey = GlobalKey();
+  static final GlobalKey<FormState> _formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +107,7 @@ class Settings extends StatelessWidget {
                                     ? Form(
                                         key: _formKey,
                                         child: TextFormField(
+                                          autofocus: true,
                                           controller: TextEditingController(
                                             text: state.user.name.getOrCrash(),
                                           ),
@@ -145,8 +146,9 @@ class Settings extends StatelessWidget {
                               if (state.isChangingName)
                                 IconButton(
                                   icon: const Icon(Icons.done),
-                                  onPressed: () =>
-                                      _formKey.currentState!.save(),
+                                  onPressed: () {
+                                    _formKey.currentState!.save();
+                                  }
                                 )
                               else
                                 IconButton(

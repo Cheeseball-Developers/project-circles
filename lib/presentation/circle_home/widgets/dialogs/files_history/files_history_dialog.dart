@@ -21,10 +21,11 @@ class FilesHistoryDialog extends StatelessWidget {
           builder: (context, state) => state.failureOrFilesInfoOption.fold(
             () => const CircularProgressIndicator(),
             (failureOrFilesInfo) => failureOrFilesInfo.fold(
-              // TODO: Add proper failure text here
-              (f) => const Text("Failure"),
-              (filesInfo) =>
-                    FileHistoryList(files: filesInfo, showOpen: true),
+              (f) => const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text("Failed to Load"),
+              ),
+              (filesInfo) => FileHistoryList(files: filesInfo, showOpen: true),
             ),
           ),
         ),

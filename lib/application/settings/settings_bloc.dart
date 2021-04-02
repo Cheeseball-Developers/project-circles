@@ -86,11 +86,14 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
             yield state.copyWith(isLoading: true);
             final Option<SettingsFailure> failureOption =
                 await _mySharedPreferences.setName(name: e.name);
+            getIt<NearbyConnections>().setUsername =
+                e.name.getOrCrash();
             yield state.copyWith(
               user: User(
                   uid: state.user.uid,
                   name: failureOption.isNone() ? e.name : state.user.name),
               isLoading: false,
+              isChangingName: false,
               settingsFailureOption: failureOption,
             );
           },
