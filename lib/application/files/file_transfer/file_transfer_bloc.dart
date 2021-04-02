@@ -331,8 +331,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       },
       receivingFiles: (state) async* {
         // Cancelling stream subscriptions that are no longer needed
+        fileInfoSuccessStreamSubscription?.cancel();
+        fileInfoSuccessStreamSubscription = null;
         incomingFileInfoStreamSubscription?.cancel();
+        incomingFileInfoStreamSubscription = null;
         respondingUserStreamSubscription?.cancel();
+        respondingUserStreamSubscription = null;
 
         // Starting necessary stream subscriptions
         logger.d("Transferring Files State");
@@ -415,11 +419,16 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       },
       transferComplete: (state) async* {
         progressOfFileStreamSubscription?.cancel();
+        progressOfFileStreamSubscription = null;
         fileSharedSuccessStreamSubscription?.cancel();
+        fileSharedSuccessStreamSubscription = null;
 
         yield* event.maybeMap(
           reset: (_) async* {
+            logger.d('Reset Event Called');
+            _nearbyConnections.reset();
             yield const FileTransferState.initial(incomingFileInfo: {});
+            add(const FileTransferEvent.initialize());
           },
           orElse: () async* {},
         );

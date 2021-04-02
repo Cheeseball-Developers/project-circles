@@ -643,4 +643,14 @@ class NearbyConnections {
     _abortTransfer = true;
     await _nearby.cancelPayload(payloadId);
   }
+
+  void reset() {
+    _tempFile = null;
+    fileIndex = 0;
+    fileInfos = [];
+    lastFilePayloadId = null;
+    _abortTransfer = false;
+    _isFile = false;
+    _isFileInfo = false;
+  }
 }
