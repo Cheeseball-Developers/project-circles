@@ -26,6 +26,10 @@ class _$MediaTabViewEventTearOff {
     );
   }
 
+  EnableLoading enableLoading() {
+    return const EnableLoading();
+  }
+
   ToggleSelection toggleSelection({required MediaInfo mediaInfo}) {
     return ToggleSelection(
       mediaInfo: mediaInfo,
@@ -46,6 +50,7 @@ mixin _$MediaTabViewEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() loadAlbums,
     required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function() enableLoading,
     required TResult Function(MediaInfo mediaInfo) toggleSelection,
     required TResult Function() deselectAll,
   }) =>
@@ -54,6 +59,7 @@ mixin _$MediaTabViewEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAlbums,
     TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function()? enableLoading,
     TResult Function(MediaInfo mediaInfo)? toggleSelection,
     TResult Function()? deselectAll,
     required TResult orElse(),
@@ -63,6 +69,7 @@ mixin _$MediaTabViewEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadAlbums value) loadAlbums,
     required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(EnableLoading value) enableLoading,
     required TResult Function(ToggleSelection value) toggleSelection,
     required TResult Function(DeselectAll value) deselectAll,
   }) =>
@@ -71,6 +78,7 @@ mixin _$MediaTabViewEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadAlbums value)? loadAlbums,
     TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(EnableLoading value)? enableLoading,
     TResult Function(ToggleSelection value)? toggleSelection,
     TResult Function(DeselectAll value)? deselectAll,
     required TResult orElse(),
@@ -135,6 +143,7 @@ class _$LoadAlbums implements LoadAlbums {
   TResult when<TResult extends Object?>({
     required TResult Function() loadAlbums,
     required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function() enableLoading,
     required TResult Function(MediaInfo mediaInfo) toggleSelection,
     required TResult Function() deselectAll,
   }) {
@@ -146,6 +155,7 @@ class _$LoadAlbums implements LoadAlbums {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAlbums,
     TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function()? enableLoading,
     TResult Function(MediaInfo mediaInfo)? toggleSelection,
     TResult Function()? deselectAll,
     required TResult orElse(),
@@ -161,6 +171,7 @@ class _$LoadAlbums implements LoadAlbums {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadAlbums value) loadAlbums,
     required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(EnableLoading value) enableLoading,
     required TResult Function(ToggleSelection value) toggleSelection,
     required TResult Function(DeselectAll value) deselectAll,
   }) {
@@ -172,6 +183,7 @@ class _$LoadAlbums implements LoadAlbums {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadAlbums value)? loadAlbums,
     TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(EnableLoading value)? enableLoading,
     TResult Function(ToggleSelection value)? toggleSelection,
     TResult Function(DeselectAll value)? deselectAll,
     required TResult orElse(),
@@ -251,6 +263,7 @@ class _$LoadMedia implements LoadMedia {
   TResult when<TResult extends Object?>({
     required TResult Function() loadAlbums,
     required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function() enableLoading,
     required TResult Function(MediaInfo mediaInfo) toggleSelection,
     required TResult Function() deselectAll,
   }) {
@@ -262,6 +275,7 @@ class _$LoadMedia implements LoadMedia {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAlbums,
     TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function()? enableLoading,
     TResult Function(MediaInfo mediaInfo)? toggleSelection,
     TResult Function()? deselectAll,
     required TResult orElse(),
@@ -277,6 +291,7 @@ class _$LoadMedia implements LoadMedia {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadAlbums value) loadAlbums,
     required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(EnableLoading value) enableLoading,
     required TResult Function(ToggleSelection value) toggleSelection,
     required TResult Function(DeselectAll value) deselectAll,
   }) {
@@ -288,6 +303,7 @@ class _$LoadMedia implements LoadMedia {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadAlbums value)? loadAlbums,
     TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(EnableLoading value)? enableLoading,
     TResult Function(ToggleSelection value)? toggleSelection,
     TResult Function(DeselectAll value)? deselectAll,
     required TResult orElse(),
@@ -306,6 +322,103 @@ abstract class LoadMedia implements MediaTabViewEvent {
   @JsonKey(ignore: true)
   $LoadMediaCopyWith<LoadMedia> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EnableLoadingCopyWith<$Res> {
+  factory $EnableLoadingCopyWith(
+          EnableLoading value, $Res Function(EnableLoading) then) =
+      _$EnableLoadingCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$EnableLoadingCopyWithImpl<$Res>
+    extends _$MediaTabViewEventCopyWithImpl<$Res>
+    implements $EnableLoadingCopyWith<$Res> {
+  _$EnableLoadingCopyWithImpl(
+      EnableLoading _value, $Res Function(EnableLoading) _then)
+      : super(_value, (v) => _then(v as EnableLoading));
+
+  @override
+  EnableLoading get _value => super._value as EnableLoading;
+}
+
+/// @nodoc
+class _$EnableLoading implements EnableLoading {
+  const _$EnableLoading();
+
+  @override
+  String toString() {
+    return 'MediaTabViewEvent.enableLoading()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is EnableLoading);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAlbums,
+    required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function() enableLoading,
+    required TResult Function(MediaInfo mediaInfo) toggleSelection,
+    required TResult Function() deselectAll,
+  }) {
+    return enableLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAlbums,
+    TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function()? enableLoading,
+    TResult Function(MediaInfo mediaInfo)? toggleSelection,
+    TResult Function()? deselectAll,
+    required TResult orElse(),
+  }) {
+    if (enableLoading != null) {
+      return enableLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadAlbums value) loadAlbums,
+    required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(EnableLoading value) enableLoading,
+    required TResult Function(ToggleSelection value) toggleSelection,
+    required TResult Function(DeselectAll value) deselectAll,
+  }) {
+    return enableLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadAlbums value)? loadAlbums,
+    TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(EnableLoading value)? enableLoading,
+    TResult Function(ToggleSelection value)? toggleSelection,
+    TResult Function(DeselectAll value)? deselectAll,
+    required TResult orElse(),
+  }) {
+    if (enableLoading != null) {
+      return enableLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class EnableLoading implements MediaTabViewEvent {
+  const factory EnableLoading() = _$EnableLoading;
 }
 
 /// @nodoc
@@ -384,6 +497,7 @@ class _$ToggleSelection implements ToggleSelection {
   TResult when<TResult extends Object?>({
     required TResult Function() loadAlbums,
     required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function() enableLoading,
     required TResult Function(MediaInfo mediaInfo) toggleSelection,
     required TResult Function() deselectAll,
   }) {
@@ -395,6 +509,7 @@ class _$ToggleSelection implements ToggleSelection {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAlbums,
     TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function()? enableLoading,
     TResult Function(MediaInfo mediaInfo)? toggleSelection,
     TResult Function()? deselectAll,
     required TResult orElse(),
@@ -410,6 +525,7 @@ class _$ToggleSelection implements ToggleSelection {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadAlbums value) loadAlbums,
     required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(EnableLoading value) enableLoading,
     required TResult Function(ToggleSelection value) toggleSelection,
     required TResult Function(DeselectAll value) deselectAll,
   }) {
@@ -421,6 +537,7 @@ class _$ToggleSelection implements ToggleSelection {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadAlbums value)? loadAlbums,
     TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(EnableLoading value)? enableLoading,
     TResult Function(ToggleSelection value)? toggleSelection,
     TResult Function(DeselectAll value)? deselectAll,
     required TResult orElse(),
@@ -483,6 +600,7 @@ class _$DeselectAll implements DeselectAll {
   TResult when<TResult extends Object?>({
     required TResult Function() loadAlbums,
     required TResult Function(AssetPathEntity album) loadMedia,
+    required TResult Function() enableLoading,
     required TResult Function(MediaInfo mediaInfo) toggleSelection,
     required TResult Function() deselectAll,
   }) {
@@ -494,6 +612,7 @@ class _$DeselectAll implements DeselectAll {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadAlbums,
     TResult Function(AssetPathEntity album)? loadMedia,
+    TResult Function()? enableLoading,
     TResult Function(MediaInfo mediaInfo)? toggleSelection,
     TResult Function()? deselectAll,
     required TResult orElse(),
@@ -509,6 +628,7 @@ class _$DeselectAll implements DeselectAll {
   TResult map<TResult extends Object?>({
     required TResult Function(LoadAlbums value) loadAlbums,
     required TResult Function(LoadMedia value) loadMedia,
+    required TResult Function(EnableLoading value) enableLoading,
     required TResult Function(ToggleSelection value) toggleSelection,
     required TResult Function(DeselectAll value) deselectAll,
   }) {
@@ -520,6 +640,7 @@ class _$DeselectAll implements DeselectAll {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(LoadAlbums value)? loadAlbums,
     TResult Function(LoadMedia value)? loadMedia,
+    TResult Function(EnableLoading value)? enableLoading,
     TResult Function(ToggleSelection value)? toggleSelection,
     TResult Function(DeselectAll value)? deselectAll,
     required TResult orElse(),
@@ -556,11 +677,15 @@ class _$MediaTabViewStateTearOff {
   _HasLoaded hasLoadedMedia(
       {required AssetPathEntity album,
       required Map<MediaInfo, bool> media,
+      required ScrollController scrollController,
+      required bool loadingMore,
       required int previousPage,
       required int currentPage}) {
     return _HasLoaded(
       album: album,
       media: media,
+      scrollController: scrollController,
+      loadingMore: loadingMore,
       previousPage: previousPage,
       currentPage: currentPage,
     );
@@ -583,8 +708,13 @@ mixin _$MediaTabViewState {
     required TResult Function() initial,
     required TResult Function() isLoading,
     required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
-    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)
+    required TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)
         hasLoadedMedia,
     required TResult Function(AppsLoadFailure failure) hasFailed,
   }) =>
@@ -594,8 +724,13 @@ mixin _$MediaTabViewState {
     TResult Function()? initial,
     TResult Function()? isLoading,
     TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
-    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)?
+    TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)?
         hasLoadedMedia,
     TResult Function(AppsLoadFailure failure)? hasFailed,
     required TResult orElse(),
@@ -678,8 +813,13 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() isLoading,
     required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
-    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)
+    required TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)
         hasLoadedMedia,
     required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
@@ -692,8 +832,13 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? isLoading,
     TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
-    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)?
+    TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)?
         hasLoadedMedia,
     TResult Function(AppsLoadFailure failure)? hasFailed,
     required TResult orElse(),
@@ -778,8 +923,13 @@ class _$_IsLoading implements _IsLoading {
     required TResult Function() initial,
     required TResult Function() isLoading,
     required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
-    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)
+    required TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)
         hasLoadedMedia,
     required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
@@ -792,8 +942,13 @@ class _$_IsLoading implements _IsLoading {
     TResult Function()? initial,
     TResult Function()? isLoading,
     TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
-    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)?
+    TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)?
         hasLoadedMedia,
     TResult Function(AppsLoadFailure failure)? hasFailed,
     required TResult orElse(),
@@ -904,8 +1059,13 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
     required TResult Function() initial,
     required TResult Function() isLoading,
     required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
-    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)
+    required TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)
         hasLoadedMedia,
     required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
@@ -918,8 +1078,13 @@ class _$_HasLoadedAlbums implements _HasLoadedAlbums {
     TResult Function()? initial,
     TResult Function()? isLoading,
     TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
-    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)?
+    TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)?
         hasLoadedMedia,
     TResult Function(AppsLoadFailure failure)? hasFailed,
     required TResult orElse(),
@@ -977,6 +1142,8 @@ abstract class _$HasLoadedCopyWith<$Res> {
   $Res call(
       {AssetPathEntity album,
       Map<MediaInfo, bool> media,
+      ScrollController scrollController,
+      bool loadingMore,
       int previousPage,
       int currentPage});
 }
@@ -995,6 +1162,8 @@ class __$HasLoadedCopyWithImpl<$Res>
   $Res call({
     Object? album = freezed,
     Object? media = freezed,
+    Object? scrollController = freezed,
+    Object? loadingMore = freezed,
     Object? previousPage = freezed,
     Object? currentPage = freezed,
   }) {
@@ -1007,6 +1176,14 @@ class __$HasLoadedCopyWithImpl<$Res>
           ? _value.media
           : media // ignore: cast_nullable_to_non_nullable
               as Map<MediaInfo, bool>,
+      scrollController: scrollController == freezed
+          ? _value.scrollController
+          : scrollController // ignore: cast_nullable_to_non_nullable
+              as ScrollController,
+      loadingMore: loadingMore == freezed
+          ? _value.loadingMore
+          : loadingMore // ignore: cast_nullable_to_non_nullable
+              as bool,
       previousPage: previousPage == freezed
           ? _value.previousPage
           : previousPage // ignore: cast_nullable_to_non_nullable
@@ -1024,6 +1201,8 @@ class _$_HasLoaded implements _HasLoaded {
   const _$_HasLoaded(
       {required this.album,
       required this.media,
+      required this.scrollController,
+      required this.loadingMore,
       required this.previousPage,
       required this.currentPage});
 
@@ -1032,13 +1211,17 @@ class _$_HasLoaded implements _HasLoaded {
   @override
   final Map<MediaInfo, bool> media;
   @override
+  final ScrollController scrollController;
+  @override
+  final bool loadingMore;
+  @override
   final int previousPage;
   @override
   final int currentPage;
 
   @override
   String toString() {
-    return 'MediaTabViewState.hasLoadedMedia(album: $album, media: $media, previousPage: $previousPage, currentPage: $currentPage)';
+    return 'MediaTabViewState.hasLoadedMedia(album: $album, media: $media, scrollController: $scrollController, loadingMore: $loadingMore, previousPage: $previousPage, currentPage: $currentPage)';
   }
 
   @override
@@ -1049,6 +1232,12 @@ class _$_HasLoaded implements _HasLoaded {
                 const DeepCollectionEquality().equals(other.album, album)) &&
             (identical(other.media, media) ||
                 const DeepCollectionEquality().equals(other.media, media)) &&
+            (identical(other.scrollController, scrollController) ||
+                const DeepCollectionEquality()
+                    .equals(other.scrollController, scrollController)) &&
+            (identical(other.loadingMore, loadingMore) ||
+                const DeepCollectionEquality()
+                    .equals(other.loadingMore, loadingMore)) &&
             (identical(other.previousPage, previousPage) ||
                 const DeepCollectionEquality()
                     .equals(other.previousPage, previousPage)) &&
@@ -1062,6 +1251,8 @@ class _$_HasLoaded implements _HasLoaded {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(album) ^
       const DeepCollectionEquality().hash(media) ^
+      const DeepCollectionEquality().hash(scrollController) ^
+      const DeepCollectionEquality().hash(loadingMore) ^
       const DeepCollectionEquality().hash(previousPage) ^
       const DeepCollectionEquality().hash(currentPage);
 
@@ -1076,12 +1267,18 @@ class _$_HasLoaded implements _HasLoaded {
     required TResult Function() initial,
     required TResult Function() isLoading,
     required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
-    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)
+    required TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)
         hasLoadedMedia,
     required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
-    return hasLoadedMedia(album, media, previousPage, currentPage);
+    return hasLoadedMedia(
+        album, media, scrollController, loadingMore, previousPage, currentPage);
   }
 
   @override
@@ -1090,14 +1287,20 @@ class _$_HasLoaded implements _HasLoaded {
     TResult Function()? initial,
     TResult Function()? isLoading,
     TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
-    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)?
+    TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)?
         hasLoadedMedia,
     TResult Function(AppsLoadFailure failure)? hasFailed,
     required TResult orElse(),
   }) {
     if (hasLoadedMedia != null) {
-      return hasLoadedMedia(album, media, previousPage, currentPage);
+      return hasLoadedMedia(album, media, scrollController, loadingMore,
+          previousPage, currentPage);
     }
     return orElse();
   }
@@ -1135,11 +1338,15 @@ abstract class _HasLoaded implements MediaTabViewState {
   const factory _HasLoaded(
       {required AssetPathEntity album,
       required Map<MediaInfo, bool> media,
+      required ScrollController scrollController,
+      required bool loadingMore,
       required int previousPage,
       required int currentPage}) = _$_HasLoaded;
 
   AssetPathEntity get album => throw _privateConstructorUsedError;
   Map<MediaInfo, bool> get media => throw _privateConstructorUsedError;
+  ScrollController get scrollController => throw _privateConstructorUsedError;
+  bool get loadingMore => throw _privateConstructorUsedError;
   int get previousPage => throw _privateConstructorUsedError;
   int get currentPage => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1222,8 +1429,13 @@ class _$_HasFailed implements _HasFailed {
     required TResult Function() initial,
     required TResult Function() isLoading,
     required TResult Function(List<AssetPathEntity> albums) hasLoadedAlbums,
-    required TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)
+    required TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)
         hasLoadedMedia,
     required TResult Function(AppsLoadFailure failure) hasFailed,
   }) {
@@ -1236,8 +1448,13 @@ class _$_HasFailed implements _HasFailed {
     TResult Function()? initial,
     TResult Function()? isLoading,
     TResult Function(List<AssetPathEntity> albums)? hasLoadedAlbums,
-    TResult Function(AssetPathEntity album, Map<MediaInfo, bool> media,
-            int previousPage, int currentPage)?
+    TResult Function(
+            AssetPathEntity album,
+            Map<MediaInfo, bool> media,
+            ScrollController scrollController,
+            bool loadingMore,
+            int previousPage,
+            int currentPage)?
         hasLoadedMedia,
     TResult Function(AppsLoadFailure failure)? hasFailed,
     required TResult orElse(),
