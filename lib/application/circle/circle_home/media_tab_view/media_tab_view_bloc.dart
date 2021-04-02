@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:flutter/widgets.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
@@ -22,51 +23,94 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
   MediaTabViewBloc(this._mediaRepository)
       : super(const MediaTabViewState.initial());
 
+  void scrollListener() {
+    print('scrollListener');
+    state.maybeMap(
+      hasLoadedMedia: (state) {
+        if (state.scrollController.position.atEdge &&
+            state.scrollController.position.pixels != 0) {
+          state.scrollController.removeListener(scrollListener);
+          add(MediaTabViewEvent.loadMedia(album: state.album));
+          print('Event added');
+        }
+      },
+      orElse: () {
+        print('Else');
+      },
+    );
+  }
+
   @override
   Stream<MediaTabViewState> mapEventToState(
     MediaTabViewEvent event,
   ) async* {
-    yield* event.map(
-      loadAlbums: (e) async* {
-        yield const MediaTabViewState.isLoading();
-        if (await MediaRepository.getPermission()) {
-          yield MediaTabViewState.hasLoadedAlbums(
-              albums: await MediaRepository.getAlbums());
-        }
-      },
-      loadMedia: (e) async* {
-        yield* state.maybeMap(hasLoadedAlbums: (state) async* {
-          if (await MediaRepository.getPermission()) {
+    yield* state.map(
+      initial: (_) async* {
+        yield* event.maybeMap(
+          loadAlbums: (_) async* {
             yield const MediaTabViewState.isLoading();
-            final Map<MediaInfo, bool> albumMedia =
-                await _mediaRepository.getAlbumMedia(e.album, 0);
-            yield MediaTabViewState.hasLoadedMedia(
-              media: albumMedia,
-              album: e.album,
-              previousPage: -1,
-              currentPage: 0,
-            );
-          }
-        }, hasLoadedMedia: (state) async* {
-          final Map<MediaInfo, bool> albumMedia = Map.from(state.media);
-          final int currentPage = state.currentPage;
-          yield state.copyWith(media: state.media, previousPage: currentPage);
-          albumMedia.addAll(
-              await _mediaRepository.getAlbumMedia(e.album, currentPage + 1));
-          yield state.copyWith(
-              media: albumMedia,
-              previousPage: currentPage,
-              currentPage: state.media.length == albumMedia.length
-                  ? currentPage
-                  : currentPage + 1);
-        }, orElse: () async* {
-          yield const MediaTabViewState.hasFailed(
-              AppsLoadFailure.unexpectedFailure());
-        });
+            if (await MediaRepository.getPermission()) {
+              yield MediaTabViewState.hasLoadedAlbums(
+                  albums: await MediaRepository.getAlbums());
+            }
+          },
+          orElse: () async* {},
+        );
       },
-      toggleSelection: (e) async* {
-        yield* state.maybeMap(
-          hasLoadedMedia: (state) async* {
+      isLoading: (_) async* {},
+      hasLoadedAlbums: (state) async* {
+        yield* event.maybeMap(
+          loadMedia: (e) async* {
+            if (await MediaRepository.getPermission()) {
+              yield const MediaTabViewState.isLoading();
+              final Map<MediaInfo, bool> albumMedia =
+                  await _mediaRepository.getAlbumMedia(e.album, 0);
+              yield MediaTabViewState.hasLoadedMedia(
+                media: albumMedia,
+                album: e.album,
+                scrollController: ScrollController(),
+                loadingMore: false,
+                previousPage: -1,
+                currentPage: 0,
+              );
+              add(const MediaTabViewEvent.deselectAll());
+            }
+          },
+          orElse: () async* {
+            yield const MediaTabViewState.hasFailed(
+                AppsLoadFailure.unexpectedFailure());
+          },
+        );
+      },
+      hasLoadedMedia: (state) async* {
+        print('hasLoadedMedia');
+        if (!state.scrollController.hasListeners) {
+          state.scrollController.addListener(scrollListener);
+        }
+        yield* event.maybeMap(
+          loadAlbums: (_) async* {
+            yield const MediaTabViewState.isLoading();
+            if (await MediaRepository.getPermission()) {
+              yield MediaTabViewState.hasLoadedAlbums(
+                  albums: await MediaRepository.getAlbums());
+            }
+          },
+          loadMedia: (e) async* {
+              yield state.copyWith(loadingMore: true);
+              final Map<MediaInfo, bool> albumMedia = Map.from(state.media);
+              final int currentPage = state.currentPage;
+              yield state.copyWith(
+                  media: state.media, previousPage: currentPage);
+              albumMedia.addAll(await _mediaRepository.getAlbumMedia(
+                  e.album, currentPage + 1));
+              yield state.copyWith(
+                  media: albumMedia,
+                  previousPage: currentPage,
+                  currentPage: state.media.length == albumMedia.length
+                      ? currentPage
+                      : currentPage + 1);
+          },
+          toggleSelection: (e) async* {
             if (_mediaRepository.toggleSelection(mediaInfo: e.mediaInfo)) {
               final Map<MediaInfo, bool> media = state.media;
               media.update(e.mediaInfo, (value) => !value);
@@ -76,15 +120,7 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
               );
             }
           },
-          orElse: () async* {
-            yield const MediaTabViewState.hasFailed(
-                AppsLoadFailure.unexpectedFailure());
-          },
-        );
-      },
-      deselectAll: (e) async* {
-        yield* state.maybeMap(
-          hasLoadedMedia: (state) async* {
+          deselectAll: (_) async* {
             if (_mediaRepository.deselectAll()) {
               final Map<MediaInfo, bool> media = Map.from(state.media);
               media.updateAll((key, value) => false);
@@ -93,12 +129,10 @@ class MediaTabViewBloc extends Bloc<MediaTabViewEvent, MediaTabViewState> {
               );
             }
           },
-          orElse: () async* {
-            yield const MediaTabViewState.hasFailed(
-                AppsLoadFailure.unexpectedFailure());
-          },
+          orElse: () async* {},
         );
       },
+      hasFailed: (_) async* {},
     );
   }
 }

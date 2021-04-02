@@ -12,6 +12,8 @@ abstract class MediaTabViewState with _$MediaTabViewState {
   const factory MediaTabViewState.hasLoadedMedia({
     required AssetPathEntity album,
     required Map<MediaInfo, bool> media,
+    required ScrollController scrollController,
+    required bool loadingMore,
     required int previousPage,
     required int currentPage,
   }) = _HasLoaded;

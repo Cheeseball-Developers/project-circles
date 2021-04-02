@@ -67,25 +67,31 @@ class MediaTabView extends StatelessWidget {
                       child: Container(),
                     ),
                   ),
-                  body: NotificationListener(
-                    onNotification: (ScrollNotification scrollInfo) {
-                      if ((scrollInfo.metrics.pixels ==
-                              scrollInfo.metrics.maxScrollExtent) &&
-                          (state.previousPage != state.currentPage)) {
-                        context.read<MediaTabViewBloc>().add(
-                            MediaTabViewEvent.loadMedia(album: state.album));
-                      }
-                      return true;
-                    },
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3),
-                      itemCount: state.media.length,
-                      itemBuilder: (context, index) =>
-                          MediaThumbnail(index: index),
-                    ),
+                  body: Column(
+                    children: [
+                      Expanded(
+                        child: GridView.builder(
+                          controller: state.scrollController,
+                          shrinkWrap: true,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3),
+                          itemCount: state.media.length,
+                          itemBuilder: (context, index) =>
+                              MediaThumbnail(index: index),
+                        ),
+                      ),
+                      if (state.loadingMore)
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 128.0),
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation(
+                                  Theme.of(context).indicatorColor),
+                            ),
+                          ),
+                        ),
+                    ],
                   ),
                 ),
             hasFailed: (_) => ErrorRetry()));
