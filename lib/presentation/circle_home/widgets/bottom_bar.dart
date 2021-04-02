@@ -62,13 +62,9 @@ class BottomBar extends StatelessWidget {
           BlocConsumer<FileTransferBloc, FileTransferState>(
         listener: (context, fileTransferState) {
           fileTransferState.maybeMap(
-            incomingFilesConfirmation: (_) => showDialog(
-              context: context,
-              builder: (_) => BlocProvider.value(
-                value: context.read<FileTransferBloc>(),
-                child: FileTransferDialog(),
-              ),
-            ),
+            incomingFilesConfirmation: (_) => context
+                .read<CurrentCircleBloc>()
+                .add(const CurrentCircleEvent.showFileTransferDialog()),
             orElse: () {},
           );
         },

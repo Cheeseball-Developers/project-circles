@@ -95,6 +95,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             yield state.copyWith(incomingFileInfo: incomingFiles);
           },
           endIdReceived: (e) async* {
+            logger.d('End ID received');
             yield FileTransferState.incomingFilesConfirmation(
               files: state.incomingFileInfo,
               user: getIt<CurrentCircleBloc>().state.maybeMap(
