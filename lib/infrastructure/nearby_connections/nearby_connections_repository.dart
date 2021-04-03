@@ -579,6 +579,9 @@ class NearbyConnections {
       if (_abortTransfer) {
         break;
       }
+      _isFile = true;
+      logger.d('$_isFile  isfile is set true in sending');
+      logger.i("Sending File to $receiver");
 
       /// Returns the payloadID as soon as file transfer has begun
       ///
@@ -591,9 +594,6 @@ class NearbyConnections {
       await _nearby.sendFilePayload(receiver, file.path).then((id) async {
         lastFilePayloadId = id;
       });
-      _isFile = true;
-      logger.d('$_isFile  isfile is set true in sending');
-      logger.i("Sending File to $receiver");
 
       //Sending the fileName and payloadId to the receiver
       logger.i("Currently sending file is: ${file.path.split('/').last}");
