@@ -20,7 +20,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="projectcircles"
+        android:label="Circles"
         android:icon="@mipmap/launcher_icon"
         android:requestLegacyExternalStorage="true">
         <activity

@@ -47,6 +47,8 @@ dependencies:
   open_file: ^3.0.3
   logger:
   logger_flutter:
+  url_launcher:
+  share:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -92,6 +94,11 @@ flutter:
     - family: Quicksand
       fonts:
         - asset: fonts/Quicksand-VariableFont_wght.ttf
+    - family: Josefin Sans
+      fonts:
+        - asset: fonts/JosefinSans-VariableFont_wght.ttf
+        - asset: fonts/JosefinSans-Italic-VariableFont_wght.ttf
+          style: italic
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

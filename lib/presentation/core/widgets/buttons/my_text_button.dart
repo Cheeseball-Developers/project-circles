@@ -28,6 +28,7 @@ class MyTextButton extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
             text,
+            textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.button!.copyWith(
                 color: type == ButtonType.primary
                     ? Theme.of(context).cardColor
