@@ -192,6 +192,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
       sendingFiles: (state) async* {
         progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream!.listen((payloadInfo) {
+          lastPayloadId = some(payloadInfo.payloadId);
           add(FileTransferEvent.updateProgress(
             payloadInfo: payloadInfo,
           ));
@@ -278,8 +279,10 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             }
           },
           abortFileTransfer: (e) async* {
-            await _nearbyConnections
-                .cancelPayload(lastPayloadId.getOrElse(() => null));
+            logger.d('lastpayloadId : $lastPayloadId');
+            lastPayloadId.fold(() => null, (a) async {
+              await _nearbyConnections.cancelPayload(a);
+            });
             yield const FileTransferState.hasFailed(
                 failure: FileTransferFailure.cancelled());
 
@@ -342,6 +345,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         logger.d("Transferring Files State");
         progressOfFileStreamSubscription ??=
             _nearbyConnections.progressOfFileStream!.listen((payloadInfo) {
+          lastPayloadId = some(payloadInfo.payloadId);
           add(FileTransferEvent.updateProgress(
             payloadInfo: payloadInfo,
           ));
@@ -408,8 +412,9 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 transferProgressInfos: [state.transferProgressInfo]);
           },
           abortFileTransfer: (e) async* {
-            await _nearbyConnections
-                .cancelPayload(lastPayloadId.getOrElse(() => null));
+            lastPayloadId.fold(() => null, (a) async {
+              await _nearbyConnections.cancelPayload(a);
+            });
             yield const FileTransferState.hasFailed(
                 failure: FileTransferFailure.cancelled());
             // TODO: Implement this

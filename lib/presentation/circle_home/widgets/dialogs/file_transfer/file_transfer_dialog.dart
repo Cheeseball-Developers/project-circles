@@ -19,9 +19,9 @@ class FileTransferDialog extends StatelessWidget {
           initial: (_) => DialogType.empty,
           outgoingFilesConfirmation: (_) => DialogType.full,
           incomingFilesConfirmation: (_) => DialogType.full,
-          sendingFiles: (_) => DialogType.withTitle,
+          sendingFiles: (_) => DialogType.full,
           // TODO: Change this to DialogType.full to implement cancellation
-          receivingFiles: (_) => DialogType.withTitle,
+          receivingFiles: (_) => DialogType.full,
           // TODO: Change this to DialogType.full to implement cancellation
           transferComplete: (_) => DialogType.full,
           hasFailed: (_) => DialogType.empty,
@@ -30,9 +30,9 @@ class FileTransferDialog extends StatelessWidget {
           initial: (_) => null,
           outgoingFilesConfirmation: (_) => DialogButtonType.doubleButton,
           incomingFilesConfirmation: (_) => DialogButtonType.doubleButton,
-          sendingFiles: (_) => null,
-          // TODO: Change this to DialogButtonType.center to implement cancellation
-          receivingFiles: (_) => null,
+          sendingFiles: (_) => DialogButtonType.center,
+          // TODO: Change this to DialogButtonType.center to implemsent cancellation
+          receivingFiles: (_) => DialogButtonType.center,
           // TODO: Change this to DialogButtonType.center to implement cancellation
           transferComplete: (_) => DialogButtonType.singleButton,
           hasFailed: (_) => null,
