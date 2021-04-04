@@ -20,7 +20,7 @@ class FileIcon extends StatelessWidget {
                 ? Theme.of(context).buttonColor
                 : Colors.transparent,
             child: InkWell(
-              onTap: () => context.read()<FilesTabViewBloc>().add(
+              onTap: () => context.read<FilesTabViewBloc>().add(
                     FilesTabViewEvent.toggleSelection(
                       fileSystemEntity: state.files.keys.elementAt(index),
                     ),
