@@ -11,6 +11,7 @@ import 'package:projectcircles/domain/core/value_objects.dart';
 import 'package:projectcircles/injection.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/my_text_button.dart';
 import 'package:projectcircles/presentation/core/widgets/buttons/button_tile.dart';
+import 'package:projectcircles/presentation/routes/router.gr.dart';
 import 'package:projectcircles/presentation/settings/widgets/folder_picker.dart';
 import 'package:projectcircles/presentation/settings/widgets/name_form_pop_up.dart';
 import 'package:projectcircles/presentation/settings/widgets/settings_section.dart';
@@ -145,11 +146,10 @@ class Settings extends StatelessWidget {
                               ),
                               if (state.isChangingName)
                                 IconButton(
-                                  icon: const Icon(Icons.done),
-                                  onPressed: () {
-                                    _formKey.currentState!.save();
-                                  }
-                                )
+                                    icon: const Icon(Icons.done),
+                                    onPressed: () {
+                                      _formKey.currentState!.save();
+                                    })
                               else
                                 IconButton(
                                   icon: const Icon(Icons.edit),
@@ -250,10 +250,12 @@ class Settings extends StatelessWidget {
                           title: 'About',
                           items: [
                             ButtonTile(
-                                icon: Icons.info,
-                                title: 'About Circles',
-                                type: ButtonTileType.tapToOpen,
-                                onTap: () {}),
+                              icon: Icons.info,
+                              title: 'About Circles',
+                              type: ButtonTileType.tapToOpen,
+                              onTap: () => ExtendedNavigator.of(context)!
+                                  .push(Routes.aboutRoute),
+                            ),
                           ],
                         ),
                       ],
