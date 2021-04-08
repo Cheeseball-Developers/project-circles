@@ -23,7 +23,7 @@ class MyListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: Theme.of(context).cardColor,
       child: InkWell(
         onTap: onTap,
         child: Stack(
