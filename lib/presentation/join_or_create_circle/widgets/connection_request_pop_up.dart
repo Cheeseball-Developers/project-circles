@@ -64,17 +64,42 @@ class ConnectionRequestPopUp extends StatelessWidget {
         );
       },
       builder: (context, state) => DialogLayout(
-        dialogType: DialogType.withButtons,
-        dialogButtonType: DialogButtonType.center,
-        primaryButtonText: state.isCancelling ? 'Cancelling...' : 'Cancel',
-        primaryOnTap: state.isCancelling
-            ? () {}
-            : () {
-                context.read<SearchBloc>().add(
-                      SearchEvent.endConnectionRequest(cancelRequestUser: user),
-                    );
-                ExtendedNavigator.of(context)!.pop();
-              },
+        dialogType: state.connectionFailureOrRequestSent.fold(
+          () => DialogType.empty,
+          (_) => state.connectionFailureOrSuccessOption.fold(
+            () => DialogType.withButtons,
+            (_) => DialogType.empty,
+          ),
+        ),
+        dialogButtonType: state.connectionFailureOrRequestSent.fold(
+          () => null,
+          (_) => state.connectionFailureOrSuccessOption.fold(
+            () => DialogButtonType.center,
+            (_) => null,
+          ),
+        ),
+        primaryButtonText: state.connectionFailureOrRequestSent.fold(
+          () => null,
+          (_) => state.connectionFailureOrSuccessOption.fold(
+            () => state.isCancelling ? 'Cancelling...' : 'Cancel',
+            (_) => null,
+          ),
+        ),
+        primaryOnTap: state.connectionFailureOrRequestSent.fold(
+          () => null,
+          (_) => state.connectionFailureOrSuccessOption.fold(
+            () => state.isCancelling
+                ? () {}
+                : () {
+                    context.read<SearchBloc>().add(
+                          SearchEvent.endConnectionRequest(
+                              cancelRequestUser: user),
+                        );
+                    ExtendedNavigator.of(context)!.pop();
+                  },
+            (_) => null,
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: state.connectionFailureOrRequestSent.fold(
@@ -94,7 +119,7 @@ class ConnectionRequestPopUp extends StatelessWidget {
               (_) => state.connectionFailureOrSuccessOption.fold(
                 () => _body(
                   context,
-                  topText: 'Waiting Approval...',
+                  topText: 'Awaiting Approval...',
                   bigBottomText: user.name.getOrCrash(),
                   smallBottomText: user.uid.getOrCrash(),
                 ),
