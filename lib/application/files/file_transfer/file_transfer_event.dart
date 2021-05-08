@@ -15,10 +15,13 @@ class FileTransferEvent with _$FileTransferEvent {
   const factory FileTransferEvent.sendFiles({required String endPointId}) =
       _SendFiles;
 
+  const factory FileTransferEvent.fileRequestDenied({required String endPointId}) =
+      _FileRequestDenied;
+
   const factory FileTransferEvent.filesSent() = _FilesSent;
 
-  const factory FileTransferEvent.fileInfoReceived({required FileInfo fileInfo}) =
-      _FileInfoReceived;
+  const factory FileTransferEvent.fileInfoReceived(
+      {required FileInfo fileInfo}) = _FileInfoReceived;
 
   const factory FileTransferEvent.endIdReceived({required String endId}) =
       _EndIdReceived;
@@ -36,8 +39,7 @@ class FileTransferEvent with _$FileTransferEvent {
 
   const factory FileTransferEvent.filesReceived() = _FilesReceived;
 
-  const factory FileTransferEvent.abortFileTransfer() =
-      _AbortFileTransfer;
+  const factory FileTransferEvent.abortFileTransfer() = _AbortFileTransfer;
 
   const factory FileTransferEvent.reset() = _Reset;
 }

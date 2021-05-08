@@ -19,6 +19,7 @@ import 'package:projectcircles/infrastructure/circle/apps_repository.dart';
 import 'package:projectcircles/infrastructure/circle/files_repository.dart';
 import 'package:projectcircles/infrastructure/circle/media_repository.dart';
 import 'package:projectcircles/infrastructure/nearby_connections/nearby_connections_repository.dart';
+import 'package:projectcircles/infrastructure/settings/my_shared_preferences.dart';
 import 'package:projectcircles/injection.dart';
 
 part 'file_transfer_event.dart';
@@ -33,6 +34,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
   final MediaRepository _mediaRepository;
   final FilesRepository _filesRepository;
   final NearbyConnections _nearbyConnections;
+  final MySharedPreferences _mySharedPreferences;
 
   StreamSubscription<FileInfo>? incomingFileInfoStreamSubscription;
   StreamSubscription<PayloadInfo>? progressOfFileStreamSubscription;
@@ -53,6 +55,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
     this._mediaRepository,
     this._filesRepository,
     this._nearbyConnections,
+    this._mySharedPreferences,
   ) : super(const FileTransferState.initial(incomingFileInfo: <FileInfo>{})) {
     add(const FileTransferEvent.initialize());
   }
@@ -127,8 +130,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             yield* _confirmOutgoingFiles(e.users);
           },
           cancelSend: (e) async* {
-            // TODO: Implement cancellation p.s- this is the cancellation before sending
-            //yield state accordingly
+            yield* reset();
           },
           sendFilesInfo: (e) async* {
             final Map<FileInfo, double> filesMap = {};
@@ -164,6 +166,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 if (transferProgressInfos[index].user.uid.getOrCrash() ==
                     response.first) {
                   if (response.last == 'true') {
+                    // TODO: Check if updating transferProgressInfos is required here to not
                     transferProgressInfos[index] = transferProgressInfos[index]
                         .copyWith(acceptOrRejectOption: some(true));
                     add(FileTransferEvent.sendFiles(
@@ -172,6 +175,8 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                     //TODO: Yield state accordingly
                     transferProgressInfos[index] = transferProgressInfos[index]
                         .copyWith(acceptOrRejectOption: some(false));
+                    add(FileTransferEvent.fileRequestDenied(
+                        endPointId: response.first));
                   }
                 }
               }
@@ -210,13 +215,47 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
         yield* event.maybeMap(
           sendFiles: (e) async* {
-            for (final transferProgressInfo in state.transferProgressInfos) {
-              if (transferProgressInfo.user.uid.getOrCrash() == e.endPointId) {
+            final List<TransferProgressInfo> transferProgressInfos =
+                List.from(state.transferProgressInfos);
+            for (final int index
+                in Iterable.generate(transferProgressInfos.length)) {
+              if (transferProgressInfos[index].user.uid.getOrCrash() ==
+                  e.endPointId) {
+                transferProgressInfos[index] = transferProgressInfos[index]
+                    .copyWith(acceptOrRejectOption: some(true));
                 _nearbyConnections.sendFilePayload(
                   receiver: e.endPointId,
                   files: state.files,
                 );
               }
+            }
+            yield state.copyWith(transferProgressInfos: transferProgressInfos);
+          },
+          fileRequestDenied: (e) async* {
+            int deviceCount = 0;
+            final List<TransferProgressInfo> transferProgressInfos =
+                List.from(state.transferProgressInfos);
+            for (final int index
+                in Iterable.generate(transferProgressInfos.length)) {
+              if (transferProgressInfos[index].user.uid.getOrCrash() ==
+                  e.endPointId) {
+                transferProgressInfos[index] = transferProgressInfos[index]
+                    .copyWith(acceptOrRejectOption: some(false));
+              } else {
+                transferProgressInfos[index].acceptOrRejectOption.fold(
+                      () => deviceCount += 1,
+                      (acceptOrReject) =>
+                          acceptOrReject ? deviceCount += 1 : null,
+                    );
+              }
+            }
+            if (deviceCount > 0) {
+              yield state.copyWith(transferProgressInfos: []);
+              yield state.copyWith(
+                  transferProgressInfos: transferProgressInfos);
+            } else {
+              yield const FileTransferState.hasFailed(
+                  failure: FileTransferFailure.denied());
             }
           },
           updateProgress: (e) async* {
@@ -267,7 +306,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
                 }
               }
               if (flag) {
-                logger.d('Transfer complete state is yeilded');
+                logger.d('Transfer complete state is yielded');
                 yield FileTransferState.transferComplete(
                   type: const FileTransferType.outgoing(),
                   transferProgressInfos: transferProgressInfos,
@@ -312,22 +351,26 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
             _nearbyConnections.acceptOrRejectFiles(
                 response: e.acceptOrReject, endId: state.user.uid.getOrCrash());
 
-            final Map<FileInfo, double> filesMap = {};
+            if (e.acceptOrReject) {
+              final Map<FileInfo, double> filesMap = {};
 
-            for (final fileInfo in state.files) {
-              filesMap.putIfAbsent(fileInfo, () => 0.0);
+              for (final fileInfo in state.files) {
+                filesMap.putIfAbsent(fileInfo, () => 0.0);
+              }
+
+              final transferProgressInfo = TransferProgressInfo(
+                user: state.user,
+                filesMap: filesMap,
+                fileTransferIndex: 0,
+                acceptOrRejectOption: none(),
+              );
+
+              yield FileTransferState.receivingFiles(
+                transferProgressInfo: transferProgressInfo,
+              );
+            } else {
+              yield* reset();
             }
-
-            final transferProgressInfo = TransferProgressInfo(
-              user: state.user,
-              filesMap: filesMap,
-              fileTransferIndex: 0,
-              acceptOrRejectOption: none(),
-            );
-
-            yield FileTransferState.receivingFiles(
-              transferProgressInfo: transferProgressInfo,
-            );
           },
           orElse: () async* {},
         );
@@ -430,10 +473,7 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
 
         yield* event.maybeMap(
           reset: (_) async* {
-            logger.d('Reset Event Called');
-            _nearbyConnections.reset();
-            yield const FileTransferState.initial(incomingFileInfo: {});
-            add(const FileTransferEvent.initialize());
+            yield* reset();
           },
           orElse: () async* {},
         );
@@ -471,5 +511,12 @@ class FileTransferBloc extends Bloc<FileTransferEvent, FileTransferState> {
         filesOption: some(Set.from(appFilesInfo + mediaFilesInfo + filesInfo)),
       );
     }
+  }
+
+  Stream<FileTransferState> reset() async* {
+    logger.d('Reset Event Called');
+    _nearbyConnections.reset();
+    yield const FileTransferState.initial(incomingFileInfo: {});
+    add(const FileTransferEvent.initialize());
   }
 }
