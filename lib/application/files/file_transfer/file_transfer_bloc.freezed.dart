@@ -40,6 +40,12 @@ class _$FileTransferEventTearOff {
     );
   }
 
+  _FileRequestDenied fileRequestDenied({required String endPointId}) {
+    return _FileRequestDenied(
+      endPointId: endPointId,
+    );
+  }
+
   _FilesSent filesSent() {
     return const _FilesSent();
   }
@@ -100,6 +106,7 @@ mixin _$FileTransferEvent {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -118,6 +125,7 @@ mixin _$FileTransferEvent {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -137,6 +145,7 @@ mixin _$FileTransferEvent {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -156,6 +165,7 @@ mixin _$FileTransferEvent {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -232,6 +242,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -253,6 +264,7 @@ class _$_Initialize implements _Initialize {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -278,6 +290,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -300,6 +313,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -393,6 +407,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -414,6 +429,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -439,6 +455,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -461,6 +478,7 @@ class _$_ConfirmOutgoingFiles implements _ConfirmOutgoingFiles {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -534,6 +552,7 @@ class _$_CancelSend implements _CancelSend {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -555,6 +574,7 @@ class _$_CancelSend implements _CancelSend {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -580,6 +600,7 @@ class _$_CancelSend implements _CancelSend {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -602,6 +623,7 @@ class _$_CancelSend implements _CancelSend {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -669,6 +691,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -690,6 +713,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -715,6 +739,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -737,6 +762,7 @@ class _$_SendFilesInfo implements _SendFilesInfo {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -829,6 +855,7 @@ class _$_SendFiles implements _SendFiles {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -850,6 +877,7 @@ class _$_SendFiles implements _SendFiles {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -875,6 +903,7 @@ class _$_SendFiles implements _SendFiles {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -897,6 +926,7 @@ class _$_SendFiles implements _SendFiles {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -922,6 +952,177 @@ abstract class _SendFiles implements FileTransferEvent {
   String get endPointId => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$SendFilesCopyWith<_SendFiles> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$FileRequestDeniedCopyWith<$Res> {
+  factory _$FileRequestDeniedCopyWith(
+          _FileRequestDenied value, $Res Function(_FileRequestDenied) then) =
+      __$FileRequestDeniedCopyWithImpl<$Res>;
+  $Res call({String endPointId});
+}
+
+/// @nodoc
+class __$FileRequestDeniedCopyWithImpl<$Res>
+    extends _$FileTransferEventCopyWithImpl<$Res>
+    implements _$FileRequestDeniedCopyWith<$Res> {
+  __$FileRequestDeniedCopyWithImpl(
+      _FileRequestDenied _value, $Res Function(_FileRequestDenied) _then)
+      : super(_value, (v) => _then(v as _FileRequestDenied));
+
+  @override
+  _FileRequestDenied get _value => super._value as _FileRequestDenied;
+
+  @override
+  $Res call({
+    Object? endPointId = freezed,
+  }) {
+    return _then(_FileRequestDenied(
+      endPointId: endPointId == freezed
+          ? _value.endPointId
+          : endPointId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+class _$_FileRequestDenied implements _FileRequestDenied {
+  const _$_FileRequestDenied({required this.endPointId});
+
+  @override
+  final String endPointId;
+
+  @override
+  String toString() {
+    return 'FileTransferEvent.fileRequestDenied(endPointId: $endPointId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _FileRequestDenied &&
+            (identical(other.endPointId, endPointId) ||
+                const DeepCollectionEquality()
+                    .equals(other.endPointId, endPointId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(endPointId);
+
+  @JsonKey(ignore: true)
+  @override
+  _$FileRequestDeniedCopyWith<_FileRequestDenied> get copyWith =>
+      __$FileRequestDeniedCopyWithImpl<_FileRequestDenied>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initialize,
+    required TResult Function(List<User> users) confirmOutgoingFiles,
+    required TResult Function() cancelSend,
+    required TResult Function() sendFilesInfo,
+    required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
+    required TResult Function() filesSent,
+    required TResult Function(FileInfo fileInfo) fileInfoReceived,
+    required TResult Function(String endId) endIdReceived,
+    required TResult Function(bool acceptOrReject) confirmIncomingFiles,
+    required TResult Function(PayloadInfo payloadInfo) updateProgress,
+    required TResult Function(UniqueId uid) incrementFileTransferIndex,
+    required TResult Function() filesReceived,
+    required TResult Function() abortFileTransfer,
+    required TResult Function() reset,
+  }) {
+    return fileRequestDenied(endPointId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initialize,
+    TResult Function(List<User> users)? confirmOutgoingFiles,
+    TResult Function()? cancelSend,
+    TResult Function()? sendFilesInfo,
+    TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
+    TResult Function()? filesSent,
+    TResult Function(FileInfo fileInfo)? fileInfoReceived,
+    TResult Function(String endId)? endIdReceived,
+    TResult Function(bool acceptOrReject)? confirmIncomingFiles,
+    TResult Function(PayloadInfo payloadInfo)? updateProgress,
+    TResult Function(UniqueId uid)? incrementFileTransferIndex,
+    TResult Function()? filesReceived,
+    TResult Function()? abortFileTransfer,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (fileRequestDenied != null) {
+      return fileRequestDenied(endPointId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_ConfirmOutgoingFiles value) confirmOutgoingFiles,
+    required TResult Function(_CancelSend value) cancelSend,
+    required TResult Function(_SendFilesInfo value) sendFilesInfo,
+    required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
+    required TResult Function(_FilesSent value) filesSent,
+    required TResult Function(_FileInfoReceived value) fileInfoReceived,
+    required TResult Function(_EndIdReceived value) endIdReceived,
+    required TResult Function(_ConfirmIncomingFiles value) confirmIncomingFiles,
+    required TResult Function(_UpdateProgress value) updateProgress,
+    required TResult Function(_IncrementFileTransferIndex value)
+        incrementFileTransferIndex,
+    required TResult Function(_FilesReceived value) filesReceived,
+    required TResult Function(_AbortFileTransfer value) abortFileTransfer,
+    required TResult Function(_Reset value) reset,
+  }) {
+    return fileRequestDenied(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_ConfirmOutgoingFiles value)? confirmOutgoingFiles,
+    TResult Function(_CancelSend value)? cancelSend,
+    TResult Function(_SendFilesInfo value)? sendFilesInfo,
+    TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
+    TResult Function(_FilesSent value)? filesSent,
+    TResult Function(_FileInfoReceived value)? fileInfoReceived,
+    TResult Function(_EndIdReceived value)? endIdReceived,
+    TResult Function(_ConfirmIncomingFiles value)? confirmIncomingFiles,
+    TResult Function(_UpdateProgress value)? updateProgress,
+    TResult Function(_IncrementFileTransferIndex value)?
+        incrementFileTransferIndex,
+    TResult Function(_FilesReceived value)? filesReceived,
+    TResult Function(_AbortFileTransfer value)? abortFileTransfer,
+    TResult Function(_Reset value)? reset,
+    required TResult orElse(),
+  }) {
+    if (fileRequestDenied != null) {
+      return fileRequestDenied(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FileRequestDenied implements FileTransferEvent {
+  const factory _FileRequestDenied({required String endPointId}) =
+      _$_FileRequestDenied;
+
+  String get endPointId => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$FileRequestDeniedCopyWith<_FileRequestDenied> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -968,6 +1169,7 @@ class _$_FilesSent implements _FilesSent {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -989,6 +1191,7 @@ class _$_FilesSent implements _FilesSent {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -1014,6 +1217,7 @@ class _$_FilesSent implements _FilesSent {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -1036,6 +1240,7 @@ class _$_FilesSent implements _FilesSent {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -1138,6 +1343,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -1159,6 +1365,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -1184,6 +1391,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -1206,6 +1414,7 @@ class _$_FileInfoReceived implements _FileInfoReceived {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -1304,6 +1513,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -1325,6 +1535,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -1350,6 +1561,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -1372,6 +1584,7 @@ class _$_EndIdReceived implements _EndIdReceived {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -1472,6 +1685,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -1493,6 +1707,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -1518,6 +1733,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -1540,6 +1756,7 @@ class _$_ConfirmIncomingFiles implements _ConfirmIncomingFiles {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -1648,6 +1865,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -1669,6 +1887,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -1694,6 +1913,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -1716,6 +1936,7 @@ class _$_UpdateProgress implements _UpdateProgress {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -1817,6 +2038,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -1838,6 +2060,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -1863,6 +2086,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -1885,6 +2109,7 @@ class _$_IncrementFileTransferIndex implements _IncrementFileTransferIndex {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -1958,6 +2183,7 @@ class _$_FilesReceived implements _FilesReceived {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -1979,6 +2205,7 @@ class _$_FilesReceived implements _FilesReceived {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -2004,6 +2231,7 @@ class _$_FilesReceived implements _FilesReceived {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -2026,6 +2254,7 @@ class _$_FilesReceived implements _FilesReceived {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -2093,6 +2322,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -2114,6 +2344,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -2139,6 +2370,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -2161,6 +2393,7 @@ class _$_AbortFileTransfer implements _AbortFileTransfer {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,
@@ -2225,6 +2458,7 @@ class _$_Reset implements _Reset {
     required TResult Function() cancelSend,
     required TResult Function() sendFilesInfo,
     required TResult Function(String endPointId) sendFiles,
+    required TResult Function(String endPointId) fileRequestDenied,
     required TResult Function() filesSent,
     required TResult Function(FileInfo fileInfo) fileInfoReceived,
     required TResult Function(String endId) endIdReceived,
@@ -2246,6 +2480,7 @@ class _$_Reset implements _Reset {
     TResult Function()? cancelSend,
     TResult Function()? sendFilesInfo,
     TResult Function(String endPointId)? sendFiles,
+    TResult Function(String endPointId)? fileRequestDenied,
     TResult Function()? filesSent,
     TResult Function(FileInfo fileInfo)? fileInfoReceived,
     TResult Function(String endId)? endIdReceived,
@@ -2271,6 +2506,7 @@ class _$_Reset implements _Reset {
     required TResult Function(_CancelSend value) cancelSend,
     required TResult Function(_SendFilesInfo value) sendFilesInfo,
     required TResult Function(_SendFiles value) sendFiles,
+    required TResult Function(_FileRequestDenied value) fileRequestDenied,
     required TResult Function(_FilesSent value) filesSent,
     required TResult Function(_FileInfoReceived value) fileInfoReceived,
     required TResult Function(_EndIdReceived value) endIdReceived,
@@ -2293,6 +2529,7 @@ class _$_Reset implements _Reset {
     TResult Function(_CancelSend value)? cancelSend,
     TResult Function(_SendFilesInfo value)? sendFilesInfo,
     TResult Function(_SendFiles value)? sendFiles,
+    TResult Function(_FileRequestDenied value)? fileRequestDenied,
     TResult Function(_FilesSent value)? filesSent,
     TResult Function(_FileInfoReceived value)? fileInfoReceived,
     TResult Function(_EndIdReceived value)? endIdReceived,

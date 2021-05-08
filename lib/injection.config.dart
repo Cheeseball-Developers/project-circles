@@ -64,7 +64,8 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
       get<_i3.AppsRepository>(),
       get<_i13.MediaRepository>(),
       get<_i8.FilesRepository>(),
-      get<_i15.NearbyConnections>()));
+      get<_i15.NearbyConnections>(),
+      get<_i16.MySharedPreferences>()));
   gh.singleton<_i7.AppDatabase>(_i7.AppDatabase());
   gh.singleton<_i16.MySharedPreferences>(_i16.MySharedPreferences());
   gh.singleton<_i20.CurrentCircleBloc>(

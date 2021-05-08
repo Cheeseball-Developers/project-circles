@@ -92,10 +92,12 @@ class FileTransferDialog extends StatelessWidget {
           initial: (_) => null,
           outgoingFilesConfirmation: (_) =>
               () => ExtendedNavigator.of(context)!.pop(),
-          incomingFilesConfirmation: (_) => () => context
-              .read<FileTransferBloc>()
-              .add(const FileTransferEvent.confirmIncomingFiles(
-                  acceptOrReject: false)),
+          incomingFilesConfirmation: (_) => () {
+            context.read<FileTransferBloc>().add(
+                const FileTransferEvent.confirmIncomingFiles(
+                    acceptOrReject: false));
+            ExtendedNavigator.of(context)!.pop();
+          },
           sendingFiles: (_) => null,
           receivingFiles: (_) => null,
           transferComplete: (_) => null,
@@ -126,10 +128,12 @@ class FileTransferDialog extends StatelessWidget {
             itemCount: state.transferProgressInfos.length,
             itemBuilder: (context, index) => TransferProgressInfoList(
               transferProgressInfo: state.transferProgressInfos[index],
+              transferType: const FileTransferType.outgoing(),
             ),
           ),
           receivingFiles: (state) => TransferProgressInfoList(
             transferProgressInfo: state.transferProgressInfo,
+            transferType: const FileTransferType.incoming(),
           ),
           transferComplete: (state) => FileHistoryList(
             files: state.transferProgressInfos[0].filesMap.keys.toList(),
