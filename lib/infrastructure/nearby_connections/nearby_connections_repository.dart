@@ -35,6 +35,7 @@ class NearbyConnections {
   User? incomingRequest;
   String? host; // host username
   int? lastFilePayloadId;
+  List<int> filePayloadId = [];
   bool _abortTransfer = false;
 
   final logger = Logger();
@@ -379,6 +380,7 @@ class NearbyConnections {
   Future<Either<ConnectionFailure, Unit>> onPayloadReceived(
       String endId, Payload payload) async {
     if (payload.type == PayloadType.FILE) {
+      filePayloadId.add(payload.id);
       _isFile = true;
       logger.d(
           '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5 hehe i am initatited on sending a file payload');
@@ -411,7 +413,9 @@ class NearbyConnections {
       fileIndex += 1;
 
       return right(unit);
-    } else if (payload.type == PayloadType.BYTES) {
+    }
+    if (payload.type == PayloadType.BYTES) {
+      _isFile = false;
       logger.i("Bytes payload received");
       //converting the bytes received to string
       final String str = String.fromCharCodes(payload.bytes!);
@@ -467,7 +471,6 @@ class NearbyConnections {
       }
 
       if (str.contains('@')) {
-        _isFile = false;
         logger.d('$_isFile isFile is set false when response is got');
         final String responseGot = str.split('@').last;
         final String r = '$endId@$responseGot';
@@ -523,7 +526,7 @@ class NearbyConnections {
           "Sending Receiving files/data to $endId ${payloadTransferUpdate.bytesTransferred}");
       return right(unit);
     } else if (payloadTransferUpdate.status == PayloadStatus.SUCCESS) {
-      if (_isFile) {
+      if (_isFile && filePayloadId.contains(payloadTransferUpdate.id)) {
         logger.d(
             '$_isFile %%%%%%% hehe i am called  for file transfer complete lets see');
         fileSharingSuccessful.sink.add(endId);
@@ -593,6 +596,7 @@ class NearbyConnections {
 
       await _nearby.sendFilePayload(receiver, file.path).then((id) async {
         lastFilePayloadId = id;
+        filePayloadId.add(id!);
       });
 
       //Sending the fileName and payloadId to the receiver
@@ -649,6 +653,7 @@ class NearbyConnections {
     fileIndex = 0;
     fileInfos = [];
     lastFilePayloadId = null;
+    filePayloadId = [];
     _abortTransfer = false;
     _isFile = false;
     _isFileInfo = false;
