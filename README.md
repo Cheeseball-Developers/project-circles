@@ -8,5 +8,5 @@ Project Circles is an ambitious approach to nearby file sharing. It uses nearby 
 
 #### Note
 
-- Project Circles is still under development
+- Project Circles is released on [Google Play Store](https://play.google.com/store/apps/details?id=cheeseball.projectcircles). We currently support android devices only.
 - We plan to add support for video streaming in future updates
